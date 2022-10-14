@@ -90,7 +90,7 @@ Erasmust is a project to simplify the Erasmus and Exchange application processes
 This project aims to move every step of the application to a web environment that will make the process remarkably easier 
 for everyone involved. 
 
-Erasmust will have 2 types of users which are student and admin. Admin users will also have sub-types with different permission.
+Erasmust will basically consist of 2 different user types. The first type of user will represent students, while the other type of user will have administrator privileges. Users in the admin category will have bureaucratic roles according to their status. Bureaucratic processes such as approval and rejection of papers in the system will be carried out through these roles.
 Applications to Erasmus/Exchange will be done from the system so that students' exchange points will be calculated and placements
 will be made automatically. After exchange coordinators approve the placements, students will be able to view previously accepted
 courses from the school that they have been placed to. They will also be able to create, fill and send pre-approval forms through the system.
