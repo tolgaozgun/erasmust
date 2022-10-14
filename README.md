@@ -126,10 +126,10 @@ Optional Featues:
 We are planning to use the following technologies to build Erasmust.
 
 * [![React][React.js]][React-url]
-* Spring
-* Jenkins
-* Docker
-* Kubernetes
+* [![Spring][Spring.io]][Spring-url]
+* [![Jenkins][Jenkins.io]][Jenkins-url]
+* [![Docker][Docker.com]][Docker-url]
+* [![Kubernetes][Kubernetes.io]][Kubernetes-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -295,4 +295,12 @@ These are the resources we have used or are planning to use during the developme
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[JQuery-url]: https://jquery.com
+[Spring.io]: https://img.shields.io/static/v1?style=for-the-badge&message=Spring&color=6DB33F&logo=Spring&logoColor=FFFFFF&label=
+[Spring-url]: https://spring.io/
+[Jenkins.io]: https://img.shields.io/static/v1?style=for-the-badge&message=Jenkins&color=D24939&logo=Jenkins&logoColor=FFFFFF&label=
+[Jenkins-url]: https://jenkins.io/
+[Docker.com]: https://img.shields.io/static/v1?style=for-the-badge&message=Docker&color=2496ED&logo=Docker&logoColor=FFFFFF&label=
+[Docker-url]: https://www.docker.com/
+[Kubernetes.io]: https://img.shields.io/static/v1?style=for-the-badge&message=Kubernetes&color=326CE5&logo=Kubernetes&logoColor=FFFFFF&label=
+[Kubernetes-url]: https://kubernetes.io/
