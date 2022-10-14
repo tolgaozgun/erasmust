@@ -217,7 +217,7 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Eylül Badem (@eylulbadem(https://gıthub.com/eylulbadem))- 
+Eylül Badem [@eylulbadem](https://gıthub.com/eylulbadem) - 
 Yahya Eren Demirel - 
 Tolga Özgün - [@tolgaozgun](https://gıthub.com/tolgaozgun) - tolgaozgunn@gmail.com
 Barış Yıldırım -
