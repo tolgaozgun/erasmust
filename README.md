@@ -217,7 +217,7 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Eylül Badem - 
+Eylül Badem (@eylulbadem(https://gıthub.com/eylulbadem))- 
 Yahya Eren Demirel - 
 Tolga Özgün - [@tolgaozgun](https://gıthub.com/tolgaozgun) - tolgaozgunn@gmail.com
 Barış Yıldırım -
@@ -279,4 +279,3 @@ These are the resources we have used or are planning to use during the developme
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
-[
