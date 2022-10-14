@@ -88,7 +88,15 @@
 
 Erasmust is a project to simplify the Erasmus and Exchange application processes of Bilkent University students. 
 This project aims to move every step of the application to a web environment that will make the process remarkably easier 
-for everyone involved.
+for everyone involved. 
+
+Erasmust will have 2 types of users which are student and admin. Admin users will also have sub-types with different permission.
+Applications to Erasmus/Exchange will be done from the system so that students' exchange points will be calculated and placements
+will be made automatically. After exchange coordinators approve the placements, students will be able to view previously accepted
+courses from the school that they have been placed to. They will also be able to create, fill and send pre-approval forms through the system.
+Course and erasmus coordinators will be able to view the pre-approval forms and sign them. Admins will have a to-do list 
+that will show all the applications they are responsible for and their current status. After the student returns and the host 
+school send the transcript of the student, coordinators will be able to create course transfer forms and send to related people.
 
 Perks of Erasmust:
 * Minimize the number of mails sent during the application process.
@@ -100,10 +108,13 @@ Must Have Features:
 * User login with data fetched from SRS/AIRS
 * Pre-approval forms filled through the system to be revived by the course coordinator. If a course has already been approved 
 previously it is approved directly without review. 
-* Course transfer and exemption 
+* Course transfer and exemption forms.
+* To-do list for admin users.
    
 Optional Featues:
-* Erasmus and Exchange applications done from Erasmust so that total points of students can be calculated directly
+* Erasmus and Exchange applications done from Erasmust so that total points of students can be calculated directly.
+* Direct messaging feature so that students can get instant feedback from instructors/coordinator.
+* Similar asked question suggestion to prevent repetitively asked questions.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -218,10 +229,15 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 ## Contact
 
 Eylül Badem [@eylulbadem](https://github.com/eylulbadem) - 
-Yahya Eren Demirel [@Yeahya35](https://github.com/Yeahya35) - 
+
+Yahya Eren Demirel [@Yeahya35](https://github.com/Yeahya35) -
+
 Tolga Özgün [@tolgaozgun](https://github.com/tolgaozgun) - 
+
 Barış Yıldırım -
+
 Nisa Yılmaz [@nisayilmaz](https://github.com/nisayilmaz) - 
+
 Emirhan Büyükkonuklu
 
 Project Link: [https://github.com/tolgaozgun/erasmust](https://github.com/tolgaozgun/erasmust)
