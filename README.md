@@ -83,18 +83,27 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!---[![Product Name Screen Shot][product-screenshot]](https://example.com)-->
 
 
+Erasmust is a project to simplify the Erasmus and Exchange application processes of Bilkent University students. 
+This project aims to move every step of the application to a web environment that will make the process remarkably easier 
+for everyone involved.
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Perks of Erasmust:
+* Minimize the number of mails sent during the application process.
+* Eliminate forms printed on paper and digitalize every document.
+* Reduce the time spent when manually pairing students with schools.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Must Have Features:
+* User login with data fetched from SRS/AIRS
+* Pre-approval forms filled through the system to be revived by the course coordinator. If a course has already been approved 
+previously it is approved directly without review. 
+* Course transfer and exemption 
+   
+Optional Featues:
+* Erasmus and Exchange applications done from Erasmust so that total points of students can be calculated directly
 
 Use the `BLANK_README.md` to get started.
 
