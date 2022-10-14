@@ -18,12 +18,13 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+<!--
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]-->
 
 
 
@@ -31,7 +32,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tolgaozgun/erasmust">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <!--<img src="images/logo.png" alt="Logo" width="80" height="80">-->
   </a>
 
   <h3 align="center">Erasmust</h3>
@@ -91,9 +92,11 @@ This project aims to move every step of the application to a web environment tha
 for everyone involved. 
 
 Erasmust will basically consist of 2 different user logins. The first type of login will represent students, and the login will be assumed to be validated using SRS system. The other type of login will be assumed as AIRS login. AIRS login will apply to academic members, deans, rector, student affairs staff, and sysadmins. Users in the AIRS category will have bureaucratic roles according to their status. Bureaucratic processes such as approval and rejection of papers in the system will be carried out through these roles.
+
 Applications to Erasmus/Exchange will be done from the system so that students' exchange points will be calculated and placements
 will be made automatically. After exchange coordinators approve the placements, students will be able to view previously accepted
 courses from the school that they have been placed to. They will also be able to create, fill and send pre-approval forms through the system.
+
 Course and erasmus coordinators will be able to view the pre-approval forms and sign them. Staff will have a to-do list 
 that will show all the applications they are responsible for and their current status. After the student returns and the host 
 school send the transcript of the student, coordinators will be able to create course transfer forms and send to related people.
