@@ -59,10 +59,10 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#technologies">Technologies</a></li>
       </ul>
     </li>
-    <li>
+    <!--<li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
@@ -70,11 +70,11 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>-->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#resources">Resources</a></li>
   </ol>
 </details>
 
@@ -229,17 +229,17 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Eylül Badem [@eylulbadem](https://github.com/eylulbadem) - 
+Eylül Badem [@eylulbadem](https://github.com/eylulbadem)
 
-Yahya Eren Demirel [@Yeahya35](https://github.com/Yeahya35) -
+Yahya Eren Demirel [@Yeahya35](https://github.com/Yeahya35)
 
-Tolga Özgün [@tolgaozgun](https://github.com/tolgaozgun) - 
+Tolga Özgün [@tolgaozgun](https://github.com/tolgaozgun) - tolgaozgunn@gmail.com
 
-Barış Yıldırım -
+Barış Yıldırım - [@BarisYildirim6](https://github.com/BarisYildirim6)
 
-Nisa Yılmaz [@nisayilmaz](https://github.com/nisayilmaz) - 
+Nisa Yılmaz [@nisayilmaz](https://github.com/nisayilmaz) 
 
-Emirhan Büyükkonuklu
+Emirhan Büyükkonuklu - [@ebuyukkonuklu](https://github.com/ebuyukkonuklu)
 
 Project Link: [https://github.com/tolgaozgun/erasmust](https://github.com/tolgaozgun/erasmust)
 
