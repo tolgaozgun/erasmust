@@ -218,10 +218,10 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 ## Contact
 
 Eylül Badem [@eylulbadem](https://github.com/eylulbadem) - 
-Yahya Eren Demirel - 
-Tolga Özgün - [@tolgaozgun](https://gıthub.com/tolgaozgun) - tolgaozgunn@gmail.com
+Yahya Eren Demirel [@Yeahya35](https://github.com/Yeahya35) - 
+Tolga Özgün [@tolgaozgun](https://github.com/tolgaozgun) - 
 Barış Yıldırım -
-Nisa Yılmaz - 
+Nisa Yılmaz [@nisayilmaz](https://github.com/nisayilmaz) - 
 
 Project Link: [https://github.com/tolgaozgun/erasmust](https://github.com/tolgaozgun/erasmust)
 
