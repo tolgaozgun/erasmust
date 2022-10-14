@@ -90,11 +90,11 @@ Erasmust is a project to simplify the Erasmus and Exchange application processes
 This project aims to move every step of the application to a web environment that will make the process remarkably easier 
 for everyone involved. 
 
-Erasmust will basically consist of 2 different user types. The first type of user will represent students, while the other type of user will have administrator privileges. Users in the admin category will have bureaucratic roles according to their status. Bureaucratic processes such as approval and rejection of papers in the system will be carried out through these roles.
+Erasmust will basically consist of 2 different user logins. The first type of login will represent students, and the login will be assumed to be validated using SRS system. The other type of login will be assumed as AIRS login. AIRS login will apply to academic members, deans, rector, student affairs staff, and sysadmins. Users in the AIRS category will have bureaucratic roles according to their status. Bureaucratic processes such as approval and rejection of papers in the system will be carried out through these roles.
 Applications to Erasmus/Exchange will be done from the system so that students' exchange points will be calculated and placements
 will be made automatically. After exchange coordinators approve the placements, students will be able to view previously accepted
 courses from the school that they have been placed to. They will also be able to create, fill and send pre-approval forms through the system.
-Course and erasmus coordinators will be able to view the pre-approval forms and sign them. Admins will have a to-do list 
+Course and erasmus coordinators will be able to view the pre-approval forms and sign them. Staff will have a to-do list 
 that will show all the applications they are responsible for and their current status. After the student returns and the host 
 school send the transcript of the student, coordinators will be able to create course transfer forms and send to related people.
 
@@ -106,10 +106,11 @@ Perks of Erasmust:
 
 Must Have Features:
 * User login with data fetched from SRS/AIRS
-* Pre-approval forms filled through the system to be revived by the course coordinator. If a course has already been approved 
-previously it is approved directly without review. 
+* Pre-approval forms filled through the system to be revived by the course coordinator. If a course has already been approved previously it is approved directly without review. 
 * Course transfer and exemption forms.
 * To-do list for admin users.
+* Syllabus upload or fetch system so that the staff won't have to open multiple links for just one application.
+* E-signature system that will sign the papers virtually.
    
 Optional Featues:
 * Erasmus and Exchange applications done from Erasmust so that total points of students can be calculated directly.
