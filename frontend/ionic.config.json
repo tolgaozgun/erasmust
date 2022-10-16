@@ -1,7 +1,0 @@
-{
-  "name": "erasmust_frontend",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}

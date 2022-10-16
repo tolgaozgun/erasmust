@@ -1,0 +1,39 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=erasmust_db
+      - POSTGRES_USER=erasmust_admin
+      - POSTGRES_PASSWORD=Ewj3@jcn_234@!
+  backend:
+    build: ./backend
+    command: java -jar /spring-boot-docker.jar
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=erasmust_db
+      - POSTGRES_USER=erasmust_admin
+      - POSTGRES_PASSWORD=Ewj3@jcn_234@!
+      - SECRET_KEY='e!jvigj_!kr4jzo^tw!cbn_0p)r!hii*yv8-=p^!7cs^_l#7_k'
+    depends_on:
+      - db
+  frontend:
+    build: ./frontend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=erasmust_db
+      - POSTGRES_USER=erasmust_admin
+      - POSTGRES_PASSWORD=Ewj3@jcn_234@!
+      - SECRET_KEY='e!jvigj_!kr4jzo^tw!cbn_0p)r!hii*yv8-=p^!7cs^_l#7_k'
+    depends_on:
+      - db
