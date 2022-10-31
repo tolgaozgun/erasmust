@@ -1,1 +1,9 @@
+com\bilkent\erasmus\service\UserService.class
 com\bilkent\erasmus\ErasmusApplication.class
+com\bilkent\erasmus\mapper\UserMapperImpl.class
+com\bilkent\erasmus\entity\User.class
+com\bilkent\erasmus\controller\UserController.class
+com\bilkent\erasmus\dto\UserDTO.class
+com\bilkent\erasmus\mapper\UserMapper.class
+com\bilkent\erasmus\repository\UserRepository.class
+com\bilkent\erasmus\enums\Department.class

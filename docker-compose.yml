@@ -16,7 +16,7 @@ services:
     volumes:
       - ./backend:/backend
     ports:
-      - "1:8080"
+      - "4:8080"
     environment:
       - POSTGRES_NAME=erasmust_db
       - POSTGRES_USER=erasmust_admin
