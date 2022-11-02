@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Button, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -13,6 +12,7 @@ import { Users as UsersIcon } from '../icons/users';
 import { XCircle as XCircleIcon } from '../icons/x-circle';
 import { Logo } from './logo';
 import { NavItem } from './nav-item';
+import { useEffect } from 'react';
 
 const items = [
   {
@@ -66,6 +66,7 @@ export const DashboardSidebar = (props) => {
 
   useEffect(
     () => {
+
       if (open) {
         onClose?.();
       }
