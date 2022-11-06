@@ -1,6 +1,5 @@
-import { Box, Button, Card, CardContent, CardHeader, Divider, useTheme } from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Divider, useTheme, Typography } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 export const Sales = (props) => {
   const theme = useTheme();
@@ -91,7 +90,7 @@ export const Sales = (props) => {
             Last 7 days
           </Button>
         )}
-        title="Latest Sales"
+        title="Mail Box"
       />
       <Divider />
       <CardContent>
@@ -101,24 +100,13 @@ export const Sales = (props) => {
             position: 'relative'
           }}
         >
+          <Typography
+          sx={{ mb: 3 }}
+        >
+          Mail Box is empty.
+        </Typography>
         </Box>
       </CardContent>
-      <Divider />
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          p: 2
-        }}
-      >
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon fontSize="small" />}
-          size="small"
-        >
-          Overview
-        </Button>
-      </Box>
     </Card>
   );
 };

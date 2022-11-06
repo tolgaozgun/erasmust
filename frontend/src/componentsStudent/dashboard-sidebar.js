@@ -12,6 +12,11 @@ import { Users as UsersIcon } from '../icons/users';
 import { XCircle as XCircleIcon } from '../icons/x-circle';
 import { Logo } from './logo';
 import { NavItem } from './nav-item';
+import ImportExportOutlinedIcon from '@mui/icons-material/ImportExportOutlined';
+import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
+import SouthAmericaOutlinedIcon from '@mui/icons-material/SouthAmericaOutlined';
+import { HiGlobeEuropeAfrica } from "react-icons/hi2";
+import { HiGlobeAmericas } from "react-icons/hi2";
 
 const items = [
   {
@@ -20,14 +25,24 @@ const items = [
     title: 'Dashboard'
   },
   {
+    href: '/erasmusProgram',
+    icon: (<HiGlobeEuropeAfrica fontSize="small" />),
+    title: 'Erasmus Program'
+  },
+  {
+    href: '/exchangeProgram',
+    icon: (<HiGlobeAmericas fontSize="small" />),
+    title: 'Exchange Program'
+  },
+  {
     href: '/splash',
-    icon: (<UsersIcon fontSize="small" />),
-    title: 'Customers'
+    icon: (<ApprovalOutlinedIcon fontSize="small" />),
+    title: 'Applications'
   },
   {
     href: '/products',
-    icon: (<ShoppingBagIcon fontSize="small" />),
-    title: 'Products'
+    icon: (<ImportExportOutlinedIcon fontSize="small" />),
+    title: 'Submissions'
   },
   {
     href: '/accountStudent',
@@ -38,21 +53,6 @@ const items = [
     href: '/settingStudent',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
-  },
-  {
-    href: '/login',
-    icon: (<LockIcon fontSize="small" />),
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: (<UserAddIcon fontSize="small" />),
-    title: 'Register'
-  },
-  {
-    href: '/404',
-    icon: (<XCircleIcon fontSize="small" />),
-    title: 'Error'
   }
 ];
 

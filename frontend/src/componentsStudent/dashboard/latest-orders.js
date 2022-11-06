@@ -23,76 +23,48 @@ const orders = [
     ref: 'CDD1049',
     amount: 30.5,
     customer: {
-      name: 'Ekaterina Tankova'
+      name: 'Erasmus Application'
     },
     createdAt: 1555016400000,
-    status: 'pending'
+    status: 'approved'
   },
   {
     id: uuid(),
     ref: 'CDD1048',
     amount: 25.1,
     customer: {
-      name: 'Cao Yu'
+      name: 'Preapproval Form'
     },
     createdAt: 1555016400000,
-    status: 'delivered'
+    status: 'approved'
   },
   {
     id: uuid(),
     ref: 'CDD1047',
     amount: 10.99,
     customer: {
-      name: 'Alexa Richardson'
+      name: 'Learning Agreement'
     },
     createdAt: 1554930000000,
-    status: 'refunded'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1046',
-    amount: 96.43,
-    customer: {
-      name: 'Anje Keizer'
-    },
-    createdAt: 1554757200000,
     status: 'pending'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1045',
-    amount: 32.54,
-    customer: {
-      name: 'Clarke Gillebert'
-    },
-    createdAt: 1554670800000,
-    status: 'delivered'
-  },
-  {
-    id: uuid(),
-    ref: 'CDD1044',
-    amount: 16.76,
-    customer: {
-      name: 'Adam Denisov'
-    },
-    createdAt: 1554670800000,
-    status: 'delivered'
   }
 ];
 
 export const LatestOrders = (props) => (
   <Card {...props}>
-    <CardHeader title="Latest Orders" />
+    <CardHeader title="Ongoing Processes" />
     <PerfectScrollbar>
-      <Box sx={{ minWidth: 800 }}>
+      <Box sx={{ 
+        minWidth: 800,
+        height: 400 }}>
         <Table>
           <TableHead>
             <TableRow>
               <TableCell>
-                Order Ref
+                Process ID
               </TableCell>
               <TableCell>
-                Customer
+                Process Name
               </TableCell>
               <TableCell sortDirection="desc">
                 <Tooltip
@@ -129,8 +101,8 @@ export const LatestOrders = (props) => (
                 </TableCell>
                 <TableCell>
                   <SeverityPill
-                    color={(order.status === 'delivered' && 'success')
-                    || (order.status === 'refunded' && 'error')
+                    color={(order.status === 'approved' && 'success')
+                    || (order.status === 'disapproved' && 'error')
                     || 'warning'}
                   >
                     {order.status}

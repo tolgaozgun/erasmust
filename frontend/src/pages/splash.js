@@ -25,6 +25,18 @@ const Splash = () => {
             }}
         >
           <Container maxWidth="xs">
+          <Box 
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={{ my: 3 }}>
+                <Typography
+                color="textPrimary"
+                variant="h3"
+              >
+                Welcome to Erasmust
+              </Typography>
+            </Box>
             <Box sx={{ py: 2 }}>
                 <Button
                     color="primary"
