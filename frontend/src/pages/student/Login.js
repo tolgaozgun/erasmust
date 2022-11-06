@@ -52,13 +52,6 @@ const Login = () => {
             }}
           >
             <Container maxWidth="sm">
-                <Button
-                  component="a"
-                  startIcon={<ArrowBackIcon fontSize="small" />}
-                  onClick={() => {goDash()}}
-                >
-                  Dashboard
-                </Button>
               <form onSubmit={formik.handleSubmit}>
                 <Box sx={{ my: 3 }}>
                   <Typography

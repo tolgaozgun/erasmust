@@ -12,16 +12,15 @@ import { Users as UsersIcon } from '../icons/users';
 import { XCircle as XCircleIcon } from '../icons/x-circle';
 import { Logo } from './logo';
 import { NavItem } from './nav-item';
-import { useEffect } from 'react';
 
 const items = [
   {
-    href: '/',
+    href: '/dashboardStudent',
     icon: (<ChartBarIcon fontSize="small" />),
     title: 'Dashboard'
   },
   {
-    href: '/customers',
+    href: '/splash',
     icon: (<UsersIcon fontSize="small" />),
     title: 'Customers'
   },
@@ -31,12 +30,12 @@ const items = [
     title: 'Products'
   },
   {
-    href: '/account',
+    href: '/accountStudent',
     icon: (<UserIcon fontSize="small" />),
     title: 'Account'
   },
   {
-    href: '/settings',
+    href: '/settingStudent',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
   },
@@ -64,15 +63,6 @@ export const DashboardSidebar = (props) => {
     noSsr: false
   });
 
-  useEffect(
-    () => {
-
-      if (open) {
-        onClose?.();
-      }
-    }
-  );
-
   const content = (
     <>
       <Box
@@ -94,42 +84,12 @@ export const DashboardSidebar = (props) => {
               </a>
           </Box>
           <Box sx={{ px: 2 }}>
-            <Box
-              sx={{
-                alignItems: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                cursor: 'pointer',
-                display: 'flex',
-                justifyContent: 'space-between',
-                px: 3,
-                py: '11px',
-                borderRadius: 1
-              }}
-            >
-              <div>
-                <Typography
-                  color="inherit"
-                  variant="subtitle1"
-                >
-                  Acme Inc
-                </Typography>
-                <Typography
-                  color="neutral.400"
-                  variant="body2"
-                >
-                  Your tier
-                  {' '}
-                  : Premium
-                </Typography>
-              </div>
-              <SelectorIcon
-                sx={{
-                  color: 'neutral.500',
-                  width: 14,
-                  height: 14
-                }}
-              />
-            </Box>
+            <Typography
+              sx={{ m: 1 }}
+              variant="h4"
+          >
+            Erasmust
+            </Typography>
           </Box>
         </div>
         <Divider
@@ -149,51 +109,6 @@ export const DashboardSidebar = (props) => {
           ))}
         </Box>
         <Divider sx={{ borderColor: '#2D3748' }} />
-        <Box
-          sx={{
-            px: 2,
-            py: 3
-          }}
-        >
-          <Typography
-            color="neutral.100"
-            variant="subtitle2"
-          >
-            Need more features?
-          </Typography>
-          <Typography
-            color="neutral.500"
-            variant="body2"
-          >
-            Check out our Pro solution template.
-          </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              mt: 2,
-              mx: 'auto',
-              width: '160px',
-              '& img': {
-                width: '100%'
-              }
-            }}
-          >
-            <img
-              alt="Go to pro"
-              src="/static/images/sidebar_pro.png"
-            />
-          </Box>
-            <Button
-              color="secondary"
-              component="a"
-              endIcon={(<OpenInNewIcon />)}
-              fullWidth
-              sx={{ mt: 2 }}
-              variant="contained"
-            >
-              Pro Live Preview
-            </Button>
-        </Box>
       </Box>
     </>
   );

@@ -1,14 +1,14 @@
 import { Box, Container, Grid } from '@mui/material';
-import { Budget } from '../../components/dashboard/budget';
-import { LatestOrders } from '../../components/dashboard/latest-orders';
-import { LatestProducts } from '../../components/dashboard/latest-products';
-import { Sales } from '../../components/dashboard/sales';
-import { TasksProgress } from '../../components/dashboard/tasks-progress';
-import { TotalCustomers } from '../../components/dashboard/total-customers';
-import { TotalProfit } from '../../components/dashboard/total-profit';
-import { TrafficByDevice } from '../../components/dashboard/traffic-by-device';
-import { DashboardNavbar } from '../../components/dashboard-navbar';
-import { DashboardSidebar } from '../../components/dashboard-sidebar';
+import { Budget } from '../../componentsStudent/dashboard/budget';
+import { LatestOrders } from '../../componentsStudent/dashboard/latest-orders';
+import { LatestProducts } from '../../componentsStudent/dashboard/latest-products';
+import { Sales } from '../../componentsStudent/dashboard/sales';
+import { TasksProgress } from '../../componentsStudent/dashboard/tasks-progress';
+import { TotalCustomers } from '../../componentsStudent/dashboard/total-customers';
+import { TotalProfit } from '../../componentsStudent/dashboard/total-profit';
+import { TrafficByDevice } from '../../componentsStudent/dashboard/traffic-by-device';
+import { DashboardNavbar } from '../../componentsStudent/dashboard-navbar';
+import { DashboardSidebar } from '../../componentsStudent/dashboard-sidebar';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 
@@ -24,7 +24,6 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 }));
 
 const DashboardStudent = (props) => {
-  const { children } = props;
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
 
@@ -125,7 +124,6 @@ const DashboardStudent = (props) => {
           </Grid>
         </Grid>
       </Container>
-      {children}
     </Box>
     </DashboardLayoutRoot>
     <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />

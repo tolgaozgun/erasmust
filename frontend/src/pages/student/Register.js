@@ -70,14 +70,6 @@ const Register = () => {
         }}
       >
         <Container maxWidth="sm">
-
-            <Button
-              component="a"
-              startIcon={<ArrowBackIcon fontSize="small" />}
-              onClick={() => goDash()}
-            >
-              Dashboard
-            </Button>
           <form onSubmit={formik.handleSubmit}>
             <Box sx={{ my: 2 }}>
               <Typography

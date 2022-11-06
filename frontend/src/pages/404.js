@@ -1,7 +1,15 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom';
 
-const Error = () => (
+const Error = () => {
+  const navigate = useNavigate();
+
+  const goSplash = () => {
+    navigate('/splash');
+  }
+
+  return(
   <>
     
       <title>
@@ -56,13 +64,15 @@ const Error = () => (
               startIcon={(<ArrowBackIcon fontSize="small" />)}
               sx={{ mt: 3 }}
               variant="contained"
+              onClick={() => goSplash()}
             >
-              Go back to dashboard
+              Go back to splash
             </Button>
         </Box>
       </Container>
     </Box>
   </>
-);
+  );
+};
 
 export default Error;
