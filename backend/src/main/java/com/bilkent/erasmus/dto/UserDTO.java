@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.dto;
 
-import com.bilkent.erasmus.enums.Department;
+import com.bilkent.erasmus.enums.DepartmentName;
 import lombok.Data;
 
 @Data
@@ -16,7 +16,7 @@ public class UserDTO {
 
     private String email;
 
-    private Department department;
+    private DepartmentName departmentName;
 
     private Boolean status;
 }
