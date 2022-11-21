@@ -2,18 +2,23 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/CourseApprovalStatus.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/StudentModels/InComingStudentExchange.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controller/CourseController.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/applicationRepositories/CourseRepositories/CourseRequestFormDetailRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/ErasmusApplication.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/mapper/UserMapper.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/service/CourseService.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/CourseModels/CourseBilkent.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/applicationRepositories/CourseRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/Chair.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controller/CourseRequestController.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/universityModels/PartnerUniversityExchange.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/User.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/StudentRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/CourseRequestForm.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/Faculty.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/service/CourseRequestService.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/OutGoingStudentErasmusRepository.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dto/CourseRequestDTO.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/CourseRequestFormDetail.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/Application.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/CourseModels/CourseDetail.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dto/UserDTO.java
@@ -30,6 +35,7 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/service/OutGoingStudentService.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/StudentModels/OutGoingStudentExchange.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dto/CourseDTO.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/applicationRepositories/CourseRepositories/CourseRequestRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/embeddables/ContactInformation.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dto/StudentDTO.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/StudentModels/OutGoingStudentErasmus.java
@@ -37,3 +43,4 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/universityModels/PartnerUniversity.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/LetterGrade.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controller/StudentController.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/service/CourseRequestFormDetailService.java

@@ -1,8 +1,11 @@
 com/bilkent/erasmus/controller/StudentController.class
 com/bilkent/erasmus/service/OutGoingStudentService.class
+com/bilkent/erasmus/models/applicationModels/CourseRequestFormDetail.class
 com/bilkent/erasmus/enums/CourseApprovalStatus.class
 com/bilkent/erasmus/models/universityModels/PartnerUniversityErasmus.class
 com/bilkent/erasmus/ErasmusApplication.class
+com/bilkent/erasmus/service/CourseRequestFormDetailService.class
+com/bilkent/erasmus/repository/applicationRepositories/CourseRepositories/CourseRequestFormDetailRepository.class
 com/bilkent/erasmus/models/StudentModels/OutGoingStudentErasmus.class
 com/bilkent/erasmus/repository/applicationRepositories/CourseRepository.class
 com/bilkent/erasmus/mapper/UserMapperImpl.class
@@ -10,9 +13,11 @@ com/bilkent/erasmus/models/User.class
 com/bilkent/erasmus/models/Faculty.class
 com/bilkent/erasmus/dto/CourseDTO.class
 com/bilkent/erasmus/models/StudentModels/Student.class
+com/bilkent/erasmus/service/CourseRequestService.class
 com/bilkent/erasmus/enums/DepartmentName.class
 com/bilkent/erasmus/service/StudentService.class
 com/bilkent/erasmus/models/universityModels/PartnerUniversity.class
+com/bilkent/erasmus/repository/applicationRepositories/CourseRepositories/CourseRequestRepository.class
 com/bilkent/erasmus/models/applicationModels/CourseRequestForm.class
 com/bilkent/erasmus/repository/OutGoingStudentErasmusRepository.class
 com/bilkent/erasmus/models/Department.class
@@ -27,10 +32,12 @@ com/bilkent/erasmus/embeddables/Address.class
 com/bilkent/erasmus/dto/UserDTO.class
 com/bilkent/erasmus/controller/CourseController.class
 com/bilkent/erasmus/service/CourseService.class
+com/bilkent/erasmus/dto/CourseRequestDTO.class
 com/bilkent/erasmus/mapper/CourseMapperImpl.class
 com/bilkent/erasmus/mapper/CourseMapper.class
 com/bilkent/erasmus/enums/LetterGrade.class
 com/bilkent/erasmus/models/applicationModels/CourseModels/CourseHost.class
+com/bilkent/erasmus/controller/CourseRequestController.class
 com/bilkent/erasmus/controller/OutGoingStudentController.class
 com/bilkent/erasmus/models/applicationModels/Application.class
 com/bilkent/erasmus/models/StudentModels/OutGoingStudentExchange.class

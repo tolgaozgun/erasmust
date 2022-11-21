@@ -28,5 +28,4 @@ public class User {
     @Embedded
     private ContactInformation contactInformation;
 
-
 }
