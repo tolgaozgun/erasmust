@@ -1,22 +1,22 @@
 package com.bilkent.erasmus.models.applicationModels;
 
-import com.bilkent.erasmus.models.applicationModels.CourseModels.CourseBilkent;
+import com.bilkent.erasmus.models.StudentModels.Student;
+import com.bilkent.erasmus.models.applicationModels.CourseModels.Course;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
-@Table
-@Entity(name = "courseRequestForm")
+@Entity
+@Table(name = "courseRequestForm")
 public class CourseRequestForm {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int formId;
 
+    @ManyToOne
+    private Student student;
 
- /*   @ElementCollection
-    @CollectionTable(name = "requested_courses",  joinColumns = @JoinColumn(name = "user_id"))
-    private List<CourseBilkent> requestedCourses;*/
 }
