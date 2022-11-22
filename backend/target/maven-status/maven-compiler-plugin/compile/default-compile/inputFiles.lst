@@ -1,3 +1,4 @@
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controller/InitialApplicationController.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controller/CourseController.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/applicationRepositories/CourseRepositories/CourseRequestFormDetailRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/mapper/UserMapper.java
@@ -10,6 +11,7 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dto/InitialApplicationDTO/ApplicationExchangeDTO.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/StudentModels/InComingStudentErasmus.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/StudentModels/OutGoingStudentErasmus.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/CourseCoordinator.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dto/CourseRequestDTO.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dto/InitialApplicationDTO/ApplicationErasmusDTO.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/CourseModels/CourseRequestFormDetail.java
@@ -19,6 +21,7 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/FacultyName.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/embeddables/Address.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/mapper/CourseMapper.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/Administrative.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/Coordinator.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/ApplicationExchange.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/service/OutGoingStudentService.java
@@ -30,18 +33,25 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/LetterGrade.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/Application.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controller/StudentController.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/CourseCoordinatorDetail.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/Dean.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/service/InitialApplicationService.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/CourseApprovalStatus.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/ErasmusApplication.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/mapper/InitialApplicationMappper/ApplicationErasmusMapper.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/ExchangeCoordinator.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/AdministrativeAssistant.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/Title.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/StudentRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/applicationRepositories/InitialApplicationRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/service/CourseRequestService.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repository/OutGoingStudentErasmusRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/User.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/ExchangeStaff.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/CourseModels/CourseDetail.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/SemesterOfferings.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/CourseModels/CourseRequestForm.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/BoardMember.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/Chair.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controller/OutGoingStudentController.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/DepartmentName.java
