@@ -12,6 +12,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "applications")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name="application_type",
+    //    discriminatorType = DiscriminatorType.STRING) --> sets nullable: false
 public class Application {
 
     @Id

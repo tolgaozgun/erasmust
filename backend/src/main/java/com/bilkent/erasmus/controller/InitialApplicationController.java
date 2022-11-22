@@ -1,6 +1,8 @@
 package com.bilkent.erasmus.controller;
 
 import com.bilkent.erasmus.dto.InitialApplicationDTO.ApplicationErasmusDTO;
+import com.bilkent.erasmus.dto.InitialApplicationDTO.ApplicationExchangeDTO;
+import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.Application;
 import com.bilkent.erasmus.service.InitialApplicationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,13 @@ public class InitialApplicationController {
         this.initialApplicationService = initialApplicationService;
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<?> sendApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO) {
+    @PostMapping("/create-erasmus-application")
+    public ResponseEntity<?> sendErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO) {
         return new ResponseEntity<>(initialApplicationService.sendApplication(applicationErasmusDTO), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/create-exchange-application")
+    public ResponseEntity sendExchangeApplication(@RequestBody ApplicationExchangeDTO applicationExchangeDTO) {
+        return new ResponseEntity(true, HttpStatus.CREATED); // initialApplicationService.sendExchangeApplication(applicationExchangeDTO)
     }
 }
