@@ -1,8 +1,7 @@
 package com.bilkent.erasmus.repository.applicationRepositories.CourseRepositories;
 
-import com.bilkent.erasmus.models.applicationModels.CourseRequestForm;
+import com.bilkent.erasmus.models.applicationModels.CourseModels.CourseRequestForm;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.stereotype.Repository;
 
 @Repository

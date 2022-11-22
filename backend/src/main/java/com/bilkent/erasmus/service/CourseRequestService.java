@@ -1,7 +1,6 @@
 package com.bilkent.erasmus.service;
 
-import com.bilkent.erasmus.models.applicationModels.CourseModels.Course;
-import com.bilkent.erasmus.models.applicationModels.CourseRequestForm;
+import com.bilkent.erasmus.models.applicationModels.CourseModels.CourseRequestForm;
 import com.bilkent.erasmus.repository.applicationRepositories.CourseRepositories.CourseRequestRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.mapper;
 
 import com.bilkent.erasmus.dto.UserDTO;
-import com.bilkent.erasmus.models.User;
+import com.bilkent.erasmus.models.applicationModels.UserModels.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-20T20:33:17+0300",
+    date = "2022-11-22T09:43:24+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.4.1 (Amazon.com Inc.)"
 )
 @Component
