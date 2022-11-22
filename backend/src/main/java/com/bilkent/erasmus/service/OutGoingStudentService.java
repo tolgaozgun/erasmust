@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.service;
 
-import com.bilkent.erasmus.models.StudentModels.OutGoingStudentErasmus;
+import com.bilkent.erasmus.models.applicationModels.UserModels.StudentModels.OutGoingStudentErasmus;
 import com.bilkent.erasmus.repository.OutGoingStudentErasmusRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.repository;
 
-import com.bilkent.erasmus.models.StudentModels.Student;
+import com.bilkent.erasmus.models.applicationModels.UserModels.StudentModels.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

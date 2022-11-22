@@ -1,12 +1,7 @@
 package com.bilkent.erasmus.dto;
 
-import com.bilkent.erasmus.models.Department;
+import com.bilkent.erasmus.models.AdministrativeModels.Department;
 import lombok.Data;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Data
 public class CourseDTO {
