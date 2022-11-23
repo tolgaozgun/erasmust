@@ -10,7 +10,6 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "applicationExchange")
 //@DiscriminatorValue("exchange")
 public class ApplicationExchange extends Application {
 

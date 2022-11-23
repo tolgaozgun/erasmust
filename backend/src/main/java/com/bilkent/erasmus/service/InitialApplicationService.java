@@ -3,9 +3,11 @@ package com.bilkent.erasmus.service;
 import com.bilkent.erasmus.dto.ApplicationPoolSelectionDTO;
 import com.bilkent.erasmus.dto.InitialApplicationDTO.ApplicationErasmusDTO;
 import com.bilkent.erasmus.enums.ApplicationPoolType;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.mapper.InitialApplicationMappper.ApplicationErasmusMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
-import com.bilkent.erasmus.repository.applicationRepositories.InitialApplicationRepository;
+import com.bilkent.erasmus.repository.applicationRepositories.ApplicationErasmusRepository;
+import com.bilkent.erasmus.repository.applicationRepositories.CourseRepositories.ApplicationExchangeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,24 +18,29 @@ import java.util.List;
 @Slf4j
 public class InitialApplicationService {
 
-    private final InitialApplicationRepository initialApplicationRepository;
+    private final ApplicationErasmusRepository applicationErasmusRepository;
 
+    private final ApplicationExchangeRepository applicationExchangeRepository;
     private final ApplicationErasmusMapper applicationErasmusMapper;
 
-    public InitialApplicationService(InitialApplicationRepository initialApplicationRepository, ApplicationErasmusMapper applicationErasmusMapper) {
-        this.initialApplicationRepository = initialApplicationRepository;
+    public InitialApplicationService(ApplicationErasmusRepository applicationErasmusRepository, ApplicationExchangeRepository applicationExchangeRepository,
+                                     ApplicationErasmusMapper applicationErasmusMapper) {
+        this.applicationErasmusRepository = applicationErasmusRepository;
+        this.applicationExchangeRepository = applicationExchangeRepository;
         this.applicationErasmusMapper = applicationErasmusMapper;
     }
 
     public ApplicationErasmusDTO sendApplication(ApplicationErasmusDTO applicationErasmusDTO) {
         ApplicationErasmus applicationErasmus = applicationErasmusMapper.toEntity(applicationErasmusDTO);
-        return applicationErasmusMapper.toApplicationErasmusDTO(initialApplicationRepository.save(applicationErasmus));
+        applicationErasmus.setStatus(Status.IN_PROCESS);
+        return applicationErasmusMapper.toApplicationErasmusDTO(applicationErasmusRepository.save(applicationErasmus));
     }
 
     public List<ApplicationErasmus> retrieveApplications(ApplicationPoolSelectionDTO applicationPoolSelectionDTO) {
 
         ApplicationPoolType poolType = applicationPoolSelectionDTO.getApplicationPoolType();
-        ArrayList<ApplicationErasmus> applications = new ArrayList<>();
+        List<ApplicationErasmus> applications = null;
+        Status status;
         switch (poolType) {
 
             // Case statements
@@ -43,8 +50,13 @@ public class InitialApplicationService {
             case APPLICATIONS_REJECTED:
                 log.info("applications rejected will be listed");
                 break;
-            case APPLICATIONS_IN_WAITING_LIST:
+            case APPLICATIONS_IN_THE_WAITING_LIST:
                 log.info("applications in the waiting list will be listed");
+                break;
+            case APPLICATIONS_IN_PROCESS:
+                log.info("All received applications before the deadline will be listed");
+                status = Status.IN_PROCESS;
+                applications = getApprovedApplications(status);
                 break;
             case APPLICATIONS_DECLINED_BY_STUDENT:
                 // --> by fetching this data, students in the waiting list will be updated accordingly
@@ -59,5 +71,9 @@ public class InitialApplicationService {
                 break;
         }
         return applications;
+    }
+
+    private List<ApplicationErasmus> getApprovedApplications(Status status) {
+        return applicationErasmusRepository.findAllByStatus(status);
     }
 }

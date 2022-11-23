@@ -7,6 +7,5 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "exchangeUniversity")
 public class PartnerUniversityExchange extends PartnerUniversity {
 }

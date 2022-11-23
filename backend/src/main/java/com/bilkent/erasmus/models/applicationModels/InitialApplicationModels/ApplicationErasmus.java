@@ -10,7 +10,6 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "applicationErasmus")
 //@DiscriminatorValue("erasmus")
 public class ApplicationErasmus extends Application {
 

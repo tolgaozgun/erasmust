@@ -19,6 +19,9 @@ public class OutGoingStudentController {
         this.outGoingStudentService = outGoingStudentService;
     }
 
+
+    //@PostMapping("/erasmus/save")
+    //@PostMapping("/exchange/save")
     @PostMapping("/save")
     public ResponseEntity<?> saveErasmusStudent(@RequestBody OutGoingStudentErasmus student) {
         return new ResponseEntity<>(outGoingStudentService.saveErasmusStudent(student), HttpStatus.CREATED);

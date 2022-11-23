@@ -19,10 +19,6 @@ public class ApplicationErasmusDTO {
 
     private LocalDate signAt;
 
-    private Boolean isNominated;
-
-    private Boolean isConfirmedByStudent;
-
     private Coordinator coordinator;
 
     private OutGoingStudentErasmus student;
