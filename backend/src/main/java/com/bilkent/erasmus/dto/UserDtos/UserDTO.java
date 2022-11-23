@@ -1,4 +1,4 @@
-package com.bilkent.erasmus.dto;
+package com.bilkent.erasmus.dto.UserDtos;
 
 import com.bilkent.erasmus.enums.DepartmentName;
 import lombok.Data;
