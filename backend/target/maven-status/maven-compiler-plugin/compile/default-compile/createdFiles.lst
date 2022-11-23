@@ -1,5 +1,6 @@
 com/bilkent/erasmus/controller/StudentController.class
 com/bilkent/erasmus/service/OutGoingStudentService.class
+com/bilkent/erasmus/enums/Status.class
 com/bilkent/erasmus/mapper/InitialApplicationMappper/ApplicationErasmusMapperImpl.class
 com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/ApplicationErasmus.class
 com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/Administrative.class
@@ -12,11 +13,12 @@ com/bilkent/erasmus/repository/applicationRepositories/CourseRepositories/Course
 com/bilkent/erasmus/repository/applicationRepositories/CourseRepository.class
 com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/CourseCoordinator.class
 com/bilkent/erasmus/models/applicationModels/UserModels/StudentModels/OutGoingStudentExchange.class
+com/bilkent/erasmus/repository/studentRepository/StudentRepository.class
+com/bilkent/erasmus/repository/studentRepository/OutGoingStudentErasmusRepository.class
 com/bilkent/erasmus/models/AdministrativeModels/Department.class
 com/bilkent/erasmus/repository/applicationRepositories/CourseRepositories/CourseRequestRepository.class
 com/bilkent/erasmus/models/applicationModels/UserModels/StudentModels/InComingStudentExchange.class
 com/bilkent/erasmus/embeddables/Signature.class
-com/bilkent/erasmus/repository/StudentRepository.class
 com/bilkent/erasmus/models/applicationModels/CourseModels/CourseBilkent.class
 com/bilkent/erasmus/mapper/UserMapper.class
 com/bilkent/erasmus/dto/InitialApplicationDTO/ApplicationErasmusDTO.class
@@ -50,7 +52,6 @@ com/bilkent/erasmus/service/CourseRequestService.class
 com/bilkent/erasmus/enums/DepartmentName.class
 com/bilkent/erasmus/service/StudentService.class
 com/bilkent/erasmus/models/universityModels/PartnerUniversity.class
-com/bilkent/erasmus/repository/OutGoingStudentErasmusRepository.class
 com/bilkent/erasmus/dto/StudentDTO.class
 com/bilkent/erasmus/models/applicationModels/CourseModels/CourseDetail.class
 com/bilkent/erasmus/models/applicationModels/UserModels/AdminModels/ExchangeCoordinator.class

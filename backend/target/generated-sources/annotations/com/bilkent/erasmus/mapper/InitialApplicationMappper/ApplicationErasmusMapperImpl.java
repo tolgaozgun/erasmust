@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-22T16:55:16+0300",
+    date = "2022-11-23T09:15:52+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.4.1 (Amazon.com Inc.)"
 )
 @Component
@@ -27,8 +27,6 @@ public class ApplicationErasmusMapperImpl implements ApplicationErasmusMapper {
         applicationErasmusDTO.setAppliedSemester( applicationErasmus.getAppliedSemester() );
         applicationErasmusDTO.setSignature( applicationErasmus.getSignature() );
         applicationErasmusDTO.setSignAt( applicationErasmus.getSignAt() );
-        applicationErasmusDTO.setIsNominated( applicationErasmus.getIsNominated() );
-        applicationErasmusDTO.setIsConfirmedByStudent( applicationErasmus.getIsConfirmedByStudent() );
         applicationErasmusDTO.setCoordinator( applicationErasmus.getCoordinator() );
         applicationErasmusDTO.setStudent( applicationErasmus.getStudent() );
 
@@ -47,8 +45,6 @@ public class ApplicationErasmusMapperImpl implements ApplicationErasmusMapper {
         applicationErasmus.setAppliedSemester( applicationErasmusDTO.getAppliedSemester() );
         applicationErasmus.setSignature( applicationErasmusDTO.getSignature() );
         applicationErasmus.setSignAt( applicationErasmusDTO.getSignAt() );
-        applicationErasmus.setIsNominated( applicationErasmusDTO.getIsNominated() );
-        applicationErasmus.setIsConfirmedByStudent( applicationErasmusDTO.getIsConfirmedByStudent() );
         applicationErasmus.setCoordinator( applicationErasmusDTO.getCoordinator() );
         applicationErasmus.setStudent( applicationErasmusDTO.getStudent() );
 
