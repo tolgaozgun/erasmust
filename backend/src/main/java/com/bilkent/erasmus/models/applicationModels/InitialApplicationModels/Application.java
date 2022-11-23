@@ -2,6 +2,7 @@ package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 
 import com.bilkent.erasmus.embeddables.Signature;
 import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.UserModels.AdminModels.Coordinator;
 import lombok.Data;
 
@@ -28,11 +29,9 @@ public class Application {
 
     private LocalDate signAt;
 
-    private Boolean isNominated;
-
-    private Boolean isConfirmedByStudent;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToOne
     private Coordinator coordinator;
-
 }

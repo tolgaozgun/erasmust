@@ -5,7 +5,7 @@ import com.bilkent.erasmus.models.applicationModels.UserModels.StudentModels.Stu
 import com.bilkent.erasmus.models.applicationModels.CourseModels.Course;
 import com.bilkent.erasmus.models.applicationModels.CourseModels.CourseRequestForm;
 import com.bilkent.erasmus.models.applicationModels.CourseModels.CourseRequestFormDetail;
-import com.bilkent.erasmus.repository.StudentRepository;
+import com.bilkent.erasmus.repository.studentRepository.StudentRepository;
 import com.bilkent.erasmus.repository.applicationRepositories.CourseRepositories.CourseRequestFormDetailRepository;
 import com.bilkent.erasmus.repository.applicationRepositories.CourseRepositories.CourseRequestRepository;
 import com.bilkent.erasmus.repository.applicationRepositories.CourseRepository;

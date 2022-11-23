@@ -1,15 +1,12 @@
 package com.bilkent.erasmus.controller;
 
+import com.bilkent.erasmus.dto.ApplicationPoolSelectionDTO;
 import com.bilkent.erasmus.dto.InitialApplicationDTO.ApplicationErasmusDTO;
 import com.bilkent.erasmus.dto.InitialApplicationDTO.ApplicationExchangeDTO;
-import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.Application;
 import com.bilkent.erasmus.service.InitialApplicationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/initial-application")
@@ -27,7 +24,13 @@ public class InitialApplicationController {
     }
 
     @PostMapping("/create-exchange-application")
-    public ResponseEntity sendExchangeApplication(@RequestBody ApplicationExchangeDTO applicationExchangeDTO) {
+    public ResponseEntity<?> sendExchangeApplication(@RequestBody ApplicationExchangeDTO applicationExchangeDTO) {
         return new ResponseEntity(true, HttpStatus.CREATED); // initialApplicationService.sendExchangeApplication(applicationExchangeDTO)
+    }
+
+    @GetMapping("/retrieve-applications")
+    public ResponseEntity<?> retrieveApplications(@RequestBody ApplicationPoolSelectionDTO applicationPoolSelectionDTO) {
+        return new ResponseEntity(initialApplicationService.retrieveApplications(applicationPoolSelectionDTO), HttpStatus.ACCEPTED);
+
     }
 }
