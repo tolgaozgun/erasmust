@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.mapper;
 
-import com.bilkent.erasmus.dto.UserDTO;
+import com.bilkent.erasmus.dto.UserDtos.UserDTO;
 import com.bilkent.erasmus.models.applicationModels.UserModels.User;
 import java.util.ArrayList;
 import java.util.List;
