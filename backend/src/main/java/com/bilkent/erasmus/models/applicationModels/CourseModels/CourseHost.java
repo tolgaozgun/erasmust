@@ -2,9 +2,11 @@ package com.bilkent.erasmus.models.applicationModels.CourseModels;
 
 import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import lombok.Data;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 @Data
 @Entity
@@ -17,5 +19,6 @@ public class CourseHost extends Course {
 
     @Enumerated(EnumType.STRING)
     private CourseApprovalStatus status;
+
 
 }

@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.controller;
 
-import com.bilkent.erasmus.models.StudentModels.Student;
+import com.bilkent.erasmus.models.applicationModels.UserModels.StudentModels.Student;
 import com.bilkent.erasmus.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.mapper;
 
-import com.bilkent.erasmus.dto.UserDTO;
-import com.bilkent.erasmus.models.User;
+import com.bilkent.erasmus.dto.UserDtos.UserDTO;
+import com.bilkent.erasmus.models.applicationModels.UserModels.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-21T21:55:01+0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.8 (AdoptOpenJDK)"
+    date = "2022-11-23T23:26:24+0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.7 (Amazon.com Inc.)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {

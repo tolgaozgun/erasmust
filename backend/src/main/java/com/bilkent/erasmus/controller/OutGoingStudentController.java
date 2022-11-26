@@ -1,7 +1,6 @@
 package com.bilkent.erasmus.controller;
 
-import com.bilkent.erasmus.models.StudentModels.OutGoingStudentErasmus;
-import com.bilkent.erasmus.models.StudentModels.Student;
+import com.bilkent.erasmus.models.applicationModels.UserModels.StudentModels.OutGoingStudentErasmus;
 import com.bilkent.erasmus.service.OutGoingStudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +19,9 @@ public class OutGoingStudentController {
         this.outGoingStudentService = outGoingStudentService;
     }
 
+
+    //@PostMapping("/erasmus/save")
+    //@PostMapping("/exchange/save")
     @PostMapping("/save")
     public ResponseEntity<?> saveErasmusStudent(@RequestBody OutGoingStudentErasmus student) {
         return new ResponseEntity<>(outGoingStudentService.saveErasmusStudent(student), HttpStatus.CREATED);

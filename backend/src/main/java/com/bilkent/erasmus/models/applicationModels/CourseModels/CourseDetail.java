@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.models.applicationModels.CourseModels;
 
-import com.bilkent.erasmus.models.Department;
+import com.bilkent.erasmus.models.AdministrativeModels.Department;
 import lombok.Data;
 
 import javax.persistence.*;
