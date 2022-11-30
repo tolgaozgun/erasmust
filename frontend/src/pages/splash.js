@@ -1,12 +1,12 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 
 const Splash = () => {
     const navigate = useNavigate();
 
-    const goLoginStuff = () => {
-        navigate('/loginStuff')
+    const goLoginStaff = () => {
+        navigate('/loginStaff')
     }
 
     const goLoginStudent = () => {
@@ -56,7 +56,7 @@ const Splash = () => {
                     size="large"
                     type="submit"
                     variant="contained"
-                    onClick={() => goLoginStuff()}
+                    onClick={() => goLoginStaff()}
                 >
                     For Academic Stuff
                 </Button>

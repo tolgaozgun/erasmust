@@ -1,8 +1,8 @@
 import { Box, Container, Typography } from '@mui/material';
-import { SettingsNotifications } from '../../components/componentsStudent/settings/settings-notifications';
-import { SettingsPassword } from '../../components/componentsStudent/settings/settings-password';
-import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
-import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
+import { SettingsNotifications } from '../../components/componentsStaff/settings/settings-notifications';
+import { SettingsPassword } from '../../components/componentsStaff/settings/settings-password';
+import { DashboardNavbar } from '../../components/componentsStaff/dashboard-navbar';
+import { DashboardSidebar } from '../../components/componentsStaff/dashboard-sidebar';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 

@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
-import { AccountProfile } from '../../componentsStudent/account/account-profile';
-import { AccountProfileDetails } from '../../componentsStudent/account/account-profile-details';
-import { DashboardNavbar } from '../../componentsStudent/dashboard-navbar';
-import { DashboardSidebar } from '../../componentsStudent/dashboard-sidebar';
+import { AccountProfile } from '../../components/componentsStudent/account/account-profile';
+import { AccountProfileDetails } from '../../components/componentsStudent/account/account-profile-details';
+import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
+import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 

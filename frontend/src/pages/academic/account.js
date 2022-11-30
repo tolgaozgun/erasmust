@@ -1,11 +1,10 @@
-import { Box, Container, Grid } from '@mui/material';
-import { LatestOrders } from '../../components/componentsStaff/dashboard/latest-orders';
-import { Sales } from '../../components/componentsStaff/dashboard/sales';
+import { Box, Container, Grid, Typography } from '@mui/material';
+import { AccountProfile } from '../../components/componentsStudent/account/account-profile';
+import { AccountProfileDetails } from '../../components/componentsStaff/account/account-profile-details';
 import { DashboardNavbar } from '../../components/componentsStaff/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStaff/dashboard-sidebar';
-import { useState } from 'react';
 import { styled } from '@mui/material/styles';
-
+import { useState } from 'react';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -17,29 +16,29 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   }
 }));
 
-const DashboardStudent = (props) => {
+const Account = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-
 
   return(
   <>
-    
       <title>
-        Dashboard | Material Kit
+        Account | Material Kit
       </title>
     <DashboardLayoutRoot>
     <Box
       component="main"
       sx={{
-        display: 'flex',
-        flex: '1 1 auto',
-        flexDirection: 'column',
-        width: '100%',
         flexGrow: 1,
         py: 8
       }}
     >
-      <Container maxWidth={false}>
+      <Container maxWidth="lg">
+        <Typography
+          sx={{ mb: 3 }}
+          variant="h4"
+        >
+          Account
+        </Typography>
         <Grid
           container
           spacing={3}
@@ -48,19 +47,17 @@ const DashboardStudent = (props) => {
             item
             lg={4}
             md={6}
-            xl={3}
             xs={12}
           >
-            <Sales />
+            <AccountProfile />
           </Grid>
           <Grid
             item
             lg={8}
-            md={12}
-            xl={9}
+            md={6}
             xs={12}
           >
-            <LatestOrders />
+            <AccountProfileDetails />
           </Grid>
         </Grid>
       </Container>
@@ -74,4 +71,4 @@ const DashboardStudent = (props) => {
   );
 };
 
-export default DashboardStudent;
+export default Account;

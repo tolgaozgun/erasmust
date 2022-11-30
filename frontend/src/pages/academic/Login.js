@@ -1,19 +1,19 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Link, TextField, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Login = () => {
     const navigate = useNavigate();
 
     const goDash = () => {
-        navigate('/dash');
+        navigate('/dashboardStaff');
     }
 
     const goRegister = () => {
-        navigate('/registerStuff');
+        navigate('/registerStaff');
     }
 
     const formik = useFormik({
@@ -33,7 +33,7 @@ const Login = () => {
             .required('Password is required')
         }),
         onSubmit: () => {
-          navigate('/dash')
+          navigate('/dashboardStaff')
         }
       });
     

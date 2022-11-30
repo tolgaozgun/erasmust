@@ -1,12 +1,9 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Box, MenuItem, MenuList, Popover, Typography } from '@mui/material';
-import { AuthContext } from '../contexts/auth-context';
 
 export const AccountPopover = (props) => {
   const { anchorEl, onClose, open, ...other } = props;
-  const authContext = useContext(AuthContext);
 
   const navigate = useNavigate();
 
