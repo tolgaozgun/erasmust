@@ -3,7 +3,7 @@ package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 import com.bilkent.erasmus.embeddables.Signature;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
-import com.bilkent.erasmus.models.applicationModels.UserModels.AdminModels.Coordinator;
+import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -33,5 +33,5 @@ public class Application {
     private Status status;
 
     @ManyToOne
-    private Coordinator coordinator;
+    private ExchangeCoordinator coordinator;
 }
