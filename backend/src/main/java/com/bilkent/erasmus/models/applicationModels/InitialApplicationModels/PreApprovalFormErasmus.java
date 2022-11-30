@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 
 import com.bilkent.erasmus.models.universityModels.PartnerUniversityErasmus;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentExchange;
 import lombok.Data;
 
@@ -15,7 +16,8 @@ public class PreApprovalFormErasmus extends PreApprovalForm {
     @ManyToOne
     private PartnerUniversityErasmus partnerUniversity;
 
-
     @OneToOne
-    private OutGoingStudentExchange studentExchange;
+    private OutGoingStudentErasmus studentErasmus;
+
+
 }

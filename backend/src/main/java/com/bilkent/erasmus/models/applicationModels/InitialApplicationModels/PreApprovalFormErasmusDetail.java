@@ -8,8 +8,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "preApprovalFormExchangeDetail")
-public class PreApprovalFormExchangeDetail {
+@Table(name = "preApprovalFormErasmusDetail")
+public class PreApprovalFormErasmusDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +20,5 @@ public class PreApprovalFormExchangeDetail {
 
     @ManyToOne
     private ExchangeCoordinator coordinator;
-
 }
+
