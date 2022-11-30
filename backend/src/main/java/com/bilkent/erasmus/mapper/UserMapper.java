@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.mapper;
 
-import com.bilkent.erasmus.dto.UserDTO;
-import com.bilkent.erasmus.entity.User;
+import com.bilkent.erasmus.dto.UserDtos.UserDTO;
+import com.bilkent.erasmus.models.applicationModels.UserModels.User;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Named;

@@ -6,7 +6,6 @@ import { DashboardSidebar } from '../../components/componentsStaff/dashboard-sid
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 
-
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',
   flex: '1 1 auto',

@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.mapper;
 
-import com.bilkent.erasmus.dto.UserDTO;
-import com.bilkent.erasmus.entity.User;
+import com.bilkent.erasmus.dto.UserDtos.UserDTO;
+import com.bilkent.erasmus.models.applicationModels.UserModels.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-10-22T20:21:17+0300",
+    date = "2022-11-23T23:26:24+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.7 (Amazon.com Inc.)"
 )
 @Component
@@ -24,12 +24,6 @@ public class UserMapperImpl implements UserMapper {
         UserDTO userDTO = new UserDTO();
 
         userDTO.setId( user.getId() );
-        userDTO.setStarsID( user.getStarsID() );
-        userDTO.setName( user.getName() );
-        userDTO.setSurname( user.getSurname() );
-        userDTO.setEmail( user.getEmail() );
-        userDTO.setDepartment( user.getDepartment() );
-        userDTO.setStatus( user.getStatus() );
 
         return userDTO;
     }
@@ -43,12 +37,6 @@ public class UserMapperImpl implements UserMapper {
         User user = new User();
 
         user.setId( userDTO.getId() );
-        user.setStarsID( userDTO.getStarsID() );
-        user.setName( userDTO.getName() );
-        user.setSurname( userDTO.getSurname() );
-        user.setEmail( userDTO.getEmail() );
-        user.setDepartment( userDTO.getDepartment() );
-        user.setStatus( userDTO.getStatus() );
 
         return user;
     }
