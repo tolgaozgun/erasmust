@@ -1,20 +1,12 @@
 import PropTypes from 'prop-types';
-import { Box, Button, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
-import { Cog as CogIcon } from '../icons/cog';
-import { Lock as LockIcon } from '../icons/lock';
-import { Selector as SelectorIcon } from '../icons/selector';
-import { ShoppingBag as ShoppingBagIcon } from '../icons/shopping-bag';
-import { User as UserIcon } from '../icons/user';
-import { UserAdd as UserAddIcon } from '../icons/user-add';
-import { Users as UsersIcon } from '../icons/users';
-import { XCircle as XCircleIcon } from '../icons/x-circle';
+import { Box, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
+import { ChartBar as ChartBarIcon } from '../../icons/chart-bar';
+import { Cog as CogIcon } from '../../icons/cog';
+import { User as UserIcon } from '../../icons/user';
 import { Logo } from './logo';
 import { NavItem } from './nav-item';
 import ImportExportOutlinedIcon from '@mui/icons-material/ImportExportOutlined';
 import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
-import SouthAmericaOutlinedIcon from '@mui/icons-material/SouthAmericaOutlined';
 import { HiGlobeEuropeAfrica } from "react-icons/hi2";
 import { HiGlobeAmericas } from "react-icons/hi2";
 
@@ -25,22 +17,22 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/erasmusProgram',
+    href: '/erasmusStudent',
     icon: (<HiGlobeEuropeAfrica fontSize="small" />),
     title: 'Erasmus Program'
   },
   {
-    href: '/exchangeProgram',
+    href: '/exchangeProgramStudent',
     icon: (<HiGlobeAmericas fontSize="small" />),
     title: 'Exchange Program'
   },
   {
-    href: '/splash',
+    href: '/applicationsStudent',
     icon: (<ApprovalOutlinedIcon fontSize="small" />),
     title: 'Applications'
   },
   {
-    href: '/products',
+    href: '/submissionsStudent',
     icon: (<ImportExportOutlinedIcon fontSize="small" />),
     title: 'Submissions'
   },
@@ -74,7 +66,7 @@ export const DashboardSidebar = (props) => {
       >
         <div>
           <Box sx={{ p: 3 }}>
-              <a>
+              <a href='/'>
                 <Logo
                   sx={{
                     height: 42,

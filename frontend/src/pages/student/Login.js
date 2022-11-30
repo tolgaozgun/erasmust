@@ -3,17 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Login = () => {
     const navigate = useNavigate();
 
     const goDash = () => {
-        navigate('/dash');
+        navigate('/dashboardStudent');
     }
 
     const goRegister = () => {
-        navigate('/registerStuff');
+        navigate('/registerStudent');
     }
 
     const formik = useFormik({
@@ -33,7 +32,7 @@ const Login = () => {
             .required('Password is required')
         }),
         onSubmit: () => {
-          navigate('/dash')
+          navigate('/dashboardStudent')
         }
       });
     
@@ -52,20 +51,13 @@ const Login = () => {
             }}
           >
             <Container maxWidth="sm">
-                <Button
-                  component="a"
-                  startIcon={<ArrowBackIcon fontSize="small" />}
-                  onClick={() => {goDash()}}
-                >
-                  Dashboard
-                </Button>
               <form onSubmit={formik.handleSubmit}>
                 <Box sx={{ my: 3 }}>
                   <Typography
                     color="textPrimary"
                     variant="h4"
                   >
-                    Academic Stuff Login
+                    Student Login
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -128,7 +120,7 @@ const Login = () => {
                       }}
                       onClick={() => {goRegister()}}
                     >
-                      Stuff Register
+                      Student Register
                     </Link>
                 </Typography>
               </form>

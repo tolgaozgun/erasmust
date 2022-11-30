@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { AccountProfile } from '../../components/componentsStudent/account/account-profile';
-import { AccountProfileDetails } from '../../components/componentsStudent/account/account-profile-details';
-import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
-import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
+import { AccountProfileDetails } from '../../components/componentsStaff/account/account-profile-details';
+import { DashboardNavbar } from '../../components/componentsStaff/dashboard-navbar';
+import { DashboardSidebar } from '../../components/componentsStaff/dashboard-sidebar';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 
@@ -16,7 +16,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   }
 }));
 
-const Account = () => {
+const Erasmus = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
   return(
@@ -71,4 +71,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Erasmus;

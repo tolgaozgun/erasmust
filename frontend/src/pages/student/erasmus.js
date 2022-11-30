@@ -16,7 +16,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   }
 }));
 
-const Account = () => {
+const Erasmus = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
   return(
@@ -71,4 +71,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Erasmus;

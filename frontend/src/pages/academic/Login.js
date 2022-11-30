@@ -1,19 +1,19 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Link, TextField, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const Login = () => {
     const navigate = useNavigate();
 
     const goDash = () => {
-        navigate('/dashboardStudent');
+        navigate('/dashboardStaff');
     }
 
     const goRegister = () => {
-        navigate('/registerStudent');
+        navigate('/registerStaff');
     }
 
     const formik = useFormik({
@@ -33,7 +33,7 @@ const Login = () => {
             .required('Password is required')
         }),
         onSubmit: () => {
-          navigate('/dashboardStudent')
+          navigate('/dashboardStaff')
         }
       });
     
@@ -52,13 +52,20 @@ const Login = () => {
             }}
           >
             <Container maxWidth="sm">
+                <Button
+                  component="a"
+                  startIcon={<ArrowBackIcon fontSize="small" />}
+                  onClick={() => {goDash()}}
+                >
+                  Dashboard
+                </Button>
               <form onSubmit={formik.handleSubmit}>
                 <Box sx={{ my: 3 }}>
                   <Typography
                     color="textPrimary"
                     variant="h4"
                   >
-                    Student Login
+                    Academic Stuff Login
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -121,7 +128,7 @@ const Login = () => {
                       }}
                       onClick={() => {goRegister()}}
                     >
-                      Student Register
+                      Stuff Register
                     </Link>
                 </Typography>
               </form>
