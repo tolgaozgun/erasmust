@@ -1,7 +1,10 @@
 package com.bilkent.erasmus.models.applicationModels.courseReviewForms;
+
+import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import lombok.Data;
+
 import javax.persistence.*;
 
 
@@ -21,6 +24,9 @@ public class CourseReviewForm {
 
     @ManyToOne
     private CourseHost courseHost;
+
+    @Enumerated(EnumType.STRING)
+    private CourseApprovalStatus status;
 
     private String description;
     private String syllabusLink;
