@@ -6,10 +6,17 @@ import lombok.Data;
 
 @Data
 public class CourseReviewFormDTO {
+
     private String courseInstructor;
+
     private CourseBilkent courseBilkent;
+
     private CourseHost courseHost;
+
     private String description;
+
     private String syllabusLink;
+
+    private String exchangeType;
 
 }
