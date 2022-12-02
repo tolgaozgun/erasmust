@@ -2,12 +2,13 @@ package com.bilkent.erasmus.dtos;
 
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.userModels.AdministrativeModels.CourseCoordinator;
 import lombok.Data;
 
 @Data
 public class CourseReviewFormExchangeDTO {
 
-    private String courseCoordinator;
+    private CourseCoordinator courseCoordinator;
 
     private CourseBilkent courseBilkent;
 

@@ -11,6 +11,8 @@ import com.bilkent.erasmus.repositories.CourseHostRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.CourseReviewFormRepository;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.security.RolesAllowed;
+
 @Service
 public class CourseReviewFormService {
 
@@ -42,6 +44,7 @@ public class CourseReviewFormService {
         form.setCourseHost(courseHost);
         return courseReviewFormRepository.save(form);
     }
+
 
 
 
