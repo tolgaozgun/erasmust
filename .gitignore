@@ -2,7 +2,8 @@
 backend/src/main/resources/application.properties
 backend/src/main/resources/application.properties
 *.properties
-
+.env
+*.env
 
 # Created by https://www.toptal.com/developers/gitignore/api/react,intellij,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=react,intellij,java
