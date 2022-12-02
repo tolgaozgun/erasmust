@@ -9,7 +9,7 @@ export const AccountPopover = (props) => {
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
-    onClose?.();
+    //onClose?.();
 
     navigate('/splash')
   };
