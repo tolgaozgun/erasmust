@@ -1,4 +1,5 @@
 import { Auth } from '@zalter/identity-js';
+import React from 'react';
 
 const noop = () => {};
 

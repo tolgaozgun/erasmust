@@ -1,4 +1,5 @@
 import { createSvgIcon } from '@mui/material/utils';
+import React from 'react';
 
 export const Users = createSvgIcon(
   <svg
