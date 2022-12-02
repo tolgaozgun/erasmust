@@ -4,7 +4,7 @@ import { SettingsPassword } from '../../components/componentsStudent/settings/se
 import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
 import { styled } from '@mui/material/styles';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',

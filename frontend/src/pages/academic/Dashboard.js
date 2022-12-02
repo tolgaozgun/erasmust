@@ -3,7 +3,7 @@ import { LatestOrders } from '../../components/componentsStaff/dashboard/latest-
 import { Sales } from '../../components/componentsStaff/dashboard/sales';
 import { DashboardNavbar } from '../../components/componentsStaff/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStaff/dashboard-sidebar';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({

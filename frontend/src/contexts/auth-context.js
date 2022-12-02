@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { auth, ENABLE_AUTH } from '../lib/auth';
 
 const HANDLERS = {

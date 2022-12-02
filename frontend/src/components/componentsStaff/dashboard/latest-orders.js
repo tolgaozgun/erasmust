@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { SeverityPill } from '../severity-pill';
+import React from 'react';
 
 const orders = [
   {

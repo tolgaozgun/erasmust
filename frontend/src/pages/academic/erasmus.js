@@ -4,7 +4,7 @@ import { AccountProfileDetails } from '../../components/componentsStaff/account/
 import { DashboardNavbar } from '../../components/componentsStaff/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStaff/dashboard-sidebar';
 import { styled } from '@mui/material/styles';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',

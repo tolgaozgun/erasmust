@@ -1,6 +1,7 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import MoneyIcon from '@mui/icons-material/Money';
+import React from 'react';
 
 export const Budget = (props) => (
   <Card

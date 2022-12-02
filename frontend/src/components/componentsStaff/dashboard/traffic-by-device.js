@@ -2,6 +2,7 @@ import { Box, Card, CardContent, CardHeader, Divider, Typography, useTheme } fro
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import PhoneIcon from '@mui/icons-material/Phone';
 import TabletIcon from '@mui/icons-material/Tablet';
+import React from 'react';
 
 export const TrafficByDevice = (props) => {
   const theme = useTheme();

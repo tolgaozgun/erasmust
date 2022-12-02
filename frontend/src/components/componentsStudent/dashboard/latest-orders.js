@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { v4 as uuid } from 'uuid';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import React from 'react';
 import {
   Box,
   Button,

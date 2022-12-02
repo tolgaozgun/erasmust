@@ -8,6 +8,7 @@ import {
   Divider,
   Typography
 } from '@mui/material';
+import React from 'react';
 
 const user = {
   avatar: '/static/images/avatars/avatar_1.png',

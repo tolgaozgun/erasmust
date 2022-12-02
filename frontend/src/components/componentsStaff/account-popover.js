@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Box, MenuItem, MenuList, Popover, Typography } from '@mui/material';
 
 export const AccountPopover = (props) => {

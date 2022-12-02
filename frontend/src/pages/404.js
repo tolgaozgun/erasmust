@@ -1,6 +1,7 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 const Error = () => {
   const navigate = useNavigate();

@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
+import React from 'react';
 //Student Pages
 import RegisterStudent from "./pages/student/register";
 import LoginStudent from "./pages/student/login";

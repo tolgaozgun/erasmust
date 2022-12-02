@@ -5,6 +5,7 @@ import { Cog as CogIcon } from '../../icons/cog';
 import { User as UserIcon } from '../../icons/user';
 import { Logo } from './logo';
 import { NavItem } from './nav-item';
+import React from 'react';
 import ImportExportOutlinedIcon from '@mui/icons-material/ImportExportOutlined';
 import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
 import { HiGlobeEuropeAfrica } from "react-icons/hi2";

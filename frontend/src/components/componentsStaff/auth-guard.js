@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useAuthContext } from '../contexts/auth-context';
 
 export const AuthGuard = (props) => {

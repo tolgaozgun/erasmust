@@ -1,5 +1,6 @@
 import { Avatar, Box, Card, CardContent, Grid, LinearProgress, Typography } from '@mui/material';
 import InsertChartIcon from '@mui/icons-material/InsertChartOutlined';
+import React from 'react';
 
 export const TasksProgress = (props) => (
   <Card

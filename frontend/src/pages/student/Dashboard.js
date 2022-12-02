@@ -3,7 +3,7 @@ import { LatestOrders } from '../../components/componentsStudent/dashboard/lates
 import { Sales } from '../../components/componentsStudent/dashboard/sales';
 import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 
 

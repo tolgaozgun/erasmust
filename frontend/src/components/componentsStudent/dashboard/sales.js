@@ -1,5 +1,6 @@
 import { Box, Button, Card, CardContent, CardHeader, Divider, useTheme, Typography } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import React from 'react';
 
 export const Sales = (props) => {
   const theme = useTheme();

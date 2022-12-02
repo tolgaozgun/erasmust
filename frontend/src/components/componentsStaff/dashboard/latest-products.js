@@ -1,5 +1,6 @@
 import { formatDistanceToNow, subHours } from 'date-fns';
 import { v4 as uuid } from 'uuid';
+import React from 'react';
 import {
   Box,
   Button,

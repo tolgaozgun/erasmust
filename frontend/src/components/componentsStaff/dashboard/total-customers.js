@@ -1,6 +1,7 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PeopleIcon from '@mui/icons-material/PeopleOutlined';
+import React from 'react';
 
 export const TotalCustomers = (props) => (
   <Card {...props}>
