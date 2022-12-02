@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.repositories.applicationRepositories;
 
-import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormExchangeDetail;
+import com.bilkent.erasmus.models.compositeModels.PreApprovalFormExchangeDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

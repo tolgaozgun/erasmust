@@ -15,7 +15,4 @@ public class PreApprovalFormExchange extends PreApprovalForm {
     @ManyToOne
     private PartnerUniversityExchange partnerUniversity;
 
-    @OneToOne
-    private OutGoingStudentExchange studentExchange;
-
 }

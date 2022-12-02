@@ -16,8 +16,5 @@ public class PreApprovalFormErasmus extends PreApprovalForm {
     @ManyToOne
     private PartnerUniversityErasmus partnerUniversity;
 
-    @OneToOne
-    private OutGoingStudentErasmus studentErasmus;
-
 
 }

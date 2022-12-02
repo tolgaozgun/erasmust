@@ -3,6 +3,7 @@ package com.bilkent.erasmus.models.applicationModels.courseReviewForms;
 import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.userModels.AdministrativeModels.CourseCoordinator;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,7 +18,8 @@ public class CourseReviewForm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String courseCoordinator; //ToDo change to foreign key to courseCoordinator
+    @ManyToOne
+    private CourseCoordinator courseCoordinator;
 
     @ManyToOne
     private CourseBilkent courseBilkent;
@@ -29,5 +31,6 @@ public class CourseReviewForm {
     private CourseApprovalStatus status;
 
     private String description;
+
     private String syllabusLink;
 }
