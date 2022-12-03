@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "preApprovalForm")
+@Table(name = "preApprovalForms")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PreApprovalForm { // --> create preapproval form detail to map coordinator and courseLists
 

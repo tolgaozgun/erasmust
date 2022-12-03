@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "courseRequestForm")
+@Table(name = "courseRequestForms")
 public class CourseRequestForm {
 
     @Id

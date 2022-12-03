@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "chair")
+@Table(name = "chairs")
 public class Chair extends User {
 
     @OneToOne

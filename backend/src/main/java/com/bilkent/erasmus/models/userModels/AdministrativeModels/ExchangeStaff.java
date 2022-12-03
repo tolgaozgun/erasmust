@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "exchangeStaff")
+@Table(name = "exchangeStaffs")
 public class ExchangeStaff extends Administrative {
 
     private String status; // temp field to create table

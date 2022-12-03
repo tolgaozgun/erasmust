@@ -7,8 +7,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "courseCoordinator")
-public class CourseCoordinatorDetail {
+@Table(name = "compositeCourseAndCourseCoordinator")
+public class CompositeCourseAndCourseCoordinator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
