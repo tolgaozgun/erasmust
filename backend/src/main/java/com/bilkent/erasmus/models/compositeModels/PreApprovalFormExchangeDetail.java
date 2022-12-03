@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "preApprovalFormExchangeDetail")
+@Table(name = "compositePreApprovalFormExchangeDetail")
 public class PreApprovalFormExchangeDetail {
 
     @Id

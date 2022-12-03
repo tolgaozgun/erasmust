@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "courseCoordinator")
+@Table(name = "courseCoordinators")
 public class CourseCoordinator extends Administrative {
 
     @ManyToOne

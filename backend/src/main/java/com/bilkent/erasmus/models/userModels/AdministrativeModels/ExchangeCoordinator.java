@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "exchangeCoordinator")
+@Table(name = "exchangeCoordinators")
 public class ExchangeCoordinator extends Administrative { // its names is replaced, previous name: Coordinator
 
     @ManyToOne

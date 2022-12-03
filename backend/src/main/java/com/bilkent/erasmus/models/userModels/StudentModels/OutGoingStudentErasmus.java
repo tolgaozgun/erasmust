@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "outGoingStudentErasmus")
+@Table(name = "studentsOutGoingErasmus")
 public class OutGoingStudentErasmus extends Student {
 
     @Enumerated(EnumType.STRING)

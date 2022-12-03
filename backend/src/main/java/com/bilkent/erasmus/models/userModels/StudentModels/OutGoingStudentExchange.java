@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "outGoingStudentExchange")
+@Table(name = "studentsOutGoingExchange")
 public class OutGoingStudentExchange extends Student {
 
     private Boolean isApplicationApproved;
