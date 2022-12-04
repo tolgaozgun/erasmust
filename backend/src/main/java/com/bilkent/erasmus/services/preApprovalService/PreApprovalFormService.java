@@ -59,7 +59,7 @@ public class PreApprovalFormService {
         preApprovalFormErasmusDetail.setPreApprovalForm(formErasmus);
 
 
-        erasmusDetailRepository.save(preApprovalFormErasmusDetail)
+        erasmusDetailRepository.save(preApprovalFormErasmusDetail);
         return formErasmus;
     }
 
