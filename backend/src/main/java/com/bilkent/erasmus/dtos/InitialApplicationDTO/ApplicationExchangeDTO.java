@@ -25,5 +25,5 @@ public class ApplicationExchangeDTO {
 
     private ExchangeCoordinator coordinator;
 
-    private OutGoingStudentExchange student;
+    private int studentId;
 }

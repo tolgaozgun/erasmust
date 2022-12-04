@@ -21,5 +21,5 @@ public class ApplicationErasmusDTO {
 
     private ExchangeCoordinator coordinator;
 
-    private OutGoingStudentErasmus student;
+    private int studentId;
 }
