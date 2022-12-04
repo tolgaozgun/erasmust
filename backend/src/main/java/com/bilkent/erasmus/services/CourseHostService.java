@@ -23,4 +23,8 @@ public class CourseHostService {
         CourseHost courseHost = courseHostMapper.toEntity(courseHostDTO);
         return(courseHostMapper.toCourseHostDTO(courseHostRepository.save(courseHost)));
     }
+
+    public CourseHost save(CourseHost courseHost) {
+        return courseHostRepository.save(courseHost);
+    }
 }

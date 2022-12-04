@@ -1,3 +1,4 @@
+/*
 package com.bilkent.erasmus.controllers;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
@@ -25,3 +26,4 @@ public class PreApprovalFormController { //todo can be merged under base preappr
         return new ResponseEntity<>(preApprovalFormService.sendForm(form), HttpStatus.CREATED);
     }
 }
+*/

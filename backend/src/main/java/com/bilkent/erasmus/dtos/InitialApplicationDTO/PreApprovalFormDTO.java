@@ -13,6 +13,8 @@ public class PreApprovalFormDTO {
 
     private int id;
 
+    private int studentId;
+
     private String academicYear;
 
     private SemesterOfferings semester;
@@ -21,6 +23,11 @@ public class PreApprovalFormDTO {
 
     private List<Integer> courseBilkentIds;
 
-    private List<CourseHost> courseHosts;
+    // host course attributes
+    private List<String> courseHostNames;
+
+    private List<String> courseHostDepartments;
+
+    private List<Double> courseHostCredits;
 
 }
