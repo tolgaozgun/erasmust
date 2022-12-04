@@ -12,6 +12,7 @@ services:
       - POSTGRES_USER=erasmust_admin
       - POSTGRES_PASSWORD=Ewj3@jcn_234@!
   backend:
+    image: erasmust_backend
     build: ./backend
     volumes:
       - ./backend:/backend
@@ -24,6 +25,8 @@ services:
     depends_on:
       - db
   frontend:
+    stdin_open: true
+    image: erasmust_frontend
     build: ./frontend
     volumes:
       - ./frontend:/frontend
