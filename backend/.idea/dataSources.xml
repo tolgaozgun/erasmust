@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:postgresql://92.205.25.135:3/erasmust_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="nisadb" uuid="d6ca82fe-cfc4-4a3f-9203-641cc043d4ca">
+    <data-source source="LOCAL" name="erasmust-database" uuid="b77cfab8-63f7-4e69-b374-070563dd2d1a">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

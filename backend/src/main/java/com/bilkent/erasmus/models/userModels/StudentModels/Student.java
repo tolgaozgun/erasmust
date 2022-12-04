@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "baseStudent")
+@Table(name = "studentsAll")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Student extends User {
 

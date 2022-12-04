@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "partnerUniversity")
+@Table(name = "partnerUniversities")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartnerUniversity {
 

@@ -2,34 +2,33 @@ package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
 import com.bilkent.erasmus.enums.CourseApprovalStatus;
-import com.bilkent.erasmus.mappers.CourseReviewFormMapper;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
 import com.bilkent.erasmus.repositories.CourseHostRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.CourseReviewFormRepository;
+import lombok.Data;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.security.RolesAllowed;
-
+@Data
 @Service
 public class CourseReviewFormService {
 
     private final CourseReviewFormRepository courseReviewFormRepository;
 
-    private final CourseReviewFormMapper courseReviewFormMapper;
-
     private final CourseBilkentRepository courseBilkentRepository;
-
 
     private final CourseHostRepository courseHostRepository;
 
-    public CourseReviewFormService(CourseReviewFormRepository courseReviewFormRepository, CourseReviewFormMapper courseReviewFormMapper, CourseBilkentRepository courseBilkentRepository, CourseHostRepository courseHostRepository) {
+    private final CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository;
+
+    public CourseReviewFormService(CourseReviewFormRepository courseReviewFormRepository, CourseBilkentRepository courseBilkentRepository,
+                                   CourseHostRepository courseHostRepository, CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository) {
         this.courseReviewFormRepository = courseReviewFormRepository;
-        this.courseReviewFormMapper = courseReviewFormMapper;
         this.courseBilkentRepository = courseBilkentRepository;
         this.courseHostRepository = courseHostRepository;
+        this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
     }
 
     public CourseReviewForm fillReviewForm(CourseReviewFormFillRequest requestBody) throws Exception {
@@ -44,6 +43,7 @@ public class CourseReviewFormService {
         form.setCourseHost(courseHost);
         return courseReviewFormRepository.save(form);
     }
+
 
 
 

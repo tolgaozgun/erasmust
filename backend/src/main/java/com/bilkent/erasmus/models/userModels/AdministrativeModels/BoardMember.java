@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "boardMember")
+@Table(name = "boardMembers")
 public class BoardMember extends Administrative {
 
     @ManyToOne

@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "inComingStudentErasmus")
+@Table(name = "studentsInComingErasmus")
 public class InComingStudentErasmus extends Student {
 
     @ManyToOne

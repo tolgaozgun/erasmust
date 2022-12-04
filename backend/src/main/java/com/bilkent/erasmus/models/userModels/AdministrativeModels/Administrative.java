@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "administrative")
+@Table(name = "administratives")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Administrative extends User {
 

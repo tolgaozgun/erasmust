@@ -1,4 +1,4 @@
-package com.bilkent.erasmus.models.applicationModels.courseReviewForms;
+package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentExchange;
 import lombok.Data;
@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 
 @Data
 @Entity
-public class CourseReviewFormExchange extends CourseReviewForm{
+public class LearningAgreementExchange extends LearningAgreement{
 
     @ManyToOne
     private OutGoingStudentExchange student;
