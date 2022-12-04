@@ -9,8 +9,9 @@ import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
 import com.bilkent.erasmus.repositories.CourseHostRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.CourseReviewFormRepository;
+import lombok.Data;
 import org.springframework.stereotype.Service;
-
+@Data
 @Service
 public class CourseReviewFormService {
 

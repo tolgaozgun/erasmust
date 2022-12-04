@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-03T11:19:05+0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.4.1 (Amazon.com Inc.)"
+    date = "2022-12-03T20:46:35+0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.7 (Amazon.com Inc.)"
 )
 @Component
 public class PreApprovalFormMapperImpl implements PreApprovalFormMapper {
@@ -26,8 +26,6 @@ public class PreApprovalFormMapperImpl implements PreApprovalFormMapper {
         preApprovalFormDTO.setId( form.getId() );
         preApprovalFormDTO.setAcademicYear( form.getAcademicYear() );
         preApprovalFormDTO.setSemester( form.getSemester() );
-        preApprovalFormDTO.setSignedAt( form.getSignedAt() );
-        preApprovalFormDTO.setStatus( form.getStatus() );
 
         return preApprovalFormDTO;
     }
@@ -43,8 +41,6 @@ public class PreApprovalFormMapperImpl implements PreApprovalFormMapper {
         preApprovalForm.setId( form.getId() );
         preApprovalForm.setAcademicYear( form.getAcademicYear() );
         preApprovalForm.setSemester( form.getSemester() );
-        preApprovalForm.setSignedAt( form.getSignedAt() );
-        preApprovalForm.setStatus( form.getStatus() );
 
         return preApprovalForm;
     }

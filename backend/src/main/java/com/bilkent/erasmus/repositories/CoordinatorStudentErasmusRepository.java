@@ -7,4 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CoordinatorStudentErasmusRepository extends
         JpaRepository<CoordinatorStudentErasmus, Integer> {
+   // CoordinatorStudentErasmus findByStudent_Id(int studentId);
+
+    CoordinatorStudentErasmus findByStudent_Id(int student_id);
+
 }
