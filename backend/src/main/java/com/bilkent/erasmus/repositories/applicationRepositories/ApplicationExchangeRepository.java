@@ -1,4 +1,4 @@
-package com.bilkent.erasmus.repositories.applicationRepositories.CourseRepositories;
+package com.bilkent.erasmus.repositories.applicationRepositories;
 
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationExchange;
@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ApplicationExchangeRepository extends JpaRepository<ApplicationExchange, Integer> {
-
-
     List<ApplicationExchange> findAllByStatus(Status status);
 }
+
