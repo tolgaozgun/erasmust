@@ -20,6 +20,7 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repositories/applicationRepositories/InitialApplicationRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/services/OutGoingStudentService.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/userModels/StudentModels/InComingStudentExchange.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repositories/CoordinatorStudentExchangeRepository.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/userModels/User.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/PreApprovalFormErasmus.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/universityModels/PartnerUniversity.java
@@ -118,6 +119,7 @@
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/dtos/InitialApplicationDTO/ApplicationErasmusDTO.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/universityModels/Faculty.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/DepartmentName.java
+/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/controllers/PreApprovalFormExchangeController.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/models/userModels/StudentModels/OutGoingStudentExchange.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/enums/MobilityType.java
 /Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/repositories/applicationRepositories/ApplicationErasmusRepository.java
