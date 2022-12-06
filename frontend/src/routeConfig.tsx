@@ -23,6 +23,7 @@ import Splash from "./pages/splash";
 import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
+import LearningAgreement from "./pages/student/LearningAgreement";
 
 export const routeItems: Array<IRoute> = [
     {
@@ -126,7 +127,13 @@ export const routeItems: Array<IRoute> = [
             title: "Student Register",
             content: <Navigate to='/splash' />,
             exact: true,
-        }
+        },
+    {
+        path: 'learningAgreement',
+        title: 'Learning Agreement',
+        content: <LearningAgreement/>,
+        exact: true
+    }
 ]
 
 
