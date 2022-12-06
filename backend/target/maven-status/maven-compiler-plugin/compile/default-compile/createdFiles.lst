@@ -26,6 +26,7 @@ com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/LearningAg
 com/bilkent/erasmus/services/preApprovalService/PreApprovalFormErasmusService.class
 com/bilkent/erasmus/services/LearningAgreementErasmusService.class
 com/bilkent/erasmus/embeddables/Address.class
+com/bilkent/erasmus/controllers/PreApprovalFormExchangeController.class
 com/bilkent/erasmus/repositories/applicationRepositories/CourseRepositories/CourseRequestFormDetailRepository.class
 com/bilkent/erasmus/repositories/applicationRepositories/CourseRepositories/ApplicationExchangeRepository.class
 com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/ApplicationExchange.class
@@ -44,6 +45,7 @@ com/bilkent/erasmus/repositories/PartnerUniversityErasmusRepository.class
 com/bilkent/erasmus/enums/SemesterOfferings.class
 com/bilkent/erasmus/models/courseModels/CourseHost.class
 com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/Application.class
+com/bilkent/erasmus/repositories/CoordinatorStudentExchangeRepository.class
 com/bilkent/erasmus/models/userModels/StudentModels/InComingStudentExchange.class
 com/bilkent/erasmus/dtos/InitialApplicationDTO/ApplicationErasmusDTO.class
 com/bilkent/erasmus/repositories/PartnerUniversityExchangeRepository.class
