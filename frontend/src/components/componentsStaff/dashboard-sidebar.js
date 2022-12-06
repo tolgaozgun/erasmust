@@ -43,7 +43,7 @@ const items = [
     title: 'Account'
   },
   {
-    href: '/settingStaff',
+    href: '/settingsStaff',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
   }

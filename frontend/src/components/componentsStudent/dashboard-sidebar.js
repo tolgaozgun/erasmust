@@ -43,10 +43,10 @@ const items = [
     title: 'Account'
   },
   {
-    href: '/settingStudent',
+    href: '/settingsStudent',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
-  }
+  },
 ];
 
 export const DashboardSidebar = (props) => {
