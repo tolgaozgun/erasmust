@@ -49,7 +49,6 @@ public class PreApprovalFormErasmusService {
     public PreApprovalFormDTO saveForm(PreApprovalFormDTO form) throws Exception {
 
         PreApprovalFormErasmus erasmusForm = createEmptyPreApprovalForm(form.getAcademicYear(), form.getSemester());
-        ;
         createMappingObject(erasmusForm, createCourseReviewForms(form.getCourseBilkentIds(), saveAllHostCourses(
                 form.getCourseHostNames()
                 ,form.getCourseHostDepartments()
