@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.models.compositeModels;
 
-import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormErasmus;
+import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormExchange;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "preApprovalFormExchangeDetail")
+@Table(name = "compositePreApprovalFormExchangeDetail")
 public class PreApprovalFormExchangeDetail {
 
     @Id
@@ -16,10 +16,10 @@ public class PreApprovalFormExchangeDetail {
     private int id;
 
     @ManyToOne
-    private CoordinatorStudentErasmus coordinatorStudent;
+    private CoordinatorStudentExchange coordinatorStudent;
 
     @ManyToOne
-    private PreApprovalFormErasmus preApprovalForm;
+    private PreApprovalFormExchange preApprovalForm;
 
     @ManyToOne
     private CourseReviewForm reviewForm;

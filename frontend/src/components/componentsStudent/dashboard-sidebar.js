@@ -43,9 +43,19 @@ const items = [
     title: 'Account'
   },
   {
-    href: '/settingStudent',
+    href: '/settingsStudent',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
+  },
+  {
+    href: '/preapproval',
+    icon: (<CogIcon fontsize="small" />),
+    title: 'Preapprovals'
+  },
+  {
+    href: '/preapprovalForm',
+    icon: (<CogIcon fontsize="small" />),
+    title: 'Preapproval Form',
   }
 ];
 

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "hostCourses")
+@Table(name = "coursesHost")
 public class CourseHost extends Course {
 
     private Boolean isNeedToBeMerged;
@@ -19,6 +19,9 @@ public class CourseHost extends Course {
 
     @Enumerated(EnumType.STRING)
     private CourseApprovalStatus status;
+
+    // todo --> add this field
+   // private boolean isPreviouslyApproved;
 
 
 }

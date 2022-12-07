@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "administrativeAssistant")
+@Table(name = "administrativeAssistants")
 public class AdministrativeAssistant extends Administrative{
 
     @OneToOne

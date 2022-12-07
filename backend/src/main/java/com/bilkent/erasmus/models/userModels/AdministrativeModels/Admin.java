@@ -8,5 +8,5 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "admin")
+@Table(name = "admins")
 public class Admin extends User {}

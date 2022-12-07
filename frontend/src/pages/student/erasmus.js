@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import {Box, Card, CardContent, Container, Grid, Typography} from '@mui/material';
 import { AccountProfile } from '../../components/componentsStudent/account/account-profile';
 import { AccountProfileDetails } from '../../components/componentsStudent/account/account-profile-details';
 import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
@@ -22,7 +22,7 @@ const Erasmus = () => {
   return(
   <>
       <title>
-        Account | Material Kit
+        Erasmus Program
       </title>
     <DashboardLayoutRoot>
     <Box
@@ -37,7 +37,7 @@ const Erasmus = () => {
           sx={{ mb: 3 }}
           variant="h4"
         >
-          Account
+          Erasmus Program
         </Typography>
         <Grid
           container
@@ -45,19 +45,49 @@ const Erasmus = () => {
         >
           <Grid
             item
-            lg={4}
-            md={6}
+            lg={6}
+            md={8}
             xs={12}
           >
-            <AccountProfile />
+            <Card>
+              <CardContent>
+                <Box>
+                  <Typography
+                      color="textPrimary"
+                      variant="h4"
+                  >
+                    Erasmus Application
+                  </Typography>
+
+                  View Your Erasmus Applications<br/>
+                  Erasmus Application Information<br/>
+                  Erasmus Appliaction FAQ
+                </Box>
+              </CardContent>
+            </Card>
           </Grid>
           <Grid
             item
-            lg={8}
-            md={6}
+            lg={6}
+            md={8}
             xs={12}
           >
-            <AccountProfileDetails />
+            <Card>
+              <CardContent>
+                <Box>
+                  <Typography
+                      color="textPrimary"
+                      variant="h4"
+                  >
+                    Preapproval
+                  </Typography>
+
+                  View Your Preapprovals<br/>
+                  Preapproval Information<br/>
+                  Preapproval FAQ
+                </Box>
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
       </Container>

@@ -11,15 +11,12 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "courseReviewForm")
+@Table(name = "courseReviewForms")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class CourseReviewForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-    private CourseCoordinator courseCoordinator;
 
     @ManyToOne
     private CourseBilkent courseBilkent;

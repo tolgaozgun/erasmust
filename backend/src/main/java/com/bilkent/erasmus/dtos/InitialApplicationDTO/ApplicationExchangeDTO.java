@@ -3,7 +3,6 @@ package com.bilkent.erasmus.dtos.InitialApplicationDTO;
 import com.bilkent.erasmus.embeddables.Signature;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
-import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentExchange;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -25,5 +24,5 @@ public class ApplicationExchangeDTO {
 
     private ExchangeCoordinator coordinator;
 
-    private OutGoingStudentExchange student;
+    private int studentId;
 }

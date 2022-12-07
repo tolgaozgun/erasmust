@@ -2,6 +2,8 @@ package com.bilkent.erasmus.controllers;
 import com.bilkent.erasmus.dtos.CourseReviewFormErasmusDTO;
 import com.bilkent.erasmus.dtos.CourseReviewFormExchangeDTO;
 import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
+import com.bilkent.erasmus.services.ApplicationErasmusService;
+import com.bilkent.erasmus.services.ApplicationExchangeService;
 import com.bilkent.erasmus.services.CourseReviewFormService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +16,13 @@ public class CourseReviewFormController {
     private final CourseReviewFormService courseReviewFormService;
 
 
+
     public CourseReviewFormController(CourseReviewFormService courseReviewFormService) {
         this.courseReviewFormService = courseReviewFormService;
     }
 
-    @PostMapping("/save-erasmus")
-    public ResponseEntity<?> sendReviewFormErasmus(@RequestBody CourseReviewFormFillRequest request) throws Exception{
+    @PostMapping("/save")
+    public ResponseEntity<?> sendReviewForm(@RequestBody CourseReviewFormFillRequest request) throws Exception{
         return new ResponseEntity<>(courseReviewFormService.fillReviewForm(request), HttpStatus.CREATED);
     }
     /*@PostMapping("/save-exchange")
