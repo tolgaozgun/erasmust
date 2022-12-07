@@ -213,9 +213,9 @@ const ErasmusApplication = () => {
         }),
         onSubmit: values => {
             //navigate('/erasmusStudent')
-            alert("Success");
-            //console.log(JSON.stringify(values, null, 2));
-            goDash()
+            //alert("Success");
+            console.log(JSON.stringify(values));
+            //goDash()
         }
     });
 
