@@ -12,6 +12,7 @@ import Preapprovals from './pages/student/Preapprovals';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import PreapprovalForm from "./pages/student/PreapprovalForm"
+import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
@@ -121,6 +122,10 @@ export const routeItems: Array<IRoute> = [
         path: '/students',
         title: "Student Register",
         content: <Students/>,
+    },
+        path: '/erasmusApplication',
+        title: "Preapproval Form",
+        content: <ErasmusApplicationForm />,
         exact: true,
     },
     {

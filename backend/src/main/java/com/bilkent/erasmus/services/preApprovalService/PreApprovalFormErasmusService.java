@@ -46,16 +46,15 @@ public class PreApprovalFormErasmusService {
     }
 
 
-    public PreApprovalFormDTO saveForm(PreApprovalFormDTO form) throws Exception {
+    public PreApprovalFormErasmus saveForm(PreApprovalFormDTO form) throws Exception {
 
         PreApprovalFormErasmus erasmusForm = createEmptyPreApprovalForm(form.getAcademicYear(), form.getSemester());
-        ;
         createMappingObject(erasmusForm, createCourseReviewForms(form.getCourseBilkentIds(), saveAllHostCourses(
                 form.getCourseHostNames()
                 ,form.getCourseHostDepartments()
                 ,form.getCourseHostCredits()
         )), form.getStudentId());
-        return null;
+        return erasmusForm;
     }
 
     private void createMappingObject(PreApprovalFormErasmus erasmusForm,

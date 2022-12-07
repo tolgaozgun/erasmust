@@ -1,16 +1,15 @@
 package com.bilkent.erasmus.services;
 
-import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementExchangeRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LearningAgreementExchangeService {
 
-    private final LearningAgreementExchangeRepository formErasmusRepository;
+    private final LearningAgreementExchangeRepository formExchangeRepository;
 
-    public LearningAgreementExchangeService(LearningAgreementExchangeRepository formErasmusRepository){
-        this.formErasmusRepository = formErasmusRepository;
+    public LearningAgreementExchangeService(LearningAgreementExchangeRepository formExchangeRepository){
+        this.formExchangeRepository = formExchangeRepository;
     }
 
 }
