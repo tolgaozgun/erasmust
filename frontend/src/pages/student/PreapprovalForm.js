@@ -102,18 +102,21 @@ const Register = () => {
                     Semester: 2022-2023 Fall
                 </Typography>
                 </Container>
-                <div style={{height: 250, width: "100%", display: "flex"}}>
+                <div style={{
+                    height: 250,
+                    display: "flex",
+                }}>
                     <DataGrid
                         autoHeight
                         pageSize={100}
 
                         columns={[
-                            { field: 'course_bilkent', headerName: 'Course Bilkent',},
-                            {field: 'course_host', headerName: "Course Host"},
-                            {field: 'status', headerName: "Status"}
+                            { field: 'course_bilkent', headerName: 'Course Bilkent', flex: 1},
+                            {field: 'course_host', headerName: "Course Host", flex: 1},
+                            {field: 'status', headerName: "Status", flex: 1}
                         ]}
                         rows={[
-                            {id:1, course_bilkent: "MATH102", course_host: "MATH104", status: "Review", editable: true}
+                            {id:1, course_bilkent: "MATH102", course_host: "MATH104", status: "Review"}
                         ]} />
                 </div>
             </Box>

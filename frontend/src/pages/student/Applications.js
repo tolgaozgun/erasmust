@@ -3,7 +3,7 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../components/componentsStudent/dashboard-navbar";
 import {DashboardSidebar} from "../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Preapprovals} from "../../components/componentsStudent/dashboard/preapprovals";
+import {ApplicationsList} from "../../components/componentsStudent/dashboard/applications";
 
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -16,12 +16,12 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const Preapproval= () => {
+const Applications = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     return (
     <> <title>
-        Preapproval
+        Applications
     </title>
         <DashboardLayoutRoot>
             <Box
@@ -47,7 +47,7 @@ const Preapproval= () => {
                             xl={15}
                             xs={12}
                         >
-                            <Preapprovals />
+                            <ApplicationsList />
                         </Grid>
                     </Grid>
                 </Container>
@@ -61,4 +61,4 @@ const Preapproval= () => {
     );
 }
 
-export default Preapproval
+export default Applications

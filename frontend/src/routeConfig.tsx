@@ -8,7 +8,9 @@ import DashboardStudent from "./pages/student/dashboard";
 import AccountStudent from './pages/student/account';
 import SettingsStudent from './pages/student/settings';
 import ErasmusStudent from './pages/student/erasmus';
-import Preapproval from './pages/student/preapproval';
+import Preapprovals from './pages/student/Preapprovals';
+import Applications from './pages/student/Applications';
+import Students from './pages/student/Students';
 import PreapprovalForm from "./pages/student/PreapprovalForm"
 
 //Staff Pages
@@ -79,54 +81,66 @@ export const routeItems: Array<IRoute> = [
         content: <DashboardStaff/>,
         exact: true,
     },
-        {
-            path: '/accountStaff',
-            title: "Student Register",
-            content: <AccountStaff/>,
-            exact: true,
-        },
-        {
-            path: '/settingsStaff',
-            title: "Student Register",
-            content: <SettingsStaff/>,
-            exact: true,
-        },
-        {
-            path: '/erasmusStaff',
-            title: "Student Register",
-            content: <ErasmusStaff/>,
-            exact: true,
-        },
-        {
-            path: '/preapproval',
-            title: "Student Register",
-            content: <Preapproval/>,
-            exact: true,
-        },
+    {
+        path: '/accountStaff',
+        title: "Student Register",
+        content: <AccountStaff/>,
+        exact: true,
+    },
+    {
+        path: '/settingsStaff',
+        title: "Student Register",
+        content: <SettingsStaff/>,
+        exact: true,
+    },
+    {
+        path: '/erasmusStaff',
+        title: "Student Register",
+        content: <ErasmusStaff/>,
+        exact: true,
+    },
+    {
+        path: '/preapprovals',
+        title: "Student Register",
+        content: <Preapprovals/>,
+        exact: true,
+    },
     {
         path: 'preapprovalForm',
         title: "Preapproval Form",
         content: <PreapprovalForm />,
         exact: true,
     },
-        {
-            path: '*',
-            title: "Student Register",
-            content: <Error/>,
-            exact: false,
-        },
-        {
-            path: '/splash',
-            title: "Student Register",
-            content: <Splash/>,
-            exact: true,
-        },
-        {
-            path: '/',
-            title: "Student Register",
-            content: <Navigate to='/splash' />,
-            exact: true,
-        }
+    {
+        path: '/applications',
+        title: "Student Register",
+        content: <Applications/>,
+        exact: true,
+    },
+    {
+        path: '/students',
+        title: "Student Register",
+        content: <Students/>,
+        exact: true,
+    },
+    {
+        path: '*',
+        title: "Student Register",
+        content: <Error/>,
+        exact: false,
+    },
+    {
+        path: '/splash',
+        title: "Student Register",
+        content: <Splash/>,
+        exact: true,
+    },
+    {
+        path: '/',
+        title: "Student Register",
+        content: <Navigate to='/splash' />,
+        exact: true,
+    },
 ]
 
 

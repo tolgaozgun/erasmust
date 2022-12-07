@@ -48,7 +48,7 @@ const items = [
     title: 'Settings'
   },
   {
-    href: '/preapproval',
+    href: '/preapprovals',
     icon: (<CogIcon fontsize="small" />),
     title: 'Preapprovals'
   },
@@ -56,7 +56,17 @@ const items = [
     href: '/preapprovalForm',
     icon: (<CogIcon fontsize="small" />),
     title: 'Preapproval Form',
-  }
+  },
+  {
+    href: '/applications',
+    icon: (<CogIcon fontsize="small" />),
+    title: 'Applications'
+  },
+  {
+    href: '/students',
+    icon: (<CogIcon fontsize="small" />),
+    title: 'Students'
+  },
 ];
 
 export const DashboardSidebar = (props) => {

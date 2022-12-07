@@ -27,6 +27,10 @@ const preapprovals = [
       id: 4,
       name: "Tolga Özgün",
     },
+    assignee: {
+      id: 5,
+      name: "Can Alkan",
+    },
     studentId: 4,
     academicYear: "2022-2023",
     semester: "FALL",
@@ -41,6 +45,10 @@ const preapprovals = [
     student:{
       id: 4,
       name: "Tolga Özgün",
+    },
+    assignee: {
+      id: 5,
+      name: "Can Alkan",
     },
     studentId: 4,
     academicYear: "2022-2023",
@@ -57,6 +65,10 @@ const preapprovals = [
       id: 4,
       name: "Tolga Özgün",
     },
+    assignee: {
+      id: 5,
+      name: "Can Alkan",
+    },
     studentId: 4,
     academicYear: "2022-2023",
     semester: "FALL",
@@ -65,7 +77,7 @@ const preapprovals = [
   },
 ];
 
-export const Preapprovals = (props) => (
+export const PreapprovalsList = (props) => (
   <Card {...props}>
     <CardHeader title="Ongoing Preapprovals" />
     <PerfectScrollbar>
@@ -94,6 +106,19 @@ export const Preapprovals = (props) => (
                   </TableSortLabel>
                 </Tooltip>
               </TableCell>
+              <TableCell sortDirection="desc">
+                <Tooltip
+                    enterDelay={300}
+                    title="Sort"
+                >
+                  <TableSortLabel
+                      active
+                      direction="desc"
+                  >
+                    Assignee
+                  </TableSortLabel>
+                </Tooltip>
+              </TableCell>
               <TableCell>
                 Status
               </TableCell>
@@ -113,6 +138,9 @@ export const Preapprovals = (props) => (
                 </TableCell>
                 <TableCell>
                   {format(preapproval.createdAt, 'dd/MM/yyyy')}
+                </TableCell>
+                <TableCell>
+                  {preapproval.assignee.name}
                 </TableCell>
                 <TableCell>
                   <SeverityPill
