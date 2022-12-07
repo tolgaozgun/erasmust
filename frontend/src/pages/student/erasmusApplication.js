@@ -22,7 +22,6 @@ import {styled} from "@mui/material/styles";
 import {DataGrid} from "@mui/x-data-grid";
 
 const options = [
-    {value : 'None', disabled : false},
     {value : 'Atria', disabled : false},
     {value : 'Callisto', disabled : false},
     {value : 'Dione', disabled : false},
@@ -37,10 +36,6 @@ const options = [
     {value : 'Triton', disabled : false},
     {value : 'Umbriel', disabled : false},
 ];
-  
-const mapping = () => {
-
-};
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -52,31 +47,36 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
+const prevValues = [
+    "",
+    "",
+    "",
+    "",
+    ""
+];
+
 const ErasmusApplication = () => {
-    var prevValues = [
-        "",
-        "",
-        "",
-        "",
-        ""
-    ];
+    
   
     const handleChange = (event) => {
+        console.log(prevValues);
+        console.log(event.target.name);
+        console.log(event.target.value);
         if (event.target.name === "firstUni") {
             if (prevValues[0] === "") {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[0] = options[i].value;
                     }
                 }
             } else {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === prevValues[0]) {
                         options[i].disabled = false;
                     }
                 }
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[0] = options[i].value;
@@ -85,19 +85,19 @@ const ErasmusApplication = () => {
             }
         } else if (event.target.name === "secondUni") {
             if (prevValues[1] === "") {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[1] = options[i].value;
                     }
                 }
             } else {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === prevValues[1]) {
                         options[i].disabled = false;
                     }
                 }
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[1] = options[i].value;
@@ -106,19 +106,19 @@ const ErasmusApplication = () => {
             }
         } else if (event.target.name === "thirdUni") {
             if (prevValues[2] === "") {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[2] = options[i].value;
                     }
                 }
             } else {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === prevValues[2]) {
                         options[i].disabled = false;
                     }
                 }
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[2] = options[i].value;
@@ -127,19 +127,19 @@ const ErasmusApplication = () => {
             }
         } else if (event.target.name === "fourthUni") {
             if (prevValues[3] === "") {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[3] = options[i].value;
                     }
                 }
             } else {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === prevValues[3]) {
                         options[i].disabled = false;
                     }
                 }
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[3] = options[i].value;
@@ -148,19 +148,19 @@ const ErasmusApplication = () => {
             }
         } else if (event.target.name === "fifthUni") {
             if (prevValues[4] === "") {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[4] = options[i].value;
                     }
                 }
             } else {
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === prevValues[4]) {
                         options[i].disabled = false;
                     }
                 }
-                for(var i = 0; i < 14; i++) {
+                for(var i = 0; i < 13; i++) {
                     if(options[i].value === event.target.value) {
                         options[i].disabled = true;
                         prevValues[4] = options[i].value;
@@ -174,7 +174,7 @@ const ErasmusApplication = () => {
     const navigate = useNavigate()
 
     const goDash = () => {
-        navigate('/dash');
+        navigate('/dashboardStudent');
     }
 
     const rows = {
@@ -213,8 +213,9 @@ const ErasmusApplication = () => {
         }),
         onSubmit: values => {
             //navigate('/erasmusStudent')
-            //alert("Success");
-            console.log(JSON.stringify(values, null, 2));
+            alert("Success");
+            //console.log(JSON.stringify(values, null, 2));
+            goDash()
         }
     });
 
@@ -283,7 +284,9 @@ const ErasmusApplication = () => {
                             </Typography>
                         </Box>
                         
-                        <Box sx={{ minWidth: 120 }}>
+                        <Box sx={{ 
+                            minWidth: 120,
+                            my: 2 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Select First University..</InputLabel>
                                 <Select
@@ -306,7 +309,9 @@ const ErasmusApplication = () => {
                             </FormControl>
                         </Box>
 
-                        <Box sx={{ minWidth: 120 }}>
+                        <Box sx={{ 
+                            minWidth: 120,
+                            my: 2 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Select Second University..</InputLabel>
                                 <Select
@@ -329,7 +334,9 @@ const ErasmusApplication = () => {
                             </FormControl>
                         </Box>
 
-                        <Box sx={{ minWidth: 120 }}>
+                        <Box sx={{ 
+                            minWidth: 120,
+                            my: 2 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Select Third University..</InputLabel>
                                 <Select
@@ -352,7 +359,9 @@ const ErasmusApplication = () => {
                             </FormControl>
                         </Box>
 
-                        <Box sx={{ minWidth: 120 }}>
+                        <Box sx={{ 
+                            minWidth: 120,
+                            my: 2 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Select Fourth University..</InputLabel>
                                 <Select
@@ -375,7 +384,9 @@ const ErasmusApplication = () => {
                             </FormControl>
                         </Box>
 
-                        <Box sx={{ minWidth: 120 }}>
+                        <Box sx={{ 
+                            minWidth: 120,
+                            my: 2 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Select Fifth University..</InputLabel>
                                 <Select
