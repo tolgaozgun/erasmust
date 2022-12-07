@@ -17,15 +17,14 @@ const Login = () => {
 
     const formik = useFormik({
         initialValues: {
-          email: 'demo@devias.io',
+          starsId: '2xxxxxxx',
           password: 'Password123'
         },
         validationSchema: Yup.object({
-          email: Yup
+          starsId: Yup
             .string()
-            .email('Must be a valid email')
-            .max(255)
-            .required('Email is required'),
+            .max(20)
+            .required('Stars ID is required'),
           password: Yup
             .string()
             .max(255)
@@ -68,16 +67,16 @@ const Login = () => {
                   </Typography>
                 </Box>
                 <TextField
-                  error={Boolean(formik.touched.email && formik.errors.email)}
+                  error={Boolean(formik.touched.starsId && formik.errors.starsId)}
                   fullWidth
-                  helperText={formik.touched.email && formik.errors.email}
-                  label="Email Address"
+                  helperText={formik.touched.starsId && formik.errors.starsId}
+                  label="Stars ID"
                   margin="normal"
-                  name="email"
+                  name="stars_id"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  type="email"
-                  value={formik.values.email}
+                  type="text"
+                  value={formik.values.starsId}
                   variant="outlined"
                 />
                 <TextField
