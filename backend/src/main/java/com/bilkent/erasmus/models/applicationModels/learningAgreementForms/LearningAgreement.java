@@ -1,4 +1,4 @@
-package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
+package com.bilkent.erasmus.models.applicationModels.learningAgreementForms;
 
 import com.bilkent.erasmus.enums.MobilityType;
 import com.bilkent.erasmus.enums.SemesterOfferings;
