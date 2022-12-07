@@ -24,6 +24,7 @@ import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
 import LearningAgreement from "./pages/student/LearningAgreement";
+import SchoolList from "./pages/academic/SchoolList";
 
 export const routeItems: Array<IRoute> = [
     {
@@ -133,7 +134,13 @@ export const routeItems: Array<IRoute> = [
         title: 'Learning Agreement',
         content: <LearningAgreement/>,
         exact: true
-    }
+    },
+    {
+        path: "/schoolList",
+        title: "School List",
+        content: <SchoolList/>,
+        exact: true
+    },
 ]
 
 
