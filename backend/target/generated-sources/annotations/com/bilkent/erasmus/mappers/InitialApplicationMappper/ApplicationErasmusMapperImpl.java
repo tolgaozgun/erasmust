@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-06T14:21:37+0300",
+    date = "2022-12-07T13:19:38+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.4.1 (Amazon.com Inc.)"
 )
 @Component
@@ -28,7 +28,6 @@ public class ApplicationErasmusMapperImpl implements ApplicationErasmusMapper {
         applicationErasmusDTO.setSignature( applicationErasmus.getSignature() );
         applicationErasmusDTO.setSignAt( applicationErasmus.getSignAt() );
         applicationErasmusDTO.setCoordinator( applicationErasmus.getCoordinator() );
-        applicationErasmusDTO.setStudent( applicationErasmus.getStudent() );
 
         return applicationErasmusDTO;
     }
@@ -46,7 +45,6 @@ public class ApplicationErasmusMapperImpl implements ApplicationErasmusMapper {
         applicationErasmus.setSignature( applicationErasmusDTO.getSignature() );
         applicationErasmus.setSignAt( applicationErasmusDTO.getSignAt() );
         applicationErasmus.setCoordinator( applicationErasmusDTO.getCoordinator() );
-        applicationErasmus.setStudent( applicationErasmusDTO.getStudent() );
 
         return applicationErasmus;
     }

@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.dtos.InitialApplicationDTO;
 
 import com.bilkent.erasmus.embeddables.Signature;
-import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.models.enums.SemesterOfferings;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
 import lombok.Data;
 

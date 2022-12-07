@@ -1,4 +1,4 @@
-package com.bilkent.erasmus.enums;
+package com.bilkent.erasmus.models.enums;
 
 public enum LetterGrade {
     A_PLUS(26),
