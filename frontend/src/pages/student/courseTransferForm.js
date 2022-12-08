@@ -24,6 +24,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import {styled} from "@mui/material/styles";
 import {DataGrid} from "@mui/x-data-grid";
+import { minWidth } from '@mui/system';
 
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -45,7 +46,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[0]", "courseName[0]", "credits[0]", "grade[0]", "courseCode2[0]", "credits2[0]", "courseCode3[0]"]
     },
     {
         id: 2,
@@ -55,7 +57,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[1]", "courseName[1]", "credits[1]", "grade[1]", "courseCode2[1]", "credits2[1]", "courseCode3[1]"]
     },
     {
         id: 3,
@@ -65,7 +68,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[2]", "courseName[2]", "credits[2]", "grade[2]", "courseCode2[2]", "credits2[2]", "courseCode3[2]"]
     },
     {
         id: 4,
@@ -75,7 +79,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[3]", "courseName[3]", "credits[3]", "grade[3]", "courseCode2[3]", "credits2[3]", "courseCode3[3]"]
     },
     {
         id: 5,
@@ -85,7 +90,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[4]", "courseName[4]", "credits[4]", "grade[4]", "courseCode2[4]", "credits2[4]", "courseCode3[4]"]
     },
     {
         id: 6,
@@ -95,7 +101,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[5]", "courseName[5]", "credits[5]", "grade[5]", "courseCode2[5]", "credits2[5]", "courseCode3[5]"]
     },
     {
         id: 7,
@@ -105,7 +112,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[6]", "courseName[6]", "credits[6]", "grade[6]", "courseCode2[6]", "credits2[6]", "courseCode3[6]"]
     },
     {
         id: 8,
@@ -115,7 +123,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[7]", "courseName[7]", "credits[7]", "grade[7]", "courseCode2[7]", "credits2[7]", "courseCode3[7]"]
     },
     {
         id: 9,
@@ -125,7 +134,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[8]", "courseName[8]", "credits[8]", "grade[8]", "courseCode2[8]", "credits2[8]", "courseCode3[8]"]
     },
     {
         id: 10,
@@ -135,7 +145,8 @@ const tableData = [
         grade: "",
         courseCode2: "",
         credits2: "",
-        courseCode3: ""
+        courseCode3: "",
+        names: ["courseCode[9]", "courseName[9]", "credits[9]", "grade[9]", "courseCode2[9]", "credits2[9]", "courseCode3[9]"]
     }
 ]
 
@@ -162,36 +173,43 @@ const CTForm = () => {
             courseCode3: ["", "", "", "", "", "", "", "", "", ""],
             studentSelect1: "",
             studentSelect2: ""
-        }/*,
+        },
         validationSchema: Yup.object({
-            courseCode: Yup
+            courseCode: Yup.array().of(
+                Yup
                 .string()
                 .max(255)
-                .required('Email is required'),
-            courseName: Yup
+                .required('Email is required')),
+            courseName: Yup.array().of(
+                Yup
                 .string()
                 .max(255)
-                .required('First name is required'),
-            credits: Yup
+                .required('First name is required')),
+            credits: Yup.array().of(
+                Yup
                 .string()
                 .max(255)
-                .required('Last name is required'),
-            grade: Yup
+                .required('Last name is required')),
+            grade: Yup.array().of(
+                Yup
                 .string()
                 .max(255)
-                .required('Password is required'),
-            courseCode2: Yup
+                .required('Password is required')),
+            courseCode2: Yup.array().of(
+                Yup
                 .string()
                 .max(255)
-                .required('Password is required'),
-            credits2: Yup
+                .required('Password is required')),
+            credits2: Yup.array().of(
+                Yup
                 .string()
                 .max(255)
-                .required('Password is required'),
-            courseCode3: Yup
+                .required('Password is required')),
+            courseCode3: Yup.array().of(
+                Yup
                 .string()
                 .max(255)
-                .required('Password is required'),
+                .required('Password is required')),
             studentSelect1: Yup
                 .string()
                 .max(255)
@@ -200,7 +218,7 @@ const CTForm = () => {
                 .string()
                 .max(255)
                 .required('Password is required')
-        })*/,
+        }),
         onSubmit: values => {
             console.log(JSON.stringify(values, null, 2));
         }
@@ -334,30 +352,110 @@ const CTForm = () => {
                         <TableContainer>
                             <Table>
                                 <TableHead>
-                                    
+                                    <TableCell>ID</TableCell>
+                                    <TableCell>Course Code</TableCell>
+                                    <TableCell>Course Name</TableCell>
+                                    <TableCell>Credits*</TableCell>
+                                    <TableCell>Grade**</TableCell>
+                                    <TableCell>Course Code and Name for a Required Course, 
+                                        Elective Group Name for an Elective Requirement
+                                    </TableCell>
+                                    <TableCell>Credits</TableCell>
+                                    <TableCell>Elective Requirement Exemptions only: 
+                                        Course code(s) of directly equivalent course(s), if any ***
+                                    </TableCell>
                                 </TableHead>
                                 <TableBody>
                                     {
-                                        tableData.map((row, index) => (
+                                        tableData.map((row, index,) => (
                                             <TableRow 
                                                 key={row.id}
                                             > 
                                                 <TableCell>{row.id}</TableCell>
                                                 <TableCell>
                                                     <TextField
+                                                        sx={{ 
+                                                         minWidth: 120 
+                                                        }}
                                                         onChange={formik.handleChange}
                                                         onBlur={formik.handleBlur}
-                                                        value={formik.values.courseCode[row.id-1]}
+                                                        value={formik.values.courseCode[index]}
                                                         error={Boolean(formik.touched.courseCode && formik.errors.courseCode)}
-                                                        name="courseCode[${index}]"
+                                                        name={row.names[0]}
                                                 />
                                                 </TableCell>
-                                                <TableCell>{row.courseName}</TableCell>
-                                                <TableCell>{row.credits}</TableCell>
-                                                <TableCell>{row.grade}</TableCell>
-                                                <TableCell>{row.courseCode2}</TableCell>
-                                                <TableCell>{row.credits2}</TableCell>
-                                                <TableCell>{row.courseCode3}</TableCell>
+                                                <TableCell>
+                                                    <TextField
+                                                        sx={{ 
+                                                         minWidth: 120 
+                                                        }}
+                                                        onChange={formik.handleChange}
+                                                        onBlur={formik.handleBlur}
+                                                        value={formik.values.courseName[index]}
+                                                        error={Boolean(formik.touched.courseName && formik.errors.courseName)}
+                                                        name={row.names[1]}
+                                                />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField
+                                                        sx={{ 
+                                                         minWidth: 120 
+                                                        }}
+                                                        onChange={formik.handleChange}
+                                                        onBlur={formik.handleBlur}
+                                                        value={formik.values.credits[index]}
+                                                        error={Boolean(formik.touched.credits && formik.errors.credits)}
+                                                        name={row.names[2]}
+                                                />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField
+                                                        sx={{ 
+                                                         minWidth: 120 
+                                                        }}
+                                                        onChange={formik.handleChange}
+                                                        onBlur={formik.handleBlur}
+                                                        value={formik.values.grade[index]}
+                                                        error={Boolean(formik.touched.grade && formik.errors.grade)}
+                                                        name={row.names[3]}
+                                                />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField
+                                                        sx={{ 
+                                                         minWidth: 120 
+                                                        }}
+                                                        onChange={formik.handleChange}
+                                                        onBlur={formik.handleBlur}
+                                                        value={formik.values.courseCode2[index]}
+                                                        error={Boolean(formik.touched.courseCode2 && formik.errors.courseCode2)}
+                                                        name={row.names[4]}
+                                                />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField
+                                                        sx={{ 
+                                                         minWidth: 120 
+                                                        }}
+                                                        onChange={formik.handleChange}
+                                                        onBlur={formik.handleBlur}
+                                                        value={formik.values.credits2[index]}
+                                                        error={Boolean(formik.touched.credits2 && formik.errors.credits2)}
+                                                        name={row.names[5]}
+                                                />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField
+                                                        sx={{ 
+                                                         minWidth: 120 
+                                                        }}
+                                                        onChange={formik.handleChange}
+                                                        onBlur={formik.handleBlur}
+                                                        value={formik.values.courseCode3[index]}
+                                                        error={Boolean(formik.touched.courseCode3 && formik.errors.courseCode3)}
+                                                        name={row.names[6]}
+                                                />
+                                                </TableCell>
                                             </TableRow>
                                         ))
                                     }
