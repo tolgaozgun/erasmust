@@ -129,17 +129,5 @@ public class InitialApplicationService {
         return applicationsList;
     }
 
-    public List<ApplicationErasmus> rankErasmusApplications(){
-        List<ApplicationErasmus> applications = new ArrayList<>(applicationErasmusRepository.findAllByStatus(Status.IN_PROCESS));
-        for(ApplicationErasmus application : applications) {
-            OutGoingStudentErasmus student = application.getStudent();
-            double gpaPoint = (100.0/3)*(student.getGpa() - 2.5);
-            double englishPoint = student.getEngLetterGrade101().getPoint() + student.getEngLetterGrade102().getPoint();
-            double totalPoints = gpaPoint + englishPoint;
-            student.setErasmusPoint(totalPoints);
-        }
-        Collections.sort(applications, Collections.reverseOrder());
-        log.info(applications.toString());
-        return applications;
-    }
+
 }

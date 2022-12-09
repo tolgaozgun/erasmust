@@ -21,13 +21,6 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Enumerated(EnumType.STRING)
-    private SemesterOfferings appliedSemester;
-
-    @Embedded
-    private Signature signature;
-
-    private LocalDate signAt;
 
     @Enumerated(EnumType.STRING)
     private Status status;
