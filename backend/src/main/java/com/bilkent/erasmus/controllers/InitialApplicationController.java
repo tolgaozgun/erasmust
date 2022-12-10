@@ -19,18 +19,24 @@ public class InitialApplicationController {
     }
 
     @PostMapping("/create-erasmus-application")
-    public ResponseEntity<?> sendErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO) {
-        return new ResponseEntity<>(initialApplicationService.sendApplication(applicationErasmusDTO), HttpStatus.CREATED);
+    public ResponseEntity<?> sendErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
+        return new ResponseEntity<>(initialApplicationService.sendApplicationErasmus(applicationErasmusDTO), HttpStatus.CREATED);
     }
 
     @PostMapping("/create-exchange-application")
-    public ResponseEntity<?> sendExchangeApplication(@RequestBody ApplicationExchangeDTO applicationExchangeDTO) {
-        return new ResponseEntity(true, HttpStatus.CREATED); // initialApplicationService.sendExchangeApplication(applicationExchangeDTO)
+    public ResponseEntity<?> sendExchangeApplication(@RequestBody ApplicationExchangeDTO applicationExchangeDTO) throws Exception {
+        return new ResponseEntity<>(initialApplicationService.sendApplicationExchange(applicationExchangeDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/retrieve-applications")
     public ResponseEntity<?> retrieveApplications(@RequestBody ApplicationPoolSelectionDTO applicationPoolSelectionDTO) {
         return new ResponseEntity(initialApplicationService.retrieveApplications(applicationPoolSelectionDTO), HttpStatus.ACCEPTED);
+
+    }
+
+    @GetMapping("/rank-applications")
+    public ResponseEntity<?> rankApplications() {
+        return new ResponseEntity(initialApplicationService.rankErasmusApplications(), HttpStatus.ACCEPTED);
 
     }
 }
