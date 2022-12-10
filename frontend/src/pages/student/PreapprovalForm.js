@@ -2,16 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {DashboardNavbar} from "../../components/componentsStudent/dashboard-navbar";
 import {DashboardSidebar} from "../../components/componentsStudent/dashboard-sidebar";
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import {
     Box,
-    Button,
-    Checkbox,
     Container,
     FormHelperText,
-    Link,
-    TextField,
     Typography
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -29,7 +23,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const Register = () => {
+const PreApprovalForm = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true)
     const navigate = useNavigate()
 
@@ -129,4 +123,4 @@ const Register = () => {
     );
 }
 
-export default Register
+export default PreApprovalForm
