@@ -17,10 +17,11 @@ import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationExcha
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentExchangeRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -50,9 +51,9 @@ public class InitialApplicationService {
     public ApplicationErasmusDTO sendApplicationErasmus(ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
         ApplicationErasmus applicationErasmus = applicationErasmusMapper.toEntity(applicationErasmusDTO);
         ApplicationErasmusDTO dto;
-        OutGoingStudentErasmus student = outGoingStudentErasmusRepository
-                .findById(applicationErasmusDTO.getStudentId())
-                .orElseThrow(()->new Exception("Student not found with id " + applicationErasmusDTO.getStudentId()));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(auth.getName()); //todo : what if student with id doesnt exist?
         if (student.getGpa() >= 2.5) {
             applicationErasmus.setStatus(Status.IN_PROCESS);
             applicationErasmus.setStudent(student);
