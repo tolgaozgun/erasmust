@@ -17,7 +17,6 @@ public class OutGoingStudentErasmus extends Student {
     @Enumerated(EnumType.STRING)
     private LetterGrade engLetterGrade102;
 
-    private Boolean isApplicationApproved;
 
     private Double erasmusPoint;
 
