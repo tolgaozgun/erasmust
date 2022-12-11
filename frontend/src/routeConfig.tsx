@@ -123,6 +123,7 @@ export const routeItems: Array<IRoute> = [
         title: "Student Register",
         content: <Students/>,
     },
+    {
         path: '/erasmusApplication',
         title: "Preapproval Form",
         content: <ErasmusApplicationForm />,
