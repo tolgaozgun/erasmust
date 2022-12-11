@@ -67,10 +67,11 @@ const items = [
     icon: (<CogIcon fontsize="small" />),
     title: 'Students'
   },
-    href: '/erasmusApplication',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Erasmus Application From',
-  }
+    {
+        href: '/erasmusApplication',
+        icon: (<CogIcon fontSize="small" />),
+        title: 'Erasmus Application From',
+    }
 ];
 
 export const DashboardSidebar = (props) => {

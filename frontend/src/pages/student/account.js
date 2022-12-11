@@ -1,12 +1,17 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
-import { AccountProfile } from '../../components/componentsStudent/account/account-profile';
-import { AccountProfileDetails } from '../../components/componentsStudent/account/account-profile-details';
-import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
-import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
-import { styled } from '@mui/material/styles';
-import React, { useState } from 'react';
+import {Box, Container, Grid, Typography} from '@mui/material';
+import {AccountProfile} from '../../components/componentsStudent/account/account-profile';
+import {AccountAdminSettings} from '../../components/componentsStudent/account/account-admin-settings';
+import {AccountProfileDetails} from '../../components/componentsStudent/account/account-profile-details';
+import {AccountIncomingErasmus} from '../../components/componentsStudent/account/account-incoming-erasmus';
+import {AccountIncomingExchange} from '../../components/componentsStudent/account/account-incoming-exchange';
+import {AccountOutgoingErasmus} from '../../components/componentsStudent/account/account-outgoing-erasmus';
+import {AccountOutgoingExchange} from '../../components/componentsStudent/account/account-outgoing-exchange';
+import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import {styled} from '@mui/material/styles';
+import React, {useState} from 'react';
 
-const DashboardLayoutRoot = styled('div')(({ theme }) => ({
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
   display: 'flex',
   flex: '1 1 auto',
   maxWidth: '100%',
@@ -17,12 +22,13 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 }));
 
 const Account = () => {
+  const enableSaveChanges = true;
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
   return(
   <>
       <title>
-        Account | Material Kit
+        Account
       </title>
     <DashboardLayoutRoot>
     <Box
@@ -49,16 +55,23 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <AccountProfile />
+            <AccountProfile/>
           </Grid>
           <Grid
-            item
-            lg={8}
-            md={6}
-            xs={12}
+              item
+              lg={8}
+              md={6}
+              xs={12}
           >
-            <AccountProfileDetails />
+            <AccountProfileDetails/>
+            <AccountAdminSettings/>
+            <AccountIncomingErasmus/>
+            <AccountIncomingExchange/>
+            <AccountOutgoingErasmus/>
+            <AccountOutgoingExchange/>
+
           </Grid>
+
         </Grid>
       </Container>
     </Box>
