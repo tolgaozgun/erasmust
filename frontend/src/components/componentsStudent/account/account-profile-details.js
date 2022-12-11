@@ -13,11 +13,17 @@ import React from 'react';
 
 export const AccountProfileDetails = (props) => {
   const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
-    phone: ''
+    firstName: 'Tolga',
+    lastName: 'Özgün',
+    email: 'tolga.ozgun@ug.bilkent.edu.tr',
+    department: 'Computer Engineering',
+    starsId: 22003850,
+    id: 1,
   });
+
+  // TODO: Change this to match current login details
+  const isAdmin = false;
+
 
   const handleChange = (event) => {
     setValues({
@@ -34,25 +40,59 @@ export const AccountProfileDetails = (props) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
-          title="Profile"
+            subheader="General user information"
+            title="Profile"
         />
         <Divider />
         <CardContent>
           <Grid
-            container
-            spacing={3}
+              container
+              spacing={3}
           >
             <Grid
-              item
-              md={6}
-              xs={12}
+                item
+                md={6}
+                xs={12}
             >
               <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
+                  fullWidth
+                  label="Stars ID"
+                  name="starsId"
+                  onChange={handleChange}
+                  required
+                  type="number"
+                  value={values.starsId}
+                  variant="outlined"
+                  disabled={!isAdmin}
+              />
+            </Grid>
+            <Grid
+                item
+                md={6}
+                xs={12}
+            >
+              <TextField
+                  fullWidth
+                  label="Account ID"
+                  name="accountId"
+                  onChange={handleChange}
+                  type="number"
+                  required
+                  value={values.id}
+                  variant="outlined"
+                  disabled={!isAdmin}
+              />
+            </Grid>
+            <Grid
+                item
+                md={6}
+                xs={12}
+            >
+              <TextField
+                  fullWidth
+                  // helperText="Please specify the first name"
+                  label="First name"
+                  name="firstName"
                 onChange={handleChange}
                 required
                 value={values.firstName}
@@ -95,13 +135,14 @@ export const AccountProfileDetails = (props) => {
               xs={12}
             >
               <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
+                  fullWidth
+                  label="Department"
+                  name="department"
+                  onChange={handleChange}
+                  value={values.department}
+                  variant="outlined"
+                  required
+                  disabled={!isAdmin}
               />
             </Grid>
           </Grid>
@@ -114,12 +155,7 @@ export const AccountProfileDetails = (props) => {
             p: 2
           }}
         >
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
-          </Button>
+
         </Box>
       </Card>
     </form>
