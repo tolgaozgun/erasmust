@@ -6,12 +6,13 @@ class AddToDoForm extends Component {
     inputRef = React.createRef();
     errorRef = React.createRef();
     handleSubmit = (e) => {
-        console.log(this.inputRef.current.value);
+        // console.log(this.inputRef.current.value);
         e.preventDefault();
         if (this.inputRef.current.value === "") {
             this.errorRef.current.classList.add("active");
             return null;
         }
+
         this.errorRef.current.classList.remove("active");
 
         this.props.addToList(this.inputRef.current.value);
@@ -38,9 +39,8 @@ class AddToDoForm extends Component {
                 >
                     Add
                 </Button>
-
                 <p ref={this.errorRef} className="error">
-                    Error, must enter a value!
+                    {/* Error, must enter a value! */}
                 </p>
             </form>
         );

@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import AddTodoForm from "./AddToDoForm";
 import List from "./List";
-import { Paper, Grid, Typography } from "@material-ui/core";
+// import { Paper, Grid, Typography } from "@material-ui/core";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 const styles = {
     Paper: {

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Save, Delete } from "@material-ui/icons";
+// import { Save, Delete } from "@material-ui/icons";
 import { Grid, Paper } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
+import DoneIcon from "@mui/icons-material/Done";
 
 const styles = {
     Icon: {
@@ -44,7 +45,7 @@ class EditToDo extends Component {
                             aria-label="Add"
                             style={styles.Icon}
                         >
-                            <Save fontSize="small" />
+                            <DoneIcon />
                         </IconButton>
                     </form>
                 </Paper>

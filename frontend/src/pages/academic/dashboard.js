@@ -5,7 +5,8 @@ import { DashboardNavbar } from "../../components/componentsStaff/dashboard-navb
 import { DashboardSidebar } from "../../components/componentsStaff/dashboard-sidebar";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import { toDoComp } from "../../components/componentsStaff/TodoComponent/ToDoComp";
+import ToDoComp from "../../components/componentsStaff/TodoComponent/ToDoComp";
+// import { ToDoComp } from "../../components/componentsStaff/TodoComponent/ToDoComp";
 
 const DashboardLayoutRoot = styled("div")(({ theme }) => ({
     display: "flex",
@@ -45,6 +46,19 @@ const DashboardStudent = (props) => {
                             </Grid>
                         </Grid>
                     </Container>
+                    <Box
+                        component="main"
+                        sx={{
+                            display: "flex",
+                            flex: "1 1 auto",
+                            flexDirection: "column",
+                            width: "100%",
+                            flexGrow: 1,
+                            py: 8,
+                        }}
+                    >
+                        <ToDoComp />
+                    </Box>
                 </Box>
             </DashboardLayoutRoot>
             <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />

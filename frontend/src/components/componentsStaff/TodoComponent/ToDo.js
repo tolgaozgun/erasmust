@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { Delete, Build } from "@material-ui/icons";
+// import { Delete, Build } from "@material-ui/icons";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { Grid, Paper } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { CSSTransition } from "react-transition-group";
@@ -58,14 +60,18 @@ class ToDo extends Component {
                         style={styles.Icon}
                         onClick={() => this.props.updateTodo(this.props.index)}
                     >
-                        <Build fontSize="small" />
+                        <EditIcon />
                     </IconButton>
                     <IconButton
                         color="secondary"
                         aria-label="Delete"
                         onClick={this.deleteTodo}
                     >
-                        <Delete fontSize="small" />
+                        <DeleteIcon
+                            color="primary"
+                            aria-label="Edit"
+                            style={styles.Icon}
+                        />
                     </IconButton>
                 </Paper>
             </Grid>
