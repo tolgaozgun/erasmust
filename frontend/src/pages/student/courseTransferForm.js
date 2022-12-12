@@ -164,6 +164,12 @@ const CTForm = () => {
 
     const formik = useFormik({
         initialValues: {
+            name: "",
+            surname: "",
+            studentID: "",
+            department: "",
+            academicYear: "",
+            semester: "",
             courseCode: ["MAT102", "MAT132", "MAT241", "MAT225", "MAT230", "MAT420", "MAT105", "MAT106", "MAT103", "MAT115"],
             courseName: ["", "", "", "", "", "", "", "", "", ""],
             credits: ["", "", "", "", "", "", "", "", "", ""],
@@ -172,9 +178,35 @@ const CTForm = () => {
             credits2: ["", "", "", "", "", "", "", "", "", ""],
             courseCode3: ["", "", "", "", "", "", "", "", "", ""],
             studentSelect1: "",
-            studentSelect2: ""
+            studentSelect2: "",
+            instituteName: "",
+            previousDepartment: ""
         },
         validationSchema: Yup.object({
+            name: Yup
+                .string()
+                .max(255)
+                .required("Name is required"),
+            surname: Yup
+                .string()
+                .max(255)
+                .required("Surname is required"),
+            studentID: Yup
+                .number()
+                .max(8)
+                .required("Student ID is required"),
+            department: Yup
+                .string()
+                .max(255)
+                .required("Department is required"),
+            academicYear: Yup
+                .string()
+                .max(255)
+                .required("Academic year is required"),
+            semester: Yup
+                .string()
+                .max(255)
+                .required("Student ID is required"),
             courseCode: Yup.array().of(
                 Yup
                 .string()
@@ -217,7 +249,15 @@ const CTForm = () => {
             studentSelect2: Yup
                 .string()
                 .max(255)
-                .required('Password is required')
+                .required('Password is required'),
+            instituteName: Yup
+                .string()
+                .max(255)
+                .required("Institute name is required"),
+            previousDepartment: Yup
+                .string()
+                .max(255)
+                .required("Department name is required")
         }),
         onSubmit: values => {
             console.log(JSON.stringify(values, null, 2));
@@ -249,44 +289,136 @@ const CTForm = () => {
                             >
                                 Course Transfer Form
                             </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
-                                marginTop={1}
+                        </Box>
+                        <Box sx={{ my: 2 }}>
+                            <TextField
+                                error={Boolean(formik.touched.name && formik.errors.name)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='name'
+                                value={formik.values.name}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Student's Name"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
                             >
-                                Student: STUDENT_NAME
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
+                            </TextField>
+                            <TextField
+                                error={Boolean(formik.touched.surname && formik.errors.surname)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='surname'
+                                value={formik.values.surname}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Student's Surname"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
                             >
-                                Exchange Coordinator: EXCHANGE_COORDINATOR
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
+                            </TextField>
+                            <TextField
+                                error={Boolean(formik.touched.studentID && formik.errors.studentID)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='studentID'
+                                value={formik.values.studentID}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Student's ID"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
                             >
-                                Host University: HOST_UNIVERSITY
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
+                            </TextField>
+                            <TextField
+                                error={Boolean(formik.touched.department && formik.errors.department)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='department'
+                                value={formik.values.department}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Student's Department"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
                             >
-                                Department: Computer Engineering (CS)
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
+                            </TextField>
+                            <TextField
+                                error={Boolean(formik.touched.academicYear && formik.errors.academicYear)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='academicYear'
+                                value={formik.values.academicYear}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Student's Academic Year"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
                             >
-
-
-                                Semester: 2022-2023 Fall
-                            </Typography>
+                            </TextField>
+                            <TextField
+                                error={Boolean(formik.touched.semester && formik.errors.semester)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='semester'
+                                value={formik.values.semester}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Student's Semester"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
+                            >
+                            </TextField>
+                            <TextField
+                                error={Boolean(formik.touched.instituteName && formik.errors.instituteName)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='instituteName'
+                                value={formik.values.instituteName}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Institute Name"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
+                            >
+                            </TextField>
+                            <TextField
+                                error={Boolean(formik.touched.previousDepartment && formik.errors.previousDepartment)}
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name='previousDepartment'
+                                value={formik.values.previousDepartment}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                variant="outlined"
+                                label="Previous Department"
+                                fullWidth
+                                sx={{
+                                    my: 1
+                                }}
+                            >
+                            </TextField>
                         </Box>
                         <Box sx={{ 
                             minWidth: 120,
@@ -471,7 +603,7 @@ const CTForm = () => {
                                 type="submit"
                                 variant="contained"
                             >
-                                Sign Up Now
+                                Create Course Transfer Form
                             </Button>
                         </Box>
                     </form>

@@ -3,6 +3,7 @@ import { AccountProfile } from '../../components/componentsStudent/account/accou
 import { AccountProfileDetails } from '../../components/componentsStudent/account/account-profile-details';
 import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
+import { Signature } from '../../components/signature';
 import { styled } from '@mui/material/styles';
 import React, { useState } from 'react';
 
@@ -57,7 +58,15 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <AccountProfileDetails />
+            <AccountProfileDetails/>
+          </Grid>
+          <Grid
+            item
+            lg={8}
+            md={6}
+            xs={12}
+          > 
+            <Signature />
           </Grid>
         </Grid>
       </Container>
