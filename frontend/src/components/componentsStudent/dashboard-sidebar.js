@@ -48,8 +48,8 @@ const items = [
     title: 'Settings'
   },
   {
-    href: '/preapproval',
-    icon: (<CogIcon fontSize="small" />),
+    href: '/preapprovals',
+    icon: (<CogIcon fontsize="small" />),
     title: 'Preapprovals'
   },
   {
@@ -58,10 +58,20 @@ const items = [
     title: 'Preapproval Form',
   },
   {
-    href: '/erasmusApplication',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Erasmus Application From',
-  }
+    href: '/applications',
+    icon: (<CogIcon fontsize="small" />),
+    title: 'Applications'
+  },
+  {
+    href: '/students',
+    icon: (<CogIcon fontsize="small" />),
+    title: 'Students'
+  },
+    {
+        href: '/erasmusApplication',
+        icon: (<CogIcon fontSize="small" />),
+        title: 'Erasmus Application From',
+    }
 ];
 
 export const DashboardSidebar = (props) => {

@@ -8,7 +8,9 @@ import DashboardStudent from "./pages/student/dashboard";
 import AccountStudent from './pages/student/account';
 import SettingsStudent from './pages/student/settings';
 import ErasmusStudent from './pages/student/erasmus';
-import Preapproval from './pages/student/preapproval';
+import Preapprovals from './pages/student/Preapprovals';
+import Applications from './pages/student/Applications';
+import Students from './pages/student/Students';
 import PreapprovalForm from "./pages/student/PreapprovalForm"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 
@@ -100,9 +102,9 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
-        path: '/preapproval',
+        path: '/preapprovals',
         title: "Student Register",
-        content: <Preapproval/>,
+        content: <Preapprovals/>,
         exact: true,
     },
     {
@@ -110,6 +112,17 @@ export const routeItems: Array<IRoute> = [
         title: "Preapproval Form",
         content: <PreapprovalForm />,
         exact: true,
+    },
+    {
+        path: '/applications',
+        title: "Student Register",
+        content: <Applications/>,
+        exact: true,
+    },
+    {
+        path: '/students',
+        title: "Student Register",
+        content: <Students/>,
     },
     {
         path: '/erasmusApplication',
@@ -140,7 +153,7 @@ export const routeItems: Array<IRoute> = [
         title: "Student Register",
         content: <Navigate to='/splash' />,
         exact: true,
-    }
+    },
 ]
 
 

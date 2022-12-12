@@ -1,6 +1,4 @@
 import {Box, Card, CardContent, Container, Grid, Typography} from '@mui/material';
-import { AccountProfile } from '../../components/componentsStudent/account/account-profile';
-import { AccountProfileDetails } from '../../components/componentsStudent/account/account-profile-details';
 import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
 import { styled } from '@mui/material/styles';
