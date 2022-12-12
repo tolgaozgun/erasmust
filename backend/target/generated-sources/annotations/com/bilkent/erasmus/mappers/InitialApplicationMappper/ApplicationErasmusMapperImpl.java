@@ -2,6 +2,7 @@ package com.bilkent.erasmus.mappers.InitialApplicationMappper;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.ApplicationErasmusDTO;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
+import com.bilkent.erasmus.models.universityModels.PartnerUniversityErasmus;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-11T18:17:50+0300",
-    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.7 (Amazon.com Inc.)"
+    date = "2022-12-12T18:48:36+0300",
+    comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.4.1 (Amazon.com Inc.)"
 )
 @Component
 public class ApplicationErasmusMapperImpl implements ApplicationErasmusMapper {
@@ -24,27 +25,29 @@ public class ApplicationErasmusMapperImpl implements ApplicationErasmusMapper {
         ApplicationErasmusDTO applicationErasmusDTO = new ApplicationErasmusDTO();
 
         applicationErasmusDTO.setId( applicationErasmus.getId() );
-        applicationErasmusDTO.setAppliedSemester( applicationErasmus.getAppliedSemester() );
-        applicationErasmusDTO.setSignature( applicationErasmus.getSignature() );
-        applicationErasmusDTO.setSignAt( applicationErasmus.getSignAt() );
         applicationErasmusDTO.setCoordinator( applicationErasmus.getCoordinator() );
+        List<PartnerUniversityErasmus> list = applicationErasmus.getSchools();
+        if ( list != null ) {
+            applicationErasmusDTO.setSchools( new ArrayList<PartnerUniversityErasmus>( list ) );
+        }
 
         return applicationErasmusDTO;
     }
 
     @Override
-    public ApplicationErasmus toEntity(ApplicationErasmusDTO applicationErasmusDTO) {
-        if ( applicationErasmusDTO == null ) {
+    public ApplicationErasmus toEntity(ApplicationErasmusDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         ApplicationErasmus applicationErasmus = new ApplicationErasmus();
 
-        applicationErasmus.setId( applicationErasmusDTO.getId() );
-        applicationErasmus.setAppliedSemester( applicationErasmusDTO.getAppliedSemester() );
-        applicationErasmus.setSignature( applicationErasmusDTO.getSignature() );
-        applicationErasmus.setSignAt( applicationErasmusDTO.getSignAt() );
-        applicationErasmus.setCoordinator( applicationErasmusDTO.getCoordinator() );
+        List<PartnerUniversityErasmus> list = dto.getSchools();
+        if ( list != null ) {
+            applicationErasmus.setSchools( new ArrayList<PartnerUniversityErasmus>( list ) );
+        }
+        applicationErasmus.setId( dto.getId() );
+        applicationErasmus.setCoordinator( dto.getCoordinator() );
 
         return applicationErasmus;
     }

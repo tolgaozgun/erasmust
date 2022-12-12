@@ -48,7 +48,6 @@ public class ApplicationErasmusService {
                     responsibleCoordinator.setWorkLoad(responsibleCoordinator.getWorkLoad() + 1);
                     exchangeCoordinatorRepository.save(responsibleCoordinator);
                     break;
-
                 }
             }
 

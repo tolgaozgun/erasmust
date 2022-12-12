@@ -3,6 +3,8 @@ package com.bilkent.erasmus.services.preApprovalService;
 import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
 import com.bilkent.erasmus.dtos.PreApprovalFormListDTO;
+import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
+import com.bilkent.erasmus.models.compositeModels.CoordinatorStudentErasmus;
 import com.bilkent.erasmus.models.enums.SemesterOfferings;
 import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormErasmus;
@@ -11,6 +13,7 @@ import com.bilkent.erasmus.models.compositeModels.PreApprovalFormErasmusDetail;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.PartnerUniversityErasmusRepository;
+import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationErasmusRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusDetailRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
@@ -32,6 +35,8 @@ import javax.persistence.criteria.Predicate;
 @Slf4j
 public class PreApprovalFormErasmusService {
 
+    private final ApplicationErasmusRepository applicationErasmusRepository;
+
     private final PreApprovalFormErasmusRepository erasmusRepository;
 
     private final PreApprovalFormErasmusDetailRepository erasmusDetailRepository;
@@ -47,8 +52,15 @@ public class PreApprovalFormErasmusService {
     private final OutGoingStudentErasmusRepository outGoingStudentErasmusRepository;
 
 
-    public PreApprovalFormErasmusService(PreApprovalFormErasmusRepository erasmusRepository, PreApprovalFormErasmusDetailRepository erasmusDetailRepository,
-                                         PartnerUniversityErasmusRepository universityErasmusRepository, CourseReviewFormService courseReviewFormService, CourseHostService courseHostService, CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository) {
+    public PreApprovalFormErasmusService(ApplicationErasmusRepository applicationErasmusRepository
+            ,PreApprovalFormErasmusRepository erasmusRepository
+            ,PreApprovalFormErasmusDetailRepository erasmusDetailRepository
+            ,PartnerUniversityErasmusRepository universityErasmusRepository
+            ,CourseReviewFormService courseReviewFormService
+            ,CourseHostService courseHostService
+            ,CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository
+            ,OutGoingStudentErasmusRepository outGoingStudentErasmusRepository) {
+        this.applicationErasmusRepository = applicationErasmusRepository;
         this.erasmusRepository = erasmusRepository;
         this.erasmusDetailRepository = erasmusDetailRepository;
         this.universityErasmusRepository = universityErasmusRepository;
@@ -60,7 +72,6 @@ public class PreApprovalFormErasmusService {
 
 
     public PreApprovalFormErasmus saveForm(PreApprovalFormDTO form) throws Exception {
-
         PreApprovalFormErasmus erasmusForm = createEmptyPreApprovalForm(form.getAcademicYear(), form.getSemester());
         createMappingObject(erasmusForm, createCourseReviewForms(form.getCourseBilkentIds(), saveAllHostCourses(
                 form.getCourseHostNames()
@@ -70,23 +81,33 @@ public class PreApprovalFormErasmusService {
         return erasmusForm;
     }
 
+    private int findStudentId() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return outGoingStudentErasmusRepository.findByStarsId(auth.getName()).getId();
+    }
+
+    private ApplicationErasmus retrieveApplicationFromStudentId() {
+        return applicationErasmusRepository.findByStudent_Id(findStudentId());
+    }
     private void createMappingObject(PreApprovalFormErasmus erasmusForm,
                                                              List<CourseReviewForm> reviewForms, int studentId) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        int studentSecurityId = outGoingStudentErasmusRepository.findByStarsId(auth.getName()).getId();
-
-
+        CoordinatorStudentErasmus coordinatorStudentErasmus =new CoordinatorStudentErasmus();
+        coordinatorStudentErasmus.setStudent(retrieveApplicationFromStudentId().getStudent());
+        coordinatorStudentErasmus.setExchangeCoordinator(retrieveApplicationFromStudentId().getCoordinator());
+        coordinatorStudentErasmusRepository.save(coordinatorStudentErasmus);
         for (CourseReviewForm form : reviewForms) {
             PreApprovalFormErasmusDetail formErasmusDetail = new PreApprovalFormErasmusDetail();
             formErasmusDetail.setPreApprovalForm(erasmusForm);
             formErasmusDetail.setReviewForm(form);
-            formErasmusDetail.setCoordinatorStudent(coordinatorStudentErasmusRepository.findByStudent_Id(studentSecurityId));
+            formErasmusDetail.setCoordinatorStudent(coordinatorStudentErasmus);
             erasmusDetailRepository.save(formErasmusDetail);
         }
     }
 
     private PreApprovalFormErasmus createEmptyPreApprovalForm(String academicYear, SemesterOfferings semester) {
         PreApprovalFormErasmus form = new PreApprovalFormErasmus();
+       // ApplicationErasmus applicationErasmus = retrieveApplicationFromStudentId();
+        form.setPartnerUniversity(retrieveApplicationFromStudentId().getAssignedUniversity());
         form.setStatus(Status.IN_PROCESS);
         form.setAcademicYear(academicYear);
         form.setSemester(semester);
@@ -120,8 +141,8 @@ public class PreApprovalFormErasmusService {
         for (int i = 0; i < courseNames.size(); i++) {
             courseHosts.add(
                     saveCourseHost(
-                    courseNames.get(i)
-                    ,credits.get(i)
+                        courseNames.get(i)
+                        ,credits.get(i)
                 )
             );
         }

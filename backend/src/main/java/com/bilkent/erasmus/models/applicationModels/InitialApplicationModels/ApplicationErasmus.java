@@ -21,12 +21,12 @@ public class ApplicationErasmus extends Application implements Comparable<Applic
 
     @ManyToMany
     @JoinTable(
-            name = "app_uni",
+            name = "CompositeApplicationAndUniversity",
             joinColumns = @JoinColumn(
-                    name = "app_id", referencedColumnName = "id"
+                    name = "applicationId", referencedColumnName = "id"
             ),
             inverseJoinColumns = @JoinColumn(
-                    name = "uni_id", referencedColumnName = "id"
+                    name = "universityId", referencedColumnName = "id"
             )
     )
     private List<PartnerUniversityErasmus> schools;
