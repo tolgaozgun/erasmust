@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import {Box, Button, Container, Grid, Link, TextField, Typography} from '@mui/material';
+import axios from "axios";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -21,19 +22,26 @@ const Login = () => {
           password: 'Password123'
         },
         validationSchema: Yup.object({
-          starsId: Yup
-            .string()
-            .max(20)
-            .required('Stars ID is required'),
-          password: Yup
-            .string()
-            .max(255)
-            .required('Password is required')
+            starsId: Yup
+                .string()
+                .max(20)
+                .required('Stars ID is required'),
+            password: Yup
+                .string()
+                .max(255)
+                .required('Password is required')
         }),
-        onSubmit: () => {
-          navigate('/dashboardStudent')
+        onSubmit: async (values, formikHelpers) => {
+            const response = await axios.post("http://92.205.25.135:4/auth/login", values).catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+            if (response && response.data) {
+                console.log("Response: " + response.data.messages)
+            }
         }
-      });
+    });
     
       return (
         <>

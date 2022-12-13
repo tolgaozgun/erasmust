@@ -153,7 +153,7 @@ export const CourseComponent = (props) => {
                                     fullWidth
                                     id="bilkent-course-selector"
                                     options={props.courses}
-                                    renderInput={(params) => <TextField {...params} label="Movie"/>}
+                                    renderInput={(params) => <TextField {...params} label="Enter class code or name"/>}
                                 />
 
                             </Grid>

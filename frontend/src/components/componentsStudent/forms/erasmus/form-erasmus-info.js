@@ -13,7 +13,7 @@ import React from 'react';
 import {useFormik} from "formik";
 import * as Yup from "yup";
 
-export const FormExchangeInfo = (props) => {
+export const FormErasmusInfo = (props) => {
 
     const formik = useFormik({
         initialValues: {
@@ -56,8 +56,8 @@ export const FormExchangeInfo = (props) => {
         >
             <Card>
                 <CardHeader
-                    subheader="Program and host instuition information"
-                    title="Exchange Information"
+                    subheader="Program and host institution information"
+                    title="Erasmus Information"
                 />
                 <Divider/>
                 <CardContent>

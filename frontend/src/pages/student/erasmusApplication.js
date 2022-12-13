@@ -1,43 +1,27 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import {DashboardNavbar} from "../../components/componentsStudent/dashboard-navbar";
-import {DashboardSidebar} from "../../components/componentsStudent/dashboard-sidebar";
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import {
-    Box,
-    Button,
-    Checkbox,
+    Box, Button,
     Container,
-    FormHelperText,
-    Link,
-    TextField,
+    Grid,
+    Step, StepButton,
+    StepConnector,
+    stepConnectorClasses,
+    StepLabel,
+    Stepper,
     Typography
 } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import {styled} from "@mui/material/styles";
-import {DataGrid} from "@mui/x-data-grid";
+import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
+import {
+    FormSemesterInfo
+} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
+import {FormSchoolInfo} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
 
-const options = [
-    {value : 'Atria', disabled : false},
-    {value : 'Callisto', disabled : false},
-    {value : 'Dione', disabled : false},
-    {value : 'Ganymede', disabled : false},
-    {value : 'Hangouts Call', disabled : false},
-    {value : 'Luna', disabled : false},
-    {value : 'Oberon', disabled : false},
-    {value : 'Phobos', disabled : false},
-    {value : 'Pyxis', disabled : false},
-    {value : 'Sedna', disabled : false},
-    {value : 'Titania', disabled : false},
-    {value : 'Triton', disabled : false},
-    {value : 'Umbriel', disabled : false},
-];
+import {styled} from '@mui/material/styles';
+import React, {useState} from 'react';
+import {Check} from "@mui/icons-material";
 
-const DashboardLayoutRoot = styled('div')(({ theme }) => ({
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
     flex: '1 1 auto',
     maxWidth: '100%',
@@ -47,392 +31,225 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const prevValues = [
-    "",
-    "",
-    "",
-    "",
-    ""
-];
+const QontoConnector = styled(StepConnector)(({theme}) => ({
+    [`&.${stepConnectorClasses.alternativeLabel}`]: {
+        top: 10,
+        left: 'calc(-50% + 16px)',
+        right: 'calc(50% + 16px)',
+    },
+    [`&.${stepConnectorClasses.active}`]: {
+        [`& .${stepConnectorClasses.line}`]: {
+            borderColor: '#784af4',
+        },
+    },
+    [`&.${stepConnectorClasses.completed}`]: {
+        [`& .${stepConnectorClasses.line}`]: {
+            borderColor: '#784af4',
+        },
+    },
+    [`& .${stepConnectorClasses.line}`]: {
+        borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+        borderTopWidth: 3,
+        borderRadius: 1,
+    },
+}));
 
-const ErasmusApplication = () => {
-    
-  
-    const handleChange = (event) => {
-        console.log(prevValues);
-        console.log(event.target.name);
-        console.log(event.target.value);
-        if (event.target.name === "firstUni") {
-            if (prevValues[0] === "") {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[0] = options[i].value;
-                    }
-                }
-            } else {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === prevValues[0]) {
-                        options[i].disabled = false;
-                    }
-                }
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[0] = options[i].value;
-                    }
-                }
-            }
-        } else if (event.target.name === "secondUni") {
-            if (prevValues[1] === "") {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[1] = options[i].value;
-                    }
-                }
-            } else {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === prevValues[1]) {
-                        options[i].disabled = false;
-                    }
-                }
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[1] = options[i].value;
-                    }
-                }
-            }
-        } else if (event.target.name === "thirdUni") {
-            if (prevValues[2] === "") {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[2] = options[i].value;
-                    }
-                }
-            } else {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === prevValues[2]) {
-                        options[i].disabled = false;
-                    }
-                }
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[2] = options[i].value;
-                    }
-                }
-            }
-        } else if (event.target.name === "fourthUni") {
-            if (prevValues[3] === "") {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[3] = options[i].value;
-                    }
-                }
-            } else {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === prevValues[3]) {
-                        options[i].disabled = false;
-                    }
-                }
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[3] = options[i].value;
-                    }
-                }
-            }
-        } else if (event.target.name === "fifthUni") {
-            if (prevValues[4] === "") {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[4] = options[i].value;
-                    }
-                }
-            } else {
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === prevValues[4]) {
-                        options[i].disabled = false;
-                    }
-                }
-                for(var i = 0; i < 13; i++) {
-                    if(options[i].value === event.target.value) {
-                        options[i].disabled = true;
-                        prevValues[4] = options[i].value;
-                    }
-                }
-            }
+const QontoStepIconRoot = styled('div')(
+    ({theme, ownerState}) => ({
+        color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
+        display: 'flex',
+        height: 22,
+        alignItems: 'center',
+        ...(ownerState.active && {
+            color: '#784af4',
+        }),
+        '& .QontoStepIcon-completedIcon': {
+            color: '#784af4',
+            zIndex: 1,
+            fontSize: 18,
+        },
+        '& .QontoStepIcon-circle': {
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            backgroundColor: 'currentColor',
+        },
+    })
+);
+
+
+const Preapproval = () => {
+    const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [activeStep, setActiveStep] = useState(0)
+    const [stepCompleted, setStepCompleted] = useState([
+        false, false, false
+    ])
+    const [isValid, setIsValid] = useState([
+        false, false, false
+    ])
+
+    const schools = require('../../erasmus-schools.json');
+
+    const handleStep = (step, state) => {
+        switch (state) {
+            case true:
+                completeStep(step)
+                setValid(step)
+                break;
+            case false:
+                unCompleteStep(step)
+                unsetValid(step)
+                break;
         }
+    }
+
+    const handleFirstStep = (state) => {
+        handleStep(0, state)
+    }
+
+    const handleSecondStep = (state) => {
+        handleStep(1, state)
+    }
+
+    const handleThirdStep = (state) => {
+        handleStep(2, state)
+    }
+
+
+    function QontoStepIcon(props) {
+        const {active, className, icon} = props;
+        return (
+            <QontoStepIconRoot ownerState={{active}} className={className}>
+                {stepCompleted[icon - 1] ? (
+                    <Check className="QontoStepIcon-completedIcon"/>
+                ) : (
+                    <div className="QontoStepIcon-circle"/>
+                )}
+            </QontoStepIconRoot>
+        );
+    }
+
+    const completeStep = (step) => {
+        let newArray = stepCompleted;
+        newArray[step] = true;
+        setStepCompleted(newArray)
+    }
+
+    const setValid = (step) => {
+        let newArray = isValid;
+        newArray[step] = true;
+        setIsValid(newArray)
+    }
+
+    const unsetValid = (step) => {
+        let newArray = isValid
+        newArray[step] = false
+        setIsValid(newArray)
+    }
+
+    const unCompleteStep = () => {
+        let newArray = stepCompleted;
+        newArray[activeStep] = false;
+        setStepCompleted(newArray)
+    }
+
+    const stepClickHandler = (step) => () => {
+        setActiveStep(step);
     };
 
-    const [isSidebarOpen, setSidebarOpen] = useState(true)
-    const navigate = useNavigate()
-
-    const goDash = () => {
-        navigate('/dashboardStudent');
-    }
-
-    const rows = {
+    const nextStepHandler = () => {
+        setActiveStep(activeStep + 1)
 
     }
 
-    const formik = useFormik({
-        initialValues: {
-            firstUni: '',
-            secondUni: '',
-            thirdUni: '',
-            fourthUni: '',
-            fifthUni: ''
-        },
-        validationSchema: Yup.object({
-            firstUni: Yup
-                .string()
-                .max(255)
-                .required('University selection is required'),
-            secondUni: Yup
-                .string()
-                .max(255)
-                .required('University selection is required'),
-            thirdUni: Yup
-                .string()
-                .max(255)
-                .required('University selection is required'),
-            fourthUni: Yup
-                .string()
-                .max(255)
-                .required('University selection is required'),
-            fifthUni: Yup
-                .string()
-                .max(255)
-                .required('University selection is required')
-        }),
-        onSubmit: values => {
-            //navigate('/erasmusStudent')
-            //alert("Success");
-            console.log(JSON.stringify(values));
-            //goDash()
-        }
-    });
+    const previousStepHandler = () => {
+        setActiveStep(activeStep - 1)
+    }
 
-    return(
+
+    const steps = ['Student Information', 'Time Information', 'Schools'];
+
+    return (
         <>
             <title>
-                Erasmus Application Form
+                Erasmus Application
             </title>
             <DashboardLayoutRoot>
-            <Box
-                component="main"
-                sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    flexGrow: 1,
-                    minHeight: '100%',
-                    paddingTop: 6
-                }}
-            >
-                <Container maxWidth="sm">
-                    <form onSubmit={formik.handleSubmit}>
-                        <Box sx={{ my: 2 }}>
-                            <Typography
-                                color="textPrimary"
-                                variant="h4"
-                            >
-                                Erasmus Application Form
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
-                                marginTop={1}
-                            >
-                                Student: STUDENT_NAME
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
-                            >
-                                Exchange Coordinator: EXCHANGE_COORDINATOR
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
-                            >
-                                Host University: HOST_UNIVERSITY
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
-                            >
-                                Department: Computer Engineering (CS)
-                            </Typography>
-                            <Typography
-                                color="textSecondary"
-                                gutterBottom
-                                variant="body2"
+                <Box
+                    component="main"
+                    sx={{
+                        flexGrow: 1,
+                        py: 8
+                    }}
+                >
+                    <Container maxWidth="lg">
+                        <Typography
+                            sx={{mb: 5}}
+                            align="center"
+                            variant="h4"
+                        >
+                            Erasmus Application
+                        </Typography>
+
+                        <Stepper nonLinear alternativeLabel activeStep={activeStep} connector={<QontoConnector/>}>
+                            {steps.map((label, index) => (
+                                <Step key={index} completed={stepCompleted[index]}>
+                                    <StepLabel StepIconComponent={QontoStepIcon} completed={stepCompleted[index]}>
+                                        <StepButton onClick={stepClickHandler(index)}>
+                                            {label}
+                                        </StepButton>
+                                    </StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
+                        <Grid
+                            container
+                            spacing={3}
+                        >
+
+                            <Grid
+                                item
+                                lg={12}
+                                md={12}
+                                xs={24}
                             >
 
 
-                                Semester: 2022-2023 Fall
-                            </Typography>
-                        </Box>
-                        
-                        <Box sx={{ 
-                            minWidth: 120,
-                            my: 2 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Select First University..</InputLabel>
-                                <Select
-                                error={Boolean(formik.touched.firstUni && formik.errors.firstUni)}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name='firstUni'
-                                value={formik.values.firstUni}
-                                label="name"
-                                onBlur={formik.handleBlur}
-                                onChange={(e) => {handleChange(e); formik.handleChange(e)}}
-                                variant="outlined"
-                                >
-                                {options.map((option) => (
-                                <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
-                                    {option.value}
-                                </MenuItem>
-                                ))}
-                                </Select>
-                            </FormControl>
-                        </Box>
+                                <FormStudentInfo hidden={activeStep !== 0} step={0} handleStep={handleFirstStep}/>
+                                <FormSemesterInfo hidden={activeStep !== 1} step={1} handleStep={handleSecondStep}/>
+                                <FormSchoolInfo schools={schools} hidden={activeStep !== 2} step={2}
+                                                handleStep={handleThirdStep}/>
 
-                        <Box sx={{ 
-                            minWidth: 120,
-                            my: 2 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Select Second University..</InputLabel>
-                                <Select
-                                error={Boolean(formik.touched.secondUni && formik.errors.secondUni)}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name='secondUni'
-                                value={formik.values.secondUni}
-                                label="Age"
-                                onBlur={formik.handleBlur}
-                                onChange={(e) => {handleChange(e); formik.handleChange(e)}}
-                                variant="outlined"
-                                >
-                                {options.map((option) => (
-                                <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
-                                    {option.value}
-                                </MenuItem>
-                                ))}
-                                </Select>
-                            </FormControl>
-                        </Box>
+                                <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
+                                    {activeStep > 0
+                                        &&
+                                        <Button onClick={previousStepHandler}>{"< Back"}</Button>
+                                    }
+                                    <Box sx={{flex: '1 1 auto'}}>
 
-                        <Box sx={{ 
-                            minWidth: 120,
-                            my: 2 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Select Third University..</InputLabel>
-                                <Select
-                                error={Boolean(formik.touched.thirdUni && formik.errors.thirdUni)}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name='thirdUni'
-                                value={formik.values.thirdUni}
-                                label="Age"
-                                onBlur={formik.handleBlur}
-                                onChange={(e) => {handleChange(e); formik.handleChange(e)}}
-                                variant="outlined"
-                                >
-                                {options.map((option) => (
-                                <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
-                                    {option.value}
-                                </MenuItem>
-                                ))}
-                                </Select>
-                            </FormControl>
-                        </Box>
-
-                        <Box sx={{ 
-                            minWidth: 120,
-                            my: 2 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Select Fourth University..</InputLabel>
-                                <Select
-                                error={Boolean(formik.touched.fourthUni && formik.errors.fourthUni)}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name='fourthUni'
-                                value={formik.values.fourthUni}
-                                label="Age"
-                                onBlur={formik.handleBlur}
-                                onChange={(e) => {handleChange(e); formik.handleChange(e)}}
-                                variant="outlined"
-                                >
-                                {options.map((option) => (
-                                <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
-                                    {option.value}
-                                </MenuItem>
-                                ))}
-                                </Select>
-                            </FormControl>
-                        </Box>
-
-                        <Box sx={{ 
-                            minWidth: 120,
-                            my: 2 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Select Fifth University..</InputLabel>
-                                <Select
-                                error={Boolean(formik.touched.fifthUni && formik.errors.fifthUni)}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name='fifthUni'
-                                value={formik.values.fifthUni}
-                                label="Age"
-                                onBlur={formik.handleBlur}
-                                onChange={(e) => {handleChange(e); formik.handleChange(e)}}
-                                variant="outlined"
-                                >
-                                {options.map((option) => (
-                                <MenuItem key={option.value} value={option.value} disabled={option.disabled}>
-                                    {option.value}
-                                </MenuItem>
-                                ))}
-                                </Select>
-                            </FormControl>
-                        </Box>
-
-                        <Box sx={{ py: 2 }}>
-                            <Button
-                                color="primary"
-                                disabled={formik.isSubmitting}
-                                fullWidth
-                                size="large"
-                                type="submit"
-                                variant="contained"
-                            >
-                                Submit Your Erasmus Application
-                            </Button>
-                        </Box>
-
-                    </form>
-                    <DataGrid columns={[{ field: 'name', editable: true }]} rows={[{id:1, field: "aa", editable: true}]} />
-                </Container>
-            </Box>
-        </DashboardLayoutRoot>
-    <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
-    <DashboardSidebar
-        onClose={() => setSidebarOpen(false)}
-        open={isSidebarOpen}/>
+                                        {activeStep !== steps.length - 1 ? (
+                                            <Button onClick={nextStepHandler}>
+                                                {"Next >"}
+                                            </Button>
+                                        ) : (
+                                            <Button>
+                                                {"Finish"}
+                                            </Button>
+                                        )
+                                        }
+                                    </Box>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </Box>
+            </DashboardLayoutRoot>
+            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
+            <DashboardSidebar
+                onClose={() => setSidebarOpen(false)}
+                open={isSidebarOpen}/>
         </>
     );
-}
+};
 
-export default ErasmusApplication
+export default Preapproval;
