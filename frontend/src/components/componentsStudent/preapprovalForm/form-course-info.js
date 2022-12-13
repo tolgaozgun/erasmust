@@ -86,9 +86,6 @@ export const FormCourseInfo = (props) => {
         formik.values.courses.push(component)
     }
 
-    console.log(formik.values.courses["0"])
-
-
     // TODO: Change this to match current login details
     const isAdmin = false;
 
@@ -114,6 +111,7 @@ export const FormCourseInfo = (props) => {
                         setFieldValue={formik.setFieldValue}
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
+                        courses={props.courses}
                     />
 
                 </>
