@@ -28,7 +28,7 @@ public class PreApprovalFormErasmusController {
     }
 
 
-    @RolesAllowed("ROLE_USER")
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/list")
     public ResponseEntity<?> listAllExchangeForms(@RequestBody PreApprovalFormListDTO form) throws Exception {
         log.info("pre approval filter is called");

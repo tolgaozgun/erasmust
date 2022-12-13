@@ -17,5 +17,5 @@ public interface PreApprovalFormErasmusDetailRepository extends JpaRepository <P
     // @Query(value = FIND_COURSE_REVIEW_FORMS, nativeQuery = true)
     // public List<Object[]> findProjects();
 
-    Page<PreApprovalFormErasmusDetail> findAll(@Nullable Specification productSpecification, Pageable pageable);
+    Page<PreApprovalFormErasmusDetail> findAll(@Nullable Specification formSpecification, Pageable pageable);
 }

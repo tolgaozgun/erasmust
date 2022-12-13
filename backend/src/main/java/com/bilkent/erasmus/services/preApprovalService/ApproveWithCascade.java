@@ -1,47 +1,33 @@
+/*
 package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
-import com.bilkent.erasmus.dtos.PreApprovalFormListDTO;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
-import com.bilkent.erasmus.models.compositeModels.CoordinatorStudentErasmus;
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormErasmus;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
+import com.bilkent.erasmus.models.compositeModels.CoordinatorStudentErasmus;
 import com.bilkent.erasmus.models.compositeModels.PreApprovalFormErasmusDetail;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.enums.SemesterOfferings;
+import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
-import com.bilkent.erasmus.repositories.PartnerUniversityErasmusRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationErasmusRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusDetailRepository;
-import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import com.bilkent.erasmus.services.CourseHostService;
 import com.bilkent.erasmus.services.CourseReviewFormService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.criteria.Predicate;
 
 @Service
-@Slf4j
-public class PreApprovalFormErasmusService {
-
-    private final ApplicationErasmusRepository applicationErasmusRepository;
-
-    private final PreApprovalFormErasmusRepository erasmusRepository;
+public class ApproveWithCascade {
 
     private final PreApprovalFormErasmusDetailRepository erasmusDetailRepository;
-
-    private final PartnerUniversityErasmusRepository universityErasmusRepository;
 
     private final CourseReviewFormService courseReviewFormService;
 
@@ -51,25 +37,21 @@ public class PreApprovalFormErasmusService {
 
     private final OutGoingStudentErasmusRepository outGoingStudentErasmusRepository;
 
+    private final ApplicationErasmusRepository applicationErasmusRepository;
 
-    public PreApprovalFormErasmusService(ApplicationErasmusRepository applicationErasmusRepository
-            ,PreApprovalFormErasmusRepository erasmusRepository
-            ,PreApprovalFormErasmusDetailRepository erasmusDetailRepository
-            ,PartnerUniversityErasmusRepository universityErasmusRepository
+    public ApproveWithCascade(PreApprovalFormErasmusDetailRepository erasmusDetailRepository
             ,CourseReviewFormService courseReviewFormService
             ,CourseHostService courseHostService
             ,CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository
-            ,OutGoingStudentErasmusRepository outGoingStudentErasmusRepository) {
-        this.applicationErasmusRepository = applicationErasmusRepository;
-        this.erasmusRepository = erasmusRepository;
+            ,OutGoingStudentErasmusRepository outGoingStudentErasmusRepository
+            ,ApplicationErasmusRepository applicationErasmusRepository) {
         this.erasmusDetailRepository = erasmusDetailRepository;
-        this.universityErasmusRepository = universityErasmusRepository;
         this.courseReviewFormService = courseReviewFormService;
         this.courseHostService = courseHostService;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
         this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
+        this.applicationErasmusRepository = applicationErasmusRepository;
     }
-
 
     public PreApprovalFormErasmus saveForm(PreApprovalFormDTO form) throws Exception {
         PreApprovalFormErasmus erasmusForm = createEmptyPreApprovalForm(form.getAcademicYear(), form.getSemester());
@@ -77,7 +59,7 @@ public class PreApprovalFormErasmusService {
                 form.getCourseHostNames()
                 ,form.getCourseHostDepartments()
                 ,form.getCourseHostCredits()
-        )));
+        )), form.getStudentId());
         return erasmusForm;
     }
 
@@ -90,8 +72,8 @@ public class PreApprovalFormErasmusService {
         return applicationErasmusRepository.findByStudent_Id(findStudentId());
     }
     private void createMappingObject(PreApprovalFormErasmus erasmusForm,
-                                                             List<CourseReviewForm> reviewForms) {
-        CoordinatorStudentErasmus coordinatorStudentErasmus = new CoordinatorStudentErasmus();
+                                     List<CourseReviewForm> reviewForms, int studentId) {
+        CoordinatorStudentErasmus coordinatorStudentErasmus =new CoordinatorStudentErasmus();
         coordinatorStudentErasmus.setStudent(retrieveApplicationFromStudentId().getStudent());
         coordinatorStudentErasmus.setExchangeCoordinator(retrieveApplicationFromStudentId().getCoordinator());
         coordinatorStudentErasmusRepository.save(coordinatorStudentErasmus);
@@ -106,7 +88,7 @@ public class PreApprovalFormErasmusService {
 
     private PreApprovalFormErasmus createEmptyPreApprovalForm(String academicYear, SemesterOfferings semester) {
         PreApprovalFormErasmus form = new PreApprovalFormErasmus();
-       // ApplicationErasmus applicationErasmus = retrieveApplicationFromStudentId();
+        // ApplicationErasmus applicationErasmus = retrieveApplicationFromStudentId();
         form.setPartnerUniversity(retrieveApplicationFromStudentId().getAssignedUniversity());
         form.setStatus(Status.IN_PROCESS);
         form.setAcademicYear(academicYear);
@@ -141,45 +123,12 @@ public class PreApprovalFormErasmusService {
         for (int i = 0; i < courseNames.size(); i++) {
             courseHosts.add(
                     saveCourseHost(
-                        courseNames.get(i)
-                        ,credits.get(i)
-                )
+                            courseNames.get(i)
+                            ,credits.get(i)
+                    )
             );
         }
         return courseHosts;
     }
-
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<PreApprovalFormErasmusDetail> filter(PreApprovalFormListDTO filter) {
-        /*if (filter.getType().equalsIgnoreCase("all")) {
-            // todo --> call preapproval form repo
-        } else if ((filter.getType().equalsIgnoreCase("erasmus"))) {
-            // todo --> call preapproval erasmus repo
-        } else if ((filter.getType().equalsIgnoreCase("exchange"))){
-            // todo --> call preapproval exchange repo
-        }*/
-
-        log.info("Process filtering for erasmus is running.");
-        Page<PreApprovalFormErasmusDetail> page = erasmusDetailRepository.findAll((root, query, criteriaBuilder) -> {
-            query.distinct(true);
-            query.orderBy(criteriaBuilder.asc(root.get("id")));
-            List<Predicate> predicates = new ArrayList<>();
-
-            if (filter.getAcademicYear() != null) {
-                predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("preApprovalForm").get("academicYear"), filter.getAcademicYear())));
-            }
-
-            if (filter.getSemester() != null) {
-                predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("preApprovalForm").get("semester"), filter.getSemester())));
-            }
-
-            if (filter.getStatus() != null) {
-                predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("preApprovalForm").get("status"), filter.getStatus())));
-            }
-            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
-        }, PageRequest.of(0, 10));
-        log.info("Process filtering is successfully completed.");
-        return page.getContent();
-    }
-
 }
+*/
