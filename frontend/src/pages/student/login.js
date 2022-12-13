@@ -32,14 +32,17 @@ const Login = () => {
                 .required('Password is required')
         }),
         onSubmit: async (values, formikHelpers) => {
-            const response = await axios.post("http://92.205.25.135:4/auth/login", values).catch((err) => {
+            await axios.post("http://92.205.25.135:4/auth/login", values).catch((err) => {
                 if (err && err.response) {
                     console.log("Error: ", err)
                 }
+            }).then((response) => {
+                if (response && response.data) {
+                    const jwtToken = response.data
+                    sessionStorage.setItem("jwtToken", jwtToken)
+                    navigate('/dashboardStudent')
+                }
             })
-            if (response && response.data) {
-                console.log("Response: " + response.data.messages)
-            }
         }
     });
     
@@ -75,17 +78,17 @@ const Login = () => {
                   </Typography>
                 </Box>
                 <TextField
-                  error={Boolean(formik.touched.starsId && formik.errors.starsId)}
-                  fullWidth
-                  helperText={formik.touched.starsId && formik.errors.starsId}
-                  label="Stars ID"
-                  margin="normal"
-                  name="stars_id"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  type="text"
-                  value={formik.values.starsId}
-                  variant="outlined"
+                    error={Boolean(formik.touched.starsId && formik.errors.starsId)}
+                    fullWidth
+                    helperText={formik.touched.starsId && formik.errors.starsId}
+                    label="Stars ID"
+                    margin="normal"
+                    name="starsId"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="text"
+                    value={formik.values.starsId}
+                    variant="outlined"
                 />
                 <TextField
                   error={Boolean(formik.touched.password && formik.errors.password)}

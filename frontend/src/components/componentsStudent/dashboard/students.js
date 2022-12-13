@@ -5,7 +5,7 @@ import {
     Box,
     Button,
     Card,
-    CardHeader,
+    CardHeader, IconButton,
     Table,
     TableBody,
     TableCell,
@@ -15,7 +15,11 @@ import {
     Tooltip
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { SeverityPill } from '../severity-pill';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
+import {SeverityPill} from '../severity-pill';
 
 const students = [
     {
@@ -96,6 +100,9 @@ export const StudentsList = (props) => (
                                     </TableSortLabel>
                                 </Tooltip>
                             </TableCell>
+                            <TableCell>
+                                Actions
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -118,6 +125,25 @@ export const StudentsList = (props) => (
                                 </TableCell>
                                 <TableCell>
                                     {student.semester}
+                                </TableCell>
+                                <TableCell>
+                                    <>
+                                        <Tooltip title="View">
+                                            <IconButton>
+                                                <VisibilityIcon/>
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Edit">
+                                            <IconButton>
+                                                <EditIcon/>
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Delete">
+                                            <IconButton>
+                                                <DeleteIcon/>
+                                            </IconButton>
+                                        </Tooltip>
+                                    </>
                                 </TableCell>
                             </TableRow>
                         ))}
