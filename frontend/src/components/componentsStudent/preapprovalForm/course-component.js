@@ -17,6 +17,8 @@ import {ArrowDropUp} from "@mui/icons-material";
 
 export const CourseComponent = (props) => {
     const [expand, setExpand] = useState(true)
+    const [curCourseName, setCourseName] = useState("")
+    const [curCourseCode, setCourseCode] = useState("")
 
     // TODO: Change this to match current login details
     const isAdmin = true;
@@ -28,6 +30,32 @@ export const CourseComponent = (props) => {
         arrow = <ArrowDropUp/>
     }
 
+
+    const courseNameChange = (event) => {
+        props.setFieldValue(`courses[${props.index}].courseName`, event.target.value)
+        setCourseName(event.target.value)
+    }
+
+    const courseCodeChange = (event) => {
+        props.setFieldValue(`courses[${props.index}].courseCode`, event.target.value)
+        setCourseCode(event.target.value)
+    }
+
+    let title = `Course #${props.index + 1}`
+
+    let isCourseCode = curCourseCode.trim().length !== 0
+    let isCourseName = curCourseName.trim().length !== 0
+    if (isCourseCode || isCourseName) {
+        title += ": "
+        if (isCourseCode && isCourseName) {
+            title += curCourseCode + " - " + curCourseName
+        } else if (isCourseCode) {
+            title += curCourseCode
+        } else {
+            title += curCourseName
+        }
+    }
+
     return (
         <>
             <Card>
@@ -35,7 +63,7 @@ export const CourseComponent = (props) => {
             <CardActions>
                 <Grid container>
                     <CardHeader
-                        title={"Course #" + (props.index + 1)}
+                        title={title}
                     />
                     <IconButton onClick={() => setExpand(!expand)}>
                         {arrow}
@@ -60,16 +88,14 @@ export const CourseComponent = (props) => {
                                 xs={12}
                             >
                                 <TextField
-                                    // error={Boolean(props.touched.hostName && props.errors.hostName)}
+                                    error={Boolean(props.touched.courseCode && props.errors.courseCode)}
                                     fullWidth
-                                    // helperText={props.touched.hostName && props.errors.hostName}
+                                    helperText={props.touched.hostName && props.errors.courseCode}
                                     label="Course Code"
                                     name="courseCode"
-                                    onChange={props.handleChange}
+                                    onChange={courseCodeChange}
                                     onBlur={props.handleBlur}
                                     required
-                                    type="number"
-                                    // value={props.values.hostName}
                                     variant="outlined"
                                     disabled={!isAdmin}
                                 />
@@ -80,16 +106,15 @@ export const CourseComponent = (props) => {
                                 xs={12}
                             >
                                 <TextField
-                                    // error={Boolean(props.touched.academicYear && props.errors.academicYear)}
+                                    error={Boolean(props.touched.courseCredits && props.errors.courseCredits)}
                                     fullWidth
-                                    // helperText={props.touched.academicYear && props.errors.academicYear}
+                                    helperText={props.touched.courseCredits && props.errors.courseCredits}
                                     label="Course Credits"
                                     name="courseCredits"
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     required
                                     type="number"
-                                    // value={props.values.academicYear}
                                     variant="outlined"
                                     disabled={!isAdmin}
                                 />
@@ -100,15 +125,14 @@ export const CourseComponent = (props) => {
                                 xs={24}
                             >
                                 <TextField
-                                    // error={Boolean(props.touched.semester && props.errors.semester)}
+                                    error={Boolean(props.touched.courseName && props.errors.courseName)}
                                     fullWidth
-                                    // helperText={props.touched.semester && props.errors.semester}
+                                    helperText={props.touched.courseName && props.errors.courseName}
                                     label="Course Name"
                                     name="courseName"
-                                    onChange={props.handleChange}
+                                    onChange={courseNameChange}
                                     onBlur={props.handleBlur}
                                     required
-                                    // value={props.values.semester}
                                     variant="outlined"
                                     disabled={!isAdmin}
                                 />

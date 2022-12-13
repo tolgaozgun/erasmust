@@ -46,7 +46,6 @@ export const FormCourseInfo = (props) => {
                     courseCode: "",
                     courseCredits: 0.0,
                     bilkentCourse: "",
-
                 }
             ]
         },
@@ -59,6 +58,7 @@ export const FormCourseInfo = (props) => {
                             .required("Course Code is required"),
                         courseCredits: Yup
                             .number()
+                            .min(0)
                             .required("Course Credits is required"),
                         courseName: Yup
                             .string()
@@ -86,10 +86,11 @@ export const FormCourseInfo = (props) => {
         formik.values.courses.push(component)
     }
 
+    console.log(formik.values.courses["0"])
+
 
     // TODO: Change this to match current login details
     const isAdmin = false;
-
 
     return (
         <form
@@ -103,13 +104,14 @@ export const FormCourseInfo = (props) => {
                 Add Course
             </Button>
             {formik.values.courses.map((course, index) => (
+
                 <>
                     <CourseComponent
                         key={index}
                         index={index}
-                        errors={formik.errors.courses}
-                        touched={formik.touched.courses}
-                        values={formik.values.courses}
+                        errors={formik.errors.courses ? formik.errors.courses[`${index}`] : {}}
+                        touched={formik.touched.courses ? formik.errors.courses[`${index}`] : {}}
+                        setFieldValue={formik.setFieldValue}
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
                     />
