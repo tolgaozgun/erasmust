@@ -147,16 +147,6 @@ export const AccountProfileDetails = (props) => {
             </Grid>
           </Grid>
         </CardContent>
-        <Divider />
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            p: 2
-          }}
-        >
-
-        </Box>
       </Card>
     </form>
   );
