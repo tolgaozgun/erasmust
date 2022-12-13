@@ -48,16 +48,6 @@ const items = [
     title: 'Settings'
   },
   {
-    href: '/preapproval',
-    icon: (<CogIcon fontsize="small"/>),
-    title: 'Preapprovals'
-  },
-  {
-    href: '/preapprovalForm',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Preapproval Form',
-  },
-  {
     href: '/students',
     icon: (<CogIcon fontsize="small" />),
     title: 'Students'
