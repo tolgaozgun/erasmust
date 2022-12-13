@@ -113,9 +113,6 @@ export const FormCourseInfo = (props) => {
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
                     />
-                    <Button onClick={() => formik.values.courses.remove(index)}>
-                        -
-                    </Button>
 
                 </>
             ))}
