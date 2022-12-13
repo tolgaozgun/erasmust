@@ -7,8 +7,8 @@ import { Logo } from './logo';
 import { NavItem } from './nav-item';
 import ImportExportOutlinedIcon from '@mui/icons-material/ImportExportOutlined';
 import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
-//import { HiGlobeEuropeAfrica } from "react-icons/hi2";
-//import { HiGlobeAmericas } from "react-icons/hi2";
+import { HiGlobeEuropeAfrica } from "react-icons/hi2";
+import { HiGlobeAmericas } from "react-icons/hi2";
 import React from 'react';
 
 const items = [
@@ -19,16 +19,16 @@ const items = [
   },
   {
     href: '/erasmusStudent',
-    //icon: (<HiGlobeEuropeAfrica fontSize="small" />),
+    icon: (<HiGlobeEuropeAfrica fontSize="small" />),
     title: 'Erasmus Program'
   },
   {
     href: '/exchangeProgramStudent',
-    //icon: (<HiGlobeAmericas fontSize="small" />),
+    icon: (<HiGlobeAmericas fontSize="small" />),
     title: 'Exchange Program'
   },
   {
-    href: '/applicationsStudent',
+    href: '/applications',
     icon: (<ApprovalOutlinedIcon fontSize="small" />),
     title: 'Applications'
   },
@@ -48,9 +48,9 @@ const items = [
     title: 'Settings'
   },
   {
-      href: '/preapproval',
-      icon: (<CogIcon fontsize="small"/>),
-      title: 'Preapprovals'
+    href: '/preapproval',
+    icon: (<CogIcon fontsize="small"/>),
+    title: 'Preapprovals'
   },
   {
     href: '/preapprovalForm',
@@ -58,20 +58,10 @@ const items = [
     title: 'Preapproval Form',
   },
   {
-    href: '/applications',
-    icon: (<CogIcon fontsize="small" />),
-    title: 'Applications'
-  },
-  {
     href: '/students',
     icon: (<CogIcon fontsize="small" />),
     title: 'Students'
-  },
-    {
-        href: '/erasmusApplication',
-        icon: (<CogIcon fontSize="small" />),
-        title: 'Erasmus Application From',
-    }
+  }
 ];
 
 export const DashboardSidebar = (props) => {
