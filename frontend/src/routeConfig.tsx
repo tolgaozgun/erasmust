@@ -26,6 +26,7 @@ import Splash from "./pages/splash";
 import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
+import CTForm from "./pages/student/courseTransferForm";
 
 export const routeItems: Array<IRoute> = [
     {
@@ -127,6 +128,12 @@ export const routeItems: Array<IRoute> = [
         path: '/erasmusApplication',
         title: "Preapproval Form",
         content: <ErasmusApplicationForm />,
+        exact: true,
+    },
+    {
+        path: '/ctForm',
+        title: "Course Transfer Form",
+        content: <CTForm />,
         exact: true,
     },
     {
