@@ -20,8 +20,13 @@ public class LearningAgreementErasmusController {
         this.erasmusService = erasmusService;
     }
 
-/*    @PostMapping("/create-learning-agreement-erasmus")
+/*    @PostMapping("/create-learning-agreement")
     public ResponseEntity<?> sendLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO) throws Exception {
         return new ResponseEntity<>(LearningAgreementErasmusService.saveForm(learningAgreementDTO), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/retrieve-learning-agreement")
+    public ResponseEntity<?> retrieveLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO) throws Exception {
+    return new ResponseEntity(LearningAgreementErasmusService.retrieveAgreement(learningAgreementDTO), HttpStatus.ACCEPTED);
     }*/
 }

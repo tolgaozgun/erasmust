@@ -5,9 +5,11 @@ import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementExchange;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementExchangeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class LearningAgreementExchangeService {
 
     private final LearningAgreementExchangeRepository exchangeRepository;

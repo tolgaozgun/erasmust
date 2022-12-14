@@ -1,12 +1,13 @@
 package com.bilkent.erasmus.models.compositeModels;
 
+import com.bilkent.erasmus.enums.ApplicationPoolType;
 import com.bilkent.erasmus.enums.MobilityType;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
-import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.Mobility;
 
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import java.util.List;
 
 public class MobilityDetail {
 
@@ -14,8 +15,12 @@ public class MobilityDetail {
     private MobilityType mobilityType;
 
     @ManyToOne
-    private CourseBilkent courseBilkent;
+    private List<CourseBilkent> courseBilkent;
 
     @ManyToOne
-    private CourseHost courseHost;
+    private List<CourseHost> courseHost;
+
+    public MobilityType getMobilityType() {
+        return mobilityType;
+    }
 }
