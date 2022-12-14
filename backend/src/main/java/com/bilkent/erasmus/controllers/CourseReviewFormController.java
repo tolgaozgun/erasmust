@@ -24,12 +24,17 @@ public class CourseReviewFormController {
         return new ResponseEntity<>(courseReviewFormService.fillReviewForm(request), HttpStatus.CREATED);
     }
 
-    @GetMapping("/list")
+    @GetMapping("coordinator/list")
     public ResponseEntity<?> getAllReviewForms(@RequestBody ReviewFormListDTO filter) {
-        return new ResponseEntity<>(courseReviewFormService.list(filter), HttpStatus.OK);
+        return new ResponseEntity<>(courseReviewFormService.list(filter), HttpStatus.FOUND);
     }
 
-    @PostMapping("/review")
+    @GetMapping("student/{id}/list")
+    public ResponseEntity<?> getAllStudentReviewForms(@PathVariable int id, @RequestBody ReviewFormStudentListDTO filter) {
+        return new ResponseEntity<>(courseReviewFormService.listForStudent(filter), HttpStatus.FOUND);
+    }
+
+    @PostMapping("/review/{formId}")
     public ResponseEntity<?> reviewForm(@RequestBody ReviewFormRequestDTO request, @PathVariable int formId) throws Exception {
         return new ResponseEntity<>(courseReviewFormService.reviewForm(request, formId), HttpStatus.ACCEPTED);
     }

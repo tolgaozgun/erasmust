@@ -1,9 +1,6 @@
 package com.bilkent.erasmus.services;
 
-import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
-import com.bilkent.erasmus.dtos.PreApprovalFormListDTO;
-import com.bilkent.erasmus.dtos.ReviewFormListDTO;
-import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
+import com.bilkent.erasmus.dtos.*;
 import com.bilkent.erasmus.models.compositeModels.PreApprovalFormErasmusDetail;
 import com.bilkent.erasmus.models.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
@@ -80,6 +77,12 @@ public class CourseReviewFormService {
         form.setStatus(request.getStatus());
         courseReviewFormRepository.save(form);
         return form;
+    }
+
+    public List<CourseReviewForm> listForStudent(ReviewFormStudentListDTO filter) {
+        log.info("Process filtering for student course review form is running.");
+
+        return null;
     }
 
 

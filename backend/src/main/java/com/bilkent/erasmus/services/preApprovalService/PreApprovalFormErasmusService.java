@@ -3,6 +3,7 @@ package com.bilkent.erasmus.services.preApprovalService;
 import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
 import com.bilkent.erasmus.dtos.PreApprovalFormListDTO;
+import com.bilkent.erasmus.exceptions.HostCourseFieldException;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.models.compositeModels.CoordinatorStudentErasmus;
 import com.bilkent.erasmus.models.enums.SemesterOfferings;
@@ -19,6 +20,7 @@ import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormE
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import com.bilkent.erasmus.services.CourseHostService;
 import com.bilkent.erasmus.services.CourseReviewFormService;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
@@ -28,7 +30,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.criteria.Predicate;
 
 @Service
@@ -87,7 +91,11 @@ public class PreApprovalFormErasmusService {
     }
 
     private ApplicationErasmus retrieveApplicationFromStudentId() {
-        return applicationErasmusRepository.findByStudent_Id(findStudentId());
+        ApplicationErasmus application = applicationErasmusRepository.findByStudent_Id(findStudentId());
+        if (application != null)
+            return application;
+        else
+            return null;
     }
     private void createMappingObject(PreApprovalFormErasmus erasmusForm,
                                                              List<CourseReviewForm> reviewForms) {
@@ -128,7 +136,10 @@ public class PreApprovalFormErasmusService {
     }
 
 
-    private CourseHost saveCourseHost(String name, double credit) {
+    private CourseHost saveCourseHost(String name, double credit) throws HostCourseFieldException {
+        if (credit < 0) {
+            throw new HostCourseFieldException("INVALID_INPUT", "creditECTS", name);
+        }
         CourseHost course = new CourseHost();
         course.setName(name);
         // course.setUnderDepartment(department);
@@ -136,7 +147,24 @@ public class PreApprovalFormErasmusService {
         return courseHostService.save(course);
     }
 
-    private List<CourseHost> saveAllHostCourses(List<String> courseNames, List<String> departments, List<Double> credits) {
+    /*private void handleCourseHostFields(List<Double> hostCourseCredits, List<String> hostCourseNames, int numberOfForms) throws HostCourseFieldException {
+        List<Integer> falseCredits = new ArrayList<>();
+        Boolean flag = true;
+        for (int i = 0; i < numberOfForms; i++) {
+            if (hostCourseCredits.get(i) < 0) {
+                flag = false;
+                falseCredits.add(i);
+            }
+            else {
+                falseCredits.add(-1);
+            }
+        }
+        if (!flag) {
+            throw new HostCourseFieldException("course credit must be positive", falseCredits, hostCourseNames);
+        }
+    }*/
+
+    private List<CourseHost> saveAllHostCourses(List<String> courseNames, List<String> departments, List<Double> credits) throws HostCourseFieldException {
         List<CourseHost> courseHosts = new ArrayList<>();
         for (int i = 0; i < courseNames.size(); i++) {
             courseHosts.add(

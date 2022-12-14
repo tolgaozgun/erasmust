@@ -1,6 +1,8 @@
 package com.bilkent.erasmus.repositories.applicationRepositories;
 
+import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.compositeModels.PreApprovalFormErasmusDetail;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -18,4 +20,5 @@ public interface PreApprovalFormErasmusDetailRepository extends JpaRepository <P
     // public List<Object[]> findProjects();
 
     Page<PreApprovalFormErasmusDetail> findAll(@Nullable Specification formSpecification, Pageable pageable);
+
 }
