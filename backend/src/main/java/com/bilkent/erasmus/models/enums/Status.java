@@ -12,5 +12,7 @@ public enum Status {
 
     DECLINED_BY_STUDENT,
 
-    IN_THE_WAITING_LIST
+    IN_THE_WAITING_LIST,
+
+    CANCELLED
 }

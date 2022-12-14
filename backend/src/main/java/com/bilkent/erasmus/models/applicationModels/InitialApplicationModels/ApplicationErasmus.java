@@ -11,17 +11,15 @@ import java.util.List;
 @Data
 @Entity
 //@DiscriminatorValue("erasmus")
-public class ApplicationErasmus extends Application implements Comparable<ApplicationErasmus> {
+public class ApplicationErasmus extends Application {
 
-    @ManyToOne
-    private OutGoingStudentErasmus student;
 
     @ManyToOne
     private PartnerUniversityErasmus assignedUniversity;
 
     @ManyToMany
     @JoinTable(
-            name = "CompositeApplicationAndUniversity",
+            name = "erasmusApplicationDetail",
             joinColumns = @JoinColumn(
                     name = "applicationId", referencedColumnName = "id"
             ),
@@ -31,16 +29,4 @@ public class ApplicationErasmus extends Application implements Comparable<Applic
     )
     private List<PartnerUniversityErasmus> schools;
 
-    @Override
-    public int compareTo(ApplicationErasmus o) {
-        if(student.getErasmusPoint().equals(o.student.getErasmusPoint())) {
-            return 0;
-        }
-        else if (student.getErasmusPoint() > o.student.getErasmusPoint()){
-            return 1;
-        }
-        else {
-            return -1;
-        }
-    }
 }

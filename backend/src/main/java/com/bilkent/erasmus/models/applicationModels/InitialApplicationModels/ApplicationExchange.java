@@ -11,7 +11,4 @@ import javax.persistence.ManyToOne;
 //@DiscriminatorValue("exchange")
 public class ApplicationExchange extends Application {
 
-    @ManyToOne
-    private OutGoingStudentExchange student;
-
 }

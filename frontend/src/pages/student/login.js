@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import {Box, Button, Container, Grid, Link, TextField, Typography} from '@mui/material';
+import axios from "axios";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -21,19 +22,31 @@ const Login = () => {
           password: 'Password123'
         },
         validationSchema: Yup.object({
-          starsId: Yup
-            .string()
-            .max(20)
-            .required('Stars ID is required'),
-          password: Yup
-            .string()
-            .max(255)
-            .required('Password is required')
+            starsId: Yup
+                .string()
+                .max(20)
+                .required('Stars ID is required'),
+            password: Yup
+                .string()
+                .max(255)
+                .required('Password is required')
         }),
-        onSubmit: () => {
-          navigate('/dashboardStudent')
+        onSubmit: async (values, formikHelpers) => {
+            await axios.post("http://92.205.25.135:4/auth/login", values)
+                .then((response) => {
+                    if (response && response.data) {
+                        const jwtToken = response.data
+                        sessionStorage.setItem("jwtToken", jwtToken)
+                        navigate('/dashboardStudent')
+                    }
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        console.log("Error: ", err)
+                    }
+                })
         }
-      });
+    });
     
       return (
         <>
@@ -67,17 +80,17 @@ const Login = () => {
                   </Typography>
                 </Box>
                 <TextField
-                  error={Boolean(formik.touched.starsId && formik.errors.starsId)}
-                  fullWidth
-                  helperText={formik.touched.starsId && formik.errors.starsId}
-                  label="Stars ID"
-                  margin="normal"
-                  name="stars_id"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  type="text"
-                  value={formik.values.starsId}
-                  variant="outlined"
+                    error={Boolean(formik.touched.starsId && formik.errors.starsId)}
+                    fullWidth
+                    helperText={formik.touched.starsId && formik.errors.starsId}
+                    label="Stars ID"
+                    margin="normal"
+                    name="starsId"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="text"
+                    value={formik.values.starsId}
+                    variant="outlined"
                 />
                 <TextField
                   error={Boolean(formik.touched.password && formik.errors.password)}

@@ -3,7 +3,7 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../components/componentsStudent/dashboard-navbar";
 import {DashboardSidebar} from "../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {StudentsList} from "../../components/componentsStudent/dashboard/students";
+import StudentsList from "../../components/componentsStudent/dashboard/students";
 
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({

@@ -1,11 +1,11 @@
 import { format } from 'date-fns';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Box,
     Button,
     Card,
-    CardHeader,
+    CardHeader, Checkbox, IconButton,
     Table,
     TableBody,
     TableCell,
@@ -15,7 +15,11 @@ import {
     Tooltip
 } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { SeverityPill } from '../severity-pill';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
+import {SeverityPill} from '../severity-pill';
 
 const students = [
     {
@@ -41,26 +45,51 @@ const students = [
     },
 ];
 
-export const StudentsList = (props) => (
-    <Card {...props}>
-        <CardHeader title="Ongoing Applications" />
-        <PerfectScrollbar>
-            <Box sx={{
-                minWidth: 800,
-                height: 400 }}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                Application ID
-                            </TableCell>
-                            <TableCell>
-                                Student Name
-                            </TableCell>
-                            <TableCell sortDirection="desc">
-                                <Tooltip
-                                    enterDelay={300}
-                                    title="Sort"
+const StudentsList = (props) => {
+    const [selectedState, setSelected] = useState(
+        new Array(students.length).fill(false)
+    )
+    const handleSelected = (position) => {
+        const updatedCheckedState = selectedState.map((item, index) =>
+            index === position ? !item : item
+        );
+        setSelected(updatedCheckedState)
+    }
+
+    const handleSelectAll = (value) => {
+        const trueArray = new Array(students.length).fill(value)
+        setSelected(trueArray)
+    }
+
+
+    console.log("Selected: " + selectedState)
+
+    return (
+        <Card {...props}>
+            <CardHeader title="Ongoing Applications"/>
+            <PerfectScrollbar>
+                <Box sx={{
+                    minWidth: 800,
+                    height: 400
+                }}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <Checkbox
+                                        onChange={(e) => handleSelectAll(e.target.checked)}
+                                    />
+                                </TableCell>
+                                <TableCell>
+                                    Application ID
+                                </TableCell>
+                                <TableCell>
+                                    Student Name
+                                </TableCell>
+                                <TableCell sortDirection="desc">
+                                    <Tooltip
+                                        enterDelay={300}
+                                        title="Sort"
                                 >
                                     <TableSortLabel
                                         active
@@ -96,14 +125,26 @@ export const StudentsList = (props) => (
                                     </TableSortLabel>
                                 </Tooltip>
                             </TableCell>
+                            <TableCell>
+                                Actions
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {students.map((student) => (
+                        {students.map((student, index) => (
                             <TableRow
                                 hover
                                 key={student.id}
+                                selected={selectedState[index]}
                             >
+                                <TableCell>
+                                    <Checkbox
+                                        onChange={() => {
+                                            handleSelected(index)
+                                        }}
+                                        checked={selectedState[index]}
+                                    />
+                                </TableCell>
                                 <TableCell>
                                     {student.id}
                                 </TableCell>
@@ -118,6 +159,25 @@ export const StudentsList = (props) => (
                                 </TableCell>
                                 <TableCell>
                                     {student.semester}
+                                </TableCell>
+                                <TableCell>
+                                    <>
+                                        <Tooltip title="View">
+                                            <IconButton>
+                                                <VisibilityIcon/>
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Edit">
+                                            <IconButton>
+                                                <EditIcon/>
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Tooltip title="Delete">
+                                            <IconButton>
+                                                <DeleteIcon/>
+                                            </IconButton>
+                                        </Tooltip>
+                                    </>
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -134,12 +194,15 @@ export const StudentsList = (props) => (
         >
             <Button
                 color="primary"
-                endIcon={<ArrowRightIcon fontSize="small" />}
+                endIcon={<ArrowRightIcon fontSize="small"/>}
                 size="small"
                 variant="text"
             >
                 View all
             </Button>
         </Box>
-    </Card>
-);
+        </Card>
+    )
+};
+
+export default StudentsList

@@ -8,6 +8,7 @@ import {AccountOutgoingErasmus} from '../../components/componentsStudent/account
 import {AccountOutgoingExchange} from '../../components/componentsStudent/account/account-outgoing-exchange';
 import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
 import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import { Signature } from '../../components/signature';
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
 
@@ -64,6 +65,7 @@ const Account = () => {
               xs={12}
           >
             <AccountProfileDetails/>
+            <Signature />
             <AccountAdminSettings/>
             <AccountIncomingErasmus/>
             <AccountIncomingExchange/>

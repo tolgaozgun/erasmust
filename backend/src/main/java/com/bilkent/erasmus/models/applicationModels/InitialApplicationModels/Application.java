@@ -4,6 +4,7 @@ import com.bilkent.erasmus.embeddables.Signature;
 import com.bilkent.erasmus.models.enums.SemesterOfferings;
 import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,4 +28,8 @@ public class Application {
 
     @ManyToOne
     private ExchangeCoordinator coordinator;
+
+    @ManyToOne
+    private OutGoingStudent student;
+
 }

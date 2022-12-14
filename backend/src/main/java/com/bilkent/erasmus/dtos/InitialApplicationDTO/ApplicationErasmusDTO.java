@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.dtos.InitialApplicationDTO;
 
+import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.universityModels.PartnerUniversityErasmus;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
 import lombok.Data;
@@ -16,4 +17,6 @@ public class ApplicationErasmusDTO {
     private int studentId;
 
     private List<PartnerUniversityErasmus> schools;
+
+    private Status status;
 }
