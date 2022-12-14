@@ -32,6 +32,4 @@ public class LearningAgreement {
 
     @Enumerated(EnumType.STRING)
     private MobilityType currentMobility;
-
-    // add bilkentInfo, hostInfo, and mobility related things
 }
