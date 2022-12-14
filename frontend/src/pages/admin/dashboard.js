@@ -1,8 +1,8 @@
 import { Box, Container, Grid } from '@mui/material';
-import { LatestOrders } from '../../components/componentsStaff/dashboard/latest-orders';
-import { Sales } from '../../components/componentsStaff/dashboard/sales';
-import { DashboardNavbar } from '../../components/componentsStaff/dashboard-navbar';
-import { DashboardSidebar } from '../../components/componentsStaff/dashboard-sidebar';
+import { LatestOrders } from '../../components/componentsAdmin/dashboard/latest-orders';
+import { Sales } from '../../components/componentsAdmin/dashboard/sales';
+import { DashboardNavbar } from '../../components/componentsAdmin/dashboard-navbar';
+import { DashboardSidebar } from '../../components/componentsAdmin/dashboard-sidebar';
 import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 
@@ -16,7 +16,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   }
 }));
 
-const DashboardStaff = (props) => {
+const DashboardAdmin = (props) => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
 
@@ -73,4 +73,4 @@ const DashboardStaff = (props) => {
   );
 };
 
-export default DashboardStaff;
+export default DashboardAdmin;
