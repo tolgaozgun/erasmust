@@ -18,8 +18,9 @@ const DashboardLayoutRoot = styled("div")(({ theme }) => ({
     },
 }));
 
-const DashboardStudent = (props) => {
-    const [isSidebarOpen, setSidebarOpen] = useState(true);
+
+const DashboardStaff = (props) => {
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     return (
         <>
@@ -70,4 +71,4 @@ const DashboardStudent = (props) => {
     );
 };
 
-export default DashboardStudent;
+export default DashboardStaff;

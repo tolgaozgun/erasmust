@@ -6,8 +6,8 @@ import React from 'react';
 const Error = () => {
   const navigate = useNavigate();
 
-  const goSplash = () => {
-    navigate('/splash');
+  const goDash = () => {
+    navigate('/dashboardStudent');
   }
 
   return(
@@ -65,9 +65,9 @@ const Error = () => {
               startIcon={(<ArrowBackIcon fontSize="small" />)}
               sx={{ mt: 3 }}
               variant="contained"
-              onClick={() => goSplash()}
+              onClick={() => goDash()}
             >
-              Go back to splash
+              Go back to dashboard
             </Button>
         </Box>
       </Container>

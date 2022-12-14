@@ -1,10 +1,9 @@
-import {Box, Card, CardContent, Container, Grid, Typography} from '@mui/material';
-import { AccountProfile } from '../../components/componentsStudent/account/account-profile';
-import { AccountProfileDetails } from '../../components/componentsStudent/account/account-profile-details';
+import {Box, Button, Card, CardContent, Container, Grid, Typography} from '@mui/material';
 import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
 import { styled } from '@mui/material/styles';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -16,8 +15,23 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   }
 }));
 
+
+
 const Erasmus = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const navigate = useNavigate();
+
+  const goErasmusApplication = () => {
+    navigate("/erasmusApplication")
+  }
+
+  const goPreapproval = () => {
+    navigate("/preapproval")
+  }
+
+  const goLearningAgreement = () => {
+    navigate()
+  }
 
   return(
   <>
@@ -58,10 +72,40 @@ const Erasmus = () => {
                   >
                     Erasmus Application
                   </Typography>
-
-                  View Your Erasmus Applications<br/>
-                  Erasmus Application Information<br/>
-                  Erasmus Appliaction FAQ
+                  <Typography
+                    color="textSecondary"
+                    variant="body2"
+                  >
+                    View Your Erasmus Applications
+                  </Typography>
+                  <Typography
+                    color="textSecondary"
+                    variant="body2"
+                  >
+                    Erasmus Application Information
+                  </Typography>
+                  <Typography
+                    color="textSecondary"
+                    variant="body2"
+                  >
+                    Erasmus Appliaction FAQ
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "flex-end" 
+                    }}
+                  >
+                    <Button
+                    color="primary"
+                    variant="contained"
+                    type="submit" 
+                    onClick={goErasmusApplication}
+                    
+                    >
+                      Go to Erasmus Application Page
+                    </Button>
+                  </Box>
                 </Box>
               </CardContent>
             </Card>
@@ -81,10 +125,40 @@ const Erasmus = () => {
                   >
                     Preapproval
                   </Typography>
-
-                  View Your Preapprovals<br/>
-                  Preapproval Information<br/>
-                  Preapproval FAQ
+                  <Typography
+                    color="textSecondary"
+                    variant="body2"
+                  >
+                    View Your Preapprovals
+                  </Typography>
+                  <Typography
+                    color="textSecondary"
+                    variant="body2"
+                  >
+                    Preapproval Information
+                  </Typography>
+                  <Typography
+                    color="textSecondary"
+                    variant="body2"
+                  >
+                    Preapproval FAQ
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "flex-end" 
+                    }}
+                  >
+                    <Button
+                    color="primary"
+                    variant="contained"
+                    type="submit" 
+                    onClick={goPreapproval}
+                    
+                    >
+                      Go to Preapproval Page
+                    </Button>
+                  </Box>
                 </Box>
               </CardContent>
             </Card>

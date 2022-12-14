@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.models.userModels.StudentModels;
 
-import com.bilkent.erasmus.enums.DepartmentName;
+import com.bilkent.erasmus.models.enums.DepartmentName;
+import com.bilkent.erasmus.models.enums.CurriculumSemester;
 import com.bilkent.erasmus.models.userModels.User;
 import lombok.Data;
 
@@ -20,4 +21,7 @@ public class Student extends User {
     private double gpa;
 
     private String gender;
+
+    @Enumerated(EnumType.STRING)
+    private CurriculumSemester semester;
 }

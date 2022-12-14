@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.models.userModels.StudentModels;
 
 
-import com.bilkent.erasmus.enums.LetterGrade;
+import com.bilkent.erasmus.models.enums.LetterGrade;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,7 +17,6 @@ public class OutGoingStudentErasmus extends Student {
     @Enumerated(EnumType.STRING)
     private LetterGrade engLetterGrade102;
 
-    private Boolean isApplicationApproved;
 
     private Double erasmusPoint;
 
