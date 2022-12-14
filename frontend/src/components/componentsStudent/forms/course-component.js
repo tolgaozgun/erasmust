@@ -97,7 +97,7 @@ export const CourseComponent = (props) => {
                                     onBlur={props.handleBlur}
                                     required
                                     variant="outlined"
-                                    disabled={!isAdmin}
+                                    disabled={!props.editable}
                                     onInvalid={() => {
                                         console.log("Course Code invalid for " + props.index)
                                     }}
@@ -119,7 +119,7 @@ export const CourseComponent = (props) => {
                                     required
                                     type="number"
                                     variant="outlined"
-                                    disabled={!isAdmin}
+                                    disabled={!props.editable}
                                 />
                             </Grid>
                             <Grid
@@ -137,7 +137,7 @@ export const CourseComponent = (props) => {
                                     onBlur={props.handleBlur}
                                     required
                                     variant="outlined"
-                                    disabled={!isAdmin}
+                                    disabled={!props.editable}
                                 />
                             </Grid>
                             <Divider/>
@@ -160,16 +160,18 @@ export const CourseComponent = (props) => {
                                 />
 
                             </Grid>
-                            <Grid
-                                item
-                                md={6}
-                                xs={12}
-                            >
-                                <Button>
-                                    Delete Course
-                                </Button>
+                            {props.editable &&
+                                <Grid
+                                    item
+                                    md={6}
+                                    xs={12}
+                                >
+                                    <Button>
+                                        Delete Course
+                                    </Button>
 
-                            </Grid>
+                                </Grid>
+                            }
                         </Grid>
                     </CardContent>
                 </Box>

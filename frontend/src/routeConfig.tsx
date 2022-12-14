@@ -15,7 +15,8 @@ import Preapproval from "./pages/student/PreapprovalForm"
 import LearningAgreement from "./pages/student/LearningAgreement"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
-
+import ViewPreapproval from "./pages/student/ViewPreapproval"
+import ViewErasmusApplication from "./pages/student/ViewErasmusApplication"
 
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
@@ -138,12 +139,12 @@ export const routeItems: Array<IRoute> = [
         path: '/students',
         title: "Student Register",
         content: <Students/>,
+        exact: true,
     },
     {
         path: '/erasmusApplication',
         title: "Preapproval Form",
         content: <ErasmusApplicationForm/>,
-
         exact: true,
     },
     {
@@ -186,6 +187,18 @@ export const routeItems: Array<IRoute> = [
         path: '/accountAdmin',
         title: "Admin Account",
         content: <AccountAdmin/>,
+        exact: true,
+    },
+    {
+        path: '/viewPreapproval',
+        title: "View Preapproval",
+        content: <ViewPreapproval/>,
+        exact: true,
+    },
+    {
+        path: '/viewErasmusApplication',
+        title: "View Erasmus Application",
+        content: <ViewErasmusApplication/>,
         exact: true,
     },
     {
