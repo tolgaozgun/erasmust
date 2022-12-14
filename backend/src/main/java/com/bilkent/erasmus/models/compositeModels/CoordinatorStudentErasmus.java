@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.models.compositeModels;
 
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class CoordinatorStudentErasmus {
     private int id;
 
     @ManyToOne
-    private OutGoingStudentErasmus student;
+    private OutGoingStudent student;
 
     @ManyToOne
     private ExchangeCoordinator exchangeCoordinator;
