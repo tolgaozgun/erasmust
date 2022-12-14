@@ -12,7 +12,14 @@ import Preapprovals from './pages/student/Preapprovals';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import Preapproval from "./pages/student/PreapprovalForm"
+import LearningAgreement from "./pages/student/LearningAgreement"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
+
+
+//Admin Pages
+import DashboardAdmin from "./pages/admin/dashboard";
+import AccountAdmin from "./pages/admin/account";
+import StudentList from "./pages/admin/studentList";
 
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
@@ -112,6 +119,12 @@ export const routeItems: Array<IRoute> = [
         title: "Preapproval Form",
         content: <Preapproval/>,
         exact: true,
+    }, ,
+    {
+        path: 'learningAgreement',
+        title: "Learning Agreement",
+        content: <LearningAgreement/>,
+        exact: true,
     },
     {
         path: '/applications',
@@ -127,13 +140,37 @@ export const routeItems: Array<IRoute> = [
     {
         path: '/erasmusApplication',
         title: "Preapproval Form",
-        content: <ErasmusApplicationForm />,
+        content: <ErasmusApplicationForm/>,
         exact: true,
     },
     {
         path: '/ctForm',
         title: "Course Transfer Form",
-        content: <CTForm />,
+        content: <CTForm/>,
+        exact: true,
+    },
+    {
+        path: '/dashboardAdmin',
+        title: "Admin Dashboard",
+        content: <DashboardAdmin/>,
+        exact: true,
+    },
+    {
+        path: '/accountAdmin',
+        title: "Admin Account",
+        content: <AccountAdmin/>,
+        exact: true,
+    },
+    {
+        path: "/schoolList",
+        title: "School List",
+        content: <SchoolList/>,
+        exact: true,
+    },
+    {
+        path: '/studentlistAdmin',
+        title: "Admin Account",
+        content: <StudentList/>,
         exact: true,
     },
     {

@@ -14,29 +14,8 @@ import {FieldArray, Form, useFormik} from "formik";
 import * as Yup from "yup";
 import {CourseComponent} from "../../course-component";
 
-export const FormCourseInfo = (props) => {
+export const StudyProgrammeInfo = (props) => {
 
-    const schema = Yup.object().shape({
-        courses: Yup.array().of(
-            Yup.object().shape(
-                {
-                    courseCode: Yup
-                        .string()
-                        .required("Course Code is required"),
-                    courseCredits: Yup
-                        .number()
-                        .required("Course Credits is required"),
-                    courseName: Yup
-                        .string()
-                        .required("Course Name is required"),
-                    bilkentCourse: Yup
-                        .string()
-                        .required("Bilkent Course is required"),
-                },
-                'Course is invalid',
-            ),
-        ),
-    });
 
     const formik = useFormik({
         initialValues: {
@@ -45,7 +24,6 @@ export const FormCourseInfo = (props) => {
                     courseName: "",
                     courseCode: "",
                     courseCredits: 0.0,
-                    bilkentCourse: "",
                 }
             ]
         },
@@ -63,9 +41,6 @@ export const FormCourseInfo = (props) => {
                         courseName: Yup
                             .string()
                             .required("Course Name is required"),
-                        bilkentCourse: Yup
-                            .string()
-                            .required("Bilkent Course is required"),
                     },
                     'Course is invalid',
                 ),
@@ -112,6 +87,7 @@ export const FormCourseInfo = (props) => {
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
                         courses={props.courses}
+                        disabled={true}
                     />
 
                 </>

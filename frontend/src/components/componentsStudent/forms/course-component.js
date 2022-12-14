@@ -92,12 +92,15 @@ export const CourseComponent = (props) => {
                                     fullWidth
                                     helperText={props.touched.hostName && props.errors.courseCode}
                                     label="Course Code"
-                                    name="courseCode"
+                                    name={"courses[" + props.index + "].courseCode"}
                                     onChange={courseCodeChange}
                                     onBlur={props.handleBlur}
                                     required
                                     variant="outlined"
                                     disabled={!isAdmin}
+                                    onInvalid={() => {
+                                        console.log("Course Code invalid for " + props.index)
+                                    }}
                                 />
                             </Grid>
                             <Grid
@@ -110,7 +113,7 @@ export const CourseComponent = (props) => {
                                     fullWidth
                                     helperText={props.touched.courseCredits && props.errors.courseCredits}
                                     label="Course Credits"
-                                    name="courseCredits"
+                                    name={"courses[" + props.index + "].courseCredits"}
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     required
@@ -129,7 +132,7 @@ export const CourseComponent = (props) => {
                                     fullWidth
                                     helperText={props.touched.courseName && props.errors.courseName}
                                     label="Course Name"
-                                    name="courseName"
+                                    name={"courses[" + props.index + "].courseName"}
                                     onChange={courseNameChange}
                                     onBlur={props.handleBlur}
                                     required
