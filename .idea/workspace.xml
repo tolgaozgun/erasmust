@@ -1,8 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7395910c-f109-4301-8467-77fc0892ed99" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/erasmus.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/bilkent/erasmus/services/LearningAgreementErasmusService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/bilkent/erasmus/services/LearningAgreementErasmusService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/bilkent/erasmus/services/LearningAgreementExchangeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/bilkent/erasmus/services/LearningAgreementExchangeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/ErasmusApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/CourseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/CourseRequestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/CourseReviewFormController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/InitialApplicationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/OutGoingStudentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/RegisterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/controllers/StudentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/ApplicationPoolSelectionDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/CourseDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/CourseRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/CourseReviewFormDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/CourseReviewFormErasmusDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/CourseReviewFormExchangeDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/CourseReviewFormFillRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/InitialApplicationDTO/ApplicationErasmusDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/InitialApplicationDTO/ApplicationExchangeDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/InitialApplicationDTO/PreApprovalFormDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/UserDtos/StudentDtos/InComingStudentErasmusDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/UserDtos/StudentDtos/InComingStudentExchangeDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/UserDtos/StudentDtos/OutGoingStudentErasmusDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/UserDtos/StudentDtos/OutGoingStudentExchangeDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/UserDtos/StudentDtos/StudentDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/dtos/UserDtos/UserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/embeddables/Address.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/embeddables/ContactInformation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/embeddables/Signature.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/ApplicationPoolType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/CourseApprovalStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/DepartmentName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/FacultyName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/LetterGrade.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/SemesterOfferings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/enums/Title.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/CourseMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/CourseMapperImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/InitialApplicationMappper/ApplicationErasmusMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/InitialApplicationMappper/ApplicationErasmusMapperImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/InitialApplicationMappper/PreApprovalFormMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/InitialApplicationMappper/PreApprovalFormMapperImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/mappers/UserMapperImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/ApplicationErasmus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/ApplicationExchange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/PreApprovalForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/PreApprovalFormErasmus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/InitialApplicationModels/PreApprovalFormExchange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/courseRequestForms/CourseRequestForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/courseRequestForms/CourseRequestFormDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/applicationModels/courseReviewForms/CourseReviewForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/compositeModels/CoordinatorStudentErasmus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/compositeModels/CoordinatorStudentExchange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/compositeModels/CoordinatorStudentInComingErasmus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/compositeModels/CoordinatorStudentInComingExchange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/compositeModels/PreApprovalFormErasmusDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/compositeModels/PreApprovalFormExchangeDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/courseModels/Course.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/courseModels/CourseBilkent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/courseModels/CourseDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/courseModels/CourseHost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/universityModels/Department.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/universityModels/Faculty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/universityModels/PartnerUniversity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/universityModels/PartnerUniversityErasmus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/universityModels/PartnerUniversityExchange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/Administrative.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/AdministrativeAssistant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/BoardMember.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/Chair.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/CompositeCourseAndCourseCoordinator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/CourseCoordinator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/Dean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/ExchangeCoordinator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/AdministrativeModels/ExchangeStaff.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/StudentModels/InComingStudentErasmus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/StudentModels/InComingStudentExchange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/StudentModels/OutGoingStudentErasmus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/StudentModels/OutGoingStudentExchange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/StudentModels/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/models/userModels/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/CourseBilkentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/CourseHostRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/RegisterService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/ApplicationErasmusRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/CourseRepositories/ApplicationExchangeRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/CourseRepositories/CourseRequestFormDetailRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/CourseRepositories/CourseRequestRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/CourseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/CourseReviewFormRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/InitialApplicationRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/PreApprovalFormErasmusDetailRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/PreApprovalFormErasmusRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/PreApprovalFormExchangeDetailRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/applicationRepositories/PreApprovalFormExchangeRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/studentRepository/OutGoingStudentErasmusRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/repositories/studentRepository/StudentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/ApplicationErasmusService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/ApplicationExchangeService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/CourseRequestFormDetailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/CourseRequestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/CourseReviewFormService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/CourseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/InitialApplicationService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/InitialApplicationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/OutGoingStudentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/bilkent/erasmus/services/StudentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/CourseHostMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/CourseHostMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/CourseMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/CourseMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/InitialApplicationMappper/ApplicationErasmusMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/InitialApplicationMappper/ApplicationErasmusMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/InitialApplicationMappper/PreApprovalFormMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/InitialApplicationMappper/PreApprovalFormMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/bilkent/erasmus/mappers/UserMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/spring-boot-docker.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/spring-boot-docker.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/bilkent/erasmus/ErasmusApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +145,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2INDqvXicjETZaMlU0VwMZ9iJ4q" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,10 +162,32 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "temurin-11",
     "last_opened_file_path": "C:/Users/eylul.badem/OneDrive - Doğuş Holding A.Ş/Documents/GitHub/erasmust/backend",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "build.tools",
+    "spring.configuration.checksum": "8f8c3387b839c1e23ee8e03b58757aeb"
   }
 }]]></component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="ErasmusApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="erasmus" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bilkent.erasmus.ErasmusApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -39,6 +198,10 @@
       <updated>1670013341394</updated>
       <workItem from="1670013345551" duration="3416000" />
       <workItem from="1670067679417" duration="1554000" />
+      <workItem from="1671029334526" duration="1187000" />
+      <workItem from="1671030535827" duration="262000" />
+      <workItem from="1671030864050" duration="2119000" />
+      <workItem from="1671036302965" duration="1116000" />
     </task>
     <servers />
   </component>
