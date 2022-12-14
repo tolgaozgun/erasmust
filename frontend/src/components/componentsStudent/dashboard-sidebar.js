@@ -7,6 +7,7 @@ import { Logo } from './logo';
 import { NavItem } from './nav-item';
 import ImportExportOutlinedIcon from '@mui/icons-material/ImportExportOutlined';
 import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { HiGlobeEuropeAfrica } from "react-icons/hi2";
 import { HiGlobeAmericas } from "react-icons/hi2";
 import React from 'react';
@@ -20,7 +21,24 @@ const items = [
   {
     href: '/erasmusStudent',
     icon: (<HiGlobeEuropeAfrica fontSize="small" />),
-    title: 'Erasmus Program'
+    title: 'Erasmus Program',
+    side: [ 
+      {
+        href: '/erasmusApplication',
+        icon: (<AddOutlinedIcon fontSize='small'/>),
+        title: 'View Your Erasmus Applications'
+      },
+      {
+        href: '/viewErasmusApplication',
+        icon: (<AddOutlinedIcon fontSize='small'/>),
+        title: 'Erasmus Application Information'
+      },
+      {
+        href: '/erasmusFAQ',
+        icon: (<AddOutlinedIcon fontSize='small'/>),
+        title: 'Erasmus Appliaction FAQ'
+      }
+      ]
   },
   {
     href: '/exchangeProgramStudent',
@@ -46,11 +64,6 @@ const items = [
     href: '/settingsStudent',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
-  },
-  {
-    href: '/students',
-    icon: (<CogIcon fontsize="small" />),
-    title: 'Students'
   }
 ];
 
@@ -103,6 +116,7 @@ export const DashboardSidebar = (props) => {
               icon={item.icon}
               href={item.href}
               title={item.title}
+              sideItems={item.side}
             />
           ))}
         </Box>
