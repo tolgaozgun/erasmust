@@ -24,21 +24,36 @@ const items = [
     title: 'Erasmus Program',
     side: [ 
       {
-        href: '/erasmusApplication',
+        href: '/erasmusApplications',
         icon: (<AddOutlinedIcon fontSize='small'/>),
         title: 'View Your Erasmus Applications'
       },
       {
-        href: '/viewErasmusApplication',
+        href: '/erasmusApplicationInfo',
         icon: (<AddOutlinedIcon fontSize='small'/>),
         title: 'Erasmus Application Information'
       },
       {
-        href: '/erasmusFAQ',
+        href: '/erasmusApplicationFAQ',
         icon: (<AddOutlinedIcon fontSize='small'/>),
         title: 'Erasmus Appliaction FAQ'
+      },
+      {
+        href: '/preapprovals',
+        icon: (<AddOutlinedIcon fontSize='small'/>),
+        title: 'View Your Preapprovals'
+      },
+      {
+        href: '/preapprovalInfo',
+        icon: (<AddOutlinedIcon fontSize='small'/>),
+        title: 'Preapproval Information'
+      },
+      {
+        href: '/erasmusFAQ',
+        icon: (<AddOutlinedIcon fontSize='small'/>),
+        title: 'Preapproval FAQ'
       }
-      ]
+    ]
   },
   {
     href: '/exchangeProgramStudent',

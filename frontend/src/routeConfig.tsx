@@ -14,6 +14,7 @@ import Students from './pages/student/Students';
 import Preapproval from "./pages/student/PreapprovalForm"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
+import ViewPreapproval from "./pages/student/ViewPreapproval";
 
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
@@ -113,9 +114,15 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
-        path: 'preapproval',
+        path: '/preapproval',
         title: "Preapproval Form",
         content: <Preapproval/>,
+        exact: true,
+    },
+    {
+        path: '/viewPreapproval',
+        title: "Preapproval Form",
+        content: <ViewPreapproval/>,
         exact: true,
     },
     {
