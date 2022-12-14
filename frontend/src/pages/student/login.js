@@ -32,17 +32,19 @@ const Login = () => {
                 .required('Password is required')
         }),
         onSubmit: async (values, formikHelpers) => {
-            await axios.post("http://92.205.25.135:4/auth/login", values).catch((err) => {
-                if (err && err.response) {
-                    console.log("Error: ", err)
-                }
-            }).then((response) => {
-                if (response && response.data) {
-                    const jwtToken = response.data
-                    sessionStorage.setItem("jwtToken", jwtToken)
-                    navigate('/dashboardStudent')
-                }
-            })
+            await axios.post("http://92.205.25.135:4/auth/login", values)
+                .then((response) => {
+                    if (response && response.data) {
+                        const jwtToken = response.data
+                        sessionStorage.setItem("jwtToken", jwtToken)
+                        navigate('/dashboardStudent')
+                    }
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        console.log("Error: ", err)
+                    }
+                })
         }
     });
     

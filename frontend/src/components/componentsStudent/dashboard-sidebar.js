@@ -10,9 +10,60 @@ import ApprovalOutlinedIcon from '@mui/icons-material/ApprovalOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { HiGlobeEuropeAfrica } from "react-icons/hi2";
 import { HiGlobeAmericas } from "react-icons/hi2";
-import React from 'react';
+import React from "react";
 
 const items = [
+    {
+        href: "/dashboardStudent",
+        icon: <ChartBarIcon fontSize="small" />,
+        title: "Dashboard",
+    },
+    {
+        href: "/erasmusStudent",
+        icon: <HiGlobeEuropeAfrica fontSize="small" />,
+        title: "Erasmus Program",
+    },
+    {
+        href: "/exchangeProgramStudent",
+        icon: <HiGlobeAmericas fontSize="small" />,
+        title: "Exchange Program",
+    },
+    {
+        href: "/applicationsStudent",
+        icon: <ApprovalOutlinedIcon fontSize="small" />,
+        title: "Applications",
+    },
+    {
+        href: "/submissionsStudent",
+        icon: <ImportExportOutlinedIcon fontSize="small" />,
+        title: "Submissions",
+    },
+    {
+        href: "/accountStudent",
+        icon: <UserIcon fontSize="small" />,
+        title: "Account",
+    },
+    {
+        href: "/settingsStudent",
+        icon: <CogIcon fontSize="small" />,
+        title: "Settings",
+    },
+    {
+        href: "/preapproval",
+        icon: <CogIcon fontsize="small" />,
+        title: "Preapprovals",
+    },
+    {
+        href: "/preapprovalForm",
+        icon: <CogIcon fontsize="small" />,
+        title: "Preapproval Form",
+    },
+    {
+        href: "/learningAgreement",
+        icon: <CogIcon fontsize="small" />,
+        title: "Learning Agreement",
+    },
+
   {
     href: '/dashboardStudent',
     icon: (<ChartBarIcon fontSize="small" />),
@@ -80,32 +131,47 @@ const items = [
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
   }
+
 ];
 
 export const DashboardSidebar = (props) => {
-  const { open, onClose } = props;
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
-    defaultMatches: true,
-    noSsr: false
-  });
+    const { open, onClose } = props;
+    const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
+        defaultMatches: true,
+        noSsr: false,
+    });
 
-  const content = (
-    <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%'
-        }}
-      >
-        <div>
-          <Box sx={{ p: 3 }}>
-              <a href='/'>
-                <Logo
-                  sx={{
-                    height: 42,
-                    width: 42
-                  }}
+    const content = (
+        <>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                }}
+            >
+                <div>
+                    <Box sx={{ p: 3 }}>
+                        <a href="/">
+                            <Logo
+                                sx={{
+                                    height: 42,
+                                    width: 42,
+                                }}
+                            />
+                        </a>
+                    </Box>
+                    <Box sx={{ px: 2 }}>
+                        <Typography sx={{ m: 1 }} variant="h4">
+                            Erasmust
+                        </Typography>
+                    </Box>
+                </div>
+                <Divider
+                    sx={{
+                        borderColor: "#2D3748",
+                        my: 3,
+                    }}
                 />
               </a>
           </Box>
@@ -139,47 +205,27 @@ export const DashboardSidebar = (props) => {
       </Box>
     </>
   );
-
-  if (lgUp) {
     return (
-      <Drawer
-        anchor="left"
-        open
-        PaperProps={{
-          sx: {
-            backgroundColor: 'neutral.900',
-            color: '#FFFFFF',
-            width: 280
-          }
-        }}
-        variant="permanent"
-      >
-        {content}
-      </Drawer>
+        <Drawer
+            anchor="left"
+            onClose={onClose}
+            open={open}
+            PaperProps={{
+                sx: {
+                    backgroundColor: "neutral.900",
+                    color: "#FFFFFF",
+                    width: 280,
+                },
+            }}
+            sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+            variant="temporary"
+        >
+            {content}
+        </Drawer>
     );
-  }
-
-  return (
-    <Drawer
-      anchor="left"
-      onClose={onClose}
-      open={open}
-      PaperProps={{
-        sx: {
-          backgroundColor: 'neutral.900',
-          color: '#FFFFFF',
-          width: 280
-        }
-      }}
-      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
-      variant="temporary"
-    >
-      {content}
-    </Drawer>
-  );
 };
 
 DashboardSidebar.propTypes = {
-  onClose: PropTypes.func,
-  open: PropTypes.bool
+    onClose: PropTypes.func,
+    open: PropTypes.bool,
 };

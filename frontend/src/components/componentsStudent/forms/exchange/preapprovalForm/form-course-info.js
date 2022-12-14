@@ -12,7 +12,7 @@ import {
 import React from 'react';
 import {FieldArray, Form, useFormik} from "formik";
 import * as Yup from "yup";
-import {CourseComponent} from "./course-component";
+import {CourseComponent} from "../../course-component";
 
 export const FormCourseInfo = (props) => {
 

@@ -12,9 +12,16 @@ import Preapprovals from './pages/student/Preapprovals';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import Preapproval from "./pages/student/PreapprovalForm"
+import LearningAgreement from "./pages/student/LearningAgreement"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
 import ViewPreapproval from "./pages/student/ViewPreapproval";
+
+
+//Admin Pages
+import DashboardAdmin from "./pages/admin/dashboard";
+import AccountAdmin from "./pages/admin/account";
+import StudentList from "./pages/admin/studentList";
 
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
@@ -24,15 +31,12 @@ import AccountStaff from "./pages/academic/account";
 import SettingsStaff from "./pages/academic/settings";
 import ErasmusStaff from "./pages/academic/erasmus"
 
-//Admin Pages
-import DashboardAdmin from "./pages/admin/dashboard";
-import AccountAdmin from "./pages/admin/account";
-import StudentList from "./pages/admin/studentList";
 
 import Splash from "./pages/splash";
 import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
+import SchoolList from "./pages/academic/SchoolList";
 
 export const routeItems: Array<IRoute> = [
     {
@@ -118,6 +122,12 @@ export const routeItems: Array<IRoute> = [
         title: "Preapproval Form",
         content: <Preapproval/>,
         exact: true,
+    }, ,
+    {
+        path: 'learningAgreement',
+        title: "Learning Agreement",
+        content: <LearningAgreement/>,
+        exact: true,
     },
     {
         path: '/viewPreapproval',
@@ -139,13 +149,38 @@ export const routeItems: Array<IRoute> = [
     {
         path: '/erasmusApplication',
         title: "Preapproval Form",
-        content: <ErasmusApplicationForm />,
+        content: <ErasmusApplicationForm/>,
+
         exact: true,
     },
     {
         path: '/ctForm',
         title: "Course Transfer Form",
-        content: <CTForm />,
+        content: <CTForm/>,
+        exact: true,
+    },
+    {
+        path: '/dashboardAdmin',
+        title: "Admin Dashboard",
+        content: <DashboardAdmin/>,
+        exact: true,
+    },
+    {
+        path: '/accountAdmin',
+        title: "Admin Account",
+        content: <AccountAdmin/>,
+        exact: true,
+    },
+    {
+        path: "/schoolList",
+        title: "School List",
+        content: <SchoolList/>,
+        exact: true,
+    },
+    {
+        path: '/studentlistAdmin',
+        title: "Admin Account",
+        content: <StudentList/>,
         exact: true,
     },
     {
@@ -183,6 +218,7 @@ export const routeItems: Array<IRoute> = [
         title: "Student Register",
         content: <Navigate to='/splash' />,
         exact: true,
+        //
     },
 ]
 
