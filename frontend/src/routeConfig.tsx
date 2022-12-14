@@ -32,6 +32,8 @@ import Splash from "./pages/splash";
 import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
+import LearningAgreement from "./pages/student/LearningAgreement";
+import SchoolList from "./pages/academic/SchoolList";
 
 export const routeItems: Array<IRoute> = [
     {
@@ -132,6 +134,40 @@ export const routeItems: Array<IRoute> = [
     {
         path: '/erasmusApplication',
         title: "Preapproval Form",
+        //
+        content: <ErasmusApplicationForm  />,
+        exact: true,
+    },
+        {
+            path: '*',
+            title: "Student Register",
+            content: <Error/>,
+            exact: false,
+        },
+        {
+            path: '/splash',
+            title: "Student Register",
+            content: <Splash/>,
+            exact: true,
+        },
+        {
+            path: '/',
+            title: "Student Register",
+            content: <Navigate to='/splash' />,
+            exact: true,
+        },
+    {
+        path: 'learningAgreement',
+        title: 'Learning Agreement',
+        content: <LearningAgreement/>,
+        exact: true
+    },
+    {
+        path: "/schoolList",
+        title: "School List",
+        content: <SchoolList/>,
+        exact: true
+        //
         content: <ErasmusApplicationForm />,
         exact: true,
     },
@@ -176,6 +212,7 @@ export const routeItems: Array<IRoute> = [
         title: "Student Register",
         content: <Navigate to='/splash' />,
         exact: true,
+        //
     },
 ]
 
