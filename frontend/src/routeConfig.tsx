@@ -30,16 +30,11 @@ import AccountStaff from "./pages/academic/account";
 import SettingsStaff from "./pages/academic/settings";
 import ErasmusStaff from "./pages/academic/erasmus"
 
-//Admin Pages
-import DashboardAdmin from "./pages/admin/dashboard";
-import AccountAdmin from "./pages/admin/account";
-import StudentList from "./pages/admin/studentList";
 
 import Splash from "./pages/splash";
 import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
-import LearningAgreement from "./pages/student/LearningAgreement";
 import SchoolList from "./pages/academic/SchoolList";
 
 export const routeItems: Array<IRoute> = [
