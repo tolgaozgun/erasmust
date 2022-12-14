@@ -24,7 +24,7 @@ public class User {
 
     private String starsId;
 
-    private String role;
+   // private String role;
 
     @Enumerated(EnumType.STRING)
     private RoleBasedPermission permission;

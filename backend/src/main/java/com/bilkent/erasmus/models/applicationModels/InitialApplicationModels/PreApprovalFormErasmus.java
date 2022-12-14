@@ -6,6 +6,7 @@ import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentExchan
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -13,8 +14,13 @@ import javax.persistence.OneToOne;
 @Entity
 public class PreApprovalFormErasmus extends PreApprovalForm {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private PartnerUniversityErasmus partnerUniversity;
 
 
 }
+
+
+
+
+

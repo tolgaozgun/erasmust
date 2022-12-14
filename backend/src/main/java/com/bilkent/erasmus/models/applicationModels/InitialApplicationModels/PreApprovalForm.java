@@ -19,6 +19,7 @@ public class PreApprovalForm { // --> create preapproval form detail to map coor
 
     private String academicYear;
 
+    @Enumerated(EnumType.STRING)
     private SemesterOfferings semester;
 
     private Date signedAt;

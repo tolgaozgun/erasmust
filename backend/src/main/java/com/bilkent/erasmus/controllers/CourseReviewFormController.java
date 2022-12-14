@@ -1,7 +1,5 @@
 package com.bilkent.erasmus.controllers;
-import com.bilkent.erasmus.dtos.CourseReviewFormErasmusDTO;
-import com.bilkent.erasmus.dtos.CourseReviewFormExchangeDTO;
-import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
+import com.bilkent.erasmus.dtos.*;
 import com.bilkent.erasmus.services.ApplicationErasmusService;
 import com.bilkent.erasmus.services.ApplicationExchangeService;
 import com.bilkent.erasmus.services.CourseReviewFormService;
@@ -25,6 +23,22 @@ public class CourseReviewFormController {
     public ResponseEntity<?> sendReviewForm(@RequestBody CourseReviewFormFillRequest request) throws Exception{
         return new ResponseEntity<>(courseReviewFormService.fillReviewForm(request), HttpStatus.CREATED);
     }
+
+    @GetMapping("coordinator/list")
+    public ResponseEntity<?> getAllReviewForms(@RequestBody ReviewFormListDTO filter) {
+        return new ResponseEntity<>(courseReviewFormService.list(filter), HttpStatus.FOUND);
+    }
+
+    @GetMapping("student/{id}/list")
+    public ResponseEntity<?> getAllStudentReviewForms(@PathVariable int id, @RequestBody ReviewFormStudentListDTO filter) {
+        return new ResponseEntity<>(courseReviewFormService.listForStudent(filter), HttpStatus.FOUND);
+    }
+
+    @PostMapping("/review/{formId}")
+    public ResponseEntity<?> reviewForm(@RequestBody ReviewFormRequestDTO request, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(courseReviewFormService.reviewForm(request, formId), HttpStatus.ACCEPTED);
+    }
+
     /*@PostMapping("/save-exchange")
     public ResponseEntity<?> sendReviewFormExchange(@RequestBody CourseReviewFormExchangeDTO courseReviewFormDTO) {
         return new ResponseEntity<>(courseReviewFormService.sendReviewFormExchange(courseReviewFormDTO), HttpStatus.CREATED);
