@@ -81,7 +81,14 @@ export const Signature = (props) => {
                   md={6}
                   xs={12}
                 >
-                  <Input  type="file" onChange={handlePngFileChange} required></Input>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    type="submit"
+                  >
+                    Upload A Png
+                  </Button>
+                  <Input  type="file" onChange={handlePngFileChange} style={{display: "none"}} required></Input>
                   <Typography
                     color="textSecondary"
                     variant="body2"
