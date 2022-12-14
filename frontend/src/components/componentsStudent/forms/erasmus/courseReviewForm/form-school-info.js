@@ -12,9 +12,9 @@ import {
 import React from 'react';
 import {FieldArray, Form, useFormik} from "formik";
 import * as Yup from "yup";
-import {CourseComponent} from "../../course-component";
+import {CourseComponent, SchoolComponent} from "./school-component";
 
-export const FormCourseInfo = (props) => {
+export const FormSchoolInfo = (props) => {
 
     const schema = Yup.object().shape({
         courses: Yup.array().of(
@@ -81,6 +81,10 @@ export const FormCourseInfo = (props) => {
 
     const addCourse = () => {
         let length = formik.values.courses.length
+        // TODO: Stop adding for more than 5 universities
+        if (length === 5) {
+
+        }
         const component = {courseCode: '', courseCredits: 0.0, courseName: '', bilkentCourse: ''}
         formik.setFieldValue(`courses.${length}`, component)
         formik.values.courses.push(component)
@@ -98,12 +102,12 @@ export const FormCourseInfo = (props) => {
 
             <Button
                 onClick={addCourse}>
-                Add Course
+                Add School
             </Button>
             {formik.values.courses.map((course, index) => (
 
                 <>
-                    <CourseComponent
+                    <SchoolComponent
                         key={index}
                         index={index}
                         errors={formik.errors.courses ? formik.errors.courses[`${index}`] : {}}
@@ -111,7 +115,7 @@ export const FormCourseInfo = (props) => {
                         setFieldValue={formik.setFieldValue}
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
-                        courses={props.courses}
+                        schools={props.schools}
                     />
 
                 </>

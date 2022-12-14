@@ -1,359 +1,301 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { DashboardNavbar } from "../../components/componentsStudent/dashboard-navbar";
-import { DashboardSidebar } from "../../components/componentsStudent/dashboard-sidebar";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import {
-    Box,
-    Button,
-    Checkbox,
+    Box, Button,
     Container,
-    FormHelperText,
-    Link,
-    TextField,
-    Typography,
-} from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { styled } from "@mui/material/styles";
-import { DataGrid } from "@mui/x-data-grid";
+    Grid,
+    Step, StepButton,
+    StepConnector,
+    stepConnectorClasses,
+    StepLabel,
+    Stepper,
+    Typography
+} from '@mui/material';
+import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import {
+    LearningStudentInfo
+} from '../../components/componentsStudent/forms/erasmus/learningAgreement/form-learning-student';
+import {
+    SendingInstitutionInfo
+} from '../../components/componentsStudent/forms/erasmus/learningAgreement/sending-institution-info';
+import {
+    ReceivingInstitutionInfo
+} from '../../components/componentsStudent/forms/erasmus/learningAgreement/receiving-institution-info';
+import {
+    StudyProgrammeInfo
+} from '../../components/componentsStudent/forms/erasmus/learningAgreement/study-programme-info';
+import {
+    SendingInstitutionRecognition
+} from '../../components/componentsStudent/forms/erasmus/learningAgreement/sending-institution-recognition';
+import {
+    LanguageCompetence
+} from '../../components/componentsStudent/forms/erasmus/learningAgreement/language-competence';
 
-const DashboardLayoutRoot = styled("div")(({ theme }) => ({
-    display: "flex",
-    flex: "1 1 auto",
-    maxWidth: "100%",
+
+import {styled} from '@mui/material/styles';
+import React, {useState} from 'react';
+import {Check} from "@mui/icons-material";
+import {FormExchangeInfo} from "../../components/componentsStudent/forms/exchange/form-exchange-info";
+import courses from "../../lessons.json";
+
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
+    display: 'flex',
+    flex: '1 1 auto',
+    maxWidth: '100%',
     paddingTop: 64,
-    [theme.breakpoints.up("lg")]: {
-        paddingLeft: 280,
+    [theme.breakpoints.up('lg')]: {
+        paddingLeft: 280
+    }
+}));
+
+const QontoConnector = styled(StepConnector)(({theme}) => ({
+    [`&.${stepConnectorClasses.alternativeLabel}`]: {
+        top: 10,
+        left: 'calc(-50% + 16px)',
+        right: 'calc(50% + 16px)',
+    },
+    [`&.${stepConnectorClasses.active}`]: {
+        [`& .${stepConnectorClasses.line}`]: {
+            borderColor: '#784af4',
+        },
+    },
+    [`&.${stepConnectorClasses.completed}`]: {
+        [`& .${stepConnectorClasses.line}`]: {
+            borderColor: '#784af4',
+        },
+    },
+    [`& .${stepConnectorClasses.line}`]: {
+        borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+        borderTopWidth: 3,
+        borderRadius: 1,
     },
 }));
 
+const QontoStepIconRoot = styled('div')(
+    ({theme, ownerState}) => ({
+        color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
+        display: 'flex',
+        height: 22,
+        alignItems: 'center',
+        ...(ownerState.active && {
+            color: '#784af4',
+        }),
+        '& .QontoStepIcon-completedIcon': {
+            color: '#784af4',
+            zIndex: 1,
+            fontSize: 18,
+        },
+        '& .QontoStepIcon-circle': {
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            backgroundColor: 'currentColor',
+        },
+    })
+);
+
+
 const LearningAgreement = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const navigate = useNavigate();
+    const [activeStep, setActiveStep] = useState(0)
+    const [stepCompleted, setStepCompleted] = useState([
+        false, false, false
+    ])
+    const [isValid, setIsValid] = useState([
+        false, false, false
+    ])
 
-    const goDash = () => {
-        navigate("/dash");
+    const courses = require('../../lessons.json');
+
+    const handleStep = (step, state) => {
+        switch (state) {
+            case true:
+                completeStep(step)
+                setValid(step)
+                break;
+            case false:
+                unCompleteStep(step)
+                unsetValid(step)
+                break;
+        }
+    }
+
+    function QontoStepIcon(props) {
+        const {active, className, icon} = props;
+        return (
+            <QontoStepIconRoot ownerState={{active}} className={className}>
+                {stepCompleted[icon - 1] ? (
+                    <Check className="QontoStepIcon-completedIcon"/>
+                ) : (
+                    <div className="QontoStepIcon-circle"/>
+                )}
+            </QontoStepIconRoot>
+        );
+    }
+
+    const completeStep = (step) => {
+        let newArray = stepCompleted;
+        newArray[step] = true;
+        setStepCompleted(newArray)
+    }
+
+    const setValid = (step) => {
+        let newArray = isValid;
+        newArray[step] = true;
+        setIsValid(newArray)
+    }
+
+    const unsetValid = (step) => {
+        let newArray = isValid
+        newArray[step] = false
+        setIsValid(newArray)
+    }
+
+    const unCompleteStep = () => {
+        let newArray = stepCompleted;
+        newArray[activeStep] = false;
+        setStepCompleted(newArray)
+    }
+
+    const stepClickHandler = (step) => () => {
+        setActiveStep(step);
     };
 
-    const rows = {};
+    const nextStepHandler = () => {
+        setActiveStep(activeStep + 1)
 
-    const formik = useFormik({
-        initialValues: {
-            email: "",
-            firstName: "",
-            lastName: "",
-            password: "",
-            policy: false,
-        },
-        validationSchema: Yup.object({
-            email: Yup.string()
-                .email("Must be a valid email")
-                .max(255)
-                .required("Email is required"),
-            firstName: Yup.string().max(255).required("First name is required"),
-            lastName: Yup.string().max(255).required("Last name is required"),
-            password: Yup.string().max(255).required("Password is required"),
-        }),
-        onSubmit: () => {
-            navigate("/loginStudent");
-        },
-    });
+    }
+
+    const previousStepHandler = () => {
+        setActiveStep(activeStep - 1)
+    }
+
+
+    const steps = ['Student Information',
+        'Sending Institution Information',
+        'Receiving Institution Information',
+        'Study Programme at Receiving Institution',
+        'Language Competence',
+        'Recognition at Sending Institution'];
 
     return (
         <>
-            <title>Learning Agreement Form</title>
+            <title>
+                Learning Agreement
+            </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
                     sx={{
-                        alignItems: "center",
-                        display: "flex",
                         flexGrow: 1,
-                        minHeight: "100%",
-                        paddingTop: 6,
+                        py: 8
                     }}
                 >
-                    <Container maxWidth="sm">
-                        <form onSubmit={formik.handleSubmit}>
-                            <Box sx={{ my: 2 }}>
-                                <Typography color="textPrimary" variant="h4">
-                                    Learning Agreement Form
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                    marginTop={1}
-                                >
-                                    First Name: FIRST_NAME
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Last Name: LAST_NAME
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Date of Birth: DATE_OF_BIRTH
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Nationality: NATIONALATY
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sex [M/F]: SEX
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Academic Year : ACADEMIC_YEAR
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Recieving Instution : RECIEVING_INSTUTITION
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Faculty : FACULTY
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Erasmus Code : ERASMUS_CODE
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Department : DEPARTMENT
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Address : ADDRESS
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Country : COUNTRY
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Contact Person : CONTACT PERSON
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Contact Person Mail : CONTACT PERSON MAIL
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution : Bilkent University
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution Faculty : SENDING
-                                    INSTITUTION FACULTY
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution Erasmus Code : SENDING
-                                    INSTITUTION ERASMUS CODE
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution Department : SENDING
-                                    INSTITUTION DEPARTMENT
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution Address : SENDING
-                                    INSTITUTION ADDRESS
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution Country : SENDING
-                                    INSTITUTION COUNTRY
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution Contact : SENDING
-                                    INSTITUTION CONTACT
-                                </Typography>
-                                <Typography
-                                    color="textSecondary"
-                                    gutterBottom
-                                    variant="body2"
-                                >
-                                    Sending Instution Contact Mail : SENDING
-                                    INSTITUTION CONTACT MAIL
-                                </Typography>
-                            </Box>
-                            <TextField
-                                error={Boolean(
-                                    formik.touched.firstName &&
-                                        formik.errors.firstName
-                                )}
-                                fullWidth
-                                helperText={
-                                    formik.touched.firstName &&
-                                    formik.errors.firstName
-                                }
-                                label="Study Cycle"
-                                margin="normal"
-                                name="firstName"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                value={formik.values.firstName}
-                                variant="outlined"
-                            />
-                            <TextField
-                                error={Boolean(
-                                    formik.touched.lastName &&
-                                        formik.errors.lastName
-                                )}
-                                fullWidth
-                                helperText={
-                                    formik.touched.lastName &&
-                                    formik.errors.lastName
-                                }
-                                label="Subject Area/Code"
-                                margin="normal"
-                                name="lastName"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                value={formik.values.lastName}
-                                variant="outlined"
-                            />
-                            <TextField
-                                error={Boolean(
-                                    formik.touched.email && formik.errors.email
-                                )}
-                                fullWidth
-                                helperText={
-                                    formik.touched.email && formik.errors.email
-                                }
-                                label="Semester"
-                                margin="normal"
-                                name="email"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                type="email"
-                                value={formik.values.email}
-                                variant="outlined"
-                            />
-                            <TextField
-                                error={Boolean(
-                                    formik.touched.password &&
-                                        formik.errors.password
-                                )}
-                                fullWidth
-                                helperText={
-                                    formik.touched.password &&
-                                    formik.errors.password
-                                }
-                                label="Password"
-                                margin="normal"
-                                name="password"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                type="password"
-                                value={formik.values.password}
-                                variant="outlined"
-                            />
-                            <Box
-                                sx={{
-                                    alignItems: "center",
-                                    display: "flex",
-                                    ml: -1,
-                                }}
-                            ></Box>
-                            {Boolean(
-                                formik.touched.policy && formik.errors.policy
-                            ) && (
-                                <FormHelperText error>
-                                    {formik.errors.policy}
-                                </FormHelperText>
-                            )}
-                            <Box sx={{ py: 2 }}>
-                                <Button
-                                    color="primary"
-                                    disabled={formik.isSubmitting}
-                                    fullWidth
-                                    size="large"
-                                    type="submit"
-                                    variant="contained"
-                                >
-                                    Submit Learning Agreement
-                                </Button>
-                            </Box>
-                        </form>
-                        <DataGrid
-                            columns={[{ field: "name", editable: true }]}
-                            rows={[{ id: 1, field: "aa", editable: true }]}
-                        />
+                    <Container maxWidth="lg">
+                        <Typography
+                            sx={{mb: 5}}
+                            align="center"
+                            variant="h4"
+                        >
+                            Learning Agreement Form
+                        </Typography>
+
+                        <Stepper nonLinear alternativeLabel activeStep={activeStep} connector={<QontoConnector/>}>
+                            {steps.map((label, index) => (
+                                <Step key={index} completed={stepCompleted[index]}>
+                                    <StepLabel StepIconComponent={QontoStepIcon} completed={stepCompleted[index]}>
+                                        <StepButton onClick={stepClickHandler(index)}>
+                                            {label}
+                                        </StepButton>
+                                    </StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
+                        <Grid
+                            container
+                            spacing={3}
+                        >
+
+                            <Grid
+                                item
+                                lg={12}
+                                md={12}
+                                xs={24}
+                            >
+
+
+                                <LearningStudentInfo
+                                    hidden={activeStep !== 0}
+                                    step={0}
+                                    handleStep={(state) => {
+                                        handleStep(0, state)
+                                    }}
+                                />
+                                <SendingInstitutionInfo
+                                    hidden={activeStep !== 1}
+                                    step={1}
+                                    handleStep={(state) => {
+                                        handleStep(1, state)
+                                    }}
+                                />
+                                <ReceivingInstitutionInfo
+                                    hidden={activeStep !== 2}
+                                    step={2}
+                                    handleStep={(state) => {
+                                        handleStep(2, state)
+                                    }}/>
+
+                                <StudyProgrammeInfo
+                                    courses={courses}
+                                    hidden={activeStep !== 3}
+                                    step={3}
+                                    handleStep={(state) => {
+                                        handleStep(3, state)
+                                    }}/>
+
+                                <LanguageCompetence
+                                    hidden={activeStep !== 4}
+                                    step={4}
+                                    handleStep={(state) => {
+                                        handleStep(4, state)
+                                    }}
+                                />
+
+                                <SendingInstitutionRecognition
+                                    courses={courses}
+                                    hidden={activeStep !== 5}
+                                    step={5}
+                                    handleStep={(state) => {
+                                        handleStep(5, state)
+                                    }}/>
+
+                                <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
+                                    {activeStep > 0
+                                        &&
+                                        <Button onClick={previousStepHandler}>{"< Back"}</Button>
+                                    }
+                                    <Box sx={{flex: '1 1 auto'}}>
+
+                                        {activeStep !== steps.length - 1 ? (
+                                            <Button onClick={nextStepHandler}>
+                                                {"Next >"}
+                                            </Button>
+                                        ) : (
+                                            <Button>
+                                                {"Finish"}
+                                            </Button>
+                                        )
+                                        }
+                                    </Box>
+                                </Box>
+                            </Grid>
+                        </Grid>
                     </Container>
                 </Box>
             </DashboardLayoutRoot>
-            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
-                open={isSidebarOpen}
-            />
+                open={isSidebarOpen}/>
         </>
     );
 };
