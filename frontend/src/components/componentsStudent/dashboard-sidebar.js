@@ -13,57 +13,6 @@ import { HiGlobeAmericas } from "react-icons/hi2";
 import React from "react";
 
 const items = [
-    {
-        href: "/dashboardStudent",
-        icon: <ChartBarIcon fontSize="small" />,
-        title: "Dashboard",
-    },
-    {
-        href: "/erasmusStudent",
-        icon: <HiGlobeEuropeAfrica fontSize="small" />,
-        title: "Erasmus Program",
-    },
-    {
-        href: "/exchangeProgramStudent",
-        icon: <HiGlobeAmericas fontSize="small" />,
-        title: "Exchange Program",
-    },
-    {
-        href: "/applicationsStudent",
-        icon: <ApprovalOutlinedIcon fontSize="small" />,
-        title: "Applications",
-    },
-    {
-        href: "/submissionsStudent",
-        icon: <ImportExportOutlinedIcon fontSize="small" />,
-        title: "Submissions",
-    },
-    {
-        href: "/accountStudent",
-        icon: <UserIcon fontSize="small" />,
-        title: "Account",
-    },
-    {
-        href: "/settingsStudent",
-        icon: <CogIcon fontSize="small" />,
-        title: "Settings",
-    },
-    {
-        href: "/preapproval",
-        icon: <CogIcon fontsize="small" />,
-        title: "Preapprovals",
-    },
-    {
-        href: "/preapprovalForm",
-        icon: <CogIcon fontsize="small" />,
-        title: "Preapproval Form",
-    },
-    {
-        href: "/learningAgreement",
-        icon: <CogIcon fontsize="small" />,
-        title: "Learning Agreement",
-    },
-
   {
     href: '/dashboardStudent',
     icon: (<ChartBarIcon fontSize="small" />),
