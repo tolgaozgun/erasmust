@@ -40,6 +40,10 @@ import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
 import SchoolList from "./pages/academic/SchoolList";
+import ExchangeFaq from "./pages/student/exchangeFaq";
+
+import Submissions from "./pages/academic/submissions";
+
 
 export const routeItems: Array<IRoute> = [
     {
@@ -124,6 +128,30 @@ export const routeItems: Array<IRoute> = [
         path: '/preapproval',
         title: "Preapproval Form",
         content: <Preapproval/>,
+        exact: true,
+    },
+    // {
+    //     path: 'learningAgreement/beforeMobility',
+    //     title: "Learning Agreement",
+    //     content: <BeforeMobility/>,
+    //     exact: true,
+    // },
+    // {
+    //     path: 'learningAgreement/duringMobility',
+    //     title: "Learning Agreement",
+    //     content: <DuringMobility/>,
+    //     exact: true,
+    // },
+    // {
+    //     path: 'learningAgreement/afterMobility',
+    //     title: "Learning Agreement",
+    //     content: <AfterMobility/>,
+    //     exact: true,
+    // },
+    {
+        path: '/viewPreapproval',
+        title: "Preapproval Form",
+        content: <ViewPreapproval/>,
         exact: true,
     },
     {
@@ -251,8 +279,20 @@ export const routeItems: Array<IRoute> = [
         title: "Student Register",
         content: <Navigate to='/splash' />,
         exact: true,
-        //
     },
-]
 
+    //
+    {
+        path: '/exchangeFaq',
+        title: "Exchange FAQ",
+        content: <ExchangeFaq/>,
+        exact: true,
+    },
+    {
+        path: "/submissions",
+        title: "Submissions",
+        content: <Submissions/>,
+        exact: true,
+    }
+]
 
