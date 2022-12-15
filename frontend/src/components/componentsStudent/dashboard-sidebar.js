@@ -140,6 +140,25 @@ export const DashboardSidebar = (props) => {
       </Box>
     </>
   );
+  if (lgUp) {
+    return (
+      <Drawer
+        anchor="left"
+        open
+        PaperProps={{
+          sx: {
+            backgroundColor: 'neutral.900',
+            color: '#FFFFFF',
+            width: 280
+          }
+        }}
+        variant="permanent"
+      >
+        {content}
+      </Drawer>
+    );
+  }
+          
     return (
         <Drawer
             anchor="left"
