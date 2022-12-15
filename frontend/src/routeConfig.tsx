@@ -41,7 +41,9 @@ import Error from "./pages/404";
 import {Navigate} from "react-router-dom";
 import SchoolList from "./pages/academic/SchoolList";
 import ExchangeFaq from "./pages/student/exchangeFaq";
+
 import Submissions from "./pages/academic/submissions";
+
 
 export const routeItems: Array<IRoute> = [
     {
@@ -254,6 +256,7 @@ export const routeItems: Array<IRoute> = [
         content: <Navigate to='/splash' />,
         exact: true,
     },
+
     //
     {
         path: '/exchangeFaq',
@@ -268,3 +271,4 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     }
 ]
+
