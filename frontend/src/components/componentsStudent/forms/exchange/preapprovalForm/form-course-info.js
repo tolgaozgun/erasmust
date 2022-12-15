@@ -112,6 +112,7 @@ export const FormCourseInfo = (props) => {
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
                         courses={props.courses}
+                        name="courseName"
                     />
 
                 </>
