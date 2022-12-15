@@ -7,10 +7,11 @@ import { Logo } from "./logo";
 import { NavItem } from "./nav-item";
 import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined";
 import ApprovalOutlinedIcon from "@mui/icons-material/ApprovalOutlined";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { HiGlobeEuropeAfrica } from "react-icons/hi2";
 import { HiGlobeAmericas } from "react-icons/hi2";
 import React from "react";
-
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 const items = [
     {
         href: "/dashboardStudent",
@@ -21,6 +22,33 @@ const items = [
         href: "/erasmusStudent",
         icon: <HiGlobeEuropeAfrica fontSize="small" />,
         title: "Erasmus Program",
+        side: [
+            {
+                href: "/erasmusApplications",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "View Your Erasmus Applications",
+            },
+            {
+                href: "/erasmusApplicationInfo",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "Erasmus Application Information",
+            },
+            {
+                href: "/erasmusApplicationFAQ",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "Erasmus Appliaction FAQ",
+            },
+            {
+                href: "/preapprovals",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "View Your Preapprovals",
+            },
+            {
+                href: "/preapprovalInfo",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "Preapproval Information",
+            },
+        ],
     },
     {
         href: "/exchangeProgramStudent",
@@ -28,7 +56,7 @@ const items = [
         title: "Exchange Program",
     },
     {
-        href: "/applicationsStudent",
+        href: "/applications",
         icon: <ApprovalOutlinedIcon fontSize="small" />,
         title: "Applications",
     },
@@ -43,67 +71,15 @@ const items = [
         title: "Account",
     },
     {
+        href: "/exchangeFaq",
+        icon: <QuestionMarkIcon fontSize="small" />,
+        title: "Exchange FAQ",
+    },
+    {
         href: "/settingsStudent",
         icon: <CogIcon fontSize="small" />,
         title: "Settings",
     },
-    {
-        href: "/preapproval",
-        icon: <CogIcon fontsize="small" />,
-        title: "Preapprovals",
-    },
-    {
-        href: "/preapprovalForm",
-        icon: <CogIcon fontsize="small" />,
-        title: "Preapproval Form",
-    },
-    {
-        href: "/learningAgreement",
-        icon: <CogIcon fontsize="small" />,
-        title: "Learning Agreement",
-    },
-
-  {
-    href: '/dashboardStudent',
-    icon: (<ChartBarIcon fontSize="small" />),
-    title: 'Dashboard'
-  },
-  {
-    href: '/erasmusStudent',
-    icon: (<HiGlobeEuropeAfrica fontSize="small" />),
-    title: 'Erasmus Program'
-  },
-  {
-    href: '/exchangeProgramStudent',
-    icon: (<HiGlobeAmericas fontSize="small" />),
-    title: 'Exchange Program'
-  },
-  {
-    href: '/applications',
-    icon: (<ApprovalOutlinedIcon fontSize="small" />),
-    title: 'Applications'
-  },
-  {
-    href: '/submissionsStudent',
-    icon: (<ImportExportOutlinedIcon fontSize="small" />),
-    title: 'Submissions'
-  },
-  {
-    href: '/accountStudent',
-    icon: (<UserIcon fontSize="small" />),
-    title: 'Account'
-  },
-  {
-    href: '/settingsStudent',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Settings'
-  },
-  {
-    href: '/students',
-    icon: (<CogIcon fontsize="small" />),
-    title: 'Students'
-  }
-
 ];
 
 export const DashboardSidebar = (props) => {
@@ -152,6 +128,7 @@ export const DashboardSidebar = (props) => {
                             icon={item.icon}
                             href={item.href}
                             title={item.title}
+                            sideItems={item.side}
                         />
                     ))}
                 </Box>
@@ -159,7 +136,6 @@ export const DashboardSidebar = (props) => {
             </Box>
         </>
     );
-
     if (lgUp) {
         return (
             <Drawer
