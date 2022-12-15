@@ -12,9 +12,9 @@ import {
 import React from 'react';
 import {FieldArray, Form, useFormik} from "formik";
 import * as Yup from "yup";
-import {CourseComponent} from "../../course-component";
+import {AfterMobilityCourse} from "./after-mobility-course";
 
-export const StudyProgrammeInfo = (props) => {
+export const SendingInstitutionOutcomes = (props) => {
 
 
     const formik = useFormik({
@@ -24,6 +24,9 @@ export const StudyProgrammeInfo = (props) => {
                     courseName: "",
                     courseCode: "",
                     courseCredits: 0.0,
+                    courseGrade: "",
+                    startOfStudy: new Date(),
+                    endOfStudy: new Date(),
                 }
             ]
         },
@@ -41,6 +44,19 @@ export const StudyProgrammeInfo = (props) => {
                         courseName: Yup
                             .string()
                             .required("Course Name is required"),
+                        courseCompleted: Yup
+                            .boolean()
+                            .required("Course Completed is required"),
+                        courseGrade: Yup
+                            .string()
+                            .max(15)
+                            .required("Course Grade is required"),
+                        startOfStudy: Yup
+                            .date()
+                            .required("Start of study date is required"),
+                        endOfStudy: Yup
+                            .date()
+                            .required("End of study date is required")
                     },
                     'Course is invalid',
                 ),
@@ -78,11 +94,11 @@ export const StudyProgrammeInfo = (props) => {
             {formik.values.courses.map((course, index) => (
 
                 <>
-                    <CourseComponent
+                    <AfterMobilityCourse
                         key={index}
                         index={index}
                         errors={formik.errors.courses ? formik.errors.courses[`${index}`] : {}}
-                        touched={formik.touched.courses ? formik.errors.courses[`${index}`] : {}}
+                        touched={formik.touched.courses ? formik.touched.courses[`${index}`] : {}}
                         setFieldValue={formik.setFieldValue}
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
