@@ -15,6 +15,12 @@ import Preapproval from "./pages/student/PreapprovalForm"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
 
+
+//Admin Pages
+// import DashboardAdmin from "./pages/admin/dashboard";
+// import AccountAdmin from "./pages/admin/account";
+// import StudentList from "./pages/admin/studentList";
+
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
 import LoginStaff from "./pages/academic/login";
@@ -22,6 +28,7 @@ import DashboardStaff from "./pages/academic/dashboard";
 import AccountStaff from "./pages/academic/account";
 import SettingsStaff from "./pages/academic/settings";
 import ErasmusStaff from "./pages/academic/erasmus"
+import Submissions from "./pages/academic/submissions"
 
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
@@ -214,6 +221,12 @@ export const routeItems: Array<IRoute> = [
         exact: true,
         //
     },
+    {
+        path: "/submissions",
+        title: "Submissions",
+        content: <Submissions/>,
+        exact: true,
+    }
 ]
 
 
