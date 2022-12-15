@@ -12,11 +12,14 @@ import Preapprovals from './pages/student/Preapprovals';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import Preapproval from "./pages/student/PreapprovalForm"
-import LearningAgreement from "./pages/student/LearningAgreement"
+import BeforeMobility from "./pages/student/LearningAgreement/BeforeMobility"
+import DuringMobility from "./pages/student/LearningAgreement/DuringMobility"
+import AfterMobility from "./pages/student/LearningAgreement/AfterMobility"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
 import ViewPreapproval from "./pages/student/ViewPreapproval"
 import ViewErasmusApplication from "./pages/student/ViewErasmusApplication"
+import CourseReviewForm from "./pages/student/courseReviewForm"
 
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
@@ -122,11 +125,23 @@ export const routeItems: Array<IRoute> = [
         title: "Preapproval Form",
         content: <Preapproval/>,
         exact: true,
-    }, ,
+    },
     {
-        path: 'learningAgreement',
+        path: 'learningAgreement/beforeMobility',
         title: "Learning Agreement",
-        content: <LearningAgreement/>,
+        content: <BeforeMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/duringMobility',
+        title: "Learning Agreement",
+        content: <DuringMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/afterMobility',
+        title: "Learning Agreement",
+        content: <AfterMobility/>,
         exact: true,
     },
     {
@@ -151,6 +166,12 @@ export const routeItems: Array<IRoute> = [
         path: '/erasmusApplication',
         title: "Preapproval Form",
         content: <ErasmusApplicationForm/>,
+        exact: true,
+    },
+    {
+        path: '/courseReviewForm',
+        title: "Course Review Form",
+        content: <CourseReviewForm/>,
         exact: true,
     },
     {

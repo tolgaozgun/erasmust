@@ -9,33 +9,33 @@ import {
     Stepper,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
 import {
     LearningStudentInfo
-} from '../../components/componentsStudent/forms/erasmus/learningAgreement/form-learning-student';
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/form-learning-student';
 import {
     SendingInstitutionInfo
-} from '../../components/componentsStudent/forms/erasmus/learningAgreement/sending-institution-info';
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/sending-institution-info';
 import {
     ReceivingInstitutionInfo
-} from '../../components/componentsStudent/forms/erasmus/learningAgreement/receiving-institution-info';
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/receiving-institution-info';
 import {
     StudyProgrammeInfo
-} from '../../components/componentsStudent/forms/erasmus/learningAgreement/study-programme-info';
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/BeforeMobility/study-programme-info';
 import {
     SendingInstitutionRecognition
-} from '../../components/componentsStudent/forms/erasmus/learningAgreement/sending-institution-recognition';
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/BeforeMobility/sending-institution-recognition';
 import {
     LanguageCompetence
-} from '../../components/componentsStudent/forms/erasmus/learningAgreement/language-competence';
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/language-competence';
 
 
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
 import {Check} from "@mui/icons-material";
-import {FormExchangeInfo} from "../../components/componentsStudent/forms/exchange/form-exchange-info";
-import courses from "../../lessons.json";
+import {FormExchangeInfo} from "../../../components/componentsStudent/forms/exchange/form-exchange-info";
+import courses from "../../../lessons.json";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -94,7 +94,7 @@ const QontoStepIconRoot = styled('div')(
 );
 
 
-const LearningAgreement = () => {
+const BeforeMobility = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [activeStep, setActiveStep] = useState(0)
     const [stepCompleted, setStepCompleted] = useState([
@@ -104,7 +104,7 @@ const LearningAgreement = () => {
         false, false, false
     ])
 
-    const courses = require('../../lessons.json');
+    const courses = require('../../../lessons.json');
 
     const handleStep = (step, state) => {
         switch (state) {
@@ -196,7 +196,7 @@ const LearningAgreement = () => {
                             align="center"
                             variant="h4"
                         >
-                            Learning Agreement Form
+                            Learning Agreement Form - Before Mobility
                         </Typography>
 
                         <Stepper nonLinear alternativeLabel activeStep={activeStep} connector={<QontoConnector/>}>
@@ -300,4 +300,4 @@ const LearningAgreement = () => {
     );
 };
 
-export default LearningAgreement;
+export default BeforeMobility;
