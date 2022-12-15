@@ -100,39 +100,25 @@ export const DashboardSidebar = (props) => {
                 }}
             >
                 <div>
-                    <Box sx={{ p: 3 }}>
-                        <a href="/">
-                            <Logo
-                                sx={{
-                                    height: 42,
-                                    width: 42,
-                                }}
-                            />
-                        </a>
-                    </Box>
-                    <Box sx={{ px: 2 }}>
-                        <Typography sx={{ m: 1 }} variant="h4">
-                            Erasmust
-                        </Typography>
-                    </Box>
+                  <Box sx={{ p: 3 }}>
+                    <a href="/">
+                      <Logo
+                        sx={{
+                          height: 42,
+                          width: 42,
+                        }}
+                      />
+                    </a>
+                  </Box>
+                  <Box sx={{ px: 2 }}>
+                    <Typography
+                      sx={{ m: 1 }}
+                      variant="h4"
+                    >
+                      Erasmust
+                    </Typography>
+                  </Box>
                 </div>
-                <Divider
-                    sx={{
-                        borderColor: "#2D3748",
-                        my: 3,
-                    }}
-                />
-              </a>
-          </Box>
-          <Box sx={{ px: 2 }}>
-            <Typography
-              sx={{ m: 1 }}
-              variant="h4"
-          >
-            Erasmust
-            </Typography>
-          </Box>
-        </div>
         <Divider
           sx={{
             borderColor: '#2D3748',
