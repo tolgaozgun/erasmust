@@ -27,4 +27,6 @@ public class PreApprovalFormDTO {
 
     private List<Double> courseHostCredits;
 
+    private int numberOfForms;
+
 }

@@ -118,7 +118,7 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
-        path: 'preapproval',
+        path: '/preapproval',
         title: "Preapproval Form",
         content: <Preapproval/>,
         exact: true,
@@ -127,6 +127,12 @@ export const routeItems: Array<IRoute> = [
         path: 'learningAgreement',
         title: "Learning Agreement",
         content: <LearningAgreement/>,
+        exact: true,
+    },
+    {
+        path: '/viewPreapproval',
+        title: "Preapproval Form",
+        content: <ViewPreapproval/>,
         exact: true,
     },
     {

@@ -4,12 +4,16 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Container, Link, TextField, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate();
 
-    const goDash = () => {
-        navigate('/dashboardStaff');
+    const goDashStaff = () => {
+      navigate('/dashboardStaff');
+    }
+    const goDashAdmin = () => {
+      navigate('/dashboardAdmin');
     }
 
     const goRegister = () => {
@@ -32,8 +36,17 @@ const Login = () => {
             .max(255)
             .required('Password is required')
         }),
-        onSubmit: () => {
-          navigate('/dashboardStaff')
+        onSubmit: async (values) => {
+          await axios.post("http://92.205.25.135:4/auth/login", values)
+          .then((res) => {
+            console.log("Response: ", res)
+          })
+          .catch((err) => {
+            if (err && err.response) {
+              // if admin call goDashAdmin else call goDashStaff
+              console.log("Error: ", err)
+            }
+          })
         }
       });
     
@@ -52,20 +65,13 @@ const Login = () => {
             }}
           >
             <Container maxWidth="sm">
-                <Button
-                  component="a"
-                  startIcon={<ArrowBackIcon fontSize="small" />}
-                  onClick={() => {goDash()}}
-                >
-                  Dashboard
-                </Button>
               <form onSubmit={formik.handleSubmit}>
                 <Box sx={{ my: 3 }}>
                   <Typography
                     color="textPrimary"
                     variant="h4"
                   >
-                    Academic Stuff Login
+                    Academic Staff Login
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -128,7 +134,7 @@ const Login = () => {
                       }}
                       onClick={() => {goRegister()}}
                     >
-                      Stuff Register
+                      Staff Register
                     </Link>
                 </Typography>
               </form>

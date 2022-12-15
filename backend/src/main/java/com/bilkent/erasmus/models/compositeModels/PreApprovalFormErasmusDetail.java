@@ -5,6 +5,7 @@ import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseRevi
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -19,13 +20,13 @@ public class PreApprovalFormErasmusDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private CoordinatorStudentErasmus coordinatorStudent;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private PreApprovalFormErasmus preApprovalForm;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private CourseReviewForm reviewForm;
 
 }
