@@ -3,7 +3,7 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../components/componentsAdmin/dashboard-navbar";
 import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {StudentsList} from "../../components/componentsAdmin/dashboard/students";
+import {StudentsList} from "../../components/componentsAdmin/lists/students";
 
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -16,7 +16,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const StudentList = () => {
+const Students = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     return (
@@ -47,7 +47,7 @@ const StudentList = () => {
                                 xl={15}
                                 xs={12}
                             >
-                                <StudentsList />
+                                <StudentsList/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -61,4 +61,4 @@ const StudentList = () => {
     );
 }
 
-export default StudentList
+export default Students

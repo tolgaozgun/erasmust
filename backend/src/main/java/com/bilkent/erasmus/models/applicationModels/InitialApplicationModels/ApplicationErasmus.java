@@ -1,9 +1,11 @@
 package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 
 import com.bilkent.erasmus.models.universityModels.PartnerUniversityErasmus;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,4 +28,5 @@ public class ApplicationErasmus extends Application {
             )
     )
     private List<PartnerUniversityErasmus> schools;
+
 }

@@ -11,7 +11,12 @@ public enum RoleBasedPermission {
 
     ROLE_USER(Sets.newHashSet()),
     ROLE_ADMIN(Sets.newHashSet(USER_READ, USER_WRITE, ADMIN_READ, ADMIN_WRITE)),
+
+    ROLE_STUDENT(Sets.newHashSet(USER_READ)),
+
     ROLE_READER(Sets.newHashSet(USER_READ, ADMIN_READ));
+
+
 
     private final Set<Permission> permissions;
 
@@ -30,4 +35,6 @@ public enum RoleBasedPermission {
         permissions.add(new SimpleGrantedAuthority( this.name()));
         return permissions;
     }
+
+
 }
