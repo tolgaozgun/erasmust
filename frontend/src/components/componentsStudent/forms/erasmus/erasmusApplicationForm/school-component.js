@@ -56,6 +56,7 @@ export const SchoolComponent = (props) => {
                             <Autocomplete
                                 disablePortal
                                 fullWidth
+                                disabled={!props.editable}
                                 id={"bilkent-course-selector" + props.index}
                                 options={props.schools}
                                 renderInput={(params) => <TextField {...params} label="Enter school name"/>}
@@ -67,9 +68,11 @@ export const SchoolComponent = (props) => {
                             md={6}
                             xs={12}
                         >
-                            <Button>
-                                Delete School
-                            </Button>
+                            {props.editable &&
+                                <Button>
+                                    Delete School
+                                </Button>
+                            }
 
                         </Grid>
                     </CardContent>

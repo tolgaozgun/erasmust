@@ -101,6 +101,7 @@ export const FormSchoolInfo = (props) => {
         >
 
             <Button
+
                 onClick={addCourse}>
                 Add School
             </Button>
