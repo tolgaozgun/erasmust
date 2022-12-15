@@ -12,14 +12,14 @@ import Preapprovals from './pages/student/Preapprovals';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import Preapproval from "./pages/student/PreapprovalForm"
-// import BeforeMobility from "./pages/student/LearningAgreement/BeforeMobility"
-// import DuringMobility from "./pages/student/LearningAgreement/DuringMobility"
-// import AfterMobility from "./pages/student/LearningAgreement/AfterMobility"
+import BeforeMobility from "./pages/student/LearningAgreement/BeforeMobility"
+import DuringMobility from "./pages/student/LearningAgreement/DuringMobility"
+import AfterMobility from "./pages/student/LearningAgreement/AfterMobility"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
 import ViewPreapproval from "./pages/student/ViewPreapproval"
-// import ViewErasmusApplication from "./pages/student/ViewErasmusApplication"
-// import CourseReviewForm from "./pages/student/courseReviewForm"
+import ViewErasmusApplication from "./pages/student/ViewErasmusApplication"
+import CourseReviewForm from "./pages/student/courseReviewForm"
 
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
@@ -155,6 +155,30 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
+        path: 'learningAgreement/beforeMobility',
+        title: "Learning Agreement",
+        content: <BeforeMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/duringMobility',
+        title: "Learning Agreement",
+        content: <DuringMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/afterMobility',
+        title: "Learning Agreement",
+        content: <AfterMobility/>,
+        exact: true,
+    },
+    {
+        path: '/viewPreapproval',
+        title: "Preapproval Form",
+        content: <ViewPreapproval/>,
+        exact: true,
+    },
+    {
         path: '/applications',
         title: "Student Register",
         content: <Applications/>,
@@ -172,12 +196,12 @@ export const routeItems: Array<IRoute> = [
         content: <ErasmusApplicationForm/>,
         exact: true,
     },
-    // {
-    //     path: '/courseReviewForm',
-    //     title: "Course Review Form",
-    //     content: <CourseReviewForm/>,
-    //     exact: true,
-    // },
+    {
+        path: '/courseReviewForm',
+        title: "Course Review Form",
+        content: <CourseReviewForm/>,
+        exact: true,
+    },
     {
         path: '/ctForm',
         title: "Course Transfer Form",
@@ -226,12 +250,12 @@ export const routeItems: Array<IRoute> = [
         content: <ViewPreapproval/>,
         exact: true,
     },
-    // {
-    //     path: '/viewErasmusApplication',
-    //     title: "View Erasmus Application",
-    //     content: <ViewErasmusApplication/>,
-    //     exact: true,
-    // },
+    {
+        path: '/viewErasmusApplication',
+        title: "View Erasmus Application",
+        content: <ViewErasmusApplication/>,
+        exact: true,
+    },
     {
         path: '/studentlistAdmin',
         title: "Admin Account",

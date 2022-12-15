@@ -75,7 +75,7 @@ export const FormSchoolInfo = (props) => {
 
         },
     });
-    if (!props.hidden) {
+    if (!props.hidden && props.handleStep) {
         props.handleStep(formik.isValid)
     }
 
@@ -99,11 +99,12 @@ export const FormSchoolInfo = (props) => {
             noValidate
             hidden={props.hidden}
         >
-
-            <Button
-                onClick={addCourse}>
-                Add School
-            </Button>
+            {props.editable &&
+                <Button
+                    onClick={addCourse}>
+                    Add School
+                </Button>
+            }
             {formik.values.courses.map((course, index) => (
 
                 <>
@@ -116,6 +117,7 @@ export const FormSchoolInfo = (props) => {
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
                         schools={props.schools}
+                        editable={false}
                     />
 
                 </>

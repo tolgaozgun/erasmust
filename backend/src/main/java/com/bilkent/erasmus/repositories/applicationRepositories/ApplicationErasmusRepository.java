@@ -17,4 +17,7 @@ public interface ApplicationErasmusRepository extends JpaRepository<ApplicationE
     Optional<ApplicationErasmus> findByStudent_StarsId(String starsId);
 
 
+
+    ApplicationErasmus findByStudent_Id(int id);
+
 }

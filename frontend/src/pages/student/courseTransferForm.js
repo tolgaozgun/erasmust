@@ -166,7 +166,7 @@ const CTForm = () => {
         initialValues: {
             name: "",
             surname: "",
-            studentID: "",
+            starsId: "",
             department: "",
             academicYear: "",
             semester: "",

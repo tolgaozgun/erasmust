@@ -2,11 +2,6 @@ import {
     Input,
     Box,
     Button,
-    Checkbox,
-    Container,
-    FormHelperText,
-    Link,
-    TextField,
     Typography,
     Card,
     CardContent,
@@ -23,6 +18,7 @@ export const Signature = (props) => {
     const [pngFile, setPngFile] = useState(null);
     const [pngFileError, setPngFileError] = useState("");
     const [viewPng, setViewPng] = useState(null);
+    const hiddenFileInput = React.useRef(null);
 
     const fileType = ["image/png"];
     const handlePngFileChange = (e) => {
@@ -48,6 +44,10 @@ export const Signature = (props) => {
 
     }
 
+    const handleClick = event => {
+      hiddenFileInput.current.click();
+    }
+
     const handlePngFileView = (e) => {
         e.preventDefault();
         if (pngFile != null) {
@@ -63,7 +63,6 @@ export const Signature = (props) => {
           autoComplete="off"
           noValidate
           {...props}
-          onSubmit={handlePngFileSubmit}
         >
           <Card>
             <CardHeader
@@ -84,16 +83,16 @@ export const Signature = (props) => {
                   <Button
                     color="primary"
                     variant="contained"
-                    type="submit"
+                    onClick={handleClick}
                   >
                     Upload A Png
                   </Button>
-                  <Input  type="file" onChange={handlePngFileChange} style={{display: "none"}} required></Input>
+                  <input  type="file" onChange={handlePngFileChange} ref={hiddenFileInput} style={{display: "none"}} required></input>
                   <Typography
                     color="textSecondary"
                     variant="body2"
-                    >
-                        {pngFileError}
+                  >
+                    {pngFileError}
                   </Typography>
                 </Grid>
 
@@ -120,7 +119,6 @@ export const Signature = (props) => {
               <Button
                 color="primary"
                 variant="contained"
-                type="submit"
                 onClick={handlePngFileView}
                 sx={{
                     mx: 3

@@ -15,7 +15,7 @@ import InputLabel from "@mui/material/InputLabel";
 import {ArrowDropDown} from "@mui/icons-material";
 import {ArrowDropUp} from "@mui/icons-material";
 
-export const CourseComponent = (props) => {
+export const AfterMobilityCourse = (props) => {
     const [expand, setExpand] = useState(true)
     const [curCourseName, setCourseName] = useState("")
     const [curCourseCode, setCourseCode] = useState("")
@@ -92,12 +92,15 @@ export const CourseComponent = (props) => {
                                     fullWidth
                                     helperText={props.touched.hostName && props.errors.courseCode}
                                     label="Course Code"
-                                    name="courseCode"
+                                    name={"courses[" + props.index + "].courseCode"}
                                     onChange={courseCodeChange}
                                     onBlur={props.handleBlur}
                                     required
                                     variant="outlined"
-                                    disabled={!isAdmin}
+                                    disabled={!props.editable}
+                                    onInvalid={() => {
+                                        console.log("Course Code invalid for " + props.index)
+                                    }}
                                 />
                             </Grid>
                             <Grid
@@ -110,13 +113,13 @@ export const CourseComponent = (props) => {
                                     fullWidth
                                     helperText={props.touched.courseCredits && props.errors.courseCredits}
                                     label="Course Credits"
-                                    name="courseCredits"
+                                    name={"courses[" + props.index + "].courseCredits"}
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
                                     required
                                     type="number"
                                     variant="outlined"
-                                    disabled={!isAdmin}
+                                    disabled={!props.editable}
                                 />
                             </Grid>
                             <Grid
@@ -129,44 +132,99 @@ export const CourseComponent = (props) => {
                                     fullWidth
                                     helperText={props.touched.courseName && props.errors.courseName}
                                     label="Course Name"
-                                    name="courseName"
+                                    name={"courses[" + props.index + "].courseName"}
                                     onChange={courseNameChange}
                                     onBlur={props.handleBlur}
                                     required
                                     variant="outlined"
-                                    disabled={!isAdmin}
+                                    disabled={!props.editable}
                                 />
-                            </Grid>
-                            <Divider/>
-                            <CardHeader
-                                subheader="Enter the details for the relevant Bilkent course"
-                                title="Bilkent Course"
-                            />
-                            <Grid
-                                item
-                                md={12}
-                                xs={24}
-                            >
-
-                                <Autocomplete
-                                    disablePortal
-                                    fullWidth
-                                    id="bilkent-course-selector"
-                                    options={props.courses}
-                                    renderInput={(params) => <TextField {...params} label="Enter class code or name"/>}
-                                />
-
                             </Grid>
                             <Grid
                                 item
                                 md={6}
                                 xs={12}
                             >
-                                <Button>
-                                    Delete Course
-                                </Button>
-
+                                <TextField
+                                    error={Boolean(props.touched.courseGrade && props.errors.courseGrade)}
+                                    fullWidth
+                                    helperText={props.touched.courseGrade && props.errors.courseGrade}
+                                    label="Course Grade"
+                                    name={"courses[" + props.index + "].courseGrade"}
+                                    onBlur={props.handleBlur}
+                                    required
+                                    variant="outlined"
+                                    disabled={!props.editable}
+                                />
                             </Grid>
+                            <Grid
+                                item
+                                md={6}
+                                xs={12}
+                            >
+                                <TextField
+                                    error={Boolean(props.touched.courseGrade && props.errors.courseGrade)}
+                                    fullWidth
+                                    helperText={props.touched.courseGrade && props.errors.courseGrade}
+                                    label="Course Grade"
+                                    name={"courses[" + props.index + "].courseGrade"}
+                                    onBlur={props.handleBlur}
+                                    required
+                                    variant="outlined"
+                                    disabled={!props.editable}
+                                />
+                            </Grid>
+                            <Grid
+                                item
+                                md={6}
+                                xs={12}
+                            >
+                                <TextField
+                                    error={Boolean(props.touched.startOfStudy && props.errors.startOfStudy)}
+                                    fullWidth
+                                    helperText={props.touched.startOfStudy && props.errors.startOfStudy}
+                                    label="Start of Study"
+                                    type="date"
+                                    name={"courses[" + props.index + "].startOfStudy"}
+                                    onBlur={props.handleBlur}
+                                    required
+                                    variant="outlined"
+                                    disabled={!props.editable}
+                                />
+                            </Grid>
+                            <Grid
+                                item
+                                md={6}
+                                xs={12}
+                            >
+                                <TextField
+                                    error={Boolean(props.touched.endOfStudy && props.errors.endOfStudy)}
+                                    fullWidth
+                                    helperText={props.touched.endOfStudy && props.errors.endOfStudy}
+                                    label="End of Study"
+                                    type="date"
+                                    name={"courses[" + props.index + "].endOfStudy"}
+                                    onBlur={props.handleBlur}
+                                    required
+                                    variant="outlined"
+                                    disabled={!props.editable}
+                                />
+                            </Grid>
+                            {props.editable &&
+                                <>
+                                    <Divider/>
+                                    <Grid
+                                        item
+                                        md={6}
+                                        xs={12}
+                                    >
+                                        <Button>
+                                            Delete Course
+                                        </Button>
+
+                                    </Grid>
+                                </>
+                            }
                         </Grid>
                     </CardContent>
                 </Box>
