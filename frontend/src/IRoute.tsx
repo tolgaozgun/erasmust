@@ -4,7 +4,7 @@ import * as React from "react";
 export interface IRoute {
     title: string,
     path: string,
-    content: string | React.ReactNode;
+    content: string | React.ReactNode,
     exact?: boolean,
     hide?: boolean,
     containParam?: boolean,

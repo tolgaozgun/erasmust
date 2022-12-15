@@ -21,7 +21,11 @@ import ViewPreapproval from "./pages/student/ViewPreapproval";
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
 import AccountAdmin from "./pages/admin/account";
+//Lists
 import StudentList from "./pages/admin/studentList";
+
+//Edits
+import StudentEdits from "./pages/admin/edits/studentEdit";
 
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
@@ -122,7 +126,7 @@ export const routeItems: Array<IRoute> = [
         title: "Preapproval Form",
         content: <Preapproval/>,
         exact: true,
-    }, ,
+    },
     {
         path: 'learningAgreement',
         title: "Learning Agreement",
@@ -150,7 +154,6 @@ export const routeItems: Array<IRoute> = [
         path: '/erasmusApplication',
         title: "Preapproval Form",
         content: <ErasmusApplicationForm/>,
-
         exact: true,
     },
     {
@@ -166,21 +169,21 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
-        path: '/accountAdmin',
-        title: "Admin Account",
-        content: <AccountAdmin/>,
-        exact: true,
-    },
-    {
         path: "/schoolList",
         title: "School List",
         content: <SchoolList/>,
         exact: true,
     },
     {
-        path: '/studentlistAdmin',
+        path: '/studentListAdmin',
         title: "Admin Account",
         content: <StudentList/>,
+        exact: true,
+    },
+    {
+        path: '/studentListAdmin/student/:id',
+        title: "Admin Account",
+        content: <StudentEdits/>,
         exact: true,
     },
     {
@@ -193,12 +196,6 @@ export const routeItems: Array<IRoute> = [
         path: '/accountAdmin',
         title: "Admin Account",
         content: <AccountAdmin/>,
-        exact: true,
-    },
-    {
-        path: '/studentlistAdmin',
-        title: "Admin Account",
-        content: <StudentList/>,
         exact: true,
     },
     {
