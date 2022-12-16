@@ -1,23 +1,30 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
-import com.bilkent.erasmus.enums.MobilityType;
-import com.bilkent.erasmus.enums.SemesterOfferings;
-import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.dtos.ReviewFormListDTO;
+import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
+import com.bilkent.erasmus.dtos.ReviewFormStudentListDTO;
+import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
+import com.bilkent.erasmus.models.enums.MobilityType;
+import com.bilkent.erasmus.models.enums.SemesterOfferings;
+import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
 import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
 import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.PartnerUniversityErasmusRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusDetailRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusRepository;
+import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Service
 @Slf4j
 public class LearningAgreementErasmusService {
@@ -34,15 +41,21 @@ public class LearningAgreementErasmusService {
 
     private final CourseBilkentService courseBilkentService;
 
+    private final OutGoingStudentErasmusRepository outGoingStudentErasmusRepository;
+
+    private final LearningAgreementMapper agreementMapper;
+
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService){
+                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository, LearningAgreementMapper agreementMapper){
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
         this.erasmusDetailRepository = erasmusDetailRepository;
         this.courseHostService = courseHostService;
         this.courseBilkentService = courseBilkentService;
+        this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
+        this.agreementMapper = agreementMapper;
     }
 
     /*private boolean notifyStudent(String studentName){
@@ -53,25 +66,35 @@ public class LearningAgreementErasmusService {
 
     }*/
 
-    private boolean cancelAgreement(LearningAgreementErasmus form){
-        form.setStatus(Status.DECLINED_BY_STUDENT);
-        return true;
+    public boolean cancelAgreement() throws Exception {
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+            LearningAgreementErasmus agreementErasmus = erasmusRepository.findByStudent_Id(starsId);
+            if (!(agreementErasmus.getStatus().equals(Status.CANCELLED))) {
+                agreementErasmus.setStatus(Status.CANCELLED);
+                erasmusRepository.save(agreementErasmus);
+                log.info("Learning agreement cancelled");
+            }
+            else {
+                log.info("Learning agreement is already cancelled");
+            }
+            return true;
     }
-
     public LearningAgreementErasmus createEmptyLearningAgreement(String academicYear, SemesterOfferings semester) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
-        form.setCurrentMobility(MobilityType.BEFORE);
         form.setStatus(Status.IN_PROCESS);
         form.setAcademicYear(academicYear);
         form.setSemester(semester);
         return erasmusRepository.save(form);
     }
 
-/*    public LearningAgreementErasmus saveForm(LearningAgreementDTO form) throws Exception {
+    public LearningAgreementErasmus saveFormBeforeMobility(LearningAgreementDTO form) throws Exception {
         LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getAcademicYear(), form.getSemester());
-        erasmusForm.setStudent(getStudentByStarsId(form.getStudentId()));
+        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(form.getStudentId());
+        erasmusForm.setCurrentMobility(MobilityType.BEFORE);
+        erasmusForm.setStudent(student);
+
         return erasmusForm;
-    }*/
+    }
 
     public List<LearningAgreementErasmus> retrieveAgreements(MobilityDetail mobility) {
 
@@ -108,9 +131,8 @@ public class LearningAgreementErasmusService {
 
     private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
         List<LearningAgreementErasmus> agreementList = null;
-        //agreementList = new ArrayList<LearningAgreementErasmus>(LearningAgreementErasmusRepository.findAllByStatus(status));
-        //agreementList.addAll(LearningAgreementErasmusRepository.findAllByStatus(status));
-
+        agreementList = new ArrayList<LearningAgreementErasmus>(erasmusRepository.findAllByCurrentMobility(type));
+        agreementList.addAll(erasmusRepository.findAllByCurrentMobility(type));
         return agreementList;
     }
 
@@ -163,6 +185,30 @@ public class LearningAgreementErasmusService {
         course.setName(name);
         course.setCreditECTS(credit);
         return courseBilkentService.save(course);
+    }
+/*
+    public List<LearningAgreementErasmus> listForCoordinator(ReviewFormListDTO filter) {
+
+    }*/
+
+    public List<LearningAgreementDTO> getAllAgreements() {
+        return agreementMapper.toLearningAgreementDTOList(erasmusRepository.findAll());
+    }
+/*
+
+    public List<LearningAgreementErasmus> listForStudent(ReviewFormStudentListDTO filter) {
+    }
+*/
+
+    public LearningAgreementDTO reviewForm(ReviewFormRequestDTO request, int formId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        LearningAgreementErasmus agreement = erasmusRepository.findByStudent_Id(auth.getName());
+        return agreementMapper.toLearningAgreementDTO(agreement);
+    }
+
+    public LearningAgreementDTO editForm(LearningAgreementDTO erasmusDTO) {
+        // to-do
+        return erasmusDTO;
     }
 }
 
