@@ -21,7 +21,6 @@ import EditIcon from '@mui/icons-material/Edit';
 export const Students = (props) => {
     const navigate = useNavigate();
     const { students } = props;
-    const [studentArray, setStudentArray] = useState(students)
     const [selectedState, setSelected] = useState(
         new Array(students.length).fill(false)
     )
@@ -35,10 +34,6 @@ export const Students = (props) => {
     const handleSelectAll = (value) => {
         const trueArray = new Array(students.length).fill(value)
         setSelected(trueArray)
-    }
-
-    const deleteStudent = (id) => {
-        setStudentArray((current) => current.filter((student) => student.id !== id)) 
     }
 
     return (
@@ -152,9 +147,7 @@ export const Students = (props) => {
                                             </IconButton>
                                         </Tooltip>
                                         <Tooltip title="Delete">
-                                            <IconButton
-                                                onClick={() => deleteStudent(student.id)}
-                                            >
+                                            <IconButton>
                                                 <DeleteIcon/>
                                             </IconButton>
                                         </Tooltip>

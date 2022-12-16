@@ -63,7 +63,7 @@ const StudentEdits = () => {
                 .max(255)
                 .required('Stars ID is required'),
             createdAt: Yup
-                .number()
+                .string()
                 .max(255)
                 .required('Password is required'),
             permission: Yup
@@ -81,11 +81,11 @@ const StudentEdits = () => {
                     .required('Stars ID is required'),
                 phoneNumberWork: Yup
                     .string()
-                    .max(255)
+                    .max(11)
                     .required('Stars ID is required'),
                 phoneNumberPersonal: Yup
                     .string()
-                    .max(255)
+                    .max(11)
                     .required('Stars ID is required'),
                 address: Yup
                     .string()
@@ -95,7 +95,7 @@ const StudentEdits = () => {
                 
         }),
         onSubmit: (values) => {
-            console.log("SA")
+            console.log(JSON.stringify(values, null, 2))
         }
     });
 
