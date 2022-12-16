@@ -33,7 +33,7 @@ const items = [
         title: "Applications",
     },
     {
-        href: "/submissionsStaff",
+        href: "/submissions",
         icon: <ImportExportOutlinedIcon fontSize="small" />,
         title: "Submissions",
     },

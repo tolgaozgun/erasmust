@@ -1,11 +1,25 @@
-import {Box, Button, Card, CardContent, Container, Grid, Typography} from '@mui/material';
-import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
-import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
-import { styled } from '@mui/material/styles';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent, Collapse,
+  Container,
+  Grid, List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText, ListSubheader,
+  Typography
+} from '@mui/material';
+import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import {styled} from '@mui/material/styles';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import ArticleIcon from '@mui/icons-material/Article';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import {ExpandLess, ExpandMore, StarBorder} from "@mui/icons-material";
 
-const DashboardLayoutRoot = styled('div')(({ theme }) => ({
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
   display: 'flex',
   flex: '1 1 auto',
   maxWidth: '100%',
@@ -16,6 +30,17 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 }));
 
 
+function InboxIcon() {
+  return null;
+}
+
+function SendIcon() {
+  return null;
+}
+
+function DraftsIcon() {
+  return null;
+}
 
 const Erasmus = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -33,136 +58,195 @@ const Erasmus = () => {
     navigate()
   }
 
-  return(
-  <>
-      <title>
-        Erasmus Program
-      </title>
-    <DashboardLayoutRoot>
-    <Box
-      component="main"
-      sx={{
-        flexGrow: 1,
-        py: 8
-      }}
-    >
-      <Container maxWidth="lg">
-        <Typography
-          sx={{ mb: 3 }}
-          variant="h4"
-        >
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  return (
+      <>
+        <title>
           Erasmus Program
+        </title>
+        <DashboardLayoutRoot>
+          <Box
+              component="main"
+              sx={{
+                flexGrow: 1,
+                py: 8
+              }}
+          >
+            <Container maxWidth="lg">
+              <Typography
+                  sx={{mb: 3}}
+                  variant="h4"
+              >
+                Erasmus Program
         </Typography>
         <Grid
           container
           spacing={3}
         >
           <Grid
-            item
-            lg={6}
-            md={8}
-            xs={12}
+              item
+              lg={6}
+              md={8}
+              xs={12}
           >
-            <Card>
-              <CardContent>
-                <Box>
-                  <Typography
-                      color="textPrimary"
-                      variant="h4"
-                  >
-                    Erasmus Application
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    View Your Erasmus Applications
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Erasmus Application Information
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Erasmus Appliaction FAQ
-                  </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "flex-end" 
-                    }}
-                  >
-                    <Button
-                    color="primary"
-                    variant="contained"
-                    type="submit" 
-                    onClick={goErasmusApplication}
-                    
-                    >
-                      Go to Erasmus Application Page
-                    </Button>
-                  </Box>
-                </Box>
-              </CardContent>
-            </Card>
+            <Typography
+                color="textPrimary"
+                variant="h6"
+            >
+              Erasmus Application
+            </Typography>
+            <List
+                sx={{width: '100%'}}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <ArticleIcon/>
+                </ListItemIcon>
+                <ListItemText primary="View Your Erasmus Applications"/>
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <HelpOutlineIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Erasmus Frequently Asked Questions"/>
+              </ListItemButton>
+            </List>
           </Grid>
           <Grid
+              item
+              lg={6}
+              md={8}
+              xs={12}
+          >
+            <Typography
+                color="textPrimary"
+                variant="h6"
+            >
+              Preapproval for Erasmus Application
+            </Typography>
+            <List
+                sx={{width: '100%'}}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+            >
+              <ListItemButton onClick={() => {
+                navigate("/preapprovals")
+              }}>
+                <ListItemIcon>
+                  <ArticleIcon/>
+                </ListItemIcon>
+                <ListItemText primary="View Your Preapproval Applications"/>
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <HelpOutlineIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Preapproval Frequently Asked Questions"/>
+              </ListItemButton>
+            </List>
+          </Grid>
+          <Grid
+              item
+              lg={6}
+              md={8}
+              xs={12}
+          >
+            <Typography
+                color="textPrimary"
+                variant="h6"
+            >
+              Learning Agreement for Erasmus Application
+            </Typography>
+            <List
+                sx={{width: '100%'}}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <ArticleIcon/>
+                </ListItemIcon>
+                <ListItemText primary="View Your Learning Agreements"/>
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <HelpOutlineIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Learning Agreement Frequently Asked Questions"/>
+              </ListItemButton>
+            </List>
+          </Grid>
+          <Grid
+              item
+              lg={6}
+              md={8}
+              xs={12}
+          >
+            <Typography
+                color="textPrimary"
+                variant="h6"
+            >
+              Course Review Forms for Erasmus Application
+            </Typography>
+            <List
+                sx={{width: '100%'}}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+            >
+              <ListItemButton onClick={() => {
+                navigate("/courseReviewForms")
+              }}>
+                <ListItemIcon>
+                  <ArticleIcon/>
+                </ListItemIcon>
+                <ListItemText primary="View Your Course Review Forms"/>
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <HelpOutlineIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Course Review Forms Frequently Asked Questions"/>
+              </ListItemButton>
+            </List>
+          </Grid><Grid
             item
             lg={6}
             md={8}
             xs={12}
+        >
+          <Typography
+              color="textPrimary"
+              variant="h6"
           >
-            <Card>
-              <CardContent>
-                <Box>
-                  <Typography
-                      color="textPrimary"
-                      variant="h4"
-                  >
-                    Preapproval
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    View Your Preapprovals
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Preapproval Information
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Preapproval FAQ
-                  </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "flex-end" 
-                    }}
-                  >
-                    <Button
-                    color="primary"
-                    variant="contained"
-                    type="submit" 
-                    onClick={goPreapproval}
-                    
-                    >
-                      Go to Preapproval Page
-                    </Button>
-                  </Box>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
+            Course Tranfer Forms for Erasmus Application
+          </Typography>
+          <List
+              sx={{width: '100%'}}
+              component="nav"
+              aria-labelledby="nested-list-subheader"
+          >
+            <ListItemButton onClick={() => {
+            }}>
+              <ListItemIcon>
+                <ArticleIcon/>
+              </ListItemIcon>
+              <ListItemText primary="View Your Course Transfer Forms"/>
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <HelpOutlineIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Course Transfer Forms Frequently Asked Questions"/>
+            </ListItemButton>
+          </List>
+        </Grid>
         </Grid>
       </Container>
     </Box>
