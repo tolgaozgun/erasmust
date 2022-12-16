@@ -2,11 +2,11 @@ package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
+import com.bilkent.erasmus.enums.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
-import com.bilkent.erasmus.enums.MobilityType;
-import com.bilkent.erasmus.enums.SemesterOfferings;
-import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormErasmus;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
+import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.MobilityCourseForm;
 import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
@@ -15,6 +15,7 @@ import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.PartnerUniversityErasmusRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusDetailRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusRepository;
+import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -22,6 +23,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 @Service
 @Slf4j
@@ -43,9 +45,13 @@ public class LearningAgreementErasmusService {
 
     private final LearningAgreementMapper agreementMapper;
 
+    private final PreApprovalFormErasmusRepository preApprovalFormErasmusRepository;
+
+    private final MobilityCourseFormService mobilityCourseFormService;
+
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository, LearningAgreementMapper agreementMapper){
+                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository, LearningAgreementMapper agreementMapper, PreApprovalFormErasmusRepository preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
@@ -54,6 +60,8 @@ public class LearningAgreementErasmusService {
         this.courseBilkentService = courseBilkentService;
         this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
         this.agreementMapper = agreementMapper;
+        this.preApprovalFormErasmusRepository = preApprovalFormErasmusRepository;
+        this.mobilityCourseFormService = mobilityCourseFormService;
     }
 
     /*private boolean notifyStudent(String studentName){
@@ -77,18 +85,31 @@ public class LearningAgreementErasmusService {
         }
         return true;
     }
-    public LearningAgreementErasmus createEmptyLearningAgreement(String academicYear, SemesterOfferings semester) {
+
+    public LearningAgreementErasmus createEmptyLearningAgreement(String subjectArea, String studyCycle, LanguageLevel languageLevel, String language) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
+        OutGoingStudentErasmus student = form.getStudent();
+        PreApprovalFormErasmus preApprovalFormErasmus = findPreApprovalById(student);
+        MobilityDetail mobility = new MobilityDetail();
+
+        mobility.setMobilityType(MobilityType.BEFORE);
+        mobility.setStartDate(new Date());
+
         form.setStatus(Status.IN_PROCESS);
-        form.setAcademicYear(academicYear);
-        form.setSemester(semester);
+        form.setMobilityDetail(mobility);
+        form.setSubjectArea(subjectArea);
+        form.setStudyCycle(studyCycle);
+        form.setLanguage(language);
+        form.setLanguageLevel(languageLevel);
+
+        // getting preapproved courses, academic year, semester from preapproval form
+
         return erasmusRepository.save(form);
     }
 
-    public LearningAgreementErasmus saveFormBeforeMobility(LearningAgreementDTO form) throws Exception {
-        LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getAcademicYear(), form.getSemester());
+    public LearningAgreementErasmus saveForm(LearningAgreementDTO form) throws Exception {
+        LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage());
         OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(form.getStudentId());
-        erasmusForm.setCurrentMobility(MobilityType.BEFORE);
         erasmusForm.setStudent(student);
 
         return erasmusForm;
@@ -137,12 +158,7 @@ public class LearningAgreementErasmusService {
     private List<CourseHost> saveAllHostCourses(List<String> courseNames, List<Double> credits) {
         List<CourseHost> courseHosts = new ArrayList<>();
         for (int i = 0; i < courseNames.size(); i++) {
-            courseHosts.add(
-                    saveCourseHost(
-                            courseNames.get(i),
-                            credits.get(i)
-                    )
-            );
+            courseHosts.add(saveCourseHost(courseNames.get(i), credits.get(i)));
         }
         return courseHosts;
     }
@@ -151,52 +167,122 @@ public class LearningAgreementErasmusService {
         List<CourseBilkent> courses = new ArrayList<>();
         for (int i = 0; i < courseNames.size(); i++) {
             courses.add(
-                    saveCourseBilkent(
-                            courseNames.get(i),
-                            credits.get(i)
-                    )
-            );
+                    saveCourseBilkent(courseNames.get(i), credits.get(i)));
         }
         return courses;
     }
 
-/*    private void createMappingObject(LearningAgreementErasmus erasmusForm,
-                                     List<CourseReviewForm> reviewForms, int studentId) {
-        for (CourseReviewForm form : reviewForms) {
-            LearningAgreementErasmusDetail formErasmusDetail = new LearningAgreementErasmusDetail();
-            formErasmusDetail.setLearningAgreement(erasmusForm);
-            formErasmusDetail.setReviewForm(form);
-            formErasmusDetail.setCoordinatorStudent(coordinatorStudentErasmusRepository.findByStudent_Id(studentId));
-            erasmusDetailRepository.save(formErasmusDetail);
-        }
-    }*/
-
-    private CourseHost saveCourseHost(String name, double credit) {
-        CourseHost course = new CourseHost();
-        course.setName(name);
-        course.setCreditECTS(credit);
-        return courseHostService.save(course);
-    }
-
+    // saving bilkent courses
     private CourseBilkent saveCourseBilkent(String name, double credit){
         CourseBilkent course = new CourseBilkent();
         course.setName(name);
         course.setCreditECTS(credit);
         return courseBilkentService.save(course);
     }
-/*
-    public List<LearningAgreementErasmus> listForCoordinator(ReviewFormListDTO filter) {
 
-    }*/
+    private MobilityCourseForm saveCourseBilkentBefore(String name, double credit) {
+        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+        CourseBilkent course = new CourseBilkent();
+        MobilityDetail mobilityDetail = new MobilityDetail();
+        mobilityDetail.setMobilityType(MobilityType.BEFORE);
+
+        course.setName(name);
+        course.setCreditECTS(credit);
+        mobilityCourseForm.setCourseBilkent(course);
+        mobilityCourseForm.setMobility(mobilityDetail);
+
+        return mobilityCourseFormService.save(mobilityCourseForm);
+    }
+
+    private MobilityCourseForm saveCourseBilkentDuring(String name, double credit, boolean isAdded, String reason) {
+        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+        CourseBilkent course = new CourseBilkent();
+        MobilityDetail mobilityDetail = new MobilityDetail();
+        mobilityDetail.setMobilityType(MobilityType.DURING);
+
+        course.setName(name);
+        course.setCreditECTS(credit);
+        mobilityCourseForm.setCourseBilkent(course);
+        mobilityCourseForm.setMobility(mobilityDetail);
+        mobilityCourseForm.setChanged(isAdded);
+        mobilityCourseForm.setReasonOfChange(reason);
+
+        return mobilityCourseFormService.save(mobilityCourseForm);
+    }
+
+    private MobilityCourseForm saveCourseBilkentAfter(String name, double credit, boolean wasCompleted, LetterGrade grade) {
+        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+        CourseBilkent course = new CourseBilkent();
+        MobilityDetail mobilityDetail = new MobilityDetail();
+        mobilityDetail.setMobilityType(MobilityType.AFTER);
+
+        course.setName(name);
+        course.setCreditECTS(credit);
+        mobilityCourseForm.setCourseBilkent(course);
+        mobilityCourseForm.setMobility(mobilityDetail);
+        mobilityCourseForm.setWasCompleted(wasCompleted);
+        mobilityCourseForm.setGrade(grade);
+
+        return mobilityCourseFormService.save(mobilityCourseForm);
+    }
+
+    // saving host courses
+    private CourseHost saveCourseHost(String name, double credit){
+        CourseHost course = new CourseHost();
+        course.setName(name);
+        course.setCreditECTS(credit);
+        return courseHostService.save(course);
+    }
+
+    private MobilityCourseForm saveCourseHostBefore(String name, double credit) {
+        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+        CourseHost course = new CourseHost();
+        MobilityDetail mobilityDetail = new MobilityDetail();
+        mobilityDetail.setMobilityType(MobilityType.BEFORE);
+
+        course.setName(name);
+        course.setCreditECTS(credit);
+        mobilityCourseForm.setCourseHost(course);
+        mobilityCourseForm.setMobility(mobilityDetail);
+
+        return mobilityCourseFormService.save(mobilityCourseForm);
+    }
+
+    private MobilityCourseForm saveCourseHostDuring(String name, double credit, boolean isAdded, String reason) {
+        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+        CourseHost course = new CourseHost();
+        MobilityDetail mobilityDetail = new MobilityDetail();
+        mobilityDetail.setMobilityType(MobilityType.DURING);
+
+        course.setName(name);
+        course.setCreditECTS(credit);
+        mobilityCourseForm.setCourseHost(course);
+        mobilityCourseForm.setMobility(mobilityDetail);
+        mobilityCourseForm.setChanged(isAdded);
+        mobilityCourseForm.setReasonOfChange(reason);
+
+        return mobilityCourseFormService.save(mobilityCourseForm);
+    }
+
+    private MobilityCourseForm saveCourseHostAfter(String name, double credit, boolean wasCompleted, LetterGrade grade) {
+        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+        CourseHost course = new CourseHost();
+        MobilityDetail mobilityDetail = new MobilityDetail();
+        mobilityDetail.setMobilityType(MobilityType.AFTER);
+
+        course.setName(name);
+        course.setCreditECTS(credit);
+        mobilityCourseForm.setCourseHost(course);
+        mobilityCourseForm.setMobility(mobilityDetail);
+        mobilityCourseForm.setWasCompleted(wasCompleted);
+        mobilityCourseForm.setGrade(grade);
+
+        return mobilityCourseFormService.save(mobilityCourseForm);
+    }
 
     public List<LearningAgreementDTO> getAllAgreements() {
         return agreementMapper.toLearningAgreementDTOList(erasmusRepository.findAll());
     }
-/*
-
-    public List<LearningAgreementErasmus> listForStudent(ReviewFormStudentListDTO filter) {
-    }
-*/
 
     public LearningAgreementDTO reviewForm(ReviewFormRequestDTO request, int formId) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -207,6 +293,33 @@ public class LearningAgreementErasmusService {
     public LearningAgreementDTO editForm(LearningAgreementDTO erasmusDTO) {
         // to-do
         return erasmusDTO;
+    }
+
+    public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds){
+        List<CourseBilkent> courseBilkentList = new ArrayList<CourseBilkent>();
+
+        for( int i = 0; i < courseBilkentIds.size(); i++){
+            courseBilkentList.get(i).setId(courseBilkentIds.get(i));
+        }
+        return courseBilkentList;
+    }
+
+    public List<CourseHost> getHostCourseList(List<String> courseHostNames, List<Double> courseHostCredits){
+        List<CourseHost> courseHostList = new ArrayList<CourseHost>();
+
+        for( int i = 0; i < courseHostNames.size(); i++){
+            courseHostList.get(i).setName(courseHostNames.get(i));
+            courseHostList.get(i).setCreditECTS(courseHostCredits.get(i));
+        }
+        return courseHostList;
+    }
+
+    public PreApprovalFormErasmus findPreApprovalById(OutGoingStudentErasmus student){
+        PreApprovalFormErasmus preApprovalForm = preApprovalFormErasmusRepository.findByStudentId(student.getStarsId());
+        if (preApprovalForm != null)
+            return preApprovalForm;
+        else
+            return null;
     }
 }
 

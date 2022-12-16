@@ -23,25 +23,13 @@ public class LearningAgreementErasmusController {
 
     @PostMapping("/create")
     public ResponseEntity<?> sendLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO) throws Exception {
-        return new ResponseEntity<>(erasmusService.saveFormBeforeMobility(learningAgreementDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(erasmusService.saveForm(learningAgreementDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/retrieve-by-type")
     public ResponseEntity<?> retrieveLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO, @RequestBody MobilityDetail mobility) throws Exception {
     return new ResponseEntity(erasmusService.retrieveAgreements(mobility), HttpStatus.ACCEPTED);
     }
-/*
-
-    @GetMapping("coordinator/list")
-    public ResponseEntity<?> getAllLearningAgreements(@RequestBody ReviewFormListDTO filter) {
-        return new ResponseEntity<>(erasmusService.listForCoordinator(filter), HttpStatus.FOUND);
-    }
-
-    @GetMapping("student/{id}/list")
-    public ResponseEntity<?> getAllStudentReviewForms(@PathVariable int id, @RequestBody ReviewFormStudentListDTO filter) {
-        return new ResponseEntity<>(erasmusService.listForStudent(filter), HttpStatus.FOUND);
-    }
-*/
 
     @PostMapping("/review/{formId}")
     public ResponseEntity<?> reviewForm(@RequestBody ReviewFormRequestDTO request, @PathVariable int formId) throws Exception {
@@ -49,18 +37,20 @@ public class LearningAgreementErasmusController {
     }
 
         @PatchMapping("/edit")
-    public ResponseEntity<?> editErasmusApplication(@RequestBody LearningAgreementDTO erasmusDTO) throws Exception {
+    public ResponseEntity<?> editAgreement(@RequestBody LearningAgreementDTO erasmusDTO) throws Exception {
         return new ResponseEntity<>(erasmusService.editForm(erasmusDTO), HttpStatus.OK);
     }
 
     @PostMapping("/cancel")
-    public ResponseEntity<?> cancelErasmusApplication() throws Exception {
+    public ResponseEntity<?> cancelAgreement() throws Exception {
         erasmusService.cancelAgreement();
         return new ResponseEntity<>("Application cancelled", HttpStatus.OK);
     }
 
     @GetMapping("/all-applications")
-    public ResponseEntity<?> viewAllApplications(){
+    public ResponseEntity<?> viewAllAgreements(){
         return new ResponseEntity<>(erasmusService.getAllAgreements(), HttpStatus.OK);
     }
+
+    //edit
 }
