@@ -32,11 +32,13 @@ const Login = () => {
                 .required('Password is required')
         }),
         onSubmit: async (values, formikHelpers) => {
-            await axios.post("http://92.205.25.135:4/auth/login", values)
+            await axios.post("http://localhost:8080/auth/login", values)
                 .then((response) => {
                     if (response && response.data) {
-                        const jwtToken = response.data
+                        const jwtToken = response.data["token"]
+                        const role = response.data["role"]
                         sessionStorage.setItem("jwtToken", jwtToken)
+                        sessionStorage.setItem("role", role)
                         navigate('/dashboardStudent')
                     }
                 })

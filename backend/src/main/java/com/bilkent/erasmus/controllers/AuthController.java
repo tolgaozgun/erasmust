@@ -5,6 +5,7 @@ import com.bilkent.erasmus.dtos.RegisterDTO;
 import com.bilkent.erasmus.embeddables.ContactInformation;
 import com.bilkent.erasmus.models.enums.RoleBasedPermission;
 import com.bilkent.erasmus.models.userModels.User;
+import com.bilkent.erasmus.repositories.UserRepository;
 import com.bilkent.erasmus.security.JwtTokenProvider;
 import com.bilkent.erasmus.services.UserService;
 import org.springframework.http.HttpStatus;
@@ -13,23 +14,27 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
+    private final UserRepository userRepository;
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;
     private PasswordEncoder passwordEncoder;
     private UserService userService;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, PasswordEncoder passwordEncoder, UserService userService) {
+    public AuthController(UserRepository userRepository, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, PasswordEncoder passwordEncoder, UserService userService) {
+        this.userRepository = userRepository;
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;
@@ -37,13 +42,24 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginDTO login) {
+    public Map<String, String> login(@RequestBody LoginDTO login) {
+        Map<String, String> returnMap = new HashMap<>();
+        String starsId = login.getStarsId();
+
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(login.getStarsId(), login.getPassword());
+                new UsernamePasswordAuthenticationToken(starsId, login.getPassword());
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwtToken = jwtTokenProvider.generateJwtToken(authentication);
-        return "Bearer " + jwtToken;
+
+        User user = userRepository.findUserByStarsId(starsId);
+        RoleBasedPermission role = user.getPermission();
+        String roleName = role.getRoleName();
+
+        returnMap.put("role", roleName);
+        returnMap.put("token", "Bearer " + jwtToken);
+
+        return returnMap;
     }
 
     @PostMapping("/register")
