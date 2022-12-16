@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../components/componentsAdmin/dashboard-navbar";
-import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Students} from "../../components/componentsAdmin/lists/students";
-import axios from 'axios';
-import { parseJSON } from 'date-fns';
+import {Students} from "../../../components/componentsAdmin/lists/students";
+
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -17,59 +16,13 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const studentList = [
-    {
-        id: 1,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-    {
-        id: 2,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-    {
-        id: 3,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-];
-
-const StudentList = () => {
+const StudentEdits = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
-    const token = sessionStorage.getItem("jwtToken");
-    
-    useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-students", {
-            headers: {
-                "Authorization": token
-            }
-        })
-            .then((res) => {
-                if (res) {
-                    console.log(res)
-                }
-            })
-            .catch((err) => {
-                if (err && err.response) {
-                    console.log("Error: ", err)
-                }
-            })
-    }, []);
-
-    
-    
-
     return (
-        <>  <title>
-                Students
+        <>  
+            <title>
+                Student
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -104,9 +57,6 @@ const StudentList = () => {
                                     display: "flex"
                                 }}
                             >
-                                <Students
-                                    students = {studentList}
-                                />
                             </Grid>
                         </Grid>
                     </Container>
@@ -120,4 +70,4 @@ const StudentList = () => {
     );
 }
 
-export default StudentList
+export default StudentEdits

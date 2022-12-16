@@ -25,7 +25,11 @@ import CourseReviewForms from "./pages/student/CourseReviewForms";
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
 import AccountAdmin from "./pages/admin/account";
+//Lists
 import StudentList from "./pages/admin/studentList";
+
+//Edits
+import StudentEdits from "./pages/admin/edits/studentEdit";
 
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
@@ -131,24 +135,24 @@ export const routeItems: Array<IRoute> = [
         content: <Preapproval/>,
         exact: true,
     },
-    // {
-    //     path: 'learningAgreement/beforeMobility',
-    //     title: "Learning Agreement",
-    //     content: <BeforeMobility/>,
-    //     exact: true,
-    // },
-    // {
-    //     path: 'learningAgreement/duringMobility',
-    //     title: "Learning Agreement",
-    //     content: <DuringMobility/>,
-    //     exact: true,
-    // },
-    // {
-    //     path: 'learningAgreement/afterMobility',
-    //     title: "Learning Agreement",
-    //     content: <AfterMobility/>,
-    //     exact: true,
-    // },
+    {
+        path: 'learningAgreement/beforeMobility',
+        title: "Learning Agreement",
+        content: <BeforeMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/duringMobility',
+        title: "Learning Agreement",
+        content: <DuringMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/afterMobility',
+        title: "Learning Agreement",
+        content: <AfterMobility/>,
+        exact: true,
+    },
     {
         path: '/viewPreapproval',
         title: "Preapproval Form",
@@ -216,21 +220,21 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
-        path: '/accountAdmin',
-        title: "Admin Account",
-        content: <AccountAdmin/>,
-        exact: true,
-    },
-    {
         path: "/schoolList",
         title: "School List",
         content: <SchoolList/>,
         exact: true,
     },
     {
-        path: '/studentlistAdmin',
+        path: '/studentListAdmin',
         title: "Admin Account",
         content: <StudentList/>,
+        exact: true,
+    },
+    {
+        path: '/studentListAdmin/student/:id',
+        title: "Admin Account",
+        content: <StudentEdits/>,
         exact: true,
     },
     {
@@ -287,8 +291,6 @@ export const routeItems: Array<IRoute> = [
         content: <Navigate to='/splash' />,
         exact: true,
     },
-
-    //
     {
         path: '/exchangeFaq',
         title: "Exchange FAQ",
