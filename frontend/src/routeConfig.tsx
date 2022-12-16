@@ -20,6 +20,8 @@ import CTForm from "./pages/student/courseTransferForm";
 import ViewPreapproval from "./pages/student/ViewPreapproval"
 import ViewErasmusApplication from "./pages/student/ViewErasmusApplication"
 import CourseReviewForm from "./pages/student/courseReviewForm"
+import StaffCourseReviewForm from "./pages/student/StaffCourseReviewForm"
+import StaffPreapprovalForm from "./pages/student/StaffPreapprovalForm"
 import CourseReviewForms from "./pages/student/CourseReviewForms";
 
 //Admin Pages
@@ -201,6 +203,18 @@ export const routeItems: Array<IRoute> = [
         path: '/courseReviewForm',
         title: "Course Review Form",
         content: <CourseReviewForm/>,
+        exact: true,
+    },
+    {
+        path: '/StaffCourseReviewForm',
+        title: "Staff Course Review Form",
+        content: <StaffCourseReviewForm/>,
+        exact: true,
+    },
+    {
+        path: '/StaffPreapprovalForm',
+        title: "Staff Preapproval Form",
+        content: <StaffPreapprovalForm/>,
         exact: true,
     },
     {
