@@ -15,6 +15,10 @@ public interface ApplicationErasmusRepository extends JpaRepository<ApplicationE
     List<ApplicationErasmus> findAllByStatusOrderByStudent_ErasmusPointDesc(Status status);
     List<ApplicationErasmus> findAllByStatusOrderByStudent_ErasmusPointAsc(Status status);
     Optional<ApplicationErasmus> findByStudent_StarsId(String starsId);
+    List<ApplicationErasmus> findAllByStudent_StarsId(String starsId);
+    List<ApplicationErasmus> findAllByCoordinator_StarsId(String starsId);
+    List<ApplicationErasmus> findAllByCoordinator_StarsIdAndStatus(String starsId, Status status);
+    List<ApplicationErasmus> findAllByStudent_StarsIdAndStatus(String starsId, Status status);
 
 
 }
