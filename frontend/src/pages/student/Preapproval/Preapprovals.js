@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../components/componentsStudent/dashboard-navbar";
-import {DashboardSidebar} from "../../components/componentsStudent/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {PreapprovalsList} from "../../components/componentsStudent/dashboard/preapprovals-list";
+import {PreapprovalsList} from "../../../components/componentsStudent/dashboard/preapprovals-list";
 
 
-const DashboardLayoutRoot = styled('div')(({ theme }) => ({
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
     flex: '1 1 auto',
     maxWidth: '100%',

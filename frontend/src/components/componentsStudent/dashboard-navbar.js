@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { AppBar, Avatar, Badge, Box, IconButton, Toolbar, Tooltip } from '@mui/material';
+import {AppBar, Autocomplete, Avatar, Badge, Box, IconButton, TextField, Toolbar, Tooltip} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Bell as BellIcon } from '../../icons/bell';
@@ -9,26 +9,40 @@ import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
 import { Users as UsersIcon } from '../../icons/users';
 import { AccountPopover } from './account-popover';
 import React from 'react';
+import {routeItems} from "../../routeConfig.tsx"
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   boxShadow: theme.shadows[3]
 }));
 
-export const DashboardNavbar = (props) => {
-  const { onSidebarOpen, ...other } = props;
-  const settingsRef = useRef(null);
-  const [openAccountPopover, setOpenAccountPopover] = useState(false);
 
-  return (
-    <>
-      <DashboardNavbarRoot
-        sx={{
-          left: {
-            lg: 280
-          },
-          width: {
-            lg: 'calc(100% - 280px)'
+export const DashboardNavbar = (props) => {
+    const {onSidebarOpen, ...other} = props;
+    const settingsRef = useRef(null);
+    const [openAccountPopover, setOpenAccountPopover] = useState(false);
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        let retrieved = routeItems.map((item, index) => (
+            {
+                key: index,
+                label: item.title,
+                path: item.path
+            }
+        ))
+        setItems(retrieved)
+    }, [])
+
+    return (
+        <>
+            <DashboardNavbarRoot
+                sx={{
+                    left: {
+                        lg: 280
+                    },
+                    width: {
+                        lg: 'calc(100% - 280px)'
           }
         }}
         {...other}>
@@ -41,22 +55,27 @@ export const DashboardNavbar = (props) => {
           }}
         >
           <IconButton
-            onClick={onSidebarOpen}
-            sx={{
-              display: {
-                xs: 'inline-flex',
-                lg: 'none'
-              }
-            }}
+              onClick={onSidebarOpen}
+              sx={{
+                  display: {
+                      xs: 'inline-flex',
+                      lg: 'none'
+                  }
+              }}
           >
-            <MenuIcon fontSize="small" />
+              <MenuIcon fontSize="small"/>
           </IconButton>
-          <Tooltip title="Search">
-            <IconButton sx={{ ml: 1 }}>
-              <SearchIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-          <Box sx={{ flexGrow: 1 }} />
+            <Tooltip title="Search">
+                <Autocomplete
+                    disablePortal
+                    id="search-bar"
+                    options={items}
+                    sx={{width: 300}}
+                    renderInput={(params) => <TextField {...params} label="Search"/>}
+                />
+                {/*<SearchIcon fontSize="small" />*/}
+            </Tooltip>
+            <Box sx={{flexGrow: 1}}/>
           <Tooltip title="Contacts">
             <IconButton sx={{ ml: 1 }}>
               <UsersIcon fontSize="small" />

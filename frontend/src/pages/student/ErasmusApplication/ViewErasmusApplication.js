@@ -1,25 +1,21 @@
 import {
-    Box, Button,
+    Box,
     Container,
     Grid,
-    Step, StepButton,
-    StepConnector,
-    stepConnectorClasses,
-    StepLabel,
-    Stepper,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
-import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
+import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
 import {
     FormSemesterInfo
-} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
-import {FormSchoolInfo} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
+} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
+import {
+    FormSchoolInfo
+} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
 
-import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
-import {Check} from "@mui/icons-material";
+import {ViewStudentInfo} from "../../../components/componentsStudent/info/view-student-info";
+import {styled} from "@mui/material/styles";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -31,15 +27,12 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-
 const ViewErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-
-
     return (
         <>
             <title>
-                Erasmus Application
+                View Erasmus Application
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -55,21 +48,25 @@ const ViewErasmusApplication = () => {
                             align="center"
                             variant="h4"
                         >
-                            Erasmus Application
+                            View Erasmus Application
                         </Typography>
+
                         <Grid
                             container
                             spacing={3}
                         >
+
                             <Grid
                                 item
                                 lg={12}
                                 md={12}
                                 xs={24}
                             >
-                                <FormStudentInfo editable={false}/>
-                                <FormSemesterInfo editable={false}/>
-                                <FormSchoolInfo editable={false}/>
+
+                                <ViewStudentInfo/>
+                                <FormSemesterInfo/>
+                                <FormSchoolInfo/>
+
                             </Grid>
                         </Grid>
                     </Container>

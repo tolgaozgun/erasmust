@@ -9,11 +9,15 @@ import {
     Stepper,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
-import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
-import {FormExchangeInfo} from '../../components/componentsStudent/forms/exchange/form-exchange-info';
-import {FormCourseInfo} from '../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
+import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
+import {FormStudentInfo} from '../../../components/componentsStudent/forms/form-student-info';
+import {
+    FormSemesterInfo
+} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
+import {
+    FormSchoolInfo
+} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
 
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
@@ -76,7 +80,7 @@ const QontoStepIconRoot = styled('div')(
 );
 
 
-const Preapproval = () => {
+const ErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [activeStep, setActiveStep] = useState(0)
     const [stepCompleted, setStepCompleted] = useState([
@@ -86,7 +90,7 @@ const Preapproval = () => {
         false, false, false
     ])
 
-    const courses = require('../../lessons.json');
+    const schools = require('../../../erasmus-schools.json');
 
     const handleStep = (step, state) => {
         switch (state) {
@@ -165,12 +169,12 @@ const Preapproval = () => {
     }
 
 
-    const steps = ['Student Information', 'Program Information', 'Courses'];
+    const steps = ['Student Information', 'Time Information', 'Schools'];
 
     return (
         <>
             <title>
-                Preapproval Form
+                Erasmus Application
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -186,7 +190,7 @@ const Preapproval = () => {
                             align="center"
                             variant="h4"
                         >
-                            Preapproval Form
+                            Erasmus Application
                         </Typography>
 
                         <Stepper nonLinear alternativeLabel activeStep={activeStep} connector={<QontoConnector/>}>
@@ -214,8 +218,8 @@ const Preapproval = () => {
 
 
                                 <FormStudentInfo hidden={activeStep !== 0} step={0} handleStep={handleFirstStep}/>
-                                <FormExchangeInfo hidden={activeStep !== 1} step={1} handleStep={handleSecondStep}/>
-                                <FormCourseInfo courses={courses} hidden={activeStep !== 2} step={2}
+                                <FormSemesterInfo hidden={activeStep !== 1} step={1} handleStep={handleSecondStep}/>
+                                <FormSchoolInfo schools={schools} hidden={activeStep !== 2} step={2}
                                                 handleStep={handleThirdStep}/>
 
                                 <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
@@ -250,4 +254,4 @@ const Preapproval = () => {
     );
 };
 
-export default Preapproval;
+export default ErasmusApplication;

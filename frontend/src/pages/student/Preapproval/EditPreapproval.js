@@ -9,11 +9,11 @@ import {
     Stepper,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
-import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
-import {FormExchangeInfo} from '../../components/componentsStudent/forms/exchange/form-exchange-info';
-import {FormCourseInfo} from '../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
+import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
+import {FormStudentInfo} from '../../../components/componentsStudent/forms/form-student-info';
+import {FormExchangeInfo} from '../../../components/componentsStudent/forms/exchange/form-exchange-info';
+import {FormCourseInfo} from '../../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
 
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
@@ -29,13 +29,13 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const ViewPreapproval = () => {
+const EditPreapproval = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     return (
         <>
             <title>
-                View Preapproval
+                Edit Preapproval
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -51,7 +51,7 @@ const ViewPreapproval = () => {
                             align="center"
                             variant="h4"
                         >
-                            Preapproval Form
+                            Edit Preapproval Form
                         </Typography>
 
                         <Grid
@@ -66,9 +66,9 @@ const ViewPreapproval = () => {
                                 xs={24}
                             >
 
-                                <FormStudentInfo editable={false}/>
-                                <FormExchangeInfo editable={false}/>
-                                <FormCourseInfo editable={false}/>
+                                <FormStudentInfo editable={true}/>
+                                <FormExchangeInfo editable={true}/>
+                                <FormCourseInfo editable={true}/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -82,4 +82,4 @@ const ViewPreapproval = () => {
     );
 };
 
-export default ViewPreapproval;
+export default EditPreapproval;

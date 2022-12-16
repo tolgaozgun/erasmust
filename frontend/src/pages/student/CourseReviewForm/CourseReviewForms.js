@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../components/componentsStudent/dashboard-navbar";
-import {DashboardSidebar} from "../../components/componentsStudent/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import CourseReviewList from "../../components/componentsStudent/dashboard/course-review-forms";
+import CourseReviewList from "../../../components/componentsStudent/dashboard/course-review-forms";
 
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
