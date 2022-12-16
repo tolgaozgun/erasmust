@@ -46,9 +46,9 @@ const StudentList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     const token = sessionStorage.getItem("jwtToken");
-
-    const sendRequest = async () => {
-        await axios.get("http://92.205.25.135:4/admin/all-students", {
+    
+    useEffect(() => {
+        axios.get("http://92.205.25.135:4/admin/all-students", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -64,31 +64,13 @@ const StudentList = () => {
                     console.log("Error: ", err)
                 }
             })
-    }
-
-    // useEffect(() => {
-    //     axios.get("http://92.205.25.135:4/admin/all-students", {
-    //         headers: {
-    //             "Authorization": token
-    //         }
-    //     })
-    //         .then((res) => {
-    //             if (res) {
-    //                 console.log(res)
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             if (err && err.response) {
-    //                 console.log("Error: ", err)
-    //             }
-    //         })
-    // }, []);
+    }, []);
 
 
     return (
         <>  <title>
-            Students
-        </title>
+                Students
+            </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
