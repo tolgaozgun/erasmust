@@ -9,11 +9,12 @@ import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
 import { Users as UsersIcon } from '../../icons/users';
 import { AccountPopover } from './account-popover';
 import React from 'react';
+import DashboardNavbarComp from "./dashboard-navbar-comp";
 import {routeItems} from "../../routeConfig.tsx"
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.shadows[3]
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[3],
 }));
 
 
@@ -117,5 +118,5 @@ export const DashboardNavbar = (props) => {
 };
 
 DashboardNavbar.propTypes = {
-  onSidebarOpen: PropTypes.func
+    onSidebarOpen: PropTypes.func,
 };

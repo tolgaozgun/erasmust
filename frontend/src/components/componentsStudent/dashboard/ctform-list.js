@@ -17,69 +17,72 @@ import {
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { SeverityPill } from "../severity-pill";
 
-const preapprovals = [
+const CTForms = [
     {
         id: 1,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
         student: {
-            id: 4,
+            id: 10,
             name: "Tolga Özgün",
         },
         assignee: {
             id: 5,
             name: "Can Alkan",
         },
-        studentId: 4,
         academicYear: "2022-2023",
-        semester: "FALL",
+        semester: "Fall",
         createdAt: 1555016400000,
         status: "approved",
     },
     {
         id: 2,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
         student: {
-            id: 4,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Can Alkan",
-        },
-        studentId: 4,
-        academicYear: "2022-2023",
-        semester: "FALL",
-        createdAt: 1555016400000,
-        status: "success",
-    },
-    {
-        id: 3,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
-        student: {
-            id: 4,
+            id: 10,
             name: "Tolga Özgün",
         },
         assignee: {
             id: 5,
             name: "Ayşegül Dündar",
         },
-        studentId: 4,
         academicYear: "2022-2023",
-        semester: "FALL",
+        semester: "Fall",
         createdAt: 1555016400000,
-        status: "approved",
+        status: "warning",
+    },
+    {
+        id: 3,
+        student: {
+            id: 10,
+            name: "Tolga Özgün",
+        },
+        assignee: {
+            id: 5,
+            name: "Ayşegül Dündar",
+        },
+        academicYear: "2022-2023",
+        semester: "Fall",
+        createdAt: 1555016400000,
+        status: "error",
+    },
+    {
+        id: 4,
+        student: {
+            id: 10,
+            name: "Tolga Özgün",
+        },
+        assignee: {
+            id: 5,
+            name: "Can Alkan",
+        },
+        academicYear: "2022-2023",
+        semester: "Fall",
+        createdAt: 1555016400000,
+        status: "disapproved",
     },
 ];
 
-export const PreapprovalsList = (props) => (
+export const CTFormList = (props) => (
     <Card {...props}>
-        <CardHeader title="Ongoing Preapprovals" />
+        <CardHeader title="Ongoing Course Transfer Forms" />
         <PerfectScrollbar>
             <Box
                 sx={{
@@ -90,7 +93,7 @@ export const PreapprovalsList = (props) => (
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Preapproval ID</TableCell>
+                            <TableCell>Course Transfer Form ID</TableCell>
                             <TableCell>Student Name</TableCell>
                             <TableCell sortDirection="desc">
                                 <Tooltip enterDelay={300} title="Sort">
@@ -110,34 +113,25 @@ export const PreapprovalsList = (props) => (
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {preapprovals.map((preapproval) => (
-                            <TableRow hover key={preapproval.id}>
-                                <TableCell>{preapproval.id}</TableCell>
+                        {CTForms.map((CTForm) => (
+                            <TableRow hover key={CTForm.id}>
+                                <TableCell>{CTForm.id}</TableCell>
+                                <TableCell>{CTForm.student.name}</TableCell>
                                 <TableCell>
-                                    {preapproval.student.name}
+                                    {format(CTForm.createdAt, "dd/MM/yyyy")}
                                 </TableCell>
-                                <TableCell>
-                                    {format(
-                                        preapproval.createdAt,
-                                        "dd/MM/yyyy"
-                                    )}
-                                </TableCell>
-                                <TableCell>
-                                    {preapproval.assignee.name}
-                                </TableCell>
+                                <TableCell>{CTForm.assignee.name}</TableCell>
                                 <TableCell>
                                     <SeverityPill
                                         color={
-                                            (preapproval.status ===
-                                                "approved" &&
+                                            (CTForm.status === "approved" &&
                                                 "success") ||
-                                            (preapproval.status ===
-                                                "disapproved" &&
+                                            (CTForm.status === "disapproved" &&
                                                 "error") ||
                                             "warning"
                                         }
                                     >
-                                        {preapproval.status}
+                                        {CTForm.status}
                                     </SeverityPill>
                                 </TableCell>
                             </TableRow>
