@@ -19,6 +19,82 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 const StudentEdits = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
+    const formik = useFormik({
+        initialValues: {
+            id: student.id,
+            firstName: student.firstName ? student.firstName : "",
+            lastName: student.lastName ? student.lastName : "",
+            password: student.password ? student.password : "",
+            starsId: student.starsId ? student.starsId : "",
+            createdAt: student.createdAt ? student.createdAt : "",
+            permission: student.permission ? student.permission : "",
+            contactInformation:
+            {
+                emailUniversity: student.contactInformation.emailUniversity ? student.contactInformation.emailUniversity : "",
+                emailPersonal: student.contactInformation.emailPersonal ? student.contactInformation.emailPersonal : "",
+                phoneNumberWork: student.contactInformation.phoneNumberWork ? student.contactInformation.phoneNumberWork : "",
+                phoneNumberPersonal: student.contactInformation.phoneNumberPersonal ? student.contactInformation.phoneNumberPersonal : "",
+                address: student.contactInformation.address ? student.contactInformation.address : ""
+            }
+        },
+        validationSchema: Yup.object({
+            id: Yup
+                .string()
+                .max(255)
+                .required("Id required"),
+            firstName: Yup
+                .string()
+                .max(255)
+                .required(""),
+            lastName: Yup
+                .string()
+                .max(255)
+                .required(""),
+            password: Yup
+                .string()
+                .max(255)
+                .required('Password is required'),
+            starsId: Yup
+                .string()
+                .max(255)
+                .required('Stars ID is required'),
+            createdAt: Yup
+                .string()
+                .max(255)
+                .required('Password is required'),
+            permission: Yup
+                .string()
+                .max(255)
+                .required('Stars ID is required'),
+            contactInformation: Yup.object().shape({
+                emailUniversity: Yup
+                    .string()
+                    .max(255)
+                    .required('Stars ID is required'),
+                emailPersonal: Yup
+                    .string()
+                    .max(255)
+                    .required('Stars ID is required'),
+                phoneNumberWork: Yup
+                    .string()
+                    .max(11)
+                    .required('Stars ID is required'),
+                phoneNumberPersonal: Yup
+                    .string()
+                    .max(11)
+                    .required('Stars ID is required'),
+                address: Yup
+                    .string()
+                    .max(255)
+                    .required('Stars ID is required'),
+            })
+                
+        }),
+        onSubmit: (values) => {
+            console.log(JSON.stringify(values, null, 2))
+        }
+    });
+
     return (
         <>  
             <title>
