@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
     Box,
@@ -35,7 +35,8 @@ export const Students = (props) => {
         const trueArray = new Array(students.length).fill(value)
         setSelected(trueArray)
     }
-    
+
+    console.log(students)
     return (
         <Card {...props}>
             <CardHeader title="Student List"/>
@@ -56,20 +57,10 @@ export const Students = (props) => {
                                     Application ID
                                 </TableCell>
                                 <TableCell>
-                                    Student Name
+                                    Student First Name
                                 </TableCell>
                                 <TableCell sortDirection="desc">
-                                    <Tooltip
-                                        enterDelay={300}
-                                        title="Sort"
-                                >
-                                    <TableSortLabel
-                                        active
-                                        direction="desc"
-                                    >
-                                        Date
-                                    </TableSortLabel>
-                                </Tooltip>
+                                    Student Last Name
                             </TableCell>
                             <TableCell sortDirection="desc">
                                 <Tooltip
@@ -124,7 +115,7 @@ export const Students = (props) => {
                                     {student.firstName}
                                 </TableCell>
                                 <TableCell>
-                                    {format(student.createdAt, 'dd/MM/yyyy')}
+                                    {student.lastName}
                                 </TableCell>
                                 <TableCell>
                                     {student.starsId}
