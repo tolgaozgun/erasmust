@@ -34,7 +34,11 @@ export const ViewSchoolInfo = (props) => {
                     spacing={3}
                 >
                     {schools.map((item, index) => (
-                        <>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
                             <Typography
                                 color="textPrimary"
                                 variant="h6"
@@ -42,7 +46,7 @@ export const ViewSchoolInfo = (props) => {
                                 School #{index}
                             </Typography>
                             <InfoTable items={item}/>
-                        </>
+                        </Grid>
                     ))}
 
                 </Grid>

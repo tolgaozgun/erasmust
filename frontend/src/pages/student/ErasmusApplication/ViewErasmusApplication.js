@@ -54,7 +54,26 @@ const ViewErasmusApplication = () => {
                             container
                             spacing={3}
                         >
+                            <Grid
+                                item
+                                lg={6}
+                                md={6}
+                                xs={12}
+                            >
 
+                                <ViewStudentInfo/>
+
+                            </Grid>
+                            <Grid
+                                item
+                                lg={6}
+                                md={6}
+                                xs={12}
+                            >
+
+                                <ViewSemesterInfo/>
+
+                            </Grid>
                             <Grid
                                 item
                                 lg={12}
@@ -62,8 +81,6 @@ const ViewErasmusApplication = () => {
                                 xs={24}
                             >
 
-                                <ViewStudentInfo/>
-                                <ViewSemesterInfo/>
                                 <ViewSchoolInfo/>
 
                             </Grid>
