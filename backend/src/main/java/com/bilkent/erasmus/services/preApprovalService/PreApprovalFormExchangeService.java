@@ -86,7 +86,7 @@ public class PreApprovalFormExchangeService {
                     ,coursesHost.get(i).getId()
                     ,null
             );
-            forms.add(courseReviewFormService.fillReviewForm(formFillRequest));
+            //forms.add(courseReviewFormService.fillReviewForm(formFillRequest));
         }
         return forms;
     }

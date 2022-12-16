@@ -13,4 +13,7 @@ public class CourseBilkent extends Course {
     @ManyToOne
     private CourseCoordinator courseCoordinator;
 
+    private String requirements;
+
+
 }

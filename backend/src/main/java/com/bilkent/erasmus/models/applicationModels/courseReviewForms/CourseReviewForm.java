@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.models.applicationModels.courseReviewForms;
 
+import com.bilkent.erasmus.models.FileData;
 import com.bilkent.erasmus.models.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
@@ -23,6 +24,9 @@ public class CourseReviewForm {
 
     @ManyToOne
     private CourseHost courseHost;
+
+    @Embedded
+    private FileData file;
 
     @Enumerated(EnumType.STRING)
     private CourseApprovalStatus status;
