@@ -63,13 +63,26 @@ const ViewPreapproval = () => {
 
                             <Grid
                                 item
+                                lg={6}
+                                md={6}
+                                xs={12}
+                            >
+                                <ViewStudentInfo/>
+                            </Grid>
+                            <Grid
+                                item
+                                lg={6}
+                                md={6}
+                                xs={12}
+                            >
+                                <ViewExchangeInfo/>
+                            </Grid>
+                            <Grid
+                                item
                                 lg={12}
                                 md={12}
                                 xs={24}
                             >
-
-                                <ViewStudentInfo/>
-                                <ViewExchangeInfo/>
                                 <ViewCourseInfo/>
                             </Grid>
                         </Grid>
