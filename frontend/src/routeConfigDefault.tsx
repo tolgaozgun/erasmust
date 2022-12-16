@@ -37,7 +37,7 @@ export const routeItemsDefault: Array<IRoute> = [
         title: "Student Login",
         content: <LoginStudent/>,
         exact: true,
-    }, ,
+    },
     {
         path: '*',
         title: "Student Register",
