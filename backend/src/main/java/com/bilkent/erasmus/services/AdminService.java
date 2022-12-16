@@ -60,16 +60,19 @@ public class AdminService {
         }
 
     }
+
     public List<ApplicationErasmus> getAllErasmusApplicationsStudentStarsId(String id, String status) {
         if (status == null) {
             return applicationErasmusRepository.findAllByStudent_StarsId(id);
-        }
-        else {
+        } else {
             Status stat = Status.valueOf(status);
             return applicationErasmusRepository.findAllByStudent_StarsIdAndStatus(id, stat);
         }
     }
 
+    public Student getStudentByStarsId(String id) {
+        return studentRepository.findByStarsId(id);
+    }
 
 
 }

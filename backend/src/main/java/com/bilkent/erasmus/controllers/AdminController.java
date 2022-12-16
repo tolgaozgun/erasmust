@@ -57,5 +57,12 @@ public class AdminController {
         return new ResponseEntity<>(adminService.getAllErasmusApplicationsStudentStarsId(studentStarsId, status), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
+    @GetMapping("/get-student-stars-id")
+    public ResponseEntity<?> getStudentByStarsId(@RequestBody Map<String, String> json) {
+        String studentStarsId = json.get("studentStarsId");
+        return new ResponseEntity<>(adminService.getStudentByStarsId(studentStarsId), HttpStatus.OK);
+    }
+
 
 }
