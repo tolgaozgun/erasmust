@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PreApprovalFormErasmusRepository extends JpaRepository<PreApprovalFormErasmus, Integer> {
+
+    PreApprovalFormErasmus findByStudentId(String studentId);
 }
