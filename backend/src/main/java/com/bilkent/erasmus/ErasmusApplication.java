@@ -1,8 +1,10 @@
 package com.bilkent.erasmus;
 
+import com.bilkent.erasmus.utils.FileStorageProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,9 @@ import java.util.Optional;
 
 @Slf4j
 @SpringBootApplication
+@EnableConfigurationProperties({
+        FileStorageProperties.class
+})
 @RestController // put here to test if app is connected to the web
 public class ErasmusApplication {
 
