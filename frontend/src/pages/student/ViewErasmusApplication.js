@@ -12,8 +12,10 @@ import {
 import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
 import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
 import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
-import {FormExchangeInfo} from '../../components/componentsStudent/forms/exchange/form-exchange-info';
-import {FormCourseInfo} from '../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
+import {
+    FormSemesterInfo
+} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
+import {FormSchoolInfo} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
 
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
@@ -29,13 +31,15 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const ViewPreapproval = () => {
+
+const ViewErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+
 
     return (
         <>
             <title>
-                View Preapproval
+                Erasmus Application
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -51,24 +55,21 @@ const ViewPreapproval = () => {
                             align="center"
                             variant="h4"
                         >
-                            Preapproval Form
+                            Erasmus Application
                         </Typography>
-
                         <Grid
                             container
                             spacing={3}
                         >
-
                             <Grid
                                 item
                                 lg={12}
                                 md={12}
                                 xs={24}
                             >
-
                                 <FormStudentInfo editable={false}/>
-                                <FormExchangeInfo editable={false}/>
-                                <FormCourseInfo editable={false}/>
+                                <FormSemesterInfo editable={false}/>
+                                <FormSchoolInfo editable={false}/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -82,4 +83,4 @@ const ViewPreapproval = () => {
     );
 };
 
-export default ViewPreapproval;
+export default ViewErasmusApplication;

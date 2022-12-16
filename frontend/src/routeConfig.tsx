@@ -12,11 +12,15 @@ import Preapprovals from './pages/student/Preapprovals';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import Preapproval from "./pages/student/PreapprovalForm"
-import LearningAgreement from "./pages/student/LearningAgreement"
+import BeforeMobility from "./pages/student/LearningAgreement/BeforeMobility"
+import DuringMobility from "./pages/student/LearningAgreement/DuringMobility"
+import AfterMobility from "./pages/student/LearningAgreement/AfterMobility"
 import ErasmusApplicationForm from "./pages/student/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
-import ViewPreapproval from "./pages/student/ViewPreapproval";
-
+import ViewPreapproval from "./pages/student/ViewPreapproval"
+import ViewErasmusApplication from "./pages/student/ViewErasmusApplication"
+import CourseReviewForm from "./pages/student/courseReviewForm"
+import CourseReviewForms from "./pages/student/CourseReviewForms";
 
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
@@ -41,6 +45,10 @@ import Error from "./pages/404";
 
 import {Navigate} from "react-router-dom";
 import SchoolList from "./pages/academic/SchoolList";
+import ExchangeFaq from "./pages/student/exchangeFaq";
+
+import Submissions from "./pages/academic/submissions";
+
 
 export const routeItems: Array<IRoute> = [
     {
@@ -128,9 +136,45 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
-        path: 'learningAgreement',
+        path: 'learningAgreement/beforeMobility',
         title: "Learning Agreement",
-        content: <LearningAgreement/>,
+        content: <BeforeMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/duringMobility',
+        title: "Learning Agreement",
+        content: <DuringMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/afterMobility',
+        title: "Learning Agreement",
+        content: <AfterMobility/>,
+        exact: true,
+    },
+    {
+        path: '/viewPreapproval',
+        title: "Preapproval Form",
+        content: <ViewPreapproval/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/beforeMobility',
+        title: "Learning Agreement",
+        content: <BeforeMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/duringMobility',
+        title: "Learning Agreement",
+        content: <DuringMobility/>,
+        exact: true,
+    },
+    {
+        path: 'learningAgreement/afterMobility',
+        title: "Learning Agreement",
+        content: <AfterMobility/>,
         exact: true,
     },
     {
@@ -149,11 +193,18 @@ export const routeItems: Array<IRoute> = [
         path: '/students',
         title: "Student Register",
         content: <Students/>,
+        exact: true,
     },
     {
         path: '/erasmusApplication',
         title: "Preapproval Form",
         content: <ErasmusApplicationForm/>,
+        exact: true,
+    },
+    {
+        path: '/courseReviewForm',
+        title: "Course Review Form",
+        content: <CourseReviewForm/>,
         exact: true,
     },
     {
@@ -199,6 +250,30 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
+        path: '/viewPreapproval',
+        title: "View Preapproval",
+        content: <ViewPreapproval/>,
+        exact: true,
+    },
+    {
+        path: '/viewErasmusApplication',
+        title: "View Erasmus Application",
+        content: <ViewErasmusApplication/>,
+        exact: true,
+    },
+    {
+        path: '/studentlistAdmin',
+        title: "Admin Account",
+        content: <StudentList/>,
+        exact: true,
+    },
+    {
+        path: '/courseReviewForms',
+        title: "Course Review Forms",
+        content: <CourseReviewForms/>,
+        exact: true,
+    },
+    {
         path: '*',
         title: "Student Register",
         content: <Error/>,
@@ -215,8 +290,18 @@ export const routeItems: Array<IRoute> = [
         title: "Student Register",
         content: <Navigate to='/splash' />,
         exact: true,
-        //
     },
+    {
+        path: '/exchangeFaq',
+        title: "Exchange FAQ",
+        content: <ExchangeFaq/>,
+        exact: true,
+    },
+    {
+        path: "/submissions",
+        title: "Submissions",
+        content: <Submissions/>,
+        exact: true,
+    }
 ]
-
 

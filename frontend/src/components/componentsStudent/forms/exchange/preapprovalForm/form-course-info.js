@@ -16,6 +16,7 @@ import {CourseComponent} from "../../course-component";
 
 export const FormCourseInfo = (props) => {
 
+
     const schema = Yup.object().shape({
         courses: Yup.array().of(
             Yup.object().shape(
@@ -37,6 +38,7 @@ export const FormCourseInfo = (props) => {
             ),
         ),
     });
+
 
     const formik = useFormik({
         initialValues: {
@@ -75,7 +77,7 @@ export const FormCourseInfo = (props) => {
 
         },
     });
-    if (!props.hidden) {
+    if (!props.hidden && props.handleStep) {
         props.handleStep(formik.isValid)
     }
 
@@ -95,11 +97,12 @@ export const FormCourseInfo = (props) => {
             noValidate
             hidden={props.hidden}
         >
-
-            <Button
-                onClick={addCourse}>
-                Add Course
-            </Button>
+            {props.editable &&
+                <Button
+                    onClick={addCourse}>
+                    Add Course
+                </Button>
+            }
             {formik.values.courses.map((course, index) => (
 
                 <>
@@ -112,7 +115,7 @@ export const FormCourseInfo = (props) => {
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
                         courses={props.courses}
-                        name="courseName"
+                        editable={props.editable}
                     />
 
                 </>

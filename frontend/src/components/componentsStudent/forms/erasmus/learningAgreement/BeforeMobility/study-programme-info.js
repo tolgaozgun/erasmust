@@ -12,9 +12,9 @@ import {
 import React from 'react';
 import {FieldArray, Form, useFormik} from "formik";
 import * as Yup from "yup";
-import {CourseComponent} from "../../course-component";
+import {CourseComponent} from "../../../course-component";
 
-export const SendingInstitutionRecognition = (props) => {
+export const StudyProgrammeInfo = (props) => {
 
 
     const formik = useFormik({
@@ -24,6 +24,7 @@ export const SendingInstitutionRecognition = (props) => {
                     courseName: "",
                     courseCode: "",
                     courseCredits: 0.0,
+                    bilkentCourse: "",
                 }
             ]
         },

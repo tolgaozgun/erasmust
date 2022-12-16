@@ -12,31 +12,10 @@ import {
 import React from 'react';
 import {FieldArray, Form, useFormik} from "formik";
 import * as Yup from "yup";
-import {CourseComponent, SchoolComponent} from "./school-component";
+import {CourseComponent} from "../../../course-component";
 
-export const FormSchoolInfo = (props) => {
+export const SendingInstitutionRecognition = (props) => {
 
-    const schema = Yup.object().shape({
-        courses: Yup.array().of(
-            Yup.object().shape(
-                {
-                    courseCode: Yup
-                        .string()
-                        .required("Course Code is required"),
-                    courseCredits: Yup
-                        .number()
-                        .required("Course Credits is required"),
-                    courseName: Yup
-                        .string()
-                        .required("Course Name is required"),
-                    bilkentCourse: Yup
-                        .string()
-                        .required("Bilkent Course is required"),
-                },
-                'Course is invalid',
-            ),
-        ),
-    });
 
     const formik = useFormik({
         initialValues: {
@@ -45,7 +24,6 @@ export const FormSchoolInfo = (props) => {
                     courseName: "",
                     courseCode: "",
                     courseCredits: 0.0,
-                    bilkentCourse: "",
                 }
             ]
         },
@@ -63,9 +41,6 @@ export const FormSchoolInfo = (props) => {
                         courseName: Yup
                             .string()
                             .required("Course Name is required"),
-                        bilkentCourse: Yup
-                            .string()
-                            .required("Bilkent Course is required"),
                     },
                     'Course is invalid',
                 ),
@@ -81,10 +56,6 @@ export const FormSchoolInfo = (props) => {
 
     const addCourse = () => {
         let length = formik.values.courses.length
-        // TODO: Stop adding for more than 5 universities
-        if (length === 5) {
-
-        }
         const component = {courseCode: '', courseCredits: 0.0, courseName: '', bilkentCourse: ''}
         formik.setFieldValue(`courses.${length}`, component)
         formik.values.courses.push(component)
@@ -101,22 +72,22 @@ export const FormSchoolInfo = (props) => {
         >
 
             <Button
-
                 onClick={addCourse}>
-                Add School
+                Add Course
             </Button>
             {formik.values.courses.map((course, index) => (
 
                 <>
-                    <SchoolComponent
+                    <CourseComponent
                         key={index}
                         index={index}
                         errors={formik.errors.courses ? formik.errors.courses[`${index}`] : {}}
-                        touched={formik.touched.courses ? formik.errors.courses[`${index}`] : {}}
+                        touched={formik.touched.courses ? formik.touched.courses[`${index}`] : {}}
                         setFieldValue={formik.setFieldValue}
                         handleChange={formik.handleChange}
                         handleBlur={formik.handleBlur}
-                        schools={props.schools}
+                        courses={props.courses}
+                        disabled={true}
                     />
 
                 </>

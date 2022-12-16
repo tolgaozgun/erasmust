@@ -39,7 +39,7 @@ export const FormSemesterInfo = (props) => {
 
         },
     });
-    if (!props.hidden) {
+    if (!props.hidden && props.handleStep) {
         props.handleStep(formik.isValid)
     }
 
@@ -82,7 +82,7 @@ export const FormSemesterInfo = (props) => {
                                 required
                                 value={formik.values.academicYear}
                                 variant="outlined"
-                                disabled={!isAdmin}
+                                disabled={!props.editable}
                             />
                         </Grid>
                         <Grid
@@ -94,6 +94,8 @@ export const FormSemesterInfo = (props) => {
                                 disablePortal
                                 fullWidth
                                 id={"semester-selector"}
+                                disabled={!props.editable}
+                                value={formik.values.semester}
                                 options={[{label: "FALL"}, {label: "SPRING"}]}
                                 renderInput={(params) => <TextField {...params} label="Enter semester"/>}
                             />
