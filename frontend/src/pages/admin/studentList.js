@@ -5,7 +5,6 @@ import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sideb
 import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import { parseJSON } from 'date-fns';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -17,44 +16,45 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const studentList = [
-    {
-        id: 1,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-    {
-        id: 2,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-    {
-        id: 3,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-];
-
 const StudentList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [studentList, setStudentList] = useState([]);
 
     const token = sessionStorage.getItem("jwtToken");
     
     useEffect(() => {
         axios.get("http://92.205.25.135:4/admin/all-students", {
             headers: {
-                "Authorization": token
+                "Authorization": `Bearer ${token}`
             }
         })
             .then((res) => {
-                if (res) {
-                    console.log(res)
+                if (res && res.data) {
+                    for (let i = 0; i < res.data.length; i++) {
+                        console.log("Item fetched!")
+                        setStudentList([
+                            ...studentList,
+                            {
+                                id: res.data[i].id,
+                                firstName: res.data[i].firstName,
+                                lastName: res.data[i].lastName,
+                                password: res.data[i].password,
+                                starsId: res.data[i].starsId,
+                                createdAt: 1555016400000,
+                                permission: res.data[i].permission,
+                                contactInformation: 
+                                {
+                                    emailUniversity: res.data[i].contactInformation.emailUniversity,
+                                    emailPersonal: res.data[i].contactInformation.emailPersonal,
+                                    phoneNumberWork: res.data[i].contactInformation.phoneNumberWork,
+                                    phoneNumberPersonal: res.data[i].contactInformation.phoneNumberPersonal,
+                                    address: res.data[i].contactInformation.address
+                                }
+                            }
+                        ])
+                        console.log(res.data);
+                        console.log("Item placed on array!");
+                    }
                 }
             })
             .catch((err) => {
@@ -63,9 +63,6 @@ const StudentList = () => {
                 }
             })
     }, []);
-
-    
-    
 
     return (
         <>  <title>
@@ -104,9 +101,7 @@ const StudentList = () => {
                                     display: "flex"
                                 }}
                             >
-                                <Students
-                                    students = {studentList}
-                                />
+                                { (studentList !== []) && <Students students = {studentList}/> }
                             </Grid>
                         </Grid>
                     </Container>
