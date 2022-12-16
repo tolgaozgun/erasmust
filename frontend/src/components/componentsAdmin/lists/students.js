@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
     Box,
@@ -22,6 +22,7 @@ export const Students = (props) => {
     const navigate = useNavigate();
     const { students } = props;
     const [studentArray, setStudentArray] = useState(students)
+
     const [selectedState, setSelected] = useState(
         new Array(students.length).fill(false)
     )
@@ -108,7 +109,7 @@ export const Students = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {students.map((student, index) => (
+                        {studentArray.map((student, index) => (
                             <TableRow
                                 hover
                                 key={student.id}
@@ -126,7 +127,7 @@ export const Students = (props) => {
                                     {student.id}
                                 </TableCell>
                                 <TableCell>
-                                    {student.firstName}
+                                    {student.name}
                                 </TableCell>
                                 <TableCell>
                                     {format(student.createdAt, 'dd/MM/yyyy')}
@@ -146,7 +147,7 @@ export const Students = (props) => {
                                         </Tooltip>
                                         <Tooltip title="Edit">
                                             <IconButton
-                                                onClick={() => {navigate(`/studentListAdmin/student/${student.id}`, {state: student})}}
+                                                onClick={() => {navigate(`/studentListAdmin/student/${student.id}`)}}
                                             >
                                                 <EditIcon/>
                                             </IconButton>
