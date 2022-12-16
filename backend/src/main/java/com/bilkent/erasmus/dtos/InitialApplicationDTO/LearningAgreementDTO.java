@@ -10,6 +10,11 @@ import lombok.Data;
 @Data
 public class LearningAgreementDTO {
 
+
+    private int id;
+
+    private int studentId;
+
     private String academicYear;
 
     private String studyCycle;

@@ -24,6 +24,12 @@ public class LearningAgreement {
 
     private String subjectArea;
 
+    private String grade;
+
+    private String reasonForChange;
+
+    private boolean isAdded;
+
     @Enumerated(EnumType.STRING)
     private SemesterOfferings semester;
 
