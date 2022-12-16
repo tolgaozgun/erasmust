@@ -9,14 +9,16 @@ import {
     Stepper, TextField,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
-import {FileUpload} from '../../components/FileUpload';
-import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
+import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
+import {FileUpload} from '../../../components/FileUpload';
+import {FormStudentInfo} from '../../../components/componentsStudent/forms/form-student-info';
 import {
     FormSemesterInfo
-} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
-import {FormSchoolInfo} from '../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
+} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
+import {
+    FormSchoolInfo
+} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
 
 import {styled} from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
@@ -37,7 +39,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 }));
 
 
-const Preapproval = () => {
+const CourseReviewForm = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const formik = useFormik({
         initialValues: {
@@ -227,4 +229,4 @@ const Preapproval = () => {
     );
 };
 
-export default Preapproval;
+export default CourseReviewForm;

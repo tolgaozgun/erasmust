@@ -131,7 +131,7 @@ const Preapproval = () => {
                             >
                                 <Alert severity="info">
                                     <AlertTitle>
-                                        {formik.values.courseCoordinator} (Course Coordinator)'s Message
+                                        Your Message as Course Coordinator:
                                     </AlertTitle>
                                     {formik.values.coordinatorMessage}
                                 </Alert>

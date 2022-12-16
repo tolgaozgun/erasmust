@@ -9,11 +9,11 @@ import {
     Stepper,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
-import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
-import {FormExchangeInfo} from '../../components/componentsStudent/forms/exchange/form-exchange-info';
-import {FormCourseInfo} from '../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
+import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
+import {FormStudentInfo} from '../../../components/componentsStudent/forms/form-student-info';
+import {FormExchangeInfo} from '../../../components/componentsStudent/forms/exchange/form-exchange-info';
+import {FormCourseInfo} from '../../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
 
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
@@ -81,7 +81,7 @@ const QontoStepIconRoot = styled('div')(
 const Preapproval = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
-    const courses = require('../../lessons.json');
+    const courses = require('../../../lessons.json');
 
     return (
         <>

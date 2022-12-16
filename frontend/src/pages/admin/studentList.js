@@ -5,7 +5,8 @@ import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sideb
 import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import { parseJSON } from 'date-fns';
+import {parseJSON} from 'date-fns';
+import Button from "@mui/material/Button";
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -45,14 +46,15 @@ const StudentList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     const token = sessionStorage.getItem("jwtToken");
-    
-    useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-students", {
+
+    const sendRequest = async () => {
+        await axios.get("http://92.205.25.135:4/admin/all-students", {
             headers: {
-                "Authorization": token
+                "Authorization": `Bearer ${token}`
             }
         })
             .then((res) => {
+                console.log(res)
                 if (res) {
                     console.log(res)
                 }
@@ -62,15 +64,31 @@ const StudentList = () => {
                     console.log("Error: ", err)
                 }
             })
-    }, []);
+    }
 
-    
-    
+    // useEffect(() => {
+    //     axios.get("http://92.205.25.135:4/admin/all-students", {
+    //         headers: {
+    //             "Authorization": token
+    //         }
+    //     })
+    //         .then((res) => {
+    //             if (res) {
+    //                 console.log(res)
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             if (err && err.response) {
+    //                 console.log("Error: ", err)
+    //             }
+    //         })
+    // }, []);
+
 
     return (
         <>  <title>
-                Students
-            </title>
+            Students
+        </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
@@ -105,8 +123,11 @@ const StudentList = () => {
                                 }}
                             >
                                 <Students
-                                    students = {studentList}
+                                    students={studentList}
                                 />
+                                <Button onClick={() => sendRequest()}>
+                                    Refresh
+                                </Button>
                             </Grid>
                         </Grid>
                     </Container>
