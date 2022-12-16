@@ -1,7 +1,7 @@
 import {
     Box, Button,
     Container,
-    Grid,
+    Grid, Stack,
     Step, StepButton,
     StepConnector,
     stepConnectorClasses,
@@ -11,6 +11,8 @@ import {
 } from '@mui/material';
 import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
 import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import DoneIcon from '@mui/icons-material/Done';
+import CloseIcon from '@mui/icons-material/Close';
 import {FileUpload} from '../../components/FileUpload';
 import {FormStudentInfo} from '../../components/componentsStudent/forms/form-student-info';
 import {
@@ -52,6 +54,7 @@ const Preapproval = () => {
             coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
             courseCoordinator: "Eray Tuzun",
             description: "My syllabus: xx.com\nMy this: xx.com",
+            coordinatorReply: '',
             files: [""],
         },
         validationSchema: Yup.object({
@@ -83,6 +86,10 @@ const Preapproval = () => {
                 .string()
                 .max(20)
                 .required("Files are required"),
+            coordinatorReply: Yup
+                .string()
+                .max(1000)
+                .required("Reply is required"),
         }),
         onSubmit: () => {
 
@@ -124,7 +131,7 @@ const Preapproval = () => {
                             >
                                 <Alert severity="info">
                                     <AlertTitle>
-                                        {formik.values.courseCoordinator} (Course Coordinator)'s Message
+                                        Your Message as Course Coordinator:
                                     </AlertTitle>
                                     {formik.values.coordinatorMessage}
                                 </Alert>
@@ -211,10 +218,48 @@ const Preapproval = () => {
                                     required
                                     value={formik.values.description}
                                     variant="outlined"
+                                    disabled={true}
                                 />
                             </Grid>
 
-                            <FileUpload fileType={["image/png"]}/>
+                            <Grid
+                                item
+                                lg={12}
+                                md={12}
+                                xs={24}
+                            >
+                                <TextField
+                                    error={Boolean(formik.touched.coordinatorReply && formik.errors.coordinatorReply)}
+                                    fullWidth
+                                    helperText={formik.touched.coordinatorReply && formik.errors.coordinatorReply}
+                                    label="Your Reply"
+                                    name="coordinatorReply"
+                                    multiline
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    required
+                                    value={formik.values.coordinatorReply}
+                                    variant="outlined"
+                                />
+                            </Grid>
+                            <Grid
+                                item
+                                lg={12}
+                                md={12}
+                                xs={24}>
+                                <Stack
+                                    direction="row"
+                                    spacing={2}
+                                    style={{justifyContent: "center"}}>
+                                    <Button variant="contained" size="large" startIcon={<DoneIcon/>}>
+                                        Accept
+                                    </Button>
+                                    <Button variant="contained" size="large" startIcon={<CloseIcon/>}>
+                                        Reject
+                                    </Button>
+                                </Stack>
+                            </Grid>
+
                         </Grid>
                     </Container>
                 </Box>

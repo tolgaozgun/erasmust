@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../components/componentsAdmin/dashboard-navbar";
 import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {StudentsList} from "../../components/componentsAdmin/lists/students";
-
+import {Students} from "../../components/componentsAdmin/lists/students";
+import axios from 'axios';
+import {parseJSON} from 'date-fns';
+import Button from "@mui/material/Button";
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -16,13 +18,77 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const Students = () => {
+const studentList = [
+    {
+        id: 1,
+        name: "Tolga Özgün",
+        starsId: "22003850",
+        semester: 5,
+        createdAt: 1555016400000,
+    },
+    {
+        id: 2,
+        name: "Tolga Özgün",
+        starsId: "22003850",
+        semester: 5,
+        createdAt: 1555016400000,
+    },
+    {
+        id: 3,
+        name: "Tolga Özgün",
+        starsId: "22003850",
+        semester: 5,
+        createdAt: 1555016400000,
+    },
+];
+
+const StudentList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+
+    const token = sessionStorage.getItem("jwtToken");
+
+    const sendRequest = async () => {
+        await axios.get("http://92.205.25.135:4/admin/all-students", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                console.log(res)
+                if (res) {
+                    console.log(res)
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }
+
+    // useEffect(() => {
+    //     axios.get("http://92.205.25.135:4/admin/all-students", {
+    //         headers: {
+    //             "Authorization": token
+    //         }
+    //     })
+    //         .then((res) => {
+    //             if (res) {
+    //                 console.log(res)
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             if (err && err.response) {
+    //                 console.log("Error: ", err)
+    //             }
+    //         })
+    // }, []);
+
 
     return (
         <>  <title>
-                Students
-            </title>
+            Students
+        </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
@@ -35,10 +101,16 @@ const Students = () => {
                         py: 8
                     }}
                 >
-                    <Container maxWidth="sm">
+                    <Container
+                        maxWidth="lg"
+                    >
                         <Grid
                             container
+                            justifyContent="center"
                             spacing={3}
+                            sx={{
+                                ml: 5
+                            }}
                         >
                             <Grid
                                 item
@@ -46,8 +118,16 @@ const Students = () => {
                                 md={12}
                                 xl={15}
                                 xs={12}
+                                sx={{
+                                    display: "flex"
+                                }}
                             >
-                                <StudentsList/>
+                                <Students
+                                    students={studentList}
+                                />
+                                <Button onClick={() => sendRequest()}>
+                                    Refresh
+                                </Button>
                             </Grid>
                         </Grid>
                     </Container>
@@ -61,4 +141,4 @@ const Students = () => {
     );
 }
 
-export default Students
+export default StudentList

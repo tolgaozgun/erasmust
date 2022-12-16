@@ -97,12 +97,10 @@ export const FormCourseInfo = (props) => {
             noValidate
             hidden={props.hidden}
         >
-            {props.editable &&
                 <Button
                     onClick={addCourse}>
                     Add Course
                 </Button>
-            }
             {formik.values.courses.map((course, index) => (
 
                 <>

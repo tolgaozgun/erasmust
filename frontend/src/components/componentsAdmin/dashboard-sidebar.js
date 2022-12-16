@@ -17,7 +17,7 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/studentlistAdmin',
+    href: '/studentListAdmin',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Student List'
   },

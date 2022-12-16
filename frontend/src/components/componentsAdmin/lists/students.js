@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import React, {useState} from 'react';
+import { React, useState } from 'react';
+import { useNavigate } from 'react-router';
 import {
     Box,
-    Button,
     Card,
     CardHeader, Checkbox, IconButton,
     Table,
@@ -14,38 +14,15 @@ import {
     TableSortLabel,
     Tooltip
 } from '@mui/material';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-import {SeverityPill} from '../severity-pill';
+export const Students = (props) => {
+    const navigate = useNavigate();
+    const { students } = props;
+    const [studentArray, setStudentArray] = useState(students)
 
-const students = [
-    {
-        id: 1,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-    {
-        id: 2,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-    {
-        id: 3,
-        name: "Tolga Özgün",
-        starsId: "22003850",
-        semester: 5,
-        createdAt: 1555016400000,
-    },
-];
-
-export const StudentsList = (props) => {
     const [selectedState, setSelected] = useState(
         new Array(students.length).fill(false)
     )
@@ -61,12 +38,13 @@ export const StudentsList = (props) => {
         setSelected(trueArray)
     }
 
-
-    console.log("Selected: " + selectedState)
+    const deleteStudent = (id) => {
+        setStudentArray((current) => current.filter((student) => student.id !== id)) 
+    }
 
     return (
         <Card {...props}>
-            <CardHeader title="Ongoing Applications"/>
+            <CardHeader title="Student List"/>
             <PerfectScrollbar>
                 <Box sx={{
                     minWidth: 800,
@@ -131,7 +109,7 @@ export const StudentsList = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {students.map((student, index) => (
+                        {studentArray.map((student, index) => (
                             <TableRow
                                 hover
                                 key={student.id}
@@ -168,12 +146,16 @@ export const StudentsList = (props) => {
                                             </IconButton>
                                         </Tooltip>
                                         <Tooltip title="Edit">
-                                            <IconButton>
+                                            <IconButton
+                                                onClick={() => {navigate(`/studentListAdmin/student/${student.id}`)}}
+                                            >
                                                 <EditIcon/>
                                             </IconButton>
                                         </Tooltip>
                                         <Tooltip title="Delete">
-                                            <IconButton>
+                                            <IconButton
+                                                onClick={() => deleteStudent(student.id)}
+                                            >
                                                 <DeleteIcon/>
                                             </IconButton>
                                         </Tooltip>
@@ -185,22 +167,6 @@ export const StudentsList = (props) => {
                 </Table>
             </Box>
         </PerfectScrollbar>
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                p: 2
-            }}
-        >
-            <Button
-                color="primary"
-                endIcon={<ArrowRightIcon fontSize="small"/>}
-                size="small"
-                variant="text"
-            >
-                View all
-            </Button>
-        </Box>
         </Card>
     )
 };
