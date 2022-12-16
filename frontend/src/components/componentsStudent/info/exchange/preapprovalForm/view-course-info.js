@@ -40,15 +40,20 @@ export const ViewCourseInfo = (props) => {
                     spacing={3}
                 >
                     {courses.map((item, index) => (
-                        <>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
                             <Typography
                                 color="textPrimary"
+                                style={{textAlign: "center"}}
                                 variant="h6"
                             >
-                                Course #{index}
+                                Course #{index + 1}
                             </Typography>
                             <InfoTable items={item}/>
-                        </>
+                        </Grid>
                     ))}
 
                 </Grid>
