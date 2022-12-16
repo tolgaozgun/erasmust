@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
     Box,
@@ -35,7 +35,7 @@ export const Students = (props) => {
         const trueArray = new Array(students.length).fill(value)
         setSelected(trueArray)
     }
-
+    
     return (
         <Card {...props}>
             <CardHeader title="Student List"/>
@@ -103,7 +103,7 @@ export const Students = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {studentArray.map((student, index) => (
+                        {students.map((student, index) => (
                             <TableRow
                                 hover
                                 key={student.id}
@@ -121,7 +121,7 @@ export const Students = (props) => {
                                     {student.id}
                                 </TableCell>
                                 <TableCell>
-                                    {student.name}
+                                    {student.firstName}
                                 </TableCell>
                                 <TableCell>
                                     {format(student.createdAt, 'dd/MM/yyyy')}
@@ -141,7 +141,7 @@ export const Students = (props) => {
                                         </Tooltip>
                                         <Tooltip title="Edit">
                                             <IconButton
-                                                onClick={() => {navigate(`/studentListAdmin/student/${student.id}`)}}
+                                                onClick={() => {navigate(`/studentListAdmin/student/${student.id}`, {state: student})}}
                                             >
                                                 <EditIcon/>
                                             </IconButton>
