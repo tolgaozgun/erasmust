@@ -5,6 +5,7 @@ import com.bilkent.erasmus.enums.MobilityType;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 
+
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import java.util.List;

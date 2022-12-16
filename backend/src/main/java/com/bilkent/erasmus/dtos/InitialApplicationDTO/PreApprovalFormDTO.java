@@ -1,11 +1,8 @@
 package com.bilkent.erasmus.dtos.InitialApplicationDTO;
 
-import com.bilkent.erasmus.enums.SemesterOfferings;
-import com.bilkent.erasmus.enums.Status;
-import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.enums.SemesterOfferings;
 import lombok.Data;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -29,5 +26,7 @@ public class PreApprovalFormDTO {
     private List<String> courseHostDepartments;
 
     private List<Double> courseHostCredits;
+
+    private int numberOfForms;
 
 }

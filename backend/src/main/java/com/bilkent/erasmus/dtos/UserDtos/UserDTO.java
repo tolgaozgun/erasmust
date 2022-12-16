@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.dtos.UserDtos;
 
-import com.bilkent.erasmus.enums.DepartmentName;
+import com.bilkent.erasmus.models.enums.DepartmentName;
 import lombok.Data;
 
 @Data

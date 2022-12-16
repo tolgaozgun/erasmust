@@ -1,0 +1,3910 @@
+[
+  {
+    "label": "TURK 101 - Turkish I",
+    "instructorName": "Seda Uyanık Tanrıverdi"
+  },
+  {
+    "label": "TURK 102 - Turkish II",
+    "instructorName": "Seda Uyanık Tanrıverdi"
+  },
+  {
+    "label": "ADA 131 - Architectural Drawing",
+    "instructorName": "Hatice Karaca"
+  },
+  {
+    "label": "ADA 134 - Designing with Digital Media",
+    "instructorName": "Alp Giray Köse"
+  },
+  {
+    "label": "ADA 263 - History of Built Environment I",
+    "instructorName": "Serpil Özaloğlu"
+  },
+  {
+    "label": "ADA 265 - How Houses Build People",
+    "instructorName": "Seda Nehir Gümüşlü"
+  },
+  {
+    "label": "AMER 115 - Methods and Texts I",
+    "instructorName": "Craig Ireland"
+  },
+  {
+    "label": "AMER 195 - Introduction to American Studies I",
+    "instructorName": "Kara McCormack"
+  },
+  {
+    "label": "AMER 207 - American Texts and Contexts I",
+    "instructorName": "Patrick Charles McDonald"
+  },
+  {
+    "label": "AMER 290 - Summer Training I",
+    "instructorName": "Emine Lale Demirtürk"
+  },
+  {
+    "label": "AMER 293 - American History I",
+    "instructorName": "Daniel Peter Johnson"
+  },
+  {
+    "label": "AMER 303 - Film Studies in American Culture to 1960",
+    "instructorName": "Can Kutay"
+  },
+  {
+    "label": "AMER 343 - American Theater",
+    "instructorName": "Patrick Charles McDonald"
+  },
+  {
+    "label": "AMER 357 - American Intellectual History I",
+    "instructorName": "Dennis Raymond Bryson"
+  },
+  {
+    "label": "AMER 383 - American Novel to 1900",
+    "instructorName": "Emine Lale Demirtürk"
+  },
+  {
+    "label": "AMER 390 - Summer Training II",
+    "instructorName": "Emine Lale Demirtürk"
+  },
+  {
+    "label": "AMER 406 - Senior Project",
+    "instructorName": "Daniel Peter Johnson"
+  },
+  {
+    "label": "AMER 427 - Topics in Theory for American Culture",
+    "instructorName": "Craig Ireland"
+  },
+  {
+    "label": "AMER 459 - Race and Ethnicity in American Culture",
+    "instructorName": "Emine Lale Demirtürk"
+  },
+  {
+    "label": "AMER 476 - Selfhood and Emotional Life in American Culture and History",
+    "instructorName": "Dennis Raymond Bryson"
+  },
+  {
+    "label": "AMER 488 - Imagining the American West",
+    "instructorName": "Kara McCormack"
+  },
+  {
+    "label": "ARCH 201 - Architectural Design Studio I",
+    "instructorName": "Zühre Sü Gül"
+  },
+  {
+    "label": "ARCH 251 - Architectural Building Systems",
+    "instructorName": "Glenn Terry Kukkola"
+  },
+  {
+    "label": "ARCH 290 - Summer Practice I",
+    "instructorName": "Özge Selen Duran"
+  },
+  {
+    "label": "ARCH 301 - Architectural Design Studio III",
+    "instructorName": "Giorgio Gasco"
+  },
+  {
+    "label": "ARCH 318 - (Ar)chitectural Visualization",
+    "instructorName": "Yavuz Baver Barut"
+  },
+  {
+    "label": "ARCH 321 - Architecture and Society",
+    "instructorName": "Segah Sak"
+  },
+  {
+    "label": "ARCH 331 - Structural Design I",
+    "instructorName": "Aysu Berk"
+  },
+  {
+    "label": "ARCH 341 - Architectural Lighting and Acoustics",
+    "instructorName": "Glenn Terry Kukkola"
+  },
+  {
+    "label": "ARCH 390 - Summer Practice II",
+    "instructorName": "Özge Selen Duran"
+  },
+  {
+    "label": "ARCH 401 - Architectural Design Studio V",
+    "instructorName": "Glenn Terry Kukkola"
+  },
+  {
+    "label": "ARCH 411 - Conservation of Historical Environments",
+    "instructorName": "Ayşe Henry"
+  },
+  {
+    "label": "ARCH 418 - Professional Practice",
+    "instructorName": "Özge Selen Duran"
+  },
+  {
+    "label": "ARCH 463 - Modern Turkish Architecture",
+    "instructorName": "Yiğit Acar"
+  },
+  {
+    "label": "ARCH 513 - Theory and Methodology",
+    "instructorName": "Burcu Şenyapılı Özcan"
+  },
+  {
+    "label": "ARCH 564 - Space and Culture",
+    "instructorName": "Bülent Batuman"
+  },
+  {
+    "label": "ARCH 565 - Contemporary Architectural Discourse: Reading as Experimental Fieldwork",
+    "instructorName": "Giorgio Gasco"
+  },
+  {
+    "label": "ARCH 590 - Graduate Seminar",
+    "instructorName": "Burcu Şenyapılı Özcan"
+  },
+  {
+    "label": "ARCH 599 - Master's Thesis",
+    "instructorName": "Burcu Şenyapılı Özcan"
+  },
+  {
+    "label": "CHEM 101 - Principles of Chemistry I",
+    "instructorName": "Ferdi Karadaş"
+  },
+  {
+    "label": "CHEM 111 - Chemistry for the Society and Planet",
+    "instructorName": "Bilge Baytekin"
+  },
+  {
+    "label": "CHEM 120 - Orientation for Chemistry Majors ",
+    "instructorName": "Emrah Özensoy"
+  },
+  {
+    "label": "CHEM 201 - Materials Science and Technology",
+    "instructorName": "Bilge Baytekin"
+  },
+  {
+    "label": "CHEM 211 - Analytical Chemistry I",
+    "instructorName": "Burak Ülgüt"
+  },
+  {
+    "label": "CHEM 214 - Analytical Chemistry Laboratory II",
+    "instructorName": "Burak Ülgüt"
+  },
+  {
+    "label": "CHEM 231 - Organic Chemistry I",
+    "instructorName": "Yunus Emre Türkmen"
+  },
+  {
+    "label": "CHEM 233 - Principles of Organic Chemistry I",
+    "instructorName": "Dönüş Tuncel"
+  },
+  {
+    "label": "CHEM 235 - Organic Chemistry Laboratory I",
+    "instructorName": "Yunus Emre Türkmen"
+  },
+  {
+    "label": "CHEM 320 - Physical Chemistry Laboratory ",
+    "instructorName": "Emrah Özensoy"
+  },
+  {
+    "label": "CHEM 323 - Physical Chemistry I",
+    "instructorName": "Emrah Özensoy"
+  },
+  {
+    "label": "CHEM 327 - Quantum Chemistry I",
+    "instructorName": "Zeki Cemal Kuruoğlu"
+  },
+  {
+    "label": "CHEM 341 - Inorganic Chemistry I",
+    "instructorName": "Ömer Dağ"
+  },
+  {
+    "label": "CHEM 399 - Summer Practice",
+    "instructorName": "Bilge Baytekin"
+  },
+  {
+    "label": "CHEM 461 - Fundamentals of Biochemistry",
+    "instructorName": "Yunus Emre Türkmen"
+  },
+  {
+    "label": "CHEM 491 - Senior Project I",
+    "instructorName": "Ömer Dağ"
+  },
+  {
+    "label": "CHEM 493 - Capstone Project",
+    "instructorName": "Halil İbrahim Okur"
+  },
+  {
+    "label": "CHEM 504 - Group Theory and its Chemical Applications",
+    "instructorName": "Ömer Dağ"
+  },
+  {
+    "label": "CHEM 571 - Special Topics in Organic Chemistry I",
+    "instructorName": "Dönüş Tuncel"
+  },
+  {
+    "label": "CHEM 586 - Electrochemistry",
+    "instructorName": "Burak Ülgüt"
+  },
+  {
+    "label": "CHEM 591 - Graduate Seminar I",
+    "instructorName": "Emrah Özensoy"
+  },
+  {
+    "label": "CHEM 599 - Master's Thesis",
+    "instructorName": "Emrah Özensoy"
+  },
+  {
+    "label": "CHEM 691 - Advanced Seminar I",
+    "instructorName": "Emrah Özensoy"
+  },
+  {
+    "label": "CHEM 699 - Ph.D. Dissertation",
+    "instructorName": "Emrah Özensoy"
+  },
+  {
+    "label": "CI 402 - Probability Theory",
+    "instructorName": "İlker Kalender"
+  },
+  {
+    "label": "CI 507 - Educational Research",
+    "instructorName": "Alipaşa Ayas"
+  },
+  {
+    "label": "CI 508 - Assessing Student Learning and Progress",
+    "instructorName": "Anita Nicole Alexander"
+  },
+  {
+    "label": "CI 509 - Thesis Seminar I",
+    "instructorName": "İlker Kalender"
+  },
+  {
+    "label": "CI 510 - Thesis Seminar II",
+    "instructorName": "Anita Nicole Alexander"
+  },
+  {
+    "label": "CI 513 - Statistics",
+    "instructorName": "İlker Kalender"
+  },
+  {
+    "label": "CI 516 - Child and Adolescent Psychology",
+    "instructorName": "Jale Ataşalar"
+  },
+  {
+    "label": "CI 532 - Written Academic Discourse ",
+    "instructorName": "Jennie Farber Lane"
+  },
+  {
+    "label": "CI 542 - Principles of Instructional Design",
+    "instructorName": "Armağan Ateşkan"
+  },
+  {
+    "label": "CI 561 - School Service and Engagement",
+    "instructorName": "Armağan Ateşkan"
+  },
+  {
+    "label": "CI 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "CI 601 - Instruction: Perspectives and Practice",
+    "instructorName": "Armağan Ateşkan"
+  },
+  {
+    "label": "CI 603 - Practicum in Curriculum Development & Evaluation ",
+    "instructorName": "Jennie Farber Lane"
+  },
+  {
+    "label": "CI 604 - Educational Statistics",
+    "instructorName": "Anita Nicole Alexander"
+  },
+  {
+    "label": "CI 690 - Dissertation Seminar",
+    "instructorName": "İlker Kalender"
+  },
+  {
+    "label": "CI 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "CINT 501 - Theory of Interpreting",
+    "instructorName": "Zeynep Şengel"
+  },
+  {
+    "label": "CINT 503 - Introduction to the Practice of Interpreting",
+    "instructorName": "Zeynep Şengel"
+  },
+  {
+    "label": "CINT 509 - Advanced Consecutive Interpretation I",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "CINT 513 - Advanced Simultaneous Interpreting I",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "COMD 101 - Visual Communication Design I",
+    "instructorName": "Jülide Akşiyote Görür"
+  },
+  {
+    "label": "COMD 203 - Media Studies I",
+    "instructorName": "Burcu Baykan"
+  },
+  {
+    "label": "COMD 210 - Introduction to Screenwriting",
+    "instructorName": "Emre Yalgın"
+  },
+  {
+    "label": "COMD 281 - Media and Design Studio I",
+    "instructorName": "Funda Şenova Tunalı"
+  },
+  {
+    "label": "COMD 290 - Summer Practice I",
+    "instructorName": "Ufuk Önen"
+  },
+  {
+    "label": "COMD 321 - Analysis of Moving Image",
+    "instructorName": "Colleen Bevin Kennedy Karpat"
+  },
+  {
+    "label": "COMD 341 - Media and Society",
+    "instructorName": "Ayşenur Dal Tokdemir"
+  },
+  {
+    "label": "COMD 357 - Multimedia Journalism",
+    "instructorName": "Müge Mengü Hale"
+  },
+  {
+    "label": "COMD 358 - Professional Communication ",
+    "instructorName": "Emel Özdora Akşak"
+  },
+  {
+    "label": "COMD 361 - Sound Design I",
+    "instructorName": "Ufuk Önen"
+  },
+  {
+    "label": "COMD 364 - Video Production for Non-majors ",
+    "instructorName": "Hasan Yusuf Akçura"
+  },
+  {
+    "label": "COMD 381 - Media and Design Studio III",
+    "instructorName": "Wickham Catesby Flannagan"
+  },
+  {
+    "label": "COMD 390 - Summer Practice II",
+    "instructorName": "Hasan Yusuf Akçura"
+  },
+  {
+    "label": "COMD 433 - Gender and Media",
+    "instructorName": "Bahar Şimşek Day"
+  },
+  {
+    "label": "COMD 434 - Special Topics in Journalism",
+    "instructorName": "Bülent Mehmet Çaplı"
+  },
+  {
+    "label": "COMD 437 - Post-production Techniques",
+    "instructorName": "Wickham Catesby Flannagan"
+  },
+  {
+    "label": "COMD 439 - International Public Relations ",
+    "instructorName": "Emel Özdora Akşak"
+  },
+  {
+    "label": "COMD 471 - Media Ethics",
+    "instructorName": "Bülent Mehmet Çaplı"
+  },
+  {
+    "label": "COMD 481 - Visual Communication Project I",
+    "instructorName": "Funda Şenova Tunalı"
+  },
+  {
+    "label": "COMD 512 - Foundations in Visual Studies",
+    "instructorName": "Burcu Baykan"
+  },
+  {
+    "label": "COMD 513 - Film and Genre",
+    "instructorName": "Colleen Bevin Kennedy Karpat"
+  },
+  {
+    "label": "COMD 523 - Media and Everyday Life",
+    "instructorName": "Ayşenur Dal Tokdemir"
+  },
+  {
+    "label": "COMD 590 - Seminar in Research Topics",
+    "instructorName": "Emel Özdora Akşak"
+  },
+  {
+    "label": "COMD 599 - Master's Thesis",
+    "instructorName": "Emel Özdora Akşak"
+  },
+  {
+    "label": "CS 101 - Algorithms and Programming I",
+    "instructorName": "Uğur Doğrusöz"
+  },
+  {
+    "label": "CS 102 - Algorithms and Programming II",
+    "instructorName": "Uğur Güdükbay"
+  },
+  {
+    "label": "CS 115 - Introduction to Programming in Python",
+    "instructorName": "İpek Sözen"
+  },
+  {
+    "label": "CS 121 - Introduction to Computer Applications and Programming",
+    "instructorName": "Sibel Uğurlubilek"
+  },
+  {
+    "label": "CS 125 - Introduction to Data Analysis for Social Sciences",
+    "instructorName": "Can Kültür"
+  },
+  {
+    "label": "CS 153 - Introduction to Computer Graphics",
+    "instructorName": "Melih Aydınat"
+  },
+  {
+    "label": "CS 155 - Interactive Media Design and Development",
+    "instructorName": "Andreas Treske"
+  },
+  {
+    "label": "CS 201 - Fundamental Structures of Computer Science I",
+    "instructorName": "Selim Aksoy"
+  },
+  {
+    "label": "CS 202 - Fundamental Structures of Computer Science II",
+    "instructorName": "Aynur Dayanık"
+  },
+  {
+    "label": "CS 223 - Digital Design",
+    "instructorName": "Shervin Rahimzadeh Arashloo"
+  },
+  {
+    "label": "CS 224 - Computer Organization",
+    "instructorName": "Fazlı Can"
+  },
+  {
+    "label": "CS 281 - Computers and Data Organization",
+    "instructorName": "Semra Güleç"
+  },
+  {
+    "label": "CS 299 - Summer Training I",
+    "instructorName": "Shervin Rahimzadeh Arashloo"
+  },
+  {
+    "label": "CS 315 - Programming Languages",
+    "instructorName": "H. Altay Güvenir"
+  },
+  {
+    "label": "CS 319 - Object-Oriented Software Engineering",
+    "instructorName": "Eray Tüzün"
+  },
+  {
+    "label": "CS 342 - Operating Systems",
+    "instructorName": "İbrahim Körpeoğlu"
+  },
+  {
+    "label": "CS 353 - Database Systems ",
+    "instructorName": "Özgür Ulusoy"
+  },
+  {
+    "label": "CS 390 - Individual Research Study",
+    "instructorName": "Selim Aksoy"
+  },
+  {
+    "label": "CS 399 - Summer Training II",
+    "instructorName": "Shervin Rahimzadeh Arashloo"
+  },
+  {
+    "label": "CS 411 - Software Architecture Design",
+    "instructorName": "Haluk Altunel"
+  },
+  {
+    "label": "CS 421 - Computer Networks",
+    "instructorName": "Ezhan Karaşan"
+  },
+  {
+    "label": "CS 423 - Computer Architecture",
+    "instructorName": "Onur Mutlu"
+  },
+  {
+    "label": "CS 426 - Parallel Computing",
+    "instructorName": "Özcan Öztürk"
+  },
+  {
+    "label": "CS 429 - Dynamic and Social Network Analysis",
+    "instructorName": "Miray Kaş"
+  },
+  {
+    "label": "CS 442 - Distributed Systems and Algorithms",
+    "instructorName": "İbrahim Körpeoğlu"
+  },
+  {
+    "label": "CS 449 - Learning for Robotics",
+    "instructorName": "Özgür Salih Öğüz"
+  },
+  {
+    "label": "CS 464 - Introduction to Machine Learning",
+    "instructorName": "Ayşegül Dündar"
+  },
+  {
+    "label": "CS 465 - Computer Graphics I",
+    "instructorName": "Uğur Güdükbay"
+  },
+  {
+    "label": "CS 473 - Algorithms I",
+    "instructorName": "Cevdet Aykanat"
+  },
+  {
+    "label": "CS 475 - Data Privacy",
+    "instructorName": "Erman Ayday"
+  },
+  {
+    "label": "CS 476 - Automata Theory and Formal Languages",
+    "instructorName": "Can Alkan"
+  },
+  {
+    "label": "CS 481 - Bioinformatics Algorithms",
+    "instructorName": "Can Alkan"
+  },
+  {
+    "label": "CS 489 - Teaching Project in Computer Engineering ",
+    "instructorName": "Selim Aksoy"
+  },
+  {
+    "label": "CS 490 - Senior Research Project",
+    "instructorName": "Selim Aksoy"
+  },
+  {
+    "label": "CS 491 - Senior Design Project I",
+    "instructorName": "Selim Aksoy"
+  },
+  {
+    "label": "CS 520 - Computer Architecture",
+    "instructorName": "Onur Mutlu"
+  },
+  {
+    "label": "CS 525 - Parallel Computing",
+    "instructorName": "Özcan Öztürk"
+  },
+  {
+    "label": "CS 527 - Advances in Switching Networks",
+    "instructorName": "Yavuz Oruç"
+  },
+  {
+    "label": "CS 529 - Dynamic and Social Network Analysis",
+    "instructorName": "Miray Kaş"
+  },
+  {
+    "label": "CS 549 - Learning for Robotics",
+    "instructorName": "Özgür Salih Öğüz"
+  },
+  {
+    "label": "CS 554 - Computer Vision",
+    "instructorName": "Hamdi Dibeklioğlu"
+  },
+  {
+    "label": "CS 559 - Deep Learning",
+    "instructorName": "Hamdi Dibeklioğlu"
+  },
+  {
+    "label": "CS 573 - Algorithms I",
+    "instructorName": "Cevdet Aykanat"
+  },
+  {
+    "label": "CS 575 - Computer Graphics I",
+    "instructorName": "Uğur Güdükbay"
+  },
+  {
+    "label": "CS 577 - Data Privacy",
+    "instructorName": "Erman Ayday"
+  },
+  {
+    "label": "CS 583 - Bioinformatics Algorithms",
+    "instructorName": "Can Alkan"
+  },
+  {
+    "label": "CS 590 - Research Seminar I",
+    "instructorName": "Uğur Güdükbay"
+  },
+  {
+    "label": "CS 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "CS 681 - Advanced Topics in Computational Biology",
+    "instructorName": "İnanç Birol"
+  },
+  {
+    "label": "CS 690 - Research Seminar II",
+    "instructorName": "Özgür Salih Öğüz"
+  },
+  {
+    "label": "CS 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "CTIS 151 - Introduction to Programming",
+    "instructorName": "Serpil Tın"
+  },
+  {
+    "label": "CTIS 152 - Algorithms and Data Structures",
+    "instructorName": "Burcu Liman"
+  },
+  {
+    "label": "CTIS 163 - Discrete Mathematics ",
+    "instructorName": "Duygu Albayrak"
+  },
+  {
+    "label": "CTIS 164 - Technical Mathematics with Programming ",
+    "instructorName": "Okyay Say"
+  },
+  {
+    "label": "CTIS 165 - Fundamentals of Information Systems",
+    "instructorName": "Erkan Uçar"
+  },
+  {
+    "label": "CTIS 166 - Information Technologies",
+    "instructorName": "Nimet Ceren Serim"
+  },
+  {
+    "label": "CTIS 186 - Business Computer Applications",
+    "instructorName": "Jamel Ben Chafra"
+  },
+  {
+    "label": "CTIS 221 - Object Oriented Programming",
+    "instructorName": "Burcu Liman"
+  },
+  {
+    "label": "CTIS 222 - Object Oriented Analysis and Design",
+    "instructorName": "Cüneyt Sevgi"
+  },
+  {
+    "label": "CTIS 255 - Frontend Web Technologies",
+    "instructorName": "Serkan Genç"
+  },
+  {
+    "label": "CTIS 256 - Introduction to Backend Development",
+    "instructorName": "Neşe Şahin Özçelik"
+  },
+  {
+    "label": "CTIS 259 - Database Management Systems and Applications",
+    "instructorName": "Nimet Ceren Serim"
+  },
+  {
+    "label": "CTIS 261 - Fundamentals of Computer Networks",
+    "instructorName": "Hamdi Murat Yıldırım"
+  },
+  {
+    "label": "CTIS 262 - Applied Computer Networks",
+    "instructorName": "Cüneyt Sevgi"
+  },
+  {
+    "label": "CTIS 264 - Computer Algorithms",
+    "instructorName": "Serkan Genç"
+  },
+  {
+    "label": "CTIS 285 - Hospitality Industry Computerization",
+    "instructorName": "Güneş Karamullaoğlu"
+  },
+  {
+    "label": "CTIS 290 - Summer Internship",
+    "instructorName": "Nimet Ceren Serim"
+  },
+  {
+    "label": "CTIS 310 - Semester Internship",
+    "instructorName": "Nimet Ceren Serim"
+  },
+  {
+    "label": "CTIS 359 - Principles of Software Engineering",
+    "instructorName": "Oumout Chousein Oglou"
+  },
+  {
+    "label": "CTIS 363 - Ethical and Social Issues in Information Systems ",
+    "instructorName": "Reyyan Ayfer"
+  },
+  {
+    "label": "CTIS 365 - Applied Data Analysis",
+    "instructorName": "Seyid Amjad Ali"
+  },
+  {
+    "label": "CTIS 411 - Senior Project I",
+    "instructorName": "Oumout Chousein Oglou"
+  },
+  {
+    "label": "CTIS 472 - Human Computer Interaction",
+    "instructorName": "Duygu Albayrak"
+  },
+  {
+    "label": "CTIS 474 - Information Systems Auditing",
+    "instructorName": "Volkan Evrin"
+  },
+  {
+    "label": "CTIS 480 - iOS Application Development",
+    "instructorName": "Seyid Amjad Ali"
+  },
+  {
+    "label": "CTIS 484 - Advanced Topics in Programming ",
+    "instructorName": "Okyay Say"
+  },
+  {
+    "label": "CTIS 486 - Linux System Administration",
+    "instructorName": "Hayrullah Doruk Fişek"
+  },
+  {
+    "label": "CTIS 487 - Mobile Application Development",
+    "instructorName": "Neşe Şahin Özçelik"
+  },
+  {
+    "label": "CTIS 491 - Software Validation Verification and Testing",
+    "instructorName": "Kadir Herkiloğlu"
+  },
+  {
+    "label": "CTIS 496 - Computer and Network Security",
+    "instructorName": "Hamdi Murat Yıldırım"
+  },
+  {
+    "label": "ECON 101 - Introduction to Economics I",
+    "instructorName": "Arda Gitmez"
+  },
+  {
+    "label": "ECON 102 - Introduction to Economics II",
+    "instructorName": "Fatma Taşkın"
+  },
+  {
+    "label": "ECON 103 - Principles of Economics",
+    "instructorName": "Güneş Karamullaoğlu"
+  },
+  {
+    "label": "ECON 107 - Principles of Microeconomics",
+    "instructorName": "Türkan Mine Kara"
+  },
+  {
+    "label": "ECON 108 - Principles of Macroeconomics",
+    "instructorName": "Bilin Neyaptı"
+  },
+  {
+    "label": "ECON 203 - Microeconomic Theory I",
+    "instructorName": "Çağla Ökten"
+  },
+  {
+    "label": "ECON 204 - Microeconomic Theory II",
+    "instructorName": "Nuh Aygün Dalkıran"
+  },
+  {
+    "label": "ECON 205 - Macroeconomic Theory I",
+    "instructorName": "Burçin Kısacıkoğlu"
+  },
+  {
+    "label": "ECON 206 - Macroeconomic Theory II",
+    "instructorName": "Sang Seok Lee"
+  },
+  {
+    "label": "ECON 207 - Economic Theory for Engineers",
+    "instructorName": "Hakan Berument"
+  },
+  {
+    "label": "ECON 221 - Introduction to Probability and Statistics I",
+    "instructorName": "Mustafa Eray Yücel"
+  },
+  {
+    "label": "ECON 222 - Introduction to Probability and Statistics II",
+    "instructorName": "Mustafa Eray Yücel"
+  },
+  {
+    "label": "ECON 225 - Mathematics for Economists",
+    "instructorName": "Mustafa Kerem Yüksel"
+  },
+  {
+    "label": "ECON 301 - Econometrics I",
+    "instructorName": "Mehmet Taner Yiğit"
+  },
+  {
+    "label": "ECON 321 - Financial Institutions and Markets",
+    "instructorName": "Burçin Kısacıkoğlu"
+  },
+  {
+    "label": "ECON 322 - Monetary Economics",
+    "instructorName": "Ali Hakan Kara"
+  },
+  {
+    "label": "ECON 363 - History of Economic Thought",
+    "instructorName": "Türkan Mine Kara"
+  },
+  {
+    "label": "ECON 399 - Summer Training ",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "ECON 409 - Contemporary Issues in Turkish Economy I",
+    "instructorName": "Ali Hakan Kara"
+  },
+  {
+    "label": "ECON 428 - Public Sector Governance",
+    "instructorName": "Mustafa Ferhat Emil"
+  },
+  {
+    "label": "ECON 432 - Turkish and World Economy in the 20th Century",
+    "instructorName": "Mustafa Ferhat Emil"
+  },
+  {
+    "label": "ECON 433 - Industrial Economics I",
+    "instructorName": "Kevin Edward Hasker"
+  },
+  {
+    "label": "ECON 439 - Game Theory I",
+    "instructorName": "Semih Koray"
+  },
+  {
+    "label": "ECON 453 - Theories of Economic Growth and Development I",
+    "instructorName": "Hüseyin Çağrı Sağlam"
+  },
+  {
+    "label": "ECON 458 - Labor Market Economics",
+    "instructorName": "Çağla Ökten"
+  },
+  {
+    "label": "ECON 503 - Microeconomic Theory I",
+    "instructorName": "Emin Karagözoğlu"
+  },
+  {
+    "label": "ECON 505 - Macroeconomic Theory I",
+    "instructorName": "Hüseyin Çağrı Sağlam"
+  },
+  {
+    "label": "ECON 509 - Probability and Statistics I",
+    "instructorName": "Tarık Kara"
+  },
+  {
+    "label": "ECON 515 - Mathematics for Economists I",
+    "instructorName": "Semih Koray"
+  },
+  {
+    "label": "ECON 541 - Economics of Labor Market",
+    "instructorName": "Şaziye Pelin Akyol"
+  },
+  {
+    "label": "ECON 591 - Masters Pre-Thesis Seminar I",
+    "instructorName": "Nuh Aygün Dalkıran"
+  },
+  {
+    "label": "ECON 595 - Research Paper I",
+    "instructorName": "Nuh Aygün Dalkıran"
+  },
+  {
+    "label": "ECON 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "ECON 691 - Ph.D. Pre-Thesis Seminar I",
+    "instructorName": "Nuh Aygün Dalkıran"
+  },
+  {
+    "label": "ECON 695 - Research Methods in Economics I",
+    "instructorName": "Nuh Aygün Dalkıran"
+  },
+  {
+    "label": "ECON 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "EDEB 201 - Introduction to Turkish Fiction",
+    "instructorName": "Hacer Esra Almas"
+  },
+  {
+    "label": "EDEB 401 - Introduction to Turkish Literature I",
+    "instructorName": "Mehmet Kalpaklı"
+  },
+  {
+    "label": "EDEB 405 - Written Expression",
+    "instructorName": "Hacer Esra Almas"
+  },
+  {
+    "label": "EDEB 411 - Ottoman Turkish I",
+    "instructorName": "Nil Tekgül"
+  },
+  {
+    "label": "EDEB 415 - Sources of Literature: Nature and Culture",
+    "instructorName": "Kudret Emiroğlu"
+  },
+  {
+    "label": "EDEB 432 - Modern Turkish Prose ",
+    "instructorName": "Hacer Esra Almas"
+  },
+  {
+    "label": "EDEB 511 - Ottoman Turkish III",
+    "instructorName": "Özer Ergenç"
+  },
+  {
+    "label": "EDEB 518 - Poetry and Translation",
+    "instructorName": "Orhan Tekelioğlu"
+  },
+  {
+    "label": "EDEB 593 - Seminar",
+    "instructorName": "Mehmet Kalpaklı"
+  },
+  {
+    "label": "EDEB 599 - Master's Thesis",
+    "instructorName": "Mehmet Kalpaklı"
+  },
+  {
+    "label": "EDEB 605 - East and West in Turkish Literature",
+    "instructorName": "Suavi Aydın"
+  },
+  {
+    "label": "EDEB 611 - Literature and Society I",
+    "instructorName": "Suavi Aydın"
+  },
+  {
+    "label": "EEE 102 - Introduction to Digital Circuit Design",
+    "instructorName": "Cem Tekin"
+  },
+  {
+    "label": "EEE 202 - Circuit Theory",
+    "instructorName": "Ömer Morgül"
+  },
+  {
+    "label": "EEE 211 - Analog Electronics",
+    "instructorName": "Abdullah Atalar"
+  },
+  {
+    "label": "EEE 212 - Microprocessors",
+    "instructorName": "Nail Akar"
+  },
+  {
+    "label": "EEE 299 - Summer Training I",
+    "instructorName": "Yusuf Ziya İder"
+  },
+  {
+    "label": "EEE 313 - Electronic Circuit Design",
+    "instructorName": "Yusuf Ziya İder"
+  },
+  {
+    "label": "EEE 321 - Signals and Systems",
+    "instructorName": "Levent Onural"
+  },
+  {
+    "label": "EEE 342 - Feedback Control Systems",
+    "instructorName": "Hitay Özbay"
+  },
+  {
+    "label": "EEE 351 - Engineering Electromagnetics",
+    "instructorName": "Vakur Behçet Ertürk"
+  },
+  {
+    "label": "EEE 391 - Basics of Signals and Systems",
+    "instructorName": "Haldun Özaktaş"
+  },
+  {
+    "label": "EEE 392 - Individual Research Study",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "EEE 399 - Summer Training II",
+    "instructorName": "Yusuf Ziya İder"
+  },
+  {
+    "label": "EEE 414 - Introduction to CMOS VLSI Design",
+    "instructorName": "Volkan Kurşun"
+  },
+  {
+    "label": "EEE 424 - Digital Signal Processing",
+    "instructorName": "Aykut Koç"
+  },
+  {
+    "label": "EEE 428 - Optics",
+    "instructorName": "Orhan Aytür"
+  },
+  {
+    "label": "EEE 431 - Telecommunications I",
+    "instructorName": "Sinan Gezici"
+  },
+  {
+    "label": "EEE 442 - Nonlinear Systems",
+    "instructorName": "Ömer Morgül"
+  },
+  {
+    "label": "EEE 443 - Neural Networks",
+    "instructorName": "Tolga Çukur"
+  },
+  {
+    "label": "EEE 447 - Introduction to Robotics ",
+    "instructorName": "Billur Barshan"
+  },
+  {
+    "label": "EEE 453 - Electrical Machinery",
+    "instructorName": "Abdullah Atalar"
+  },
+  {
+    "label": "EEE 455 - Power System Analysis and Design",
+    "instructorName": "Ayhan Altıntaş"
+  },
+  {
+    "label": "EEE 473 - Medical Imaging",
+    "instructorName": "Emine Ülkü Sarıtaş"
+  },
+  {
+    "label": "EEE 485 - Statistical Learning and Data Analytics",
+    "instructorName": "Süleyman Serdar Kozat"
+  },
+  {
+    "label": "EEE 491 - Electrical and Electronics Engineering Design I",
+    "instructorName": "İsmail Enis Ungan"
+  },
+  {
+    "label": "EEE 492 - Senior Project",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "EEE 493 - Industrial Design Project I",
+    "instructorName": "Mehmet Alper Kutay"
+  },
+  {
+    "label": "EEE 495 - Electrical and Electronics Engineering Design II",
+    "instructorName": "Mehmet Alper Kutay"
+  },
+  {
+    "label": "EEE 501 - Linear System Theory",
+    "instructorName": "Arif Bülent Özgüler"
+  },
+  {
+    "label": "EEE 514 - Introduction to CMOS VLSI Design",
+    "instructorName": "Volkan Kurşun"
+  },
+  {
+    "label": "EEE 528 - Optics",
+    "instructorName": "Orhan Aytür"
+  },
+  {
+    "label": "EEE 533 - Random Processes",
+    "instructorName": "Sinan Gezici"
+  },
+  {
+    "label": "EEE 534 - Wireless Communications",
+    "instructorName": "Ali Taha Koç"
+  },
+  {
+    "label": "EEE 542 - Nonlinear Systems",
+    "instructorName": "Ömer Morgül"
+  },
+  {
+    "label": "EEE 543 - Neural Networks",
+    "instructorName": "Tolga Çukur"
+  },
+  {
+    "label": "EEE 547 - Introduction to Robotics ",
+    "instructorName": "Billur Barshan"
+  },
+  {
+    "label": "EEE 553 - Electrical Machinery",
+    "instructorName": "Abdullah Atalar"
+  },
+  {
+    "label": "EEE 560 - Nanoengineering and Nanodevices",
+    "instructorName": "Ekmel Özbay"
+  },
+  {
+    "label": "EEE 573 - Medical Imaging",
+    "instructorName": "Emine Ülkü Sarıtaş"
+  },
+  {
+    "label": "EEE 585 - Statistical Learning and Data Analytics",
+    "instructorName": "Süleyman Serdar Kozat"
+  },
+  {
+    "label": "EEE 591 - Graduate Seminar I",
+    "instructorName": "Tolga Çukur"
+  },
+  {
+    "label": "EEE 592 - Graduate Seminar II",
+    "instructorName": "Tolga Çukur"
+  },
+  {
+    "label": "EEE 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "EEE 634 - Information Theory",
+    "instructorName": "Tolga Mete Duman"
+  },
+  {
+    "label": "EEE 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "ELIT 139 - Appreciation of Literature",
+    "instructorName": "Atti Viragh"
+  },
+  {
+    "label": "ELIT 143 - Literature in its Contexts",
+    "instructorName": "Atti Viragh"
+  },
+  {
+    "label": "ELIT 227 - Poetry and Poetics",
+    "instructorName": "Andrea Selleri"
+  },
+  {
+    "label": "ELIT 273 - Medieval and Renaissance Literature",
+    "instructorName": "Ayşe Çelikkol"
+  },
+  {
+    "label": "ELIT 290 - Summer Training I",
+    "instructorName": "Ceylan Bevington"
+  },
+  {
+    "label": "ELIT 359 - Shakespeare",
+    "instructorName": "Gül Kurtuluş"
+  },
+  {
+    "label": "ELIT 377 - Romantic Literature",
+    "instructorName": "Jonathan Coleman Williams"
+  },
+  {
+    "label": "ELIT 378 - Literature and the Global City",
+    "instructorName": "Timothy Sean Wright"
+  },
+  {
+    "label": "ELIT 390 - Summer Training II",
+    "instructorName": "Gül Kurtuluş"
+  },
+  {
+    "label": "ELIT 393 - Essentials of Short Fiction",
+    "instructorName": "Gül Kurtuluş"
+  },
+  {
+    "label": "ELIT 420 - Sir Walter Scott, Scotland, and the Historical Novel",
+    "instructorName": "Stein Haugom Olsen"
+  },
+  {
+    "label": "ELIT 421 - Literature and Modernity",
+    "instructorName": "Ceylan Bevington"
+  },
+  {
+    "label": "ELIT 440 - Literary Imagination and the End of the World",
+    "instructorName": "Jonathan Coleman Williams"
+  },
+  {
+    "label": "ELIT 463 - Postcolonial Literature",
+    "instructorName": "Timothy Sean Wright"
+  },
+  {
+    "label": "ELIT 490 - Senior Project ",
+    "instructorName": "Gül Kurtuluş"
+  },
+  {
+    "label": "EMBA 514 - Foundations of Organizational Management I",
+    "instructorName": "Aydın Örsan Örge"
+  },
+  {
+    "label": "EMBA 515 - Foundations of Organizational Management II",
+    "instructorName": "Aydın Örsan Örge"
+  },
+  {
+    "label": "EMBA 525 - Managing Systems Effectively",
+    "instructorName": "Fehmi Tanrısever"
+  },
+  {
+    "label": "EMBA 534 - Quantitative Methods",
+    "instructorName": "Banu Sultanoğlu"
+  },
+  {
+    "label": "EMBA 535 - Financial Reporting",
+    "instructorName": "Banu Sultanoğlu"
+  },
+  {
+    "label": "EMBA 546 - Strategic Financial Management ",
+    "instructorName": "Ayşe Başak Tanyeri"
+  },
+  {
+    "label": "EMBA 547 - Decision Analysis",
+    "instructorName": "Fehmi Tanrısever"
+  },
+  {
+    "label": "ENG 101 - English and Composition I",
+    "instructorName": "Andrew Bonar"
+  },
+  {
+    "label": "ENG 102 - English and Composition II",
+    "instructorName": "Nilüfer Yeşil"
+  },
+  {
+    "label": "ENG 117 - Advanced English Grammar I",
+    "instructorName": "Nilüfer Yeşil"
+  },
+  {
+    "label": "ENG 206 - Business Communications",
+    "instructorName": "Ahu Ertan"
+  },
+  {
+    "label": "ENG 401 - Technical Report Writing and Presentation",
+    "instructorName": "Marinus Hendrik Johannes Langbroek"
+  },
+  {
+    "label": "FA 101 - Basic Design I",
+    "instructorName": "Burçak Altay"
+  },
+  {
+    "label": "FA 103 - Drawing I",
+    "instructorName": "Birsu Semra Çeltek"
+  },
+  {
+    "label": "FA 105 - Foundation Studio I",
+    "instructorName": "Can İzzet Birand"
+  },
+  {
+    "label": "FA 131 - Technical Drawing",
+    "instructorName": "Alper Küçük"
+  },
+  {
+    "label": "FA 171 - Introduction to Art, Design and Culture I",
+    "instructorName": "Sema Karamanoğlu"
+  },
+  {
+    "label": "FA 201 - Art Studio I",
+    "instructorName": "Beata Malgorzata Zalewska Sladczyk"
+  },
+  {
+    "label": "FA 203 - Drawing III",
+    "instructorName": "Ahmet Özsalar"
+  },
+  {
+    "label": "FA 207 - Artistic Anatomy ",
+    "instructorName": "Düral Kadıoğlu"
+  },
+  {
+    "label": "FA 211 - Introduction to Painting I",
+    "instructorName": "Beata Malgorzata Zalewska Sladczyk"
+  },
+  {
+    "label": "FA 213 - Introduction to Printmaking I",
+    "instructorName": "Beata Malgorzata Zalewska Sladczyk"
+  },
+  {
+    "label": "FA 215 - Introduction to Sculpture I",
+    "instructorName": "Ercan Sağlam"
+  },
+  {
+    "label": "FA 217 - Introduction to Ceramics I",
+    "instructorName": "Ahmet Özsalar"
+  },
+  {
+    "label": "FA 219 - Ancient Techniques and New Technology in Mosaic",
+    "instructorName": "Ahmet Özsalar"
+  },
+  {
+    "label": "FA 223 - Visual Perception and Color",
+    "instructorName": "Elvan Serin"
+  },
+  {
+    "label": "FA 271 - History of Art I",
+    "instructorName": "Birsu Semra Çeltek"
+  },
+  {
+    "label": "FA 290 - Summer Practice I",
+    "instructorName": "Ercan Sağlam"
+  },
+  {
+    "label": "FA 301 - Art Studio III",
+    "instructorName": "Ahmet Özsalar"
+  },
+  {
+    "label": "FA 361 - Philosophy of Art I",
+    "instructorName": "Yasemin Gümüş Ağca"
+  },
+  {
+    "label": "FA 390 - Summer Practice II",
+    "instructorName": "Ercan Sağlam"
+  },
+  {
+    "label": "FA 401 - Art Studio V",
+    "instructorName": "Ercan Sağlam"
+  },
+  {
+    "label": "FA 421 - Analysis of Art Work I",
+    "instructorName": "Yasemin Gümüş Ağca"
+  },
+  {
+    "label": "GE 100 - Orientation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "GE 250 - Collegiate Activities Program I",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "GE 251 - Collegiate Activities Program II",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "GE 301 - Science Technology and Society",
+    "instructorName": "Robin Ann Downey"
+  },
+  {
+    "label": "GE 400 - Transdisciplinary Senior Project",
+    "instructorName": "Fatma Tahire Erman"
+  },
+  {
+    "label": "GE 401 - Innovative Design and Entrepreneurship I",
+    "instructorName": "H. Altay Güvenir"
+  },
+  {
+    "label": "GE 420 - Applied Sustainable Business Development",
+    "instructorName": "Ayşe Collins"
+  },
+  {
+    "label": "GE 500 - Research Methods and Academic Publication Ethics",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "GE 510 - Fundamentals of Social Research Design",
+    "instructorName": "İhsan Efe Tokdemir"
+  },
+  {
+    "label": "GE 511 - Philosophy of Social Inquiry",
+    "instructorName": "Simon Drummond Wigley"
+  },
+  {
+    "label": "GE 512 - Quantitative Data Analysis",
+    "instructorName": "Athanasios Mouratidis"
+  },
+  {
+    "label": "GE 590 - Academic Practices",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "GE 690 - Academic Practices",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "GRA 131 - Design Tools and Techniques",
+    "instructorName": "Mehmet Atıl Kurttekin"
+  },
+  {
+    "label": "GRA 201 - Graphic Design I",
+    "instructorName": "Marek Brzozowski"
+  },
+  {
+    "label": "GRA 205 - Rendering for Graphic Design I",
+    "instructorName": "Birsu Semra Çeltek"
+  },
+  {
+    "label": "GRA 207 - Conceptual Design",
+    "instructorName": "Çavlan Başarır"
+  },
+  {
+    "label": "GRA 209 - Graphic Design for Non-Majors",
+    "instructorName": "Ekin Kılıç Ezer"
+  },
+  {
+    "label": "GRA 210 - Web Design",
+    "instructorName": "Can İzzet Birand"
+  },
+  {
+    "label": "GRA 211 - Typography I",
+    "instructorName": "Can İzzet Birand"
+  },
+  {
+    "label": "GRA 215 - Computer Graphics for Film and Television I",
+    "instructorName": "Oğuz Akın"
+  },
+  {
+    "label": "GRA 218 - Essentials of Photography",
+    "instructorName": "Murad Gürzumar"
+  },
+  {
+    "label": "GRA 225 - Introduction to Visual Techniques",
+    "instructorName": "Çağatay Alpay"
+  },
+  {
+    "label": "GRA 290 - Summer Practice I",
+    "instructorName": "Birsu Semra Çeltek"
+  },
+  {
+    "label": "GRA 301 - Graphic Design III",
+    "instructorName": "Ekin Kılıç Ezer"
+  },
+  {
+    "label": "GRA 323 - Logos, Symbols and Signs",
+    "instructorName": "Ekin Kılıç Ezer"
+  },
+  {
+    "label": "GRA 324 - Photographic Practice",
+    "instructorName": "Murad Gürzumar"
+  },
+  {
+    "label": "GRA 325 - Visual Literacy",
+    "instructorName": "Marek Brzozowski"
+  },
+  {
+    "label": "GRA 341 - History of Graphic Art",
+    "instructorName": "Defne Kırmızı"
+  },
+  {
+    "label": "GRA 390 - Summer Practice II",
+    "instructorName": "Mehmet Atıl Kurttekin"
+  },
+  {
+    "label": "GRA 401 - Graphic Design V",
+    "instructorName": "Erhan Tunalı"
+  },
+  {
+    "label": "GRA 501 - Graduate Studio I",
+    "instructorName": "Funda Şenova Tunalı"
+  },
+  {
+    "label": "GRA 541 - Graphic and Visual Representation",
+    "instructorName": "Lutz Peschke"
+  },
+  {
+    "label": "GRA 590 - Seminar in Research Topics",
+    "instructorName": "Funda Şenova Tunalı"
+  },
+  {
+    "label": "GRA 599 - Master's Thesis",
+    "instructorName": "Marek Brzozowski"
+  },
+  {
+    "label": "HART 111 - Introduction to Archaeology",
+    "instructorName": "Thomas Zimmermann"
+  },
+  {
+    "label": "HART 117 - Ways of Seeing: Approaches to Art and Architectural History",
+    "instructorName": "Ayşe Batman"
+  },
+  {
+    "label": "HART 120 - Human Evolution and World Prehistory",
+    "instructorName": "Thomas Zimmermann"
+  },
+  {
+    "label": "HART 125 - Archaeological Illustration",
+    "instructorName": "Nadire Atıcı"
+  },
+  {
+    "label": "HART 206 - Mythologies of the Ancient Mediterranean World",
+    "instructorName": "Nebahat İlgi Gerçek"
+  },
+  {
+    "label": "HART 221 - Great Discoveries from the Ancient World ",
+    "instructorName": "Julian Bennett"
+  },
+  {
+    "label": "HART 222 - Mesopotamian Archaeology",
+    "instructorName": "Michele Massa"
+  },
+  {
+    "label": "HART 227 - Greek Archaeology",
+    "instructorName": "Dominique Tezgör Kassab"
+  },
+  {
+    "label": "HART 231 - Ancient Greek I",
+    "instructorName": "Luuk Otmar De Boer"
+  },
+  {
+    "label": "HART 239 - Latin I",
+    "instructorName": "Nebahat İlgi Gerçek"
+  },
+  {
+    "label": "HART 305 - Byzantine and Islamic Art and Archaeology",
+    "instructorName": "Luca Zavagno"
+  },
+  {
+    "label": "HART 352 - Monuments of Rome",
+    "instructorName": "Julian Bennett"
+  },
+  {
+    "label": "HART 372 - Hittite I",
+    "instructorName": "Nebahat İlgi Gerçek"
+  },
+  {
+    "label": "HART 399 - Summer Practice I",
+    "instructorName": "Dominique Tezgör Kassab"
+  },
+  {
+    "label": "HART 400 - Senior Project",
+    "instructorName": "Thomas Zimmermann"
+  },
+  {
+    "label": "HART 401 - Summer Practice II",
+    "instructorName": "Dominique Tezgör Kassab"
+  },
+  {
+    "label": "HART 409 - Museum Practices and the Preservation of Cultural Heritage",
+    "instructorName": "Aysun Çadallı"
+  },
+  {
+    "label": "HART 423 - Cities, Monuments and Landscapes of Classical Anatolia ",
+    "instructorName": "Julian Bennett"
+  },
+  {
+    "label": "HART 434 - Landscape Archaeology",
+    "instructorName": "Michele Massa"
+  },
+  {
+    "label": "HART 436 - Archaeological Method and Theory",
+    "instructorName": "Michele Massa"
+  },
+  {
+    "label": "HART 507 - Pre-Classical Art and Archaeology",
+    "instructorName": "Thomas Zimmermann"
+  },
+  {
+    "label": "HART 519 - Research Directions for Anatolian Archaeology and Art",
+    "instructorName": "Dominique Tezgör Kassab"
+  },
+  {
+    "label": "HART 542 - Hittite I",
+    "instructorName": "Nebahat İlgi Gerçek"
+  },
+  {
+    "label": "HART 551 - Ancient Greek I",
+    "instructorName": "Luuk Otmar De Boer"
+  },
+  {
+    "label": "HART 563 - Latin I",
+    "instructorName": "Nebahat İlgi Gerçek"
+  },
+  {
+    "label": "HART 590 - Seminar",
+    "instructorName": "Michele Massa"
+  },
+  {
+    "label": "HART 599 - Master's Thesis",
+    "instructorName": "Michele Massa"
+  },
+  {
+    "label": "HCIV 101 - History of Civilization I",
+    "instructorName": "Doğuş Aytaç"
+  },
+  {
+    "label": "HCIV 102 - History of Civilization II",
+    "instructorName": "David E. Thornton"
+  },
+  {
+    "label": "HIST 200 - History of Turkey ",
+    "instructorName": "Abdürrahim Özer"
+  },
+  {
+    "label": "HIST 205 - An Introduction to the History of the Ottoman Empire",
+    "instructorName": "Ahmet Zeybek"
+  },
+  {
+    "label": "HIST 209 - History of Turkey",
+    "instructorName": "Kaan Gazne"
+  },
+  {
+    "label": "HIST 401 - Ottoman Turkish and Paleography I",
+    "instructorName": "Nil Tekgül"
+  },
+  {
+    "label": "HIST 411 - Ottoman History: 1300-1600",
+    "instructorName": "Nil Tekgül"
+  },
+  {
+    "label": "HIST 413 - Byzantine History I: 324-1025",
+    "instructorName": "Luca Zavagno"
+  },
+  {
+    "label": "HIST 417 - Medieval Europe (500-1500)",
+    "instructorName": "Paul Latimer"
+  },
+  {
+    "label": "HIST 431 - History of the United States until the Reconstruction",
+    "instructorName": "Kenneth Weisbrode"
+  },
+  {
+    "label": "HIST 442 - A History of the Modern Middle East :1800 to Present",
+    "instructorName": "Berke Torunoğlu"
+  },
+  {
+    "label": "HIST 476 - The Ottoman Empire in the Great War 1911-1923",
+    "instructorName": "Suavi Aydın"
+  },
+  {
+    "label": "HIST 490 - Field Related Seminar",
+    "instructorName": "Paul Latimer"
+  },
+  {
+    "label": "HIST 501 - Ottoman Paleography I",
+    "instructorName": "Özer Ergenç"
+  },
+  {
+    "label": "HIST 505 - Ottoman Rule in Southeast Europe I: 1354-1600",
+    "instructorName": "Evgeniy Radoslavov Radushev"
+  },
+  {
+    "label": "HIST 507 - Methodology in History I",
+    "instructorName": "Berke Torunoğlu"
+  },
+  {
+    "label": "HIST 517 - Ottoman Millet System",
+    "instructorName": "Evgeniy Radoslavov Radushev"
+  },
+  {
+    "label": "HIST 520 - Sources of Ottoman Social and Economic History II",
+    "instructorName": "Özer Ergenç"
+  },
+  {
+    "label": "HIST 576 - The Ottoman Empire in the Great War 1911-1923",
+    "instructorName": "Suavi Aydın"
+  },
+  {
+    "label": "HIST 577 - US Military and Diplomatic History",
+    "instructorName": "Kenneth Weisbrode"
+  },
+  {
+    "label": "HIST 581 - Latin for Medieval and Early Modern History III",
+    "instructorName": "Paul Latimer"
+  },
+  {
+    "label": "HIST 593 - Seminar in English History I",
+    "instructorName": "David E. Thornton"
+  },
+  {
+    "label": "HIST 599 - Master's Thesis",
+    "instructorName": "Paul Latimer"
+  },
+  {
+    "label": "HIST 692 - Pre-Thesis Seminar",
+    "instructorName": "Paul Latimer"
+  },
+  {
+    "label": "HIST 693 - Pre-Thesis Seminar",
+    "instructorName": "Paul Latimer"
+  },
+  {
+    "label": "HIST 699 - Ph.D. Dissertation",
+    "instructorName": "Paul Latimer"
+  },
+  {
+    "label": "HIST 702 - A History of the Modern Middle East -1800 to Present ",
+    "instructorName": "Berke Torunoğlu"
+  },
+  {
+    "label": "HIST 4413 - Venice between the Byzantines and the Ottomans(ca.300-ca.1700 CE)",
+    "instructorName": "Luca Zavagno"
+  },
+  {
+    "label": "HIST 5513 - Venice between the Byzantines and the Ottomans (ca. 300 - ca. 1700 CE)",
+    "instructorName": "Luca Zavagno"
+  },
+  {
+    "label": "HUM 111 - Cultures Civilizations and Ideas I",
+    "instructorName": "Scott Allen Kennedy"
+  },
+  {
+    "label": "HUM 112 - Cultures Civilizations and Ideas II",
+    "instructorName": "Costantino Costantini"
+  },
+  {
+    "label": "IAED 201 - Interior Design Studio I",
+    "instructorName": "Burcu Egel"
+  },
+  {
+    "label": "IAED 211 - Media for Representation ",
+    "instructorName": "Tijen Sonkan Türkkan"
+  },
+  {
+    "label": "IAED 221 - Human Factors",
+    "instructorName": "Burçak Altay"
+  },
+  {
+    "label": "IAED 251 - Construction and Materials I",
+    "instructorName": "Necmiye Şule Aybar"
+  },
+  {
+    "label": "IAED 290 - Summer Practice I",
+    "instructorName": "Tijen Sonkan Türkkan"
+  },
+  {
+    "label": "IAED 301 - Interior Design Studio III",
+    "instructorName": "Elif Erdemir Türkkan"
+  },
+  {
+    "label": "IAED 322 - People and Environment",
+    "instructorName": "Çağrı İmamoğlu"
+  },
+  {
+    "label": "IAED 341 - Architectural Acoustics and Fire Safety",
+    "instructorName": "Semiha Yılmazer"
+  },
+  {
+    "label": "IAED 351 - Detailing Studio",
+    "instructorName": "Murat Özdamar"
+  },
+  {
+    "label": "IAED 390 - Summer Practice II",
+    "instructorName": "Tijen Sonkan Türkkan"
+  },
+  {
+    "label": "IAED 397 - Color Theory and Applications",
+    "instructorName": "Nilgün Olguntürk"
+  },
+  {
+    "label": "IAED 401 - Interior Design Studio V",
+    "instructorName": "Serpil Özaloğlu"
+  },
+  {
+    "label": "IAED 415 - Advanced Detailing Studio",
+    "instructorName": "Yunus Altay"
+  },
+  {
+    "label": "IAED 461 - Environmental Management and Sustainable Development",
+    "instructorName": "Andre Naghi Lopes Dos Santos Nouri"
+  },
+  {
+    "label": "IAED 463 - History of Furniture",
+    "instructorName": "Elif Erdemir Türkkan"
+  },
+  {
+    "label": "IAED 501 - Graduate Studio I",
+    "instructorName": "Yasemin Afacan"
+  },
+  {
+    "label": "IAED 511 - Research Methods I",
+    "instructorName": "Halime Demirkan"
+  },
+  {
+    "label": "IAED 543 - Environmental Analysis I",
+    "instructorName": "Halime Demirkan"
+  },
+  {
+    "label": "IAED 590 - Seminar in Research Topics",
+    "instructorName": "Yasemin Afacan"
+  },
+  {
+    "label": "IAED 599 - Master's Thesis",
+    "instructorName": "Yasemin Afacan"
+  },
+  {
+    "label": "IAED 690 - Seminar in Advanced Research Topics",
+    "instructorName": "Yasemin Afacan"
+  },
+  {
+    "label": "IAED 699 - Ph.D. Dissertation",
+    "instructorName": "Yasemin Afacan"
+  },
+  {
+    "label": "IE 102 - A Process Outlook for Industrial Engineering",
+    "instructorName": "Özlem Karsu"
+  },
+  {
+    "label": "IE 202 - Introduction to Modeling and Optimization",
+    "instructorName": "Oya Karaşan"
+  },
+  {
+    "label": "IE 272 - Manufacturing Processes and Operations Analysis",
+    "instructorName": "Yiğit Karpat"
+  },
+  {
+    "label": "IE 299 - Summer Training I",
+    "instructorName": "Nil Şahin"
+  },
+  {
+    "label": "IE 303 - Modeling and Methods in Optimization",
+    "instructorName": "Mustafa Çelebi Pınar"
+  },
+  {
+    "label": "IE 324 - Simulation",
+    "instructorName": "Emre Uzun"
+  },
+  {
+    "label": "IE 325 - Stochastic Models",
+    "instructorName": "Özlem Çavuş İyigün"
+  },
+  {
+    "label": "IE 342 - Engineering Economic Analysis",
+    "instructorName": "Arnab Basu"
+  },
+  {
+    "label": "IE 375 - Production Planning",
+    "instructorName": "Emre Nadar"
+  },
+  {
+    "label": "IE 376 - Production Information Systems",
+    "instructorName": "Arnab Basu"
+  },
+  {
+    "label": "IE 380 - Quality Control and Improvement",
+    "instructorName": "Halil İbrahim Bayrak"
+  },
+  {
+    "label": "IE 399 - Summer Training II",
+    "instructorName": "Özlem Çavuş İyigün"
+  },
+  {
+    "label": "IE 400 - Principles of Engineering Management",
+    "instructorName": "Tagi Hanalioğlu"
+  },
+  {
+    "label": "IE 411 - Introduction to Nonlinear Optimization",
+    "instructorName": "Firdevs Ulus"
+  },
+  {
+    "label": "IE 443 - Multi-Objective Decision Analysis",
+    "instructorName": "Özlem Karsu"
+  },
+  {
+    "label": "IE 448 - Financial Issues in Engineering Projects",
+    "instructorName": "Hasan Semih Ergür"
+  },
+  {
+    "label": "IE 451 - Applied Data Analysis",
+    "instructorName": "Savaş Dayanık"
+  },
+  {
+    "label": "IE 452 - Algebraic and Geometric Methods in Data Analysis",
+    "instructorName": "Arnab Basu"
+  },
+  {
+    "label": "IE 469 - Industrial Applications of Operations Research",
+    "instructorName": "Emre Uzun"
+  },
+  {
+    "label": "IE 474 - Facility Layout and Location",
+    "instructorName": "Meltem Peker Sarhan"
+  },
+  {
+    "label": "IE 477 - Systems Design - Analysis",
+    "instructorName": "Ayşe Selin Kocaman"
+  },
+  {
+    "label": "IE 482 - Humanitarian Logistics",
+    "instructorName": "Bahar Yetiş"
+  },
+  {
+    "label": "IE 490 - Introduction to Research in IE and OR",
+    "instructorName": "Firdevs Ulus"
+  },
+  {
+    "label": "IE 491 - Introduction to Research in IE and OR II",
+    "instructorName": "Firdevs Ulus"
+  },
+  {
+    "label": "IE 500 - Mathematics of Operations Research",
+    "instructorName": "Nil Şahin"
+  },
+  {
+    "label": "IE 505 - Mathematical Programming ",
+    "instructorName": "Firdevs Ulus"
+  },
+  {
+    "label": "IE 523 - Probabilistic Analysis",
+    "instructorName": "Ülkü Gürler"
+  },
+  {
+    "label": "IE 552 - Algebraic and Geometric Methods in Data Analysis",
+    "instructorName": "Arnab Basu"
+  },
+  {
+    "label": "IE 590 - Research Topics in IE and OR",
+    "instructorName": "Emre Nadar"
+  },
+  {
+    "label": "IE 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "IE 690 - Advanced Research Topics in IE&OR",
+    "instructorName": "Emre Nadar"
+  },
+  {
+    "label": "IE 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "IELTS 100 - International English Language Testing System",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "IR 101 - Introduction to World Politics",
+    "instructorName": "Seçkin Köstem"
+  },
+  {
+    "label": "IR 205 - Diplomatic History ",
+    "instructorName": "Sırrı Hakan Kırımlı"
+  },
+  {
+    "label": "IR 214 - Global Environmental Issues",
+    "instructorName": "Tore Fougner"
+  },
+  {
+    "label": "IR 227 - Research Methods in International Relations ",
+    "instructorName": "Serdar Ş. Güner"
+  },
+  {
+    "label": "IR 236 - 20th Century World Politics",
+    "instructorName": "Samuel John Hirst"
+  },
+  {
+    "label": "IR 303 - International Law ",
+    "instructorName": "Tuğba Bayar"
+  },
+  {
+    "label": "IR 305 - International Organizations",
+    "instructorName": "Tuğba Bayar"
+  },
+  {
+    "label": "IR 311 - Russian History",
+    "instructorName": "Sırrı Hakan Kırımlı"
+  },
+  {
+    "label": "IR 331 - War, Peace and Security",
+    "instructorName": "Ömer Zarplı"
+  },
+  {
+    "label": "IR 333 - Foreign Policy Analysis",
+    "instructorName": "Ömer Zarplı"
+  },
+  {
+    "label": "IR 335 - International Relations Theory",
+    "instructorName": "Tore Fougner"
+  },
+  {
+    "label": "IR 338 - Politics of International Economy",
+    "instructorName": "Seçkin Köstem"
+  },
+  {
+    "label": "IR 358 - International Security",
+    "instructorName": "Tudor A. Onea"
+  },
+  {
+    "label": "IR 399 - Summer Training",
+    "instructorName": "Seçkin Köstem"
+  },
+  {
+    "label": "IR 413 - Game Theory and International Politics",
+    "instructorName": "Serdar Ş. Güner"
+  },
+  {
+    "label": "IR 439 - Turkish Foreign Policy ",
+    "instructorName": "Onur İşçi"
+  },
+  {
+    "label": "IR 464 - History of the Cold War",
+    "instructorName": "Samuel John Hirst"
+  },
+  {
+    "label": "IR 492 - Gender in International Relations",
+    "instructorName": "Crystal Marie Whestone"
+  },
+  {
+    "label": "IR 501 - International Relations Theory",
+    "instructorName": "Tudor A. Onea"
+  },
+  {
+    "label": "IR 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "IR 621 - Current Debates in International Relations Theory",
+    "instructorName": "İhsan Efe Tokdemir"
+  },
+  {
+    "label": "IR 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "IR 4022 - Protection of Human Rights in the European Union and Turkey",
+    "instructorName": "Tuğba Bayar"
+  },
+  {
+    "label": "IR 4121 - Intervention in International Relations",
+    "instructorName": "Selver Buldanlıoğlu Şahin"
+  },
+  {
+    "label": "IR 4130 - Foreign Policy and Public Opinion",
+    "instructorName": "İhsan Efe Tokdemir"
+  },
+  {
+    "label": "IR 5104 - Issues in Turkish Foreign Policy ",
+    "instructorName": "İbrahim Özgür Özdamar"
+  },
+  {
+    "label": "LAUD 201 - Design Studio I:Site Design",
+    "instructorName": "Gizem Karabay Can"
+  },
+  {
+    "label": "LAUD 221 - Introduction to Urban Concepts",
+    "instructorName": "Gizem Karabay Can"
+  },
+  {
+    "label": "LAUD 242 - Flora of Turkey",
+    "instructorName": "Didem Dizdaroğlu"
+  },
+  {
+    "label": "LAUD 251 - Introduction to Landscape Theory",
+    "instructorName": "Hatice Karaca"
+  },
+  {
+    "label": "LAUD 290 - Summer Practice II",
+    "instructorName": "Bülent Batuman"
+  },
+  {
+    "label": "LAUD 301 - Design Studio III: Small Town",
+    "instructorName": "Hatice Karaca"
+  },
+  {
+    "label": "LAUD 357 - Landscape Construction: Techniques, Materials and Structures",
+    "instructorName": "Ahmet Oktan Nalbantoğlu"
+  },
+  {
+    "label": "LAUD 390 - Summer Practice III",
+    "instructorName": "Bülent Batuman"
+  },
+  {
+    "label": "LAUD 401 - Senior Design Studio I: Open Space Network",
+    "instructorName": "Didem Dizdaroğlu"
+  },
+  {
+    "label": "LAUD 421 - Realization of Urban Projects",
+    "instructorName": "Ahmet Oktan Nalbantoğlu"
+  },
+  {
+    "label": "LAUD 471 - Urban Sociology",
+    "instructorName": "Bülent Batuman"
+  },
+  {
+    "label": "LAUD 481 - Landscape Ecology Studio",
+    "instructorName": "Kumru Arapgirlioğlu"
+  },
+  {
+    "label": "LAW 102 - Roman Law (in Turkish)",
+    "instructorName": "Talya Şans Deibel"
+  },
+  {
+    "label": "LAW 103 - Constitutional Law (in Turkish)",
+    "instructorName": "Zülfiye Yılmaz"
+  },
+  {
+    "label": "LAW 105 - Civil Law: Introductory Provisions and Natural Persons (in Turkish)",
+    "instructorName": "Osman B. Gürzumar"
+  },
+  {
+    "label": "LAW 201 - Law of Obligations I (in Turkish)",
+    "instructorName": "Vedat Buz"
+  },
+  {
+    "label": "LAW 203 - Criminal Law I (in Turkish)",
+    "instructorName": "Haluk Toroslu"
+  },
+  {
+    "label": "LAW 205 - Administrative Law (in Turkish)",
+    "instructorName": "Turgut Tan"
+  },
+  {
+    "label": "LAW 210 - Basic Concepts of Law (in Turkish)",
+    "instructorName": "Serkan Yolcu"
+  },
+  {
+    "label": "LAW 211 - Basic Concepts of Law",
+    "instructorName": "Ayşe Dicle Ergin"
+  },
+  {
+    "label": "LAW 301 - Civil Procedure I (in Turkish)",
+    "instructorName": "Ejder Yılmaz"
+  },
+  {
+    "label": "LAW 303 - Public International Law",
+    "instructorName": "Danai Angeli"
+  },
+  {
+    "label": "LAW 304 - Private International Law (in Turkish)",
+    "instructorName": "Fatma Aslı Bayata Canyaş"
+  },
+  {
+    "label": "LAW 305 - Law of Property I (in Turkish)",
+    "instructorName": "Şemsi Barış Özçelik"
+  },
+  {
+    "label": "LAW 307 - Commercial Enterprise Law (in Turkish)",
+    "instructorName": "Hamdi Pınar"
+  },
+  {
+    "label": "LAW 308 - Company Law (in Turkish)",
+    "instructorName": "Hamdi Pınar"
+  },
+  {
+    "label": "LAW 309 - Law of Obligations Special Provisions (in Turkish)",
+    "instructorName": "Pınar Altınok Ormancı"
+  },
+  {
+    "label": "LAW 313 - Business Law (in Turkish)",
+    "instructorName": "Fatma Aslı Bayata Canyaş"
+  },
+  {
+    "label": "LAW 315 - Administrative Law (in Turkish)",
+    "instructorName": "Elvin Evrim Dalkılıç"
+  },
+  {
+    "label": "LAW 371 - International Criminal Law",
+    "instructorName": "Elif Gökşen Köstem"
+  },
+  {
+    "label": "LAW 375 - Turkish Constitutional History (in Turkish)",
+    "instructorName": "Erdal Onar"
+  },
+  {
+    "label": "LAW 377 - Current Issues in Law of Technology",
+    "instructorName": "Işıl Selen Denemeç"
+  },
+  {
+    "label": "LAW 383 - Introduction to Law and Economics of Competition and Regulatory Policies",
+    "instructorName": "Halil Baha Karabudak"
+  },
+  {
+    "label": "LAW 401 - Law of Negotiable Instruments (in Turkish)",
+    "instructorName": "Mehmet Çağlar Manavgat"
+  },
+  {
+    "label": "LAW 403 - Inheritance Law (in Turkish)",
+    "instructorName": "Pınar Çağlayan Aksoy"
+  },
+  {
+    "label": "LAW 405 - International Human Rights Law",
+    "instructorName": "Elvin Evrim Dalkılıç"
+  },
+  {
+    "label": "LAW 407 - Tax Law (in Turkish)",
+    "instructorName": "Mustafa Akkaya"
+  },
+  {
+    "label": "LAW 411 - Criminal Procedure  (in Turkish)",
+    "instructorName": "Haluk Toroslu"
+  },
+  {
+    "label": "LAW 412 - Labor Law (in Turkish)",
+    "instructorName": "Levent Akın"
+  },
+  {
+    "label": "LAW 413 - European Union Law",
+    "instructorName": "Gülüm Özçelik"
+  },
+  {
+    "label": "LAW 447 - Moot Court I",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "LAW 473 - Mergers and Acquisitions",
+    "instructorName": "İsmail Gökhan Esin"
+  },
+  {
+    "label": "LAW 554 - Current Issues on Law of Torts (in Turkish)",
+    "instructorName": "Şemsi Barış Özçelik"
+  },
+  {
+    "label": "LAW 568 - Contemporary Governmental Systems (in Turkish)",
+    "instructorName": "Erdal Onar"
+  },
+  {
+    "label": "LAW 571 - Law Applicable to Contractual Obligations (in Turkish)",
+    "instructorName": "Bilgin Tiryakioğlu"
+  },
+  {
+    "label": "LAW 580 - Legal Methodology (in Turkish)",
+    "instructorName": "Hamdi Pınar"
+  },
+  {
+    "label": "LAW 590 - Pre-Thesis Seminar",
+    "instructorName": "Hüseyin Can Aksoy"
+  },
+  {
+    "label": "LAW 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "LAW 635 - Corporate Governance Issues of Joint Stock Companies (in Turkish)",
+    "instructorName": "Mehmet Çağlar Manavgat"
+  },
+  {
+    "label": "LAW 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "LNG 111 - Spanish I",
+    "instructorName": "Özlem Doğan"
+  },
+  {
+    "label": "LNG 112 - Spanish II",
+    "instructorName": "Mariela Del Carmen Aguirre Fidan"
+  },
+  {
+    "label": "LNG 113 - Spanish III",
+    "instructorName": "Mariela Del Carmen Aguirre Fidan"
+  },
+  {
+    "label": "LNG 121 - French I",
+    "instructorName": "Pierre Bertrand Mossoa"
+  },
+  {
+    "label": "LNG 122 - French II",
+    "instructorName": "Betül Bostan"
+  },
+  {
+    "label": "LNG 123 - French III",
+    "instructorName": "Pierre Bertrand Mossoa"
+  },
+  {
+    "label": "LNG 131 - German I",
+    "instructorName": "Ahu Gümüşkan"
+  },
+  {
+    "label": "LNG 132 - German II",
+    "instructorName": "Ahu Gümüşkan"
+  },
+  {
+    "label": "LNG 133 - German III",
+    "instructorName": "Ahu Gümüşkan"
+  },
+  {
+    "label": "LNG 134 - Intermediate German I",
+    "instructorName": "Tuna Başaran"
+  },
+  {
+    "label": "LNG 141 - Italian I",
+    "instructorName": "Arzu Bezgin"
+  },
+  {
+    "label": "LNG 142 - Italian II",
+    "instructorName": "Arzu Bezgin"
+  },
+  {
+    "label": "LNG 161 - Russian I",
+    "instructorName": "Gülnara Tanrıkulu"
+  },
+  {
+    "label": "LNG 162 - Russian II",
+    "instructorName": "Gülnara Tanrıkulu"
+  },
+  {
+    "label": "LNG 171 - Turkish I",
+    "instructorName": "Özlem Aksu Kurtoğlu"
+  },
+  {
+    "label": "LNG 172 - Turkish II",
+    "instructorName": "Özlem Aksu Kurtoğlu"
+  },
+  {
+    "label": "LNG 173 - Turkish III",
+    "instructorName": "Nurbanu Aydın"
+  },
+  {
+    "label": "LNG 178 - Advanced Turkish I",
+    "instructorName": "Nurbanu Aydın"
+  },
+  {
+    "label": "LNG 221 - Chinese I",
+    "instructorName": "Simay Erden Tuğlu"
+  },
+  {
+    "label": "LNG 231 - Korean I",
+    "instructorName": "Nam Sig Yang"
+  },
+  {
+    "label": "LNG 232 - Korean II",
+    "instructorName": "Nam Sig Yang"
+  },
+  {
+    "label": "LNG 241 - Japanese I",
+    "instructorName": "Masumi Hiratsuka (Cakmakcı)"
+  },
+  {
+    "label": "LNG 242 - Japanese II",
+    "instructorName": "Masumi Hiratsuka (Cakmakcı)"
+  },
+  {
+    "label": "LNG 331 - Readings in German I",
+    "instructorName": "İlknur Garbioğlu"
+  },
+  {
+    "label": "MAN 101 - Introduction to Business I",
+    "instructorName": "Levent Akdeniz"
+  },
+  {
+    "label": "MAN 102 - Introduction to Business II",
+    "instructorName": "Özgür Tolga Baycan"
+  },
+  {
+    "label": "MAN 211 - Principles of Accounting I",
+    "instructorName": "Selda Sevin"
+  },
+  {
+    "label": "MAN 213 - Principles of Financial Accounting",
+    "instructorName": "Banu Sultanoğlu"
+  },
+  {
+    "label": "MAN 216 - Elements of Finance",
+    "instructorName": "İdil Ayberk"
+  },
+  {
+    "label": "MAN 256 - Introduction to Management Science",
+    "instructorName": "Yasemin Limon"
+  },
+  {
+    "label": "MAN 262 - Organizational Behavior",
+    "instructorName": "Celile Itır Göğüş"
+  },
+  {
+    "label": "MAN 312 - Managerial Accounting",
+    "instructorName": "Alaattin Ecer"
+  },
+  {
+    "label": "MAN 321 - Corporate Finance",
+    "instructorName": "Kürşat Aydoğan"
+  },
+  {
+    "label": "MAN 333 - Marketing Principles",
+    "instructorName": "Ceren Aydoğmuş"
+  },
+  {
+    "label": "MAN 335 - Fundamentals of Marketing",
+    "instructorName": "Ahmet Ekici"
+  },
+  {
+    "label": "MAN 341 - Production Management",
+    "instructorName": "Fehmi Tanrısever"
+  },
+  {
+    "label": "MAN 361 - Organization Theory",
+    "instructorName": "Zahide Karakitapoğlu Aygün"
+  },
+  {
+    "label": "MAN 399 - Summer Practice",
+    "instructorName": "Celile Itır Göğüş"
+  },
+  {
+    "label": "MAN 401 - Managerial Economics",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MAN 403 - International Business",
+    "instructorName": "Atilla Onuklu"
+  },
+  {
+    "label": "MAN 404 - Investment Analysis",
+    "instructorName": "Zeynep Önder"
+  },
+  {
+    "label": "MAN 406 - Business Strategy",
+    "instructorName": "Aydın Örsan Örge"
+  },
+  {
+    "label": "MAN 409 - Sustainability and Social Impact in Business",
+    "instructorName": "Selcen Erdem"
+  },
+  {
+    "label": "MAN 414 - Auditing",
+    "instructorName": "Uğur Akdoğan"
+  },
+  {
+    "label": "MAN 421 - Capital Markets and Institutions",
+    "instructorName": "Ayşe Başak Tanyeri"
+  },
+  {
+    "label": "MAN 433 - Global Marketing and Emerging Markets",
+    "instructorName": "Emin Çivi"
+  },
+  {
+    "label": "MAN 435 - Financial Services Marketing",
+    "instructorName": "Can Mehmet Pamir"
+  },
+  {
+    "label": "MAN 450 - Sustainable Management of Urban Mobility",
+    "instructorName": "Ali Onuralp Ünal"
+  },
+  {
+    "label": "MAN 456 - Business Analytics",
+    "instructorName": "Yasemin Limon"
+  },
+  {
+    "label": "MAN 462 - Human Resources Management",
+    "instructorName": "Sibel Bostancı Çelebi"
+  },
+  {
+    "label": "MAN 467 - Cross-Cultural Management",
+    "instructorName": "Ceren Aydoğmuş"
+  },
+  {
+    "label": "MAN 485 - Real Estate Finance",
+    "instructorName": "Zeynep Önder"
+  },
+  {
+    "label": "MAN 495 - Business Capstone Project",
+    "instructorName": "Ceren Aydoğmuş"
+  },
+  {
+    "label": "MAN 525 - Financial Economics",
+    "instructorName": "Altan Pazarbaşı"
+  },
+  {
+    "label": "MAN 590 - Pro-Thesis Seminar",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MAN 593 - Research Paper I",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MAN 594 - Research Paper II",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MAN 599 - Master's Thesis Project",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MAN 610 - Data Analytics and Statistics",
+    "instructorName": "Canberk Üçel"
+  },
+  {
+    "label": "MAN 690 - Pre-Thesis Seminar",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MAN 699 - Ph.D. Dissertation",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MATH 101 - Calculus I",
+    "instructorName": "Ali Süleyman Üstünel"
+  },
+  {
+    "label": "MATH 102 - Calculus II",
+    "instructorName": "Hamza Yeşilyurt"
+  },
+  {
+    "label": "MATH 103 - Thinking Mathematically I",
+    "instructorName": "Fatma Güliz Bolat"
+  },
+  {
+    "label": "MATH 104 - Thinking Mathematically II",
+    "instructorName": "Fatma Güliz Bolat"
+  },
+  {
+    "label": "MATH 105 - Introduction to Calculus I",
+    "instructorName": "Kamer Rodoplu"
+  },
+  {
+    "label": "MATH 106 - Introduction to Calculus II",
+    "instructorName": "Yaghoub Heydarzade"
+  },
+  {
+    "label": "MATH 123 - Abstract Mathematics I",
+    "instructorName": "Özgün Ünlü"
+  },
+  {
+    "label": "MATH 132 - Discrete and Combinatorial Mathematics",
+    "instructorName": "Laurence John Barker"
+  },
+  {
+    "label": "MATH 202 - Complex Analysis",
+    "instructorName": "Türker Özsarı"
+  },
+  {
+    "label": "MATH 213 - Advanced Calculus I",
+    "instructorName": "Aurelian Gheondea"
+  },
+  {
+    "label": "MATH 220 - Linear Algebra",
+    "instructorName": "Bülent Ünal"
+  },
+  {
+    "label": "MATH 223 - Linear Algebra I",
+    "instructorName": "Özgün Ünlü"
+  },
+  {
+    "label": "MATH 225 - Linear Algebra and Differential Equations",
+    "instructorName": "Metin Gürses"
+  },
+  {
+    "label": "MATH 227 - Introduction to Linear Algebra",
+    "instructorName": "Ergün Yalçın"
+  },
+  {
+    "label": "MATH 230 - Probability and Statistics for Engineers",
+    "instructorName": "Dilek Köksal"
+  },
+  {
+    "label": "MATH 240 - Differential Equations",
+    "instructorName": "Fatihcan Atay"
+  },
+  {
+    "label": "MATH 241 - Engineering Mathematics I",
+    "instructorName": "Nil Şahin"
+  },
+  {
+    "label": "MATH 242 - Engineering Mathematics II",
+    "instructorName": "Arif Bülent Özgüler"
+  },
+  {
+    "label": "MATH 250 - Introduction to Probability",
+    "instructorName": "Azer Kerimov"
+  },
+  {
+    "label": "MATH 255 - Probability and Statistics",
+    "instructorName": "Muhammed Ömer Sayın"
+  },
+  {
+    "label": "MATH 260 - Introduction to Statistics",
+    "instructorName": "Gökhan Yıldırım"
+  },
+  {
+    "label": "MATH 264 - Statistics for Social Sciences",
+    "instructorName": "İnci Apaydın"
+  },
+  {
+    "label": "MATH 313 - Real Analysis I",
+    "instructorName": "Alexandre Goncharov"
+  },
+  {
+    "label": "MATH 323 - Algebra I",
+    "instructorName": "Müfit Sezer"
+  },
+  {
+    "label": "MATH 399 - Summer Practice",
+    "instructorName": "Hamza Yeşilyurt"
+  },
+  {
+    "label": "MATH 421 - Introduction to Quantum Computation",
+    "instructorName": "Cihan Okay"
+  },
+  {
+    "label": "MATH 445 - Analysis on Manifolds",
+    "instructorName": "Bülent Ünal"
+  },
+  {
+    "label": "MATH 473 - Introduction to Financial Mathematics",
+    "instructorName": "Ali Süleyman Üstünel"
+  },
+  {
+    "label": "MATH 490 - Project in Mathematics",
+    "instructorName": "Aurelian Gheondea"
+  },
+  {
+    "label": "MATH 491 - Senior Project I",
+    "instructorName": "Gökhan Yıldırım"
+  },
+  {
+    "label": "MATH 492 - Senior Project II",
+    "instructorName": "Gökhan Yıldırım"
+  },
+  {
+    "label": "MATH 521 - Introduction to Quantum Computation",
+    "instructorName": "Cihan Okay"
+  },
+  {
+    "label": "MATH 541 - Manifold Theory",
+    "instructorName": "Bülent Ünal"
+  },
+  {
+    "label": "MATH 573 - Introduction to Financial Mathematics",
+    "instructorName": "Ali Süleyman Üstünel"
+  },
+  {
+    "label": "MATH 597 - Graduate Seminars in Mathematics I",
+    "instructorName": "Metin Gürses"
+  },
+  {
+    "label": "MATH 599 - Master's Thesis",
+    "instructorName": "Metin Gürses"
+  },
+  {
+    "label": "MATH 641 - Topics in Soliton Theory I",
+    "instructorName": "Metin Gürses"
+  },
+  {
+    "label": "MATH 699 - Ph.D. Dissertation",
+    "instructorName": "Metin Gürses"
+  },
+  {
+    "label": "MBA 503 - Business Economics",
+    "instructorName": "Süheyla Özyıldırım"
+  },
+  {
+    "label": "MBA 511 - Accounting",
+    "instructorName": "Emin Feridun Yalvaç"
+  },
+  {
+    "label": "MBA 535 - Consumer Behavior I",
+    "instructorName": "Olga Kravets"
+  },
+  {
+    "label": "MBA 542 - Production and Operations Management",
+    "instructorName": "Eyüp Emre Berk"
+  },
+  {
+    "label": "MBA 553 - Data Models and Decisions",
+    "instructorName": "Erdal Erel"
+  },
+  {
+    "label": "MBA 568 - Entrepreneurship and Innovation Management ",
+    "instructorName": "Murad Bayar"
+  },
+  {
+    "label": "MBA 588 - Capital Markets and Institutions ",
+    "instructorName": "Alaattin Ecer"
+  },
+  {
+    "label": "MBG 101 - Biology I",
+    "instructorName": "Murat Alper Cevher"
+  },
+  {
+    "label": "MBG 110 - Introduction to Modern Biology",
+    "instructorName": "Özhan Öçal"
+  },
+  {
+    "label": "MBG 209 - Principles of Genetics",
+    "instructorName": "Pınar Önal"
+  },
+  {
+    "label": "MBG 210 - Genetics",
+    "instructorName": "Pınar Önal"
+  },
+  {
+    "label": "MBG 291 - Summer Practice I",
+    "instructorName": "Özhan Öçal"
+  },
+  {
+    "label": "MBG 301 - Molecular Biology of the Cell I",
+    "instructorName": "Onur Çizmecioğlu"
+  },
+  {
+    "label": "MBG 311 - Biochemistry I",
+    "instructorName": "Serkan Belkaya"
+  },
+  {
+    "label": "MBG 324 - Molecular Biology of the Gene",
+    "instructorName": "Işık Yuluğ"
+  },
+  {
+    "label": "MBG 326 - Introduction to Bioinformatics",
+    "instructorName": "Özlen Konu Karakayalı"
+  },
+  {
+    "label": "MBG 391 - Summer Practice II",
+    "instructorName": "Özhan Öçal"
+  },
+  {
+    "label": "MBG 416 - Science and Ethics",
+    "instructorName": "Serkan İsmail Göktuna"
+  },
+  {
+    "label": "MBG 483 - Developmental Biology",
+    "instructorName": "Bahar Değirmenci Uzun"
+  },
+  {
+    "label": "MBG 488 - Introduction to Human Genetics",
+    "instructorName": "Tayfun Özçelik"
+  },
+  {
+    "label": "MBG 489 - Genetics and Biology of Cancer",
+    "instructorName": "Serkan İsmail Göktuna"
+  },
+  {
+    "label": "MBG 491 - Senior Project I",
+    "instructorName": "İlyas Chachoua"
+  },
+  {
+    "label": "MBG 492 - Senior Project II",
+    "instructorName": "İlyas Chachoua"
+  },
+  {
+    "label": "MBG 502 - Advanced Cellular Biology",
+    "instructorName": "Onur Çizmecioğlu"
+  },
+  {
+    "label": "MBG 503 - Advanced Molecular Biology",
+    "instructorName": "Işık Yuluğ"
+  },
+  {
+    "label": "MBG 509 - Special Topics in Molecular Biology I",
+    "instructorName": "Serkan İsmail Göktuna"
+  },
+  {
+    "label": "MBG 514 - Stem Cell Biology",
+    "instructorName": "Bahar Değirmenci Uzun"
+  },
+  {
+    "label": "MBG 599 - Master's Thesis",
+    "instructorName": "Tayfun Özçelik"
+  },
+  {
+    "label": "MBG 601 - Human Genetics",
+    "instructorName": "Tayfun Özçelik"
+  },
+  {
+    "label": "MBG 612 - Special Topics in Genetics I",
+    "instructorName": "Serkan İsmail Göktuna"
+  },
+  {
+    "label": "MBG 616 - Experimental Molecular Biology and Genetics I",
+    "instructorName": "Tayfun Özçelik"
+  },
+  {
+    "label": "MBG 623 - Seminars in Molecular Genetics I",
+    "instructorName": "Işık Yuluğ"
+  },
+  {
+    "label": "MBG 624 - Seminars in Molecular Genetics II",
+    "instructorName": "Işık Yuluğ"
+  },
+  {
+    "label": "MBG 699 - Ph.D. Dissertation",
+    "instructorName": "Tayfun Özçelik"
+  },
+  {
+    "label": "ME 101 - Fundamentals of Mechanical Engineering",
+    "instructorName": "Gökberk Kabacaoğlu"
+  },
+  {
+    "label": "ME 211 - Thermo-Fluids Engineering I",
+    "instructorName": "Emine Yegan Erdem"
+  },
+  {
+    "label": "ME 212 - Thermo-Fluids Engineering II",
+    "instructorName": "Gökberk Kabacaoğlu"
+  },
+  {
+    "label": "ME 231 - Mechanics and Materials I ",
+    "instructorName": "Ali Javili"
+  },
+  {
+    "label": "ME 299 - Summer Practice I",
+    "instructorName": "Şakir Baytaroğlu"
+  },
+  {
+    "label": "ME 341 - Dynamics and Control I ",
+    "instructorName": "Melih Çakmakcı"
+  },
+  {
+    "label": "ME 371 - Measurement and Instrumentation",
+    "instructorName": "Şakir Baytaroğlu"
+  },
+  {
+    "label": "ME 399 - Summer Practice II",
+    "instructorName": "Şakir Baytaroğlu"
+  },
+  {
+    "label": "ME 412 - Introduction to Computational Fluid Dynamics",
+    "instructorName": "Luca Biancofiore"
+  },
+  {
+    "label": "ME 440 - Automotive Engineering",
+    "instructorName": "Melih Çakmakcı"
+  },
+  {
+    "label": "ME 446 - Applications of Solid Mechanics",
+    "instructorName": "İlker Temizer"
+  },
+  {
+    "label": "ME 453 - Principles of Turbomachinery",
+    "instructorName": "Luca Biancofiore"
+  },
+  {
+    "label": "ME 481 - Mechanical Engineering Design I",
+    "instructorName": "Müjdat Tohumcu"
+  },
+  {
+    "label": "ME 490 - Undergraduate Research in ME",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "ME 503 - Numerical Methods in Mechanical Engineering ",
+    "instructorName": "Barbaros Çetin"
+  },
+  {
+    "label": "ME 570 - Dynamics of Aerospace Vehicles",
+    "instructorName": "Mustafa Özgür Ateşoğlu"
+  },
+  {
+    "label": "ME 571 - Advanced System Modeling",
+    "instructorName": "Yıldıray Yıldız"
+  },
+  {
+    "label": "ME 582 - Fundamentals of Design for Reliability",
+    "instructorName": "Müjdat Tohumcu"
+  },
+  {
+    "label": "ME 590 - Mechanical Engineering Seminar",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "ME 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "ME 615 - Microfluidics",
+    "instructorName": "Emine Yegan Erdem"
+  },
+  {
+    "label": "ME 690 - Mechanical Engineering Seminar",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "ME 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "MSC 100 - Freshman Concert",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 103 - Symphony Orchestra I",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 104 - Symphony Orchestra II",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 105 - Ear Training for Non-Majors I",
+    "instructorName": "Nino Skhvitaridze"
+  },
+  {
+    "label": "MSC 107 - Individual Music Studies",
+    "instructorName": "Kağan Korad"
+  },
+  {
+    "label": "MSC 108 - Individual Music Studies II",
+    "instructorName": "Zeliha Meral Gökoğlu"
+  },
+  {
+    "label": "MSC 110 - The Culture and Basics of Music Making",
+    "instructorName": "Aylin Yılmaz"
+  },
+  {
+    "label": "MSC 112 - Composition II",
+    "instructorName": "Tahsin Tolga Yayalar"
+  },
+  {
+    "label": "MSC 113 - Notation",
+    "instructorName": "Onur Yıldırım"
+  },
+  {
+    "label": "MSC 121 - Fundamentals of Musicianship I",
+    "instructorName": "Ülkemin Akbaş"
+  },
+  {
+    "label": "MSC 131 - Instrument I",
+    "instructorName": "Julian Lupu"
+  },
+  {
+    "label": "MSC 133 - Chamber Music I",
+    "instructorName": "Zita Zempleni"
+  },
+  {
+    "label": "MSC 134 - Chamber Music II",
+    "instructorName": "Kağan Korad"
+  },
+  {
+    "label": "MSC 150 - Singing for Theatre I",
+    "instructorName": "Jennifer Leigh Tipton"
+  },
+  {
+    "label": "MSC 151 - Singing Voice I",
+    "instructorName": "Jennifer Leigh Tipton"
+  },
+  {
+    "label": "MSC 153 - Bilkent Chorale I",
+    "instructorName": "Jennifer Leigh Tipton"
+  },
+  {
+    "label": "MSC 154 - Bilkent Chorale II",
+    "instructorName": "Jennifer Leigh Tipton"
+  },
+  {
+    "label": "MSC 155 - Diction for Singers: English and Italian",
+    "instructorName": "Jennifer Leigh Tipton"
+  },
+  {
+    "label": "MSC 171 - Theory I: Fundamentals",
+    "instructorName": "Yiğit Aydın"
+  },
+  {
+    "label": "MSC 181 - Ear Training I",
+    "instructorName": "Nino Skhvitaridze"
+  },
+  {
+    "label": "MSC 184 - Keyboard Skills II",
+    "instructorName": "Hatıra Hasanova"
+  },
+  {
+    "label": "MSC 200 - Sophomore Concert",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 203 - Symphony Orchestra III",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 204 - Symphony Orchestra IV",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 207 - Individual Music Studies III",
+    "instructorName": "Ayhan Uştuk"
+  },
+  {
+    "label": "MSC 208 - Individual Music Studies IV",
+    "instructorName": "Gölge Şekeranber"
+  },
+  {
+    "label": "MSC 213 - Orchestration",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 231 - Instrument III",
+    "instructorName": "Laura Ann Krentzman Eryılmaz"
+  },
+  {
+    "label": "MSC 232 - Instrument IV",
+    "instructorName": "Sema Celil Hakioğlu"
+  },
+  {
+    "label": "MSC 233 - Chamber Music III",
+    "instructorName": "Adelya Azikeyeva Ateşoğlu"
+  },
+  {
+    "label": "MSC 234 - Chamber Music IV",
+    "instructorName": "Adelya Azikeyeva Ateşoğlu"
+  },
+  {
+    "label": "MSC 251 - Singing Voice III",
+    "instructorName": "Jennifer Leigh Tipton"
+  },
+  {
+    "label": "MSC 253 - Bilkent Chorale III",
+    "instructorName": "Jennifer Leigh Tipton"
+  },
+  {
+    "label": "MSC 271 - Theory III: Modal Counterpoint",
+    "instructorName": "Yiğit Aydın"
+  },
+  {
+    "label": "MSC 273 - Music in Europe during the Age of the Enlightenment",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 300 - Junior Concert",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 301 - Department Seminar V",
+    "instructorName": "Tahsin Tolga Yayalar"
+  },
+  {
+    "label": "MSC 302 - Department Seminar VI",
+    "instructorName": "Tahsin Tolga Yayalar"
+  },
+  {
+    "label": "MSC 303 - Symphony Orchestra V",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 304 - Symphony Orchestra VI",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 311 - Composition V",
+    "instructorName": "Tahsin Tolga Yayalar"
+  },
+  {
+    "label": "MSC 312 - Composition VI",
+    "instructorName": "Onur Yıldırım"
+  },
+  {
+    "label": "MSC 315 - Score Reading I",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 326 - Conducting I",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 331 - Instrument V",
+    "instructorName": "Süreyya Defne"
+  },
+  {
+    "label": "MSC 332 - Instrument VI",
+    "instructorName": "Julian Lupu"
+  },
+  {
+    "label": "MSC 333 - Chamber Music V",
+    "instructorName": "Gamze Kırtıl"
+  },
+  {
+    "label": "MSC 334 - Chamber Music VI",
+    "instructorName": "Noriyoshi Murakami"
+  },
+  {
+    "label": "MSC 373 - History of 20th Century Music ",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 399 - Summer Practice",
+    "instructorName": "Tahsin Tolga Yayalar"
+  },
+  {
+    "label": "MSC 400 - Senior Concert",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 401 - Department Seminar VII",
+    "instructorName": "Tahsin Tolga Yayalar"
+  },
+  {
+    "label": "MSC 402 - Department Seminar VIII",
+    "instructorName": "Tahsin Tolga Yayalar"
+  },
+  {
+    "label": "MSC 403 - Symphony Orchestra VII",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 412 - Composition VIII: Graduation Project",
+    "instructorName": "Onur Yıldırım"
+  },
+  {
+    "label": "MSC 431 - Instrument VII",
+    "instructorName": "Oliver Folger Jia"
+  },
+  {
+    "label": "MSC 433 - Chamber Music VII",
+    "instructorName": "Zita Zempleni"
+  },
+  {
+    "label": "MSC 500 - Department Seminar",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 511 - Music Performance and Interpretation I",
+    "instructorName": "Oliver Folger Jia"
+  },
+  {
+    "label": "MSC 512 - Conducting I",
+    "instructorName": "Işın Metin"
+  },
+  {
+    "label": "MSC 513 - Music Composition I",
+    "instructorName": "Onur Türkmen"
+  },
+  {
+    "label": "MSC 525 - Bilkent Ensembles",
+    "instructorName": "Gülnara Aziz"
+  },
+  {
+    "label": "MSN 500 - Concepts in Materials Science",
+    "instructorName": "Engin Durgun"
+  },
+  {
+    "label": "MSN 513 - Micro and Nanostructured Sensors and Biosensing Applications",
+    "instructorName": "Fatih İnci"
+  },
+  {
+    "label": "MSN 517 - Nanoscience and Nanotechnology I",
+    "instructorName": "Seymur Jahangirov"
+  },
+  {
+    "label": "MSN 519 - Applications of Microfluidics and Nanofluidics",
+    "instructorName": "Gürkan Yeşilöz"
+  },
+  {
+    "label": "MSN 522 - Synthetic Biology",
+    "instructorName": "Urartu Özgür Şafak Şeker"
+  },
+  {
+    "label": "MSN 529 - Introduction to Adaptive Optics and Optical Imaging",
+    "instructorName": "Hasan Yılmaz"
+  },
+  {
+    "label": "MSN 531 - Magnetic Materials",
+    "instructorName": "Cüneyt Şahin"
+  },
+  {
+    "label": "MSN 555 - Laser Physics: from Principles to Applications for Materials Science",
+    "instructorName": "Bülend Ortaç"
+  },
+  {
+    "label": "MSN 598 - Seminar I",
+    "instructorName": "Engin Durgun"
+  },
+  {
+    "label": "MSN 599 - Master's Thesis",
+    "instructorName": "Hilmi Volkan Demir"
+  },
+  {
+    "label": "MSN 698 - Seminar II",
+    "instructorName": "Engin Durgun"
+  },
+  {
+    "label": "MSN 699 - Ph.D. Thesis",
+    "instructorName": "Hilmi Volkan Demir"
+  },
+  {
+    "label": "NSC 510 - Sensory and Motor Systems Neuroscience",
+    "instructorName": "Hacı Hulusi Kafalıgönül"
+  },
+  {
+    "label": "NSC 513 - Behavioral Neuroscience ",
+    "instructorName": "Meltem Karataş"
+  },
+  {
+    "label": "NSC 591 - Pro-thesis Seminar I",
+    "instructorName": "Michelle Marie Adams"
+  },
+  {
+    "label": "NSC 599 - Neuroscience Master's Thesis",
+    "instructorName": "Michelle Marie Adams"
+  },
+  {
+    "label": "NSC 612 - Selected Topics in Neuroscience I",
+    "instructorName": "Demet Ataman Sadık"
+  },
+  {
+    "label": "NSC 691 - Pro-thesis Seminar II",
+    "instructorName": "Michelle Marie Adams"
+  },
+  {
+    "label": "NSC 699 - Neuroscience Ph.D. Dissertation",
+    "instructorName": "Michelle Marie Adams"
+  },
+  {
+    "label": "PHIL 101 - Introduction to Logic",
+    "instructorName": "Nazım Keven"
+  },
+  {
+    "label": "PHIL 103 - Introduction to Philosophy I",
+    "instructorName": "Tufan Kıymaz"
+  },
+  {
+    "label": "PHIL 201 - Epistemology",
+    "instructorName": "Simon Drummond Wigley"
+  },
+  {
+    "label": "PHIL 203 - Rationalists",
+    "instructorName": "Sandrine Berges"
+  },
+  {
+    "label": "PHIL 243 - Social and Political Philosophy I",
+    "instructorName": "Yan Trefor Overfield Shaw"
+  },
+  {
+    "label": "PHIL 244 - Social and Political Philosophy II",
+    "instructorName": "Yehezkel S. Berkovski"
+  },
+  {
+    "label": "PHIL 299 - Summer Training I",
+    "instructorName": "Sandrine Berges"
+  },
+  {
+    "label": "PHIL 303 - Kant",
+    "instructorName": "Saniye Vatansever"
+  },
+  {
+    "label": "PHIL 304 - History and Philosophy of Science",
+    "instructorName": "Adriana Monica Solomon"
+  },
+  {
+    "label": "PHIL 307 - Paradox and Infinity",
+    "instructorName": "Istvan Albert Aranyosi"
+  },
+  {
+    "label": "PHIL 308 - Philosophy of Mind",
+    "instructorName": "Nazım Keven"
+  },
+  {
+    "label": "PHIL 399 - Summer Training II",
+    "instructorName": "Sandrine Berges"
+  },
+  {
+    "label": "PHIL 401 - Metaphysics",
+    "instructorName": "Yehezkel S. Berkovski"
+  },
+  {
+    "label": "PHIL 403 - Senior Thesis I",
+    "instructorName": "Yehezkel S. Berkovski"
+  },
+  {
+    "label": "PHIL 404 - Senior Thesis II",
+    "instructorName": "Yehezkel S. Berkovski"
+  },
+  {
+    "label": "PHIL 423 - Philosophy of Action",
+    "instructorName": "Jonathan Payton"
+  },
+  {
+    "label": "PHIL 426 - Plato",
+    "instructorName": "Daniel Mark Wolt"
+  },
+  {
+    "label": "PHIL 501 - Research Preparation in Philosophy I",
+    "instructorName": "William Giles Wringe"
+  },
+  {
+    "label": "PHIL 509 - Philosophy of Action",
+    "instructorName": "Jonathan Payton"
+  },
+  {
+    "label": "PHIL 526 - Plato",
+    "instructorName": "Daniel Mark Wolt"
+  },
+  {
+    "label": "PHIL 531 - Metaphysics",
+    "instructorName": "Yehezkel S. Berkovski"
+  },
+  {
+    "label": "PHIL 533 - Kant",
+    "instructorName": "Saniye Vatansever"
+  },
+  {
+    "label": "PHIL 537 - Paradox and Infinity",
+    "instructorName": "Istvan Albert Aranyosi"
+  },
+  {
+    "label": "PHIL 591 - Thesis Seminar I",
+    "instructorName": "Simon Drummond Wigley"
+  },
+  {
+    "label": "PHIL 599 - M.A.Dissertation",
+    "instructorName": "Simon Drummond Wigley"
+  },
+  {
+    "label": "PHIL 691 - Thesis Seminar II",
+    "instructorName": "Simon Drummond Wigley"
+  },
+  {
+    "label": "PHIL 699 - Ph.D. Dissertation",
+    "instructorName": "Simon Drummond Wigley"
+  },
+  {
+    "label": "PHYS 101 - General Physics I",
+    "instructorName": "Ceren Sibel Sayın"
+  },
+  {
+    "label": "PHYS 102 - General Physics II",
+    "instructorName": "Ceyhun Bulutay"
+  },
+  {
+    "label": "PHYS 120 - Orientation for Physics Majors",
+    "instructorName": "Cemal Yalabık"
+  },
+  {
+    "label": "PHYS 180 - Conceptual Physics",
+    "instructorName": "Ali Ulvi Yılmazer"
+  },
+  {
+    "label": "PHYS 211 - Waves, Optics and Thermodynamics",
+    "instructorName": "Onur Tokel"
+  },
+  {
+    "label": "PHYS 252 - Introductory Astronomy",
+    "instructorName": "Özgür Baştürk"
+  },
+  {
+    "label": "PHYS 291 - Summer Practice",
+    "instructorName": "Onur Tokel"
+  },
+  {
+    "label": "PHYS 315 - Electromagnetic Theory I",
+    "instructorName": "Cemal Yalabık"
+  },
+  {
+    "label": "PHYS 325 - Quantum Mechanics I",
+    "instructorName": "Oğuz Gülseren"
+  },
+  {
+    "label": "PHYS 333 - Classical Thermodynamics",
+    "instructorName": "Zeki Cemal Kuruoğlu"
+  },
+  {
+    "label": "PHYS 371 - Numerical Methods in Physics",
+    "instructorName": "Yiğit Gündüç"
+  },
+  {
+    "label": "PHYS 445 - Condensed Matter Physics I",
+    "instructorName": "Mehmet Özgür Oktel"
+  },
+  {
+    "label": "PHYS 453 - Nuclear and Particle Physics",
+    "instructorName": "Ali Ulvi Yılmazer"
+  },
+  {
+    "label": "PHYS 491 - Senior Project I",
+    "instructorName": "Şahin Büyükdağlı"
+  },
+  {
+    "label": "PHYS 492 - Senior Project II",
+    "instructorName": "Şahin Büyükdağlı"
+  },
+  {
+    "label": "PHYS 541 - Electromagnetic Theory I",
+    "instructorName": "Bilal Tanatar"
+  },
+  {
+    "label": "PHYS 552 - Statistical Physics",
+    "instructorName": "Cemal Yalabık"
+  },
+  {
+    "label": "PHYS 580 - Experimental Methods in Applied Physics",
+    "instructorName": "Onur Tokel"
+  },
+  {
+    "label": "PHYS 591 - Graduate Seminar I",
+    "instructorName": "Ceyhun Bulutay"
+  },
+  {
+    "label": "PHYS 599 - Master's Thesis",
+    "instructorName": "Oğuz Gülseren"
+  },
+  {
+    "label": "PHYS 699 - Ph.D. Dissertation",
+    "instructorName": "Oğuz Gülseren"
+  },
+  {
+    "label": "POLS 101 - Introduction to Political Science I",
+    "instructorName": "John James Alexander"
+  },
+  {
+    "label": "POLS 104 - Introduction to Political Science II",
+    "instructorName": "Zerrin Tandoğan"
+  },
+  {
+    "label": "POLS 201 - Fundamentals of Social Research",
+    "instructorName": "Zerrin Tandoğan"
+  },
+  {
+    "label": "POLS 229 - Turkish Political History I",
+    "instructorName": "Berrak Burçak"
+  },
+  {
+    "label": "POLS 303 - Comparative Politics I",
+    "instructorName": "Saime Özçürümez"
+  },
+  {
+    "label": "POLS 304 - Comparative Politics II",
+    "instructorName": "Aida Just"
+  },
+  {
+    "label": "POLS 305 - Turkish Political Development",
+    "instructorName": "İhsan İlker Aytürk"
+  },
+  {
+    "label": "POLS 306 - Contemporary Turkish Politics",
+    "instructorName": "Meral Uğur Çınar"
+  },
+  {
+    "label": "POLS 346 - Ethnographic Research and Politics",
+    "instructorName": "Zerrin Tandoğan"
+  },
+  {
+    "label": "POLS 399 - Summer Training",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "POLS 419 - Contemporary Social Movements",
+    "instructorName": "Anh Susann Pham Thi"
+  },
+  {
+    "label": "POLS 420 - Theory and Modern Society",
+    "instructorName": "Mehmet Nedim Karakayalı"
+  },
+  {
+    "label": "POLS 437 - Politics and Literature",
+    "instructorName": "Daniel Just"
+  },
+  {
+    "label": "POLS 449 - Political Concepts ",
+    "instructorName": "John James Alexander"
+  },
+  {
+    "label": "POLS 452 - State Society and Citizenship in Turkey",
+    "instructorName": "Başak İnce"
+  },
+  {
+    "label": "POLS 465 - Governance and Public Policy ",
+    "instructorName": "Onur Özgöde"
+  },
+  {
+    "label": "POLS 473 - Democratization Process in Turkey",
+    "instructorName": "Zeki Sarıgil"
+  },
+  {
+    "label": "POLS 480 - European Politics",
+    "instructorName": "Ioannis N. Grigoriadis"
+  },
+  {
+    "label": "POLS 490 - Democracy, Development and Human Rights",
+    "instructorName": "Aida Just"
+  },
+  {
+    "label": "POLS 536 - Turkish Politics in Comparative Perspective",
+    "instructorName": "Meral Uğur Çınar"
+  },
+  {
+    "label": "POLS 551 - Pre-Thesis Seminar I",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "POLS 560 - Contemporary Political Theory",
+    "instructorName": "Banu Helvacıoğlu"
+  },
+  {
+    "label": "POLS 568 - Urban Politics",
+    "instructorName": "Fatma Tahire Erman"
+  },
+  {
+    "label": "POLS 599 - Master's Thesis",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "POLS 602 - Seminar in Comparative Politics",
+    "instructorName": "Saime Özçürümez"
+  },
+  {
+    "label": "POLS 612 - Seminar in Social and Cultural Studies:",
+    "instructorName": "Mehmet Nedim Karakayalı"
+  },
+  {
+    "label": "POLS 651 - Pre-Thesis Seminar I",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "POLS 699 - Ph.D. Dissertation",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "POLS 4536 - Turkish Politics in Comparative Perspective",
+    "instructorName": "Meral Uğur Çınar"
+  },
+  {
+    "label": "POLS 4560 - Contemporary Political Theory",
+    "instructorName": "Banu Helvacıoğlu"
+  },
+  {
+    "label": "POLS 4568 - Urban Politics",
+    "instructorName": "Fatma Tahire Erman"
+  },
+  {
+    "label": "POLS 5437 - Politics and Literature",
+    "instructorName": "Daniel Just"
+  },
+  {
+    "label": "POLS 5449 - Political Concepts ",
+    "instructorName": "John James Alexander"
+  },
+  {
+    "label": "POLS 5490 - Democracy, Development, and Human Rights",
+    "instructorName": "Aida Just"
+  },
+  {
+    "label": "PREP 111 - Elementary ",
+    "instructorName": "Pelin Yetkin"
+  },
+  {
+    "label": "PREP 121 - Pre-intermediate",
+    "instructorName": "Clare Yalçın"
+  },
+  {
+    "label": "PREP 131 - Intermediate ",
+    "instructorName": "Ayşe Deniz Yüzbir Gürgen"
+  },
+  {
+    "label": "PREP 141 - Upper-intermediate",
+    "instructorName": "Nurdan Yeşil"
+  },
+  {
+    "label": "PREP 155 - Pre-faculty ",
+    "instructorName": "Nihal Kurtay"
+  },
+  {
+    "label": "PSYC 100 - Introduction to Psychology",
+    "instructorName": "Ebru İnanç"
+  },
+  {
+    "label": "PSYC 101 - Introduction to Psychology I / Cognitive and Biological",
+    "instructorName": "Burcu Ayşen Ürgen"
+  },
+  {
+    "label": "PSYC 102 - Introduction to Social Psychology",
+    "instructorName": "Ayşe Collins"
+  },
+  {
+    "label": "PSYC 103 - Introduction to Psychology II / Social and Developmental",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "PSYC 200 - Cognitive Psychology",
+    "instructorName": "Ausaf Ahmed Farooqui"
+  },
+  {
+    "label": "PSYC 203 - Statistics I",
+    "instructorName": "Sezer Kadayıfçılar"
+  },
+  {
+    "label": "PSYC 204 - Research Methods I",
+    "instructorName": "Miri Besken"
+  },
+  {
+    "label": "PSYC 205 - Statistics II",
+    "instructorName": "Sezer Kadayıfçılar"
+  },
+  {
+    "label": "PSYC 206 - Research Methods II",
+    "instructorName": "Robert Ian Bowers"
+  },
+  {
+    "label": "PSYC 220 - Brain and Behavior",
+    "instructorName": "Timothea Toulopoulou"
+  },
+  {
+    "label": "PSYC 230 - Social Psychology",
+    "instructorName": "Ezgi Sakman"
+  },
+  {
+    "label": "PSYC 240 - Developmental Psychology",
+    "instructorName": "Seçil Gönültaş"
+  },
+  {
+    "label": "PSYC 310 - Perception, Attention, and Action",
+    "instructorName": "Burcu Ayşen Ürgen"
+  },
+  {
+    "label": "PSYC 340 - Learning, Remembering, and Thinking",
+    "instructorName": "Miri Besken"
+  },
+  {
+    "label": "PSYC 350 - Cognitive and Social Development",
+    "instructorName": "Seçil Gönültaş"
+  },
+  {
+    "label": "PSYC 360 - Individual Differences and Personality",
+    "instructorName": "Ezgi Sakman"
+  },
+  {
+    "label": "PSYC 391 - Directed Research in Psychology",
+    "instructorName": "Miri Besken"
+  },
+  {
+    "label": "PSYC 399 - Summer Training",
+    "instructorName": "Emine Ulaşan Özgüle"
+  },
+  {
+    "label": "PSYC 423 - Selected Topics in Cognitive Science",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "PSYC 430 - Clinical Psychology",
+    "instructorName": "Nedret Öztan"
+  },
+  {
+    "label": "PSYC 431 - Psychological Testing and Measurement",
+    "instructorName": "Ezgi Tunçel"
+  },
+  {
+    "label": "PSYC 433 - Abnormal Psychology",
+    "instructorName": "Timothea Toulopoulou"
+  },
+  {
+    "label": "PSYC 434 - Child and Adolescent Psychopathology",
+    "instructorName": "Selin Yalçın"
+  },
+  {
+    "label": "PSYC 435 - Industrial and Organizational Psychology",
+    "instructorName": "Emine Ulaşan Özgüle"
+  },
+  {
+    "label": "PSYC 444 - Human Bonding",
+    "instructorName": "Ezgi Sakman"
+  },
+  {
+    "label": "PSYC 449 - Clinical Interview Skills and Techniques",
+    "instructorName": "Şenel Poyrazlı"
+  },
+  {
+    "label": "PSYC 482 - Mind in Evolution",
+    "instructorName": "Kaan Kerman"
+  },
+  {
+    "label": "PSYC 483 - Theory of Mind ",
+    "instructorName": "Hande Ilgaz"
+  },
+  {
+    "label": "PSYC 498 - Senior Project I",
+    "instructorName": "Hande Ilgaz"
+  },
+  {
+    "label": "PSYC 499 - Senior Project II",
+    "instructorName": "Hande Ilgaz"
+  },
+  {
+    "label": "PSYC 575 - Advanced Training in Psychological Research I",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "PSYC 583 - Theory of Mind",
+    "instructorName": "Hande Ilgaz"
+  },
+  {
+    "label": "PSYC 591 - Pro-Thesis Seminar I",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "PSYC 599 - M.A. Dissertation",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "PSYC 673 - Advanced Training in Psychological Research II",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "PSYC 691 - Pro-Thesis Seminar II",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "PSYC 699 - Ph.D. Dissertation",
+    "instructorName": "Jedediah Wilfred Papas Allen"
+  },
+  {
+    "label": "SFL 392 - Common European Framework of Reference Level B2",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "SFL 431 - French in Corporate Communication",
+    "instructorName": "Hacı İbrahim Yilmaz"
+  },
+  {
+    "label": "SOC 101 - Introduction to Sociology",
+    "instructorName": "Daniel Just"
+  },
+  {
+    "label": "TEFL 510 - Language Testing",
+    "instructorName": "Christine Anne Coombe"
+  },
+  {
+    "label": "TEFL 528 - Curriculum Development and Evaluation",
+    "instructorName": "Necmi Akşit"
+  },
+  {
+    "label": "TEFL 531 - Research Methods in Linguistics I",
+    "instructorName": "Necmi Akşit"
+  },
+  {
+    "label": "TEFL 554 - Thesis Writing",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "TEFL 555 - Written Academic Discourse",
+    "instructorName": "Tijen Akşit"
+  },
+  {
+    "label": "TEFL 556 - Seminar in TEFL",
+    "instructorName": "Necmi Akşit"
+  },
+  {
+    "label": "THEA 181 - Acting Techniques I-Singing",
+    "instructorName": "Jason Edward Hale"
+  },
+  {
+    "label": "THM 105 - Service Business Management",
+    "instructorName": "Oğuz Benice"
+  },
+  {
+    "label": "THM 106 - Principles of Accounting",
+    "instructorName": "Esin Şenol"
+  },
+  {
+    "label": "THM 125 - Introduction to Tourism and Hospitality in the Digital Age",
+    "instructorName": "Esin Şenol"
+  },
+  {
+    "label": "THM 168 - Nutrition and Sanitation",
+    "instructorName": "Esin Şenol"
+  },
+  {
+    "label": "THM 243 - Rooms Division Management",
+    "instructorName": "Jamel Ben Chafra"
+  },
+  {
+    "label": "THM 244 - Food Production Techniques",
+    "instructorName": "Oğuz Benice"
+  },
+  {
+    "label": "THM 245 - Purchasing and Cost Analysis",
+    "instructorName": "Esin Şenol"
+  },
+  {
+    "label": "THM 246 - Restaurant Service",
+    "instructorName": "Ali Ünal"
+  },
+  {
+    "label": "THM 247 - Food and Beverage Management",
+    "instructorName": "Oğuz Benice"
+  },
+  {
+    "label": "THM 300 - Summer Internship",
+    "instructorName": "Jamel Ben Chafra"
+  },
+  {
+    "label": "THM 302 - Human Resources Analytics and Applications",
+    "instructorName": "Ayşe Collins"
+  },
+  {
+    "label": "THM 309 - Principles of Marketing",
+    "instructorName": "Oğuz Benice"
+  },
+  {
+    "label": "THM 310 - Semester Internship",
+    "instructorName": "Esin Şenol"
+  },
+  {
+    "label": "THM 323 - International Cuisines",
+    "instructorName": "Elif Denizci"
+  },
+  {
+    "label": "THM 409 - Tourism Law",
+    "instructorName": "Güneş Karamullaoğlu"
+  },
+  {
+    "label": "THM 415 - Finance",
+    "instructorName": "Jamel Ben Chafra"
+  },
+  {
+    "label": "THM 416 - Revenue Management and Data Analytics",
+    "instructorName": "Semih Sait Yılmaz"
+  },
+  {
+    "label": "THM 418 - Senior Project",
+    "instructorName": "Ayşe Collins"
+  },
+  {
+    "label": "THM 423 - Tourism Economics",
+    "instructorName": "Semih Sait Yılmaz"
+  },
+  {
+    "label": "THR 101 - Fundamentals of Acting I",
+    "instructorName": "Ahmet Sinan Pekinton"
+  },
+  {
+    "label": "THR 103 - Voice and Speech I",
+    "instructorName": "Eray Eserol"
+  },
+  {
+    "label": "THR 105 - Movement and Combat I",
+    "instructorName": "Halim Şener"
+  },
+  {
+    "label": "THR 107 - Dance I",
+    "instructorName": "Mehmet Onur Dilek"
+  },
+  {
+    "label": "THR 110 - Introduction to Theatre",
+    "instructorName": "Gizem Gürer Arslan"
+  },
+  {
+    "label": "THR 111 - Phonetics I",
+    "instructorName": "Eray Eserol"
+  },
+  {
+    "label": "THR 201 - Acting I",
+    "instructorName": "Hayriye Fulya Koçak Mutlu"
+  },
+  {
+    "label": "THR 203 - Voice and Speech III",
+    "instructorName": "Eray Eserol"
+  },
+  {
+    "label": "THR 205 - Movement and Combat III",
+    "instructorName": "Halim Şener"
+  },
+  {
+    "label": "THR 227 - History of Theater I: Origins to Renaissance",
+    "instructorName": "Hande Vural Johnson"
+  },
+  {
+    "label": "THR 301 - Acting III",
+    "instructorName": "Jason Edward Hale"
+  },
+  {
+    "label": "THR 303 - Voice and Speech V",
+    "instructorName": "Eray Eserol"
+  },
+  {
+    "label": "THR 327 - History of Theater III: 20th Century",
+    "instructorName": "Hande Vural Johnson"
+  },
+  {
+    "label": "THR 331 - Textual Interpretation and Analysis I",
+    "instructorName": "Hande Vural Johnson"
+  },
+  {
+    "label": "THR 399 - Summer Practice",
+    "instructorName": "Jason Edward Hale"
+  },
+  {
+    "label": "THR 431 - Textual Interpretation and Analysis III",
+    "instructorName": "Hande Vural Johnson"
+  },
+  {
+    "label": "THR 451 - Senior Project I",
+    "instructorName": "Jason Edward Hale"
+  },
+  {
+    "label": "TRIN 111 - Introduction to Translation in French ",
+    "instructorName": "Cenk Cangır"
+  },
+  {
+    "label": "TRIN 121 - Introduction to Translation in English",
+    "instructorName": "Cahide Ekiz"
+  },
+  {
+    "label": "TRIN 133 - Texts and Composition in French I",
+    "instructorName": "Neda Siami"
+  },
+  {
+    "label": "TRIN 191 - Turkish for Translators",
+    "instructorName": "Mehpare Çelik"
+  },
+  {
+    "label": "TRIN 221 - Translation Studies I",
+    "instructorName": "Asena Kaya Karaca"
+  },
+  {
+    "label": "TRIN 227 - Anglo-Saxon Culture and Civilisation",
+    "instructorName": "Asena Kaya Karaca"
+  },
+  {
+    "label": "TRIN 241 - Specialised Translation I:Agriculture, Health, Sports, Advertising",
+    "instructorName": "Cahide Ekiz"
+  },
+  {
+    "label": "TRIN 267 - Sight Translation I",
+    "instructorName": "Duygu Duman"
+  },
+  {
+    "label": "TRIN 335 - Note-Taking and Consecutive Interpretation",
+    "instructorName": "Füsun Ataseven"
+  },
+  {
+    "label": "TRIN 337 - Precis Writing in English-French",
+    "instructorName": "Yasemin Tanbi"
+  },
+  {
+    "label": "TRIN 361 - Technical Translation (English-Turkish)",
+    "instructorName": "Asena Kaya Karaca"
+  },
+  {
+    "label": "TRIN 363 - Technical Translation (French-Turkish)",
+    "instructorName": "Emine Bogenç Demirel"
+  },
+  {
+    "label": "TRIN 390 - Summer Practice",
+    "instructorName": "Staff"
+  },
+  {
+    "label": "TRIN 461 - English-French Translation Workshop I",
+    "instructorName": "Elvin Abbasbeyli"
+  },
+  {
+    "label": "TRIN 465 - Audiovisual Translation",
+    "instructorName": "Şerife Dalbudak"
+  },
+  {
+    "label": "TRIN 481 - Consecutive and Simultaneous Interpretation Techniques",
+    "instructorName": "Ayşe Akıncı Candoğan"
+  },
+  {
+    "label": "TRIN 485 - Translation workshop for EU texts and official documents ",
+    "instructorName": "Cahide Ekiz"
+  },
+  {
+    "label": "TRIN 487 - Interpreting for Public Services",
+    "instructorName": "Füsun Ataseven"
+  }
+]

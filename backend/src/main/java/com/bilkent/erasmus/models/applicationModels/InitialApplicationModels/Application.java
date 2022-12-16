@@ -1,9 +1,10 @@
 package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 
 import com.bilkent.erasmus.embeddables.Signature;
-import com.bilkent.erasmus.enums.SemesterOfferings;
-import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.models.enums.SemesterOfferings;
+import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,17 +22,14 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Enumerated(EnumType.STRING)
-    private SemesterOfferings appliedSemester;
-
-    @Embedded
-    private Signature signature;
-
-    private LocalDate signAt;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne
     private ExchangeCoordinator coordinator;
+
+    @ManyToOne
+    private OutGoingStudent student;
+
 }
