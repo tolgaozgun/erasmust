@@ -8,19 +8,24 @@ import DashboardStudent from "./pages/student/dashboard";
 import AccountStudent from './pages/student/account';
 import SettingsStudent from './pages/student/settings';
 import ErasmusStudent from './pages/student/erasmus';
-import Preapprovals from './pages/student/Preapprovals';
+import Preapprovals from './pages/student/Preapproval/Preapprovals';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
-import Preapproval from "./pages/student/PreapprovalForm"
+import Preapproval from "./pages/student/Preapproval/PreapprovalForm"
 import BeforeMobility from "./pages/student/LearningAgreement/BeforeMobility"
 import DuringMobility from "./pages/student/LearningAgreement/DuringMobility"
 import AfterMobility from "./pages/student/LearningAgreement/AfterMobility"
-import ErasmusApplicationForm from "./pages/student/erasmusApplication"
+import ViewBeforeMobility from "./pages/student/LearningAgreement/ViewBeforeMobility"
+import ErasmusApplicationForm from "./pages/student/ErasmusApplication/erasmusApplication"
 import CTForm from "./pages/student/courseTransferForm";
-import ViewPreapproval from "./pages/student/ViewPreapproval"
-import ViewErasmusApplication from "./pages/student/ViewErasmusApplication"
-import CourseReviewForm from "./pages/student/courseReviewForm"
-import CourseReviewForms from "./pages/student/CourseReviewForms";
+import ViewPreapproval from "./pages/student/Preapproval/ViewPreapproval"
+import ViewErasmusApplication from "./pages/student/ErasmusApplication/ViewErasmusApplication"
+import CourseReviewForm from "./pages/student/CourseReviewForm/courseReviewForm"
+import StaffCourseReviewForm from "./pages/student/StaffCourseReviewForm"
+import StaffPreapprovalForm from "./pages/student/Preapproval/StaffPreapprovalForm"
+import EditPreapproval from "./pages/student/Preapproval/EditPreapproval"
+import CourseReviewForms from "./pages/student/CourseReviewForm/CourseReviewForms";
+import ViewCourseReviewForm from "./pages/student/CourseReviewForm/ViewCourseReviewForm";
 
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
@@ -59,73 +64,73 @@ export const routeItems: Array<IRoute> = [
     },
     {
         path: '/loginStudent',
-        title: "Student Register",
+        title: "Student Login",
         content: <LoginStudent/>,
         exact: true,
     },
     {
         path: '/dashboardStudent',
-        title: "Student Register",
+        title: "Student Dashboard",
         content: <DashboardStudent/>,
         exact: true,
     },
     {
         path: '/accountStudent',
-        title: "Student Register",
+        title: "Student Account",
         content: <AccountStudent/>,
         exact: true,
     },
     {
         path: '/settingsStudent',
-        title: "Student Register",
+        title: "Student Settings",
         content: <SettingsStudent/>,
         exact: true,
     },
     {
         path: '/erasmusStudent',
-        title: "Student Register",
+        title: "Student Erasmus Page",
         content: <ErasmusStudent/>,
         exact: true,
     },
     {
         path: '/registerStaff',
-        title: "Student Register",
+        title: "Staff Register",
         content: <RegisterStaff/>,
         exact: true,
     },
     {
         path: '/loginStaff',
-        title: "Student Register",
+        title: "Staff Login",
         content: <LoginStaff/>,
         exact: true,
     },
     {
         path: '/dashboardStaff',
-        title: "Student Register",
+        title: "Staff Dashboard",
         content: <DashboardStaff/>,
         exact: true,
     },
     {
         path: '/accountStaff',
-        title: "Student Register",
+        title: "Staff Account",
         content: <AccountStaff/>,
         exact: true,
     },
     {
         path: '/settingsStaff',
-        title: "Student Register",
+        title: "Staff Settings",
         content: <SettingsStaff/>,
         exact: true,
     },
     {
         path: '/erasmusStaff',
-        title: "Student Register",
+        title: "Staff Erasmus Page",
         content: <ErasmusStaff/>,
         exact: true,
     },
     {
         path: '/preapprovals',
-        title: "Student Register",
+        title: "Preapproval List",
         content: <Preapprovals/>,
         exact: true,
     },
@@ -137,74 +142,86 @@ export const routeItems: Array<IRoute> = [
     },
     {
         path: 'learningAgreement/beforeMobility',
-        title: "Learning Agreement",
+        title: "Learning Agreement Before Mobility",
         content: <BeforeMobility/>,
         exact: true,
     },
     {
+        path: 'learningAgreement/ViewBeforeMobility',
+        title: "Learning Agreement View Before Mobility",
+        content: <ViewBeforeMobility/>,
+        exact: true,
+    },
+    {
         path: 'learningAgreement/duringMobility',
-        title: "Learning Agreement",
+        title: "Learning Agreement During Mobility",
         content: <DuringMobility/>,
         exact: true,
     },
     {
         path: 'learningAgreement/afterMobility',
-        title: "Learning Agreement",
+        title: "Learning Agreement After Mobility",
         content: <AfterMobility/>,
         exact: true,
     },
     {
         path: '/viewPreapproval',
-        title: "Preapproval Form",
-        content: <ViewPreapproval/>,
-        exact: true,
-    },
-    {
-        path: 'learningAgreement/beforeMobility',
-        title: "Learning Agreement",
-        content: <BeforeMobility/>,
-        exact: true,
-    },
-    {
-        path: 'learningAgreement/duringMobility',
-        title: "Learning Agreement",
-        content: <DuringMobility/>,
-        exact: true,
-    },
-    {
-        path: 'learningAgreement/afterMobility',
-        title: "Learning Agreement",
-        content: <AfterMobility/>,
-        exact: true,
-    },
-    {
-        path: '/viewPreapproval',
-        title: "Preapproval Form",
+        title: "View Preapproval Form",
         content: <ViewPreapproval/>,
         exact: true,
     },
     {
         path: '/applications',
-        title: "Student Register",
+        title: "Applications",
         content: <Applications/>,
         exact: true,
     },
     {
         path: '/students',
-        title: "Student Register",
+        title: "Students",
         content: <Students/>,
         exact: true,
     },
     {
         path: '/erasmusApplication',
-        title: "Preapproval Form",
+        title: "Erasmus Application",
         content: <ErasmusApplicationForm/>,
+        exact: true,
+    },
+    {
+        path: '/ViewErasmusApplication',
+        title: "View Erasmus Application",
+        content: <ViewErasmusApplication/>,
         exact: true,
     },
     {
         path: '/courseReviewForm',
         title: "Course Review Form",
         content: <CourseReviewForm/>,
+        exact: true,
+    },
+    {
+        path: '/ViewCourseReviewForm',
+        title: "View Review Form",
+        content: <ViewCourseReviewForm/>,
+        exact: true,
+    },
+    {
+        path: '/StaffCourseReviewForm',
+        title: "Staff Course Review Form",
+        content: <StaffCourseReviewForm/>,
+        exact: true,
+    },
+    {
+        path: '/StaffPreapprovalForm',
+        title: "Staff Preapproval Form",
+        content: <StaffPreapprovalForm/>,
+        exact: true,
+    },
+    {
+        path: '/EditPreapproval',
+        title: "Edit Preapproval Form",
+        content: <EditPreapproval/>,
         exact: true,
     },
     {

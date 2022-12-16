@@ -51,7 +51,7 @@ export const StudyProgrammeInfo = (props) => {
 
         },
     });
-    if (!props.hidden) {
+    if (!props.hidden && props.handleStep) {
         props.handleStep(formik.isValid)
     }
 

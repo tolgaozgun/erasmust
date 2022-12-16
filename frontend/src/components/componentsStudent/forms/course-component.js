@@ -97,7 +97,6 @@ export const CourseComponent = (props) => {
                                     onBlur={props.handleBlur}
                                     required
                                     variant="outlined"
-                                    disabled={!props.editable}
                                     onInvalid={() => {
                                         console.log("Course Code invalid for " + props.index)
                                     }}
@@ -119,7 +118,6 @@ export const CourseComponent = (props) => {
                                     required
                                     type="number"
                                     variant="outlined"
-                                    disabled={!props.editable}
                                 />
                             </Grid>
                             <Grid
@@ -137,7 +135,6 @@ export const CourseComponent = (props) => {
                                     onBlur={props.handleBlur}
                                     required
                                     variant="outlined"
-                                    disabled={!props.editable}
                                 />
                             </Grid>
                             <Divider/>

@@ -23,6 +23,12 @@ public class LearningAgreement {
 
     private String subjectArea;
 
+    private String grade;
+
+    private String reasonForChange;
+
+    private boolean isAdded;
+
     @Enumerated(EnumType.STRING)
     private SemesterOfferings semester;
 
@@ -31,6 +37,4 @@ public class LearningAgreement {
 
     @Enumerated(EnumType.STRING)
     private MobilityType currentMobility;
-
-    // add bilkentInfo, hostInfo, and mobility related things
 }
