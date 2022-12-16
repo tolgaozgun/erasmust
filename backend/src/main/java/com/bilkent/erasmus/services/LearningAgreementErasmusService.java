@@ -1,23 +1,24 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
-import com.bilkent.erasmus.enums.MobilityType;
-import com.bilkent.erasmus.enums.SemesterOfferings;
-import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.models.enums.MobilityType;
+import com.bilkent.erasmus.models.enums.SemesterOfferings;
+import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
 import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
 import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.PartnerUniversityErasmusRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusDetailRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusRepository;
+import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Service
 @Slf4j
 public class LearningAgreementErasmusService {
@@ -34,15 +35,18 @@ public class LearningAgreementErasmusService {
 
     private final CourseBilkentService courseBilkentService;
 
+    private final OutGoingStudentErasmusRepository outGoingStudentErasmusRepository;
+
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService){
+                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository){
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
         this.erasmusDetailRepository = erasmusDetailRepository;
         this.courseHostService = courseHostService;
         this.courseBilkentService = courseBilkentService;
+        this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
     }
 
     /*private boolean notifyStudent(String studentName){
@@ -60,18 +64,20 @@ public class LearningAgreementErasmusService {
 
     public LearningAgreementErasmus createEmptyLearningAgreement(String academicYear, SemesterOfferings semester) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
-        form.setCurrentMobility(MobilityType.BEFORE);
         form.setStatus(Status.IN_PROCESS);
         form.setAcademicYear(academicYear);
         form.setSemester(semester);
         return erasmusRepository.save(form);
     }
 
-/*    public LearningAgreementErasmus saveForm(LearningAgreementDTO form) throws Exception {
+    public LearningAgreementErasmus saveFormBeforeMobility(LearningAgreementDTO form) throws Exception {
         LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getAcademicYear(), form.getSemester());
-        erasmusForm.setStudent(getStudentByStarsId(form.getStudentId()));
+        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(form.getStudentId());
+        erasmusForm.setCurrentMobility(MobilityType.BEFORE);
+        erasmusForm.setStudent(student);
+
         return erasmusForm;
-    }*/
+    }
 
     public List<LearningAgreementErasmus> retrieveAgreements(MobilityDetail mobility) {
 
@@ -108,9 +114,8 @@ public class LearningAgreementErasmusService {
 
     private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
         List<LearningAgreementErasmus> agreementList = null;
-        //agreementList = new ArrayList<LearningAgreementErasmus>(LearningAgreementErasmusRepository.findAllByStatus(status));
-        //agreementList.addAll(LearningAgreementErasmusRepository.findAllByStatus(status));
-
+        agreementList = new ArrayList<LearningAgreementErasmus>(erasmusRepository.findAllByType(type));
+        agreementList.addAll(erasmusRepository.findAllByType(type));
         return agreementList;
     }
 

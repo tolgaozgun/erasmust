@@ -2,9 +2,9 @@ package com.bilkent.erasmus.dtos.InitialApplicationDTO;
 
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
-import com.bilkent.erasmus.enums.MobilityType;
-import com.bilkent.erasmus.enums.SemesterOfferings;
-import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.models.enums.MobilityType;
+import com.bilkent.erasmus.models.enums.SemesterOfferings;
+import com.bilkent.erasmus.models.enums.Status;
 import lombok.Data;
 
 @Data
@@ -13,7 +13,7 @@ public class LearningAgreementDTO {
 
     private int id;
 
-    private int studentId;
+    private String studentId;
 
     private String academicYear;
 

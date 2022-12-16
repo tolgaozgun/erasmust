@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.models.compositeModels;
 
-import com.bilkent.erasmus.enums.ApplicationPoolType;
-import com.bilkent.erasmus.enums.MobilityType;
+import com.bilkent.erasmus.models.enums.ApplicationPoolType;
+import com.bilkent.erasmus.models.enums.MobilityType;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 
