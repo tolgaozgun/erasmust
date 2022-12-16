@@ -65,80 +65,99 @@ const SchoolList = (props) => {
         navigate("/dash");
     };
     return (
-        <DashboardLayoutRoot>
-            <Card {...props}>
-                <CardHeader title="Schools" />
-                <PerfectScrollbar>
-                    <Box
-                        sx={{
-                            minWidth: 800,
-                            height: 400,
-                            display: "flex",
-                        }}
-                    >
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Scool Name</TableCell>
-                                    <TableCell sortDirection="desc">
-                                        <Tooltip enterDelay={300} title="Sort">
-                                            <TableSortLabel
-                                                active
-                                                direction="desc"
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+            }}
+        >
+            <DashboardLayoutRoot>
+                <Card {...props}>
+                    <CardHeader title="Schools" />
+                    <PerfectScrollbar>
+                        <Box
+                            sx={{
+                                minWidth: 800,
+                                height: 400,
+                                display: "flex",
+                            }}
+                        >
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Scool Name</TableCell>
+                                        <TableCell sortDirection="desc">
+                                            <Tooltip
+                                                enterDelay={300}
+                                                title="Sort"
                                             >
-                                                Country
-                                            </TableSortLabel>
-                                        </Tooltip>
-                                    </TableCell>
-                                    <TableCell sortDirection="desc">
-                                        <Tooltip enterDelay={300} title="Sort">
-                                            <TableSortLabel
-                                                active
-                                                direction="desc"
+                                                <TableSortLabel
+                                                    active
+                                                    direction="desc"
+                                                >
+                                                    Country
+                                                </TableSortLabel>
+                                            </Tooltip>
+                                        </TableCell>
+                                        <TableCell sortDirection="desc">
+                                            <Tooltip
+                                                enterDelay={300}
+                                                title="Sort"
                                             >
-                                                City
-                                            </TableSortLabel>
-                                        </Tooltip>
-                                    </TableCell>
-                                    <TableCell>Quota</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {schools.map((school) => (
-                                    <TableRow hover key={school.name}>
-                                        <TableCell>{school.name}</TableCell>
-                                        <TableCell>{school.country}</TableCell>
-                                        <TableCell>{school.city}</TableCell>
-                                        <TableCell>{school.quota}</TableCell>
+                                                <TableSortLabel
+                                                    active
+                                                    direction="desc"
+                                                >
+                                                    City
+                                                </TableSortLabel>
+                                            </Tooltip>
+                                        </TableCell>
+                                        <TableCell>Quota</TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </Box>
-                </PerfectScrollbar>
-                {/* <Box
+                                </TableHead>
+                                <TableBody>
+                                    {schools.map((school) => (
+                                        <TableRow hover key={school.name}>
+                                            <TableCell>{school.name}</TableCell>
+                                            <TableCell>
+                                                {school.country}
+                                            </TableCell>
+                                            <TableCell>{school.city}</TableCell>
+                                            <TableCell>
+                                                {school.quota}
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </Box>
+                    </PerfectScrollbar>
+                    {/* <Box
                     sx={{
                         display: "flex",
                         justifyContent: "flex-end",
                         p: 2,
                     }}
-                >
-                    <Button
-                        color="primary"
-                        endIcon={<ArrowRightIcon fontSize="small" />}
-                        size="small"
-                        variant="text"
                     >
-                        View all
+                    <Button
+                    color="primary"
+                    endIcon={<ArrowRightIcon fontSize="small" />}
+                    size="small"
+                    variant="text"
+                    >
+                    View all
                     </Button>
                 </Box> */}
-            </Card>
-            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
-            <DashboardSidebar
-                onClose={() => setSidebarOpen(false)}
-                open={isSidebarOpen}
-            />
-        </DashboardLayoutRoot>
+                </Card>
+                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+                <DashboardSidebar
+                    onClose={() => setSidebarOpen(false)}
+                    open={isSidebarOpen}
+                />
+            </DashboardLayoutRoot>
+        </div>
     );
 };
 export default SchoolList;
