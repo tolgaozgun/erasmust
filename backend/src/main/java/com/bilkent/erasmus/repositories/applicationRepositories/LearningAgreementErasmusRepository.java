@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.repositories.applicationRepositories;
 
+import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.models.enums.MobilityType;
 import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
@@ -12,7 +13,9 @@ import java.util.List;
 @Repository
 public interface LearningAgreementErasmusRepository extends JpaRepository<LearningAgreementErasmus, Integer> {
 
-    List<LearningAgreementErasmus> findAllByType(MobilityType type);
+    List<LearningAgreementErasmus> findAllByCurrentMobility(MobilityType type);
 
     List<LearningAgreementErasmus> findAllByStatus(Status status);
+
+    LearningAgreementErasmus findByStudent_Id(String id);
 }
