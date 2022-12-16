@@ -16,6 +16,9 @@ import Error from "./pages/404";
 import {Navigate} from "react-router-dom";
 import SchoolList from "./pages/academic/SchoolList";
 
+import RegisterStaff from "./pages/academic/register";
+import LoginStaff from "./pages/academic/login";
+
 // Admin
 export const routeItemsAdmin: Array<IRoute> = [
     {
@@ -97,7 +100,6 @@ export const routeItemsAdmin: Array<IRoute> = [
         content: <Navigate to='/splash' />,
         exact: true,
     },
-    
     {
         path: "/schoolList",
         title: "School List",
@@ -129,10 +131,22 @@ export const routeItemsAdmin: Array<IRoute> = [
         content: <ViewPreapproval/>,
         exact: true,
     },
-    { 
+    {
         path: '/applications',
         title: "Applications",
         content: <Applications/>,
         exact: true,
     },
+    {
+        path: '/registerStaff',
+        title: "Staff Register",
+        content: <RegisterStaff/>,
+        exact: true,
+    },
+    {
+        path: '/loginStaff',
+        title: "Staff Login",
+        content: <LoginStaff/>,
+        exact: true,
+    }
 ]
