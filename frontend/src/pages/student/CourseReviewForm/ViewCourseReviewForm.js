@@ -67,7 +67,6 @@ const ViewCourseReviewForm = () => {
                             spacing={3}
                         >
                             <InfoTable items={info}/>
-
                         </Grid>
                     </Container>
                 </Box>

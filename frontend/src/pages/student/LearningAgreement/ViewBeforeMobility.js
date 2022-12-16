@@ -1,20 +1,38 @@
 import {
-    Box,
+    Box, Button,
     Container,
     Grid,
+    Step, StepButton,
+    StepConnector,
+    stepConnectorClasses,
+    StepLabel,
+    Stepper,
     Typography
 } from '@mui/material';
 import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
 import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
+import {
+    StudyProgrammeInfo
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/BeforeMobility/study-programme-info';
+import {
+    SendingInstitutionRecognition
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/BeforeMobility/sending-institution-recognition';
+import {
+    LanguageCompetence
+} from '../../../components/componentsStudent/forms/erasmus/learningAgreement/language-competence';
+
+
+import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
-import {ViewStudentInfo} from "../../../components/componentsStudent/info/view-student-info";
-import {styled} from "@mui/material/styles";
 import {
-    ViewSemesterInfo
-} from "../../../components/componentsStudent/info/erasmus/erasmusApplicationForm/view-semester-info";
+    ViewLearningStudentInfo
+} from "../../../components/componentsStudent/info/erasmus/learningAgreement/view-learning-student";
 import {
-    ViewSchoolInfo
-} from "../../../components/componentsStudent/info/erasmus/erasmusApplicationForm/view-school-info";
+    ViewSendingInstitutionInfo
+} from "../../../components/componentsStudent/info/erasmus/learningAgreement/view-sending-institution-info";
+import {
+    ViewReceivingInstitutionInfo
+} from "../../../components/componentsStudent/info/erasmus/learningAgreement/view-receiving-institution-info";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -26,12 +44,13 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const ViewErasmusApplication = () => {
+const ViewBeforeMobility = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+
     return (
         <>
             <title>
-                View Erasmus Application
+                View Learning Agreement
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -47,7 +66,7 @@ const ViewErasmusApplication = () => {
                             align="center"
                             variant="h4"
                         >
-                            View Erasmus Application
+                            View Learning Agreement Form - Before Mobility
                         </Typography>
 
                         <Grid
@@ -61,10 +80,19 @@ const ViewErasmusApplication = () => {
                                 md={12}
                                 xs={24}
                             >
+                                <ViewLearningStudentInfo
+                                />
+                                <ViewSendingInstitutionInfo
+                                />
+                                <ViewReceivingInstitutionInfo/>
 
-                                <ViewStudentInfo/>
-                                <ViewSemesterInfo/>
-                                <ViewSchoolInfo/>
+                                <StudyProgrammeInfo/>
+
+                                <LanguageCompetence
+                                />
+
+                                <SendingInstitutionRecognition/>
+
 
                             </Grid>
                         </Grid>
@@ -79,4 +107,4 @@ const ViewErasmusApplication = () => {
     );
 };
 
-export default ViewErasmusApplication;
+export default ViewBeforeMobility;
