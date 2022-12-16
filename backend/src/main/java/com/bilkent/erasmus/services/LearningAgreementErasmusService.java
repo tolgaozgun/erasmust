@@ -1,13 +1,11 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
-import com.bilkent.erasmus.dtos.ReviewFormListDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
-import com.bilkent.erasmus.dtos.ReviewFormStudentListDTO;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
-import com.bilkent.erasmus.models.enums.MobilityType;
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.MobilityType;
+import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
 import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
@@ -68,16 +66,16 @@ public class LearningAgreementErasmusService {
 
     public boolean cancelAgreement() throws Exception {
         String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
-            LearningAgreementErasmus agreementErasmus = erasmusRepository.findByStudent_Id(starsId);
-            if (!(agreementErasmus.getStatus().equals(Status.CANCELLED))) {
-                agreementErasmus.setStatus(Status.CANCELLED);
-                erasmusRepository.save(agreementErasmus);
-                log.info("Learning agreement cancelled");
-            }
-            else {
-                log.info("Learning agreement is already cancelled");
-            }
-            return true;
+        LearningAgreementErasmus agreementErasmus = erasmusRepository.findByStudent_Id(starsId);
+        if (!(agreementErasmus.getStatus().equals(Status.CANCELLED))) {
+            agreementErasmus.setStatus(Status.CANCELLED);
+            erasmusRepository.save(agreementErasmus);
+            log.info("Learning agreement cancelled");
+        }
+        else {
+            log.info("Learning agreement is already cancelled");
+        }
+        return true;
     }
     public LearningAgreementErasmus createEmptyLearningAgreement(String academicYear, SemesterOfferings semester) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
@@ -211,5 +209,4 @@ public class LearningAgreementErasmusService {
         return erasmusDTO;
     }
 }
-
 

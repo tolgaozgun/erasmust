@@ -1,8 +1,8 @@
 package com.bilkent.erasmus.models.applicationModels.learningAgreementForms;
 
-import com.bilkent.erasmus.models.enums.MobilityType;
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.MobilityType;
+import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.enums.Status;
 import lombok.Data;
 
 import javax.persistence.*;

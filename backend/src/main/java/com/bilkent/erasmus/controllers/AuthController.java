@@ -3,7 +3,7 @@ package com.bilkent.erasmus.controllers;
 import com.bilkent.erasmus.dtos.LoginDTO;
 import com.bilkent.erasmus.dtos.RegisterDTO;
 import com.bilkent.erasmus.embeddables.ContactInformation;
-import com.bilkent.erasmus.models.enums.RoleBasedPermission;
+import com.bilkent.erasmus.enums.RoleBasedPermission;
 import com.bilkent.erasmus.models.userModels.User;
 import com.bilkent.erasmus.repositories.UserRepository;
 import com.bilkent.erasmus.security.JwtTokenProvider;

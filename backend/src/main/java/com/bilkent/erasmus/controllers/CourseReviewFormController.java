@@ -6,6 +6,7 @@ import com.bilkent.erasmus.services.CourseReviewFormService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/course-review")
@@ -20,8 +21,8 @@ public class CourseReviewFormController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> sendReviewForm(@RequestBody CourseReviewFormFillRequest request) throws Exception{
-        return new ResponseEntity<>(courseReviewFormService.fillReviewForm(request), HttpStatus.CREATED);
+    public ResponseEntity<?> sendReviewForm(@RequestPart("data") CourseReviewFormFillRequest basicForm, @RequestParam("file") MultipartFile file) throws Exception{
+        return new ResponseEntity<>(courseReviewFormService.fillReviewForm(basicForm, file), HttpStatus.CREATED);
     }
 
     @GetMapping("coordinator/list")
@@ -37,6 +38,11 @@ public class CourseReviewFormController {
     @PostMapping("/review/{formId}")
     public ResponseEntity<?> reviewForm(@RequestBody ReviewFormRequestDTO request, @PathVariable int formId) throws Exception {
         return new ResponseEntity<>(courseReviewFormService.reviewForm(request, formId), HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/coordinator/addRequirements/{id}")
+    public ResponseEntity<?> addRequirements(@PathVariable int id, @RequestBody CourseRequirementsDTO requirementsDTO) throws Exception {
+        return new ResponseEntity<>(courseReviewFormService.addRequirement(id, requirementsDTO), HttpStatus.ACCEPTED);
     }
 
     /*@PostMapping("/save-exchange")

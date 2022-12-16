@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.models.userModels.StudentModels;
 
-import com.bilkent.erasmus.models.enums.DepartmentName;
-import com.bilkent.erasmus.models.enums.CurriculumSemester;
+import com.bilkent.erasmus.enums.DepartmentName;
+import com.bilkent.erasmus.enums.CurriculumSemester;
 import com.bilkent.erasmus.models.userModels.User;
 import lombok.Data;
 

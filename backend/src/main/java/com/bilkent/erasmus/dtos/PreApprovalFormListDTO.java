@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.dtos;
 
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.universityModels.PartnerUniversityErasmus;
 import com.bilkent.erasmus.models.universityModels.PartnerUniversityExchange;
 import lombok.Data;

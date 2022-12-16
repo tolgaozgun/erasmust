@@ -1,4 +1,4 @@
-package com.bilkent.erasmus.models.enums;
+package com.bilkent.erasmus.enums;
 
 //toDo title fields will be added
 public enum Title {

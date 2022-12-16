@@ -1,20 +1,18 @@
-package com.bilkent.erasmus.models.enums;
+package com.bilkent.erasmus.enums;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.google.common.collect.Sets;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.bilkent.erasmus.models.enums.Permission.*;
-
 public enum RoleBasedPermission {
 
     ROLE_USER(Sets.newHashSet(), "USER"),
-    ROLE_ADMIN(Sets.newHashSet(USER_READ, USER_WRITE, ADMIN_READ, ADMIN_WRITE), "ADMIN"),
+    ROLE_ADMIN(Sets.newHashSet(Permission.USER_READ, Permission.USER_WRITE, Permission.ADMIN_READ, Permission.ADMIN_WRITE), "ADMIN"),
 
-    ROLE_STUDENT(Sets.newHashSet(USER_READ), "STUDENT"),
+    ROLE_STUDENT(Sets.newHashSet(Permission.USER_READ), "STUDENT"),
 
-    ROLE_READER(Sets.newHashSet(USER_READ, ADMIN_READ), "READER");
+    ROLE_READER(Sets.newHashSet(Permission.USER_READ, Permission.ADMIN_READ), "READER");
 
 
     // STUDENT, EXCHANGE_COORDINATOR, ADMIN, DEAN

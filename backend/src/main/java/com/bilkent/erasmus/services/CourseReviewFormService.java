@@ -1,8 +1,8 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.*;
-import com.bilkent.erasmus.models.compositeModels.PreApprovalFormErasmusDetail;
-import com.bilkent.erasmus.models.enums.CourseApprovalStatus;
+import com.bilkent.erasmus.models.FileData;
+import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
@@ -17,6 +17,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
@@ -35,16 +37,26 @@ public class CourseReviewFormService {
 
     private final CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository;
 
-    public CourseReviewFormService(CourseReviewFormRepository courseReviewFormRepository, CourseBilkentRepository courseBilkentRepository,
-                                   CourseHostRepository courseHostRepository, CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository) {
+    private final StorageService storageService;
+
+    public CourseReviewFormService(CourseReviewFormRepository courseReviewFormRepository
+            ,CourseBilkentRepository courseBilkentRepository
+            ,CourseHostRepository courseHostRepository
+            ,CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository
+            ,StorageService storageService) {
+
         this.courseReviewFormRepository = courseReviewFormRepository;
         this.courseBilkentRepository = courseBilkentRepository;
         this.courseHostRepository = courseHostRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
+        this.storageService = storageService;
     }
 
-    public CourseReviewForm fillReviewForm(CourseReviewFormFillRequest requestBody) throws Exception {
-
+    public CourseReviewForm fillReviewForm(CourseReviewFormFillRequest requestBody, MultipartFile file) throws Exception {
+        String fileName = storageService.storeFile(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path(fileName)
+                .toUriString();
         CourseBilkent courseBilkent = courseBilkentRepository.findById(
                 requestBody.getBilkentCourseId()).orElseThrow(() -> new Exception("not found with id: " + requestBody.getBilkentCourseId()));
         CourseHost courseHost = courseHostRepository.findById(
@@ -53,6 +65,11 @@ public class CourseReviewFormService {
         form.setStatus(CourseApprovalStatus.ON_PROCESS);
         form.setCourseBilkent(courseBilkent);
         form.setCourseHost(courseHost);
+        FileData data = new FileData();
+        data.setName(fileName);
+        data.setUrl(fileDownloadUri);
+        data.setFileType(file.getContentType());
+        form.setFile(data);
         return courseReviewFormRepository.save(form);
     }
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -83,6 +100,14 @@ public class CourseReviewFormService {
         log.info("Process filtering for student course review form is running.");
 
         return null;
+    }
+
+    public CourseBilkent addRequirement(int id, CourseRequirementsDTO requirementsDTO) throws Exception {
+        CourseBilkent courseBilkent = courseBilkentRepository.findById(id).
+                orElseThrow(() -> new Exception("course with id: " + id + "not found"));
+        courseBilkent.setRequirements(requirementsDTO.getRequirements());
+        courseBilkentRepository.save(courseBilkent);
+        return courseBilkent;
     }
 
 

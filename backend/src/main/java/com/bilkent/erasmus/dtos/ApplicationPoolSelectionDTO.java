@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.dtos;
 
-import com.bilkent.erasmus.models.enums.ApplicationPoolType;
+import com.bilkent.erasmus.enums.ApplicationPoolType;
 import lombok.Data;
 
 @Data
