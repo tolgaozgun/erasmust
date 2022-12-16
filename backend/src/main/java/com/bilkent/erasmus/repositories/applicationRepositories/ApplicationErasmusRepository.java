@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.repositories.applicationRepositories;
 
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

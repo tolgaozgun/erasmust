@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.dtos.UserDtos.StudentDtos;
 
-import com.bilkent.erasmus.models.enums.LetterGrade;
+import com.bilkent.erasmus.enums.LetterGrade;
 import lombok.Data;
 
 @Data

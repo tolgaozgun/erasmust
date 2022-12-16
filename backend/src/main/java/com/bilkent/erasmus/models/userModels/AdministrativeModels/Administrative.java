@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.models.userModels.AdministrativeModels;
 
-import com.bilkent.erasmus.models.enums.Title;
+import com.bilkent.erasmus.enums.Title;
 import com.bilkent.erasmus.models.userModels.User;
 import lombok.Data;
 

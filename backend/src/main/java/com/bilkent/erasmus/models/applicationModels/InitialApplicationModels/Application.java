@@ -1,14 +1,11 @@
 package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 
-import com.bilkent.erasmus.embeddables.Signature;
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Data
 @Entity

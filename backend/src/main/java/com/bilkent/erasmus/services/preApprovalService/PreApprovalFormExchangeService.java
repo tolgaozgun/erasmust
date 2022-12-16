@@ -2,8 +2,8 @@ package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormExchange;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.compositeModels.PreApprovalFormExchangeDetail;

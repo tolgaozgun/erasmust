@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.models.userModels.StudentModels;
 
 
-import com.bilkent.erasmus.models.enums.LetterGrade;
+import com.bilkent.erasmus.enums.LetterGrade;
 import lombok.Data;
 
 import javax.persistence.*;

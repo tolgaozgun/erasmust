@@ -6,8 +6,8 @@ import com.bilkent.erasmus.dtos.PreApprovalFormListDTO;
 import com.bilkent.erasmus.exceptions.HostCourseFieldException;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.models.compositeModels.CoordinatorStudentErasmus;
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormErasmus;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.compositeModels.PreApprovalFormErasmusDetail;
@@ -20,7 +20,6 @@ import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormE
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import com.bilkent.erasmus.services.CourseHostService;
 import com.bilkent.erasmus.services.CourseReviewFormService;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
@@ -30,9 +29,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.persistence.criteria.Predicate;
 
 @Service

@@ -2,7 +2,7 @@ package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.*;
 import com.bilkent.erasmus.models.FileData;
-import com.bilkent.erasmus.models.enums.CourseApprovalStatus;
+import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;

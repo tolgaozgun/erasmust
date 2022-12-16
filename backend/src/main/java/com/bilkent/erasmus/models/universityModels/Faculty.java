@@ -1,6 +1,6 @@
 package com.bilkent.erasmus.models.universityModels;
 
-import com.bilkent.erasmus.models.enums.FacultyName;
+import com.bilkent.erasmus.enums.FacultyName;
 import lombok.Data;
 
 import javax.persistence.*;

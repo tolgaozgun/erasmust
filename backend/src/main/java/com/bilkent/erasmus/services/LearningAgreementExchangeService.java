@@ -1,8 +1,8 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
-import com.bilkent.erasmus.models.enums.SemesterOfferings;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.SemesterOfferings;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementExchange;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementExchangeRepository;
 import lombok.extern.slf4j.Slf4j;

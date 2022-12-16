@@ -1,6 +1,5 @@
 package com.bilkent.erasmus.controllers;
 
-import com.bilkent.erasmus.models.enums.Status;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.services.AdminService;
 import org.springframework.http.HttpStatus;
