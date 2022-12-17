@@ -1,10 +1,12 @@
 package com.bilkent.erasmus.services;
 
+import com.bilkent.erasmus.dtos.CourseReviewFormListResponse;
 import com.bilkent.erasmus.mappers.OutgoingStudentMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.enums.RoleBasedPermission;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormErasmus;
+import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.models.userModels.StudentModels.Student;
@@ -17,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -83,4 +86,15 @@ public class AdminService {
     }
 
 
+    public List<CourseReviewFormListResponse> getAllCourseReviewForms() {
+        List<PreApprovalFormNew> forms = preApprovalFormRepositoryNew.findAll();
+        List<CourseReviewFormListResponse> responseList = new ArrayList<>();
+        for (PreApprovalFormNew form : forms) {
+            CourseReviewFormListResponse response = CourseReviewFormListResponse.builder()
+                    .studentId(form.getStudent().getId())
+                    .courseReviewFormNew(form.getForms()).build();
+            responseList.add(response);
+        }
+        return responseList;
+    }
 }

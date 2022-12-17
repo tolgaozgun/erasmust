@@ -28,7 +28,7 @@ public class PreApprovalFormEditDTO {
 
     private ExchangeCoordinator exchangeCoordinator;
 
-    private List<CourseReviewFormNew> forms;
+    private List<CourseReviewFormNewDTO> forms;
 
     private PartnerUniversityErasmus partnerUniversityErasmus;
 }
