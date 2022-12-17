@@ -67,7 +67,7 @@ const StudentErasmusPage = () => {
   return (
       <>
           <title>
-              StudentErasmusPage Program
+              Erasmus Program
           </title>
           <DashboardLayoutRoot>
               <Box
@@ -82,7 +82,7 @@ const StudentErasmusPage = () => {
                           sx={{mb: 3}}
                           variant="h4"
                       >
-                          StudentErasmusPage Program
+                          Erasmus Program
                       </Typography>
                       <Grid
                           container
@@ -98,7 +98,7 @@ const StudentErasmusPage = () => {
                                   color="textPrimary"
                                   variant="h6"
                               >
-                                  StudentErasmusPage Application
+                                  Erasmus Application
                               </Typography>
                               <List
                                   sx={{width: '100%'}}
@@ -109,13 +109,13 @@ const StudentErasmusPage = () => {
                                       <ListItemIcon>
                                           <ArticleIcon/>
                                       </ListItemIcon>
-                                      <ListItemText primary="View Your StudentErasmusPage Applications"/>
+                                      <ListItemText primary="View Your Erasmus Applications"/>
               </ListItemButton>
               <ListItemButton>
                   <ListItemIcon>
                       <HelpOutlineIcon/>
                   </ListItemIcon>
-                  <ListItemText primary="StudentErasmusPage Frequently Asked Questions"/>
+                  <ListItemText primary="Erasmus Frequently Asked Questions"/>
               </ListItemButton>
             </List>
           </Grid>
@@ -129,7 +129,7 @@ const StudentErasmusPage = () => {
                   color="textPrimary"
                   variant="h6"
               >
-                  Preapproval for StudentErasmusPage Application
+                  Preapproval for Erasmus Application
               </Typography>
               <List
                   sx={{width: '100%'}}
@@ -162,7 +162,7 @@ const StudentErasmusPage = () => {
                   color="textPrimary"
                   variant="h6"
               >
-                  Learning Agreement for StudentErasmusPage Application
+                  Learning Agreement for Erasmus Application
               </Typography>
               <List
                   sx={{width: '100%'}}
@@ -193,7 +193,7 @@ const StudentErasmusPage = () => {
                   color="textPrimary"
                   variant="h6"
               >
-                  Course Review Forms for StudentErasmusPage Application
+                  Course Review Forms for Erasmus Application
               </Typography>
               <List
                   sx={{width: '100%'}}
@@ -225,7 +225,7 @@ const StudentErasmusPage = () => {
                               color="textPrimary"
                               variant="h6"
                           >
-                              Course Tranfer Forms for StudentErasmusPage Application
+                              Course Tranfer Forms for Erasmus Application
                           </Typography>
                           <List
                               sx={{width: '100%'}}

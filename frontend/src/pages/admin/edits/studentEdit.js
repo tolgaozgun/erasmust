@@ -17,7 +17,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const StudentEdits = () => {
+const StudentEdit = () => {
     const location = useLocation();
     const student = location.state;
 
@@ -265,7 +265,7 @@ const StudentEdits = () => {
                 <TextField
                     error={Boolean(formik.touched.erasmusPoint && formik.errors.erasmusPoint)}
                     fullWidth
-                    label="StudentErasmusPage Point"
+                    label="Erasmus Point"
                     margin="normal"
                     name="erasmusPoint"
                     onBlur={formik.handleBlur}
@@ -364,4 +364,4 @@ const StudentEdits = () => {
     );
 }
 
-export default StudentEdits
+export default StudentEdit

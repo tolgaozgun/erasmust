@@ -13,14 +13,14 @@ import { HiGlobeAmericas } from "react-icons/hi2";
 
 const items = [
     {
-        href: "/dashboardStaff",
+        href: "/staff/dashboard",
         icon: <ChartBarIcon fontSize="small" />,
         title: "Dashboard",
     },
     {
         href: "/erasmusStaff",
         icon: <HiGlobeEuropeAfrica fontSize="small"/>,
-        title: "StudentErasmusPage Program",
+        title: "Erasmus Program",
     },
     {
         href: "/exchangeProgramStaff",
