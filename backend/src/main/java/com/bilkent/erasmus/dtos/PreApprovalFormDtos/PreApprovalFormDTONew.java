@@ -28,4 +28,6 @@ public class PreApprovalFormDTONew {
     private ExchangeCoordinator exchangeCoordinator;
 
     private List<CourseReviewFormCreation> forms;
+
+    private long date;
 }
