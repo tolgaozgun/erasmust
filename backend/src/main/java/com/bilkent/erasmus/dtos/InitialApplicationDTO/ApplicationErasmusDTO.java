@@ -19,4 +19,6 @@ public class ApplicationErasmusDTO {
     private List<PartnerUniversityErasmus> schools;
 
     private Status status;
+
+    private long date;
 }
