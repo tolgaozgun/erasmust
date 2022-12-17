@@ -140,19 +140,29 @@ const ErasmusApplication = () => {
             ),
         }),
         onSubmit: async (values, formikHelpers) => {
-            await axios.post("http://92.205.25.135:4/auth/login", values)
+            let token = sessionStorage.getItem("jwtToken")
+            await axios.post("http://92.205.25.135:4/erasmus-application/create", values, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
                 .then((response) => {
                     if (response && response.data) {
-                        const jwtToken = response.data["token"]
-                        const role = response.data["role"]
-                        sessionStorage.setItem("jwtToken", jwtToken)
-                        sessionStorage.setItem("role", role)
+                        console.log(response.data)
+                        // const jwtToken = response.data["token"]
+                        // const role = response.data["role"]
+                        // sessionStorage.setItem("jwtToken", jwtToken)
+                        // sessionStorage.setItem("role", role)
                         // navigate('/dashboardStudent')
                     }
                 })
                 .catch((err) => {
+                    console.log("Formik error1")
                     if (err && err.response) {
-                        console.log("Error: ", err)
+                        console.log("Formik error")
+                        console.log(err)
+                        console.log(err.response)
+
                     }
                 })
         },
@@ -160,7 +170,7 @@ const ErasmusApplication = () => {
 
     useEffect(async () => {
         let token = sessionStorage.getItem("jwtToken")
-        await axios.get("http://localhost:8080/student/retrieveAllSchools", {
+        await axios.get("http://92.205.25.135:4/student/retrieveAllSchools", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -292,7 +302,7 @@ const ErasmusApplication = () => {
     const steps = ['Student Information', 'Time Information', 'Schools'];
 
     return (
-        <>
+        <form onSubmit={formik.handleSubmit}>
             <title>
                 Erasmus Application
             </title>
@@ -375,9 +385,8 @@ const ErasmusApplication = () => {
                                                 {"Next >"}
                                             </Button>
                                         ) : (
-                                            <Button onClick={() => {
-                                                formik.submitForm()
-                                            }}>
+                                            <Button
+                                                type="submit">
                                                 {"Finish"}
                                             </Button>
                                         )
@@ -393,7 +402,7 @@ const ErasmusApplication = () => {
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
-        </>
+        </form>
     );
 };
 

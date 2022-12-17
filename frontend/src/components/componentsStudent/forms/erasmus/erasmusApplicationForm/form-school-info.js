@@ -39,7 +39,7 @@ export const FormSchoolInfo = (props) => {
                         key={index}
                         index={index}
                         errors={props.errors.schools ? props.errors.schools[`${index}`] : {}}
-                        touched={props.touched.schools ? props.errors.schools[`${index}`] : {}}
+                        touched={props.touched.schools ? props.touched.schools[`${index}`] : {}}
                         setSchool={props.setSchool}
                         handleChange={props.handleChange}
                         handleBlur={props.handleBlur}
