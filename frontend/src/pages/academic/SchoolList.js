@@ -74,7 +74,12 @@ const SchoolList = (props) => {
             }}
         >
             <DashboardLayoutRoot>
-                <Card {...props}>
+                <Card
+                    {...props}
+                    sx={{
+                        py: 8,
+                    }}
+                >
                     <CardHeader title="Schools" />
                     <PerfectScrollbar>
                         <Box
