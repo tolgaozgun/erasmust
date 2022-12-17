@@ -26,9 +26,9 @@ import { useNavigate } from "react-router-dom";
 import { DashboardSidebar } from "../../components/componentsStaff/dashboard-sidebar";
 import { DashboardNavbar } from "../../components/componentsStaff/dashboard-navbar";
 
-import { ApplicationsList } from "../../components/componentsStudent/dashboard/applications";
-import { PreapprovalsList } from "../../components/componentsStudent/dashboard/preapprovals-list";
-import { LearningAgreementList } from "../../components/componentsStudent/dashboard/learning-agreement-list";
+import {ApplicationsList} from "../../components/componentsStudent/dashboard/applications";
+import PreapprovalsList from "../../components/componentsAdmin/lists/preapprovals-list";
+import {LearningAgreementList} from "../../components/componentsStudent/dashboard/learning-agreement-list";
 import { CTFormList } from "../../components/componentsStudent/dashboard/ctform-list";
 
 const DashboardLayoutRoot = styled("div")(({ theme }) => ({
