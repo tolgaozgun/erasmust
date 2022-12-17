@@ -17,6 +17,7 @@ import DuringMobility from "./pages/student/LearningAgreement/DuringMobility"
 import AfterMobility from "./pages/student/LearningAgreement/AfterMobility"
 import ViewBeforeMobility from "./pages/student/LearningAgreement/ViewBeforeMobility"
 import ErasmusApplicationForm from "./pages/student/ErasmusApplication/erasmusApplication"
+import StudentErasmusApplicationList from "./pages/student/ErasmusApplication/StudentErasmusApplications"
 import CTForm from "./pages/student/courseTransferForm";
 import ViewPreapproval from "./pages/student/Preapproval/ViewPreapproval"
 import ViewErasmusApplication from "./pages/student/ErasmusApplication/ViewErasmusApplication"
@@ -135,6 +136,12 @@ export const routeItems: Array<IRoute> = [
         path: '/preapprovals',
         title: "Preapproval List",
         content: <StudentPreapprovalList/>,
+        exact: true,
+    },
+    {
+        path: "/studentErasmusApplications",
+        title: "Student Erasmus Applications",
+        content: <StudentErasmusApplicationList/>,
         exact: true,
     },
     {
