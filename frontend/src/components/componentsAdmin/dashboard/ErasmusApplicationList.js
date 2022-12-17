@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import {format} from "date-fns";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import React from "react";
 import {
@@ -15,12 +15,11 @@ import {
     Tooltip,
 } from "@mui/material";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { SeverityPill } from "../severity-pill";
+import {SeverityPill} from "../severity-pill";
 
-
-export const PreapprovalsList = (props) => (
+export const ErasmusApplicationList = (props) => (
     <Card {...props}>
-        <CardHeader title="Ongoing Preapprovals" />
+        <CardHeader title="Ongoing Preapprovals"/>
         <PerfectScrollbar>
             <Box
                 sx={{
@@ -51,34 +50,34 @@ export const PreapprovalsList = (props) => (
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.preapprovals && props.preapprovals.map((preapproval) => (
-                            <TableRow hover key={preapproval.id}>
-                                <TableCell>{preapproval.id}</TableCell>
+                        {props.applications && props.applications.map((application) => (
+                            <TableRow hover key={application.id}>
+                                <TableCell>{application.id}</TableCell>
                                 <TableCell>
-                                    {preapproval.student.name}
+                                    {application.student.firstName} {application.student.lastName}
                                 </TableCell>
                                 <TableCell>
-                                    {format(
-                                        preapproval.createdAt,
-                                        "dd/MM/yyyy"
-                                    )}
+                                    {/*{format(*/}
+                                    {/*    preapproval.createdAt,*/}
+                                    {/*    "dd/MM/yyyy"*/}
+                                    {/*)}*/}
                                 </TableCell>
                                 <TableCell>
-                                    {preapproval.assignee.name}
+                                    {application.coordinator.firstName} {application.coordinator.lastName}
                                 </TableCell>
                                 <TableCell>
                                     <SeverityPill
                                         color={
-                                            (preapproval.status ===
+                                            (application.status ===
                                                 "approved" &&
                                                 "success") ||
-                                            (preapproval.status ===
+                                            (application.status ===
                                                 "disapproved" &&
                                                 "error") ||
                                             "warning"
                                         }
                                     >
-                                        {preapproval.status}
+                                        {application.status}
                                     </SeverityPill>
                                 </TableCell>
                             </TableRow>
@@ -96,7 +95,7 @@ export const PreapprovalsList = (props) => (
         >
             <Button
                 color="primary"
-                endIcon={<ArrowRightIcon fontSize="small" />}
+                endIcon={<ArrowRightIcon fontSize="small"/>}
                 size="small"
                 variant="text"
             >
