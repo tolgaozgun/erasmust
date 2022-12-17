@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewEditDTO;
+import com.bilkent.erasmus.models.FileData;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
@@ -10,6 +11,11 @@ import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.CourseReview
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -24,12 +30,11 @@ public class CourseReviewFormServiceNew {
    // private final StorageService storageService;
 
     public CourseReviewFormServiceNew(CourseReviewFormRepositoryNew courseReviewFormRepository
-            ,CourseHostRepository courseHostRepository
-            ,CourseBilkentRepository courseBilkentRepository) {
+            , CourseHostRepository courseHostRepository
+            , CourseBilkentRepository courseBilkentRepository) {
         this.courseReviewFormRepository = courseReviewFormRepository;
         this.courseHostRepository = courseHostRepository;
         this.courseBilkentRepository = courseBilkentRepository;
-
     }
 
     public CourseReviewFormNew createForm(CourseBilkent courseBilkent, CourseHost courseHost
@@ -79,8 +84,8 @@ public class CourseReviewFormServiceNew {
                 .stream()
                 .map(file -> saveFile(file))
                 .collect(Collectors.toList());
-    }
-*/
+    }*/
+
 
 
 }

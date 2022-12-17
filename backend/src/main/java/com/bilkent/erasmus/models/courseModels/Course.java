@@ -14,7 +14,6 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Course {
 
     @Id

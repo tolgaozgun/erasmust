@@ -69,5 +69,10 @@ public class AdminController {
         return new ResponseEntity<>(adminService.getAllPreapprovalErasmus(), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
+    @GetMapping("/all-course-review-form")
+    public ResponseEntity<?> getAllCourseReviewForms() {
+        return new ResponseEntity<>(adminService.getAllCourseReviewForms(), HttpStatus.OK);
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.mappers;
 
 import com.bilkent.erasmus.dtos.PreApprovalFormEditDTO;
+import com.bilkent.erasmus.mappers.PreApprovalFormMapper.CourseBilkentMapper;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import org.mapstruct.*;
 
