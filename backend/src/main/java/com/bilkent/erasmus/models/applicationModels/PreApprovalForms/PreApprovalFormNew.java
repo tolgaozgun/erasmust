@@ -34,7 +34,7 @@ public class PreApprovalFormNew {
 
     private Date approvalDate;
 
-    private long createDate;
+    private long date;
 
     private Status status;
 
