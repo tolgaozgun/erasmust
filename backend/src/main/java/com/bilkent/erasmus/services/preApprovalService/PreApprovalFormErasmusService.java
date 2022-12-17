@@ -18,6 +18,7 @@ import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationErasm
 import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusDetailRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
+import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import com.bilkent.erasmus.services.CourseHostService;
 import com.bilkent.erasmus.services.CourseReviewFormService;
 import org.springframework.data.domain.Page;
@@ -52,6 +53,8 @@ public class PreApprovalFormErasmusService {
 
     private final OutGoingStudentErasmusRepository outGoingStudentErasmusRepository;
 
+    private final OutGoingStudentRepository studentRepository;
+
 
     public PreApprovalFormErasmusService(ApplicationErasmusRepository applicationErasmusRepository
             ,PreApprovalFormErasmusRepository erasmusRepository
@@ -60,7 +63,8 @@ public class PreApprovalFormErasmusService {
             ,CourseReviewFormService courseReviewFormService
             ,CourseHostService courseHostService
             ,CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository
-            ,OutGoingStudentErasmusRepository outGoingStudentErasmusRepository) {
+            ,OutGoingStudentErasmusRepository outGoingStudentErasmusRepository
+            ,OutGoingStudentRepository studentRepository) {
         this.applicationErasmusRepository = applicationErasmusRepository;
         this.erasmusRepository = erasmusRepository;
         this.erasmusDetailRepository = erasmusDetailRepository;
@@ -69,6 +73,7 @@ public class PreApprovalFormErasmusService {
         this.courseHostService = courseHostService;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
         this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
+        this.studentRepository = studentRepository;
     }
 
 
@@ -127,7 +132,7 @@ public class PreApprovalFormErasmusService {
                     ,coursesHost.get(i).getId()
                     ,null
             );
-           // forms.add(courseReviewFormService.fillReviewForm(formFillRequest));
+              // forms.add(courseReviewFormService.fillReviewForm(formFillRequest));
         }
         return forms;
     }

@@ -1,3 +1,4 @@
+/*
 package com.bilkent.erasmus.controllers;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
@@ -35,3 +36,4 @@ public class PreApprovalFormErasmusController {
         return new ResponseEntity<>(erasmusService.filter(form), HttpStatus.CREATED);
     }
 }
+*/
