@@ -15,7 +15,7 @@ import java.util.List;
 
 public interface PartnerUniversityErasmusMapper {
     @Named("toErasmusUniversityDTO")
-    PartnerUniversityErasmus toErasmusUniversityDTO(PartnerUniversityErasmusDTO partnerUniversityErasmusDTO);
+    PartnerUniversityErasmusDTO toErasmusUniversityDTO(PartnerUniversityErasmus partnerUniversityErasmus);
     @IterableMapping(qualifiedByName = "toErasmusUniversityDTO")
     List<PartnerUniversityErasmusDTO> toErasmusUniversityListDTO(List<PartnerUniversityErasmus> universityErasmusList);
 }
