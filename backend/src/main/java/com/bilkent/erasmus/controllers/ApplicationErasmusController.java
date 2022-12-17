@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
+
 @RestController
 @RequestMapping("/erasmus-application")
 public class ApplicationErasmusController {
@@ -42,6 +44,7 @@ public class ApplicationErasmusController {
         applicationErasmusService.reevaluateApplications();
         return new ResponseEntity<>("applications reevaluated", HttpStatus.OK);
     }
+    @RolesAllowed("ROLE_STUDENT")
     @GetMapping("/view-application")
     public ResponseEntity<?> viewApplication(){
         return new ResponseEntity<>(applicationErasmusService.viewApplication(), HttpStatus.OK);
