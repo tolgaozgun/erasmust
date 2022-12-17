@@ -22,7 +22,7 @@ const items = [
     title: 'Student List'
   },
   {
-    href: '/exchangeProgramAdmin',
+    href: '/staffListAdmin',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Staff List'
   },

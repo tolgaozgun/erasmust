@@ -17,28 +17,28 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const StudentEdits = () => {
+const StaffEdits = () => {
     const location = useLocation();
-    const student = location.state;
+    const staff = location.state;
 
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     const formik = useFormik({
         initialValues: {
-            id: student.id,
-            firstName: student.firstName ? student.firstName : "",
-            lastName: student.lastName ? student.lastName : "",
-            password: student.password ? student.password : "",
-            starsId: student.starsId ? student.starsId : "",
-            createdAt: student.createdAt ? student.createdAt : "",
-            permission: student.permission ? student.permission : "",
-            contactInformation: student.contactInformation ? 
+            id: staff.id,
+            firstName: staff.firstName ? staff.firstName : "",
+            lastName: staff.lastName ? staff.lastName : "",
+            password: staff.password ? staff.password : "",
+            starsId: staff.starsId ? staff.starsId : "",
+            createdAt: staff.createdAt ? staff.createdAt : "",
+            permission: staff.permission ? staff.permission : "",
+            contactInformation: staff.contactInformation ? 
             {
-                emailUniversity: student.contactInformation.emailUniversity ? student.contactInformation.emailUniversity : "",
-                emailPersonal: student.contactInformation.emailPersonal ? student.contactInformation.emailPersonal : "",
-                phoneNumberWork: student.contactInformation.phoneNumberWork ? student.contactInformation.phoneNumberWork : "",
-                phoneNumberPersonal: student.contactInformation.phoneNumberPersonal ? student.contactInformation.phoneNumberPersonal : "",
-                address: student.contactInformation.address ? student.contactInformation.address : ""
+                emailUniversity: staff.contactInformation.emailUniversity ? staff.contactInformation.emailUniversity : "",
+                emailPersonal: staff.contactInformation.emailPersonal ? staff.contactInformation.emailPersonal : "",
+                phoneNumberWork: staff.contactInformation.phoneNumberWork ? staff.contactInformation.phoneNumberWork : "",
+                phoneNumberPersonal: staff.contactInformation.phoneNumberPersonal ? staff.contactInformation.phoneNumberPersonal : "",
+                address: staff.contactInformation.address ? staff.contactInformation.address : ""
             } : ""
         },
         validationSchema: Yup.object({
@@ -102,7 +102,7 @@ const StudentEdits = () => {
     return (
         <>  
             <title>
-                Student
+                Staff
             </title>
             <DashboardLayoutRoot>
             <Box
@@ -122,7 +122,7 @@ const StudentEdits = () => {
                     color="textPrimary"
                     variant="h4"
                   >
-                    Edit Student
+                    Edit Staff
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -281,4 +281,4 @@ const StudentEdits = () => {
     );
 }
 
-export default StudentEdits
+export default StaffEdits
