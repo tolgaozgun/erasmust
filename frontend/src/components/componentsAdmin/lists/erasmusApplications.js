@@ -17,7 +17,11 @@ import {
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import {SeverityPill} from "../severity-pill";
 
-export const ErasmusApplicationList = (props) => (
+export const ErasmusApplications = (props) => {
+    const {applications} = props
+
+
+    return (
     <Card {...props}>
         <CardHeader title="Ongoing Preapprovals"/>
         <PerfectScrollbar>
@@ -50,7 +54,7 @@ export const ErasmusApplicationList = (props) => (
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.applications && props.applications.map((application) => (
+                        {applications.map((application) => (
                             <TableRow hover key={application.id}>
                                 <TableCell>{application.id}</TableCell>
                                 <TableCell>
@@ -103,4 +107,5 @@ export const ErasmusApplicationList = (props) => (
             </Button>
         </Box>
     </Card>
-);
+    )
+};
