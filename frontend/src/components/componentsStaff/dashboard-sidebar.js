@@ -19,8 +19,8 @@ const items = [
     },
     {
         href: "/erasmusStaff",
-        icon: <HiGlobeEuropeAfrica fontSize="small" />,
-        title: "Erasmus Program",
+        icon: <HiGlobeEuropeAfrica fontSize="small"/>,
+        title: "StudentErasmusPage Program",
     },
     {
         href: "/exchangeProgramStaff",

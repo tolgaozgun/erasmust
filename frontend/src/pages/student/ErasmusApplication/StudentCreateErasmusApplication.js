@@ -86,7 +86,7 @@ const QontoStepIconRoot = styled('div')(
 );
 
 
-const ErasmusApplication = () => {
+const StudentCreateErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [activeStep, setActiveStep] = useState(0)
     const [stepCompleted, setStepCompleted] = useState([
@@ -413,4 +413,4 @@ const ErasmusApplication = () => {
     );
 };
 
-export default ErasmusApplication;
+export default StudentCreateErasmusApplication;

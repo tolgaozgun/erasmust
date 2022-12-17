@@ -88,7 +88,7 @@ const readyData = {
 }
 
 
-const Preapproval = () => {
+const StudentCreateErasmusPreapproval = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [activeStep, setActiveStep] = useState(0)
     const [stepCompleted, setStepCompleted] = useState([
@@ -324,4 +324,4 @@ const Preapproval = () => {
     );
 };
 
-export default Preapproval;
+export default StudentCreateErasmusPreapproval;

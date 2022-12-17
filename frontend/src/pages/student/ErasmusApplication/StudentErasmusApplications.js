@@ -6,7 +6,7 @@ import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
 import StudentPreapprovalList from "../Preapproval/StudentErasmusPreapprovalList";
-import ErasmusApplication from "../../student/ErasmusApplication/erasmusApplication";
+import StudentCreateErasmusApplication from "./StudentCreateErasmusApplication";
 import {ErasmusApplicationList} from "../../../components/componentsStudent/lists/ErasmusApplicationList";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({

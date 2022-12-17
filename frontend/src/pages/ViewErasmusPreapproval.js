@@ -1,20 +1,25 @@
 import {
-    Box,
+    Box, Button,
     Container,
     Grid,
+    Step, StepButton,
+    StepConnector,
+    stepConnectorClasses,
+    StepLabel,
+    Stepper,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
+import {DashboardNavbar} from '../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../components/componentsStudent/dashboard-sidebar';
+import {ViewStudentInfo} from '../components/componentsStudent/info/view-student-info';
+import {FormExchangeInfo} from '../components/componentsStudent/forms/exchange/form-exchange-info';
+import {FormCourseInfo} from '../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
+
+import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
-import {ViewStudentInfo} from "../../../components/componentsStudent/info/view-student-info";
-import {styled} from "@mui/material/styles";
-import {
-    ViewSemesterInfo
-} from "../../../components/componentsStudent/info/erasmus/erasmusApplicationForm/view-semester-info";
-import {
-    ViewSchoolInfo
-} from "../../../components/componentsStudent/info/erasmus/erasmusApplicationForm/view-school-info";
+import {Check} from "@mui/icons-material";
+import {ViewExchangeInfo} from "../components/componentsStudent/info/exchange/view-exchange-info";
+import {ViewCourseInfo} from "../components/componentsStudent/info/exchange/preapprovalForm/view-course-info";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -26,12 +31,13 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const ViewErasmusApplication = () => {
+const ViewErasmusPreapproval = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+
     return (
         <>
             <title>
-                View Erasmus Application
+                View Preapproval
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -47,22 +53,21 @@ const ViewErasmusApplication = () => {
                             align="center"
                             variant="h4"
                         >
-                            View Erasmus Application
+                            Preapproval Form
                         </Typography>
 
                         <Grid
                             container
                             spacing={3}
                         >
+
                             <Grid
                                 item
                                 lg={6}
                                 md={6}
                                 xs={12}
                             >
-
                                 <ViewStudentInfo/>
-
                             </Grid>
                             <Grid
                                 item
@@ -70,9 +75,7 @@ const ViewErasmusApplication = () => {
                                 md={6}
                                 xs={12}
                             >
-
-                                <ViewSemesterInfo/>
-
+                                <ViewExchangeInfo/>
                             </Grid>
                             <Grid
                                 item
@@ -80,9 +83,7 @@ const ViewErasmusApplication = () => {
                                 md={12}
                                 xs={24}
                             >
-
-                                <ViewSchoolInfo/>
-
+                                <ViewCourseInfo/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -96,4 +97,4 @@ const ViewErasmusApplication = () => {
     );
 };
 
-export default ViewErasmusApplication;
+export default ViewErasmusPreapproval;
