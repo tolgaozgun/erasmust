@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../components/componentsAdmin/dashboard-navbar";
-import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Staffs} from "../../components/componentsAdmin/lists/staffs";
+import {Staffs} from "../../../components/componentsAdmin/lists/staffs";
 import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -40,6 +40,7 @@ const StaffList = () => {
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                    setFlag(true)
                 }
             })
             .catch((err) => {
