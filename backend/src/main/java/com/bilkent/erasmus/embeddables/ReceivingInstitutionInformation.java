@@ -5,23 +5,28 @@ import lombok.Data;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Data
 @Embeddable
 public class ReceivingInstitutionInformation {
 
-    private String name;
+    private String nameHost;
 
-    private String erasmusCode;
+    private String erasmusCodeHost;
 
-    private String contactPersonName;
+    private String contactPersonFirstNameHost;
 
-    private String contactPersonEmail;
+    private String contactPersonLastNameHost;
 
-    @OneToOne
-    private Faculty faculty;
+    private String contactPersonEmailHost;
 
-    @Embedded
-    private Address address;
+    private String contactPersonPhoneNumberHost;
+
+    private String contactPersonFunctionHost;
+    @ManyToOne
+    private Faculty facultyHost;
+
+    private String addressHost;
 }
