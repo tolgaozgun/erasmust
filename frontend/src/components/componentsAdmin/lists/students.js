@@ -54,7 +54,7 @@ export const Students = (props) => {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    Application ID
+                                    Student ID
                                 </TableCell>
                                 <TableCell>
                                     Student First Name
@@ -94,7 +94,7 @@ export const Students = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {students.map((student, index) => (
+                        {students && students.map((student, index) => (
                             <TableRow
                                 hover
                                 key={student.id}
