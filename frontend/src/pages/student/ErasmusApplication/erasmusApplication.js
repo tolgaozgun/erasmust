@@ -170,7 +170,7 @@ const ErasmusApplication = () => {
 
     useEffect(async () => {
         let token = sessionStorage.getItem("jwtToken")
-        await axios.get("http://92.205.25.135:4/student/retrieveAllSchools", {
+        await axios.get("http://92.205.25.135:4/universities/all-by-student-department", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

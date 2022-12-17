@@ -40,8 +40,8 @@ const items = [
             },
             {
                 href: "/preapprovals",
-                icon: <AddOutlinedIcon fontSize="small" />,
-                title: "View Your Preapprovals",
+                icon: <AddOutlinedIcon fontSize="small"/>,
+                title: "View Your StudentPreapprovalList",
             },
             {
                 href: "/preapprovalInfo",

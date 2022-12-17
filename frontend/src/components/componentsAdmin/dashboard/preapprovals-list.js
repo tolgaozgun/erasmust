@@ -79,7 +79,7 @@ const preapprovals = [
 
 export const PreapprovalsList = (props) => (
     <Card {...props}>
-        <CardHeader title="Ongoing Preapprovals"/>
+        <CardHeader title="Ongoing StudentPreapprovalList"/>
         <PerfectScrollbar>
             <Box
                 sx={{
