@@ -10,7 +10,7 @@ const Splash = (props) => {
     }
 
     const goLoginStudent = () => {
-        navigate('/loginStudent')
+        navigate('/login')
     }
 
     return(

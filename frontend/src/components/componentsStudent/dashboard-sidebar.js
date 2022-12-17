@@ -14,49 +14,49 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import React from "react";
 const items = [
     {
-        href: "/dashboardStudent",
+        href: "/student/dashboard",
         icon: <ChartBarIcon fontSize="small" />,
         title: "Dashboard",
     },
     {
-        href: "/erasmusStudent",
+        href: "/student/erasmus/dashboard",
         icon: <HiGlobeEuropeAfrica fontSize="small"/>,
-        title: "StudentErasmusPage Program",
+        title: "Erasmus Page",
         side: [
             {
-                href: "/erasmusApplications",
+                href: "/student/erasmus/application/list",
                 icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "View Your StudentErasmusPage Applications",
+                title: "View Your Erasmus Application List",
             },
             {
-                href: "/erasmusApplicationInfo",
+                href: "/student/erasmus/application/create",
                 icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "StudentErasmusPage Application Information",
+                title: "Create Erasmus Application",
             },
             {
-                href: "/erasmusApplicationFAQ",
+                href: "/student/erasmus/application/view",
                 icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "StudentErasmusPage Appliaction FAQ",
+                title: "View Your Erasmus Applicaiton",
             },
             {
-                href: "/preapprovals",
+                href: "/student/erasmus/preapproval/list",
                 icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "View Your StudentPreapprovalList",
+                title: "View Your Preapproval List",
             },
             {
-                href: "/preapprovalInfo",
+                href: "/student/erasmus/preapproval/create",
                 icon: <AddOutlinedIcon fontSize="small" />,
-                title: "Preapproval Information",
+                title: "Create Preapproval Form",
             },
             {
-                href: "/erasmusFAQ",
+                href: "/student/erasmus/preapproval/view",
                 icon: <AddOutlinedIcon fontSize="small" />,
-                title: "Preapproval FAQ",
+                title: "View Your Preapproval Form",
             },
         ],
     },
     {
-        href: "/exchangeProgramStudent",
+        href: "/student/exchange/",
         icon: <HiGlobeAmericas fontSize="small" />,
         title: "Exchange Program",
     },
@@ -71,7 +71,7 @@ const items = [
         title: "Submissions",
     },
     {
-        href: "/accountStudent",
+        href: "/student/account",
         icon: <UserIcon fontSize="small" />,
         title: "Account",
     },
@@ -81,7 +81,7 @@ const items = [
         title: "Exchange FAQ",
     },
     {
-        href: "/settingsStudent",
+        href: "/student/settings",
         icon: <CogIcon fontSize="small" />,
         title: "Settings",
     },
