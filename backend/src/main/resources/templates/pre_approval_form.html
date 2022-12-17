@@ -1,0 +1,414 @@
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+<!--    <title>BILKENT UNIVERSITY - Course Transfer / Exemption Form</title>-->
+<!--    <meta name="author" content=""/>-->
+<!--    <style type="text/css"> * {-->
+<!--        margin: 0;-->
+<!--        padding: 0;-->
+<!--        text-indent: 0;-->
+<!--    }-->
+
+<!--    h2 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 14pt;-->
+<!--    }-->
+
+<!--    .h1 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 16pt;-->
+<!--    }-->
+
+<!--    .s1 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 9.5pt;-->
+<!--    }-->
+
+<!--    .s2 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 10pt;-->
+<!--    }-->
+
+<!--    .s3 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 6.5pt;-->
+<!--        vertical-align: 3pt;-->
+<!--    }-->
+
+<!--    .s4 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 8pt;-->
+<!--    }-->
+
+<!--    .s5 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 10pt;-->
+<!--    }-->
+
+<!--    .s6 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: normal;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 9pt;-->
+<!--    }-->
+
+<!--    .s7 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 9pt;-->
+<!--    }-->
+
+<!--    .p, p {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: normal;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 7pt;-->
+<!--        margin: 0pt;-->
+<!--    }-->
+
+<!--    h3 {-->
+<!--        color: black;-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        font-style: normal;-->
+<!--        font-weight: bold;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 6pt;-->
+<!--    }-->
+
+<!--    table, tbody {-->
+<!--        vertical-align: top;-->
+<!--        overflow: visible;-->
+<!--    }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body><p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--<p style="text-indent: 0pt;text-align: left;"><span>-->
+<!--<table border="0" cellspacing="0" cellpadding="0">-->
+<!--    <tr>-->
+<!--        <td><img width="56" height="56"-->
+<!--                 src="data:image/png;base64,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"/>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--</span></p><h2 style="padding-top: 4pt;padding-left: 62pt;text-indent: 0pt;text-align: left;">Bilkent University <span-->
+<!--        class="h1">Course Exemption Pre-Approval Form for Outgoing Exchange Students</span></h2>-->
+<!--<p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--<p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--<table style="border-collapse:collapse;margin-left:7.37pt" cellspacing="0">-->
+<!--    <tr style="height:20pt">-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s1" style="padding-top: 4pt;padding-left: 3pt;text-indent: 0pt;text-align: left;">Name</p></td>-->
+<!--        <td style="width:317pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p th:text = "${student.firstName}" style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:92pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s1" style="padding-top: 4pt;padding-left: 6pt;text-indent: 0pt;text-align: left;">ID Number</p>-->
+<!--        </td>-->
+<!--        <td style="width:341pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p th:text = "${student.starsId}" style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:20pt">-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p  class="s1" style="padding-top: 4pt;padding-left: 3pt;text-indent: 0pt;text-align: left;">Surname</p></td>-->
+<!--        <td style="width:317pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p th:text = "${student.lastName}" style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:92pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p  class="s1" style="padding-top: 4pt;padding-left: 6pt;text-indent: 0pt;text-align: left;">Department</p>-->
+<!--        </td>-->
+<!--        <td style="width:341pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p th:text = "${student.departmentName}" style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--<p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--<table style="border-collapse:collapse;margin-left:6.65pt" cellspacing="0">-->
+<!--    <tr style="height:24pt">-->
+<!--        <td style="width:141pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"-->
+<!--            rowspan="2"><p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--            <p class="s1" style="padding-top: 7pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Name of the host-->
+<!--                institution</p></td>-->
+<!--        <td style="width:227pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"-->
+<!--            rowspan="2"><p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:92pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s1" style="padding-top: 6pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Academic-->
+<!--                Year</p></td>-->
+<!--        <td style="width:340pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:24pt">-->
+<!--        <td style="width:92pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s1" style="padding-top: 6pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Semester</p>-->
+<!--        </td>-->
+<!--        <td style="width:340pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--<p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--<table style="border-collapse:collapse;margin-left:6.65pt" cellspacing="0">-->
+<!--    <tr style="height:32pt">-->
+<!--        <td style="width:368pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"-->
+<!--            colspan="4"><p class="s2" style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Host-->
+<!--            institution courses to be transferred upon approval</p></td>-->
+<!--        <td style="width:432pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"-->
+<!--            colspan="3"><p class="s2" style="padding-top: 4pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">-->
+<!--            Course or requirement to be exempted if transferred course is completed with a passing grade <span-->
+<!--                class="s3">†</span></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:31pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s4"-->
+<!--               style="padding-top: 5pt;padding-left: 3pt;padding-right: 12pt;text-indent: 0pt;text-align: left;">Course-->
+<!--                Code</p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--            <p class="s4" style="padding-left: 98pt;padding-right: 97pt;text-indent: 0pt;text-align: center;">Course-->
+<!--                Name</p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s4" style="padding-top: 9pt;padding-left: 9pt;text-indent: 0pt;text-align: left;">Credits<span-->
+<!--                    class="s5">*</span></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s4"-->
+<!--               style="padding-top: 5pt;padding-left: 3pt;padding-right: 18pt;text-indent: 0pt;text-align: left;">Course-->
+<!--                Code and Name for a Required Course, Elective Group Name for an Elective Requirement</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--            <p class="s4" style="padding-left: 8pt;text-indent: 0pt;text-align: left;">Credits</p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s4" style="padding-top: 1pt;padding-left: 3pt;text-indent: 0pt;text-align: left;">Elective-->
+<!--                Requirement Exemptions</p>-->
+<!--            <p class="s4" style="padding-left: 3pt;text-indent: 0pt;line-height: 9pt;text-align: left;">only: Course-->
+<!--                code(s) of directly equivalent course(s), if any **</p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 6pt;text-indent: 0pt;text-align: center;">1</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">2</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">3</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">4</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">5</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 6pt;text-indent: 0pt;text-align: center;">6</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">7</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">8</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">9</p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:23pt">-->
+<!--        <td style="width:22pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6"-->
+<!--               style="padding-top: 5pt;padding-left: 5pt;padding-right: 4pt;text-indent: 0pt;text-align: center;">10</p>-->
+<!--        </td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:251pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:50pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:230pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:45pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--<p style="text-indent: 0pt;text-align: left;"><br/></p>-->
+<!--<table style="border-collapse:collapse;margin-left:5.93pt" cellspacing="0">-->
+<!--    <tr style="height:14pt">-->
+<!--        <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s7" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Approved by</p>-->
+<!--        </td>-->
+<!--        <td style="width:279pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s7" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Name</p></td>-->
+<!--        <td style="width:207pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s7" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Signature</p>-->
+<!--        </td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s7" style="padding-left: 5pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Date</p></td>-->
+<!--    </tr>-->
+<!--    <tr style="height:25pt">-->
+<!--        <td style="width:158pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p class="s6" style="padding-top: 6pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Exchange-->
+<!--                Coordinator</p></td>-->
+<!--        <td style="width:279pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:207pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">-->
+<!--            <p style="text-indent: 0pt;text-align: left;"><br/></p></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--<p style="padding-top: 5pt;padding-left: 10pt;text-indent: 0pt;text-align: left;">* ECTS credits for Erasmus exchange-->
+<!--    students.</p>-->
+<!--<p style="padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">** Applicable only if there is a-->
+<!--    directly equivalent course in the elective group that the student is exempted from. The student will be considered-->
+<!--    to have taken this course by the STARS system.</p>-->
+<!--<h3 style="padding-top: 3pt;padding-left: 13pt;text-indent: -5pt;text-align: left;">† <span class="p">A transferred course may provide exemption from a requirement in the curriculum if deemed to be equivalent by the Faculty/School Executive Board. It is possible for one transferred course to provide exemption from one or more curriculum courses or vice versa.</span>-->
+<!--</h3></body>-->
+<!--</html>-->
