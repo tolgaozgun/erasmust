@@ -17,76 +17,6 @@ import {CourseComponent} from "../../course-component";
 export const FormCourseInfo = (props) => {
 
 
-    const schema = Yup.object().shape({
-        courses: Yup.array().of(
-            Yup.object().shape(
-                {
-                    courseCode: Yup
-                        .string()
-                        .required("Course Code is required"),
-                    courseCredits: Yup
-                        .number()
-                        .required("Course Credits is required"),
-                    courseName: Yup
-                        .string()
-                        .required("Course Name is required"),
-                    bilkentCourse: Yup
-                        .string()
-                        .required("Bilkent Course is required"),
-                },
-                'Course is invalid',
-            ),
-        ),
-    });
-
-
-    const formik = useFormik({
-        initialValues: {
-            courses: [
-                {
-                    courseName: "",
-                    courseCode: "",
-                    courseCredits: 0.0,
-                    bilkentCourse: "",
-                }
-            ]
-        },
-        validationSchema: Yup.object({
-            courses: Yup.array().of(
-                Yup.object().shape(
-                    {
-                        courseCode: Yup
-                            .string()
-                            .required("Course Code is required"),
-                        courseCredits: Yup
-                            .number()
-                            .min(0)
-                            .required("Course Credits is required"),
-                        courseName: Yup
-                            .string()
-                            .required("Course Name is required"),
-                        bilkentCourse: Yup
-                            .string()
-                            .required("Bilkent Course is required"),
-                    },
-                    'Course is invalid',
-                ),
-            ),
-        }),
-        onSubmit: () => {
-
-        },
-    });
-    if (!props.hidden && props.handleStep) {
-        props.handleStep(formik.isValid)
-    }
-
-    const addCourse = () => {
-        let length = formik.values.courses.length
-        const component = {courseCode: '', courseCredits: 0.0, courseName: '', bilkentCourse: ''}
-        formik.setFieldValue(`courses.${length}`, component)
-        formik.values.courses.push(component)
-    }
 
     // TODO: Change this to match current login details
     const isAdmin = false;
@@ -98,22 +28,22 @@ export const FormCourseInfo = (props) => {
             hidden={props.hidden}
         >
                 <Button
-                    onClick={addCourse}>
+                    onClick={props.addCourse}>
                     Add Course
                 </Button>
-            {formik.values.courses.map((course, index) => (
+            {props.values.courses.map((course, index) => (
 
                 <>
                     <CourseComponent
                         key={index}
                         index={index}
-                        errors={formik.errors.courses ? formik.errors.courses[`${index}`] : {}}
-                        touched={formik.touched.courses ? formik.errors.courses[`${index}`] : {}}
-                        setFieldValue={formik.setFieldValue}
-                        handleChange={formik.handleChange}
-                        handleBlur={formik.handleBlur}
+                        errors={props.errors.courses ? props.errors.courses[`${index}`] : {}}
+                        touched={props.touched.courses ? props.errors.courses[`${index}`] : {}}
+                        handleChange={props.handleChange}
+                        handleBlur={props.handleBlur}
                         courses={props.courses}
                         editable={props.editable}
+                        setCourse={props.setCourse}
                     />
 
                 </>

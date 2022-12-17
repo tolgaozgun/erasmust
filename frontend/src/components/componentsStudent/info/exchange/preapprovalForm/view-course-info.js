@@ -22,6 +22,12 @@ const courses = [
         courseCredits: 6.0,
         bilkentCourse: "CS 401 - Database Systems",
     },
+    {
+        courseName: "Database Systems",
+        courseCode: "CS 391",
+        courseCredits: 6.0,
+        bilkentCourse: "CS 401 - Database Systems",
+    },
 ]
 
 

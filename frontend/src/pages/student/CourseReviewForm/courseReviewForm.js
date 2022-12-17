@@ -12,13 +12,6 @@ import {
 import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
 import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
 import {FileUpload} from '../../../components/FileUpload';
-import {FormStudentInfo} from '../../../components/componentsStudent/forms/form-student-info';
-import {
-    FormSemesterInfo
-} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
-import {
-    FormSchoolInfo
-} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
 
 import {styled} from '@mui/material/styles';
 import Alert from '@mui/material/Alert';

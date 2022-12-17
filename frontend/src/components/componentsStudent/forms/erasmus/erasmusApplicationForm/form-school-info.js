@@ -16,79 +16,6 @@ import {CourseComponent, SchoolComponent} from "./school-component";
 
 export const FormSchoolInfo = (props) => {
 
-    const schema = Yup.object().shape({
-        courses: Yup.array().of(
-            Yup.object().shape(
-                {
-                    courseCode: Yup
-                        .string()
-                        .required("Course Code is required"),
-                    courseCredits: Yup
-                        .number()
-                        .required("Course Credits is required"),
-                    courseName: Yup
-                        .string()
-                        .required("Course Name is required"),
-                    bilkentCourse: Yup
-                        .string()
-                        .required("Bilkent Course is required"),
-                },
-                'Course is invalid',
-            ),
-        ),
-    });
-
-    const formik = useFormik({
-        initialValues: {
-            courses: [
-                {
-                    courseName: "",
-                    courseCode: "",
-                    courseCredits: 0.0,
-                    bilkentCourse: "",
-                }
-            ]
-        },
-        validationSchema: Yup.object({
-            courses: Yup.array().of(
-                Yup.object().shape(
-                    {
-                        courseCode: Yup
-                            .string()
-                            .required("Course Code is required"),
-                        courseCredits: Yup
-                            .number()
-                            .min(0)
-                            .required("Course Credits is required"),
-                        courseName: Yup
-                            .string()
-                            .required("Course Name is required"),
-                        bilkentCourse: Yup
-                            .string()
-                            .required("Bilkent Course is required"),
-                    },
-                    'Course is invalid',
-                ),
-            ),
-        }),
-        onSubmit: () => {
-
-        },
-    });
-    if (!props.hidden && props.handleStep) {
-        props.handleStep(formik.isValid)
-    }
-
-    const addCourse = () => {
-        let length = formik.values.courses.length
-        // TODO: Stop adding for more than 5 universities
-        if (length === 5) {
-
-        }
-        const component = {courseCode: '', courseCredits: 0.0, courseName: '', bilkentCourse: ''}
-        formik.setFieldValue(`courses.${length}`, component)
-        formik.values.courses.push(component)
-    }
 
     // TODO: Change this to match current login details
     const isAdmin = false;
@@ -101,23 +28,23 @@ export const FormSchoolInfo = (props) => {
         >
             {props.editable &&
                 <Button
-                    onClick={addCourse}>
+                    onClick={props.addSchool}>
                     Add School
                 </Button>
             }
-            {formik.values.courses.map((course, index) => (
+            {props.values.schools.map((school, index) => (
 
                 <>
                     <SchoolComponent
                         key={index}
                         index={index}
-                        errors={formik.errors.courses ? formik.errors.courses[`${index}`] : {}}
-                        touched={formik.touched.courses ? formik.errors.courses[`${index}`] : {}}
-                        setFieldValue={formik.setFieldValue}
-                        handleChange={formik.handleChange}
-                        handleBlur={formik.handleBlur}
+                        errors={props.errors.schools ? props.errors.schools[`${index}`] : {}}
+                        touched={props.touched.schools ? props.errors.schools[`${index}`] : {}}
+                        setSchool={props.setSchool}
+                        handleChange={props.handleChange}
+                        handleBlur={props.handleBlur}
                         schools={props.schools}
-                        editable={false}
+                        editable={props.editable}
                     />
 
                 </>

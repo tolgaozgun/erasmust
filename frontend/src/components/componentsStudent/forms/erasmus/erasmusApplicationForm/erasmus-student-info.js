@@ -13,9 +13,10 @@ import React from 'react';
 import {useFormik} from "formik";
 import * as Yup from "yup";
 
-export const FormExchangeInfo = (props) => {
+export const ErasmusStudentInfo = (props) => {
 
-
+    // TODO: Change this to match current login details
+    const isAdmin = false;
 
     return (
         <form
@@ -25,8 +26,8 @@ export const FormExchangeInfo = (props) => {
         >
             <Card>
                 <CardHeader
-                    subheader="Program and host institution information"
-                    title="Exchange Information"
+                    subheader="This part contains general information"
+                    title="Student Information"
                 />
                 <Divider/>
                 <CardContent>
@@ -41,10 +42,10 @@ export const FormExchangeInfo = (props) => {
                         >
                             <TextField
                                 fullWidth
-                                label="Host Institution Name"
-                                name="hostName"
+                                label="Name"
+                                name="name"
                                 required
-                                value={props.values.hostName}
+                                value={props.values.name}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -56,10 +57,10 @@ export const FormExchangeInfo = (props) => {
                         >
                             <TextField
                                 fullWidth
-                                label="Academic Year"
-                                name="academicYear"
+                                label="Surname"
+                                name="surname"
                                 required
-                                value={props.values.academicYear}
+                                value={props.values.surname}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -71,10 +72,25 @@ export const FormExchangeInfo = (props) => {
                         >
                             <TextField
                                 fullWidth
-                                label="Semester"
-                                name="semester"
+                                label="Stars ID"
+                                name="starsId"
                                 required
-                                value={props.values.semester}
+                                value={props.values.starsId}
+                                variant="outlined"
+                                disabled={true}
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                fullWidth
+                                label="Department"
+                                name="department"
+                                required
+                                value={props.values.department}
                                 variant="outlined"
                                 disabled={true}
                             />
