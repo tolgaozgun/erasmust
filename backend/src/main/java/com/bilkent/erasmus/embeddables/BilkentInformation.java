@@ -1,27 +1,37 @@
 package com.bilkent.erasmus.embeddables;
 
+import com.bilkent.erasmus.enums.DepartmentName;
 import com.bilkent.erasmus.models.universityModels.Faculty;
 import lombok.Data;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Data
 @Embeddable
 public class BilkentInformation {
 
-    private String name;
+    private String nameBilkent;
 
-    private String erasmusCode;
+    private String erasmusCodeBilkent;
 
-    private String contactPersonName;
+    private String contactPersonFirstNameBilkent;
 
-    private String contactPersonEmail;
+    private String contactPersonLastNameBilkent;
 
-    @OneToOne
-    private Faculty faculty;
+    private String contactPersonEmailBilkent;
 
-    @Embedded
-    private Address address;
+    private String contactPersonPhoneNumberBilkent;
+
+    private String contactPersonFunctionBilkent;
+
+    private DepartmentName departmentBilkent;
+
+    @ManyToOne
+    private Faculty facultyBilkent;
+
+    private String addressBilkent;
+
 }

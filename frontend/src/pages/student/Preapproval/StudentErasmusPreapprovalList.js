@@ -26,7 +26,7 @@ const StudentErasmusPreapprovalList = () => {
     const token = sessionStorage.getItem("jwtToken");
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/erasmus-application/view-application", {
+        axios.get("http://92.205.25.135:4/pre-approval/erasmus/all-preapproval-student", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -81,7 +81,7 @@ const StudentErasmusPreapprovalList = () => {
                                 xl={15}
                                 xs={12}
                             >
-                                {/*<PreapprovalsList preapprovals={preapprovalList}/>*/}
+                                <PreapprovalsList preapprovals={preapprovalList}/>
                             </Grid>
                         </Grid>
                     </Container>

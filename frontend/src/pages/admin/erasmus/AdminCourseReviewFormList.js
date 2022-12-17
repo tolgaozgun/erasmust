@@ -3,10 +3,14 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
 import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Staffs} from "../../../components/componentsAdmin/lists/staffs";
+import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
+import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
+import {PreapprovalsList} from "../../../components/componentsAdmin/lists/preapprovals-list";
+import StudentCreateErasmusApplication from "../../student/ErasmusApplication/StudentCreateErasmusApplication";
+import {ErasmusApplicationList} from "../../../components/componentsAdmin/lists/ErasmusApplicationList";
 
-const DashboardLayoutRoot = styled('div')(({ theme }) => ({
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
     flex: '1 1 auto',
     maxWidth: '100%',
@@ -16,30 +20,31 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const StaffList = () => {
+const AdminCourseReviewFormList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const [staffList, setStaffList] = useState([]);
+    const [applicationList, setApplicationList] = useState([]);
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
-    var array = []
-    
+
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-students", {
+        axios.get("http://92.205.25.135:4/admin/all-applications", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
             .then((res) => {
                 if (res && res.data) {
-                    for (let i = 0; i < res.data.length; i++) {
+                    var i;
+                    for (i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
-                        array.push(res.data[i])
+                        var item = res.data[i]
+
+                        setApplicationList(oldArray => [...oldArray, item])
 
                         console.log(res.data);
                         console.log("Item placed on array!");
-                    } 
-                    setStaffList(array)
+                    }
                     setFlag(true)
                 }
             })
@@ -51,50 +56,40 @@ const StaffList = () => {
     }, []);
 
     return (
-        <>  
-        <title>
-            Students
+        <>  <title>
+            Erasmus Application List
         </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
                     sx={{
-                        alignItems: "center",
                         display: 'flex',
+                        flex: '1 1 auto',
+                        flexDirection: 'column',
                         width: '100%',
                         flexGrow: 1,
-                        minHeight: "100%",
                         py: 8
                     }}
                 >
-                    <Container
-                        maxWidth="lg"
-                    >
+                    <Container maxWidth={false}>
                         <Grid
                             container
-                            justifyContent="center"
                             spacing={3}
-                            sx={{
-                                ml: 5
-                            }}
                         >
                             <Grid
                                 item
-                                lg={10}
+                                lg={12}
                                 md={12}
                                 xl={15}
                                 xs={12}
-                                sx={{
-                                    display: "flex"
-                                }}
                             >
-                                {<Staffs staffs = {staffList}/> }
+                                <ErasmusApplicationList applications={applicationList}/>
                             </Grid>
                         </Grid>
                     </Container>
                 </Box>
             </DashboardLayoutRoot>
-            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
@@ -102,4 +97,4 @@ const StaffList = () => {
     );
 }
 
-export default StaffList
+export default AdminCourseReviewFormList

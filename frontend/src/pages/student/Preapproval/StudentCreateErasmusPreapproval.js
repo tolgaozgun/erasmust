@@ -20,6 +20,7 @@ import React, {useState} from 'react';
 import {Check} from "@mui/icons-material";
 import {useFormik} from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -159,8 +160,32 @@ const StudentCreateErasmusPreapproval = () => {
                 ),
             ),
         }),
-        onSubmit: () => {
+        onSubmit: async (values, formikHelpers) => {
+            let token = sessionStorage.getItem("jwtToken")
+            await axios.post("http://92.205.25.135:4/pre-approval/erasmus/create", values, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then((response) => {
+                    if (response && response.data) {
+                        console.log(response.data)
+                        // const jwtToken = response.data["token"]
+                        // const role = response.data["role"]
+                        // sessionStorage.setItem("jwtToken", jwtToken)
+                        // sessionStorage.setItem("role", role)
+                        // navigate('/dashboardStudent')
+                    }
+                })
+                .catch((err) => {
+                    console.log("Formik error1")
+                    if (err && err.response) {
+                        console.log("Formik error")
+                        console.log(err)
+                        console.log(err.response)
 
+                    }
+                })
         },
     });
 

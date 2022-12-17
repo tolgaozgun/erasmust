@@ -1,3 +1,4 @@
+
 package com.bilkent.erasmus.repositories.applicationRepositories;
 
 import com.bilkent.erasmus.models.compositeModels.LearningAgreementExchangeDetail;
@@ -9,3 +10,4 @@ public interface LearningAgreementExchangeDetailRepository extends JpaRepository
 
     LearningAgreementExchangeDetail findById(int id);
 }
+
