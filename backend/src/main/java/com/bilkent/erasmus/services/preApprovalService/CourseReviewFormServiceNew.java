@@ -1,24 +1,15 @@
 package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewEditDTO;
-import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
-import com.bilkent.erasmus.models.FileData;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
-import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
 import com.bilkent.erasmus.repositories.CourseHostRepository;
 import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.CourseReviewFormRepositoryNew;
-import com.bilkent.erasmus.services.StorageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -30,16 +21,15 @@ public class CourseReviewFormServiceNew {
 
     private final CourseBilkentRepository courseBilkentRepository;
 
-    private final StorageService storageService;
+   // private final StorageService storageService;
 
     public CourseReviewFormServiceNew(CourseReviewFormRepositoryNew courseReviewFormRepository
             ,CourseHostRepository courseHostRepository
-            ,CourseBilkentRepository courseBilkentRepository
-            ,StorageService storageService) {
+            ,CourseBilkentRepository courseBilkentRepository) {
         this.courseReviewFormRepository = courseReviewFormRepository;
         this.courseHostRepository = courseHostRepository;
         this.courseBilkentRepository = courseBilkentRepository;
-        this.storageService = storageService;
+
     }
 
     public CourseReviewFormNew createForm(CourseBilkent courseBilkent, CourseHost courseHost
@@ -63,9 +53,10 @@ public class CourseReviewFormServiceNew {
         CourseReviewFormNew form = courseReviewFormRepository.findById(fillRequest.getFormId())
                 .orElseThrow(() -> new Exception("no form is found"));
         form.setRequirements(fillRequest.getRequirements());
-        form.setFiles(saveMultipleFiles(files));
+      //  form.setFiles(saveMultipleFiles(files));
         return courseReviewFormRepository.save(form);
     }
+/*
 
     private FileData saveFile(MultipartFile file) {
         String fileName = storageService.storeFile(file);
@@ -89,6 +80,7 @@ public class CourseReviewFormServiceNew {
                 .map(file -> saveFile(file))
                 .collect(Collectors.toList());
     }
+*/
 
 
 }

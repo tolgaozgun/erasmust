@@ -1,3 +1,4 @@
+/*
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.exceptions.FileStorageException;
@@ -71,6 +72,7 @@ public class StorageService {
     }
 }
 
+*/
 /* private final Path root = Paths.get("/Users/yahya/Documents/GitHub/erasmust/backend/src/main/java/com/bilkent/erasmus/uploads");
 
     public void init() {
@@ -120,6 +122,8 @@ public class StorageService {
         }
     }
 
+*//*
+
 */
 /*  private final PdfRepository repository;
 
@@ -164,6 +168,8 @@ public class StorageService {
                 .toUriString();
         return ResponseEntity.ok(fileDownloadUri);
     }
+*//*
+
 */
 /*private final PdfRepository pdfRepository;
 
