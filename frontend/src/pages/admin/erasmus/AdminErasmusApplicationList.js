@@ -8,7 +8,7 @@ import axios from 'axios';
 import Preapprovals from "../../student/Preapproval/Preapprovals";
 import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
 import ErasmusApplication from "../../student/ErasmusApplication/erasmusApplication";
-import {ErasmusApplicationList} from "../../../components/componentsAdmin/dashboard/ErasmusApplicationList";
+import {ErasmusApplicationList} from "../../../components/componentsAdmin/lists/ErasmusApplicationList";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
