@@ -6,6 +6,7 @@ import {Box, Container, Grid} from "@mui/material";
 import axios from 'axios';
 import {ErasmusApplications} from "../../../components/componentsAdmin/lists/erasmusApplications";
 
+
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
     flex: '1 1 auto',

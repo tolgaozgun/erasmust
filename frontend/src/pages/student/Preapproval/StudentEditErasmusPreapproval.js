@@ -11,15 +11,13 @@ import {
 } from '@mui/material';
 import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
 import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
-import {ViewStudentInfo} from '../../../components/componentsStudent/info/view-student-info';
+import {FormStudentInfo} from '../../../components/componentsStudent/forms/form-student-info';
 import {FormExchangeInfo} from '../../../components/componentsStudent/forms/exchange/form-exchange-info';
 import {FormCourseInfo} from '../../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
 
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
 import {Check} from "@mui/icons-material";
-import {ViewExchangeInfo} from "../../../components/componentsStudent/info/exchange/view-exchange-info";
-import {ViewCourseInfo} from "../../../components/componentsStudent/info/exchange/preapprovalForm/view-course-info";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -31,13 +29,13 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const ViewPreapproval = () => {
+const StudentEditErasmusPreapproval = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     return (
         <>
             <title>
-                View Preapproval
+                Edit Preapproval
             </title>
             <DashboardLayoutRoot>
                 <Box
@@ -53,7 +51,7 @@ const ViewPreapproval = () => {
                             align="center"
                             variant="h4"
                         >
-                            Preapproval Form
+                            Edit Preapproval Form
                         </Typography>
 
                         <Grid
@@ -63,27 +61,14 @@ const ViewPreapproval = () => {
 
                             <Grid
                                 item
-                                lg={6}
-                                md={6}
-                                xs={12}
-                            >
-                                <ViewStudentInfo/>
-                            </Grid>
-                            <Grid
-                                item
-                                lg={6}
-                                md={6}
-                                xs={12}
-                            >
-                                <ViewExchangeInfo/>
-                            </Grid>
-                            <Grid
-                                item
                                 lg={12}
                                 md={12}
                                 xs={24}
                             >
-                                <ViewCourseInfo/>
+
+                                <FormStudentInfo editable={true}/>
+                                <FormExchangeInfo editable={true}/>
+                                <FormCourseInfo editable={true}/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -97,4 +82,4 @@ const ViewPreapproval = () => {
     );
 };
 
-export default ViewPreapproval;
+export default StudentEditErasmusPreapproval;

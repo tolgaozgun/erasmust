@@ -263,15 +263,15 @@ const StudentEdits = () => {
                   variant="outlined"
                 />
                 <TextField
-                  error={Boolean(formik.touched.erasmusPoint && formik.errors.erasmusPoint)}
-                  fullWidth
-                  label="Erasmus Point"
-                  margin="normal"
-                  name="erasmusPoint"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  value={formik.values.erasmusPoint}
-                  variant="outlined"
+                    error={Boolean(formik.touched.erasmusPoint && formik.errors.erasmusPoint)}
+                    fullWidth
+                    label="StudentErasmusPage Point"
+                    margin="normal"
+                    name="erasmusPoint"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    value={formik.values.erasmusPoint}
+                    variant="outlined"
                 />
                 <TextField
                   error={Boolean(formik.touched.permission && formik.errors.permission)}

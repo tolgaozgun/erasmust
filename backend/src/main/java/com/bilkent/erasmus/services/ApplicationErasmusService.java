@@ -2,6 +2,7 @@ package com.bilkent.erasmus.services;
 
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.ApplicationErasmusDTO;
+import com.bilkent.erasmus.enums.DepartmentName;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.ApplicationErasmusMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.enums.Status;
@@ -45,11 +46,13 @@ public class ApplicationErasmusService {
         ApplicationErasmus applicationErasmus = applicationErasmusMapper.toEntity(applicationErasmusDTO);
         ApplicationErasmusDTO dto;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         try {
             OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName()).orElseThrow(() -> new EntityNotFoundException());
             if (student.getGpa() >= 2.5 && (student.getSemester().ordinal() >= 2 && student.getSemester().ordinal() <= 4)) {
                 applicationErasmus.setStatus(Status.IN_PROCESS);
                 applicationErasmus.setStudent(student);
+                applicationErasmus.setDate(System.currentTimeMillis());
                 applicationErasmusRepository.save(applicationErasmus);
             } else {
                 applicationErasmus.setStatus(Status.REJECTED);
@@ -93,50 +96,51 @@ public class ApplicationErasmusService {
         }
     }
     public void placeStudents() {
-        List<ApplicationErasmus> applications = applicationErasmusRepository.findAllByStatusOrderByStudent_ErasmusPointDesc(Status.IN_PROCESS);
-        calculateErasmusPoints();
-
-        for (ApplicationErasmus application:applications) {
-            for (PartnerUniversityErasmus school : application.getSchools()) {
-                if (school.getQuota() > 0)  {
-                    application.setAssignedUniversity(school);
-                    application.setStatus(Status.APPROVED);
-                    ExchangeCoordinator responsibleCoordinator = exchangeCoordinatorRepository.findFirstByDepartmentNameOrderByWorkLoadAsc(
-                            application.getStudent().getDepartmentName());
-                    application.setCoordinator(responsibleCoordinator);
-                    applicationErasmusRepository.save(application);
-                    school.setQuota(school.getQuota() - 1);
-                    partnerUniversityErasmusRepository.save(school);
-                    responsibleCoordinator.setWorkLoad(responsibleCoordinator.getWorkLoad() + 1);
-                    exchangeCoordinatorRepository.save(responsibleCoordinator);
-                    break;
+        for (DepartmentName departmentName : DepartmentName.values()) {
+            List<ApplicationErasmus> applications = applicationErasmusRepository.findAllByStatusAndStudent_DepartmentNameOrderByStudent_ErasmusPointDesc(Status.IN_PROCESS, departmentName);
+            calculateErasmusPoints();
+            for (ApplicationErasmus application : applications) {
+                for (PartnerUniversityErasmus school : application.getSchools()) {
+                    if (school.getQuota() > 0) {
+                        application.setAssignedUniversity(school);
+                        application.setStatus(Status.APPROVED);
+                        ExchangeCoordinator responsibleCoordinator = exchangeCoordinatorRepository.findFirstByDepartmentNameOrderByWorkLoadAsc(departmentName);
+                        application.setCoordinator(responsibleCoordinator);
+                        applicationErasmusRepository.save(application);
+                        school.setQuota(school.getQuota() - 1);
+                        partnerUniversityErasmusRepository.save(school);
+                        responsibleCoordinator.setWorkLoad(responsibleCoordinator.getWorkLoad() + 1);
+                        exchangeCoordinatorRepository.save(responsibleCoordinator);
+                        break;
+                    }
                 }
-            }
-            if (application.getAssignedUniversity() == null) {
-                application.setStatus(Status.IN_THE_WAITING_LIST);
-                applicationErasmusRepository.save(application);
+                if (application.getAssignedUniversity() == null) {
+                    application.setStatus(Status.IN_THE_WAITING_LIST);
+                    applicationErasmusRepository.save(application);
+                }
             }
         }
     }
 
     public void reevaluateApplications() {
-        List<ApplicationErasmus> waitlist = applicationErasmusRepository.findAllByStatusOrderByStudent_ErasmusPointAsc(Status.IN_THE_WAITING_LIST);
-
-        List<PartnerUniversityErasmus> schoolsWithQuota = partnerUniversityErasmusRepository.findAllByQuotaGreaterThan(0);
-        if (waitlist.size() > 0 && schoolsWithQuota.size() > 0) {
-            for (PartnerUniversityErasmus school : schoolsWithQuota) {
-                ApplicationErasmus application = waitlist.get(waitlist.size() - 1);
-                application.setAssignedUniversity(school);
-                application.setStatus(Status.APPROVED);
-                ExchangeCoordinator responsibleCoordinator = exchangeCoordinatorRepository.findFirstByDepartmentNameOrderByWorkLoadAsc(
-                        application.getStudent().getDepartmentName());
-                application.setCoordinator(responsibleCoordinator);
-                responsibleCoordinator.setWorkLoad(responsibleCoordinator.getWorkLoad() + 1);
-                school.setQuota(school.getQuota() - 1);
-                applicationErasmusRepository.save(application);
-                partnerUniversityErasmusRepository.save(school);
-                exchangeCoordinatorRepository.save(responsibleCoordinator);
-                waitlist.remove(application);
+        for (DepartmentName departmentName : DepartmentName.values()) {
+            List<ApplicationErasmus> waitlist = applicationErasmusRepository.findAllByStatusAndStudent_DepartmentNameOrderByStudent_ErasmusPointAsc(Status.IN_THE_WAITING_LIST, departmentName);
+            List<PartnerUniversityErasmus> schoolsWithQuota = partnerUniversityErasmusRepository.findAllByDepartmentAndQuotaGreaterThan(departmentName, 0);
+            if (waitlist.size() > 0 && schoolsWithQuota.size() > 0) {
+                for (PartnerUniversityErasmus school : schoolsWithQuota) {
+                    ApplicationErasmus application = waitlist.get(waitlist.size() - 1);
+                    application.setAssignedUniversity(school);
+                    application.setStatus(Status.APPROVED);
+                    ExchangeCoordinator responsibleCoordinator = exchangeCoordinatorRepository.findFirstByDepartmentNameOrderByWorkLoadAsc(
+                            application.getStudent().getDepartmentName());
+                    application.setCoordinator(responsibleCoordinator);
+                    responsibleCoordinator.setWorkLoad(responsibleCoordinator.getWorkLoad() + 1);
+                    school.setQuota(school.getQuota() - 1);
+                    applicationErasmusRepository.save(application);
+                    partnerUniversityErasmusRepository.save(school);
+                    exchangeCoordinatorRepository.save(responsibleCoordinator);
+                    waitlist.remove(application);
+                }
             }
         }
     }
@@ -154,12 +158,11 @@ public class ApplicationErasmusService {
         outGoingStudentRepository.saveAll(students);
     }
 
-    public ApplicationErasmusDTO viewApplication() {
+    public List<ApplicationErasmusDTO> viewApplication() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         try {
-            ApplicationErasmus application = applicationErasmusRepository.findByStudent_StarsId(auth.getName())
-                    .orElseThrow(EntityNotFoundException::new);
-            return applicationErasmusMapper.toApplicationErasmusDTO(application);
+            List <ApplicationErasmus> application = applicationErasmusRepository.findAllByStudent_StarsId(auth.getName());
+            return applicationErasmusMapper.toApplicationErasmusDTOList(application);
 
         }catch(EntityNotFoundException e) {
             log.info("Student doesn't have an Erasmus application");

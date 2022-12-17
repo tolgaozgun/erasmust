@@ -1,5 +1,5 @@
 import {
-    Box, Button,
+    Box, Button, CircularProgress,
     Container,
     Grid,
     Step, StepButton,
@@ -86,7 +86,7 @@ const QontoStepIconRoot = styled('div')(
 );
 
 
-const ErasmusApplication = () => {
+const StudentCreateErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [activeStep, setActiveStep] = useState(0)
     const [stepCompleted, setStepCompleted] = useState([
@@ -170,7 +170,7 @@ const ErasmusApplication = () => {
 
     useEffect(async () => {
         let token = sessionStorage.getItem("jwtToken")
-        await axios.get("http://92.205.25.135:4/student/retrieveAllSchools", {
+        await axios.get("http://92.205.25.135:4/universities/all-by-student-department", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -339,61 +339,68 @@ const ErasmusApplication = () => {
                             spacing={3}
                         >
 
-                            <Grid
-                                item
-                                lg={12}
-                                md={12}
-                                xs={24}
-                            >
+                            {formik.isSubmitting ?
+                                <Container
+                                    align="center"
+                                    sx={{mt: 10}}>
+                                    <CircularProgress/>
+                                </Container> :
+                                <Grid
+                                    item
+                                    lg={12}
+                                    md={12}
+                                    xs={24}
+                                >
 
-                                <ErasmusStudentInfo
-                                    hidden={activeStep !== 0}
-                                    values={readyData}
-                                />
-                                <FormSemesterInfo
-                                    hidden={activeStep !== 1}
-                                    touched={formik.touched}
-                                    values={formik.values}
-                                    errors={formik.errors}
-                                    handleChange={formik.handleChange}
-                                    handleBlur={formik.handleBlur}
-                                    setSemester={setSemester}
-                                    editable={true}
-                                />
-                                <FormSchoolInfo
-                                    addSchool={addSchool}
-                                    schools={schools}
-                                    hidden={activeStep !== 2}
-                                    touched={formik.touched}
-                                    values={formik.values}
-                                    errors={formik.errors}
-                                    setSchool={setSchool}
-                                    handleChange={formik.handleChange}
-                                    handleBlur={formik.handleBlur}
-                                    editable={true}
-                                />
+                                    <ErasmusStudentInfo
+                                        hidden={activeStep !== 0}
+                                        values={readyData}
+                                    />
+                                    <FormSemesterInfo
+                                        hidden={activeStep !== 1}
+                                        touched={formik.touched}
+                                        values={formik.values}
+                                        errors={formik.errors}
+                                        handleChange={formik.handleChange}
+                                        handleBlur={formik.handleBlur}
+                                        setSemester={setSemester}
+                                        editable={true}
+                                    />
+                                    <FormSchoolInfo
+                                        addSchool={addSchool}
+                                        schools={schools}
+                                        hidden={activeStep !== 2}
+                                        touched={formik.touched}
+                                        values={formik.values}
+                                        errors={formik.errors}
+                                        setSchool={setSchool}
+                                        handleChange={formik.handleChange}
+                                        handleBlur={formik.handleBlur}
+                                        editable={true}
+                                    />
 
-                                <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
-                                    {activeStep > 0
-                                        &&
-                                        <Button onClick={previousStepHandler}>{"< Back"}</Button>
-                                    }
-                                    <Box sx={{flex: '1 1 auto'}}>
-
-                                        {activeStep !== steps.length - 1 ? (
-                                            <Button onClick={nextStepHandler}>
-                                                {"Next >"}
-                                            </Button>
-                                        ) : (
-                                            <Button
-                                                type="submit">
-                                                {"Finish"}
-                                            </Button>
-                                        )
+                                    <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
+                                        {activeStep > 0
+                                            &&
+                                            <Button onClick={previousStepHandler}>{"< Back"}</Button>
                                         }
+                                        <Box sx={{flex: '1 1 auto'}}>
+
+                                            {activeStep !== steps.length - 1 ? (
+                                                <Button onClick={nextStepHandler}>
+                                                    {"Next >"}
+                                                </Button>
+                                            ) : (
+                                                <Button
+                                                    type="submit">
+                                                    {"Finish"}
+                                                </Button>
+                                            )
+                                            }
+                                        </Box>
                                     </Box>
-                                </Box>
-                            </Grid>
+                                </Grid>
+                            }
                         </Grid>
                     </Container>
                 </Box>
@@ -406,4 +413,4 @@ const ErasmusApplication = () => {
     );
 };
 
-export default ErasmusApplication;
+export default StudentCreateErasmusApplication;

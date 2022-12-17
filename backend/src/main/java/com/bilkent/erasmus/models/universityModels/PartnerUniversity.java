@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.models.universityModels;
 
 import com.bilkent.erasmus.embeddables.Address;
+import com.bilkent.erasmus.enums.DepartmentName;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,4 +26,7 @@ public class PartnerUniversity {
 
     @Embedded
     private Address address;
+
+    @Enumerated(EnumType.STRING)
+    DepartmentName department;
 }

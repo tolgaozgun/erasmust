@@ -20,28 +20,28 @@ const items = [
     },
     {
         href: "/erasmusStudent",
-        icon: <HiGlobeEuropeAfrica fontSize="small" />,
-        title: "Erasmus Program",
+        icon: <HiGlobeEuropeAfrica fontSize="small"/>,
+        title: "StudentErasmusPage Program",
         side: [
             {
                 href: "/erasmusApplications",
-                icon: <AddOutlinedIcon fontSize="small" />,
-                title: "View Your Erasmus Applications",
+                icon: <AddOutlinedIcon fontSize="small"/>,
+                title: "View Your StudentErasmusPage Applications",
             },
             {
                 href: "/erasmusApplicationInfo",
-                icon: <AddOutlinedIcon fontSize="small" />,
-                title: "Erasmus Application Information",
+                icon: <AddOutlinedIcon fontSize="small"/>,
+                title: "StudentErasmusPage Application Information",
             },
             {
                 href: "/erasmusApplicationFAQ",
-                icon: <AddOutlinedIcon fontSize="small" />,
-                title: "Erasmus Appliaction FAQ",
+                icon: <AddOutlinedIcon fontSize="small"/>,
+                title: "StudentErasmusPage Appliaction FAQ",
             },
             {
                 href: "/preapprovals",
-                icon: <AddOutlinedIcon fontSize="small" />,
-                title: "View Your Preapprovals",
+                icon: <AddOutlinedIcon fontSize="small"/>,
+                title: "View Your StudentPreapprovalList",
             },
             {
                 href: "/preapprovalInfo",

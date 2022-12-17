@@ -17,69 +17,9 @@ import {
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import {SeverityPill} from "../severity-pill";
 
-const preapprovals = [
-    {
-        id: 1,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
-        student: {
-            id: 4,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Can Alkan",
-        },
-        studentId: 4,
-        academicYear: "2022-2023",
-        semester: "FALL",
-        createdAt: 1555016400000,
-        status: "approved",
-    },
-    {
-        id: 2,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
-        student: {
-            id: 4,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Can Alkan",
-        },
-        studentId: 4,
-        academicYear: "2022-2023",
-        semester: "FALL",
-        createdAt: 1555016400000,
-        status: "success",
-    },
-    {
-        id: 3,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
-        student: {
-            id: 4,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Ayşegül Dündar",
-        },
-        studentId: 4,
-        academicYear: "2022-2023",
-        semester: "FALL",
-        createdAt: 1555016400000,
-        status: "approved",
-    },
-];
-
-export const PreapprovalsList = (props) => (
+export const ErasmusApplicationList = (props) => (
     <Card {...props}>
-        <CardHeader title="Ongoing Preapprovals"/>
+        <CardHeader title="Ongoing StudentPreapprovalList"/>
         <PerfectScrollbar>
             <Box
                 sx={{
@@ -110,11 +50,11 @@ export const PreapprovalsList = (props) => (
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.preapprovals && props.preapprovals.map((preapproval) => (
-                            <TableRow hover key={preapproval.id}>
-                                <TableCell>{preapproval.id}</TableCell>
+                        {props.applications && props.applications.map((application) => (
+                            <TableRow hover key={application.id}>
+                                <TableCell>{application.id}</TableCell>
                                 <TableCell>
-                                    {preapproval.student.firstName} {preapproval.student.lastName}
+                                    {application.student.firstName} {application.student.lastName}
                                 </TableCell>
                                 <TableCell>
                                     {/*{format(*/}
@@ -123,21 +63,21 @@ export const PreapprovalsList = (props) => (
                                     {/*)}*/}
                                 </TableCell>
                                 <TableCell>
-                                    {preapproval.exchangeCoordinator.firstName} {preapproval.exchangeCoordinator.lastName}
+                                    {application.coordinator.firstName} {application.coordinator.lastName}
                                 </TableCell>
                                 <TableCell>
                                     <SeverityPill
                                         color={
-                                            (preapproval.status ===
+                                            (application.status ===
                                                 "approved" &&
                                                 "success") ||
-                                            (preapproval.status ===
+                                            (application.status ===
                                                 "disapproved" &&
                                                 "error") ||
                                             "warning"
                                         }
                                     >
-                                        {preapproval.status}
+                                        {application.status}
                                     </SeverityPill>
                                 </TableCell>
                             </TableRow>

@@ -5,8 +5,8 @@ import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-si
 import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import Preapprovals from "../../student/Preapproval/Preapprovals";
-import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
+import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
+import {PreapprovalsList} from "../../../components/componentsAdmin/lists/preapprovals-list";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',

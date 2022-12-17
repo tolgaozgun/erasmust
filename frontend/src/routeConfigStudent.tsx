@@ -6,7 +6,7 @@ import DashboardStudent from "./pages/student/dashboard";
 import AccountStudent from './pages/student/account';
 import SettingsStudent from './pages/student/settings';
 import ErasmusStudent from './pages/student/erasmus';
-import Preapprovals from './pages/student/Preapproval/Preapprovals';
+import StudentPreapprovalList from './pages/student/Preapproval/StudentErasmusPreapprovalList';
 import Applications from './pages/student/Applications';
 import Preapproval from "./pages/student/Preapproval/PreapprovalForm"
 import BeforeMobility from "./pages/student/LearningAgreement/BeforeMobility"
@@ -14,7 +14,7 @@ import DuringMobility from "./pages/student/LearningAgreement/DuringMobility"
 import AfterMobility from "./pages/student/LearningAgreement/AfterMobility"
 import ViewPreapproval from "./pages/student/Preapproval/ViewPreapproval"
 import ViewErasmusApplication from "./pages/student/ErasmusApplication/ViewErasmusApplication"
-import CourseReviewForms from "./pages/student/CourseReviewForm/CourseReviewForms";
+import CourseReviewForms from "./pages/student/CourseReviewForm/StudentErasmusCourseReviewForms";
 import Splash from "./pages/splash";
 import Error from "./pages/404";
 import {Navigate} from "react-router-dom";
@@ -101,7 +101,7 @@ export const routeItemsStudent: Array<IRoute> = [
     {
         path: '/preapprovals',
         title: "Preapproval List",
-        content: <Preapprovals/>,
+        content: <StudentPreapprovalList/>,
         exact: true,
     },
 

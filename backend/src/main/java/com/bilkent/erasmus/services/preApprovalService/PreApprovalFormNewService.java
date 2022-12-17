@@ -1,12 +1,15 @@
 package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewFormCreation;
+import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
 import com.bilkent.erasmus.dtos.PreApprovalFormDtos.PreApprovalFormDTONew;
 import com.bilkent.erasmus.dtos.PreApprovalFormEditDTO;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.enums.ToDoType;
 import com.bilkent.erasmus.mappers.PreApprovalFormEditMapper;
 import com.bilkent.erasmus.mappers.PreApprovalFormMapper.PreApprovalFormErasmusMapper;
+import com.bilkent.erasmus.models.ToDoItem;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
@@ -15,6 +18,7 @@ import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
 import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.PreApprovalFormRepositoryNew;
+import com.bilkent.erasmus.repositories.ToDoItemRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import com.bilkent.erasmus.services.CourseHostService;
@@ -47,6 +51,7 @@ public class PreApprovalFormNewService {
 
     private final PreApprovalFormEditMapper editMapper;
 
+    private final ToDoItemRepository toDoItemRepository;
 
     public PreApprovalFormNewService(PreApprovalFormErasmusMapper preApprovalFormErasmusMapper
             , PreApprovalFormRepositoryNew preApprovalFormRepository
@@ -55,7 +60,7 @@ public class PreApprovalFormNewService {
             , CourseReviewFormServiceNew courseReviewFormService
             , OutGoingStudentRepository outGoingStudentRepository
             , ApplicationErasmusRepository erasmusRepository
-            , PreApprovalFormEditMapper editMapper) {
+            , PreApprovalFormEditMapper editMapper, ToDoItemRepository toDoItemRepository) {
         this.preApprovalFormErasmusMapper = preApprovalFormErasmusMapper;
         this.preApprovalFormRepository = preApprovalFormRepository;
         this.courseHostService = courseHostService;
@@ -64,14 +69,22 @@ public class PreApprovalFormNewService {
         this.outGoingStudentRepository = outGoingStudentRepository;
         this.applicationErasmusRepository = erasmusRepository;
         this.editMapper = editMapper;
+        this.toDoItemRepository = toDoItemRepository;
     }
 
     public PreApprovalFormNew saveForm(PreApprovalFormDTONew form) throws Exception {
         PreApprovalFormNew preApprovalForm = PreApprovalFormNew.builder()
                 .forms(createCourseReviewFormAll(form.getForms()))
+                .createDate(System.currentTimeMillis())
                 .build();
         inheritInfoFromApplication(preApprovalForm);
-        return preApprovalFormRepository.save(preApprovalForm);
+        ToDoItem todo = new ToDoItem();
+        todo.setType(ToDoType.PREAPPROVAL);
+        preApprovalFormRepository.save(preApprovalForm);
+        todo.setKey(preApprovalForm.getId());
+        todo.setTitle("Review preapproval");
+        toDoItemRepository.save(todo);
+        return preApprovalForm;
     }
 
     private CourseHost createHostCourse(CourseReviewFormCreation formCreation) {
@@ -138,5 +151,25 @@ public class PreApprovalFormNewService {
         }
         return preApprovalFormErasmusMapper.toPreApprovalFormDTONew(preApprovalForm);
 
+    }
+    public List<PreApprovalFormDTONew> getAllPreapprovalStudent() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        try {
+            List <PreApprovalFormNew> preApprovalFormNews = preApprovalFormRepository.findAllByStudent_StarsId(auth.getName());
+            return preApprovalFormErasmusMapper.toPreApprovalFormDTONewList(preApprovalFormNews);
+
+        }catch(EntityNotFoundException e) {
+            log.info("Student doesn't have a preapproval form");
+            return null;
+        }
+    }
+
+    public List<PreApprovalFormDTONew> getAllPreapproval() {
+        return preApprovalFormErasmusMapper.toPreApprovalFormDTONewList(preApprovalFormRepository.findAll());
+    }
+
+    public PreApprovalFormNew getStudentForm() throws Exception {
+        return preApprovalFormRepository.findByStatusAndStudent_Id(Status.IN_PROCESS, findStudentId())
+                .orElseThrow(() -> new Exception("no form is found"));
     }
 }

@@ -4,7 +4,8 @@ import { Sales } from '../../components/componentsAdmin/dashboard/sales';
 import { DashboardNavbar } from '../../components/componentsAdmin/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsAdmin/dashboard-sidebar';
 import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
+import {Link, Outlet} from "react-router-dom";
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',

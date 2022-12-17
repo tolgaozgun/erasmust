@@ -29,8 +29,4 @@ public class StudentController {
         return new ResponseEntity<>(studentService.findStudentByName(name), HttpStatus.FOUND);
     }
 
-    @GetMapping("/retrieveAllSchools")
-    public ResponseEntity<?> retrieveAllSchools() {
-        return new ResponseEntity<>(partnerUniversityErasmusRepository.findAll(), HttpStatus.OK);
-    }
 }

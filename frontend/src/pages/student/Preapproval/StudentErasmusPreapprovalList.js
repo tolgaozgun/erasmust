@@ -5,8 +5,8 @@ import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-si
 import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
-import PreapprovalsList from "../../../components/componentsAdmin/lists/preapprovals-list";
+import StudentPreapprovalList from "./StudentErasmusPreapprovalList";
+import PreapprovalsList from "../../../components/componentsStudent/lists/preapprovals-list";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -18,7 +18,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const AdminErasmusPreapprovalList = () => {
+const StudentErasmusPreapprovalList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [preapprovalList, setPreapprovalList] = useState([]);
     const [flag, setFlag] = useState(false);
@@ -26,7 +26,7 @@ const AdminErasmusPreapprovalList = () => {
     const token = sessionStorage.getItem("jwtToken");
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-preapproval-erasmus", {
+        axios.get("http://92.205.25.135:4/erasmus-application/view-application", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -81,7 +81,7 @@ const AdminErasmusPreapprovalList = () => {
                                 xl={15}
                                 xs={12}
                             >
-                                <PreapprovalsList preapprovals={preapprovalList}/>
+                                {/*<PreapprovalsList preapprovals={preapprovalList}/>*/}
                             </Grid>
                         </Grid>
                     </Container>
@@ -95,4 +95,4 @@ const AdminErasmusPreapprovalList = () => {
     );
 }
 
-export default AdminErasmusPreapprovalList
+export default StudentErasmusPreapprovalList
