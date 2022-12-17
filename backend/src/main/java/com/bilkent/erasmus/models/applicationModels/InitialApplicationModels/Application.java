@@ -29,4 +29,6 @@ public class Application {
     @ManyToOne
     private OutGoingStudent student;
 
+    private long date;
+
 }

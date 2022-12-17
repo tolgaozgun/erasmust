@@ -21,4 +21,9 @@ public class PartnerUniversityErasmusController {
         return new ResponseEntity<>(partnerUniversityErasmusService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/all-by-student-department")
+    public ResponseEntity<?> getAllByStudentDepartment() {
+        return new ResponseEntity<>(partnerUniversityErasmusService.findByStudentDepartment(), HttpStatus.OK);
+    }
+
 }
