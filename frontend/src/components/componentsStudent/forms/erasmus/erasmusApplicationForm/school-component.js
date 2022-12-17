@@ -29,7 +29,6 @@ export const SchoolComponent = (props) => {
     }
 
     let title = `School #${props.index + 1}`
-    console.log("Schools " + props.schools)
 
     return (
         <>
@@ -58,8 +57,13 @@ export const SchoolComponent = (props) => {
                                 fullWidth
                                 disabled={!props.editable}
                                 id={"bilkent-course-selector" + props.index}
+                                onChange={(event, value) => {
+                                    props.setSchool(props.index, value["id"])
+                                }}
                                 options={props.schools}
-                                renderInput={(params) => <TextField {...params} label="Enter school name"/>}
+                                renderInput={(params) =>
+                                    <TextField {...params} label="Enter school name"/>
+                                }
                             />
 
                         </Grid>

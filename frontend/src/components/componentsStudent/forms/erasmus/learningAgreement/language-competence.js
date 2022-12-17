@@ -16,33 +16,6 @@ import * as Yup from "yup";
 
 export const LanguageCompetence = (props) => {
 
-    const formik = useFormik({
-        initialValues: {
-            language: "English",
-            competence: "A1",
-        },
-        validationSchema: Yup.object({
-            language: Yup
-                .string()
-                .max(255)
-                .required("Language name is required"),
-            competence: Yup
-                .string()
-                .max(10)
-                .required('Competence level is required')
-        }),
-        onSubmit: () => {
-
-        },
-    });
-    if (!props.hidden && props.handleStep) {
-        props.handleStep(formik.isValid)
-    }
-
-
-    // TODO: Change this to match current login details
-    const isAdmin = false;
-
 
     return (
         <form
@@ -68,15 +41,15 @@ export const LanguageCompetence = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.language && formik.errors.language)}
+                                error={Boolean(props.touched.language && props.errors.language)}
                                 fullWidth
-                                helperText={formik.touched.language && formik.errors.language}
+                                helperText={props.touched.language && props.errors.language}
                                 label="Language"
                                 name="language"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
                                 required
-                                value={formik.values.language}
+                                value={props.values.language}
                                 variant="outlined"
                             />
                         </Grid>
@@ -91,6 +64,7 @@ export const LanguageCompetence = (props) => {
                                 id={"semester-selector"}
                                 options={[{label: "A1"}, {label: "A2"}, {label: "B1"}, {label: "B2"},
                                     {label: "C1"}, {label: "C2"}, {label: "Native"}]}
+                                onChange={(e, value) => props.competenceChange(value["label"])}
 
                                 renderInput={(params) => <TextField {...params} label="Competence Level"/>}
                             />

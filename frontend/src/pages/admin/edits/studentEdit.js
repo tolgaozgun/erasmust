@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
 import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
-import {Box, Container, TextField, Typography, Button, Link} from "@mui/material";
+import {Box, Container, TextField, Typography, Button} from "@mui/material";
 import { useFormik } from 'formik';
 import * as Yup from "yup"
 import { useLocation } from 'react-router-dom';
@@ -28,74 +28,90 @@ const StudentEdits = () => {
             id: student.id,
             firstName: student.firstName ? student.firstName : "",
             lastName: student.lastName ? student.lastName : "",
+            gender: student.gender ? student.gender : "",
             password: student.password ? student.password : "",
             starsId: student.starsId ? student.starsId : "",
             createdAt: student.createdAt ? student.createdAt : "",
             permission: student.permission ? student.permission : "",
-            contactInformation:
+            degree: student.degree ? student.degree : "",
+            departmentName: student.departmentName ? student.departmentName : "",
+            engLetterGrade101: student.engLetterGrade101 ? student.engLetterGrade101 : "",
+            engLetterGrade102: student.engLetterGrade102 ? student.engLetterGrade102 : "",
+            erasmusPoint: student.erasmusPoint ? student.erasmusPoint : "",
+            gpa: student.gpa ? student.gpa : "",
+            contactInformation: student.contactInformation ? 
             {
                 emailUniversity: student.contactInformation.emailUniversity ? student.contactInformation.emailUniversity : "",
                 emailPersonal: student.contactInformation.emailPersonal ? student.contactInformation.emailPersonal : "",
                 phoneNumberWork: student.contactInformation.phoneNumberWork ? student.contactInformation.phoneNumberWork : "",
                 phoneNumberPersonal: student.contactInformation.phoneNumberPersonal ? student.contactInformation.phoneNumberPersonal : "",
                 address: student.contactInformation.address ? student.contactInformation.address : ""
-            }
+            } : ""
         },
         validationSchema: Yup.object({
             id: Yup
                 .string()
-                .max(255)
-                .required("Id required"),
+                .max(255),
             firstName: Yup
                 .string()
-                .max(255)
-                .required(""),
+                .max(255),
             lastName: Yup
                 .string()
-                .max(255)
-                .required(""),
+                .max(255),
+            gender: Yup
+                .string()
+                .max(6),
             password: Yup
                 .string()
-                .max(255)
-                .required('Password is required'),
+                .max(255),
             starsId: Yup
                 .string()
-                .max(255)
-                .required('Stars ID is required'),
+                .max(255),
             createdAt: Yup
-                .number()
-                .max(255)
-                .required('Password is required'),
+                .string()
+                .max(255),
             permission: Yup
                 .string()
-                .max(255)
-                .required('Stars ID is required'),
+                .max(255),
+            degree: Yup
+                .string()
+                .max(255),
+            departmentName: Yup
+                .string()
+                .max(255),
+            engLetterGrade101: Yup
+                .string()
+                .max(255),
+            engLetterGrade102: Yup
+                .string()
+                .max(255),
+            erasmusPoint: Yup
+                .string()
+                .max(255),
+            gpa: Yup
+                .number()
+                .max(255),
             contactInformation: Yup.object().shape({
                 emailUniversity: Yup
                     .string()
-                    .max(255)
-                    .required('Stars ID is required'),
+                    .max(255),
                 emailPersonal: Yup
                     .string()
-                    .max(255)
-                    .required('Stars ID is required'),
+                    .max(255),
                 phoneNumberWork: Yup
                     .string()
-                    .max(255)
-                    .required('Stars ID is required'),
+                    .max(11),
                 phoneNumberPersonal: Yup
                     .string()
-                    .max(255)
-                    .required('Stars ID is required'),
+                    .max(11),
                 address: Yup
                     .string()
-                    .max(255)
-                    .required('Stars ID is required'),
+                    .max(255),
             })
                 
         }),
         onSubmit: (values) => {
-            console.log("SA")
+            console.log(JSON.stringify(values, null, 2))
         }
     });
 
@@ -157,6 +173,18 @@ const StudentEdits = () => {
                     variant="outlined"
                 />
                 <TextField
+                    error={Boolean(formik.touched.gender && formik.errors.gender)}
+                    fullWidth
+                    label="Gender"
+                    margin="normal"
+                    name="gender"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="text"
+                    value={formik.values.gender}
+                    variant="outlined"
+                />
+                <TextField
                   error={Boolean(formik.touched.password && formik.errors.password)}
                   fullWidth
                   label="Password"
@@ -180,14 +208,69 @@ const StudentEdits = () => {
                     variant="outlined"
                 />
                 <TextField
-                  error={Boolean(formik.touched.createdAt && formik.errors.createdAt)}
+                  error={Boolean(formik.touched.gpa && formik.errors.gpa)}
                   fullWidth
-                  label="Creation Time"
+                  label="GPA"
                   margin="normal"
-                  name="createdAt"
+                  name="gpa"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  value={formik.values.createdAt}
+                  value={formik.values.gpa}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(formik.touched.degree && formik.errors.degree)}
+                  fullWidth
+                  label="Degree"
+                  margin="normal"
+                  name="degree"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.degree}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(formik.touched.departmentName && formik.errors.departmentName)}
+                  fullWidth
+                  label="Department Name"
+                  margin="normal"
+                  name="departmentName"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.departmentName}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(formik.touched.engLetterGrade101 && formik.errors.engLetterGrade101)}
+                  fullWidth
+                  label="Eng101 Letter Grade"
+                  margin="normal"
+                  name="engLetterGrade101"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.engLetterGrade101}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(formik.touched.engLetterGrade102 && formik.errors.engLetterGrade102)}
+                  fullWidth
+                  label="Eng102 Letter Grade"
+                  margin="normal"
+                  name="engLetterGrade102"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.engLetterGrade102}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(formik.touched.erasmusPoint && formik.errors.erasmusPoint)}
+                  fullWidth
+                  label="Erasmus Point"
+                  margin="normal"
+                  name="erasmusPoint"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.erasmusPoint}
                   variant="outlined"
                 />
                 <TextField

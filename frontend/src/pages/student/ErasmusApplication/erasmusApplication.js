@@ -13,6 +13,9 @@ import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-n
 import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
 import {FormStudentInfo} from '../../../components/componentsStudent/forms/form-student-info';
 import {
+    ErasmusStudentInfo
+} from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/erasmus-student-info';
+import {
     FormSemesterInfo
 } from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-semester-info';
 import {
@@ -20,8 +23,11 @@ import {
 } from '../../../components/componentsStudent/forms/erasmus/erasmusApplicationForm/form-school-info';
 
 import {styled} from '@mui/material/styles';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Check} from "@mui/icons-material";
+import {useFormik} from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -89,8 +95,114 @@ const ErasmusApplication = () => {
     const [isValid, setIsValid] = useState([
         false, false, false
     ])
+    const [schools, setSchools] = useState([])
 
-    const schools = require('../../../erasmus-schools.json');
+    const emptySchoolComponent = (
+        {
+            id: 0,
+        }
+    )
+
+    const readyData = {
+        name: "Tolga",
+        surname: "Özgün",
+        starsId: 22003850,
+        department: "Computer Engineering",
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            academicYear: "",
+            semester: "",
+            schools: [
+                emptySchoolComponent
+            ]
+        },
+        validationSchema: Yup.object({
+            academicYear: Yup
+                .string()
+                .max(255)
+                .required("Academic year is required"),
+            semester: Yup
+                .string()
+                .max(10)
+                .required('Semester is required'),
+            schools: Yup.array().of(
+                Yup.object().shape(
+                    {
+                        id: Yup
+                            .number()
+                            .min(0)
+                            .required("School is required"),
+                    },
+                    'Course is invalid',
+                ),
+            ),
+        }),
+        onSubmit: async (values, formikHelpers) => {
+            let token = sessionStorage.getItem("jwtToken")
+            await axios.post("http://92.205.25.135:4/erasmus-application/create", values, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then((response) => {
+                    if (response && response.data) {
+                        console.log(response.data)
+                        // const jwtToken = response.data["token"]
+                        // const role = response.data["role"]
+                        // sessionStorage.setItem("jwtToken", jwtToken)
+                        // sessionStorage.setItem("role", role)
+                        // navigate('/dashboardStudent')
+                    }
+                })
+                .catch((err) => {
+                    console.log("Formik error1")
+                    if (err && err.response) {
+                        console.log("Formik error")
+                        console.log(err)
+                        console.log(err.response)
+
+                    }
+                })
+        },
+    });
+
+    useEffect(async () => {
+        let token = sessionStorage.getItem("jwtToken")
+        await axios.get("http://92.205.25.135:4/student/retrieveAllSchools", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((response) => {
+                if (response && response.data) {
+                    let schoolArray = response.data.map((obj, index) => ({
+                        ...obj,
+                        label: obj.name
+                    }))
+                    setSchools(schoolArray)
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }, [])
+
+    console.log("Errors: ")
+    console.log(formik.errors)
+
+    // const firstStepValues = [formik.values.name, formik.values.surname, formik.values.starsId, formik.values.department]
+    //
+    // useEffect(() => {
+    //     let validArray = isValid;
+    //
+    //     validArray[0] =
+    //
+    // }, firstStepValues)
+
 
     const handleStep = (step, state) => {
         switch (state) {
@@ -168,11 +280,29 @@ const ErasmusApplication = () => {
         setActiveStep(activeStep - 1)
     }
 
+    const setSemester = (semester) => {
+        formik.setFieldValue("semester", semester)
+    }
+
+    const setSchool = (index, id) => {
+        formik.setFieldValue(`schools[${index}].id`, id)
+    }
+
+    const addSchool = () => {
+        let length = formik.values.schools.length
+        // TODO: Stop adding for more than 5 universities
+        if (length === 5) {
+
+        }
+        formik.setFieldValue(`schools.${length}`, emptySchoolComponent)
+        formik.values.schools.push(emptySchoolComponent)
+    }
+
 
     const steps = ['Student Information', 'Time Information', 'Schools'];
 
     return (
-        <>
+        <form onSubmit={formik.handleSubmit}>
             <title>
                 Erasmus Application
             </title>
@@ -216,11 +346,32 @@ const ErasmusApplication = () => {
                                 xs={24}
                             >
 
-
-                                <FormStudentInfo hidden={activeStep !== 0} step={0} handleStep={handleFirstStep}/>
-                                <FormSemesterInfo hidden={activeStep !== 1} step={1} handleStep={handleSecondStep}/>
-                                <FormSchoolInfo schools={schools} hidden={activeStep !== 2} step={2}
-                                                handleStep={handleThirdStep}/>
+                                <ErasmusStudentInfo
+                                    hidden={activeStep !== 0}
+                                    values={readyData}
+                                />
+                                <FormSemesterInfo
+                                    hidden={activeStep !== 1}
+                                    touched={formik.touched}
+                                    values={formik.values}
+                                    errors={formik.errors}
+                                    handleChange={formik.handleChange}
+                                    handleBlur={formik.handleBlur}
+                                    setSemester={setSemester}
+                                    editable={true}
+                                />
+                                <FormSchoolInfo
+                                    addSchool={addSchool}
+                                    schools={schools}
+                                    hidden={activeStep !== 2}
+                                    touched={formik.touched}
+                                    values={formik.values}
+                                    errors={formik.errors}
+                                    setSchool={setSchool}
+                                    handleChange={formik.handleChange}
+                                    handleBlur={formik.handleBlur}
+                                    editable={true}
+                                />
 
                                 <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
                                     {activeStep > 0
@@ -234,7 +385,8 @@ const ErasmusApplication = () => {
                                                 {"Next >"}
                                             </Button>
                                         ) : (
-                                            <Button>
+                                            <Button
+                                                type="submit">
                                                 {"Finish"}
                                             </Button>
                                         )
@@ -250,7 +402,7 @@ const ErasmusApplication = () => {
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
-        </>
+        </form>
     );
 };
 

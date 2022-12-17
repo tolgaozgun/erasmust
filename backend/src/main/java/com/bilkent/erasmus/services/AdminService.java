@@ -1,18 +1,25 @@
 package com.bilkent.erasmus.services;
 
+import com.bilkent.erasmus.dtos.CourseReviewFormListResponse;
 import com.bilkent.erasmus.mappers.OutgoingStudentMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.enums.RoleBasedPermission;
 import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.PreApprovalFormErasmus;
+import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
+import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.models.userModels.StudentModels.Student;
+import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.PreApprovalFormRepositoryNew;
 import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationErasmusRepository;
+import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import com.bilkent.erasmus.repositories.studentRepository.StudentRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -23,15 +30,16 @@ public class AdminService {
     private final StudentRepository studentRepository;
     private final PasswordEncoder passwordEncoder;
     private final ApplicationErasmusRepository applicationErasmusRepository;
-
+    private final PreApprovalFormRepositoryNew preApprovalFormRepositoryNew;
 
     public AdminService(OutGoingStudentRepository outGoingStudentRepository, OutgoingStudentMapper outgoingStudentMapper,
-                        StudentRepository studentRepository, PasswordEncoder passwordEncoder, ApplicationErasmusRepository applicationErasmusRepository) {
+                        StudentRepository studentRepository, PasswordEncoder passwordEncoder, ApplicationErasmusRepository applicationErasmusRepository, PreApprovalFormRepositoryNew preApprovalFormRepositoryNew) {
         this.outGoingStudentRepository = outGoingStudentRepository;
         this.outgoingStudentMapper = outgoingStudentMapper;
         this.studentRepository = studentRepository;
         this.passwordEncoder = passwordEncoder;
         this.applicationErasmusRepository = applicationErasmusRepository;
+        this.preApprovalFormRepositoryNew = preApprovalFormRepositoryNew;
     }
 
     public void createOutgoingStudent(OutGoingStudent outgoingStudent) {
@@ -73,6 +81,20 @@ public class AdminService {
     public Student getStudentByStarsId(String id) {
         return studentRepository.findByStarsId(id);
     }
+    public List<PreApprovalFormNew> getAllPreapprovalErasmus(){
+        return preApprovalFormRepositoryNew.findAll();
+    }
 
 
+    public List<CourseReviewFormListResponse> getAllCourseReviewForms() {
+        List<PreApprovalFormNew> forms = preApprovalFormRepositoryNew.findAll();
+        List<CourseReviewFormListResponse> responseList = new ArrayList<>();
+        for (PreApprovalFormNew form : forms) {
+            CourseReviewFormListResponse response = CourseReviewFormListResponse.builder()
+                    .studentId(form.getStudent().getId())
+                    .courseReviewFormNew(form.getForms()).build();
+            responseList.add(response);
+        }
+        return responseList;
+    }
 }

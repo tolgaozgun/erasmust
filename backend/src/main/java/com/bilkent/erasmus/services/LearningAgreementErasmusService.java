@@ -64,8 +64,6 @@ public class LearningAgreementErasmusService {
         this.courseBilkentService = courseBilkentService;
         this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
         this.agreementMapper = agreementMapper;
-        this.preApprovalFormErasmusRepository = preApprovalFormErasmusRepository;
-        this.mobilityCourseFormService = mobilityCourseFormService;
     }
 
     /*private boolean notifyStudent(String studentName){
@@ -140,16 +138,8 @@ public class LearningAgreementErasmusService {
         hostInformation.setFaculty(hostFaculty);
 
         form.setStatus(Status.IN_PROCESS);
-        form.setMobilityDetail(mobility);
-        form.setSubjectArea(subjectArea);
-        form.setStudyCycle(studyCycle);
-        form.setLanguage(language);
-        form.setLanguageLevel(languageLevel);
-        form.setBilkentInformation(bilkentInformation);
-        form.setReceivingInstitutionInformation(hostInformation);
-        form.setSemester(findPreApprovalById(student).getSemester());
-        form.setAcademicYear(findPreApprovalById(student).getAcademicYear());
-
+        form.setAcademicYear(academicYear);
+        form.setSemester(semester);
         return erasmusRepository.save(form);
     }
 

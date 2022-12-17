@@ -19,6 +19,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 const StudentList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [studentList, setStudentList] = useState([]);
+    const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
     
@@ -30,31 +31,17 @@ const StudentList = () => {
         })
             .then((res) => {
                 if (res && res.data) {
-                    for (let i = 0; i < res.data.length; i++) {
+                    var i;
+                    for (i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
-                        setStudentList([
-                            ...studentList,
-                            {
-                                id: res.data[i].id,
-                                firstName: res.data[i].firstName,
-                                lastName: res.data[i].lastName,
-                                password: res.data[i].password,
-                                starsId: res.data[i].starsId,
-                                createdAt: 1555016400000,
-                                permission: res.data[i].permission,
-                                contactInformation: 
-                                {
-                                    emailUniversity: res.data[i].contactInformation.emailUniversity,
-                                    emailPersonal: res.data[i].contactInformation.emailPersonal,
-                                    phoneNumberWork: res.data[i].contactInformation.phoneNumberWork,
-                                    phoneNumberPersonal: res.data[i].contactInformation.phoneNumberPersonal,
-                                    address: res.data[i].contactInformation.address
-                                }
-                            }
-                        ])
+                        var item = res.data[i]
+                        
+                        setStudentList(oldArray => [...oldArray, item])                       
+                        
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                    setFlag(true)
                 }
             })
             .catch((err) => {
@@ -64,6 +51,50 @@ const StudentList = () => {
             })
     }, []);
 
+    if (flag) {
+        return (
+            <>
+                <title>
+                    Students
+                </title>
+                <DashboardLayoutRoot>
+                    <Box
+                        component="main"
+                        sx={{
+                            display: 'flex',
+                            flex: '1 1 auto',
+                            flexDirection: 'column',
+                            width: '100%',
+                            flexGrow: 1,
+                            py: 8
+                        }}
+                    >
+                        <Container maxWidth={false}>
+                            <Grid
+                                container
+                                spacing={3}
+                            >
+                                <Grid
+                                    item
+                                    lg={12}
+                                    md={12}
+                                    xl={15}
+                                    xs={12}
+                                >
+                                    <Students students={studentList}/> </Grid>
+                            </Grid>
+                        </Container>
+                    </Box>
+                </DashboardLayoutRoot>
+                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
+                <DashboardSidebar
+                    onClose={() => setSidebarOpen(false)}
+                    open={isSidebarOpen}/>
+            </>
+        )
+    }
+
+
     return (
         <>  <title>
                 Students
@@ -72,37 +103,27 @@ const StudentList = () => {
                 <Box
                     component="main"
                     sx={{
-                        alignItems: "center",
                         display: 'flex',
+                        flex: '1 1 auto',
+                        flexDirection: 'column',
                         width: '100%',
                         flexGrow: 1,
-                        minHeight: "100%",
                         py: 8
                     }}
                 >
-                    <Container
-                        maxWidth="lg"
-                    >
+                    <Container maxWidth={false}>
                         <Grid
                             container
-                            justifyContent="center"
                             spacing={3}
-                            sx={{
-                                ml: 5
-                            }}
                         >
                             <Grid
                                 item
-                                lg={10}
+                                lg={12}
                                 md={12}
                                 xl={15}
                                 xs={12}
-                                sx={{
-                                    display: "flex"
-                                }}
                             >
-                                { (studentList !== []) && <Students students = {studentList}/> }
-                            </Grid>
+                                <Students students={studentList}/> </Grid>
                         </Grid>
                     </Container>
                 </Box>

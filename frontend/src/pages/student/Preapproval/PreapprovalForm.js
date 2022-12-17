@@ -18,6 +18,8 @@ import {FormCourseInfo} from '../../../components/componentsStudent/forms/exchan
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
 import {Check} from "@mui/icons-material";
+import {useFormik} from "formik";
+import * as Yup from "yup";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -75,6 +77,16 @@ const QontoStepIconRoot = styled('div')(
     })
 );
 
+const readyData = {
+    name: "Tolga",
+    surname: "Özgün",
+    starsId: 22003850,
+    department: "Computer Engineering",
+    hostName: "EPFL",
+    academicYear: "2022-2023",
+    semester: "FALL",
+}
+
 
 const Preapproval = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -112,6 +124,52 @@ const Preapproval = () => {
 
     const handleThirdStep = (state) => {
         handleStep(2, state)
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            courses: [
+                {
+                    courseName: "",
+                    courseCode: "",
+                    courseCredits: 0.0,
+                    bilkentCourse: "",
+                }
+            ]
+        },
+        validationSchema: Yup.object({
+            courses: Yup.array().of(
+                Yup.object().shape(
+                    {
+                        courseCode: Yup
+                            .string()
+                            .required("Course Code is required"),
+                        courseCredits: Yup
+                            .number()
+                            .min(0)
+                            .required("Course Credits is required"),
+                        courseName: Yup
+                            .string()
+                            .required("Course Name is required"),
+                        bilkentCourse: Yup
+                            .string()
+                            .required("Bilkent Course is required"),
+                    },
+                    'Course is invalid',
+                ),
+            ),
+        }),
+        onSubmit: () => {
+
+        },
+    });
+
+
+    const addCourse = () => {
+        let length = formik.values.courses.length
+        const component = {courseCode: '', courseCredits: 0.0, courseName: '', bilkentCourse: ''}
+        formik.setFieldValue(`courses.${length}`, component)
+        formik.values.courses.push(component)
     }
 
 
@@ -165,6 +223,9 @@ const Preapproval = () => {
         setActiveStep(activeStep - 1)
     }
 
+    const setCourse = (index, field, value) => {
+        formik.setFieldValue(`courses[${index}].${field}`, value)
+    }
 
     const steps = ['Student Information', 'Program Information', 'Courses'];
 
@@ -214,10 +275,22 @@ const Preapproval = () => {
                             >
 
 
-                                <FormStudentInfo hidden={activeStep !== 0} step={0} handleStep={handleFirstStep}/>
-                                <FormExchangeInfo hidden={activeStep !== 1} step={1} handleStep={handleSecondStep}/>
-                                <FormCourseInfo courses={courses} hidden={activeStep !== 2} step={2}
-                                                handleStep={handleThirdStep}/>
+                                <FormStudentInfo
+                                    hidden={activeStep !== 0}
+                                    values={readyData}
+                                />
+                                <FormExchangeInfo
+                                    hidden={activeStep !== 1}
+                                    values={readyData}
+                                />
+                                <FormCourseInfo
+                                    courses={courses}
+                                    values={formik.values}
+                                    touched={formik.touched}
+                                    errors={formik.errors}
+                                    hidden={activeStep !== 2}
+                                    addCourse={addCourse}
+                                    setCourse={setCourse}/>
 
                                 <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
                                     {activeStep > 0

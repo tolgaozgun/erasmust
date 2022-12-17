@@ -30,8 +30,11 @@ import ViewCourseReviewForm from "./pages/student/CourseReviewForm/ViewCourseRev
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
 import AccountAdmin from "./pages/admin/account";
+
 //Lists
 import StudentList from "./pages/admin/studentList";
+import AdminErasmusApplicationList from "./pages/admin/erasmus/AdminErasmusApplicationList";
+import AdminErasmusPreapprovalList from "./pages/admin/erasmus/AdminErasmusPreapprovalList";
 
 //Edits
 import StudentEdits from "./pages/admin/edits/studentEdit";
@@ -59,7 +62,7 @@ export const routeItems: Array<IRoute> = [
     {
         path: '/registerStudent',
         title: "Student Register",
-        content: <RegisterStudent />,
+        content: <RegisterStudent/>,
         exact: true,
     },
     {
@@ -249,6 +252,12 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     },
     {
+        path: '/AdminErasmusApplicationList',
+        title: "Admin Account",
+        content: <AdminErasmusApplicationList/>,
+        exact: true,
+    },
+    {
         path: '/studentListAdmin/student/:id',
         title: "Admin Account",
         content: <StudentEdits/>,
@@ -264,6 +273,12 @@ export const routeItems: Array<IRoute> = [
         path: '/accountAdmin',
         title: "Admin Account",
         content: <AccountAdmin/>,
+        exact: true,
+    },
+    {
+        path: '/adminErasmusPreapprovalList',
+        title: "Admin Erasmus Preapproval List",
+        content: <AdminErasmusPreapprovalList/>,
         exact: true,
     },
     {
@@ -305,7 +320,7 @@ export const routeItems: Array<IRoute> = [
     {
         path: '/',
         title: "Student Register",
-        content: <Navigate to='/splash' />,
+        content: <Navigate to='/splash'/>,
         exact: true,
     },
     {
@@ -321,4 +336,3 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     }
 ]
-
