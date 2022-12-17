@@ -6,9 +6,8 @@ import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
 import StudentPreapprovalList from "../Preapproval/StudentErasmusPreapprovalList";
-import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
-import ErasmusApplication from "../../student/ErasmusApplication/erasmusApplication";
-import {ErasmusApplicationList} from "../../../components/componentsAdmin/lists/ErasmusApplicationList";
+import StudentCreateErasmusApplication from "./StudentCreateErasmusApplication";
+import {ErasmusApplicationList} from "../../../components/componentsStudent/lists/ErasmusApplicationList";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -28,7 +27,7 @@ const StudentErasmusApplicationList = () => {
     const token = sessionStorage.getItem("jwtToken");
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/student/all-applications", {
+        axios.get("http://92.205.25.135:4/erasmus-application/view-application", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -97,4 +96,4 @@ const StudentErasmusApplicationList = () => {
     );
 }
 
-export default AdminErasmusApplicationList
+export default StudentErasmusApplicationList

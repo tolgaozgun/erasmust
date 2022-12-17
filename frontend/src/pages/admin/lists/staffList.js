@@ -22,6 +22,7 @@ const StaffList = () => {
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
+    var array = []
     
     useEffect(() => {
         axios.get("http://92.205.25.135:4/admin/all-students", {
@@ -33,13 +34,12 @@ const StaffList = () => {
                 if (res && res.data) {
                     for (let i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
-                        var item = res.data[i]
-                        
-                        setStaffList(oldArray =>[...oldArray, item])
+                        array.push(res.data[i])
 
                         console.log(res.data);
                         console.log("Item placed on array!");
-                    }
+                    } 
+                    setStaffList(array)
                     setFlag(true)
                 }
             })
@@ -50,62 +50,11 @@ const StaffList = () => {
             })
     }, []);
 
-    if(flag) {
-        return (
-            <>  <title>
-                    Students
-                </title>
-                <DashboardLayoutRoot>
-                    <Box
-                        component="main"
-                        sx={{
-                            alignItems: "center",
-                            display: 'flex',
-                            width: '100%',
-                            flexGrow: 1,
-                            minHeight: "100%",
-                            py: 8
-                        }}
-                    >
-                        <Container
-                            maxWidth="lg"
-                        >
-                            <Grid
-                                container
-                                justifyContent="center"
-                                spacing={3}
-                                sx={{
-                                    ml: 5
-                                }}
-                            >
-                                <Grid
-                                    item
-                                    lg={10}
-                                    md={12}
-                                    xl={15}
-                                    xs={12}
-                                    sx={{
-                                        display: "flex"
-                                    }}
-                                >
-                                    {<Staffs staffs = {staffList}/> }
-                                </Grid>
-                            </Grid>
-                        </Container>
-                    </Box>
-                </DashboardLayoutRoot>
-                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
-                <DashboardSidebar
-                    onClose={() => setSidebarOpen(false)}
-                    open={isSidebarOpen}/>
-            </>
-        );
-    }
-
     return (
-        <>  <title>
-                Students
-            </title>
+        <>  
+        <title>
+            Students
+        </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"

@@ -3,12 +3,9 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
 import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
-import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
-import ErasmusApplication from "../../student/ErasmusApplication/erasmusApplication";
-import {ErasmusApplicationList} from "../../../components/componentsAdmin/lists/ErasmusApplicationList";
+import {ErasmusApplications} from "../../../components/componentsAdmin/lists/erasmusApplications";
+
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -26,6 +23,7 @@ const AdminErasmusApplicationList = () => {
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
+    var array = []
 
     useEffect(() => {
         axios.get("http://92.205.25.135:4/admin/all-applications", {
@@ -38,13 +36,12 @@ const AdminErasmusApplicationList = () => {
                     var i;
                     for (i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
-                        var item = res.data[i]
-
-                        setApplicationList(oldArray => [...oldArray, item])
+                        array.push(res.data[i])
 
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                    setApplicationList(array)
                     setFlag(true)
                 }
             })
@@ -55,8 +52,53 @@ const AdminErasmusApplicationList = () => {
             })
     }, []);
 
+    if (flag) {
+        return (
+            <>  
+            <title>
+                Erasmus Application List
+            </title>
+                <DashboardLayoutRoot>
+                    <Box
+                        component="main"
+                        sx={{
+                            display: 'flex',
+                            flex: '1 1 auto',
+                            flexDirection: 'column',
+                            width: '100%',
+                            flexGrow: 1,
+                            py: 8
+                        }}
+                    >
+                        <Container maxWidth={false}>
+                            <Grid
+                                container
+                                spacing={3}
+                            >
+                                <Grid
+                                    item
+                                    lg={12}
+                                    md={12}
+                                    xl={15}
+                                    xs={12}
+                                >
+                                    <ErasmusApplications applications={applicationList}/>
+                                </Grid>
+                            </Grid>
+                        </Container>
+                    </Box>
+                </DashboardLayoutRoot>
+                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
+                <DashboardSidebar
+                    onClose={() => setSidebarOpen(false)}
+                    open={isSidebarOpen}/>
+            </>
+        );
+    }
+
     return (
-        <>  <title>
+        <>  
+        <title>
             Erasmus Application List
         </title>
             <DashboardLayoutRoot>
@@ -83,7 +125,7 @@ const AdminErasmusApplicationList = () => {
                                 xl={15}
                                 xs={12}
                             >
-                                <ErasmusApplicationList applications={applicationList}/>
+                                <ErasmusApplications applications={applicationList}/>
                             </Grid>
                         </Grid>
                     </Container>

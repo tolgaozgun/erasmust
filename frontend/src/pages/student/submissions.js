@@ -26,10 +26,12 @@ import { useNavigate } from "react-router-dom";
 import { DashboardSidebar } from "../../components/componentsStaff/dashboard-sidebar";
 import { DashboardNavbar } from "../../components/componentsStaff/dashboard-navbar";
 
-import {ApplicationsList} from "../../components/componentsStudent/dashboard/applications";
-import PreapprovalsList from "../../components/componentsAdmin/lists/preapprovals-list";
-import {LearningAgreementList} from "../../components/componentsStudent/dashboard/learning-agreement-list";
+import { ApplicationsList } from "../../components/componentsStudent/dashboard/applications";
+import { PreapprovalsList } from "../../components/componentsStudent/dashboard/preapprovals-list";
+import { LearningAgreementList } from "../../components/componentsStudent/dashboard/learning-agreement-list";
 import { CTFormList } from "../../components/componentsStudent/dashboard/ctform-list";
+
+import { SubmissionComp } from "../../components/componentsStudent/dashboard/submission-comp";
 
 const DashboardLayoutRoot = styled("div")(({ theme }) => ({
     display: "flex",
@@ -60,15 +62,9 @@ const Submissions = (props) => {
 
     return (
         <DashboardLayoutRoot style={innerstyle}>
-            <div style={divstyle}>
-                <ApplicationsList style={liststyle} />
-                <PreapprovalsList style={liststyle} />
+            <div>
+                <SubmissionComp />
             </div>
-            <div style={divstyle}>
-                <LearningAgreementList style={liststyle} />
-                <CTFormList style={liststyle} />
-            </div>
-
             <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}

@@ -34,6 +34,8 @@ public class PreApprovalFormNew {
 
     private Date approvalDate;
 
+    private long createDate;
+
     private Status status;
 
     @ManyToOne

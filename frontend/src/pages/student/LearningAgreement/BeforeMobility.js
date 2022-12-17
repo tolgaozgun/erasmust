@@ -190,7 +190,7 @@ const BeforeMobility = () => {
                 erasmusCode: Yup
                     .string()
                     .max(12)
-                    .required("Erasmus Code is required"),
+                    .required("StudentErasmusPage Code is required"),
                 department: Yup
                     .string()
                     .max(255)

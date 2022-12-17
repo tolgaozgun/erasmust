@@ -4,12 +4,12 @@ import {
     Grid,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from '../../../components/componentsStudent/dashboard-navbar';
-import {DashboardSidebar} from '../../../components/componentsStudent/dashboard-sidebar';
+import {DashboardNavbar} from '../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../components/componentsStudent/dashboard-sidebar';
 
 import {styled} from '@mui/material/styles';
 import React, {useState} from 'react';
-import {InfoTable} from "../../../components/componentsStudent/info/info-table";
+import {InfoTable} from "../components/componentsStudent/info/info-table";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Button, Container, Typography } from '@mui/material';
 
-const Splash = () => {
+const Splash = (props) => {
     const navigate = useNavigate();
 
     const goLoginStaff = () => {
