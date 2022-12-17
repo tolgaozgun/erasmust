@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface PartnerUniversityErasmusRepository extends JpaRepository<PartnerUniversityErasmus, Integer> {
     List<PartnerUniversityErasmus> findAllByQuotaGreaterThan(int quota);
+
+    @Override
+    List<PartnerUniversityErasmus> findAll();
 }

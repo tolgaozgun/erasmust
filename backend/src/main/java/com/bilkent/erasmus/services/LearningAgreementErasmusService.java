@@ -82,6 +82,7 @@ public class LearningAgreementErasmusService {
         form.setStatus(Status.IN_PROCESS);
         form.setAcademicYear(academicYear);
         form.setSemester(semester);
+        OutGoingStudentErasmus outGoingStudentErasmus = form.getStudent();
         return erasmusRepository.save(form);
     }
 
