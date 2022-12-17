@@ -44,5 +44,10 @@ public class PreApprovalFormErasmusControllerNew {
         return new ResponseEntity<>(preApprovalService.getAllPreapproval(), HttpStatus.OK);
     }
 
+    @GetMapping("/retrieveForm")
+    public ResponseEntity<?> getForm() throws Exception {
+        return new ResponseEntity<>(preApprovalService.getStudentForm(),HttpStatus.OK);
+    }
+
 
 }

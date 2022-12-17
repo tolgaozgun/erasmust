@@ -75,6 +75,7 @@ public class PreApprovalFormNewService {
     public PreApprovalFormNew saveForm(PreApprovalFormDTONew form) throws Exception {
         PreApprovalFormNew preApprovalForm = PreApprovalFormNew.builder()
                 .forms(createCourseReviewFormAll(form.getForms()))
+                .createDate(System.currentTimeMillis())
                 .build();
         inheritInfoFromApplication(preApprovalForm);
         ToDoItem todo = new ToDoItem();
@@ -165,5 +166,10 @@ public class PreApprovalFormNewService {
 
     public List<PreApprovalFormDTONew> getAllPreapproval() {
         return preApprovalFormErasmusMapper.toPreApprovalFormDTONewList(preApprovalFormRepository.findAll());
+    }
+
+    public PreApprovalFormNew getStudentForm() throws Exception {
+        return preApprovalFormRepository.findByStatusAndStudent_Id(Status.IN_PROCESS, findStudentId())
+                .orElseThrow(() -> new Exception("no form is found"));
     }
 }
