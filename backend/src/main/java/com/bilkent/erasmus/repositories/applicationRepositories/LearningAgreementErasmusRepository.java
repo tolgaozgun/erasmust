@@ -16,4 +16,6 @@ public interface LearningAgreementErasmusRepository extends JpaRepository<Learni
     List<LearningAgreementErasmus> findAllByStatus(Status status);
 
     LearningAgreementErasmus findByStudent_Id(String id);
+
+    LearningAgreementErasmus findByFormId(String Id);
 }

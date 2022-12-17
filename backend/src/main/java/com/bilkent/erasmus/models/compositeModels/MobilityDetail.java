@@ -27,7 +27,10 @@ public class MobilityDetail {
     private MobilityType mobilityType;
 
     @OneToMany
-    private List<MobilityCourseForm> mobilityCourse;
+    private List<MobilityCourseForm> mobilityCourseBilkent;
+
+    @OneToMany
+    private List<MobilityCourseForm> mobilityCourseHost;
 
     public MobilityType getMobilityType() {
         return mobilityType;

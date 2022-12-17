@@ -19,6 +19,9 @@ public class ReceivingInstitutionInformation {
 
     private String contactPersonEmail;
 
+    private String contactPersonPhoneNumber;
+
+    private String contactPersonFunction;
     @OneToOne
     private Faculty faculty;
 

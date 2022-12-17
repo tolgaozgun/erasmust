@@ -1,5 +1,7 @@
 package com.bilkent.erasmus.models.applicationModels.learningAgreementForms;
 
+import com.bilkent.erasmus.embeddables.BilkentInformation;
+import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.LanguageLevel;
 import com.bilkent.erasmus.enums.MobilityType;
 import com.bilkent.erasmus.enums.SemesterOfferings;
@@ -30,6 +32,10 @@ public class LearningAgreement {
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    private BilkentInformation bilkentInformation;
+
+    private ReceivingInstitutionInformation receivingInstitutionInformation;
 
     @OneToOne
     private MobilityDetail mobilityDetail;

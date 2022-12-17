@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.embeddables;
 
+import com.bilkent.erasmus.enums.DepartmentName;
 import com.bilkent.erasmus.models.universityModels.Faculty;
 import lombok.Data;
 
@@ -19,9 +20,16 @@ public class BilkentInformation {
 
     private String contactPersonEmail;
 
+    private String contactPersonPhoneNumber;
+
+    private String contactPersonFunction;
+
+    private DepartmentName department;
+
     @OneToOne
     private Faculty faculty;
 
     @Embedded
     private Address address;
+
 }
