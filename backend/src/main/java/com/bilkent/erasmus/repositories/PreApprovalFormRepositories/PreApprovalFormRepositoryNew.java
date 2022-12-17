@@ -6,6 +6,7 @@ import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmu
 import com.bilkent.erasmus.models.userModels.StudentModels.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.bilkent.erasmus.enums.Status;
 
 import java.util.List;
 import java.util.Optional;
