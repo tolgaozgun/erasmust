@@ -63,5 +63,11 @@ public class AdminController {
         return new ResponseEntity<>(adminService.getStudentByStarsId(studentStarsId), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
+    @GetMapping("/all-preapproval-erasmus")
+    public ResponseEntity<?> getAllPreapprovalErasmus() {
+        return new ResponseEntity<>(adminService.getAllPreapprovalErasmus(), HttpStatus.OK);
+    }
+
 
 }

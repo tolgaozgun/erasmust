@@ -23,6 +23,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,7 +114,8 @@ public class PreApprovalFormNewService {
         log.info("stars id: " + auth.getName());
         List<OutGoingStudent> list = outGoingStudentRepository.findAll();
         log.info(list.get(0).getStarsId() + " " + list.get(1).getStarsId() );
-        return outGoingStudentRepository.findByStarsId(auth.getName()).getId();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName()).orElseThrow(()-> new EntityNotFoundException());
+        return student.getId();
     }
 
     private ApplicationErasmus retrieveApplicationFromStudentId() {
