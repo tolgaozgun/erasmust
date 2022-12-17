@@ -2,8 +2,8 @@ package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.mappers.OutgoingStudentMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
-import com.bilkent.erasmus.models.enums.RoleBasedPermission;
-import com.bilkent.erasmus.models.enums.Status;
+import com.bilkent.erasmus.enums.RoleBasedPermission;
+import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.models.userModels.StudentModels.Student;
 import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationErasmusRepository;
@@ -60,16 +60,19 @@ public class AdminService {
         }
 
     }
+
     public List<ApplicationErasmus> getAllErasmusApplicationsStudentStarsId(String id, String status) {
         if (status == null) {
             return applicationErasmusRepository.findAllByStudent_StarsId(id);
-        }
-        else {
+        } else {
             Status stat = Status.valueOf(status);
             return applicationErasmusRepository.findAllByStudent_StarsIdAndStatus(id, stat);
         }
     }
 
+    public Student getStudentByStarsId(String id) {
+        return studentRepository.findByStarsId(id);
+    }
 
 
 }

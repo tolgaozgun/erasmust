@@ -1,8 +1,0 @@
-package com.bilkent.erasmus.models.enums;
-
-//toDo title fields will be added
-public enum Title {
-    PROF,
-    DR,
-    ASSISTANT_PROF,
-}
