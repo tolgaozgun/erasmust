@@ -33,12 +33,17 @@ import DashboardAdmin from "./pages/admin/dashboard";
 import AccountAdmin from "./pages/admin/account";
 
 //Lists
-import StudentList from "./pages/admin/studentList";
+import StudentList from "./pages/admin/lists/studentList";
+import StaffList from "./pages/admin/lists/staffList"
 import AdminErasmusApplicationList from "./pages/admin/erasmus/AdminErasmusApplicationList";
 import AdminErasmusPreapprovalList from "./pages/admin/erasmus/AdminErasmusPreapprovalList";
 
 //Edits
-import StudentEdits from "./pages/admin/edits/studentEdit";
+import StudentEdit from "./pages/admin/edits/studentEdit";
+import StaffEdit from "./pages/admin/edits/staffEdits"
+
+//Adds
+import StudentAdd from "./pages/admin/adds/studentAdd"
 
 //Staff Pages
 import RegisterStaff from "./pages/academic/register";
@@ -173,9 +178,17 @@ const App = () => {
                     <Route exact path="student" element={<Splash/>}/>
                     <Route exact path="student/*" element={<Outlet/>}>
                         <Route path="list" element={<StudentList/>}/>
+                        <Route path="create" element={<StudentAdd/>}/>
+                        <Route path="view" element={<Error/>}/>
+                        <Route path="edit/:id" element={<StudentEdit/>}/>
+                    </Route>
+
+                    <Route exact path="staff" element={<Splash/>}/>
+                    <Route exact path="staff/*" element={<Outlet/>}>
+                        <Route path="list" element={<StaffList/>}/>
                         <Route path="create" element={<Error/>}/>
                         <Route path="view" element={<Error/>}/>
-                        <Route path="edit" element={<Error/>}/>
+                        <Route path="edit/:id" element={<StaffEdit/>}/>
                     </Route>
 
                     <Route exact path="school" element={<Splash/>}/>

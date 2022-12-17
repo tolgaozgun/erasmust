@@ -35,8 +35,8 @@ export const AccountIncomingErasmus = (props) => {
         >
             <Card>
                 <CardHeader
-                    subheader="Information about StudentErasmusPage program"
-                    title="Incoming StudentErasmusPage Student Information"
+                    subheader="Information about Erasmus program"
+                    title="Incoming Erasmus Student Information"
                 />
                 <Divider/>
                 <CardContent>

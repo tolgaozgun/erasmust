@@ -71,7 +71,7 @@ export const SendingInstitutionInfo = (props) => {
                         >
                             <TextField
                                 fullWidth
-                                label="StudentErasmusPage Code"
+                                label="Erasmus Code"
                                 name="erasmusCode"
                                 required
                                 value={props.values.erasmusCode}

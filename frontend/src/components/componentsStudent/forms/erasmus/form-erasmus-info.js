@@ -57,7 +57,7 @@ export const FormErasmusInfo = (props) => {
             <Card>
                 <CardHeader
                     subheader="Program and host institution information"
-                    title="StudentErasmusPage Information"
+                    title="Erasmus Information"
                 />
                 <Divider/>
                 <CardContent>

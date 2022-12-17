@@ -5,11 +5,7 @@ import { Box, Button, Container, Typography } from '@mui/material';
 const Splash = (props) => {
     const navigate = useNavigate();
 
-    const goLoginStaff = () => {
-        navigate('/loginStaff')
-    }
-
-    const goLoginStudent = () => {
+    const goLogin = () => {
         navigate('/login')
     }
 
@@ -44,21 +40,9 @@ const Splash = (props) => {
                     size="large"
                     type="submit"
                     variant="contained"
-                    onClick={() => goLoginStudent()}
+                    onClick={() => goLogin()}
                 >
-                    For Students
-                </Button>
-            </Box>
-            <Box sx={{ py: 2 }}>
-                <Button
-                    color="primary"
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
-                    onClick={() => goLoginStaff()}
-                >
-                    For Academic Stuff
+                    Login
                 </Button>
             </Box>
             </Container>

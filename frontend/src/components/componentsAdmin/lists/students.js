@@ -37,7 +37,7 @@ export const Students = (props) => {
     }
 
     const goStudentAdd = () => {
-        navigate("/studentAdd")
+        navigate("/admin/student/create")
     }
 
     console.log(students)
@@ -133,7 +133,7 @@ export const Students = (props) => {
                                         </Tooltip>
                                         <Tooltip title="Edit">
                                             <IconButton
-                                                onClick={() => {navigate(`/studentListAdmin/student/${student.id}`, {state: student})}}
+                                                onClick={() => {navigate(`/admin/student/edit/${student.id}`, {state: student})}}
                                             >
                                                 <EditIcon/>
                                             </IconButton>
