@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../components/componentsAdmin/dashboard-navbar";
-import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Students} from "../../components/componentsAdmin/lists/students";
+import {Staffs} from "../../../components/componentsAdmin/lists/staffs";
 import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -16,9 +16,9 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const StudentList = () => {
+const StaffList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const [studentList, setStudentList] = useState([]);
+    const [staffList, setStaffList] = useState([]);
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
@@ -31,13 +31,12 @@ const StudentList = () => {
         })
             .then((res) => {
                 if (res && res.data) {
-                    var i;
-                    for (i = 0; i < res.data.length; i++) {
+                    for (let i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
                         var item = res.data[i]
                         
-                        setStudentList(oldArray => [...oldArray, item])                       
-                        
+                        setStaffList(oldArray =>[...oldArray, item])
+
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
@@ -51,49 +50,57 @@ const StudentList = () => {
             })
     }, []);
 
-    if (flag) {
+    if(flag) {
         return (
-            <>
-                <title>
+            <>  <title>
                     Students
                 </title>
                 <DashboardLayoutRoot>
                     <Box
                         component="main"
                         sx={{
+                            alignItems: "center",
                             display: 'flex',
-                            flex: '1 1 auto',
-                            flexDirection: 'column',
                             width: '100%',
                             flexGrow: 1,
+                            minHeight: "100%",
                             py: 8
                         }}
                     >
-                        <Container maxWidth={false}>
+                        <Container
+                            maxWidth="lg"
+                        >
                             <Grid
                                 container
+                                justifyContent="center"
                                 spacing={3}
+                                sx={{
+                                    ml: 5
+                                }}
                             >
                                 <Grid
                                     item
-                                    lg={12}
+                                    lg={10}
                                     md={12}
                                     xl={15}
                                     xs={12}
+                                    sx={{
+                                        display: "flex"
+                                    }}
                                 >
-                                    <Students students={studentList}/> </Grid>
+                                    {<Staffs staffs = {staffList}/> }
+                                </Grid>
                             </Grid>
                         </Container>
                     </Box>
                 </DashboardLayoutRoot>
-                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
+                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
                 <DashboardSidebar
                     onClose={() => setSidebarOpen(false)}
                     open={isSidebarOpen}/>
             </>
-        )
+        );
     }
-
 
     return (
         <>  <title>
@@ -103,27 +110,37 @@ const StudentList = () => {
                 <Box
                     component="main"
                     sx={{
+                        alignItems: "center",
                         display: 'flex',
-                        flex: '1 1 auto',
-                        flexDirection: 'column',
                         width: '100%',
                         flexGrow: 1,
+                        minHeight: "100%",
                         py: 8
                     }}
                 >
-                    <Container maxWidth={false}>
+                    <Container
+                        maxWidth="lg"
+                    >
                         <Grid
                             container
+                            justifyContent="center"
                             spacing={3}
+                            sx={{
+                                ml: 5
+                            }}
                         >
                             <Grid
                                 item
-                                lg={12}
+                                lg={10}
                                 md={12}
                                 xl={15}
                                 xs={12}
+                                sx={{
+                                    display: "flex"
+                                }}
                             >
-                                <Students students={studentList}/> </Grid>
+                                {<Staffs staffs = {staffList}/> }
+                            </Grid>
                         </Grid>
                     </Container>
                 </Box>
@@ -136,4 +153,4 @@ const StudentList = () => {
     );
 }
 
-export default StudentList
+export default StaffList

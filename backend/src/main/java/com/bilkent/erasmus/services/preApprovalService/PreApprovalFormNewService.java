@@ -144,7 +144,8 @@ public class PreApprovalFormNewService {
             log.info(preApprovalForm.toString());
             form.setId(id);
             editMapper.updatePreApprovalFormNewFromDTO(form, preApprovalForm);
-            log.info(preApprovalForm.toString());
+            log.info("reqeuest payload: " + form.getForms().get(0).getCourseHost().getName());
+            log.info(preApprovalForm.getForms().get(0).getCourseHost().getName());
         }
         return preApprovalFormErasmusMapper.toPreApprovalFormDTONew(preApprovalForm);
 

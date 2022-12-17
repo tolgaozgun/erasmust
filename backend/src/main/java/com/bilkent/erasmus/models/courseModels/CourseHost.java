@@ -1,6 +1,5 @@
 package com.bilkent.erasmus.models.courseModels;
 
-import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.models.universityModels.Department;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,8 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Data

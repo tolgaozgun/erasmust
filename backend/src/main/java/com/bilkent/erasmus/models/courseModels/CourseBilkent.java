@@ -1,13 +1,19 @@
 package com.bilkent.erasmus.models.courseModels;
 
+import com.bilkent.erasmus.models.universityModels.Department;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.CourseCoordinator;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "coursesBilkent")
+@AllArgsConstructor
+@NoArgsConstructor
 public class CourseBilkent extends Course {
 
     @ManyToOne
@@ -15,5 +21,18 @@ public class CourseBilkent extends Course {
 
     private String requirements;
 
+    @Builder(builderMethodName = "courseBilkentBuilder")
+    public CourseBilkent(int id
+            , String name
+            , Double creditECTS
+            , Double creditBilkent
+            , Boolean isProjectCourse
+            , Department underDepartment
+            , CourseCoordinator courseCoordinator
+            , String requirements) {
+        super(id, name, creditECTS, creditBilkent, isProjectCourse, underDepartment);
+        this.courseCoordinator = courseCoordinator;
+        this.requirements = requirements;
+    }
 
 }

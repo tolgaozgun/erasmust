@@ -27,12 +27,12 @@ const items = [
     title: 'Staff List'
   },
   {
-    href: '/applicationsAdmin',
+    href: '/applicationListAdmin',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Application List'
   },
   {
-    href: '/submissionsAdmin',
+    href: '/preapprovalListAdmin',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Preapproval List'
   },

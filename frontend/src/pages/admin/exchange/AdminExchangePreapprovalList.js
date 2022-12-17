@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../components/componentsAdmin/dashboard-navbar";
-import {DashboardSidebar} from "../../components/componentsAdmin/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Staffs} from "../../components/componentsAdmin/lists/staffs";
+import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
+import Preapprovals from "../../student/Preapproval/Preapprovals";
+import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
 
-const DashboardLayoutRoot = styled('div')(({ theme }) => ({
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
     flex: '1 1 auto',
     maxWidth: '100%',
@@ -16,13 +18,13 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const StaffList = () => {
+const AdminExchangePreapprovalList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const [staffList, setStaffList] = useState([]);
+    const [preapprovalList, setPreapprovalList] = useState([]);
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
-    
+
     useEffect(() => {
         axios.get("http://92.205.25.135:4/admin/all-students", {
             headers: {
@@ -31,15 +33,17 @@ const StaffList = () => {
         })
             .then((res) => {
                 if (res && res.data) {
-                    for (let i = 0; i < res.data.length; i++) {
+                    var i;
+                    for (i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
                         var item = res.data[i]
-                        
-                        setStaffList(oldArray =>[...oldArray, item])
+
+                        setPreapprovalList(oldArray => [...oldArray, item])
 
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                    setFlag(true)
                 }
             })
             .catch((err) => {
@@ -49,11 +53,11 @@ const StaffList = () => {
             })
     }, []);
 
-    if(flag) {
+    if (flag) {
         return (
             <>  <title>
-                    Students
-                </title>
+                Students
+            </title>
                 <DashboardLayoutRoot>
                     <Box
                         component="main"
@@ -87,24 +91,23 @@ const StaffList = () => {
                                         display: "flex"
                                     }}
                                 >
-                                    {<Staffs staffs = {staffList}/> }
+                                    {<PreapprovalsList preapprovals={preapprovalList}/>}
                                 </Grid>
                             </Grid>
                         </Container>
                     </Box>
                 </DashboardLayoutRoot>
-                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
                 <DashboardSidebar
                     onClose={() => setSidebarOpen(false)}
                     open={isSidebarOpen}/>
             </>
         );
     }
-
     return (
         <>  <title>
-                Students
-            </title>
+            Students
+        </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
@@ -138,13 +141,13 @@ const StaffList = () => {
                                     display: "flex"
                                 }}
                             >
-                                {<Staffs staffs = {staffList}/> }
+                                {<Students students={preapprovalList}/>}
                             </Grid>
                         </Grid>
                     </Container>
                 </Box>
             </DashboardLayoutRoot>
-            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+            <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
@@ -152,4 +155,4 @@ const StaffList = () => {
     );
 }
 
-export default StaffList
+export default StudentList
