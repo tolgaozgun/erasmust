@@ -15,61 +15,6 @@ import * as Yup from "yup";
 
 export const LearningStudentInfo = (props) => {
 
-    const formik = useFormik({
-        initialValues: {
-            name: "Tolga",
-            surname: "Özgün",
-            dateOfBirth: new Date(),
-            nationality: "Turkish",
-            sex: "M",
-            academicYear: "2022-2023",
-            studyCycle: "EQF Level 6",
-            subjectAreaCode: "Computer Science"
-        },
-        validationSchema: Yup.object({
-            name: Yup
-                .string()
-                .max(255)
-                .required("Name is required"),
-            surname: Yup
-                .string()
-                .max(255)
-                .required("Surname is required"),
-            dateOfBirth: Yup
-                .date()
-                .required("Date of Birth is required"),
-            nationality: Yup
-                .string()
-                .max(255)
-                .required("Nationality is required"),
-            sex: Yup
-                .string()
-                .max(1)
-                .required("Sex is required"),
-            academicYear: Yup
-                .string()
-                .max(10)
-                .required("Academic Year is required (20xx-20xx)"),
-            studyCycle: Yup
-                .string()
-                .max(20)
-                .required("Study cycle is required"),
-            subjectAreaCode: Yup
-                .string()
-                .max(50)
-                .required("Subject Area, Code is required"),
-        }),
-        onSubmit: () => {
-
-        },
-    });
-    if (!props.hidden) {
-        props.handleStep(formik.isValid)
-    }
-
-    // TODO: Change this to match current login details
-    const isAdmin = true;
-
     return (
         <form
             autoComplete="off"
@@ -93,17 +38,13 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.name && formik.errors.name)}
                                 fullWidth
-                                helperText={formik.touched.name && formik.errors.name}
                                 label="Name"
                                 name="name"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                                 required
-                                value={formik.values.name}
+                                value={props.setData.name}
                                 variant="outlined"
-                                disabled={!isAdmin}
+                                disabled={true}
                             />
                         </Grid>
                         <Grid
@@ -112,17 +53,13 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.surname && formik.errors.surname)}
                                 fullWidth
-                                helperText={formik.touched.surname && formik.errors.surname}
                                 label="Surname"
                                 name="surname"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                                 required
-                                value={formik.values.surname}
+                                value={props.setData.surname}
                                 variant="outlined"
-                                disabled={!isAdmin}
+                                disabled={true}
                             />
                         </Grid>
                         <Grid
@@ -131,18 +68,14 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.dateOfBirth && formik.errors.dateOfBirth)}
                                 fullWidth
-                                helperText={formik.touched.dateOfBirth && formik.errors.dateOfBirth}
                                 label="Date of Birth"
                                 name="dateOfBirth"
                                 type="date"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                                 required
-                                value={formik.values.dateOfBirth}
+                                value={props.setData.dateOfBirth}
                                 variant="outlined"
-                                disabled={!isAdmin}
+                                disabled={true}
                             />
                         </Grid>
                         <Grid
@@ -151,17 +84,13 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.nationality && formik.errors.nationality)}
                                 fullWidth
-                                helperText={formik.touched.nationality && formik.errors.nationality}
                                 label="Nationality"
                                 name="nationality"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                                 required
-                                value={formik.values.nationality}
+                                value={props.setData.nationality}
                                 variant="outlined"
-                                disabled={!isAdmin}
+                                disabled={true}
                             />
                         </Grid>
                         <Grid
@@ -170,17 +99,13 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.sex && formik.errors.sex)}
                                 fullWidth
-                                helperText={formik.touched.sex && formik.errors.sex}
                                 label="Sex"
                                 name="sex"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                                 required
-                                value={formik.values.sex}
+                                value={props.setData.sex}
                                 variant="outlined"
-                                disabled={!isAdmin}
+                                disabled={true}
                             />
                         </Grid>
                         <Grid
@@ -189,17 +114,13 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.academicYear && formik.errors.academicYear)}
                                 fullWidth
-                                helperText={formik.touched.academicYear && formik.errors.academicYear}
                                 label="Academic Year"
                                 name="academicYear"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                                 required
-                                value={formik.values.academicYear}
+                                value={props.setData.academicYear}
                                 variant="outlined"
-                                disabled={!isAdmin}
+                                disabled={true}
                             />
                         </Grid>
                         <Grid
@@ -208,17 +129,16 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.studyCycle && formik.errors.studyCycle)}
+                                error={Boolean(props.touched.studyCycle && props.errors.studyCycle)}
                                 fullWidth
-                                helperText={formik.touched.studyCycle && formik.errors.studyCycle}
+                                helperText={props.touched.studyCycle && props.errors.studyCycle}
                                 label="Study Cycle"
                                 name="studyCycle"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
                                 required
-                                value={formik.values.studyCycle}
+                                value={props.values.studyCycle}
                                 variant="outlined"
-                                disabled={!isAdmin}
                             />
                         </Grid>
                         <Grid
@@ -227,17 +147,16 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.subjectAreaCode && formik.errors.subjectAreaCode)}
+                                error={Boolean(props.touched.subjectAreaCode && props.errors.subjectAreaCode)}
                                 fullWidth
-                                helperText={formik.touched.subjectAreaCode && formik.errors.subjectAreaCode}
+                                helperText={props.touched.subjectAreaCode && props.errors.subjectAreaCode}
                                 label="Subject Area, Code"
                                 name="subjectAreaCode"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
                                 required
-                                value={formik.values.subjectAreaCode}
+                                value={props.values.subjectAreaCode}
                                 variant="outlined"
-                                disabled={!isAdmin}
                             />
                         </Grid>
                     </Grid>

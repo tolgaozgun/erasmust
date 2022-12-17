@@ -16,33 +16,6 @@ import * as Yup from "yup";
 
 export const FormSemesterInfo = (props) => {
 
-    const formik = useFormik({
-        initialValues: {
-            academicYear: "2023-2024",
-            semester: "FALL",
-        },
-        validationSchema: Yup.object({
-            hostName: Yup
-                .string()
-                .max(255)
-                .required("Host school name is required"),
-            academicYear: Yup
-                .string()
-                .max(255)
-                .required("Academic year is required"),
-            semester: Yup
-                .string()
-                .max(10)
-                .required('Semester is required')
-        }),
-        onSubmit: () => {
-
-        },
-    });
-    if (!props.hidden && props.handleStep) {
-        props.handleStep(formik.isValid)
-    }
-
 
     // TODO: Change this to match current login details
     const isAdmin = false;
@@ -72,15 +45,15 @@ export const FormSemesterInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(formik.touched.academicYear && formik.errors.academicYear)}
+                                error={Boolean(props.touched.academicYear && props.errors.academicYear)}
                                 fullWidth
-                                helperText={formik.touched.academicYear && formik.errors.academicYear}
+                                helperText={props.touched.academicYear && props.errors.academicYear}
                                 label="Academic Year"
                                 name="academicYear"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
                                 required
-                                value={formik.values.academicYear}
+                                value={props.values.academicYear}
                                 variant="outlined"
                                 disabled={!props.editable}
                             />
@@ -95,7 +68,7 @@ export const FormSemesterInfo = (props) => {
                                 fullWidth
                                 id={"semester-selector"}
                                 disabled={!props.editable}
-                                value={formik.values.semester}
+                                onChange={(e, value) => props.setSemester(value["label"])}
                                 options={[{label: "FALL"}, {label: "SPRING"}]}
                                 renderInput={(params) => <TextField {...params} label="Enter semester"/>}
                             />

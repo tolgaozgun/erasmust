@@ -36,6 +36,9 @@ import React, {useState} from 'react';
 import {Check} from "@mui/icons-material";
 import {FormExchangeInfo} from "../../../components/componentsStudent/forms/exchange/form-exchange-info";
 import courses from "../../../lessons.json";
+import {getIn, useFormik} from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -93,6 +96,42 @@ const QontoStepIconRoot = styled('div')(
     })
 );
 
+const data = {
+    name: "Tolga",
+    surname: "Özgün",
+    dateOfBirth: new Date(),
+    nationality: "Turkish",
+    sex: "M",
+    academicYear: "2022-2023",
+    sending: {
+        name: "Bilkent University",
+        faculty: "Faculty of Engineering",
+        erasmusCode: "ANKARA07",
+        department: "Computer Engineering",
+        address: "UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA",
+        countryWithCode: "Turkey, TR",
+        contactPersonName: "Can Alkan",
+        contactPersonDetails: "calkan@cs.bilkent.edu.tr"
+    },
+    bilkentCourses: [
+        {
+            courseName: "BILKENTNAME",
+            courseCode: "BILKENTCODE",
+            courseCredits: 1.1,
+            bilkentCourse: "",
+        }
+    ],
+    hostCourses: [
+        {
+            courseName: "HOSTNAME",
+            courseCode: "HOSTCODE",
+            courseCredits: 1.1,
+            bilkentCourse: "XX",
+        }
+    ],
+
+}
+
 
 const BeforeMobility = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -103,6 +142,96 @@ const BeforeMobility = () => {
     const [isValid, setIsValid] = useState([
         false, false, false
     ])
+
+
+    const formik = useFormik({
+        initialValues: {
+            studyCycle: "",
+            subjectAreaCode: "",
+            language: "",
+            competence: "",
+            receiving: {
+                name: "",
+                faculty: "",
+                erasmusCode: "",
+                department: "",
+                address: "",
+                countryWithCode: "",
+                contactPersonName: "",
+                contactPersonDetails: "",
+            },
+        },
+        validationSchema: Yup.object({
+            studyCycle: Yup
+                .string()
+                .max(20)
+                .required("Study cycle is required"),
+            subjectAreaCode: Yup
+                .string()
+                .max(50)
+                .required("Subject Area, Code is required"),
+            language: Yup
+                .string()
+                .max(255)
+                .required("Language name is required"),
+            competence: Yup
+                .string()
+                .max(10)
+                .required('Competence level is required'),
+            receiving: Yup.object().shape({
+                name: Yup
+                    .string()
+                    .max(255)
+                    .required("Name is required"),
+                faculty: Yup
+                    .string()
+                    .max(255)
+                    .required("Faculty is required"),
+                erasmusCode: Yup
+                    .string()
+                    .max(12)
+                    .required("Erasmus Code is required"),
+                department: Yup
+                    .string()
+                    .max(255)
+                    .required("Department is required"),
+                address: Yup
+                    .string()
+                    .max(500)
+                    .required("Address is required"),
+                countryWithCode: Yup
+                    .string()
+                    .max(40)
+                    .required("Country & Country Code is required"),
+                contactPersonName: Yup
+                    .string()
+                    .max(20)
+                    .required("Study cycle is required"),
+                contactPersonDetails: Yup
+                    .string()
+                    .max(50)
+                    .required("Contact Person Details is required"),
+            }),
+
+        }),
+        onSubmit: async (values, formikHelpers) => {
+            await axios.post("http://92.205.25.135:4/auth/login", values)
+                .then((response) => {
+                    if (response && response.data) {
+                        const jwtToken = response.data["token"]
+                        const role = response.data["role"]
+                        sessionStorage.setItem("jwtToken", jwtToken)
+                        sessionStorage.setItem("role", role)
+                        // navigate('/dashboardStudent')
+                    }
+                })
+                .catch((err) => {
+                    if (err && err.response) {
+                        console.log("Error: ", err)
+                    }
+                })
+        },
+    });
 
     const courses = require('../../../lessons.json');
 
@@ -162,13 +291,15 @@ const BeforeMobility = () => {
 
     const nextStepHandler = () => {
         setActiveStep(activeStep + 1)
-
     }
 
     const previousStepHandler = () => {
         setActiveStep(activeStep - 1)
     }
 
+    const competenceChange = (competence) => {
+        formik.setFieldValue("competence", competence)
+    }
 
     const steps = ['Student Information',
         'Sending Institution Information',
@@ -176,6 +307,9 @@ const BeforeMobility = () => {
         'Study Programme at Receiving Institution',
         'Language Competence',
         'Recognition at Sending Institution'];
+
+    console.log("Values")
+    console.log(formik.values)
 
     return (
         <>
@@ -225,48 +359,45 @@ const BeforeMobility = () => {
 
                                 <LearningStudentInfo
                                     hidden={activeStep !== 0}
-                                    step={0}
-                                    handleStep={(state) => {
-                                        handleStep(0, state)
-                                    }}
+                                    setData={data}
+                                    values={formik.values}
+                                    touched={formik.touched}
+                                    errors={formik.errors}
+                                    handleChange={formik.handleChange}
+                                    handleBlur={formik.handleBlur}
                                 />
                                 <SendingInstitutionInfo
                                     hidden={activeStep !== 1}
-                                    step={1}
-                                    handleStep={(state) => {
-                                        handleStep(1, state)
-                                    }}
+                                    values={data.sending}
                                 />
                                 <ReceivingInstitutionInfo
                                     hidden={activeStep !== 2}
-                                    step={2}
-                                    handleStep={(state) => {
-                                        handleStep(2, state)
-                                    }}/>
+                                    values={getIn(formik.values, "receiving")}
+                                    touched={getIn(formik.touched, "receiving")}
+                                    errors={getIn(formik.errors, "receiving")}
+                                    handleChange={formik.handleChange}
+                                    handleBlur={formik.handleBlur}
+                                />
 
                                 <StudyProgrammeInfo
-                                    courses={courses}
                                     hidden={activeStep !== 3}
-                                    step={3}
-                                    handleStep={(state) => {
-                                        handleStep(3, state)
-                                    }}/>
+                                    values={data.hostCourses}
+                                />
 
                                 <LanguageCompetence
                                     hidden={activeStep !== 4}
-                                    step={4}
-                                    handleStep={(state) => {
-                                        handleStep(4, state)
-                                    }}
+                                    values={formik.values}
+                                    touched={formik.touched}
+                                    errors={formik.errors}
+                                    handleChange={formik.handleChange}
+                                    handleBlur={formik.handleBlur}
+                                    competenceChange={competenceChange}
                                 />
 
                                 <SendingInstitutionRecognition
-                                    courses={courses}
                                     hidden={activeStep !== 5}
-                                    step={5}
-                                    handleStep={(state) => {
-                                        handleStep(5, state)
-                                    }}/>
+                                    values={data.bilkentCourses}
+                                />
 
                                 <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
                                     {activeStep > 0
