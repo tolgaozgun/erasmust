@@ -34,7 +34,6 @@ public class CourseReviewFormServiceNew {
 
     private final CourseBilkentRepository courseBilkentRepository;
 
-
     private final StorageService storageService;
     private final ToDoItemRepository toDoItemRepository;
 
@@ -46,6 +45,7 @@ public class CourseReviewFormServiceNew {
         this.courseHostRepository = courseHostRepository;
         this.courseBilkentRepository = courseBilkentRepository;
         this.storageService = storageService;
+        //this.storageService = storageService;
         this.toDoItemRepository = toDoItemRepository;
 
     }
@@ -77,10 +77,10 @@ public class CourseReviewFormServiceNew {
         CourseReviewFormNew form = courseReviewFormRepository.findById(fillRequest.getFormId())
                 .orElseThrow(() -> new Exception("no form is found"));
         form.setRequirements(fillRequest.getRequirements());
-      //  form.setFiles(saveMultipleFiles(files));
+        form.setFiles(saveMultipleFiles(files));
         return courseReviewFormRepository.save(form);
     }
-/*
+
 
     private FileData saveFile(MultipartFile file) {
         String fileName = storageService.storeFile(file);
@@ -103,8 +103,7 @@ public class CourseReviewFormServiceNew {
                 .stream()
                 .map(file -> saveFile(file))
                 .collect(Collectors.toList());
-    }*/
-
+    }
 
 
 }

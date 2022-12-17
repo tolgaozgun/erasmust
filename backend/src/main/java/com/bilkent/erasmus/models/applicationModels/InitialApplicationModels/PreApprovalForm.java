@@ -26,4 +26,6 @@ public class PreApprovalForm { // --> create preapproval form detail to map coor
 
     private Status status;
 
+    private long date;
+
 }

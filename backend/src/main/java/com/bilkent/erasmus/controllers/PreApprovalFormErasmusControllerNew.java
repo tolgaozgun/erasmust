@@ -32,4 +32,22 @@ public class PreApprovalFormErasmusControllerNew {
     public ResponseEntity<?> editForm(@PathVariable int id, @RequestBody PreApprovalFormEditDTO form) throws Exception {
         return new ResponseEntity<>(preApprovalService.editForm(id,form), HttpStatus.OK);
     }
+    @RolesAllowed("ROLE_STUDENT")
+    @GetMapping("/all-preapproval-student")
+    public ResponseEntity<?> getAllPreapprovalByStudent() {
+        return new ResponseEntity<>(preApprovalService.getAllPreapprovalStudent(), HttpStatus.OK);
+    }
+
+    //todo add hoca permission
+    @GetMapping("/all-preapproval")
+    public ResponseEntity<?> getAllPreapproval() {
+        return new ResponseEntity<>(preApprovalService.getAllPreapproval(), HttpStatus.OK);
+    }
+
+    @GetMapping("/retrieveForm")
+    public ResponseEntity<?> getForm() throws Exception {
+        return new ResponseEntity<>(preApprovalService.getStudentForm(),HttpStatus.OK);
+    }
+
+
 }

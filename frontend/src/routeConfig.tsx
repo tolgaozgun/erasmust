@@ -343,3 +343,166 @@ export const routeItems: Array<IRoute> = [
         exact: true,
     }
 ]
+
+/*
+DO NOT ERASE
+Erasmus/Exchange Coordinator
+Faculty Administration Board Member
+Dean
+Course Coordinator
+// Staff
+/*
+    {
+        // all
+        path: '/registerStaff',
+        title: "Staff Register",
+        content: <RegisterStaff/>,
+        exact: true,
+    },
+    {
+        // all
+        path: '/loginStaff',
+        title: "Staff Login",
+        content: <LoginStaff/>,
+        exact: true,
+    },
+    {
+        // all
+        path: '/dashboardStaff',
+        title: "Staff Dashboard",
+        content: <DashboardStaff/>,
+        exact: true,
+    },
+    {
+        // all
+        path: '/accountStaff',
+        title: "Staff Account",
+        content: <AccountStaff/>,
+        exact: true,
+    },
+    {
+        // all
+        path: '/settingsStaff',
+        title: "Staff Settings",
+        content: <SettingsStaff/>,
+        exact: true,
+    },
+    {
+        // all
+        path: '/erasmusStaff',
+        title: "Staff Erasmus Page",
+        content: <ErasmusStaff/>,
+        exact: true,
+    },
+    {
+        // all
+        path: '*',
+        title: "Student Register",
+        content: <Navigate to='/splash' />,
+        exact: true,
+    },
+    {
+        // all
+        path: "/schoolList",
+        title: "School List",
+        content: <SchoolList/>,
+        exact: true,
+    },
+
+    {
+        // Course Coordinator, Erasmus Coordinator, Faculty Administration Board Member
+        path: '/StaffCourseReviewForm',
+        title: "Staff Course Review Form",
+        content: <StaffCourseReviewForm/>,
+        exact: true,
+    },
+    {
+        // Course Coordinator
+        path: '/courseReviewForm',
+        title: "Course Review Form",
+        content: <CourseReviewForm/>,
+        exact: true,
+    },
+    {
+        // Course Coordinator,Faculty Administration Board Member,Erasmus Coordinator
+        path: '/ViewCourseReviewForm',
+        title: "View Review Form",
+        content: <ViewCourseReviewForm/>,
+        exact: true,
+    },
+    {
+        // Erasmus Coordinator, Faculty Administration Board Member
+        path: '/courseReviewForms',
+        title: "Course Review Forms",
+        content: <CourseReviewForms/>,
+        exact: true,
+    },
+
+    {
+        // Erasmus Coordinator,Faculty Administration Board Member
+        path: '/StaffPreapprovalForm',
+        title: "Staff Preapproval Form",
+        content: <StaffPreapprovalForm/>,
+        exact: true,
+    },
+    {
+        //Erasmus Coordinator, Faculty Administration Board Member
+        path: '/viewPreapproval',
+        title: "View Preapproval",
+        content: <ViewPreapproval/>,
+        exact: true,
+    },
+    {
+        //Erasmus Coordinator, Faculty Administration Board Member NANI
+        path: '/viewPreapproval',
+        title: "View Preapproval Form",
+        content: <ViewPreapproval/>,
+        exact: true,
+    },
+
+    {
+        // Erasmus Coordinator, Faculty Administration Board Member
+        path: '/ViewErasmusApplication',
+        title: "View Erasmus Application",
+        content: <ViewErasmusApplication/>,
+        exact: true,
+    },
+    {
+        // Erasmus Coordinator, Faculty Administration Board Member
+        path: '/erasmusApplication',
+        title: "Erasmus Application",
+        content: <ErasmusApplicationForm/>,
+        exact: true,
+    }, 
+    {
+        //Erasmus Coordinator, Faculty Administration Board Member NANI
+        path: '/viewErasmusApplication',
+        title: "View Erasmus Application",
+        content: <ViewErasmusApplication/>,
+        exact: true,
+    },
+
+    {
+        // Erasmus Coordinator,Faculty Administration Board Member
+        path: "/submissions",
+        title: "Submissions",
+        content: <Submissions/>,
+        exact: true,
+    },
+    
+    {
+        //Erasmus Coordinator, Faculty Administration Board Member, Dean
+        path: '/ctForm',
+        title: "Course Transfer Form",
+        content: <CTForm/>,
+        exact: true,
+    },
+
+    { 
+        //Erasmus Coordinator, Faculty Administration Board Member
+        path: '/applications',
+        title: "Applications",
+        content: <Applications/>,
+        exact: true,
+    },
+*/
