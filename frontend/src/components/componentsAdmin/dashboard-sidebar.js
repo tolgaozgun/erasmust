@@ -27,9 +27,9 @@ const items = [
     title: 'Staff List'
   },
   {
-    href: '/applicationListAdmin',
+    href: '/erasmusApplicationListAdmin',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
-    title: 'Application List'
+    title: 'Erasmus Application List'
   },
   {
     href: '/preapprovalListAdmin',

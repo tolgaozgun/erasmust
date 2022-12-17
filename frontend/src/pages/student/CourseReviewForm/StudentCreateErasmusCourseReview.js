@@ -32,7 +32,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 }));
 
 
-const CourseReviewForm = () => {
+const StudentCreateErasmusCourseReview = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const formik = useFormik({
         initialValues: {
@@ -222,4 +222,4 @@ const CourseReviewForm = () => {
     );
 };
 
-export default CourseReviewForm;
+export default StudentCreateErasmusCourseReview;

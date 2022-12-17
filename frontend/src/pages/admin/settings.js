@@ -1,8 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
-import { SettingsNotifications } from "../../components/componentsStudent/settings/settings-notifications";
-import { SettingsPassword } from "../../components/componentsStudent/settings/settings-password";
-import { DashboardNavbar } from "../../components/componentsStudent/dashboard-navbar";
-import { DashboardSidebar } from "../../components/componentsStudent/dashboard-sidebar";
+import { SettingsPassword } from "../../components/componentsAdmin/settings/settings-password";
+import { DashboardNavbar } from "../../components/componentsAdmin/dashboard-navbar";
+import { DashboardSidebar } from "../../components/componentsAdmin/dashboard-sidebar";
 import { styled } from "@mui/material/styles";
 import React, { useState } from "react";
 

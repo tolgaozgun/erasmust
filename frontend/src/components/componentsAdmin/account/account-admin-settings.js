@@ -15,14 +15,14 @@ import InputLabel from "@mui/material/InputLabel";
 export const AccountAdminSettings = (props) => {
     const roles = [
         "Student",
-        "Outgoing Erasmus Student",
+        "Outgoing StudentErasmusPage Student",
         "Outgoing Exchange Student",
-        "Incoming Erasmus Student",
+        "Incoming StudentErasmusPage Student",
         "Incoming Exchange Student",
         "Instructor",
         "Dean",
         "Exchange Coordinator",
-        "Erasmus Coordinator",
+        "StudentErasmusPage Coordinator",
         "Board Member",
         "University Administrator",
         "Administrator",

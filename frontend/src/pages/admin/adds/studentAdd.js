@@ -5,7 +5,8 @@ import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-si
 import {Box, Container, TextField, Typography, Button} from "@mui/material";
 import { useFormik } from 'formik';
 import * as Yup from "yup"
-import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -17,84 +18,102 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
     }
 }));
 
-const StudentEdits = () => {
-    const location = useLocation();
-    const student = location.state;
-
+const StudentAdd = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const navigate = useNavigate();
+
+    const token = sessionStorage.getItem("jwtToken");
 
     const formik = useFormik({
         initialValues: {
-            id: student.id,
-            firstName: student.firstName ? student.firstName : "",
-            lastName: student.lastName ? student.lastName : "",
-            gender: student.gender ? student.gender : "",
-            password: student.password ? student.password : "",
-            starsId: student.starsId ? student.starsId : "",
-            createdAt: student.createdAt ? student.createdAt : "",
-            permission: student.permission ? student.permission : "",
-            degree: student.degree ? student.degree : "",
-            departmentName: student.departmentName ? student.departmentName : "",
-            engLetterGrade101: student.engLetterGrade101 ? student.engLetterGrade101 : "",
-            engLetterGrade102: student.engLetterGrade102 ? student.engLetterGrade102 : "",
-            erasmusPoint: student.erasmusPoint ? student.erasmusPoint : "",
-            gpa: student.gpa ? student.gpa : "",
-            contactInformation: student.contactInformation ? 
+            id: "213",
+            firstName: "",
+            lastName: "",
+            gender: "",
+            password: "",
+            starsId: "",
+            permission: "",
+            degree: "",
+            departmentName: "",
+            engLetterGrade101: "",
+            engLetterGrade102: "",
+            erasmusPoint: "",
+            semester: "",
+            gpa: "",
+            contactInformation:  
             {
-                emailUniversity: student.contactInformation.emailUniversity ? student.contactInformation.emailUniversity : "",
-                emailPersonal: student.contactInformation.emailPersonal ? student.contactInformation.emailPersonal : "",
-                phoneNumberWork: student.contactInformation.phoneNumberWork ? student.contactInformation.phoneNumberWork : "",
-                phoneNumberPersonal: student.contactInformation.phoneNumberPersonal ? student.contactInformation.phoneNumberPersonal : "",
-                address: student.contactInformation.address ? student.contactInformation.address : ""
-            } : ""
+                emailUniversity: "",
+                emailPersonal: "",
+                phoneNumberWork: "",
+                phoneNumberPersonal: "",
+                address: 
+                {
+                  fullAdress: "",
+                  postalCode: ""
+                }
+            }
         },
         validationSchema: Yup.object({
             id: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("ID is required"),
             firstName: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("First name is required"),
             lastName: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("Last name is required"),
             gender: Yup
                 .string()
-                .max(6),
+                .max(6)
+                .required("Gender is required"),
             password: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("Password is required"),
             starsId: Yup
                 .string()
-                .max(255),
-            createdAt: Yup
-                .string()
-                .max(255),
+                .max(255)
+                .required("Stars ID is required"),
             permission: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("Permission is required"),
             degree: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("Degree is required"),
             departmentName: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("Department name is required"),
             engLetterGrade101: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("Eng101 letter grade is required"),
             engLetterGrade102: Yup
                 .string()
-                .max(255),
-            erasmusPoint: Yup
+                .max(255)
+                .required("Eng102 letter grade is required"),
+            semester: Yup
                 .string()
-                .max(255),
+                .max(255)
+                .required("Semester is required"),
             gpa: Yup
                 .number()
-                .max(255),
+                .max(255)
+                .required("GPA is required"),
+            childOfVeteranOrMartyr: Yup
+                .string()
+                .max(),
             contactInformation: Yup.object().shape({
                 emailUniversity: Yup
                     .string()
-                    .max(255),
+                    .max(255)
+                    .required(""),
                 emailPersonal: Yup
                     .string()
                     .max(255),
@@ -104,14 +123,35 @@ const StudentEdits = () => {
                 phoneNumberPersonal: Yup
                     .string()
                     .max(11),
-                address: Yup
-                    .string()
-                    .max(255),
+                address: Yup.object().shape({
+                  fullAdress: Yup
+                      .string()
+                      .max(255),
+                  postalCode: Yup
+                      .string()
+                      .max(255)
+                })
+                    
             })
                 
         }),
-        onSubmit: (values) => {
-            console.log(JSON.stringify(values, null, 2))
+        onSubmit: async (values) => {
+            await axios.post("http://92.205.25.135:4/admin/add-outgoing-student", values, {
+              headers: {
+                "Authorization": `Bearer ${token}`
+              }
+            })
+              .then((response) => {
+                if (response && response.data) {
+                  console.log(response)
+                  //navigate("/studentListAdmin")
+                }
+              })
+              .catch((err) => {
+                if (err && err.response) {
+                  console.log("Error: ", err)
+                }
+              })
         }
     });
 
@@ -150,6 +190,7 @@ const StudentEdits = () => {
                 </Box>
                 <TextField
                     error={Boolean(formik.touched.firstName && formik.errors.firstName)}
+                    helperText={formik.touched.firstName && formik.errors.firstName}
                     fullWidth
                     label="First Name"
                     margin="normal"
@@ -162,6 +203,7 @@ const StudentEdits = () => {
                 />
                 <TextField
                     error={Boolean(formik.touched.lastName && formik.errors.lastName)}
+                    helperText={formik.touched.lastName && formik.errors.lastName}
                     fullWidth
                     label="Last Name"
                     margin="normal"
@@ -174,6 +216,7 @@ const StudentEdits = () => {
                 />
                 <TextField
                     error={Boolean(formik.touched.gender && formik.errors.gender)}
+                    helperText={formik.touched.gender && formik.errors.gender}
                     fullWidth
                     label="Gender"
                     margin="normal"
@@ -263,15 +306,15 @@ const StudentEdits = () => {
                   variant="outlined"
                 />
                 <TextField
-                    error={Boolean(formik.touched.erasmusPoint && formik.errors.erasmusPoint)}
-                    fullWidth
-                    label="StudentErasmusPage Point"
-                    margin="normal"
-                    name="erasmusPoint"
-                    onBlur={formik.handleBlur}
-                    onChange={formik.handleChange}
-                    value={formik.values.erasmusPoint}
-                    variant="outlined"
+                  error={Boolean(formik.touched.semester && formik.errors.semester)}
+                  fullWidth
+                  label="Semester"
+                  margin="normal"
+                  name="semester"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.semester}
+                  variant="outlined"
                 />
                 <TextField
                   error={Boolean(formik.touched.permission && formik.errors.permission)}
@@ -282,6 +325,17 @@ const StudentEdits = () => {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.permission}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(formik.touched.childOfVeteranOrMartyr && formik.errors.childOfVeteranOrMartyr)}
+                  fullWidth
+                  label="Veteran or Martyr Child"
+                  margin="normal"
+                  name="childOfVeteranOrMartyr"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.childOfVeteranOrMartyr}
                   variant="outlined"
                 />
                 <TextField
@@ -333,10 +387,21 @@ const StudentEdits = () => {
                   fullWidth
                   label="Address"
                   margin="normal"
-                  name="contactInformation.address"
+                  name="contactInformation.fullAddress"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  value={formik.values.contactInformation.address}
+                  value={formik.values.contactInformation.fullAddress}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(formik.touched.contactInformation && formik.errors.contactInformation)}
+                  fullWidth
+                  label="Postal Code"
+                  margin="normal"
+                  name="contactInformation.postalCode"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.contactInformation.postalCode}
                   variant="outlined"
                 />
 
@@ -364,4 +429,4 @@ const StudentEdits = () => {
     );
 }
 
-export default StudentEdits
+export default StudentAdd

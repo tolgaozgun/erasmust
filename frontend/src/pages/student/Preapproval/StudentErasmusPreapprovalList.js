@@ -6,7 +6,7 @@ import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
 import StudentPreapprovalList from "./StudentErasmusPreapprovalList";
-import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
+import PreapprovalsList from "../../../components/componentsStudent/lists/preapprovals-list";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -26,7 +26,7 @@ const StudentErasmusPreapprovalList = () => {
     const token = sessionStorage.getItem("jwtToken");
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-preapproval-erasmus", {
+        axios.get("http://92.205.25.135:4/erasmus-application/view-application", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -81,7 +81,7 @@ const StudentErasmusPreapprovalList = () => {
                                 xl={15}
                                 xs={12}
                             >
-                                <PreapprovalsList preapprovals={preapprovalList}/>
+                                {/*<PreapprovalsList preapprovals={preapprovalList}/>*/}
                             </Grid>
                         </Grid>
                     </Container>
