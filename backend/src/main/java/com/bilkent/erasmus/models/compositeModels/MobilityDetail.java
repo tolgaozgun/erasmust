@@ -1,26 +1,29 @@
 package com.bilkent.erasmus.models.compositeModels;
 
 import com.bilkent.erasmus.enums.MobilityType;
-import com.bilkent.erasmus.models.courseModels.CourseBilkent;
-import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.MobilityCourseForm;
+import lombok.Data;
 
-
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
+@Data
+@Entity
 public class MobilityDetail {
 
-    @Enumerated
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private Date startDate;
+
+    private Date endDate;
+
+    @Enumerated(EnumType.STRING)
     private MobilityType mobilityType;
 
-    @ManyToOne
-    private List<CourseBilkent> courseBilkent;
+    @OneToMany
+    private List<MobilityCourseForm> mobilityCourseForms;
 
-    @ManyToOne
-    private List<CourseHost> courseHost;
-
-    public MobilityType getMobilityType() {
-        return mobilityType;
-    }
 }
