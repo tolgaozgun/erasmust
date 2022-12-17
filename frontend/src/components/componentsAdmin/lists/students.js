@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router';
@@ -12,7 +11,8 @@ import {
     TableHead,
     TableRow,
     TableSortLabel,
-    Tooltip
+    Tooltip,
+    Button
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -36,15 +36,16 @@ export const Students = (props) => {
         setSelected(trueArray)
     }
 
+    const goStudentAdd = () => {
+        navigate("/studentAdd")
+    }
+
     console.log(students)
     return (
         <Card {...props}>
             <CardHeader title="Student List"/>
             <PerfectScrollbar>
-                <Box sx={{
-                    minWidth: 800,
-                    height: 400
-                }}>
+                <Box >
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -150,6 +151,22 @@ export const Students = (props) => {
                 </Table>
             </Box>
         </PerfectScrollbar>
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                p: 2,
+            }}
+        >
+            <Button
+                color="primary"
+                size="small"
+                variant="contained"
+                onClick={goStudentAdd}
+            >
+                Add New Student
+            </Button>
+        </Box>
         </Card>
     )
 };
