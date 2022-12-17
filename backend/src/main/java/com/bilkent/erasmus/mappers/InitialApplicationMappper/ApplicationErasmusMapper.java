@@ -9,6 +9,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ApplicationErasmusMapper {
 
+    @Mapping(target = "studentId", source = "student.id")
     @Named("toApplicationErasmusDTO")
     ApplicationErasmusDTO toApplicationErasmusDTO(ApplicationErasmus applicationErasmus);
 
