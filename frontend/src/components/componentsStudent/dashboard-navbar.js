@@ -10,7 +10,6 @@ import { Users as UsersIcon } from '../../icons/users';
 import { AccountPopover } from './account-popover';
 import React from 'react';
 import DashboardNavbarComp from "./dashboard-navbar-comp";
-import {routeItems} from "../../routeConfig.tsx"
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
@@ -22,18 +21,6 @@ export const DashboardNavbar = (props) => {
     const {onSidebarOpen, ...other} = props;
     const settingsRef = useRef(null);
     const [openAccountPopover, setOpenAccountPopover] = useState(false);
-    const [items, setItems] = useState([])
-
-    useEffect(() => {
-        let retrieved = routeItems.map((item, index) => (
-            {
-                key: index,
-                label: item.title,
-                path: item.path
-            }
-        ))
-        setItems(retrieved)
-    }, [])
 
     return (
         <>
@@ -70,7 +57,7 @@ export const DashboardNavbar = (props) => {
                 <Autocomplete
                     disablePortal
                     id="search-bar"
-                    options={items}
+                    options={[]}
                     sx={{width: 300}}
                     renderInput={(params) => <TextField {...params} label="Search"/>}
                 />

@@ -5,8 +5,10 @@ import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-si
 import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import StudentPreapprovalList from "./StudentErasmusPreapprovalList";
-import PreapprovalsList from "../../../components/componentsStudent/lists/preapprovals-list";
+import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
+import {PreapprovalsList} from "../../../components/componentsAdmin/lists/preapprovals-list";
+import StudentCreateErasmusApplication from "../../student/ErasmusApplication/StudentCreateErasmusApplication";
+import {ErasmusApplicationList} from "../../../components/componentsAdmin/lists/ErasmusApplicationList";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -18,15 +20,15 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const StudentErasmusPreapprovalList = () => {
+const AdminCourseReviewFormList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const [preapprovalList, setPreapprovalList] = useState([]);
+    const [applicationList, setApplicationList] = useState([]);
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/pre-approval/erasmus/all-preapproval-student", {
+        axios.get("http://92.205.25.135:4/admin/all-applications", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -38,7 +40,7 @@ const StudentErasmusPreapprovalList = () => {
                         console.log("Item fetched!")
                         var item = res.data[i]
 
-                        setPreapprovalList(oldArray => [...oldArray, item])
+                        setApplicationList(oldArray => [...oldArray, item])
 
                         console.log(res.data);
                         console.log("Item placed on array!");
@@ -55,7 +57,7 @@ const StudentErasmusPreapprovalList = () => {
 
     return (
         <>  <title>
-            Preapprovals
+            Erasmus Application List
         </title>
             <DashboardLayoutRoot>
                 <Box
@@ -81,7 +83,7 @@ const StudentErasmusPreapprovalList = () => {
                                 xl={15}
                                 xs={12}
                             >
-                                <PreapprovalsList preapprovals={preapprovalList}/>
+                                <ErasmusApplicationList applications={applicationList}/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -95,4 +97,4 @@ const StudentErasmusPreapprovalList = () => {
     );
 }
 
-export default StudentErasmusPreapprovalList
+export default AdminCourseReviewFormList

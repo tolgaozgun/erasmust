@@ -1,12 +1,6 @@
 import {BrowserRouter, Outlet, Navigate, Routes, Route} from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
 
-import {routeItems} from "./routeConfig.tsx";
-import {routeItemsStudent} from "./routeConfigStudent.tsx"
-import {routeItemsAdmin} from "./routeConfigAdmin.tsx"
-import {routeItemsDefault} from "./routeConfigDefault.tsx"
-
-
 //Student Pages
 import RegisterStudent from "./pages/student/register";
 import LoginStudent from "./pages/student/login";
@@ -69,23 +63,23 @@ import StudentCreateErasmusApplication from "./pages/student/ErasmusApplication/
 import StudentErasmusPage from "./pages/student/StudentErasmusPage";
 
 const App = () => {
-    const [routes, setRoutes] = useState(routeItemsDefault)
-
-    let role = sessionStorage.getItem("role")
-    useEffect(() => {
-        switch (role) {
-            case "ADMIN":
-                setRoutes(routeItemsAdmin);
-                break;
-            case "STUDENT":
-                setRoutes(routeItemsStudent);
-                break;
-            case null:
-            default:
-                setRoutes(routeItemsDefault);
-                break;
-        }
-    }, [role])
+    // const [routes, setRoutes] = useState(routeItemsDefault)
+    //
+    // let role = sessionStorage.getItem("role")
+    // useEffect(() => {
+    //     switch (role) {
+    //         case "ADMIN":
+    //             setRoutes(routeItemsAdmin);
+    //             break;
+    //         case "STUDENT":
+    //             setRoutes(routeItemsStudent);
+    //             break;
+    //         case null:
+    //         default:
+    //             setRoutes(routeItemsDefault);
+    //             break;
+    //     }
+    // }, [role])
 
 
     return (
@@ -263,7 +257,7 @@ const App = () => {
                         </Route>
                         <Route path="learningagreement/*" element={<Outlet/>}>
                             <Route path="list" element={<Error/>}/>
-                            <Route path="create" element={<Error/>}/>
+                            <Route path="create" element={<BeforeMobility/>}/>
                             <Route path="view" element={<Error/>}/>
                             <Route path="edit" element={<Error/>}/>
                         </Route>
