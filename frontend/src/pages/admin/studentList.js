@@ -50,59 +50,51 @@ const StudentList = () => {
                 }
             })
     }, []);
-  
+
     if (flag) {
-        console.log("Sikoş", studentList)
         return (
-            <>  <title>
+            <>
+                <title>
                     Students
                 </title>
                 <DashboardLayoutRoot>
                     <Box
                         component="main"
                         sx={{
-                            alignItems: "center",
                             display: 'flex',
+                            flex: '1 1 auto',
+                            flexDirection: 'column',
                             width: '100%',
                             flexGrow: 1,
-                            minHeight: "100%",
                             py: 8
                         }}
                     >
-                        <Container
-                            maxWidth="lg"
-                        >
+                        <Container maxWidth={false}>
                             <Grid
                                 container
-                                justifyContent="center"
                                 spacing={3}
-                                sx={{
-                                    ml: 5
-                                }}
                             >
                                 <Grid
                                     item
-                                    lg={10}
+                                    lg={12}
                                     md={12}
                                     xl={15}
                                     xs={12}
-                                    sx={{
-                                        display: "flex"
-                                    }}
                                 >
-                                    {<Students students = {studentList}/> }
-                                </Grid>
+                                    <Students students={studentList}/> </Grid>
                             </Grid>
                         </Container>
                     </Box>
                 </DashboardLayoutRoot>
-                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
                 <DashboardSidebar
                     onClose={() => setSidebarOpen(false)}
                     open={isSidebarOpen}/>
             </>
-        );
+        )
     }
+
+
     return (
         <>  <title>
                 Students
@@ -111,37 +103,27 @@ const StudentList = () => {
                 <Box
                     component="main"
                     sx={{
-                        alignItems: "center",
                         display: 'flex',
+                        flex: '1 1 auto',
+                        flexDirection: 'column',
                         width: '100%',
                         flexGrow: 1,
-                        minHeight: "100%",
                         py: 8
                     }}
                 >
-                    <Container
-                        maxWidth="lg"
-                    >
+                    <Container maxWidth={false}>
                         <Grid
                             container
-                            justifyContent="center"
                             spacing={3}
-                            sx={{
-                                ml: 5
-                            }}
                         >
                             <Grid
                                 item
-                                lg={10}
+                                lg={12}
                                 md={12}
                                 xl={15}
                                 xs={12}
-                                sx={{
-                                    display: "flex"
-                                }}
                             >
-                                {<Students students = {studentList}/> }
-                            </Grid>
+                                <Students students={studentList}/> </Grid>
                         </Grid>
                     </Container>
                 </Box>
