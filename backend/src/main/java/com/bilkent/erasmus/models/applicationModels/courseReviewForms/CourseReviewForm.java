@@ -33,10 +33,11 @@ public class CourseReviewForm {
 
     private String description;
 
-    private String syllabusLink;
+    private String coordinatorReply;
 
     private String academicYear;
 
     @Enumerated(EnumType.STRING)
     private SemesterOfferings semester;
+
 }
