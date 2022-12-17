@@ -114,16 +114,16 @@ export const PreapprovalsList = (props) => (
                             <TableRow hover key={preapproval.id}>
                                 <TableCell>{preapproval.id}</TableCell>
                                 <TableCell>
-                                    {preapproval.student.name}
+                                    {preapproval.student.firstName} {preapproval.student.lastName}
                                 </TableCell>
                                 <TableCell>
-                                    {format(
-                                        preapproval.createdAt,
-                                        "dd/MM/yyyy"
-                                    )}
+                                    {/*{format(*/}
+                                    {/*    preapproval.createdAt,*/}
+                                    {/*    "dd/MM/yyyy"*/}
+                                    {/*)}*/}
                                 </TableCell>
                                 <TableCell>
-                                    {preapproval.assignee.name}
+                                    {preapproval.exchangeCoordinator.firstName} {preapproval.exchangeCoordinator.lastName}
                                 </TableCell>
                                 <TableCell>
                                     <SeverityPill

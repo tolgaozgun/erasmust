@@ -17,65 +17,6 @@ import {
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { SeverityPill } from "../severity-pill";
 
-const preapprovals = [
-    {
-        id: 1,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
-        student: {
-            id: 4,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Can Alkan",
-        },
-        studentId: 4,
-        academicYear: "2022-2023",
-        semester: "FALL",
-        createdAt: 1555016400000,
-        status: "approved",
-    },
-    {
-        id: 2,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
-        student: {
-            id: 4,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Can Alkan",
-        },
-        studentId: 4,
-        academicYear: "2022-2023",
-        semester: "FALL",
-        createdAt: 1555016400000,
-        status: "success",
-    },
-    {
-        id: 3,
-        courseHostNames: ["MATH111", "MATH112"],
-        courseHostCredits: [1, 5],
-        courseBilkentIds: [1, 4],
-        student: {
-            id: 4,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Ayşegül Dündar",
-        },
-        studentId: 4,
-        academicYear: "2022-2023",
-        semester: "FALL",
-        createdAt: 1555016400000,
-        status: "approved",
-    },
-];
 
 export const PreapprovalsList = (props) => (
     <Card {...props}>

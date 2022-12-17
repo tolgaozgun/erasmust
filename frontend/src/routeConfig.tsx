@@ -33,6 +33,7 @@ import AccountAdmin from "./pages/admin/account";
 
 //Lists
 import StudentList from "./pages/admin/studentList";
+import AdminErasmusPreapprovalList from "./pages/admin/erasmus/AdminErasmusPreapprovalList";
 
 //Edits
 import StudentEdits from "./pages/admin/edits/studentEdit";
@@ -265,6 +266,12 @@ export const routeItems: Array<IRoute> = [
         path: '/accountAdmin',
         title: "Admin Account",
         content: <AccountAdmin/>,
+        exact: true,
+    },
+    {
+        path: '/adminErasmusPreapprovalList',
+        title: "Admin Erasmus Preapproval List",
+        content: <AdminErasmusPreapprovalList/>,
         exact: true,
     },
     {
