@@ -122,6 +122,7 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setAddress(bilkentAddress);
         bilkentInformation.setErasmusCode("ANKARA07");
         // contact person getting
+        //findPreApprovalById(student).getBilkentCoordinator().getName()
         bilkentInformation.setContactPersonName("");
         bilkentInformation.setContactPersonEmail("");
         bilkentInformation.setContactPersonPhoneNumber("");
