@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface OutGoingStudentRepository
         extends JpaRepository<OutGoingStudent, Integer> {
     OutGoingStudent findByStarsId(String str);
+
 }

@@ -1,7 +1,10 @@
 package com.bilkent.erasmus.models.courseModels;
 
 import com.bilkent.erasmus.models.universityModels.Department;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,6 +12,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "courses")
 @Inheritance(strategy = InheritanceType.JOINED)
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Course {
 
     @Id
