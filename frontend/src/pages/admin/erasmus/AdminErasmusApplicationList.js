@@ -7,7 +7,7 @@ import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
 import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
 import {PreapprovalsList} from "../../../components/componentsAdmin/lists/preapprovals-list";
-import ErasmusApplication from "../../student/ErasmusApplication/erasmusApplication";
+import StudentCreateErasmusApplication from "../../student/ErasmusApplication/StudentCreateErasmusApplication";
 import {ErasmusApplicationList} from "../../../components/componentsAdmin/lists/ErasmusApplicationList";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
