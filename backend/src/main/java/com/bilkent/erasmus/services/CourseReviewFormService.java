@@ -1,3 +1,4 @@
+/*
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.*;
@@ -72,6 +73,7 @@ public class CourseReviewFormService {
         form.setFile(data);
         return courseReviewFormRepository.save(form);
     }
+
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<CourseReviewForm> list(ReviewFormListDTO filter) {
         log.info("Process filtering for course review form is running.");
@@ -114,7 +116,6 @@ public class CourseReviewFormService {
 
 
 
-/*
     public CourseReviewFormErasmusDTO sendReviewFormErasmus(CourseReviewFormErasmusDTO courseReviewFormDTO) {
         CourseReviewFormErasmus courseReviewForm = courseReviewFormMapper.toEntity(courseReviewFormDTO);
         courseReviewForm.setStatus(CourseApprovalStatus.ON_PROCESS);
@@ -146,7 +147,12 @@ public class CourseReviewFormService {
 //        courseReviewForm.setFormStatus(CourseApprovalStatus.ON_PROCESS);
 //        return courseReviewFormMapper.toCourseReviewFormExchangeDTO(courseReviewFormRepository.save(courseReviewForm));
 //    }
-*/
+
+
     //todo form.setStatus kullanmak doğru mu????
 
 }
+*/
+/*
+
+ */
