@@ -19,7 +19,7 @@ import {SeverityPill} from "../severity-pill";
 
 export const ErasmusApplicationList = (props) => (
     <Card {...props}>
-        <CardHeader title="Ongoing Preapprovals"/>
+        <CardHeader title="Ongoing StudentPreapprovalList"/>
         <PerfectScrollbar>
             <Box
                 sx={{

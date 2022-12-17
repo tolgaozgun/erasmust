@@ -8,7 +8,7 @@ import DashboardStudent from "./pages/student/dashboard";
 import AccountStudent from './pages/student/account';
 import SettingsStudent from './pages/student/settings';
 import ErasmusStudent from './pages/student/erasmus';
-import Preapprovals from './pages/student/Preapproval/Preapprovals';
+import StudentPreapprovalList from './pages/student/Preapproval/StudentErasmusPreapprovalList';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import Preapproval from "./pages/student/Preapproval/PreapprovalForm"
@@ -24,7 +24,7 @@ import CourseReviewForm from "./pages/student/CourseReviewForm/courseReviewForm"
 import StaffCourseReviewForm from "./pages/student/StaffCourseReviewForm"
 import StaffPreapprovalForm from "./pages/student/Preapproval/StaffPreapprovalForm"
 import EditPreapproval from "./pages/student/Preapproval/EditPreapproval"
-import CourseReviewForms from "./pages/student/CourseReviewForm/CourseReviewForms";
+import CourseReviewForms from "./pages/student/CourseReviewForm/StudentErasmusCourseReviewForms";
 import ViewCourseReviewForm from "./pages/student/CourseReviewForm/ViewCourseReviewForm";
 
 //Admin Pages
@@ -134,7 +134,7 @@ export const routeItems: Array<IRoute> = [
     {
         path: '/preapprovals',
         title: "Preapproval List",
-        content: <Preapprovals/>,
+        content: <StudentPreapprovalList/>,
         exact: true,
     },
     {

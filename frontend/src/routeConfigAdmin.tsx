@@ -1,12 +1,12 @@
 import {IRoute} from "./IRoute";
 import * as React from "react";
-import Preapprovals from './pages/student/Preapproval/Preapprovals';
+import StudentPreapprovalList from './pages/student/Preapproval/StudentErasmusPreapprovalList';
 import Applications from './pages/student/Applications';
 import Students from './pages/student/Students';
 import ViewPreapproval from "./pages/student/Preapproval/ViewPreapproval"
 import ViewErasmusApplication from "./pages/student/ErasmusApplication/ViewErasmusApplication"
 import EditPreapproval from "./pages/student/Preapproval/EditPreapproval"
-import CourseReviewForms from "./pages/student/CourseReviewForm/CourseReviewForms";
+import CourseReviewForms from "./pages/student/CourseReviewForm/StudentErasmusCourseReviewForms";
 import DashboardAdmin from "./pages/admin/dashboard";
 import AccountAdmin from "./pages/admin/account";
 import StudentList from "./pages/admin/studentList";
@@ -78,7 +78,7 @@ export const routeItemsAdmin: Array<IRoute> = [
     {
         path: '/preapprovals',
         title: "Preapproval List",
-        content: <Preapprovals/>,
+        content: <StudentPreapprovalList/>,
         exact: true,
     },
 

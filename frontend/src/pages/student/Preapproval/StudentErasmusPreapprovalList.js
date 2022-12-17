@@ -5,7 +5,7 @@ import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-si
 import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
+import StudentPreapprovalList from "./StudentErasmusPreapprovalList";
 import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
@@ -18,7 +18,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const AdminExchangePreapprovalList = () => {
+const StudentErasmusPreapprovalList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [preapprovalList, setPreapprovalList] = useState([]);
     const [flag, setFlag] = useState(false);
@@ -26,7 +26,7 @@ const AdminExchangePreapprovalList = () => {
     const token = sessionStorage.getItem("jwtToken");
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-students", {
+        axios.get("http://92.205.25.135:4/admin/all-preapproval-erasmus", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -53,95 +53,35 @@ const AdminExchangePreapprovalList = () => {
             })
     }, []);
 
-    if (flag) {
-        return (
-            <>  <title>
-                Students
-            </title>
-                <DashboardLayoutRoot>
-                    <Box
-                        component="main"
-                        sx={{
-                            alignItems: "center",
-                            display: 'flex',
-                            width: '100%',
-                            flexGrow: 1,
-                            minHeight: "100%",
-                            py: 8
-                        }}
-                    >
-                        <Container
-                            maxWidth="lg"
-                        >
-                            <Grid
-                                container
-                                justifyContent="center"
-                                spacing={3}
-                                sx={{
-                                    ml: 5
-                                }}
-                            >
-                                <Grid
-                                    item
-                                    lg={10}
-                                    md={12}
-                                    xl={15}
-                                    xs={12}
-                                    sx={{
-                                        display: "flex"
-                                    }}
-                                >
-                                    {<PreapprovalsList preapprovals={preapprovalList}/>}
-                                </Grid>
-                            </Grid>
-                        </Container>
-                    </Box>
-                </DashboardLayoutRoot>
-                <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
-                <DashboardSidebar
-                    onClose={() => setSidebarOpen(false)}
-                    open={isSidebarOpen}/>
-            </>
-        );
-    }
     return (
         <>  <title>
-            Students
+            Preapprovals
         </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
                     sx={{
-                        alignItems: "center",
                         display: 'flex',
+                        flex: '1 1 auto',
+                        flexDirection: 'column',
                         width: '100%',
                         flexGrow: 1,
-                        minHeight: "100%",
                         py: 8
                     }}
                 >
-                    <Container
-                        maxWidth="lg"
-                    >
+                    <Container maxWidth={false}>
                         <Grid
                             container
-                            justifyContent="center"
                             spacing={3}
-                            sx={{
-                                ml: 5
-                            }}
                         >
                             <Grid
                                 item
-                                lg={10}
+                                lg={12}
                                 md={12}
                                 xl={15}
                                 xs={12}
-                                sx={{
-                                    display: "flex"
-                                }}
                             >
-                                {<Students students={preapprovalList}/>}
+                                <PreapprovalsList preapprovals={preapprovalList}/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -155,4 +95,4 @@ const AdminExchangePreapprovalList = () => {
     );
 }
 
-export default StudentList
+export default StudentErasmusPreapprovalList

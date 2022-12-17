@@ -5,7 +5,7 @@ import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-si
 import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import Preapprovals from "../../student/Preapproval/Preapprovals";
+import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
 import {PreapprovalsList} from "../../../components/componentsAdmin/dashboard/preapprovals-list";
 import ErasmusApplication from "../../student/ErasmusApplication/erasmusApplication";
 import {ErasmusApplicationList} from "../../../components/componentsAdmin/lists/ErasmusApplicationList";

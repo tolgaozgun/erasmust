@@ -16,7 +16,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const Students = () => {
+const StudentErasmusCourseReviewForms = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     return (
@@ -61,4 +61,4 @@ const Students = () => {
     );
 }
 
-export default Students
+export default StudentErasmusCourseReviewForms
