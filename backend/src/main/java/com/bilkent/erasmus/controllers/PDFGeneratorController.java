@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/pdf")
@@ -29,9 +31,9 @@ public class PDFGeneratorController {
     ServletContext servletContext;
 
     @GetMapping("/a")
-    public ResponseEntity<?> generate(HttpServletResponse response, HttpServletRequest request) throws IOException {
+    public ResponseEntity<?> generate(@RequestBody Map<String, String> json, HttpServletResponse response, HttpServletRequest request) throws IOException {
         response.setContentType("application/pdf");
-        ByteArrayOutputStream target = pdfGeneratorService.generate(response,request, servletContext);
+        ByteArrayOutputStream target = pdfGeneratorService.generate(response,request, servletContext, json.get("student"));
 
         byte[] bytes = target.toByteArray();
         return ResponseEntity.ok()
