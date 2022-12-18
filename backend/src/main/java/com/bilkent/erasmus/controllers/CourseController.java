@@ -2,6 +2,7 @@ package com.bilkent.erasmus.controllers;
 
 import com.bilkent.erasmus.dtos.CourseDTO;
 import com.bilkent.erasmus.services.CourseBilkentService;
+import com.bilkent.erasmus.services.CourseHostService;
 import com.bilkent.erasmus.services.CourseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +16,15 @@ public class CourseController {
 
     private final CourseService courseService;
     private final CourseBilkentService courseBilkentService;
+    private final CourseHostService courseHostService;
 
 
-    public CourseController(CourseService courseService, CourseBilkentService courseBilkentService) {
+    public CourseController(CourseService courseService
+            , CourseBilkentService courseBilkentService
+            , CourseHostService courseHostService) {
         this.courseService = courseService;
         this.courseBilkentService = courseBilkentService;
+        this.courseHostService = courseHostService;
     }
 
     @PostMapping("/add")
@@ -39,6 +44,6 @@ public class CourseController {
 
     @GetMapping("/previously-approved")
     public ResponseEntity<?> getPreviouslyApproved() {
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(courseHostService.getAllPreviouslyApproved(), HttpStatus.OK);
     }
 }
