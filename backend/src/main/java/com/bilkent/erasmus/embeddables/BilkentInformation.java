@@ -29,6 +29,8 @@ public class BilkentInformation {
 
     private DepartmentName departmentBilkent;
 
+    private String countryCodeBilkent;
+
     @ManyToOne
     private Faculty facultyBilkent;
 

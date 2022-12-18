@@ -147,15 +147,15 @@ export const LearningStudentInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(props.touched.subjectAreaCode && props.errors.subjectAreaCode)}
+                                error={Boolean(props.errors && props.errors.subjectArea)}
                                 fullWidth
-                                helperText={props.touched.subjectAreaCode && props.errors.subjectAreaCode}
-                                label="Subject Area, Code"
-                                name="subjectAreaCode"
+                                helperText={props.touched && props.touched.subjectArea}
+                                label="Subject Area"
+                                name="subjectArea"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 required
-                                value={props.values.subjectAreaCode}
+                                value={props.values.subjectArea}
                                 variant="outlined"
                             />
                         </Grid>

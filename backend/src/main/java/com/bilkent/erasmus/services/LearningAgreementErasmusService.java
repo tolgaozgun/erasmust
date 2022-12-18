@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
+import com.bilkent.erasmus.dtos.LearningAgreementInitialFieldsDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
@@ -13,18 +14,19 @@ import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.models.universityModels.Faculty;
-import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.PartnerUniversityErasmusRepository;
 import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.PreApprovalFormRepositoryNew;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusDetailRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusRepository;
-import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
+import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +46,7 @@ public class LearningAgreementErasmusService {
 
     private final CourseBilkentService courseBilkentService;
 
-    private final OutGoingStudentErasmusRepository outGoingStudentErasmusRepository;
+    private final OutGoingStudentRepository outGoingStudentRepository;
 
     private final LearningAgreementMapper agreementMapper;
 
@@ -54,14 +56,15 @@ public class LearningAgreementErasmusService {
 
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
+                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService,
+                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
         this.erasmusDetailRepository = erasmusDetailRepository;
         this.courseHostService = courseHostService;
         this.courseBilkentService = courseBilkentService;
-        this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
+        this.outGoingStudentRepository = outGoingStudentRepository;
         this.agreementMapper = agreementMapper;
         this.preApprovalFormErasmusRepository = preApprovalFormErasmusRepository;
         this.mobilityCourseFormService = mobilityCourseFormService;
@@ -81,12 +84,55 @@ public class LearningAgreementErasmusService {
         return true;
     }
 
+    public LearningAgreementInitialFieldsDTO getInitialFieldValues(){
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
+
+
+        BilkentInformation bilkentInformation = new BilkentInformation();
+        Faculty bilkentFaculty = new Faculty();
+
+        bilkentFaculty.setId(0);
+        bilkentFaculty.setName(FacultyName.ENGINEERING);
+
+        bilkentInformation.setNameBilkent("Bilkent University");
+        bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
+        bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
+
+        try{
+            if(findPreApprovalById(student).getExchangeCoordinator() != null){
+                bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
+                bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
+                bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
+                bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
+                bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+            }
+        }catch(NullPointerException ex){
+            // exchange coordinator will be empty
+        }
+        bilkentInformation.setFacultyBilkent(bilkentFaculty);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
+
+
+        List<MobilityCourseForm> courseList = findCoursesByStudent(student);
+
+
+        LearningAgreementInitialFieldsDTO response = LearningAgreementInitialFieldsDTO.builder()
+                .outGoingStudent(student)
+                .bilkentInformation(bilkentInformation)
+                .mobilityCourseForms(courseList).build();
+        return response;
+
+    }
+
     public LearningAgreementErasmus createEmptyLearningAgreement(String subjectArea, String studyCycle, LanguageLevel languageLevel, String language,
-                                                                 String hostName, String hostFullAddress, String hostErasmusCode,
+                                                                 String hostName, String hostFullAddress, String hostErasmusCode, String hostCountryCode,
                                                                  String hostContactFirstName, String hostContactLastName, String hostContactMail, String hostContactNumber, String hostContactFunction,
-                                                                 int hostFacultyId) {
+                                                                 int hostFacultyId, DepartmentName departmentHost) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
-        OutGoingStudentErasmus student = form.getStudent();
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
         BilkentInformation bilkentInformation = new BilkentInformation();
         ReceivingInstitutionInformation hostInformation = new ReceivingInstitutionInformation();
 
@@ -95,7 +141,7 @@ public class LearningAgreementErasmusService {
         MobilityDetail afterMobility = new MobilityDetail();
 
         beforeMobility.setMobilityType(MobilityType.BEFORE);
-        beforeMobility.setStartDate(new Date()); // an idea
+        beforeMobility.setStartDate(new Date());
         beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
 
         duringMobility.setMobilityType(MobilityType.DURING);
@@ -117,6 +163,7 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setNameBilkent("Bilkent University");
         bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
         bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
 
         bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
         bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
@@ -124,7 +171,7 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
         bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
         bilkentInformation.setFacultyBilkent(bilkentFaculty);
-        bilkentInformation.setDepartmentBilkent(DepartmentName.CS);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
 
         hostInformation.setNameHost(hostName);
         hostInformation.setAddressHost(hostFullAddress);
@@ -135,7 +182,10 @@ public class LearningAgreementErasmusService {
         hostInformation.setContactPersonPhoneNumberHost(hostContactNumber);
         hostInformation.setContactPersonFunctionHost(hostContactFunction);
         hostInformation.setFacultyHost(hostFaculty);
+        hostInformation.setDepartmentHost(departmentHost);
+        hostInformation.setCountryCodeHost(hostCountryCode);
 
+        form.setStudent(student);
         form.setStatus(Status.IN_PROCESS);
         form.setMobilityDetailList(mobilityDetailList);
         form.setSubjectArea(subjectArea);
@@ -152,10 +202,11 @@ public class LearningAgreementErasmusService {
 
     public LearningAgreementErasmus saveForm(LearningAgreementDTO form) throws Exception {
         LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
-                form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
+                form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getCountryCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
                 form.getReceivingInstitutionInformation().getContactPersonEmailHost(),form.getReceivingInstitutionInformation().getContactPersonPhoneNumberHost(), form.getReceivingInstitutionInformation().getContactPersonFunctionHost(),
-                form.getReceivingInstitutionInformation().getFacultyHost().getId());
-        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(form.getStudentId());
+                form.getReceivingInstitutionInformation().getFacultyHost().getId(),form.getReceivingInstitutionInformation().getDepartmentHost() );
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(form.getStudentId()).orElseThrow(() -> new EntityNotFoundException("No student found"));
+
         erasmusForm.setStudent(student);
 
         return erasmusForm;
@@ -192,9 +243,8 @@ public class LearningAgreementErasmusService {
                 break;
         }
         return agreements;
-    }*/
 
-/*    private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
+       private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
         List<LearningAgreementErasmus> agreementList = null;
         agreementList = new ArrayList<LearningAgreementErasmus>(erasmusRepository.findByMobilityDetail(type));
         agreementList.addAll(erasmusRepository.findByMobilityDetail(type));
@@ -343,7 +393,7 @@ public class LearningAgreementErasmusService {
         return courseHostList;
     }
 
-    public PreApprovalFormNew findPreApprovalById(OutGoingStudentErasmus student){
+    public PreApprovalFormNew findPreApprovalById(OutGoingStudent student){
         PreApprovalFormNew preApprovalForm = preApprovalFormErasmusRepository.findByStudent(student);
         if (preApprovalForm != null)
             return preApprovalForm;
@@ -351,7 +401,7 @@ public class LearningAgreementErasmusService {
             return null;
     }
 
-    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudentErasmus student){
+    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudent student){
         PreApprovalFormNew preApprovalForm = findPreApprovalById(student);
         List<MobilityCourseForm> courses = new ArrayList<>();
 
@@ -363,7 +413,7 @@ public class LearningAgreementErasmusService {
         return courses;
     }
 
-    public LearningAgreementErasmus findLearningAgreementByStudent(OutGoingStudentErasmus student){
+    public LearningAgreementErasmus findLearningAgreementByStudent(OutGoingStudent student){
         LearningAgreementErasmus agreementForm = erasmusRepository.findByStudent_Id(student.getStarsId());
         if (agreementForm != null)
             return agreementForm;
