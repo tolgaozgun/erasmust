@@ -62,8 +62,8 @@ public class ApplicationErasmusController {
     }
 
     @RolesAllowed("ROLE_STUDENT")
-    @GetMapping("/view-application-by-id")
-    public ResponseEntity<?> viewApplication(@RequestBody int id) {
+    @GetMapping("/student/view-application-by-id/{id}")
+    public ResponseEntity<?> viewApplication(@PathVariable int id) {
         return new ResponseEntity<>(applicationErasmusService.viewApplicationById(id), HttpStatus.OK);
     }
 
