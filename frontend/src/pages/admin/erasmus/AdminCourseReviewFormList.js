@@ -26,6 +26,7 @@ const AdminCourseReviewFormList = () => {
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
+    var array = []
 
     useEffect(() => {
         axios.get("http://92.205.25.135:4/admin/all-applications", {
@@ -38,13 +39,13 @@ const AdminCourseReviewFormList = () => {
                     var i;
                     for (i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
-                        var item = res.data[i]
-
-                        setApplicationList(oldArray => [...oldArray, item])
+                        
+                        array.push(res.data[i])
 
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                    setApplicationList(array)
                     setFlag(true)
                 }
             })
