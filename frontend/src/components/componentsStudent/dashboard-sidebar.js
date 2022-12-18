@@ -20,27 +20,27 @@ const items = [
     },
     {
         href: "/student/erasmus/dashboard",
-        icon: <HiGlobeEuropeAfrica fontSize="small"/>,
+        icon: <HiGlobeEuropeAfrica fontSize="small" />,
         title: "Erasmus Page",
         side: [
             {
                 href: "/student/erasmus/application/list",
-                icon: <AddOutlinedIcon fontSize="small"/>,
+                icon: <AddOutlinedIcon fontSize="small" />,
                 title: "View Your Erasmus Application List",
             },
             {
                 href: "/student/erasmus/application/create",
-                icon: <AddOutlinedIcon fontSize="small"/>,
+                icon: <AddOutlinedIcon fontSize="small" />,
                 title: "Create Erasmus Application",
             },
             {
                 href: "/student/erasmus/application/view",
-                icon: <AddOutlinedIcon fontSize="small"/>,
+                icon: <AddOutlinedIcon fontSize="small" />,
                 title: "View Your Erasmus Applicaiton",
             },
             {
                 href: "/student/erasmus/preapproval/list",
-                icon: <AddOutlinedIcon fontSize="small"/>,
+                icon: <AddOutlinedIcon fontSize="small" />,
                 title: "View Your Preapproval List",
             },
             {
@@ -76,7 +76,7 @@ const items = [
         title: "Account",
     },
     {
-        href: "/exchangeFaq",
+        href: "/student/exchange/faq",
         icon: <QuestionMarkIcon fontSize="small" />,
         title: "Exchange FAQ",
     },
