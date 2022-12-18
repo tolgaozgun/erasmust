@@ -21,7 +21,11 @@ public class CourseHostService {
 
     public CourseHostDTO createCourseHost(CourseHostDTO courseHostDTO) {
         CourseHost courseHost = courseHostMapper.toEntity(courseHostDTO);
-        return(courseHostMapper.toCourseHostDTO(courseHostRepository.save(courseHost)));
+        return (courseHostMapper.toCourseHostDTO(courseHostRepository.save(courseHost)));
+    }
+
+    public CourseHost findById(int id) {
+        return courseHostRepository.findById(id).orElse(null);
     }
 
     public CourseHost save(CourseHost courseHost) {

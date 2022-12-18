@@ -7,6 +7,7 @@ import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
+import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.MobilityCourseForm;
@@ -374,11 +375,14 @@ public class LearningAgreementErasmusService {
         return erasmusDTO;
     }
 
-    public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds){
+    public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds) {
         List<CourseBilkent> courseBilkentList = new ArrayList<CourseBilkent>();
 
-        for( int i = 0; i < courseBilkentIds.size(); i++){
-            courseBilkentList.get(i).setId(courseBilkentIds.get(i));
+        for (int id : courseBilkentIds) {
+            CourseBilkent courseBilkent = courseBilkentService.getById(id);
+            if (courseBilkent != null) {
+                courseBilkentList.add(courseBilkent);
+            }
         }
         return courseBilkentList;
     }
@@ -401,14 +405,13 @@ public class LearningAgreementErasmusService {
             return null;
     }
 
-    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudent student){
+    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudent student) {
         PreApprovalFormNew preApprovalForm = findPreApprovalById(student);
         List<MobilityCourseForm> courses = new ArrayList<>();
-
-        for (int i=0; i<preApprovalForm.getForms().size(); i++) {
-            courses.get(i).setCourseBilkent(preApprovalForm.getForms().get(i).getCourseBilkent());
-            courses.get(i).setCourseHost(preApprovalForm.getForms().get(i).getCourseHost());
-            courses.get(i).setId(preApprovalForm.getForms().get(i).getId());
+        for (CourseReviewFormNew courseReviewForm : preApprovalForm.getForms()) {
+            MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+            mobilityCourseForm.setCourseBilkent(courseReviewForm.getCourseBilkent());
+            mobilityCourseForm.setCourseHost(courseReviewForm.getCourseHost());
         }
         return courses;
     }
