@@ -23,13 +23,14 @@ public class CourseHost extends Course {
     @Builder(builderMethodName = "courseHostBuilder")
     public CourseHost(int id
             ,String name
+            ,String courseCode
             ,Double creditECTS
             ,Double creditBilkent
             ,Boolean isProjectCourse
             ,Department underDepartment
             ,Boolean isNeedToBeMerged
             ,Boolean isApprovedPrev) {
-        super(id, name, creditECTS, creditBilkent, isProjectCourse, underDepartment);
+        super(id, name, courseCode, creditECTS, creditBilkent, isProjectCourse, underDepartment);
         this.isNeedToBeMerged = isNeedToBeMerged;
         this.isApprovedPrev = isApprovedPrev;
     }

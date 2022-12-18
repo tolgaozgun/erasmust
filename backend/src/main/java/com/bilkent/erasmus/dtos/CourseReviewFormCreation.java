@@ -9,5 +9,7 @@ public class CourseReviewFormCreation {
 
     private String courseHostName;
 
+    private String courseHostCode;
+
     private double courseHostCredit;
 }
