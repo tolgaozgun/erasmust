@@ -1,14 +1,18 @@
 package com.bilkent.erasmus.controllers;
 
+import com.bilkent.erasmus.dtos.AdminLoginResponseDTO;
 import com.bilkent.erasmus.dtos.LoginDTO;
+import com.bilkent.erasmus.dtos.LoginStudentResponseDTO;
 import com.bilkent.erasmus.dtos.RegisterDTO;
 import com.bilkent.erasmus.embeddables.ContactInformation;
 import com.bilkent.erasmus.enums.RoleBasedPermission;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.models.userModels.User;
 import com.bilkent.erasmus.repositories.UserRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import com.bilkent.erasmus.security.JwtTokenProvider;
 import com.bilkent.erasmus.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,11 +25,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
+@Slf4j
 public class AuthController {
 
     private final UserRepository userRepository;
@@ -51,7 +57,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public Map<String, String> login(@RequestBody LoginDTO login) {
+    public Object login(@RequestBody LoginDTO login) {
         Map<String, String> returnMap = new HashMap<>();
         String starsId = login.getStarsId();
 
@@ -62,8 +68,33 @@ public class AuthController {
         String jwtToken = jwtTokenProvider.generateJwtToken(authentication);
 
         User user = userRepository.findUserByStarsId(starsId);
+        log.info("starsID: " + user.getStarsId());
         RoleBasedPermission role = user.getPermission();
         String roleName = role.getRoleName();
+
+        if (roleName.equals("STUDENT")) {
+            OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId)
+                    .orElseThrow(() -> new EntityNotFoundException("no user is available"));
+            LoginStudentResponseDTO loginResponse = LoginStudentResponseDTO.builder()
+                    .academicYear(student.getAcademicYear())
+                    .token(jwtToken)
+                    .starsId(starsId)
+                    .department(student.getDepartmentName().toString())
+                    .semester(student.getSemester())
+                    .firstName(student.getFirstName())
+                    .lastName(student.getLastName()).build();
+            return loginResponse;
+        }
+        else {
+            AdminLoginResponseDTO loginResponse = AdminLoginResponseDTO.builder()
+                    .starsId(starsId)
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .token(jwtToken)
+                    .build();
+            return  loginResponse;
+        }
+/*
 
         returnMap.put("firstName", user.getFirstName());
         returnMap.put("lastName", user.getLastName());
@@ -72,6 +103,7 @@ public class AuthController {
         returnMap.put("token", "Bearer " + jwtToken);
 
         return returnMap;
+*/
 
         // name
         // lastname

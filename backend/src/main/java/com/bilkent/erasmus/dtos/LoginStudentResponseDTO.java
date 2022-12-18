@@ -19,11 +19,13 @@ public class LoginStudentResponseDTO {
 
     private String starsId;
 
-    private Department department;
+    private String department;
 
     private String academicYear;
 
     private CurriculumSemester semester;
+
+    private String token;
 
 }
 
