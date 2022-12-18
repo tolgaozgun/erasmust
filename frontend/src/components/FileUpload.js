@@ -1,28 +1,20 @@
 import {
     Input,
-    Box,
     Button,
-    Checkbox,
-    Container,
-    FormHelperText,
-    Link,
-    TextField,
     Typography,
-    Card,
-    CardContent,
-    Divider,
     Grid,
-    CardHeader,
     CardMedia
 } from "@mui/material"
 import {useState} from 'react';
 import React from 'react';
+import axios from "axios";
 
 
 export const FileUpload = (props) => {
     const [uploadedFile, setUploadedFile] = useState(null);
     const [uploadedFileError, setUploadedFileError] = useState("");
     const [viewFile, setViewFile] = useState(null);
+    const hiddenFileInput = React.useRef(null);
 
     const fileType = props.fileType
     const handleFileChange = (e) => {
@@ -35,6 +27,20 @@ export const FileUpload = (props) => {
                     setUploadedFile(e.target.result);
                     setUploadedFileError("");
                 }
+                let formData = new FormData()
+                formData.append("file", uploadedFile)
+
+                axios.post(("http://92.205.25.135:4/course-review-v2/edit"), formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                })
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
             } else {
                 setUploadedFile(null);
                 setUploadedFileError("Please select a valid file");
@@ -46,6 +52,10 @@ export const FileUpload = (props) => {
 
     const handleFileSubmit = () => {
 
+    }
+
+    const handleClick = event => {
+        hiddenFileInput.current.click();
     }
 
     const handleFileView = (e) => {
@@ -71,11 +81,11 @@ export const FileUpload = (props) => {
                 <Button
                     color="primary"
                     variant="contained"
-                    type="submit"
+                    onClick={handleClick}
                 >
-                    Upload A Png
+                    Upload A File
                 </Button>
-                <Input type="file" onChange={handleFileChange} style={{display: "none"}} required></Input>
+                <input type="file" onChange={handleFileChange} ref={hiddenFileInput} style={{display: "none"}} required></input>
                 <Typography
                     color="textSecondary"
                     variant="body2"
@@ -103,7 +113,7 @@ export const FileUpload = (props) => {
                     mx: 3
                 }}
             >
-                View Signature
+                View File
             </Button>
 
             <Button
@@ -111,7 +121,7 @@ export const FileUpload = (props) => {
                 variant="contained"
                 type="submit"
             >
-                Submit Signature
+                Submit File
             </Button>
         </Grid>
     );

@@ -17,5 +17,11 @@ public class CourseReviewFormListResponse {
 
     private int studentId;
 
+    private String firstName;
+
+    private String lastName;
+
+    private String starsId;
+
     private List<CourseReviewFormNew> courseReviewFormNew;
 }

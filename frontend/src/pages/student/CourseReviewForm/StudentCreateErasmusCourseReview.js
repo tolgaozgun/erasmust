@@ -20,6 +20,7 @@ import React, {useState} from 'react';
 import {Check} from "@mui/icons-material";
 import {useFormik} from "formik";
 import * as Yup from "yup";
+import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -46,8 +47,7 @@ const StudentCreateErasmusCourseReview = () => {
             semester: "FALL",
             coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
             courseCoordinator: "Eray Tuzun",
-            description: "My syllabus: xx.com\nMy this: xx.com",
-            files: [""],
+            description: "My syllabus: xx.com\nMy this: xx.com"
         },
         validationSchema: Yup.object({
             name: Yup
@@ -73,14 +73,10 @@ const StudentCreateErasmusCourseReview = () => {
             description: Yup
                 .string()
                 .max(1000)
-                .required("Description is required"),
-            Files: Yup
-                .string()
-                .max(20)
-                .required("Files are required"),
+                .required("Description is required")
+                
         }),
-        onSubmit: () => {
-
+        onSubmit: async (values) => { 
         },
     });
 
@@ -209,7 +205,7 @@ const StudentCreateErasmusCourseReview = () => {
                                 />
                             </Grid>
 
-                            <FileUpload fileType={["image/png"]}/>
+                            <FileUpload fileType={["image/png", "image/jpeg", "image/jpg", "application/pdf", ]}/>
                         </Grid>
                     </Container>
                 </Box>

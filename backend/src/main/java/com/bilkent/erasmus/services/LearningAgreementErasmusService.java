@@ -391,11 +391,14 @@ public class LearningAgreementErasmusService {
         return agreementMapper.toLearningAgreementDTO(agreementForm);
     }
 
-    public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds){
+    public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds) {
         List<CourseBilkent> courseBilkentList = new ArrayList<CourseBilkent>();
 
-        for( int i = 0; i < courseBilkentIds.size(); i++){
-            courseBilkentList.get(i).setId(courseBilkentIds.get(i));
+        for (int id : courseBilkentIds) {
+            CourseBilkent courseBilkent = courseBilkentService.getById(id);
+            if (courseBilkent != null) {
+                courseBilkentList.add(courseBilkent);
+            }
         }
         return courseBilkentList;
     }
@@ -418,14 +421,18 @@ public class LearningAgreementErasmusService {
             return null;
     }
 
-    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudent student){
+    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudent student) {
         PreApprovalFormNew preApprovalForm = findPreApprovalById(student);
         List<MobilityCourseForm> courses = new ArrayList<>();
-
-        for (int i=0; i<preApprovalForm.getForms().size(); i++) {
-            courses.get(i).setCourseBilkent(preApprovalForm.getForms().get(i).getCourseBilkent());
-            courses.get(i).setCourseHost(preApprovalForm.getForms().get(i).getCourseHost());
-            courses.get(i).setId(preApprovalForm.getForms().get(i).getId());
+        if (preApprovalForm == null) {
+            return courses;
+        }
+        for (CourseReviewFormNew courseReviewForm : preApprovalForm.getForms()) {
+            MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+            mobilityCourseForm.setCourseBilkent(courseReviewForm.getCourseBilkent());
+            mobilityCourseForm.setCourseHost(courseReviewForm.getCourseHost());
+            mobilityCourseFormService.save(mobilityCourseForm);
+            courses.add(mobilityCourseForm);
         }
         return courses;
     }

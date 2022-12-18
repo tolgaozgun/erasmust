@@ -116,10 +116,10 @@ export const SendingInstitutionInfo = (props) => {
                         >
                             <TextField
                                 fullWidth
-                                label="Country with Code"
-                                name="countryWithCode"
+                                label="Host Country Code"
+                                name="hostCountryCode"
                                 required
-                                value={props.values.countryWithCode}
+                                value={props.values.hostCountryCode}
                                 variant="outlined"
                                 disabled={true}
                             />

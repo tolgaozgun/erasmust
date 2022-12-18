@@ -32,7 +32,7 @@ import {
 
 
 import {styled} from '@mui/material/styles';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Check} from "@mui/icons-material";
 import {FormExchangeInfo} from "../../../components/componentsStudent/forms/exchange/form-exchange-info";
 import courses from "../../../lessons.json";
@@ -143,79 +143,93 @@ const BeforeMobility = () => {
         false, false, false
     ])
 
+    const [faculties, setFaculties] = useState([])
+
+    const token = sessionStorage.getItem("jwtToken")
+
 
     const formik = useFormik({
         initialValues: {
             studyCycle: "",
-            subjectAreaCode: "",
+            subjectArea: "",
             language: "",
-            competence: "",
-            receiving: {
-                name: "",
-                faculty: "",
-                erasmusCode: "",
-                department: "",
-                address: "",
-                countryWithCode: "",
-                contactPersonName: "",
-                contactPersonDetails: "",
-            },
+            languageLevel: "",
+            hostName: "",
+            faculty: "",
+            hostErasmusCode: "",
+            departmentHost: "",
+            hostFullAddress: "",
+            hostCountryCode: "",
+            hostContactFirstName: "",
+            hostContactLastName: "",
+            hostContactMail: "",
+            hostContactNumber: "",
+            hostContactFunction: "",
         },
         validationSchema: Yup.object({
             studyCycle: Yup
                 .string()
                 .max(20)
                 .required("Study cycle is required"),
-            subjectAreaCode: Yup
+            subjectArea: Yup
                 .string()
                 .max(50)
-                .required("Subject Area, Code is required"),
+                .required("Subject Area is required"),
             language: Yup
                 .string()
                 .max(255)
                 .required("Language name is required"),
-            competence: Yup
+            languageLevel: Yup
                 .string()
                 .max(10)
                 .required('Competence level is required'),
-            receiving: Yup.object().shape({
-                name: Yup
-                    .string()
-                    .max(255)
-                    .required("Name is required"),
-                faculty: Yup
-                    .string()
-                    .max(255)
-                    .required("Faculty is required"),
-                erasmusCode: Yup
-                    .string()
-                    .max(12)
-                    .required("Erasmus Code is required"),
-                department: Yup
-                    .string()
-                    .max(255)
-                    .required("Department is required"),
-                address: Yup
-                    .string()
-                    .max(500)
-                    .required("Address is required"),
-                countryWithCode: Yup
-                    .string()
-                    .max(40)
-                    .required("Country & Country Code is required"),
-                contactPersonName: Yup
-                    .string()
-                    .max(20)
-                    .required("Study cycle is required"),
-                contactPersonDetails: Yup
-                    .string()
-                    .max(50)
-                    .required("Contact Person Details is required"),
-            }),
-
+            hostName: Yup
+                .string()
+                .max(255)
+                .required("Name is required"),
+            faculty: Yup
+                .string()
+                .max(255)
+                .required("Faculty is required"),
+            hostErasmusCode: Yup
+                .string()
+                .max(12)
+                .required("Host Erasmus Code is required"),
+            departmentHost: Yup
+                .string()
+                .max(255)
+                .required("Host Department is required"),
+            hostFullAddress: Yup
+                .string()
+                .max(500)
+                .required("Address is required"),
+            hostCountryCode: Yup
+                .string()
+                .max(40)
+                .required("Country & Country Code is required"),
+            hostContactFirstName: Yup
+                .string()
+                .max(20)
+                .required("Host Contact Person's First Name is required"),
+            hostContactLastName: Yup
+                .string()
+                .max(20)
+                .required("Host Contact Person's Last Name is required"),
+            hostContactMail: Yup
+                .string()
+                .max(50)
+                .required("Contact Person Details is required"),
+            hostContactNumber: Yup
+                .string()
+                .max(50)
+                .required("Contact Person Details is required"),
+            hostContactFunction: Yup
+                .string()
+                .max(50)
+                .required("Contact Person Details is required"),
         }),
         onSubmit: async (values, formikHelpers) => {
-            await axios.post("http://92.205.25.135:4/auth/login", values)
+            await axios.post("http://92.205.25.135:4/learning-agreement-erasmus/create", values)
                 .then((response) => {
                     if (response && response.data) {
                         const jwtToken = response.data["token"]
@@ -233,7 +247,85 @@ const BeforeMobility = () => {
         },
     });
 
-    const courses = require('../../../lessons.json');
+    useEffect(() => {
+            axios.get("http://92.205.25.135:4/learning-agreement-erasmus/get-initial", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then((res) => {
+                if (res && res.data) {
+                    console.log(res.data)
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }, []);
+
+    useEffect(() => {
+        axios.get("http://92.205.25.135:4/faculty/all", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (res && res.data) {
+                    var i;
+                    for (i = 0; i < res.data.length; i++) {
+                        console.log("Item fetched!")
+                        var item = res.data[i]
+                        if (item.name) {
+                            item.label = item.name
+                        }
+
+                        setFaculties(oldArray => [...oldArray, item])
+
+                        console.log(res.data);
+                        console.log("Item placed on array!");
+                    }
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }, []);
+
+
+    useEffect(() => {
+        axios.get("http://92.205.25.135:4/faculty/all", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (res && res.data) {
+                    var i;
+                    for (i = 0; i < res.data.length; i++) {
+                        console.log("Item fetched!")
+                        var item = res.data[i]
+                        if (item.name) {
+                            item.label = item.name
+                        }
+
+                        setFaculties(oldArray => [...oldArray, item])
+
+                        console.log(res.data);
+                        console.log("Item placed on array!");
+                    }
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }, []);
+
 
     const handleStep = (step, state) => {
         switch (state) {
@@ -298,7 +390,11 @@ const BeforeMobility = () => {
     }
 
     const competenceChange = (competence) => {
-        formik.setFieldValue("competence", competence)
+        formik.setFieldValue("languageLevel", competence)
+    }
+
+    const facultyChange = (facultyId) => {
+        formik.setFieldValue("hostFacultyId", facultyId)
     }
 
     const steps = ['Student Information',
@@ -372,11 +468,13 @@ const BeforeMobility = () => {
                                 />
                                 <ReceivingInstitutionInfo
                                     hidden={activeStep !== 2}
-                                    values={getIn(formik.values, "receiving")}
-                                    touched={getIn(formik.touched, "receiving")}
-                                    errors={getIn(formik.errors, "receiving")}
+                                    values={formik.values}
+                                    touched={formik.touched}
+                                    errors={formik.errors}
                                     handleChange={formik.handleChange}
                                     handleBlur={formik.handleBlur}
+                                    faculties={faculties}
+                                    facultyChange={facultyChange}
                                 />
 
                                 <StudyProgrammeInfo

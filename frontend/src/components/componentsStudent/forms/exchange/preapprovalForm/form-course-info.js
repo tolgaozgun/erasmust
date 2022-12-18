@@ -31,7 +31,7 @@ export const FormCourseInfo = (props) => {
                     onClick={props.addCourse}>
                     Add Course
                 </Button>
-            {props.values.courses.map((course, index) => (
+            {props.values.forms.map((course, index) => (
 
                 <>
                     <CourseComponent
