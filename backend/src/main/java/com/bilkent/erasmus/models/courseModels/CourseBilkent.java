@@ -24,6 +24,7 @@ public class CourseBilkent extends Course {
     private Boolean isMustCourse;
 
     @Builder(builderMethodName = "courseBilkentBuilder")
+
     public CourseBilkent(int id
             , String name
             , String courseCode
@@ -34,11 +35,9 @@ public class CourseBilkent extends Course {
             , CourseCoordinator courseCoordinator
             , String requirements
             , Boolean isMustCourse) {
-        super(id, name, creditECTS, creditBilkent, isProjectCourse, underDepartment);
-            , String requirements) {
+        super(id, name, courseCode, creditECTS, creditBilkent, isProjectCourse, underDepartment);
         this.courseCoordinator = courseCoordinator;
         this.requirements = requirements;
         this.isMustCourse = isMustCourse;
     }
-
 }
