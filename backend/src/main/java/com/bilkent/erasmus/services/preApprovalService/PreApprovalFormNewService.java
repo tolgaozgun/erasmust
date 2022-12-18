@@ -214,5 +214,8 @@ public class PreApprovalFormNewService {
         return preApprovalForm.getForms();
     }
 
-
+    public PreApprovalFormNew getAllPreapprovalByIdForStudent(int id) {
+        return preApprovalFormRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("no pre approval form is found"));
+    }
 }

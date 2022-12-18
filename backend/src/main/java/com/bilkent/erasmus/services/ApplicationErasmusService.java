@@ -174,11 +174,11 @@ public class ApplicationErasmusService {
         return applicationErasmusMapper.toApplicationErasmusDTOList(applicationErasmusRepository.findAll());
     }
 
-    public ApplicationErasmusDTO viewApplicationById(int id) {
+    public ApplicationErasmus viewApplicationById(int id) {
        // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return applicationErasmusMapper.toApplicationErasmusDTO(applicationErasmusRepository.findById(id).orElseThrow(
+        return applicationErasmusRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("No application is found: " + id)
-        ));
+        );
     }
 
     public List<ApplicationErasmusDTO> viewApplicationStudentAll() {
