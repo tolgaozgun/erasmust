@@ -15,13 +15,15 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import {InfoTable} from "../../info-table";
 
-const info = {
-    academicYear: "2023-2024",
-    semester: "FALL",
-}
+
 
 export const ViewSemesterInfo = (props) => {
+    const { academicYear, semester } = props
 
+    const info = {
+        academicYear: academicYear,
+        semester: semester,
+    }
 
     return (
         <Card>

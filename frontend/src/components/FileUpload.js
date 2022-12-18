@@ -16,6 +16,7 @@ export const FileUpload = (props) => {
     const [viewFile, setViewFile] = useState(null);
     const hiddenFileInput = React.useRef(null);
 
+    const data = props.data
     const fileType = props.fileType
     const handleFileChange = (e) => {
         let selectedFile = e.target.files[0];
@@ -26,21 +27,9 @@ export const FileUpload = (props) => {
                 reader.onloadend = (e) => {
                     setUploadedFile(e.target.result);
                     setUploadedFileError("");
+                    props.handleSubmission(selectedFile);
                 }
-                let formData = new FormData()
-                formData.append("file", uploadedFile)
 
-                axios.post(("http://92.205.25.135:4/course-review-v2/edit"), formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data"
-                    }
-                })
-                .then((res) => {
-                    console.log(res)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
             } else {
                 setUploadedFile(null);
                 setUploadedFileError("Please select a valid file");
@@ -100,29 +89,10 @@ export const FileUpload = (props) => {
                 xs={12}
             >
                 <CardMedia
-                    component="img"
-                    src={viewFile}
-                ></CardMedia>
+                    component={"img" || ""}
+                    src
+                ></CardMedia> 
             </Grid>
-            <Button
-                color="primary"
-                variant="contained"
-                type="submit"
-                onClick={handleFileView}
-                sx={{
-                    mx: 3
-                }}
-            >
-                View File
-            </Button>
-
-            <Button
-                color="primary"
-                variant="contained"
-                type="submit"
-            >
-                Submit File
-            </Button>
         </Grid>
     );
 };
