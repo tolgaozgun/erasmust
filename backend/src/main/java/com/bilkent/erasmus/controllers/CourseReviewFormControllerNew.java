@@ -45,8 +45,8 @@ public class CourseReviewFormControllerNew {
     }
 
     @PostMapping("/edit")
-    public ResponseEntity<?> editForm(@RequestBody CourseReviewEditDTO editDTO,
-                                      @RequestParam("file") MultipartFile[] files) throws Exception {
+    public ResponseEntity<?> editForm(@RequestPart("data") CourseReviewEditDTO editDTO,
+                                      @RequestPart("file") MultipartFile[] files) throws Exception {
         return new ResponseEntity<>(courseReviewFormService.editForm(editDTO, files),HttpStatus.ACCEPTED);
     }
 
@@ -59,5 +59,10 @@ public class CourseReviewFormControllerNew {
     @PostMapping("/edit-v3")
     public ResponseEntity<?> editFormTogether(@RequestParam("file") MultipartFile file) throws Exception {
         return new ResponseEntity<>(courseReviewFormService.saveFile(file), HttpStatus.OK);
+    }
+
+    @PostMapping("/edit-v4")
+    public ResponseEntity<?> editFormAllTogether(@RequestParam("file") MultipartFile file) throws Exception {
+        return new ResponseEntity<>(courseReviewFormService.saveFileAllTogether(file), HttpStatus.OK);
     }
 }
