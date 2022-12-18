@@ -13,13 +13,13 @@ import {InfoTable} from "../../info-table";
 
 export const ViewStudentInfo = (props) => {
 
-    const {name, surname, starsId, department} = props
+    const {student} = props
 
     const items = {
-        name: name,
-        surname: surname,
-        starsId: starsId,
-        department: department,
+        name: student.firstName ? student.firstName : "",
+        surname: student.lastName ? student.lastName : "",
+        starsId: student.starsId ? student.starsId : "",
+        department: student.departmentName ? student.departmentName : "",
     }
 
     return (

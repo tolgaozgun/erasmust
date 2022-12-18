@@ -6,8 +6,8 @@ import {
 } from '@mui/material';
 import {DashboardNavbar} from '../components/componentsStudent/dashboard-navbar';
 import {DashboardSidebar} from '../components/componentsStudent/dashboard-sidebar';
-import React, {useState} from 'react';
-import {ViewStudentInfo} from "../components/componentsStudent/info/view-student-info";
+import React, {useEffect, useState} from 'react';
+import {ViewStudentInfo} from "../components/componentsStudent/info/erasmus/erasmusApplicationForm/view-student-info";
 import {styled} from "@mui/material/styles";
 import {
     ViewSemesterInfo
@@ -15,6 +15,8 @@ import {
 import {
     ViewSchoolInfo
 } from "../components/componentsStudent/info/erasmus/erasmusApplicationForm/view-school-info";
+import { useLocation, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -28,6 +30,42 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 
 const ViewErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [schools, setSchools] = useState([])
+    const [student, setStudent] = useState({})
+    
+    var schoolArray = []
+    var studentObj = {}
+
+    const token = sessionStorage.getItem("jwtToken");
+
+    const params = useParams();
+    const appId = params.id
+    const url = "http://92.205.25.135:4/erasmus-application/student/view-application-by-id/" + appId;
+    // application id => params.id => appId
+
+    useEffect(() => {
+        axios.get(url, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (res && res.data) {
+                    console.log(res)
+                    studentObj = res.data.student
+                    schoolArray = res.data.schools
+                    console.log(studentObj, schoolArray)
+                }
+                setStudent(studentObj)
+                setSchools(schoolArray)
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log(err)
+                }
+            })
+    }, [])
+
     return (
         <>
             <title>
@@ -61,7 +99,9 @@ const ViewErasmusApplication = () => {
                                 xs={12}
                             >
 
-                                <ViewStudentInfo/>
+                                <ViewStudentInfo
+                                    student={student}
+                                />
 
                             </Grid>
                             <Grid
@@ -71,7 +111,9 @@ const ViewErasmusApplication = () => {
                                 xs={12}
                             >
 
-                                <ViewSemesterInfo/>
+                                <ViewSemesterInfo
+                                    student={student}
+                                />
 
                             </Grid>
                             <Grid
@@ -81,7 +123,9 @@ const ViewErasmusApplication = () => {
                                 xs={24}
                             >
 
-                                <ViewSchoolInfo/>
+                                <ViewSchoolInfo
+                                    schools={schools}
+                                />
 
                             </Grid>
                         </Grid>
