@@ -101,11 +101,13 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setErasmusCodeBilkent("ANKARA07");
         bilkentInformation.setCountryCodeBilkent("Turkey, TR");
 
-        bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
-        bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
-        bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
-        bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
-        bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+        if(findPreApprovalById(student).getExchangeCoordinator() != null){
+            bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
+            bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
+            bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
+            bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
+            bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+        }
         bilkentInformation.setFacultyBilkent(bilkentFaculty);
         bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
 
