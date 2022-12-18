@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.xml.ws.Response;
 
 @RestController
@@ -73,6 +74,19 @@ public class CourseReviewFormControllerNew {
     public ResponseEntity<?> getAllFormsForStudent() {
         return new ResponseEntity<>(courseReviewFormService.getAllFormsForStudent(), HttpStatus.OK);
     }
+
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_COURSE_COORDINATOR"})
+    @PostMapping("/accept/{id}")
+    public ResponseEntity<?> approveCourse(@PathVariable int id) {
+        return new ResponseEntity<>(courseReviewFormService.accept(id), HttpStatus.OK);
+    }
+
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_COURSE_COORDINATOR"})
+    @PostMapping("/reject/{id}")
+    public ResponseEntity<?> rejectCourse(@PathVariable int id) {
+        return new ResponseEntity<>(courseReviewFormService.reject(id), HttpStatus.OK);
+    }
+
 /*
     @PostMapping("get-all/courseCoordinator/course-forms")
     public ResponseEntity<?> getAllFormsForStudent() {
