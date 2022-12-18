@@ -9,11 +9,15 @@ const Login = () => {
     const navigate = useNavigate();
 
     const goDashboardStudent = () => {
-        navigate('/student/dashboard');
+      navigate('/student/dashboard');
+    }
+
+    const goDashboardStaff = () => {
+      navigate('/staff/dashboard');
     }
 
     const goDashboardAdmin = () => {
-        navigate('/admin/dashboard');
+      navigate('/admin/dashboard');
     }
 
     const formik = useFormik({
@@ -35,6 +39,7 @@ const Login = () => {
             await axios.post("http://92.205.25.135:4/auth/login", values)
                 .then((response) => {
                     if (response && response.data) {
+                        console.log(response.data)
                         const jwtToken = response.data["token"]
                         const role = response.data["role"]
                         sessionStorage.setItem("jwtToken", jwtToken)
@@ -43,6 +48,8 @@ const Login = () => {
                           goDashboardAdmin()
                         } else if (role === "STUDENT") {
                           goDashboardStudent()
+                        } else {
+                          goDashboardStaff()
                         }
                     }
                 })
@@ -75,7 +82,7 @@ const Login = () => {
                     color="textPrimary"
                     variant="h4"
                   >
-                    Student Login
+                    Login
                   </Typography>
                   <Typography
                     color="textSecondary"

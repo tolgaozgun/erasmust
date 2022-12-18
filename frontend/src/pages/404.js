@@ -5,9 +5,16 @@ import React from 'react';
 
 const Error = () => {
   const navigate = useNavigate();
+  const role = sessionStorage.getItem("role");
 
   const goDash = () => {
-    navigate('/dashboardStudent');
+    if (role === "ADMIN") {
+      navigate('/admin/dashboard');
+    } else if (role === "STUDENT") {
+      navigate('/student/dashboard');
+    } else {
+      navigate('staff/dashboard')
+    }
   }
 
   return(

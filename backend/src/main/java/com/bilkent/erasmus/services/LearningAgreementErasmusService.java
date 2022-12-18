@@ -1,6 +1,8 @@
 package com.bilkent.erasmus.services;
 
+import com.bilkent.erasmus.dtos.CourseReviewFormListResponse;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
+import com.bilkent.erasmus.dtos.LearningAgreementInitialFieldsDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
@@ -21,12 +23,14 @@ import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreemen
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.mapping.Map;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 @Service
 @Slf4j
@@ -80,6 +84,46 @@ public class LearningAgreementErasmusService {
             log.info("Learning agreement is already cancelled");
         }
         return true;
+    }
+
+    public LearningAgreementInitialFieldsDTO getInitialFieldValues(){
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(starsId);
+
+        BilkentInformation bilkentInformation = new BilkentInformation();
+        Faculty bilkentFaculty = new Faculty();
+
+        bilkentFaculty.setId(0);
+        bilkentFaculty.setName(FacultyName.ENGINEERING);
+
+        bilkentInformation.setNameBilkent("Bilkent University");
+        bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
+        bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
+
+        try{
+            if(findPreApprovalById(student).getExchangeCoordinator() != null){
+                bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
+                bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
+                bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
+                bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
+                bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+            }
+        }catch(NullPointerException ex){
+            // exchange coordinator will be empty
+        }
+        bilkentInformation.setFacultyBilkent(bilkentFaculty);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
+
+        List<MobilityCourseForm> courseList = findCoursesByStudent(student);
+
+
+        LearningAgreementInitialFieldsDTO response = LearningAgreementInitialFieldsDTO.builder()
+                .outGoingStudentErasmus(student)
+                .bilkentInformation(bilkentInformation)
+                .mobilityCourseForms(courseList).build();
+        return response;
+
     }
 
     public LearningAgreementErasmus createEmptyLearningAgreement(String subjectArea, String studyCycle, LanguageLevel languageLevel, String language,
