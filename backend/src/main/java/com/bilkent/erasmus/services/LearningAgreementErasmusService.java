@@ -154,7 +154,7 @@ public class LearningAgreementErasmusService {
         MobilityDetail afterMobility = new MobilityDetail();
 
         beforeMobility.setMobilityType(MobilityType.BEFORE);
-        beforeMobility.setStartDate(new Date());
+        beforeMobility.setStartDate(System.currentTimeMillis());
         beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
 
         duringMobility.setMobilityType(MobilityType.DURING);
@@ -224,7 +224,7 @@ public class LearningAgreementErasmusService {
         MobilityDetail afterMobility = new MobilityDetail();
 
         beforeMobility.setMobilityType(MobilityType.BEFORE);
-        beforeMobility.setStartDate(new Date());
+        beforeMobility.setStartDate(System.currentTimeMillis());
         beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
 
         duringMobility.setMobilityType(MobilityType.DURING);
