@@ -292,7 +292,7 @@ const App = () => {
                                 element={<StudentCreateErasmusApplication />}
                             />
                             <Route
-                                path="view"
+                                path="view/:id"
                                 element={<ViewErasmusApplication />}
                             />
                             <Route path="edit" element={<Error />} />

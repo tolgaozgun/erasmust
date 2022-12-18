@@ -9,17 +9,9 @@ import {
 import React from 'react';
 import {InfoTable} from "../../info-table";
 
-const schools = [
-    {
-        name: "University of California",
-    },
-    {
-        name: "University of München",
-    },
-]
-
 
 export const ViewSchoolInfo = (props) => {
+    const {schools} = props;
 
     return (
         <Card>
@@ -43,7 +35,7 @@ export const ViewSchoolInfo = (props) => {
                                 color="textPrimary"
                                 variant="h6"
                             >
-                                School #{index}
+                                School #{index + 1}
                             </Typography>
                             <InfoTable items={item}/>
                         </Grid>
