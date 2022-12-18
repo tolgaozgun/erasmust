@@ -35,8 +35,14 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 
 const StudentCreateErasmusCourseReview = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [data, setData] = useState();
+    const [file, setFile] = useState();
+
+    const token = sessionStorage.getItem("jwtToken");
+
     const formik = useFormik({
         initialValues: {
+            formId: 1,
             name: "Tolga",
             surname: "Özgün",
             bilkentCourse: "CS319 - Object Oriented Software Engineering",
@@ -47,7 +53,7 @@ const StudentCreateErasmusCourseReview = () => {
             semester: "FALL",
             coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
             courseCoordinator: "Eray Tuzun",
-            description: "My syllabus: xx.com\nMy this: xx.com"
+            description: "My syllabus: xx.com\nMy this: xx.com",
         },
         validationSchema: Yup.object({
             name: Yup
@@ -73,15 +79,45 @@ const StudentCreateErasmusCourseReview = () => {
             description: Yup
                 .string()
                 .max(1000)
-                .required("Description is required")
+                .required("Description is required"),
                 
         }),
-        onSubmit: async (values) => { 
+        onSubmit: async (values) => {
+            let formData = new FormData()
+            formData.append("file", file)
+            formData.append("data", new Blob([JSON.stringify(values)], {
+                type: "application/json"
+            }))
+            //console.log(file)
+            //console.log(values)
+            console.log(JSON.stringify(values))
+            /*for (var pair of formData.entries()) {
+                console.log(pair[0], pair[1])
+            }*/
+
+            await axios.post("http://92.205.25.135:4/course-review-v2/edit", formData, {
+                headers: {
+                    'Content-Type': undefined,
+                    "Authorization": `Bearer ${token}`
+                },
+            })
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log("Error: ", err)
+                })
         },
     });
 
+    const handleSubmission = (file) => {
+        setFile(file);
+    }
+
     return (
         <>
+        
+        <form onSubmit={formik.handleSubmit}>
             <title>
                 Course Review Form
             </title>
@@ -205,15 +241,35 @@ const StudentCreateErasmusCourseReview = () => {
                                 />
                             </Grid>
 
-                            <FileUpload fileType={["image/png", "image/jpeg", "image/jpg", "application/pdf", ]}/>
+                            <Grid
+                                item
+                                lg={12}
+                                md={12}
+                                xs={24}
+                            >
+                                <FileUpload data={data} handleSubmission={handleSubmission} fileType={["image/png", "image/jpeg", "image/jpg", "application/pdf", ]}/>
+                            </Grid>
                         </Grid>
                     </Container>
+                    <Box sx={{ py: 2 }}>
+                        <Button
+                            color="primary"
+                            fullWidth
+                            size="large"
+                            type="submit"
+                            variant="contained"
+                        >
+                            Sign In Now
+                        </Button>
+                    </Box>
                 </Box>
             </DashboardLayoutRoot>
             <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
+            
+            </form>
         </>
     );
 };
