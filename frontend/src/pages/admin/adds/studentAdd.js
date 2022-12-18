@@ -144,7 +144,7 @@ const StudentAdd = () => {
               .then((response) => {
                 if (response && response.data) {
                   console.log(response)
-                  //navigate("/studentListAdmin")
+                  navigate("/admin/student/list")
                 }
               })
               .catch((err) => {
@@ -178,14 +178,14 @@ const StudentAdd = () => {
                     color="textPrimary"
                     variant="h4"
                   >
-                    Edit Student
+                    Create Student
                   </Typography>
                   <Typography
                     color="textSecondary"
                     gutterBottom
                     variant="body2"
                   >
-                    You can manually edit student information
+                    You can manually create student
                   </Typography>
                 </Box>
                 <TextField

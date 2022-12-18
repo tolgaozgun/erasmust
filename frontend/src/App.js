@@ -148,16 +148,19 @@ const App = () => {
                             <Route path="list" element={<AdminErasmusApplicationList/>}/>
                             <Route path="view" element={<ViewErasmusApplication/>}/>
                             <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
                         <Route path="preapproval/*" element={<Outlet/>}>
                             <Route path="list" element={<AdminErasmusPreapprovalList/>}/>
                             <Route path="view" element={<ViewErasmusPreapproval/>}/>
                             <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
                         <Route path="coursereview/*" element={<Outlet/>}>
                             <Route path="list" element={<Error/>}/>
                             <Route path="view" element={<Error/>}/>
                             <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
                         <Route path="coursetransfer/*" element={<Outlet/>}>
                             <Route path="list" element={<Error/>}/>
@@ -165,11 +168,13 @@ const App = () => {
                             <Route path="view" element={<Error/>}/>
                             <Route path="edit" element={<Error/>}/>
                             <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
                         <Route path="learningagreement/*" element={<Outlet/>}>
                             <Route path="list" element={<Error/>}/>
                             <Route path="view" element={<Error/>}/>
                             <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
                         <Route path="faq" element={<ExchangeFaq/>}/>
                         <Route path="*" element={<Error/>}/>
@@ -181,6 +186,7 @@ const App = () => {
                         <Route path="create" element={<StudentAdd/>}/>
                         <Route path="view" element={<Error/>}/>
                         <Route path="edit/:id" element={<StudentEdit/>}/>
+                        <Route path="*" element={<Error/>}/>
                     </Route>
 
                     <Route exact path="staff" element={<Splash/>}/>
@@ -189,6 +195,7 @@ const App = () => {
                         <Route path="create" element={<Error/>}/>
                         <Route path="view" element={<Error/>}/>
                         <Route path="edit/:id" element={<StaffEdit/>}/>
+                        <Route path="*" element={<Error/>}/>
                     </Route>
 
                     <Route exact path="school" element={<Splash/>}/>
@@ -197,7 +204,9 @@ const App = () => {
                         <Route path="create" element={<Error/>}/>
                         <Route path="view" element={<Error/>}/>
                         <Route path="edit" element={<Error/>}/>
+                        <Route path="*" element={<Error/>}/>
                     </Route>
+                    <Route path="*" element={<Error/>}/>
                 </Route>
 
 
