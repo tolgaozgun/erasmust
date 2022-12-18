@@ -16,6 +16,10 @@ public class Student extends User {
     @Enumerated(EnumType.STRING)
     private DepartmentName departmentName;
 
+    private String nationality;
+
+    private String academicYear;
+
     private String degree;
 
     private double gpa;
