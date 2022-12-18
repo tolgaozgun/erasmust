@@ -50,6 +50,18 @@ public class ApplicationErasmusController {
         return new ResponseEntity<>(applicationErasmusService.viewApplication(), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_STUDENT")
+    @GetMapping("/view-application-by-id")
+    public ResponseEntity<?> viewApplication(@RequestBody int id) {
+        return new ResponseEntity<>(applicationErasmusService.viewApplicationById(id), HttpStatus.OK);
+    }
+
+    @RolesAllowed("ROLE_STUDENT")
+    @GetMapping("/student/view-application-all")
+    public ResponseEntity<?> viewApplicationAllForStudent() {
+        return new ResponseEntity<>(applicationErasmusService.viewApplicationStudentAll(), HttpStatus.OK);
+    }
+
     @GetMapping("/all-applications")
     public ResponseEntity<?> viewAllApplication(){
         return new ResponseEntity<>(applicationErasmusService.viewAllApplications(), HttpStatus.OK);
