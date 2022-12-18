@@ -37,19 +37,27 @@ public class PreApprovalFormErasmusControllerNew {
     public ResponseEntity<?> getAllPreapprovalByStudent() {
         return new ResponseEntity<>(preApprovalService.getAllPreapprovalStudent(), HttpStatus.OK);
     }
+    @RolesAllowed("ROLE_STUDENT")
+    @GetMapping("/all-preapproval-student/{id}")
+    public ResponseEntity<?> getAllPreapprovalByStudent(@PathVariable int id) {
+        return new ResponseEntity<>(preApprovalService.getAllPreapprovalByIdForStudent(id), HttpStatus.OK);
+    }
 
     //todo add hoca permission
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_COURSE_COORDINATOR"})
     @GetMapping("/all-preapproval")
     public ResponseEntity<?> getAllPreapproval() {
         return new ResponseEntity<>(preApprovalService.getAllPreapproval(), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_STUDENT")
     @GetMapping("/retrieveForm")
     public ResponseEntity<?> getForm() throws Exception {
         return new ResponseEntity<>(preApprovalService.getStudentForm(),HttpStatus.OK);
     }
 
-    @GetMapping("/course-coordinator-retrieve-all")
+    @RolesAllowed("ROLE_ADMIN")
+    @GetMapping("/get-all/course-coordinator/review-course-forms")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(preApprovalService.gelAllReviewFormsForCourseCoordinator(), HttpStatus.OK);
     }
@@ -60,7 +68,7 @@ public class PreApprovalFormErasmusControllerNew {
         return new ResponseEntity<>(preApprovalService.getAllCourseReviewFormsForStudent(), HttpStatus.OK);
     }
 
-    @RolesAllowed("ROLE_ADMIN")
+    @RolesAllowed("ROLE_ERASMUS_COORDINATOR")
     @GetMapping("get-all/exchange-coordinator/review-course-forms")
     public ResponseEntity<?> getAllFormsForExchangeCoordinatorToReview() {
         return new ResponseEntity<>(preApprovalService.getAllReviewFormsForExchangeCoordinator(), HttpStatus.OK);
