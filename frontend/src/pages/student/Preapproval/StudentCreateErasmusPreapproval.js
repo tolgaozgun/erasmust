@@ -114,6 +114,10 @@ const StudentCreateErasmusPreapproval = () => {
                         console.log("Item fetched!")
                         var item = res.data[i]
 
+                        let name = item.name;
+                        item.label = name;
+
+
                         setCourses(oldArray => [...oldArray, item])
 
                         console.log(res.data);
@@ -156,7 +160,7 @@ const StudentCreateErasmusPreapproval = () => {
 
     const formik = useFormik({
         initialValues: {
-            courses: [
+            forms: [
                 {
                     courseName: "",
                     courseCode: "",
@@ -166,7 +170,7 @@ const StudentCreateErasmusPreapproval = () => {
             ]
         },
         validationSchema: Yup.object({
-            courses: Yup.array().of(
+            forms: Yup.array().of(
                 Yup.object().shape(
                     {
                         courseCode: Yup
@@ -189,7 +193,7 @@ const StudentCreateErasmusPreapproval = () => {
         }),
         onSubmit: async (values, formikHelpers) => {
             let token = sessionStorage.getItem("jwtToken")
-            await axios.post("http://92.205.25.135:4/pre-approval/erasmus/create", values, {
+            await axios.post("http://92.205.25.135:4/pre-approval/erasmus/save", values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -282,7 +286,7 @@ const StudentCreateErasmusPreapproval = () => {
     const steps = ['Student Information', 'Program Information', 'Courses'];
 
     return (
-        <>
+        <form onSubmit={formik.handleSubmit}>
             <title>
                 Preapproval Form
             </title>
@@ -351,15 +355,15 @@ const StudentCreateErasmusPreapproval = () => {
                                     }
                                     <Box sx={{flex: '1 1 auto'}}>
 
-                                        {activeStep !== steps.length - 1 ? (
+                                        {activeStep !== steps.length - 1 && (
                                             <Button onClick={nextStepHandler}>
                                                 {"Next >"}
                                             </Button>
-                                        ) : (
-                                            <Button>
+                                        )}
+                                        {activeStep === steps.length - 1 &&
+                                            <Button type="submit">
                                                 {"Finish"}
                                             </Button>
-                                        )
                                         }
                                     </Box>
                                 </Box>
@@ -372,7 +376,7 @@ const StudentCreateErasmusPreapproval = () => {
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
-        </>
+        </form>
     );
 };
 
