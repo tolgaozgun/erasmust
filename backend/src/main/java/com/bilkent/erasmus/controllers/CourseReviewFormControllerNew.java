@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.xml.ws.Response;
+
 @RestController
 @RequestMapping("/course-review-v2")
 public class CourseReviewFormControllerNew {
@@ -65,4 +67,23 @@ public class CourseReviewFormControllerNew {
     public ResponseEntity<?> editFormAllTogether(@RequestParam("file") MultipartFile file) throws Exception {
         return new ResponseEntity<>(courseReviewFormService.saveFileAllTogether(file), HttpStatus.OK);
     }
+
+
+    @PostMapping("get-all/student/course-forms")
+    public ResponseEntity<?> getAllFormsForStudent() {
+        return new ResponseEntity<>(courseReviewFormService.getAllFormsForStudent(), HttpStatus.OK);
+    }
+/*
+    @PostMapping("get-all/courseCoordinator/course-forms")
+    public ResponseEntity<?> getAllFormsForStudent() {
+        return new ResponseEntity<>(courseReviewFormService.getAllFormsForCourseCoordinator(), HttpStatus.OK);
+    }
+
+    @PostMapping("get-all/courseCoordinator/course-forms")
+    public ResponseEntity<?> getAllFormsForStudent() {
+        return new ResponseEntity<>(courseReviewFormService.getAllFormsForExchangeCoordinator(), HttpStatus.OK);
+    }
+*/
+
+
 }

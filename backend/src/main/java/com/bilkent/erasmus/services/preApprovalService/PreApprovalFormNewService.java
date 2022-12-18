@@ -180,7 +180,8 @@ public class PreApprovalFormNewService {
         List<PreApprovalFormNew> copyList = preApprovalFormRepository.findAll();
         for (PreApprovalFormNew form : copyList) {
             for (CourseReviewFormNew reviewForm : form.getForms()) {
-                if (reviewForm.getCourseBilkent().getCourseCoordinator().getStarsId().equals(starsId)) {
+                if (reviewForm.getCourseBilkent().getCourseCoordinator().getStarsId().equals(starsId)
+                && reviewForm.getCourseBilkent().getIsMustCourse()) {
                     reviewForms.add(reviewForm);
                 }
             }
@@ -194,16 +195,23 @@ public class PreApprovalFormNewService {
     }
     public List<CourseReviewFormNew> getAllReviewFormsForExchangeCoordinator() {
         String starsId = getStarsId();
+        log.info("exchange coordinator id: " + starsId);
         List<CourseReviewFormNew> reviewForms = new ArrayList<>();
         List<PreApprovalFormNew> copyList = preApprovalFormRepository.findAll();
         for (PreApprovalFormNew form : copyList) {
             for (CourseReviewFormNew reviewForm : form.getForms()) {
-                if (form.getExchangeCoordinator().getStarsId().equals(starsId)) {
+                if (form.getExchangeCoordinator().getStarsId().equals(starsId)
+                && !reviewForm.getCourseBilkent().getIsMustCourse()) {
                     reviewForms.add(reviewForm);
                 }
             }
         }
         return reviewForms;
+    }
+
+    public List<CourseReviewFormNew> getAllCourseReviewFormsForStudent() throws Exception {
+        PreApprovalFormNew preApprovalForm = getStudentForm();
+        return preApprovalForm.getForms();
     }
 
 

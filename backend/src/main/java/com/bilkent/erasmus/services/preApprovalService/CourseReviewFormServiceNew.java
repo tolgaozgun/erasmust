@@ -13,6 +13,7 @@ import com.bilkent.erasmus.repositories.CourseBilkentRepository;
 import com.bilkent.erasmus.repositories.CourseHostRepository;
 import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.CourseReviewFormRepositoryNew;
 import com.bilkent.erasmus.repositories.ToDoItemRepository;
+import com.bilkent.erasmus.repositories.applicationRepositories.PreApprovalFormRepository;
 import com.bilkent.erasmus.services.StorageService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,27 +29,25 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class CourseReviewFormServiceNew {
-
     private final CourseReviewFormRepositoryNew courseReviewFormRepository;
-
     private final CourseHostRepository courseHostRepository;
-
     private final CourseBilkentRepository courseBilkentRepository;
-
     private final StorageService storageService;
     private final ToDoItemRepository toDoItemRepository;
+    private final PreApprovalFormRepository preApprovalFormRepository;
 
     public CourseReviewFormServiceNew(CourseReviewFormRepositoryNew courseReviewFormRepository
             , CourseHostRepository courseHostRepository
             , CourseBilkentRepository courseBilkentRepository
-            , StorageService storageService, ToDoItemRepository toDoItemRepository) {
+            , StorageService storageService, ToDoItemRepository toDoItemRepository
+            , PreApprovalFormRepository preApprovalFormRepository) {
         this.courseReviewFormRepository = courseReviewFormRepository;
         this.courseHostRepository = courseHostRepository;
         this.courseBilkentRepository = courseBilkentRepository;
         this.storageService = storageService;
-        //this.storageService = storageService;
         this.toDoItemRepository = toDoItemRepository;
 
+        this.preApprovalFormRepository = preApprovalFormRepository;
     }
 
     public CourseReviewFormNew createForm(CourseBilkent courseBilkent, CourseHost courseHost
@@ -109,6 +108,12 @@ public class CourseReviewFormServiceNew {
                 .stream()
                 .map(file -> saveFile(file))
                 .collect(Collectors.toList());
+    }
+
+
+    public List<CourseReviewFormNew> getAllFormsForStudent() {
+
+        return null;
     }
 
 
