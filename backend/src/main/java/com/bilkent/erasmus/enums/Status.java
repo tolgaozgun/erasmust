@@ -14,5 +14,7 @@ public enum Status {
 
     IN_THE_WAITING_LIST,
 
-    CANCELLED
+    CANCELLED,
+
+    DONE;
 }
