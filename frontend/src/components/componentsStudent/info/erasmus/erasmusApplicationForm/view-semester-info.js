@@ -18,11 +18,11 @@ import {InfoTable} from "../../info-table";
 
 
 export const ViewSemesterInfo = (props) => {
-    const { academicYear, semester } = props
+    const { student } = props
 
     const info = {
-        academicYear: academicYear,
-        semester: semester,
+        academicYear: student.academicYear ? student.academicYear : "",
+        semester: student.semester ? student.semester : "",
     }
 
     return (
