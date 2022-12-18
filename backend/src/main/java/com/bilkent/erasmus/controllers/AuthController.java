@@ -6,6 +6,7 @@ import com.bilkent.erasmus.embeddables.ContactInformation;
 import com.bilkent.erasmus.enums.RoleBasedPermission;
 import com.bilkent.erasmus.models.userModels.User;
 import com.bilkent.erasmus.repositories.UserRepository;
+import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import com.bilkent.erasmus.security.JwtTokenProvider;
 import com.bilkent.erasmus.services.UserService;
 import org.springframework.http.HttpStatus;
@@ -28,13 +29,21 @@ import java.util.Map;
 public class AuthController {
 
     private final UserRepository userRepository;
+
+    private final OutGoingStudentRepository outGoingStudentRepository;
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;
     private PasswordEncoder passwordEncoder;
     private UserService userService;
 
-    public AuthController(UserRepository userRepository, AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, PasswordEncoder passwordEncoder, UserService userService) {
+    public AuthController(UserRepository userRepository
+            , OutGoingStudentRepository outGoingStudentRepository
+            , AuthenticationManager authenticationManager
+            , JwtTokenProvider jwtTokenProvider
+            , PasswordEncoder passwordEncoder
+            , UserService userService) {
         this.userRepository = userRepository;
+        this.outGoingStudentRepository = outGoingStudentRepository;
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;
@@ -56,10 +65,20 @@ public class AuthController {
         RoleBasedPermission role = user.getPermission();
         String roleName = role.getRoleName();
 
+        returnMap.put("firstName", user.getFirstName());
+        returnMap.put("lastName", user.getLastName());
+        returnMap.put("starsId", user.getStarsId());
         returnMap.put("role", roleName);
         returnMap.put("token", "Bearer " + jwtToken);
 
         return returnMap;
+
+        // name
+        // lastname
+        // starsId
+        // department
+        // academicYear
+        // semester
     }
 
     @PostMapping("/register")
