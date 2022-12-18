@@ -16,9 +16,9 @@ public class MobilityDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private Date startDate;
+    private long startDate;
 
-    private Date endDate;
+    private long endDate;
 
     @Enumerated(EnumType.STRING)
     private MobilityType mobilityType;
