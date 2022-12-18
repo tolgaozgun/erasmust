@@ -1,11 +1,7 @@
 package com.bilkent.erasmus.controllers;
 
-import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
-import com.bilkent.erasmus.dtos.ReviewFormListDTO;
+import com.bilkent.erasmus.dtos.LearningAgreementErasmusDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
-import com.bilkent.erasmus.dtos.ReviewFormStudentListDTO;
-import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
-import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.services.LearningAgreementErasmusService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +23,7 @@ public class LearningAgreementErasmusController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> sendLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO) throws Exception {
+    public ResponseEntity<?> sendLearningAgreement(@RequestBody LearningAgreementErasmusDTO learningAgreementDTO) throws Exception {
         return new ResponseEntity<>(erasmusService.saveForm(learningAgreementDTO), HttpStatus.CREATED);
     }
 
