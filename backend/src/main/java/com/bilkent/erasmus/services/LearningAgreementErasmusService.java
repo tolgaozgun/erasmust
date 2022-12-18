@@ -63,11 +63,18 @@ public class LearningAgreementErasmusService {
 
     private final LearningAgreementEditMapper learningAgreementEditMapper;
 
-    private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
-                                            CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService,
-                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, LearningAgreementErasmusMapper erasmusMapper,
-                                            PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService, LearningAgreementEditMapper learningAgreementEditMapper) {
+    private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository
+            , PartnerUniversityErasmusRepository universityErasmusRepository
+            , CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository
+            , LearningAgreementErasmusDetailRepository erasmusDetailRepository
+            , CourseHostService courseHostService
+            , CourseBilkentService courseBilkentService
+            , OutGoingStudentRepository outGoingStudentRepository
+            , LearningAgreementMapper agreementMapper
+            , LearningAgreementErasmusMapper erasmusMapper
+            , PreApprovalFormRepositoryNew preApprovalFormErasmusRepository
+            , MobilityCourseFormService mobilityCourseFormService
+            , LearningAgreementEditMapper learningAgreementEditMapper) {
 
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
@@ -139,9 +146,19 @@ public class LearningAgreementErasmusService {
 
     }
 
-    public LearningAgreementErasmus createEmptyLearningAgreement(String subjectArea, String studyCycle, LanguageLevel languageLevel, String language,
-                                                                 String hostName, String hostFullAddress, String hostErasmusCode, String hostCountryCode,
-                                                                 String hostContactFirstName, String hostContactLastName, String hostContactMail, String hostContactNumber, String hostContactFunction,
+    public LearningAgreementErasmus createEmptyLearningAgreement(String subjectArea
+            , String studyCycle
+            , LanguageLevel languageLevel
+            , String language
+            , String hostName
+            , String hostFullAddress
+            , String hostErasmusCode
+            , String hostCountryCode
+            , String hostContactFirstName
+            , String hostContactLastName
+            , String hostContactMail
+            , String hostContactNumber
+            , String hostContactFunction,
                                                                  int hostFacultyId, DepartmentName departmentHost) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
         String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
