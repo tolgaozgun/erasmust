@@ -44,7 +44,7 @@ public class AdminService {
 
     public void createOutgoingStudent(OutGoingStudent outgoingStudent) {
         outgoingStudent.setPassword(passwordEncoder.encode(outgoingStudent.getPassword()));
-        outgoingStudent.setPermission(RoleBasedPermission.ROLE_USER);
+        outgoingStudent.setPermission(RoleBasedPermission.ROLE_STUDENT);
         outGoingStudentRepository.save(outgoingStudent);
     }
 
@@ -92,6 +92,9 @@ public class AdminService {
         for (PreApprovalFormNew form : forms) {
             CourseReviewFormListResponse response = CourseReviewFormListResponse.builder()
                     .studentId(form.getStudent().getId())
+                    .firstName(form.getStudent().getFirstName())
+                    .lastName(form.getStudent().getLastName())
+                    .starsId(form.getStudent().getStarsId())
                     .courseReviewFormNew(form.getForms()).build();
             responseList.add(response);
         }

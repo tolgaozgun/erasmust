@@ -75,7 +75,7 @@ public class PreApprovalFormNewService {
     public PreApprovalFormNew saveForm(PreApprovalFormDTONew form) throws Exception {
         PreApprovalFormNew preApprovalForm = PreApprovalFormNew.builder()
                 .forms(createCourseReviewFormAll(form.getForms()))
-                .createDate(System.currentTimeMillis())
+                .date(System.currentTimeMillis())
                 .build();
         inheritInfoFromApplication(preApprovalForm);
         ToDoItem todo = new ToDoItem();
@@ -171,5 +171,20 @@ public class PreApprovalFormNewService {
     public PreApprovalFormNew getStudentForm() throws Exception {
         return preApprovalFormRepository.findByStatusAndStudent_Id(Status.IN_PROCESS, findStudentId())
                 .orElseThrow(() -> new Exception("no form is found"));
+    }
+
+    public List<CourseReviewFormNew> gelAllReviewFormsForCourseCoordinator() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String starsId = auth.getName();
+        List<CourseReviewFormNew> reviewForms = new ArrayList<>();
+        List<PreApprovalFormNew> copyList = preApprovalFormRepository.findAll();
+        for (PreApprovalFormNew form : copyList) {
+            for (CourseReviewFormNew reviewForm : form.getForms()) {
+                if (reviewForm.getCourseBilkent().getCourseCoordinator().getStarsId().equals(starsId)) {
+                    reviewForms.add(reviewForm);
+                }
+            }
+        }
+        return reviewForms;
     }
 }
