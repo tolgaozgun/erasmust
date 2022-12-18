@@ -383,7 +383,7 @@ public class LearningAgreementErasmusService {
         return courseHostService.save(course);
     }
 
-    private LearningAgreementErasmus saveCourseHostDuring(int formId, String name, double credit, boolean isAdded, String reason) {
+    public LearningAgreementErasmus saveCourseHostDuring(int formId, String name, double credit, boolean isAdded, String reason) {
         LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseHost course = new CourseHost();
@@ -400,7 +400,7 @@ public class LearningAgreementErasmusService {
         return erasmusRepository.save(agreementErasmus);
     }
 
-    private LearningAgreementErasmus saveCourseHostAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) {
+    public LearningAgreementErasmus saveCourseHostAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) {
         LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseHost course = new CourseHost();
@@ -496,7 +496,7 @@ public class LearningAgreementErasmusService {
     }
 
     public List<LearningAgreementErasmus> findLearningAgreementsByStudent(OutGoingStudent student){
-        List<LearningAgreementErasmus> agreementForms = erasmusRepository.findAllByStudent_Id(student.getStarsId());
+        List<LearningAgreementErasmus> agreementForms = erasmusRepository.findAllByStudent_StarsId(student.getStarsId());
         if (agreementForms != null)
             return agreementForms;
         else
