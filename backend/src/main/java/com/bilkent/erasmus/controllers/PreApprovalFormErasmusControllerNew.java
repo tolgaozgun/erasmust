@@ -54,11 +54,13 @@ public class PreApprovalFormErasmusControllerNew {
         return new ResponseEntity<>(preApprovalService.gelAllReviewFormsForCourseCoordinator(), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_STUDENT")
     @GetMapping("get-all/student/course-forms")
     public ResponseEntity<?> getAllFormsForStudent() throws Exception {
         return new ResponseEntity<>(preApprovalService.getAllCourseReviewFormsForStudent(), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_ADMIN")
     @GetMapping("get-all/exchange-coordinator/review-course-forms")
     public ResponseEntity<?> getAllFormsForExchangeCoordinatorToReview() {
         return new ResponseEntity<>(preApprovalService.getAllReviewFormsForExchangeCoordinator(), HttpStatus.OK);
