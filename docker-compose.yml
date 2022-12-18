@@ -16,6 +16,7 @@ services:
     build: ./backend
     volumes:
       - ./backend:/backend
+      - ./uploads:/uploads
     ports:
       - "4:8080"
     environment:
