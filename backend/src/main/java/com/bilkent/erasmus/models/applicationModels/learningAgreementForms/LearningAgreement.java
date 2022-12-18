@@ -45,4 +45,15 @@ public class LearningAgreement {
 
     private String language;
 
+    public BilkentInformation getBilkentInformation(){
+        return bilkentInformation;
+    }
+
+    public ReceivingInstitutionInformation getReceivingInstitutionInformation(){
+        return receivingInstitutionInformation;
+    }
+
+    public List<MobilityDetail> getMobilityDetailList(){
+        return mobilityDetailList;
+    }
 }
