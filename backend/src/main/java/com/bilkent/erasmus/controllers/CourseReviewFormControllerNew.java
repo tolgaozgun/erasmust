@@ -45,7 +45,7 @@ public class CourseReviewFormControllerNew {
     }
 
     @PostMapping("/edit")
-    public ResponseEntity<?> editForm(@RequestPart("data") CourseReviewEditDTO editDTO,
+    public ResponseEntity<?> editForm(@RequestBody CourseReviewEditDTO editDTO,
                                       @RequestParam("file") MultipartFile[] files) throws Exception {
         return new ResponseEntity<>(courseReviewFormService.editForm(editDTO, files),HttpStatus.ACCEPTED);
     }
