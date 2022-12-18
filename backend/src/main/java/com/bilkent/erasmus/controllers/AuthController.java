@@ -78,7 +78,7 @@ public class AuthController {
             LoginStudentResponseDTO loginResponse = LoginStudentResponseDTO.builder()
                     .academicYear(student.getAcademicYear())
                     .role(user.getPermission().getRoleName())
-                    .token(jwtToken)
+                    .token("Bearer " + jwtToken)
                     .starsId(starsId)
                     .department(student.getDepartmentName().toString())
                     .semester(student.getSemester())
@@ -92,7 +92,7 @@ public class AuthController {
                     .firstName(user.getFirstName())
                     .lastName(user.getLastName())
                     .role(user.getPermission().getRoleName())
-                    .token(jwtToken)
+                    .token("Bearer " + jwtToken)
                     .build();
             return  loginResponse;
         }

@@ -173,4 +173,17 @@ public class ApplicationErasmusService {
     public List<ApplicationErasmusDTO> viewAllApplications() {
         return applicationErasmusMapper.toApplicationErasmusDTOList(applicationErasmusRepository.findAll());
     }
+
+    public ApplicationErasmusDTO viewApplicationById(int id) {
+       // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return applicationErasmusMapper.toApplicationErasmusDTO(applicationErasmusRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("No application is found: " + id)
+        ));
+    }
+
+    public List<ApplicationErasmusDTO> viewApplicationStudentAll() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        log.info("student id : " + auth.getName());
+        return applicationErasmusMapper.toApplicationErasmusDTOList(applicationErasmusRepository.findAllByStudent_StarsId(auth.getName()));
+    }
 }
