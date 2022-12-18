@@ -17,7 +17,7 @@ public class AdminController {
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
-
+    @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/add-outgoing-student")
     public ResponseEntity<?> addOutgoingStudent(@RequestBody OutGoingStudent outgoingStudent) {
         adminService.createOutgoingStudent(outgoingStudent);

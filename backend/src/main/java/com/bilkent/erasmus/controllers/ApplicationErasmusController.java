@@ -17,28 +17,33 @@ public class ApplicationErasmusController {
         this.applicationErasmusService = applicationErasmusService;
     }
 
+    @RolesAllowed({"ROLE_STUDENT", "ROLE_ADMIN"})
     @PostMapping("/create")
     public ResponseEntity<?> createErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO){
         return new ResponseEntity<>(applicationErasmusService.createErasmusApplication(applicationErasmusDTO), HttpStatus.CREATED);
     }
 
+    @RolesAllowed({"ROLE_STUDENT", "ROLE_ADMIN"})
     @PatchMapping("/edit")
     public ResponseEntity<?> editErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
         return new ResponseEntity<>(applicationErasmusService.editErasmusApplication(applicationErasmusDTO), HttpStatus.OK);
     }
 
+    @RolesAllowed({"ROLE_STUDENT", "ROLE_ADMIN"})
     @PostMapping("/cancel")
     public ResponseEntity<?> cancelErasmusApplication() throws Exception {
         applicationErasmusService.cancelErasmusApplication();
         return new ResponseEntity<>("Application cancelled", HttpStatus.OK);
     }
 
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN"})
     @PostMapping("/place")
     public ResponseEntity<?> placeStudents(){
         applicationErasmusService.placeStudents();
         return new ResponseEntity<>("students placed", HttpStatus.OK);
     }
 
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN"})
     @PostMapping("/reevaluate")
     public ResponseEntity<?> reevaluateApplications(){
         applicationErasmusService.reevaluateApplications();
@@ -50,6 +55,7 @@ public class ApplicationErasmusController {
         return new ResponseEntity<>(applicationErasmusService.viewApplication(), HttpStatus.OK);
     }
 
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN"})
     @GetMapping("/all-applications")
     public ResponseEntity<?> viewAllApplication(){
         return new ResponseEntity<>(applicationErasmusService.viewAllApplications(), HttpStatus.OK);
