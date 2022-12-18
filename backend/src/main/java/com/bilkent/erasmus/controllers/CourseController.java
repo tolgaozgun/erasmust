@@ -36,4 +36,9 @@ public class CourseController {
     public ResponseEntity<?> setRequirement(@RequestBody Map<String, String> json) {
         return new ResponseEntity<>(courseBilkentService.setRequirements(json.get("requirements")), HttpStatus.OK);
     }
+
+    @GetMapping("/previously-approved")
+    public ResponseEntity<?> getPreviouslyApproved() {
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 }

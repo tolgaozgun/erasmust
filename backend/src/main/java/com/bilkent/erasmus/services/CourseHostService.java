@@ -6,6 +6,9 @@ import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.repositories.CourseHostRepository;
 import lombok.Data;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Data
 @Service
 public class CourseHostService {
@@ -19,16 +22,15 @@ public class CourseHostService {
         this.courseHostMapper = courseHostMapper;
     }
 
-    public CourseHostDTO createCourseHost(CourseHostDTO courseHostDTO) {
-        CourseHost courseHost = courseHostMapper.toEntity(courseHostDTO);
-        return (courseHostMapper.toCourseHostDTO(courseHostRepository.save(courseHost)));
-    }
-
     public CourseHost findById(int id) {
         return courseHostRepository.findById(id).orElse(null);
     }
 
     public CourseHost save(CourseHost courseHost) {
         return courseHostRepository.save(courseHost);
+    }
+
+    public List<CourseHost> getAllPreviouslyApproved() {
+        return courseHostRepository.findAllByIsApprovedPrevIsTrue(true);
     }
 }
