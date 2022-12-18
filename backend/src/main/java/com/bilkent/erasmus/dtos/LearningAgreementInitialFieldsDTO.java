@@ -3,7 +3,7 @@ package com.bilkent.erasmus.dtos;
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.MobilityCourseForm;
-import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class LearningAgreementInitialFieldsDTO {
 
     List<MobilityCourseForm> mobilityCourseForms;
 
-    OutGoingStudentErasmus outGoingStudentErasmus;
+    OutGoingStudent outGoingStudent;
 
 
 }
