@@ -14,4 +14,8 @@ public class LearningAgreementErasmus extends LearningAgreement {
 
     @ManyToOne
     private OutGoingStudentErasmus student;
+
+    public OutGoingStudentErasmus getsStudent(){
+        return student;
+    }
 }

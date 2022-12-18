@@ -54,7 +54,8 @@ public class LearningAgreementErasmusService {
 
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
+                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository,
+                                            LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
@@ -86,7 +87,8 @@ public class LearningAgreementErasmusService {
                                                                  String hostContactFirstName, String hostContactLastName, String hostContactMail, String hostContactNumber, String hostContactFunction,
                                                                  int hostFacultyId, DepartmentName departmentHost) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
-        OutGoingStudentErasmus student = form.getStudent();
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(starsId);
         BilkentInformation bilkentInformation = new BilkentInformation();
         ReceivingInstitutionInformation hostInformation = new ReceivingInstitutionInformation();
 
@@ -95,7 +97,7 @@ public class LearningAgreementErasmusService {
         MobilityDetail afterMobility = new MobilityDetail();
 
         beforeMobility.setMobilityType(MobilityType.BEFORE);
-        beforeMobility.setStartDate(new Date()); // an idea
+        beforeMobility.setStartDate(new Date());
         beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
 
         duringMobility.setMobilityType(MobilityType.DURING);
@@ -139,6 +141,7 @@ public class LearningAgreementErasmusService {
         hostInformation.setDepartmentHost(departmentHost);
         hostInformation.setCountryCodeHost(hostCountryCode);
 
+        form.setStudent(student);
         form.setStatus(Status.IN_PROCESS);
         form.setMobilityDetailList(mobilityDetailList);
         form.setSubjectArea(subjectArea);
@@ -195,9 +198,8 @@ public class LearningAgreementErasmusService {
                 break;
         }
         return agreements;
-    }*/
 
-/*    private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
+       private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
         List<LearningAgreementErasmus> agreementList = null;
         agreementList = new ArrayList<LearningAgreementErasmus>(erasmusRepository.findByMobilityDetail(type));
         agreementList.addAll(erasmusRepository.findByMobilityDetail(type));
