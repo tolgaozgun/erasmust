@@ -21,7 +21,7 @@ public class LearningAgreementErasmusController {
         this.erasmusService = erasmusService;
     }
 
-    @PostMapping("/get-initial")
+    @GetMapping("/get-initial")
     public ResponseEntity<?> sendLearningAgreement() throws Exception {
         return new ResponseEntity<>(erasmusService.getInitialFieldValues(), HttpStatus.OK);
     }
