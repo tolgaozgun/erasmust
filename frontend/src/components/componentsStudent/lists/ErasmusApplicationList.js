@@ -19,8 +19,11 @@ import {SeverityPill} from "../severity-pill";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 const ErasmusApplicationList = (props) => {
+
+    const navigate = useNavigate()
 
     const getCoordinator = (application) => {
         if (application.coordinator) {
@@ -99,15 +102,17 @@ const ErasmusApplicationList = (props) => {
                                     <TableCell>
                                         <>
                                             <Tooltip title="View">
-                                                <IconButton>
+                                                <IconButton
+                                                    onClick={() => {
+                                                        navigate(`/student/erasmus/application/view/${application.id}`, {state: application})
+                                                    }}
+                                                >
                                                     <VisibilityIcon/>
                                                 </IconButton>
                                             </Tooltip>
                                             <Tooltip title="Edit">
                                                 <IconButton
-                                                    // onClick={() => {
-                                                    //     navigate(`/studentListAdmin/student/${student.id}`, {state: student})
-                                                    // {}
+                                                    
                                                 >
                                                     <EditIcon/>
                                                 </IconButton>

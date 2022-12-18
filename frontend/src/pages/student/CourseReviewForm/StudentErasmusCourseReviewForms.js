@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
 import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
 import CourseReviewList from "../../../components/componentsStudent/dashboard/course-review-forms";
-
+import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -18,6 +18,34 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 
 const StudentErasmusCourseReviewForms = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [courseReviewFormList, setCourseReviewFormList] = useState([]);
+
+    const token = sessionStorage.getItem("jwtToken");
+    var array = []
+
+    useEffect(() => {
+        axios.get("http://92.205.25.135:4/pre-approval/erasmus/get-all/student/course-forms", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (res && res.data) {
+                    for (let i = 0; i < res.data.length; i++) {
+                        console.log("Item fetched!")
+                        array.push(res.data[i])
+                        
+                        console.log(res.data)
+                        console.log("Item placed on array!");
+                    }
+                    
+                }
+                setCourseReviewFormList(array)
+            })
+            .catch((err) => {
+                console.log("Error: ", err)
+            })
+    }, [])
 
     return (
         <> <title>
@@ -47,7 +75,9 @@ const StudentErasmusCourseReviewForms = () => {
                                 xl={15}
                                 xs={12}
                             >
-                                <CourseReviewList/>
+                                <CourseReviewList
+                                    students={courseReviewFormList}
+                                />
                             </Grid>
                         </Grid>
                     </Container>
