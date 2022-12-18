@@ -21,58 +21,10 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import {SeverityPill} from '../severity-pill';
 
-const students = [
-    {
-        id: 1,
-        name: "Tolga",
-        surname: "Özgün",
-        bilkentCourse: "CS319 - Object Oriented Software Engineering",
-        coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
-        courseCoordinator: "Eray Tuzun",
-        hostCourseName: "Statistics",
-        hostCourseCode: "MATH234",
-        hostUnivesity: "EPFL",
-        academicYear: "2022-2023",
-        semester: "FALL",
-        description: "My syllabus: xx.com\nMy this: xx.com",
-        createdAt: 1555016400000,
-        files: [""],
-    },
-    {
-        id: 2,
-        name: "Tolga",
-        surname: "Özgün",
-        bilkentCourse: "CS319 - Object Oriented Software Engineering",
-        coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
-        courseCoordinator: "Eray Tuzun",
-        hostCourseName: "Statistics",
-        hostCourseCode: "MATH234",
-        hostUnivesity: "EPFL",
-        academicYear: "2022-2023",
-        semester: "FALL",
-        description: "My syllabus: xx.com\nMy this: xx.com",
-        createdAt: 1555016400000,
-        files: [""],
-    },
-    {
-        id: 3,
-        name: "Tolga",
-        surname: "Özgün",
-        bilkentCourse: "CS319 - Object Oriented Software Engineering",
-        coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
-        courseCoordinator: "Eray Tuzun",
-        hostCourseName: "Statistics",
-        hostCourseCode: "MATH234",
-        hostUnivesity: "EPFL",
-        academicYear: "2022-2023",
-        semester: "FALL",
-        description: "My syllabus: xx.com\nMy this: xx.com",
-        createdAt: 1555016400000,
-        files: [""],
-    },
-];
 
 const CourseReviewList = (props) => {
+    const {students} = props
+
     const [selectedState, setSelected] = useState(
         new Array(students.length).fill(false)
     )
@@ -205,7 +157,7 @@ const CourseReviewList = (props) => {
                                         {student.name} {student.surname}
                                     </TableCell>
                                     <TableCell>
-                                        {format(student.createdAt, 'dd/MM/yyyy')}
+                                        {/*format(student.createdAt, 'dd/MM/yyyy')*/}
                                     </TableCell>
                                     <TableCell>
                                         {student.bilkentCourse}
