@@ -12,7 +12,6 @@ public interface LearningAgreementEditMapper {
     @Named("toLearningAgreementDTO")
     LearningAgreementDTO toLearningAgreementDTO(LearningAgreementErasmus learningAgreementErasmus);
 
-    // todo: ask
     //@Mapping(target = "mobilityDetailList", source = "dto.mobilityDetailList")
     @Named("toEntity")
     LearningAgreementErasmus toEntity(LearningAgreementDTO dto);
