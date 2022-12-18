@@ -208,7 +208,7 @@ public class LearningAgreementErasmusService {
     }
 
     public LearningAgreementErasmus saveForm(LearningAgreementErasmusDTO form) throws Exception {
-        LearningAgreementErasmus erasmusForm = erasmusMapper.toEntity(form);
+       // LearningAgreementErasmus erasmusForm = erasmusMapper.toEntity(form);
         /*LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
                 form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getCountryCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
                 form.getReceivingInstitutionInformation().getContactPersonEmailHost(),form.getReceivingInstitutionInformation().getContactPersonPhoneNumberHost(), form.getReceivingInstitutionInformation().getContactPersonFunctionHost(),
@@ -216,10 +216,8 @@ public class LearningAgreementErasmusService {
         // Optional<OutGoingStudent> student = outGoingStudentRepository.findByStarsId(erasmusForm.getStudent().getStarsId());
         // if (student.isEmpty())
         //    throw new EntityNotFoundException("No student found");
-
         // erasmusForm.setStudent(student);
-
-        return erasmusForm;
+        return erasmusRepository.save(erasmusMapper.toEntity(form));
     }
 
 /*  public List<LearningAgreementErasmus> retrieveAgreements(MobilityDetail mobility) {
