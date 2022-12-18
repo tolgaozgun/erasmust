@@ -24,7 +24,7 @@ const orders = [
     ref: 'CDD1049',
     amount: 30.5,
     customer: {
-      name: 'StudentErasmusPage Application'
+      name: 'Erasmus Application'
     },
     createdAt: 1555016400000,
     status: 'approved'

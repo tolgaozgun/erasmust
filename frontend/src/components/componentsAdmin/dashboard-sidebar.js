@@ -12,37 +12,37 @@ import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBullet
 
 const items = [
   {
-    href: '/dashboardAdmin',
+    href: '/admin/dashboard',
     icon: (<ChartBarIcon fontSize="small" />),
     title: 'Dashboard'
   },
   {
-    href: '/studentListAdmin',
+    href: '/admin/student/list',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Student List'
   },
   {
-    href: '/staffListAdmin',
+    href: '/admin/staff/list',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Staff List'
   },
   {
-    href: '/erasmusApplicationListAdmin',
+    href: '/admin/erasmus/application/list',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Erasmus Application List'
   },
   {
-    href: '/preapprovalListAdmin',
+    href: '/admin/erasmus/preapproval/list',
     icon: (<FormatListBulletedOutlinedIcon fontSize="small" />),
     title: 'Preapproval List'
   },
   {
-    href: '/accountAdmin',
+    href: '/admin/account',
     icon: (<UserIcon fontSize="small" />),
     title: 'Account'
   },
   {
-    href: '/settingsAdmin',
+    href: '/admin/settings',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
   }

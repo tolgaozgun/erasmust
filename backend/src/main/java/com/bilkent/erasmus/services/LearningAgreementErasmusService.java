@@ -54,7 +54,8 @@ public class LearningAgreementErasmusService {
 
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
+                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository,
+                                            LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
@@ -82,11 +83,12 @@ public class LearningAgreementErasmusService {
     }
 
     public LearningAgreementErasmus createEmptyLearningAgreement(String subjectArea, String studyCycle, LanguageLevel languageLevel, String language,
-                                                                 String hostName, String hostFullAddress, String hostErasmusCode,
+                                                                 String hostName, String hostFullAddress, String hostErasmusCode, String hostCountryCode,
                                                                  String hostContactFirstName, String hostContactLastName, String hostContactMail, String hostContactNumber, String hostContactFunction,
-                                                                 int hostFacultyId) {
+                                                                 int hostFacultyId, DepartmentName departmentHost) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
-        OutGoingStudentErasmus student = form.getStudent();
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(starsId);
         BilkentInformation bilkentInformation = new BilkentInformation();
         ReceivingInstitutionInformation hostInformation = new ReceivingInstitutionInformation();
 
@@ -95,7 +97,7 @@ public class LearningAgreementErasmusService {
         MobilityDetail afterMobility = new MobilityDetail();
 
         beforeMobility.setMobilityType(MobilityType.BEFORE);
-        beforeMobility.setStartDate(new Date()); // an idea
+        beforeMobility.setStartDate(new Date());
         beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
 
         duringMobility.setMobilityType(MobilityType.DURING);
@@ -117,6 +119,7 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setNameBilkent("Bilkent University");
         bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
         bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
 
         bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
         bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
@@ -124,7 +127,7 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
         bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
         bilkentInformation.setFacultyBilkent(bilkentFaculty);
-        bilkentInformation.setDepartmentBilkent(DepartmentName.CS);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
 
         hostInformation.setNameHost(hostName);
         hostInformation.setAddressHost(hostFullAddress);
@@ -135,7 +138,10 @@ public class LearningAgreementErasmusService {
         hostInformation.setContactPersonPhoneNumberHost(hostContactNumber);
         hostInformation.setContactPersonFunctionHost(hostContactFunction);
         hostInformation.setFacultyHost(hostFaculty);
+        hostInformation.setDepartmentHost(departmentHost);
+        hostInformation.setCountryCodeHost(hostCountryCode);
 
+        form.setStudent(student);
         form.setStatus(Status.IN_PROCESS);
         form.setMobilityDetailList(mobilityDetailList);
         form.setSubjectArea(subjectArea);
@@ -152,9 +158,9 @@ public class LearningAgreementErasmusService {
 
     public LearningAgreementErasmus saveForm(LearningAgreementDTO form) throws Exception {
         LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
-                form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
+                form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getCountryCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
                 form.getReceivingInstitutionInformation().getContactPersonEmailHost(),form.getReceivingInstitutionInformation().getContactPersonPhoneNumberHost(), form.getReceivingInstitutionInformation().getContactPersonFunctionHost(),
-                form.getReceivingInstitutionInformation().getFacultyHost().getId());
+                form.getReceivingInstitutionInformation().getFacultyHost().getId(),form.getReceivingInstitutionInformation().getDepartmentHost() );
         OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(form.getStudentId());
         erasmusForm.setStudent(student);
 
@@ -192,9 +198,8 @@ public class LearningAgreementErasmusService {
                 break;
         }
         return agreements;
-    }*/
 
-/*    private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
+       private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
         List<LearningAgreementErasmus> agreementList = null;
         agreementList = new ArrayList<LearningAgreementErasmus>(erasmusRepository.findByMobilityDetail(type));
         agreementList.addAll(erasmusRepository.findByMobilityDetail(type));

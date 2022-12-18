@@ -77,7 +77,7 @@ export const ReceivingInstitutionInfo = (props) => {
                                 error={Boolean(props.errors && props.errors["erasmusCode"])}
                                 fullWidth
                                 helperText={props.touched && props.touched["erasmusCode"]}
-                                label="StudentErasmusPage Code"
+                                label="Erasmus Code"
                                 name="receiving.erasmusCode"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}

@@ -8,12 +8,12 @@ import axios from "axios";
 const Login = () => {
     const navigate = useNavigate();
 
-    const goDash = () => {
-        navigate('/dashboardStudent');
+    const goDashboardStudent = () => {
+        navigate('/student/dashboard');
     }
 
-    const goRegister = () => {
-        navigate('/registerStudent');
+    const goDashboardAdmin = () => {
+        navigate('/admin/dashboard');
     }
 
     const formik = useFormik({
@@ -39,7 +39,11 @@ const Login = () => {
                         const role = response.data["role"]
                         sessionStorage.setItem("jwtToken", jwtToken)
                         sessionStorage.setItem("role", role)
-                        navigate('/dashboardStudent')
+                        if(role === "ADMIN") {
+                          goDashboardAdmin()
+                        } else if (role === "STUDENT") {
+                          goDashboardStudent()
+                        }
                     }
                 })
                 .catch((err) => {
@@ -119,24 +123,6 @@ const Login = () => {
                     Sign In Now
                   </Button>
                 </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body2"
-                >
-                  Don&apos;t have an account?
-                  {' '}
-                    <Link
-                      to="/register"
-                      variant="subtitle2"
-                      underline="hover"
-                      sx={{
-                        cursor: 'pointer'
-                      }}
-                      onClick={() => {goRegister()}}
-                    >
-                      Student Register
-                    </Link>
-                </Typography>
               </form>
             </Container>
           </Box>

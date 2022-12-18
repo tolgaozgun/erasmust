@@ -140,7 +140,7 @@ export const Staffs = (props) => {
                                         </Tooltip>
                                         <Tooltip title="Edit">
                                             <IconButton
-                                                onClick={() => {navigate(`/staffListAdmin/staff/${staff.id}`, {state: staff})}}
+                                                onClick={() => {navigate(`/admin/staff/edit/${staff.id}`, {state: staff})}}
                                             >
                                                 <EditIcon/>
                                             </IconButton>
