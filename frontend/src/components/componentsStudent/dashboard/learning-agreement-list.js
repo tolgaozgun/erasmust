@@ -15,86 +15,32 @@ import {
     Tooltip,
 } from "@mui/material";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { SeverityPill } from "../severity-pill";
+import {SeverityPill} from "../severity-pill";
 
-const learningAgreements = [
-    {
-        id: 1,
-        student: {
-            id: 10,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Can Alkan",
-        },
-        academicYear: "2022-2023",
-        semester: "Fall",
-        createdAt: 1555016400000,
-        status: "approved",
-    },
-    {
-        id: 2,
-        student: {
-            id: 10,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Ayşegül Dündar",
-        },
-        academicYear: "2022-2023",
-        semester: "Fall",
-        createdAt: 1555016400000,
-        status: "warning",
-    },
-    {
-        id: 3,
-        student: {
-            id: 10,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Can Alkan",
-        },
-        academicYear: "2022-2023",
-        semester: "Fall",
-        createdAt: 1555016400000,
-        status: "error",
-    },
-    {
-        id: 4,
-        student: {
-            id: 10,
-            name: "Tolga Özgün",
-        },
-        assignee: {
-            id: 5,
-            name: "Ayşegül Dündar",
-        },
-        academicYear: "2022-2023",
-        semester: "Fall",
-        createdAt: 1555016400000,
-        status: "disapproved",
-    },
-];
 
-export const LearningAgreementList = (props) => (
-    <Card {...props}>
-        <CardHeader title="Ongoing Learning Agreements" />
-        <PerfectScrollbar>
-            <Box
-                sx={{
-                    minWidth: 800,
-                    height: 400,
-                }}
-            >
-                <Table>
+export const LearningAgreementList = (props) => {
+
+
+    const getAssigneeName = (application) => {
+        return application["bilkentInformation"]["contactPersonFirstNameBilkent"] + " " +
+            application["bilkentInformation"]["contactPersonLastNameBilkent"]
+    }
+
+    return (
+        <Card {...props}>
+            <CardHeader title="Ongoing Learning Agreements"/>
+            <PerfectScrollbar>
+                <Box
+                    sx={{
+                        minWidth: 800,
+                        height: 400,
+                    }}
+                >
+                    <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell>Learning Agreement ID</TableCell>
-                            <TableCell>Student Name</TableCell>
+                            {/*<TableCell>Student Name</TableCell>*/}
                             <TableCell sortDirection="desc">
                                 <Tooltip enterDelay={300} title="Sort">
                                     <TableSortLabel active direction="desc">
@@ -113,20 +59,20 @@ export const LearningAgreementList = (props) => (
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {learningAgreements.map((learningAgreement) => (
+                        {props.applications.map((learningAgreement) => (
                             <TableRow hover key={learningAgreement.id}>
                                 <TableCell>{learningAgreement.id}</TableCell>
-                                <TableCell>
-                                    {learningAgreement.student.name}
-                                </TableCell>
+                                {/*<TableCell>*/}
+                                {/*    {learningAgreement.student.name}*/}
+                                {/*</TableCell>*/}
                                 <TableCell>
                                     {format(
-                                        learningAgreement.createdAt,
+                                        learningAgreement["mobilityDetailList"][0]["startDate"],
                                         "dd/MM/yyyy"
                                     )}
                                 </TableCell>
                                 <TableCell>
-                                    {learningAgreement.assignee.name}
+                                    {getAssigneeName(learningAgreement)}
                                 </TableCell>
                                 <TableCell>
                                     <SeverityPill
@@ -158,12 +104,13 @@ export const LearningAgreementList = (props) => (
         >
             <Button
                 color="primary"
-                endIcon={<ArrowRightIcon fontSize="small" />}
+                endIcon={<ArrowRightIcon fontSize="small"/>}
                 size="small"
                 variant="text"
             >
                 View all
             </Button>
         </Box>
-    </Card>
-);
+        </Card>
+    )
+};
