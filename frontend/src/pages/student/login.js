@@ -46,7 +46,7 @@ const Login = () => {
                         console.log(response.data)
                         const jwtToken = response.data["token"]
                         const role = response.data["role"]
-                        sessionStorage.setItem("jwtToken", jwtToken)
+                        sessionStorage.setItem("jwtToken", "Bearer " + jwtToken)
                         sessionStorage.setItem("role", role)
                         if(role === "ADMIN") {
                           goDashboardAdmin()
