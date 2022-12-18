@@ -20,6 +20,10 @@ const Login = () => {
       navigate('/admin/dashboard');
     }
 
+    const goSplash = () => {
+      navigate('/')
+    }
+
     const formik = useFormik({
         initialValues: {
           starsId: '2xxxxxxx',
@@ -47,9 +51,24 @@ const Login = () => {
                         if(role === "ADMIN") {
                           goDashboardAdmin()
                         } else if (role === "STUDENT") {
+                          const firstName = response.data["firstName"]
+                          const lastName = response.data["lastName"]
+                          const starsId = response.data["starsId"]
+                          const department = response.data["department"]
+                          const academicYear = response.data["academicYear"]
+                          const semester = response.data["semester"]
+
+                          sessionStorage.setItem("firstName", firstName)
+                          sessionStorage.setItem("lastName", lastName)
+                          sessionStorage.setItem("startId", starsId)
+                          sessionStorage.setItem("department", department)
+                          sessionStorage.setItem("academicYear", academicYear)
+                          sessionStorage.setItem("semester", semester)
                           goDashboardStudent()
-                        } else {
+                        } else if (role !== undefined) {
                           goDashboardStaff()
+                        } else {
+                          goSplash()
                         }
                     }
                 })
