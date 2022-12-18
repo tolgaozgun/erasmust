@@ -82,7 +82,7 @@ public class CourseReviewFormServiceNew {
     }
 
 
-    private FileData saveFile(MultipartFile file) {
+    public FileData saveFile(MultipartFile file) {
         String fileName = storageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()

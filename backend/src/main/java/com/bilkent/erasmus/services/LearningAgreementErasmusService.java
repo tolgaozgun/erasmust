@@ -1,13 +1,14 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
+import com.bilkent.erasmus.dtos.LearningAgreementErasmusDTO;
 import com.bilkent.erasmus.dtos.LearningAgreementInitialFieldsDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
-import com.bilkent.erasmus.mappers.LearningAgreementEditMapper;
+import com.bilkent.erasmus.mappers.LearningAgreementErasmusMapper;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
@@ -32,6 +33,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 @Service
 @Slf4j
 public class LearningAgreementErasmusService {
@@ -52,6 +54,8 @@ public class LearningAgreementErasmusService {
 
     private final LearningAgreementMapper agreementMapper;
 
+    private final LearningAgreementErasmusMapper erasmusMapper;
+
     private final PreApprovalFormRepositoryNew preApprovalFormErasmusRepository;
 
     private final MobilityCourseFormService mobilityCourseFormService;
@@ -61,7 +65,8 @@ public class LearningAgreementErasmusService {
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
                                             CourseHostService courseHostService, CourseBilkentService courseBilkentService,
-                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService, LearningAgreementEditMapper learningAgreementEditMapper){
+                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, LearningAgreementErasmusMapper erasmusMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService) {
+
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
@@ -70,6 +75,7 @@ public class LearningAgreementErasmusService {
         this.courseBilkentService = courseBilkentService;
         this.outGoingStudentRepository = outGoingStudentRepository;
         this.agreementMapper = agreementMapper;
+        this.erasmusMapper = erasmusMapper;
         this.preApprovalFormErasmusRepository = preApprovalFormErasmusRepository;
         this.mobilityCourseFormService = mobilityCourseFormService;
         this.learningAgreementEditMapper = learningAgreementEditMapper;
@@ -205,16 +211,17 @@ public class LearningAgreementErasmusService {
         return erasmusRepository.save(form);
     }
 
-    public LearningAgreementErasmus saveForm(LearningAgreementDTO form) throws Exception {
-        LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
+    public LearningAgreementErasmus saveForm(LearningAgreementErasmusDTO form) throws Exception {
+       // LearningAgreementErasmus erasmusForm = erasmusMapper.toEntity(form);
+        /*LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
                 form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getCountryCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
                 form.getReceivingInstitutionInformation().getContactPersonEmailHost(),form.getReceivingInstitutionInformation().getContactPersonPhoneNumberHost(), form.getReceivingInstitutionInformation().getContactPersonFunctionHost(),
-                form.getReceivingInstitutionInformation().getFacultyHost().getId(),form.getReceivingInstitutionInformation().getDepartmentHost() );
-        OutGoingStudent student = outGoingStudentRepository.findByStarsId(form.getStudentId()).orElseThrow(() -> new EntityNotFoundException("No student found"));
-
-        erasmusForm.setStudent(student);
-
-        return erasmusForm;
+                form.getReceivingInstitutionInformation().getFacultyHost().getId(),form.getReceivingInstitutionInformation().getDepartmentHost() );*/
+        // Optional<OutGoingStudent> student = outGoingStudentRepository.findByStarsId(erasmusForm.getStudent().getStarsId());
+        // if (student.isEmpty())
+        //    throw new EntityNotFoundException("No student found");
+        // erasmusForm.setStudent(student);
+        return erasmusRepository.save(erasmusMapper.toEntity(form));
     }
 
 /*  public List<LearningAgreementErasmus> retrieveAgreements(MobilityDetail mobility) {
