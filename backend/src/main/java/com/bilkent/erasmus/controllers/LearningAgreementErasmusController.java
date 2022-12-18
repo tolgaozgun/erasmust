@@ -18,7 +18,7 @@ public class LearningAgreementErasmusController {
     }
 
     @GetMapping("/get-initial")
-    public ResponseEntity<?> sendLearningAgreement() throws Exception {
+    public ResponseEntity<?> getInitialLearningAgreement() throws Exception {
         return new ResponseEntity<>(erasmusService.getInitialFieldValues(), HttpStatus.OK);
     }
 
@@ -39,12 +39,10 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.reviewForm(request, formId), HttpStatus.ACCEPTED);
     }
 
-    /*
     @PatchMapping("/edit")
-    public ResponseEntity<?> editAgreement(@RequestBody LearningAgreementDTO erasmusDTO) throws Exception {
-        return new ResponseEntity<>(erasmusService.editForm(erasmusDTO), HttpStatus.OK);
+    public ResponseEntity<?> editAgreement(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.editForm(formId, erasmusDTO), HttpStatus.OK);
     }
-*/
 
     @PostMapping("/cancel")
     public ResponseEntity<?> cancelAgreement() throws Exception {
@@ -57,5 +55,13 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.getAllAgreements(), HttpStatus.OK);
     }
 
-    //edit
+/*    @PatchMapping("/add-course-during")
+    public ResponseEntity<?> addCourseDuring(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.saveCourseHostDuring(formId, erasmusDTO), HttpStatus.OK);
+    }
+
+    @PatchMapping("/add-course-after")
+    public ResponseEntity<?> addCourseAfter(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.saveCourseHostAfter(formId, erasmusDTO), HttpStatus.OK);
+    }*/
 }
