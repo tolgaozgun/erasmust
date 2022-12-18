@@ -17,6 +17,8 @@ public class Student extends User {
     private DepartmentName departmentName;
 
     private String nationality;
+    // -> todo date
+    private long dateOfBirth;
 
     private String academicYear;
 

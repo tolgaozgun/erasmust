@@ -46,4 +46,6 @@ public class CourseReviewFormNew {
 
     private String requirements;
 
+    private long date;
+
 }
