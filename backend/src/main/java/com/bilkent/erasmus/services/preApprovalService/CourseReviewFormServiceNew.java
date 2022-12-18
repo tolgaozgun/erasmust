@@ -2,6 +2,7 @@ package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewEditDTO;
 
+import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.enums.ToDoType;
 
 import com.bilkent.erasmus.models.FileData;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -108,6 +110,22 @@ public class CourseReviewFormServiceNew {
                 .stream()
                 .map(file -> saveFile(file))
                 .collect(Collectors.toList());
+    }
+
+    public CourseReviewFormNew accept(int id){
+        CourseReviewFormNew courseReviewFormNew = courseReviewFormRepository
+                .findById(id).orElseThrow(() -> new EntityNotFoundException("Course review form doesn't exist"));
+        courseReviewFormNew.setStatus(CourseApprovalStatus.APPROVED);
+        courseReviewFormRepository.save(courseReviewFormNew);
+        return courseReviewFormNew;
+    }
+
+    public CourseReviewFormNew reject(int id){
+        CourseReviewFormNew courseReviewFormNew = courseReviewFormRepository
+                .findById(id).orElseThrow(() -> new EntityNotFoundException("Course review form doesn't exist"));
+        courseReviewFormNew.setStatus(CourseApprovalStatus.DECLINED);
+        courseReviewFormRepository.save(courseReviewFormNew);
+        return courseReviewFormNew;
     }
 
 

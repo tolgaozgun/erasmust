@@ -12,7 +12,14 @@ public enum RoleBasedPermission {
 
     ROLE_STUDENT(Sets.newHashSet(Permission.USER_READ), "STUDENT"),
 
-    ROLE_READER(Sets.newHashSet(Permission.USER_READ, Permission.ADMIN_READ), "READER");
+    ROLE_READER(Sets.newHashSet(Permission.USER_READ, Permission.ADMIN_READ), "READER"),
+
+    ROLE_ERASMUS_COORDINATOR(Sets.newHashSet(Permission.ADMIN_READ), "ERASMUS_COORDINATOR"),
+
+    ROLE_COURSE_COORDINATOR(Sets.newHashSet(Permission.ADMIN_READ), "COURSE_COORDINATOR"),
+
+    ROLE_DEAN(Sets.newHashSet(Permission.ADMIN_READ),"DEAN");
+
 
 
     // STUDENT, EXCHANGE_COORDINATOR, ADMIN, DEAN
