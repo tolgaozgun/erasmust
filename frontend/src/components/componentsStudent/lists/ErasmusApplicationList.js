@@ -5,7 +5,7 @@ import {
     Box,
     Button,
     Card,
-    CardHeader,
+    CardHeader, IconButton,
     Table,
     TableBody,
     TableCell,
@@ -16,6 +16,9 @@ import {
 } from "@mui/material";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import {SeverityPill} from "../severity-pill";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ErasmusApplicationList = (props) => {
 
@@ -29,7 +32,7 @@ const ErasmusApplicationList = (props) => {
 
     return (
         <Card {...props}>
-            <CardHeader title="Ongoing StudentPreapprovalList"/>
+            <CardHeader title="Erasmus Applications"/>
             <PerfectScrollbar>
                 <Box
                     sx={{
@@ -57,6 +60,9 @@ const ErasmusApplicationList = (props) => {
                                     </Tooltip>
                                 </TableCell>
                                 <TableCell>Status</TableCell>
+                                <TableCell>
+                                    Actions
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -89,6 +95,29 @@ const ErasmusApplicationList = (props) => {
                                         >
                                             {application.status}
                                         </SeverityPill>
+                                    </TableCell>
+                                    <TableCell>
+                                        <>
+                                            <Tooltip title="View">
+                                                <IconButton>
+                                                    <VisibilityIcon/>
+                                                </IconButton>
+                                            </Tooltip>
+                                            <Tooltip title="Edit">
+                                                <IconButton
+                                                    // onClick={() => {
+                                                    //     navigate(`/studentListAdmin/student/${student.id}`, {state: student})
+                                                    // {}
+                                                >
+                                                    <EditIcon/>
+                                                </IconButton>
+                                            </Tooltip>
+                                            <Tooltip title="Delete">
+                                                <IconButton>
+                                                    <DeleteIcon/>
+                                                </IconButton>
+                                            </Tooltip>
+                                        </>
                                     </TableCell>
                                 </TableRow>
                             ))}

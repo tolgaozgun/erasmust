@@ -16,6 +16,9 @@ import * as Yup from "yup";
 
 export const SendingInstitutionInfo = (props) => {
 
+    let setData = props.values
+
+    let contactPersonName = setData["contactPersonFirstNameBilkent"] + " " + setData["contactPersonLastNameBilkent"]
 
     return (
         <form
@@ -44,7 +47,7 @@ export const SendingInstitutionInfo = (props) => {
                                 label="Name"
                                 name="name"
                                 required
-                                value={props.values.name}
+                                value={setData["nameBilkent"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -59,7 +62,7 @@ export const SendingInstitutionInfo = (props) => {
                                 label="Faculty"
                                 name="faculty"
                                 required
-                                value={props.values.faculty}
+                                value={setData["facultyBilkent"]["name"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -74,7 +77,7 @@ export const SendingInstitutionInfo = (props) => {
                                 label="Erasmus Code"
                                 name="erasmusCode"
                                 required
-                                value={props.values.erasmusCode}
+                                value={setData["erasmusCodeBilkent"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -89,7 +92,7 @@ export const SendingInstitutionInfo = (props) => {
                                 label="Department"
                                 name="department"
                                 required
-                                value={props.values.department}
+                                value={setData["departmentBilkent"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -104,7 +107,7 @@ export const SendingInstitutionInfo = (props) => {
                                 label="Address"
                                 name="address"
                                 required
-                                value={props.values.address}
+                                value={setData["addressBilkent"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -119,7 +122,7 @@ export const SendingInstitutionInfo = (props) => {
                                 label="Host Country Code"
                                 name="hostCountryCode"
                                 required
-                                value={props.values.hostCountryCode}
+                                value={setData["countryCodeBilkent"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -134,7 +137,7 @@ export const SendingInstitutionInfo = (props) => {
                                 label="Contact Person Name"
                                 name="contactPersonName"
                                 required
-                                value={props.values.contactPersonName}
+                                value={contactPersonName}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -146,10 +149,40 @@ export const SendingInstitutionInfo = (props) => {
                         >
                             <TextField
                                 fullWidth
-                                label="Contact Person Details"
-                                name="contactPersonDetails"
+                                label="Contact Person Email"
+                                name="contactPersonEmail"
                                 required
-                                value={props.values.contactPersonDetails}
+                                value={setData["contactPersonEmailBilkent"]}
+                                variant="outlined"
+                                disabled={true}
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                fullWidth
+                                label="Contact Person Phone Number"
+                                name="contactPersonPhone"
+                                required
+                                value={setData["contactPersonPhoneNumberBilkent"]}
+                                variant="outlined"
+                                disabled={true}
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                fullWidth
+                                label="Contact Person Function"
+                                name="contactPersonFunction"
+                                required
+                                value={setData["contactPersonFunctionBilkent"]}
                                 variant="outlined"
                                 disabled={true}
                             />

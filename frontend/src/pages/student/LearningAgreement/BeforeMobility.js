@@ -96,42 +96,36 @@ const QontoStepIconRoot = styled('div')(
     })
 );
 
-const data = {
-    name: "Tolga",
-    surname: "Özgün",
-    dateOfBirth: new Date(),
-    nationality: "Turkish",
-    sex: "M",
-    academicYear: "2022-2023",
-    sending: {
-        name: "Bilkent University",
-        faculty: "Faculty of Engineering",
-        erasmusCode: "ANKARA07",
-        department: "Computer Engineering",
-        address: "UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA",
-        countryWithCode: "Turkey, TR",
-        contactPersonName: "Can Alkan",
-        contactPersonDetails: "calkan@cs.bilkent.edu.tr"
+const prefetchData = {
+    outGoingStudent: {
+        id: 0,
+        firstName: "",
+        lastName: "",
+        dateOfBirth: new Date(),
+        nationality: "",
+        academicYear: "",
+        gender: "M",
     },
-    bilkentCourses: [
-        {
-            courseName: "BILKENTNAME",
-            courseCode: "BILKENTCODE",
-            courseCredits: 1.1,
-            bilkentCourse: "",
-        }
-    ],
-    hostCourses: [
-        {
-            courseName: "HOSTNAME",
-            courseCode: "HOSTCODE",
-            courseCredits: 1.1,
-            bilkentCourse: "XX",
-        }
-    ],
+    bilkentInformation: {
+        nameBilkent: "",
+        facultyBilkent: {
+            id: 0,
+            name: ""
+        },
+        erasmusCodeBilkent: "",
+        departmentBilkent: "",
+        addressBilkent: "",
+        countryCodeBilkent: "",
+        contactPersonFirstNameBilkent: "",
+        contactPersonLastNameBilkent: "",
+        contactPersonEmailBilkent: "",
+        contactPersonPhoneNumberBilkent: "",
+        contactPersonFunctionBilkent: "",
+    },
+    bilkentCourses: [],
+    hostCourses: [],
 
 }
-
 
 const BeforeMobility = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -142,6 +136,7 @@ const BeforeMobility = () => {
     const [isValid, setIsValid] = useState([
         false, false, false
     ])
+    const [initialData, setInitialData] = useState(prefetchData)
 
     const [faculties, setFaculties] = useState([])
 
@@ -154,17 +149,21 @@ const BeforeMobility = () => {
             subjectArea: "",
             language: "",
             languageLevel: "",
-            hostName: "",
-            faculty: "",
-            hostErasmusCode: "",
-            departmentHost: "",
-            hostFullAddress: "",
-            hostCountryCode: "",
-            hostContactFirstName: "",
-            hostContactLastName: "",
-            hostContactMail: "",
-            hostContactNumber: "",
-            hostContactFunction: "",
+            receivingInstitutionInformation: {
+                nameHost: "",
+                facultyHost: {
+                    id: 0,
+                },
+                erasmusCodeHost: "",
+                departmentHost: "",
+                addressHost: "",
+                countryCodeHost: "",
+                contactPersonFirstNameHost: "",
+                contactPersonLastNameHost: "",
+                contactPersonEmailHost: "",
+                contactPersonPhoneNumberHost: "",
+                contactPersonFunctionHost: "",
+            },
         },
         validationSchema: Yup.object({
             studyCycle: Yup
@@ -183,59 +182,66 @@ const BeforeMobility = () => {
                 .string()
                 .max(10)
                 .required('Competence level is required'),
-            hostName: Yup
-                .string()
-                .max(255)
-                .required("Name is required"),
-            faculty: Yup
-                .string()
-                .max(255)
-                .required("Faculty is required"),
-            hostErasmusCode: Yup
-                .string()
-                .max(12)
-                .required("Host Erasmus Code is required"),
-            departmentHost: Yup
-                .string()
-                .max(255)
-                .required("Host Department is required"),
-            hostFullAddress: Yup
-                .string()
-                .max(500)
-                .required("Address is required"),
-            hostCountryCode: Yup
-                .string()
-                .max(40)
-                .required("Country & Country Code is required"),
-            hostContactFirstName: Yup
-                .string()
-                .max(20)
-                .required("Host Contact Person's First Name is required"),
-            hostContactLastName: Yup
-                .string()
-                .max(20)
-                .required("Host Contact Person's Last Name is required"),
-            hostContactMail: Yup
-                .string()
-                .max(50)
-                .required("Contact Person Details is required"),
-            hostContactNumber: Yup
-                .string()
-                .max(50)
-                .required("Contact Person Details is required"),
-            hostContactFunction: Yup
-                .string()
-                .max(50)
-                .required("Contact Person Details is required"),
+            receivingInstitutionInformation: Yup.object({
+                nameHost: Yup
+                    .string()
+                    .max(255)
+                    .required("Name is required"),
+                facultyHost: Yup.object({
+                    id: Yup
+                        .number()
+                        .required("Faculty is required")
+                }),
+                erasmusCodeHost: Yup
+                    .string()
+                    .max(12)
+                    .required("Host Erasmus Code is required"),
+                departmentHost: Yup
+                    .string()
+                    .max(255)
+                    .required("Host Department is required"),
+                addressHost: Yup
+                    .string()
+                    .max(500)
+                    .required("Address is required"),
+                countryCodeHost: Yup
+                    .string()
+                    .max(40)
+                    .required("Country & Country Code is required"),
+                contactPersonFirstNameHost: Yup
+                    .string()
+                    .max(20)
+                    .required("Host Contact Person's First Name is required"),
+                contactPersonLastNameHost: Yup
+                    .string()
+                    .max(20)
+                    .required("Host Contact Person's Last Name is required"),
+                contactPersonEmailHost: Yup
+                    .string()
+                    .max(50)
+                    .required("Contact Person Details is required"),
+                contactPersonPhoneNumberHost: Yup
+                    .string()
+                    .max(50)
+                    .required("Contact Person Details is required"),
+                contactPersonFunctionHost: Yup
+                    .string()
+                    .max(50)
+                    .required("Contact Person Details is required"),
+            }),
         }),
         onSubmit: async (values, formikHelpers) => {
-            await axios.post("http://92.205.25.135:4/learning-agreement-erasmus/create", values)
+            await axios.post("http://92.205.25.135:4/learning-agreement-erasmus/create", values, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
                 .then((response) => {
+                    console.log("onSubmit1")
                     if (response && response.data) {
-                        const jwtToken = response.data["token"]
-                        const role = response.data["role"]
-                        sessionStorage.setItem("jwtToken", jwtToken)
-                        sessionStorage.setItem("role", role)
+                        console.log("onSubmit2")
+
+                        console.log(response.data)
                         // navigate('/dashboardStudent')
                     }
                 })
@@ -255,37 +261,17 @@ const BeforeMobility = () => {
             })
             .then((res) => {
                 if (res && res.data) {
-                    console.log(res.data)
-                }
-            })
-            .catch((err) => {
-                if (err && err.response) {
-                    console.log("Error: ", err)
-                }
-            })
-    }, []);
 
-    useEffect(() => {
-        axios.get("http://92.205.25.135:4/faculty/all", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then((res) => {
-                if (res && res.data) {
-                    var i;
-                    for (i = 0; i < res.data.length; i++) {
-                        console.log("Item fetched!")
-                        var item = res.data[i]
-                        if (item.name) {
-                            item.label = item.name
-                        }
-
-                        setFaculties(oldArray => [...oldArray, item])
-
-                        console.log(res.data);
-                        console.log("Item placed on array!");
-                    }
+                    let data = {};
+                    data["bilkentInformation"] = res.data.bilkentInformation;
+                    data.outGoingStudent = res.data.outGoingStudent;
+                    data.bilkentCourses = []
+                    data.hostCourses = []
+                    res.data["mobilityCourseForms"].map((mobilityCourseForm, index) => {
+                        data.bilkentCourses.push(mobilityCourseForm["courseBilkent"])
+                        data.hostCourses.push(mobilityCourseForm["courseHost"])
+                    })
+                    setInitialData(data)
                 }
             })
             .catch((err) => {
@@ -306,7 +292,6 @@ const BeforeMobility = () => {
                 if (res && res.data) {
                     var i;
                     for (i = 0; i < res.data.length; i++) {
-                        console.log("Item fetched!")
                         var item = res.data[i]
                         if (item.name) {
                             item.label = item.name
@@ -315,7 +300,6 @@ const BeforeMobility = () => {
                         setFaculties(oldArray => [...oldArray, item])
 
                         console.log(res.data);
-                        console.log("Item placed on array!");
                     }
                 }
             })
@@ -326,6 +310,8 @@ const BeforeMobility = () => {
             })
     }, []);
 
+    console.log("Formik errors")
+    console.log(formik.errors)
 
     const handleStep = (step, state) => {
         switch (state) {
@@ -394,7 +380,7 @@ const BeforeMobility = () => {
     }
 
     const facultyChange = (facultyId) => {
-        formik.setFieldValue("hostFacultyId", facultyId)
+        formik.setFieldValue("receivingInstitutionInformation.facultyHost.id", facultyId)
     }
 
     const steps = ['Student Information',
@@ -407,8 +393,9 @@ const BeforeMobility = () => {
     console.log("Values")
     console.log(formik.values)
 
+
     return (
-        <>
+        <form onSubmit={formik.handleSubmit}>
             <title>
                 Learning Agreement
             </title>
@@ -455,7 +442,8 @@ const BeforeMobility = () => {
 
                                 <LearningStudentInfo
                                     hidden={activeStep !== 0}
-                                    setData={data}
+                                    initialData={initialData}
+                                    setData={initialData["outGoingStudent"]}
                                     values={formik.values}
                                     touched={formik.touched}
                                     errors={formik.errors}
@@ -464,13 +452,13 @@ const BeforeMobility = () => {
                                 />
                                 <SendingInstitutionInfo
                                     hidden={activeStep !== 1}
-                                    values={data.sending}
+                                    values={initialData.bilkentInformation}
                                 />
                                 <ReceivingInstitutionInfo
                                     hidden={activeStep !== 2}
-                                    values={formik.values}
-                                    touched={formik.touched}
-                                    errors={formik.errors}
+                                    values={getIn(formik.values, "receivingInstitutionInformation")}
+                                    touched={getIn(formik.touched, "receivingInstitutionInformation")}
+                                    errors={getIn(formik.errors, "receivingInstitutionInformation")}
                                     handleChange={formik.handleChange}
                                     handleBlur={formik.handleBlur}
                                     faculties={faculties}
@@ -479,7 +467,7 @@ const BeforeMobility = () => {
 
                                 <StudyProgrammeInfo
                                     hidden={activeStep !== 3}
-                                    values={data.hostCourses}
+                                    values={initialData["hostCourses"]}
                                 />
 
                                 <LanguageCompetence
@@ -494,7 +482,7 @@ const BeforeMobility = () => {
 
                                 <SendingInstitutionRecognition
                                     hidden={activeStep !== 5}
-                                    values={data.bilkentCourses}
+                                    values={initialData["bilkentCourses"]}
                                 />
 
                                 <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
@@ -504,16 +492,16 @@ const BeforeMobility = () => {
                                     }
                                     <Box sx={{flex: '1 1 auto'}}>
 
-                                        {activeStep !== steps.length - 1 ? (
+                                        {activeStep !== steps.length - 1 && (
                                             <Button onClick={nextStepHandler}>
                                                 {"Next >"}
                                             </Button>
-                                        ) : (
-                                            <Button>
-                                                {"Finish"}
+                                        )}
+                                        {activeStep === steps.length - 1 && (
+                                            <Button type="submit">
+                                                {"Submit"}
                                             </Button>
-                                        )
-                                        }
+                                        )}
                                     </Box>
                                 </Box>
                             </Grid>
@@ -525,7 +513,7 @@ const BeforeMobility = () => {
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
-        </>
+        </form>
     );
 };
 

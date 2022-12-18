@@ -15,6 +15,7 @@ import * as Yup from "yup";
 
 export const LearningStudentInfo = (props) => {
 
+
     return (
         <form
             autoComplete="off"
@@ -42,7 +43,7 @@ export const LearningStudentInfo = (props) => {
                                 label="Name"
                                 name="name"
                                 required
-                                value={props.setData.name}
+                                value={props.setData["firstName"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -57,7 +58,7 @@ export const LearningStudentInfo = (props) => {
                                 label="Surname"
                                 name="surname"
                                 required
-                                value={props.setData.surname}
+                                value={props.setData["lastName"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -73,7 +74,7 @@ export const LearningStudentInfo = (props) => {
                                 name="dateOfBirth"
                                 type="date"
                                 required
-                                value={props.setData.dateOfBirth}
+                                // value={props.setData["dateOfBirth"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -88,7 +89,7 @@ export const LearningStudentInfo = (props) => {
                                 label="Nationality"
                                 name="nationality"
                                 required
-                                value={props.setData.nationality}
+                                // value={props.setData["nationality"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -103,7 +104,7 @@ export const LearningStudentInfo = (props) => {
                                 label="Sex"
                                 name="sex"
                                 required
-                                value={props.setData.sex}
+                                value={props.setData["gender"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -118,7 +119,7 @@ export const LearningStudentInfo = (props) => {
                                 label="Academic Year"
                                 name="academicYear"
                                 required
-                                value={props.setData.academicYear}
+                                // value={props.setData["academicYear"]}
                                 variant="outlined"
                                 disabled={true}
                             />
