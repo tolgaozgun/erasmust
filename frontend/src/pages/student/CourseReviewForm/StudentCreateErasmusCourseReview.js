@@ -47,7 +47,12 @@ const StudentCreateErasmusCourseReview = () => {
             coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
             courseCoordinator: "Eray Tuzun",
             description: "My syllabus: xx.com\nMy this: xx.com",
-            files: [""],
+            files: 
+            {
+                name: "",
+                url: "",
+                fileType: ""
+            },
         },
         validationSchema: Yup.object({
             name: Yup
@@ -74,10 +79,19 @@ const StudentCreateErasmusCourseReview = () => {
                 .string()
                 .max(1000)
                 .required("Description is required"),
-            Files: Yup
-                .string()
-                .max(20)
-                .required("Files are required"),
+            files: Yup.array().shapeOf({
+                name: Yup
+                    .string()
+                    .max(255)
+                    .required("File name is required"),
+                url: Yup
+                    .string()
+                    .required("Url is required"),
+                fileType: Yup
+                    .string()
+                    .required("File type is required"),
+            })
+                
         }),
         onSubmit: () => {
 
@@ -209,7 +223,7 @@ const StudentCreateErasmusCourseReview = () => {
                                 />
                             </Grid>
 
-                            <FileUpload fileType={["image/png"]}/>
+                            <FileUpload fileType={["image/png", "image/jpeg", "image/jpg", "application/pdf", ]}/>
                         </Grid>
                     </Container>
                 </Box>

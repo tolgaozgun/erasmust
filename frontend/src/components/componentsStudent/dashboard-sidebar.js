@@ -19,7 +19,7 @@ const items = [
         title: "Dashboard",
     },
     {
-        href: "/student/erasmus/dashboard",
+        href: "/student/erasmus",
         icon: <HiGlobeEuropeAfrica fontSize="small"/>,
         title: "Erasmus Page",
         side: [
