@@ -39,7 +39,7 @@ public class PreApprovalFormErasmusControllerNew {
     }
     @RolesAllowed("ROLE_STUDENT")
     @GetMapping("/all-preapproval-student/{id}")
-    public ResponseEntity<?> getAllPreapprovalByStudent(@PathVariable int id) {
+    public ResponseEntity<?> getAllPreapprovalByFormIdForStudent(@PathVariable int id) {
         return new ResponseEntity<>(preApprovalService.getAllPreapprovalByIdForStudent(id), HttpStatus.OK);
     }
 

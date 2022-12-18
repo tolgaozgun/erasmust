@@ -8,6 +8,7 @@ import com.bilkent.erasmus.enums.ToDoType;
 import com.bilkent.erasmus.models.FileData;
 import com.bilkent.erasmus.models.ToDoItem;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
+import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
@@ -134,5 +135,13 @@ public class CourseReviewFormServiceNew {
         return null;
     }
 
+
+    // todo -->  add exception
+    public CourseReviewFormNew getCourseReviewFormByIdForStudent(int id) {
+        CourseReviewFormNew courseReviewForm = courseReviewFormRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("course review form not found with id: " + id));
+
+        return null;
+    }
 
 }
