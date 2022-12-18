@@ -248,11 +248,11 @@ const BeforeMobility = () => {
     });
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/learning-agreement-erasmus/get-initial", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
+            axios.get("http://92.205.25.135:4/learning-agreement-erasmus/get-initial", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
             .then((res) => {
                 if (res && res.data) {
                     console.log(res.data)
