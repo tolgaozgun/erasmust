@@ -495,10 +495,10 @@ public class LearningAgreementErasmusService {
         return courses;
     }
 
-    public LearningAgreementErasmus findLearningAgreementByStudent(OutGoingStudent student){
-        LearningAgreementErasmus agreementForm = erasmusRepository.findByStudent_Id(student.getStarsId());
-        if (agreementForm != null)
-            return agreementForm;
+    public List<LearningAgreementErasmus> findLearningAgreementsByStudent(OutGoingStudent student){
+        List<LearningAgreementErasmus> agreementForms = erasmusRepository.findAllByStudent_Id(student.getStarsId());
+        if (agreementForms != null)
+            return agreementForms;
         else
             return null;
     }
@@ -509,6 +509,19 @@ public class LearningAgreementErasmusService {
             return agreementForm;
         else
             return null;
+    }
+
+    public List<LearningAgreementDTO> getAllStudent(){
+        List<LearningAgreementDTO> list = new ArrayList<>();
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
+        List<LearningAgreementErasmus> agreement = findLearningAgreementsByStudent(student);
+
+        for(int i=0; i<agreement.size(); i++){
+            LearningAgreementDTO dto = learningAgreementEditMapper.toLearningAgreementDTO(agreement.get(i));
+            list.add(dto);
+        }
+        return list;
     }
 }
 
