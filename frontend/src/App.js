@@ -71,6 +71,7 @@ import StudentErasmusPreapprovalList from "./pages/student/Preapproval/StudentEr
 import StudentErasmusCourseReviewForms from "./pages/student/CourseReviewForm/StudentErasmusCourseReviewForms";
 import StudentCreateErasmusApplication from "./pages/student/ErasmusApplication/StudentCreateErasmusApplication";
 import StudentErasmusPage from "./pages/student/StudentErasmusPage";
+import StudentLearningAgreements from "./pages/student/LearningAgreement/StudentLearningAgreements";
 
 const App = () => {
     // const [routes, setRoutes] = useState(routeItemsDefault)
@@ -337,8 +338,8 @@ const App = () => {
                             <Route path="edit" element={<Error />} />
                         </Route>
                         <Route path="learningagreement/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<BeforeMobility />} />
+                            <Route path="list" element={<StudentLearningAgreements/>}/>
+                            <Route path="create" element={<BeforeMobility/>}/>
                             <Route path="view" element={<Error />} />
                             <Route path="edit" element={<Error />} />
                         </Route>
