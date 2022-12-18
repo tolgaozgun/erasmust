@@ -22,7 +22,7 @@ public class LearningAgreementErasmusController {
     }
 
     @GetMapping("/get-initial")
-    public ResponseEntity<?> sendLearningAgreement() throws Exception {
+    public ResponseEntity<?> getInitialLearningAgreement() throws Exception {
         return new ResponseEntity<>(erasmusService.getInitialFieldValues(), HttpStatus.OK);
     }
 
@@ -58,4 +58,14 @@ public class LearningAgreementErasmusController {
     public ResponseEntity<?> viewAllAgreements(){
         return new ResponseEntity<>(erasmusService.getAllAgreements(), HttpStatus.OK);
     }
+
+/*    @PatchMapping("/add-course-during")
+    public ResponseEntity<?> addCourseDuring(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.saveCourseHostDuring(formId, erasmusDTO), HttpStatus.OK);
+    }
+
+    @PatchMapping("/add-course-after")
+    public ResponseEntity<?> addCourseAfter(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.saveCourseHostAfter(formId, erasmusDTO), HttpStatus.OK);
+    }*/
 }
