@@ -40,6 +40,10 @@ const CourseReviewList = (props) => {
         setSelected(trueArray)
     }
 
+    const getCourseName = (path, application) => {
+        return application[path]["courseCode"] + " " + application[path]["name"]
+    }
+
 
     console.log("Selected: " + selectedState)
 
@@ -61,9 +65,6 @@ const CourseReviewList = (props) => {
                                 </TableCell>
                                 <TableCell>
                                     Application ID
-                                </TableCell>
-                                <TableCell>
-                                    Student Name
                                 </TableCell>
                                 <TableCell sortDirection="desc">
                                     <Tooltip
@@ -154,16 +155,13 @@ const CourseReviewList = (props) => {
                                         {student.id}
                                     </TableCell>
                                     <TableCell>
-                                        {student.name} {student.surname}
-                                    </TableCell>
-                                    <TableCell>
                                         {/*format(student.createdAt, 'dd/MM/yyyy')*/}
                                     </TableCell>
                                     <TableCell>
-                                        {student.bilkentCourse}
+                                        {getCourseName("courseBilkent", student)}
                                     </TableCell>
                                     <TableCell>
-                                        {student.hostCourseName}
+                                        {getCourseName("courseHost", student)}
                                     </TableCell>
                                     <TableCell>
                                         {student.academicYear}
