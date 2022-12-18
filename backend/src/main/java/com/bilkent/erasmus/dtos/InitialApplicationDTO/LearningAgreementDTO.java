@@ -3,11 +3,12 @@ package com.bilkent.erasmus.dtos.InitialApplicationDTO;
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.LanguageLevel;
-import com.bilkent.erasmus.enums.MobilityType;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class LearningAgreementDTO {
@@ -31,7 +32,7 @@ public class LearningAgreementDTO {
 
     private Status status;
 
-    private MobilityDetail mobilityDetail;
+    private List<MobilityDetail> mobilityDetailList;
 
     private LanguageLevel languageLevel;
 

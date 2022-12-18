@@ -7,6 +7,7 @@ import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
+import com.bilkent.erasmus.mappers.LearningAgreementEditMapper;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.MobilityCourseForm;
@@ -54,10 +55,12 @@ public class LearningAgreementErasmusService {
 
     private final MobilityCourseFormService mobilityCourseFormService;
 
+    private final LearningAgreementEditMapper learningAgreementEditMapper;
+
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
                                             CourseHostService courseHostService, CourseBilkentService courseBilkentService,
-                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
+                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService, LearningAgreementEditMapper learningAgreementEditMapper){
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
@@ -68,6 +71,7 @@ public class LearningAgreementErasmusService {
         this.agreementMapper = agreementMapper;
         this.preApprovalFormErasmusRepository = preApprovalFormErasmusRepository;
         this.mobilityCourseFormService = mobilityCourseFormService;
+        this.learningAgreementEditMapper = learningAgreementEditMapper;
     }
 
     public boolean cancelAgreement() throws Exception {
@@ -369,9 +373,22 @@ public class LearningAgreementErasmusService {
         return agreementMapper.toLearningAgreementDTO(agreement);
     }
 
-    public LearningAgreementDTO editForm(LearningAgreementDTO erasmusDTO) {
-        // todo: edit form
-        return erasmusDTO;
+    public LearningAgreementDTO editForm(int id, LearningAgreementDTO erasmusDTO) {
+        LearningAgreementErasmus agreementForm = new LearningAgreementErasmus();
+        try {
+            if (erasmusRepository.findById(id) != null) {
+                agreementForm = erasmusRepository.findById(id);
+
+                if (agreementForm.getStatus().equals(Status.IN_PROCESS)) {
+                    log.info(agreementForm.toString());
+                    learningAgreementEditMapper.updateLearningAgreementFromDTO(erasmusDTO, agreementForm);
+                }
+            }
+        } catch(NullPointerException ex){
+            // learning agreement is null
+        }
+
+        return agreementMapper.toLearningAgreementDTO(agreementForm);
     }
 
     public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds){
