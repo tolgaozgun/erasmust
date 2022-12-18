@@ -11,4 +11,8 @@ import org.checkerframework.checker.units.qual.A;
 @NoArgsConstructor
 @Builder
 public class LoginStudentResponse {
+
+    private String firstName;
+
+    private String lastName;
 }
