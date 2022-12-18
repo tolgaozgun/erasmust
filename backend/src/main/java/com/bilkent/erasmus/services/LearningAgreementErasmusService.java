@@ -1,11 +1,16 @@
 package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
+import com.bilkent.erasmus.dtos.LearningAgreementErasmusDTO;
+import com.bilkent.erasmus.dtos.LearningAgreementInitialFieldsDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
+import com.bilkent.erasmus.mappers.LearningAgreementEditMapper;
+import com.bilkent.erasmus.mappers.LearningAgreementErasmusMapper;
+import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
 import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.MobilityCourseForm;
@@ -13,21 +18,23 @@ import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.models.universityModels.Faculty;
-import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentErasmus;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.repositories.CoordinatorStudentErasmusRepository;
 import com.bilkent.erasmus.repositories.PartnerUniversityErasmusRepository;
 import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.PreApprovalFormRepositoryNew;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusDetailRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.LearningAgreementErasmusRepository;
-import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentErasmusRepository;
+import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 @Service
 @Slf4j
 public class LearningAgreementErasmusService {
@@ -44,27 +51,36 @@ public class LearningAgreementErasmusService {
 
     private final CourseBilkentService courseBilkentService;
 
-    private final OutGoingStudentErasmusRepository outGoingStudentErasmusRepository;
+    private final OutGoingStudentRepository outGoingStudentRepository;
 
     private final LearningAgreementMapper agreementMapper;
+
+    private final LearningAgreementErasmusMapper erasmusMapper;
 
     private final PreApprovalFormRepositoryNew preApprovalFormErasmusRepository;
 
     private final MobilityCourseFormService mobilityCourseFormService;
 
+    private final LearningAgreementEditMapper learningAgreementEditMapper;
+
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
-                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService, OutGoingStudentErasmusRepository outGoingStudentErasmusRepository, LearningAgreementMapper agreementMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService){
+                                            CourseHostService courseHostService, CourseBilkentService courseBilkentService,
+                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, LearningAgreementErasmusMapper erasmusMapper,
+                                            PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService, LearningAgreementEditMapper learningAgreementEditMapper) {
+
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;
         this.coordinatorStudentErasmusRepository = coordinatorStudentErasmusRepository;
         this.erasmusDetailRepository = erasmusDetailRepository;
         this.courseHostService = courseHostService;
         this.courseBilkentService = courseBilkentService;
-        this.outGoingStudentErasmusRepository = outGoingStudentErasmusRepository;
+        this.outGoingStudentRepository = outGoingStudentRepository;
         this.agreementMapper = agreementMapper;
+        this.erasmusMapper = erasmusMapper;
         this.preApprovalFormErasmusRepository = preApprovalFormErasmusRepository;
         this.mobilityCourseFormService = mobilityCourseFormService;
+        this.learningAgreementEditMapper = learningAgreementEditMapper;
     }
 
     public boolean cancelAgreement() throws Exception {
@@ -81,12 +97,55 @@ public class LearningAgreementErasmusService {
         return true;
     }
 
+    public LearningAgreementInitialFieldsDTO getInitialFieldValues(){
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
+
+
+        BilkentInformation bilkentInformation = new BilkentInformation();
+        Faculty bilkentFaculty = new Faculty();
+
+        bilkentFaculty.setId(0);
+        bilkentFaculty.setName(FacultyName.ENGINEERING);
+
+        bilkentInformation.setNameBilkent("Bilkent University");
+        bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
+        bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
+
+        try{
+            if(findPreApprovalById(student).getExchangeCoordinator() != null){
+                bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
+                bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
+                bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
+                bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
+                bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+            }
+        }catch(NullPointerException ex){
+            // exchange coordinator will be empty
+        }
+        bilkentInformation.setFacultyBilkent(bilkentFaculty);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
+
+
+        List<MobilityCourseForm> courseList = findCoursesByStudent(student);
+
+
+        LearningAgreementInitialFieldsDTO response = LearningAgreementInitialFieldsDTO.builder()
+                .outGoingStudent(student)
+                .bilkentInformation(bilkentInformation)
+                .mobilityCourseForms(courseList).build();
+        return response;
+
+    }
+
     public LearningAgreementErasmus createEmptyLearningAgreement(String subjectArea, String studyCycle, LanguageLevel languageLevel, String language,
-                                                                 String hostName, String hostFullAddress, String hostErasmusCode,
+                                                                 String hostName, String hostFullAddress, String hostErasmusCode, String hostCountryCode,
                                                                  String hostContactFirstName, String hostContactLastName, String hostContactMail, String hostContactNumber, String hostContactFunction,
-                                                                 int hostFacultyId) {
+                                                                 int hostFacultyId, DepartmentName departmentHost) {
         LearningAgreementErasmus form = new LearningAgreementErasmus();
-        OutGoingStudentErasmus student = form.getStudent();
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
         BilkentInformation bilkentInformation = new BilkentInformation();
         ReceivingInstitutionInformation hostInformation = new ReceivingInstitutionInformation();
 
@@ -95,7 +154,7 @@ public class LearningAgreementErasmusService {
         MobilityDetail afterMobility = new MobilityDetail();
 
         beforeMobility.setMobilityType(MobilityType.BEFORE);
-        beforeMobility.setStartDate(new Date()); // an idea
+        beforeMobility.setStartDate(new Date());
         beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
 
         duringMobility.setMobilityType(MobilityType.DURING);
@@ -117,6 +176,7 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setNameBilkent("Bilkent University");
         bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
         bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
 
         bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
         bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
@@ -124,7 +184,7 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
         bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
         bilkentInformation.setFacultyBilkent(bilkentFaculty);
-        bilkentInformation.setDepartmentBilkent(DepartmentName.CS);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
 
         hostInformation.setNameHost(hostName);
         hostInformation.setAddressHost(hostFullAddress);
@@ -135,7 +195,10 @@ public class LearningAgreementErasmusService {
         hostInformation.setContactPersonPhoneNumberHost(hostContactNumber);
         hostInformation.setContactPersonFunctionHost(hostContactFunction);
         hostInformation.setFacultyHost(hostFaculty);
+        hostInformation.setDepartmentHost(departmentHost);
+        hostInformation.setCountryCodeHost(hostCountryCode);
 
+        form.setStudent(student);
         form.setStatus(Status.IN_PROCESS);
         form.setMobilityDetailList(mobilityDetailList);
         form.setSubjectArea(subjectArea);
@@ -150,15 +213,67 @@ public class LearningAgreementErasmusService {
         return erasmusRepository.save(form);
     }
 
-    public LearningAgreementErasmus saveForm(LearningAgreementDTO form) throws Exception {
-        LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
-                form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
-                form.getReceivingInstitutionInformation().getContactPersonEmailHost(),form.getReceivingInstitutionInformation().getContactPersonPhoneNumberHost(), form.getReceivingInstitutionInformation().getContactPersonFunctionHost(),
-                form.getReceivingInstitutionInformation().getFacultyHost().getId());
-        OutGoingStudentErasmus student = outGoingStudentErasmusRepository.findByStarsId(form.getStudentId());
+    public LearningAgreementErasmus saveForm(LearningAgreementErasmusDTO form) throws Exception {
+
+        LearningAgreementErasmus erasmusForm = erasmusMapper.toEntity(form);
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
+
+        MobilityDetail beforeMobility = new MobilityDetail();
+        MobilityDetail duringMobility = new MobilityDetail();
+        MobilityDetail afterMobility = new MobilityDetail();
+
+        beforeMobility.setMobilityType(MobilityType.BEFORE);
+        beforeMobility.setStartDate(new Date());
+        beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
+
+        duringMobility.setMobilityType(MobilityType.DURING);
+        afterMobility.setMobilityType(MobilityType.AFTER);
+
+        List<MobilityDetail> mobilityDetailList = new ArrayList<>();
+
+        mobilityDetailList.add(beforeMobility);
+        mobilityDetailList.add(duringMobility);
+        mobilityDetailList.add(afterMobility);
+
+        BilkentInformation bilkentInformation = new BilkentInformation();
+        Faculty bilkentFaculty = new Faculty();
+
+        bilkentFaculty.setId(0);
+        bilkentFaculty.setName(FacultyName.ENGINEERING);
+
+
+        bilkentInformation.setNameBilkent("Bilkent University");
+        bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
+        bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
+
+        bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
+        bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
+        bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
+        bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
+        bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+        bilkentInformation.setFacultyBilkent(bilkentFaculty);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
+
+
+        erasmusForm.setMobilityDetailList(mobilityDetailList);
+        erasmusForm.setBilkentInformation(bilkentInformation);
+        erasmusForm.setSemester(findPreApprovalById(student).getSemester());
+        erasmusForm.setAcademicYear(findPreApprovalById(student).getAcademicYear());
+        erasmusForm.setStatus(Status.IN_PROCESS);
         erasmusForm.setStudent(student);
 
-        return erasmusForm;
+
+        /*LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
+                form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getCountryCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
+                form.getReceivingInstitutionInformation().getContactPersonEmailHost(),form.getReceivingInstitutionInformation().getContactPersonPhoneNumberHost(), form.getReceivingInstitutionInformation().getContactPersonFunctionHost(),
+                form.getReceivingInstitutionInformation().getFacultyHost().getId(),form.getReceivingInstitutionInformation().getDepartmentHost() );*/
+        // Optional<OutGoingStudent> student = outGoingStudentRepository.findByStarsId(erasmusForm.getStudent().getStarsId());
+        // if (student.isEmpty())
+        //    throw new EntityNotFoundException("No student found");
+        // erasmusForm.setStudent(student);
+        return erasmusRepository.save(erasmusForm);
     }
 
 /*  public List<LearningAgreementErasmus> retrieveAgreements(MobilityDetail mobility) {
@@ -192,9 +307,8 @@ public class LearningAgreementErasmusService {
                 break;
         }
         return agreements;
-    }*/
 
-/*    private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
+       private List<LearningAgreementErasmus> getAgreementsByType(MobilityType type) {
         List<LearningAgreementErasmus> agreementList = null;
         agreementList = new ArrayList<LearningAgreementErasmus>(erasmusRepository.findByMobilityDetail(type));
         agreementList.addAll(erasmusRepository.findByMobilityDetail(type));
@@ -227,17 +341,8 @@ public class LearningAgreementErasmusService {
         return courseBilkentService.save(course);
     }
 
-    private MobilityCourseForm saveCourseBilkentBefore(String name, double credit) {
-        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
-        CourseBilkent course = new CourseBilkent();
-        course.setName(name);
-        course.setCreditECTS(credit);
-        mobilityCourseForm.setCourseBilkent(course);
-
-        return mobilityCourseFormService.save(mobilityCourseForm);
-    }
-
-    private MobilityCourseForm saveCourseBilkentDuring(String name, double credit, boolean isAdded, String reason) {
+    private LearningAgreementErasmus saveCourseBilkentDuring(int formId, String name, double credit, boolean isAdded, String reason) {
+        LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseBilkent course = new CourseBilkent();
 
@@ -246,11 +351,15 @@ public class LearningAgreementErasmusService {
         mobilityCourseForm.setCourseBilkent(course);
         mobilityCourseForm.setChanged(isAdded);
         mobilityCourseForm.setReasonOfChange(reason);
+        mobilityCourseFormService.save(mobilityCourseForm);
 
-        return mobilityCourseFormService.save(mobilityCourseForm);
+        agreementErasmus.getMobilityDetailList().get(1).getMobilityCourseForms().add(mobilityCourseForm);
+
+        return erasmusRepository.save(agreementErasmus);
     }
 
-    private MobilityCourseForm saveCourseBilkentAfter(String name, double credit, boolean wasCompleted, LetterGrade grade) {
+    private LearningAgreementErasmus saveCourseBilkentAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) {
+        LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseBilkent course = new CourseBilkent();
 
@@ -259,8 +368,11 @@ public class LearningAgreementErasmusService {
         mobilityCourseForm.setCourseBilkent(course);
         mobilityCourseForm.setWasCompleted(wasCompleted);
         mobilityCourseForm.setGrade(grade);
+        mobilityCourseFormService.save(mobilityCourseForm);
 
-        return mobilityCourseFormService.save(mobilityCourseForm);
+        agreementErasmus.getMobilityDetailList().get(2).getMobilityCourseForms().add(mobilityCourseForm);
+
+        return erasmusRepository.save(agreementErasmus);
     }
 
     // saving host courses
@@ -271,19 +383,8 @@ public class LearningAgreementErasmusService {
         return courseHostService.save(course);
     }
 
-    private MobilityCourseForm saveCourseHostBefore(String name, double credit) {
-        MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
-        CourseHost course = new CourseHost();
-        MobilityDetail mobilityDetail = new MobilityDetail();
-
-        course.setName(name);
-        course.setCreditECTS(credit);
-        mobilityCourseForm.setCourseHost(course);
-
-        return mobilityCourseFormService.save(mobilityCourseForm);
-    }
-
-    private MobilityCourseForm saveCourseHostDuring(String name, double credit, boolean isAdded, String reason) {
+    private LearningAgreementErasmus saveCourseHostDuring(int formId, String name, double credit, boolean isAdded, String reason) {
+        LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseHost course = new CourseHost();
 
@@ -292,11 +393,15 @@ public class LearningAgreementErasmusService {
         mobilityCourseForm.setCourseHost(course);
         mobilityCourseForm.setChanged(isAdded);
         mobilityCourseForm.setReasonOfChange(reason);
+        mobilityCourseFormService.save(mobilityCourseForm);
 
-        return mobilityCourseFormService.save(mobilityCourseForm);
+        agreementErasmus.getMobilityDetailList().get(1).getMobilityCourseForms().add(mobilityCourseForm);
+
+        return erasmusRepository.save(agreementErasmus);
     }
 
-    private MobilityCourseForm saveCourseHostAfter(String name, double credit, boolean wasCompleted, LetterGrade grade) {
+    private LearningAgreementErasmus saveCourseHostAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) {
+        LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseHost course = new CourseHost();
 
@@ -305,8 +410,11 @@ public class LearningAgreementErasmusService {
         mobilityCourseForm.setCourseHost(course);
         mobilityCourseForm.setWasCompleted(wasCompleted);
         mobilityCourseForm.setGrade(grade);
+        mobilityCourseFormService.save(mobilityCourseForm);
 
-        return mobilityCourseFormService.save(mobilityCourseForm);
+        agreementErasmus.getMobilityDetailList().get(2).getMobilityCourseForms().add(mobilityCourseForm);
+
+        return erasmusRepository.save(agreementErasmus);
     }
 
     public List<LearningAgreementDTO> getAllAgreements() {
@@ -319,16 +427,32 @@ public class LearningAgreementErasmusService {
         return agreementMapper.toLearningAgreementDTO(agreement);
     }
 
-    public LearningAgreementDTO editForm(LearningAgreementDTO erasmusDTO) {
-        // todo: edit form
-        return erasmusDTO;
+    public LearningAgreementDTO editForm(int id, LearningAgreementDTO erasmusDTO) {
+        LearningAgreementErasmus agreementForm = new LearningAgreementErasmus();
+        try {
+            if (erasmusRepository.findById(id) != null) {
+                agreementForm = erasmusRepository.findById(id);
+
+                if (agreementForm.getStatus().equals(Status.IN_PROCESS)) {
+                    log.info(agreementForm.toString());
+                    learningAgreementEditMapper.updateLearningAgreementFromDTO(erasmusDTO, agreementForm);
+                }
+            }
+        } catch(NullPointerException ex){
+            // learning agreement is null
+        }
+
+        return agreementMapper.toLearningAgreementDTO(agreementForm);
     }
 
-    public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds){
+    public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds) {
         List<CourseBilkent> courseBilkentList = new ArrayList<CourseBilkent>();
 
-        for( int i = 0; i < courseBilkentIds.size(); i++){
-            courseBilkentList.get(i).setId(courseBilkentIds.get(i));
+        for (int id : courseBilkentIds) {
+            CourseBilkent courseBilkent = courseBilkentService.getById(id);
+            if (courseBilkent != null) {
+                courseBilkentList.add(courseBilkent);
+            }
         }
         return courseBilkentList;
     }
@@ -343,7 +467,7 @@ public class LearningAgreementErasmusService {
         return courseHostList;
     }
 
-    public PreApprovalFormNew findPreApprovalById(OutGoingStudentErasmus student){
+    public PreApprovalFormNew findPreApprovalById(OutGoingStudent student){
         PreApprovalFormNew preApprovalForm = preApprovalFormErasmusRepository.findByStudent(student);
         if (preApprovalForm != null)
             return preApprovalForm;
@@ -351,19 +475,27 @@ public class LearningAgreementErasmusService {
             return null;
     }
 
-    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudentErasmus student){
+    public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudent student) {
         PreApprovalFormNew preApprovalForm = findPreApprovalById(student);
         List<MobilityCourseForm> courses = new ArrayList<>();
-
-        for (int i=0; i<preApprovalForm.getForms().size(); i++) {
-            courses.get(i).setCourseBilkent(preApprovalForm.getForms().get(i).getCourseBilkent());
-            courses.get(i).setCourseHost(preApprovalForm.getForms().get(i).getCourseHost());
-            courses.get(i).setId(preApprovalForm.getForms().get(i).getId());
+        if (preApprovalForm == null) {
+            return courses;
+        }
+        for (CourseReviewFormNew courseReviewForm : preApprovalForm.getForms()) {
+            MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
+            mobilityCourseForm.setCourseBilkent(courseReviewForm.getCourseBilkent());
+            mobilityCourseForm.setCourseHost(courseReviewForm.getCourseHost());
+//            mobilityCourseForm.setGrade(LetterGrade.FZ);
+//            mobilityCourseForm.setChanged(false);
+//            mobilityCourseForm.setReasonOfChange("");
+//            mobilityCourseForm.setWasCompleted(false);
+            mobilityCourseFormService.save(mobilityCourseForm);
+            courses.add(mobilityCourseForm);
         }
         return courses;
     }
 
-    public LearningAgreementErasmus findLearningAgreementByStudent(OutGoingStudentErasmus student){
+    public LearningAgreementErasmus findLearningAgreementByStudent(OutGoingStudent student){
         LearningAgreementErasmus agreementForm = erasmusRepository.findByStudent_Id(student.getStarsId());
         if (agreementForm != null)
             return agreementForm;

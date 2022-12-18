@@ -16,7 +16,7 @@ import {FormExchangeInfo} from '../../../components/componentsStudent/forms/exch
 import {FormCourseInfo} from '../../../components/componentsStudent/forms/exchange/preapprovalForm/form-course-info';
 
 import {styled} from '@mui/material/styles';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Check} from "@mui/icons-material";
 import {useFormik} from "formik";
 import * as Yup from "yup";
@@ -98,9 +98,40 @@ const StudentCreateErasmusPreapproval = () => {
     const [isValid, setIsValid] = useState([
         false, false, false
     ])
+    const [courses, setCourses] = useState([])
+    const token = sessionStorage.getItem("jwtToken")
+
+    useEffect(() => {
+        axios.get("http://92.205.25.135:4/course/all-bilkent-courses", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (res && res.data) {
+                    var i;
+                    for (i = 0; i < res.data.length; i++) {
+                        console.log("Item fetched!")
+                        var item = res.data[i]
+
+                        let name = item.name;
+                        item.label = name;
 
 
-    const courses = require('../../../lessons.json');
+                        setCourses(oldArray => [...oldArray, item])
+
+                        console.log(res.data);
+                        console.log("Item placed on array!");
+                    }
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }, []);
+
 
     const handleStep = (step, state) => {
         switch (state) {
@@ -129,7 +160,7 @@ const StudentCreateErasmusPreapproval = () => {
 
     const formik = useFormik({
         initialValues: {
-            courses: [
+            forms: [
                 {
                     courseName: "",
                     courseCode: "",
@@ -139,7 +170,7 @@ const StudentCreateErasmusPreapproval = () => {
             ]
         },
         validationSchema: Yup.object({
-            courses: Yup.array().of(
+            forms: Yup.array().of(
                 Yup.object().shape(
                     {
                         courseCode: Yup
@@ -162,7 +193,7 @@ const StudentCreateErasmusPreapproval = () => {
         }),
         onSubmit: async (values, formikHelpers) => {
             let token = sessionStorage.getItem("jwtToken")
-            await axios.post("http://92.205.25.135:4/pre-approval/erasmus/create", values, {
+            await axios.post("http://92.205.25.135:4/pre-approval/erasmus/save", values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -255,7 +286,7 @@ const StudentCreateErasmusPreapproval = () => {
     const steps = ['Student Information', 'Program Information', 'Courses'];
 
     return (
-        <>
+        <form onSubmit={formik.handleSubmit}>
             <title>
                 Preapproval Form
             </title>
@@ -324,15 +355,15 @@ const StudentCreateErasmusPreapproval = () => {
                                     }
                                     <Box sx={{flex: '1 1 auto'}}>
 
-                                        {activeStep !== steps.length - 1 ? (
+                                        {activeStep !== steps.length - 1 && (
                                             <Button onClick={nextStepHandler}>
                                                 {"Next >"}
                                             </Button>
-                                        ) : (
-                                            <Button>
+                                        )}
+                                        {activeStep === steps.length - 1 &&
+                                            <Button type="submit">
                                                 {"Finish"}
                                             </Button>
-                                        )
                                         }
                                     </Box>
                                 </Box>
@@ -345,7 +376,7 @@ const StudentCreateErasmusPreapproval = () => {
             <DashboardSidebar
                 onClose={() => setSidebarOpen(false)}
                 open={isSidebarOpen}/>
-        </>
+        </form>
     );
 };
 

@@ -1,11 +1,8 @@
 package com.bilkent.erasmus.controllers;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
-import com.bilkent.erasmus.dtos.ReviewFormListDTO;
+import com.bilkent.erasmus.dtos.LearningAgreementErasmusDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
-import com.bilkent.erasmus.dtos.ReviewFormStudentListDTO;
-import com.bilkent.erasmus.models.applicationModels.learningAgreementForms.LearningAgreementErasmus;
-import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import com.bilkent.erasmus.services.LearningAgreementErasmusService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +18,13 @@ public class LearningAgreementErasmusController {
         this.erasmusService = erasmusService;
     }
 
+    @GetMapping("/get-initial")
+    public ResponseEntity<?> getInitialLearningAgreement() throws Exception {
+        return new ResponseEntity<>(erasmusService.getInitialFieldValues(), HttpStatus.OK);
+    }
+
     @PostMapping("/create")
-    public ResponseEntity<?> sendLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO) throws Exception {
+    public ResponseEntity<?> sendLearningAgreement(@RequestBody LearningAgreementErasmusDTO learningAgreementDTO) throws Exception {
         return new ResponseEntity<>(erasmusService.saveForm(learningAgreementDTO), HttpStatus.CREATED);
     }
 
@@ -38,12 +40,10 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.reviewForm(request, formId), HttpStatus.ACCEPTED);
     }
 
-    /*
     @PatchMapping("/edit")
-    public ResponseEntity<?> editAgreement(@RequestBody LearningAgreementDTO erasmusDTO) throws Exception {
-        return new ResponseEntity<>(erasmusService.editForm(erasmusDTO), HttpStatus.OK);
+    public ResponseEntity<?> editAgreement(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.editForm(formId, erasmusDTO), HttpStatus.OK);
     }
-*/
 
     @PostMapping("/cancel")
     public ResponseEntity<?> cancelAgreement() throws Exception {
@@ -56,5 +56,13 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.getAllAgreements(), HttpStatus.OK);
     }
 
-    //edit
+/*    @PatchMapping("/add-course-during")
+    public ResponseEntity<?> addCourseDuring(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.saveCourseHostDuring(formId, erasmusDTO), HttpStatus.OK);
+    }
+
+    @PatchMapping("/add-course-after")
+    public ResponseEntity<?> addCourseAfter(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
+        return new ResponseEntity<>(erasmusService.saveCourseHostAfter(formId, erasmusDTO), HttpStatus.OK);
+    }*/
 }

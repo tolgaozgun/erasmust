@@ -22,6 +22,8 @@ public class Course {
 
     private String name;
 
+    private String courseCode;
+
     private Double creditECTS;
 
     private Double creditBilkent;

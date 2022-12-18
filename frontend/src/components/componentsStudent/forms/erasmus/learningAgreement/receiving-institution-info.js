@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {
+    Autocomplete,
     Box,
     Button,
     Card,
@@ -38,15 +39,49 @@ export const ReceivingInstitutionInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(props.errors && props.errors["name"])}
+                                error={Boolean(props.errors && props.errors["nameHost"])}
                                 fullWidth
-                                helperText={props.touched && props.touched["name"]}
-                                label="Name"
-                                name="receiving.name"
+                                helperText={props.touched && props.touched["nameHost"]}
+                                label="Host Name"
+                                name="receivingInstitutionInformation.nameHost"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 required
-                                value={props.values["name"]}
+                                value={props.values["nameHost"]}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <Autocomplete
+                                disablePortal
+                                fullWidth
+                                id={"faculty-selector"}
+                                options={props.faculties}
+                                onChange={(e, value) => props.facultyChange(value["id"])}
+
+                                renderInput={(params) => <TextField {...params} label="Host Faculty"/>}
+                            />
+
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                error={Boolean(props.errors && props.errors["erasmusCodeHost"])}
+                                fullWidth
+                                helperText={props.touched && props.touched["erasmusCodeHost"]}
+                                label="Host Erasmus Code"
+                                name="receivingInstitutionInformation.erasmusCodeHost"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                required
+                                value={props.values["erasmusCodeHost"]}
                                 variant="outlined"
                             />
                         </Grid>
@@ -56,51 +91,15 @@ export const ReceivingInstitutionInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(props.errors && props.errors["faculty"])}
+                                error={Boolean(props.errors && props.errors["departmentHost"])}
                                 fullWidth
-                                helperText={props.touched && props.touched["faculty"]}
-                                label="Faculty"
-                                name="receiving.faculty"
-                                onChange={props.handleChange}
-                                onBlur={props.handleBlur}
-                                required
-                                value={props.values["faculty"]}
-                                variant="outlined"
-                            />
-                        </Grid>
-                        <Grid
-                            item
-                            md={6}
-                            xs={12}
-                        >
-                            <TextField
-                                error={Boolean(props.errors && props.errors["erasmusCode"])}
-                                fullWidth
-                                helperText={props.touched && props.touched["erasmusCode"]}
-                                label="Erasmus Code"
-                                name="receiving.erasmusCode"
-                                onChange={props.handleChange}
-                                onBlur={props.handleBlur}
-                                required
-                                value={props.values["erasmusCode"]}
-                                variant="outlined"
-                            />
-                        </Grid>
-                        <Grid
-                            item
-                            md={6}
-                            xs={12}
-                        >
-                            <TextField
-                                error={Boolean(props.errors && props.errors["department"])}
-                                fullWidth
-                                helperText={props.touched && props.touched["department"]}
+                                helperText={props.touched && props.touched["departmentHost"]}
                                 label="Department"
-                                name="receiving.department"
+                                name="receivingInstitutionInformation.departmentHost"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 required
-                                value={props.values["department"]}
+                                value={props.values["departmentHost"]}
                                 variant="outlined"
                             />
                         </Grid>
@@ -110,15 +109,15 @@ export const ReceivingInstitutionInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(props.errors && props.errors["address"])}
+                                error={Boolean(props.errors && props.errors["addressHost"])}
                                 fullWidth
-                                helperText={props.touched && props.touched["address"]}
-                                label="Address"
-                                name="receiving.address"
+                                helperText={props.touched && props.touched["addressHost"]}
+                                label="Host Address"
+                                name="receivingInstitutionInformation.addressHost"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 required
-                                value={props.values["address"]}
+                                value={props.values["addressHost"]}
                                 variant="outlined"
                             />
                         </Grid>
@@ -128,15 +127,15 @@ export const ReceivingInstitutionInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(props.errors && props.errors["countryWithCode"])}
+                                error={Boolean(props.errors && props.errors["countryCodeHost"])}
                                 fullWidth
-                                helperText={props.touched && props.touched["countryWithCode"]}
+                                helperText={props.touched && props.touched["countryCodeHost"]}
                                 label="Country with Code"
-                                name="receiving.countryWithCode"
+                                name="receivingInstitutionInformation.countryCodeHost"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 required
-                                value={props.values["countryWithCode"]}
+                                value={props.values["countryCodeHost"]}
                                 variant="outlined"
                             />
                         </Grid>
@@ -146,15 +145,15 @@ export const ReceivingInstitutionInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(props.errors && props.errors["contactPersonName"])}
+                                error={Boolean(props.errors && props.errors["contactPersonFirstNameHost"])}
                                 fullWidth
-                                helperText={props.touched && props.touched["contactPersonName"]}
-                                label="Contact Person Name"
-                                name="receiving.contactPersonName"
+                                helperText={props.touched && props.touched["contactPersonFirstNameHost"]}
+                                label="Host Contact First Name"
+                                name="receivingInstitutionInformation.contactPersonFirstNameHost"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 required
-                                value={props.values["contactPersonName"]}
+                                value={props.values["contactPersonFirstNameHost"]}
                                 variant="outlined"
                             />
                         </Grid>
@@ -164,15 +163,69 @@ export const ReceivingInstitutionInfo = (props) => {
                             xs={12}
                         >
                             <TextField
-                                error={Boolean(props.errors && props.errors["contactPersonDetails"])}
+                                error={Boolean(props.errors && props.errors["contactPersonLastNameHost"])}
                                 fullWidth
-                                helperText={props.touched && props.touched["contactPersonDetails"]}
-                                label="Contact Person Details"
-                                name="receiving.contactPersonDetails"
+                                helperText={props.touched && props.touched["contactPersonLastNameHost"]}
+                                label="Host Contact Last Name"
+                                name="receivingInstitutionInformation.contactPersonLastNameHost"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 required
-                                value={props.values["contactPersonDetails"]}
+                                value={props.values["contactPersonLastNameHost"]}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                error={Boolean(props.errors && props.errors["contactPersonEmailHost"])}
+                                fullWidth
+                                helperText={props.touched && props.touched["contactPersonEmailHost"]}
+                                label="Host Contact Person Mail"
+                                name="receivingInstitutionInformation.contactPersonEmailHost"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                required
+                                value={props.values["contactPersonEmailHost"]}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                error={Boolean(props.errors && props.errors["contactPersonPhoneNumberHost"])}
+                                fullWidth
+                                helperText={props.touched && props.touched["contactPersonPhoneNumberHost"]}
+                                label="Host Contact Person Number"
+                                name="receivingInstitutionInformation.contactPersonPhoneNumberHost"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                required
+                                value={props.values["contactPersonPhoneNumberHost"]}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            md={6}
+                            xs={12}
+                        >
+                            <TextField
+                                error={Boolean(props.errors && props.errors["contactPersonFunctionHost"])}
+                                fullWidth
+                                helperText={props.touched && props.touched["contactPersonFunctionHost"]}
+                                label="Host Contact Person Function"
+                                name="receivingInstitutionInformation.contactPersonFunctionHost"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                required
+                                value={props.values["contactPersonFunctionHost"]}
                                 variant="outlined"
                             />
                         </Grid>

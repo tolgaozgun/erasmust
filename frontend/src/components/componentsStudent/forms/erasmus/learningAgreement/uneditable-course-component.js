@@ -45,6 +45,9 @@ export const UneditableCourseComponent = (props) => {
         }
     }
 
+    console.log("UneditableCourseComponent")
+    console.log(props.course)
+
     return (
         <>
             <Card>
@@ -82,7 +85,7 @@ export const UneditableCourseComponent = (props) => {
                                     name={"courses[" + props.index + "].courseCode"}
                                     onBlur={props.handleBlur}
                                     required
-                                    value={props.course.courseCode}
+                                    value={props.course["courseCode"]}
                                     disabled={true}
                                     variant="outlined"
                                 />
@@ -95,9 +98,9 @@ export const UneditableCourseComponent = (props) => {
                                 <TextField
                                     fullWidth
                                     label="Course Credits"
-                                    name={"courses[" + props.index + "].courseCredits"}
+                                    name={"courses[" + props.index + "].creditECTS"}
                                     required
-                                    value={props.course.courseCredits}
+                                    value={props.course["creditECTS"]}
                                     disabled={true}
                                     type="number"
                                     variant="outlined"
@@ -111,9 +114,9 @@ export const UneditableCourseComponent = (props) => {
                                 <TextField
                                     fullWidth
                                     label="Course Name"
-                                    name={"courses[" + props.index + "].courseName"}
+                                    name={"courses[" + props.index + "].name"}
                                     required
-                                    value={props.course.courseName}
+                                    value={props.course["name"]}
                                     disabled={true}
                                     variant="outlined"
                                 />

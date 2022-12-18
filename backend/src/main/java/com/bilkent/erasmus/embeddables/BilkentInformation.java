@@ -4,10 +4,7 @@ import com.bilkent.erasmus.enums.DepartmentName;
 import com.bilkent.erasmus.models.universityModels.Faculty;
 import lombok.Data;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Data
 @Embeddable
@@ -29,7 +26,9 @@ public class BilkentInformation {
 
     private DepartmentName departmentBilkent;
 
-    @ManyToOne
+    private String countryCodeBilkent;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Faculty facultyBilkent;
 
     private String addressBilkent;

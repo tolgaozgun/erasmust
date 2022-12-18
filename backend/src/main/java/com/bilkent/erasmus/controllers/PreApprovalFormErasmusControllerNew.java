@@ -49,5 +49,10 @@ public class PreApprovalFormErasmusControllerNew {
         return new ResponseEntity<>(preApprovalService.getStudentForm(),HttpStatus.OK);
     }
 
+    @GetMapping("/course-coordinator-retrieve-all")
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<>(preApprovalService.gelAllReviewFormsForCourseCoordinator(), HttpStatus.OK);
+    }
+
 
 }

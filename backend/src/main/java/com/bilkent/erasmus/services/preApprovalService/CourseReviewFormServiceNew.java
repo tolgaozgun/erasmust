@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -82,7 +83,7 @@ public class CourseReviewFormServiceNew {
     }
 
 
-    private FileData saveFile(MultipartFile file) {
+    public FileData saveFile(MultipartFile file) {
         String fileName = storageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -96,6 +97,11 @@ public class CourseReviewFormServiceNew {
                 .build();
 
         return fileData;
+    }
+
+    public MultipartFile saveFileAllTogether(MultipartFile file) throws IOException {
+        String description = file.getResource().getDescription();
+        return null;
     }
 
     private List<FileData> saveMultipleFiles(MultipartFile[] files) {
