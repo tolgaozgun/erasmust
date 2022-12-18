@@ -101,12 +101,16 @@ public class LearningAgreementErasmusService {
         bilkentInformation.setErasmusCodeBilkent("ANKARA07");
         bilkentInformation.setCountryCodeBilkent("Turkey, TR");
 
-        if(findPreApprovalById(student).getExchangeCoordinator() != null){
-            bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
-            bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
-            bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
-            bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
-            bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+        try{
+            if(findPreApprovalById(student).getExchangeCoordinator() != null){
+                bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
+                bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
+                bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
+                bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
+                bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+            }
+        }catch(NullPointerException ex){
+            // exchange coordinator will be empty
         }
         bilkentInformation.setFacultyBilkent(bilkentFaculty);
         bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
