@@ -471,6 +471,10 @@ public class LearningAgreementErasmusService {
             MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
             mobilityCourseForm.setCourseBilkent(courseReviewForm.getCourseBilkent());
             mobilityCourseForm.setCourseHost(courseReviewForm.getCourseHost());
+//            mobilityCourseForm.setGrade(LetterGrade.FZ);
+//            mobilityCourseForm.setChanged(false);
+//            mobilityCourseForm.setReasonOfChange("");
+//            mobilityCourseForm.setWasCompleted(false);
             mobilityCourseFormService.save(mobilityCourseForm);
             courses.add(mobilityCourseForm);
         }

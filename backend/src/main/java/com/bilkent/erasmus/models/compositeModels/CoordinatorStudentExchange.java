@@ -1,7 +1,7 @@
 package com.bilkent.erasmus.models.compositeModels;
 
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
-import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudentExchange;
+import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,8 +16,8 @@ public class CoordinatorStudentExchange {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "outGoingStudentExchange_id")
-    private OutGoingStudentExchange student;
+    @JoinColumn(name = "outGoingStudent_id")
+    private OutGoingStudent student;
 
     @ManyToOne
     private ExchangeCoordinator exchangeCoordinator;
