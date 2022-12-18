@@ -37,7 +37,7 @@ public class LearningAgreement {
 
     private ReceivingInstitutionInformation receivingInstitutionInformation;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<MobilityDetail> mobilityDetailList;
 
     @Enumerated(EnumType.STRING)

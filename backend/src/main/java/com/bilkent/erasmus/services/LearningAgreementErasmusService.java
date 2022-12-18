@@ -242,6 +242,7 @@ public class LearningAgreementErasmusService {
         bilkentFaculty.setId(0);
         bilkentFaculty.setName(FacultyName.ENGINEERING);
 
+
         bilkentInformation.setNameBilkent("Bilkent University");
         bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
         bilkentInformation.setErasmusCodeBilkent("ANKARA07");
