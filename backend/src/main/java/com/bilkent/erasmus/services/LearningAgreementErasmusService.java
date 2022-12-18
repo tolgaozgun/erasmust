@@ -8,6 +8,7 @@ import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
+import com.bilkent.erasmus.mappers.LearningAgreementEditMapper;
 import com.bilkent.erasmus.mappers.LearningAgreementErasmusMapper;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
@@ -65,7 +66,8 @@ public class LearningAgreementErasmusService {
     private LearningAgreementErasmusService(LearningAgreementErasmusRepository formErasmusRepository, PartnerUniversityErasmusRepository universityErasmusRepository,
                                             CoordinatorStudentErasmusRepository coordinatorStudentErasmusRepository, LearningAgreementErasmusDetailRepository erasmusDetailRepository,
                                             CourseHostService courseHostService, CourseBilkentService courseBilkentService,
-                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, LearningAgreementErasmusMapper erasmusMapper, PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService) {
+                                            OutGoingStudentRepository outGoingStudentRepository, LearningAgreementMapper agreementMapper, LearningAgreementErasmusMapper erasmusMapper,
+                                            PreApprovalFormRepositoryNew preApprovalFormErasmusRepository, MobilityCourseFormService mobilityCourseFormService, LearningAgreementEditMapper learningAgreementEditMapper) {
 
         this.erasmusRepository = formErasmusRepository;
         this.universityErasmusRepository = universityErasmusRepository;

@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.controllers;
 
+import com.bilkent.erasmus.dtos.InitialApplicationDTO.LearningAgreementDTO;
 import com.bilkent.erasmus.dtos.LearningAgreementErasmusDTO;
 import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
 import com.bilkent.erasmus.services.LearningAgreementErasmusService;
