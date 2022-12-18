@@ -77,6 +77,7 @@ public class AuthController {
                     .orElseThrow(() -> new EntityNotFoundException("no user is available"));
             LoginStudentResponseDTO loginResponse = LoginStudentResponseDTO.builder()
                     .academicYear(student.getAcademicYear())
+                    .role(user.getPermission().getRoleName())
                     .token(jwtToken)
                     .starsId(starsId)
                     .department(student.getDepartmentName().toString())
@@ -90,6 +91,7 @@ public class AuthController {
                     .starsId(starsId)
                     .firstName(user.getFirstName())
                     .lastName(user.getLastName())
+                    .role(user.getPermission().getRoleName())
                     .token(jwtToken)
                     .build();
             return  loginResponse;

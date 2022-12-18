@@ -17,5 +17,7 @@ public class AdminLoginResponseDTO {
 
     private String lastName;
 
+    private String role;
+
     private String token;
 }

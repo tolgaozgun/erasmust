@@ -25,6 +25,8 @@ public class LoginStudentResponseDTO {
 
     private CurriculumSemester semester;
 
+    private String role;
+
     private String token;
 
 }
