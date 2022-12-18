@@ -1,11 +1,15 @@
 package com.bilkent.erasmus.models.applicationModels.learningAgreementForms;
 
-import com.bilkent.erasmus.enums.MobilityType;
+import com.bilkent.erasmus.embeddables.BilkentInformation;
+import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
+import com.bilkent.erasmus.enums.LanguageLevel;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
+import com.bilkent.erasmus.models.compositeModels.MobilityDetail;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,18 +27,33 @@ public class LearningAgreement {
 
     private String subjectArea;
 
-    private String grade;
-
-    private String reasonForChange;
-
-    private boolean isAdded;
-
     @Enumerated(EnumType.STRING)
     private SemesterOfferings semester;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    private BilkentInformation bilkentInformation;
+
+    private ReceivingInstitutionInformation receivingInstitutionInformation;
+
+    @OneToMany
+    private List<MobilityDetail> mobilityDetailList;
+
     @Enumerated(EnumType.STRING)
-    private MobilityType currentMobility;
+    private LanguageLevel languageLevel;
+
+    private String language;
+
+    public BilkentInformation getBilkentInformation(){
+        return bilkentInformation;
+    }
+
+    public ReceivingInstitutionInformation getReceivingInstitutionInformation(){
+        return receivingInstitutionInformation;
+    }
+
+    public List<MobilityDetail> getMobilityDetailList(){
+        return mobilityDetailList;
+    }
 }

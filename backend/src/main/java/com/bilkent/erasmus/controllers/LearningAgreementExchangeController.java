@@ -14,7 +14,8 @@ public class LearningAgreementExchangeController {
         this.exchangeService = exchangeService;
     }
 
-    /*    @PostMapping("/create-learning-agreement")
+
+    /* @PostMapping("/create-learning-agreement")
     public ResponseEntity<?> sendLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO) throws Exception {
         return new ResponseEntity<>(LearningAgreementExchangeService.saveForm(learningAgreementDTO), HttpStatus.CREATED);
     }
@@ -23,4 +24,6 @@ public class LearningAgreementExchangeController {
     public ResponseEntity<?> retrieveLearningAgreement(@RequestBody LearningAgreementDTO learningAgreementDTO) throws Exception {
     return new ResponseEntity(LearningAgreementExchangeService.retrieveAgreement(learningAgreementDTO), HttpStatus.ACCEPTED);
     }*/
+
 }
+

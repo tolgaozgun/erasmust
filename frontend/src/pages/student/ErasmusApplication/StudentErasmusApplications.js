@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
-import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Students} from "../../../components/componentsAdmin/lists/students";
+import {Students} from "../../../components/componentsStudent/lists/students";
 import axios from 'axios';
 import StudentPreapprovalList from "../Preapproval/StudentErasmusPreapprovalList";
 import StudentCreateErasmusApplication from "./StudentCreateErasmusApplication";
@@ -25,6 +25,7 @@ const StudentErasmusApplicationList = () => {
     const [flag, setFlag] = useState(false);
 
     const token = sessionStorage.getItem("jwtToken");
+    var array = []
 
     useEffect(() => {
         axios.get("http://92.205.25.135:4/erasmus-application/view-application", {
@@ -37,13 +38,12 @@ const StudentErasmusApplicationList = () => {
                     var i;
                     for (i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
-                        var item = res.data[i]
-
-                        setApplicationList(oldArray => [...oldArray, item])
+                        array.push(res.data[i])
 
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                    setApplicationList(array)
                     setFlag(true)
                 }
             })

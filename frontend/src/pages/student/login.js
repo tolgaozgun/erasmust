@@ -8,12 +8,16 @@ import axios from "axios";
 const Login = () => {
     const navigate = useNavigate();
 
-    const goDash = () => {
-        navigate('/dashboardStudent');
+    const goDashboardStudent = () => {
+      navigate('/student/dashboard');
     }
 
-    const goRegister = () => {
-        navigate('/registerStudent');
+    const goDashboardStaff = () => {
+      navigate('/staff/dashboard');
+    }
+
+    const goDashboardAdmin = () => {
+      navigate('/admin/dashboard');
     }
 
     const formik = useFormik({
@@ -35,11 +39,18 @@ const Login = () => {
             await axios.post("http://92.205.25.135:4/auth/login", values)
                 .then((response) => {
                     if (response && response.data) {
+                        console.log(response.data)
                         const jwtToken = response.data["token"]
                         const role = response.data["role"]
                         sessionStorage.setItem("jwtToken", jwtToken)
                         sessionStorage.setItem("role", role)
-                        navigate('/dashboardStudent')
+                        if(role === "ADMIN") {
+                          goDashboardAdmin()
+                        } else if (role === "STUDENT") {
+                          goDashboardStudent()
+                        } else {
+                          goDashboardStaff()
+                        }
                     }
                 })
                 .catch((err) => {
@@ -71,7 +82,7 @@ const Login = () => {
                     color="textPrimary"
                     variant="h4"
                   >
-                    Student Login
+                    Login
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -119,24 +130,6 @@ const Login = () => {
                     Sign In Now
                   </Button>
                 </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body2"
-                >
-                  Don&apos;t have an account?
-                  {' '}
-                    <Link
-                      to="/register"
-                      variant="subtitle2"
-                      underline="hover"
-                      sx={{
-                        cursor: 'pointer'
-                      }}
-                      onClick={() => {goRegister()}}
-                    >
-                      Student Register
-                    </Link>
-                </Typography>
               </form>
             </Container>
           </Box>

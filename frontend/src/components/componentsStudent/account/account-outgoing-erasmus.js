@@ -37,8 +37,8 @@ export const AccountOutgoingErasmus = (props) => {
         >
             <Card>
                 <CardHeader
-                    subheader="Information about StudentErasmusPage program"
-                    title="Outgoing StudentErasmusPage Student Information"
+                    subheader="Information about Erasmus program"
+                    title="Outgoing Erasmus Student Information"
                 />
                 <Divider/>
                 <CardContent>
@@ -85,7 +85,7 @@ export const AccountOutgoingErasmus = (props) => {
                         >
                             <TextField
                                 fullWidth
-                                label="StudentErasmusPage Point"
+                                label="Erasmus Point"
                                 name="erasmusPoint"
                                 onChange={handleChange}
                                 required

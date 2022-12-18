@@ -227,7 +227,6 @@ const BeforeMobility = () => {
                 .string()
                 .max(50)
                 .required("Contact Person Details is required"),
-
         }),
         onSubmit: async (values, formikHelpers) => {
             await axios.post("http://92.205.25.135:4/learning-agreement-erasmus/create", values)

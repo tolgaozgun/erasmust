@@ -18,13 +18,15 @@ public class LearningAgreementExchangeService {
         this.exchangeRepository = formExchangeRepository;
     }
 
-    /*private boolean notifyStudent(String studentName){
+
+/*private boolean notifyStudent(String studentName){
 
     }
 
     private boolean notifyCoordinator(String coordinatorName){
 
     }*/
+
 
     private boolean cancelAgreement(LearningAgreementExchange form){
         form.setStatus(Status.DECLINED_BY_STUDENT);
