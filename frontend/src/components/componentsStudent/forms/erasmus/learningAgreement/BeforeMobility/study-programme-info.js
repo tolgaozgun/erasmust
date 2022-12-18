@@ -17,6 +17,13 @@ import {UneditableCourseComponent} from "../uneditable-course-component";
 
 export const StudyProgrammeInfo = (props) => {
 
+    console.log("StudyProgrammeInfo")
+    console.log(props.values)
+
+    const courses = props.values.filter((element) => {
+            return element !== undefined
+        }
+    )
 
     return (
         <form
@@ -25,7 +32,7 @@ export const StudyProgrammeInfo = (props) => {
             hidden={props.hidden}
         >
 
-            {props.values.map((course, index) => (
+            {courses.map((course, index) => (
 
                 <>
                     <UneditableCourseComponent

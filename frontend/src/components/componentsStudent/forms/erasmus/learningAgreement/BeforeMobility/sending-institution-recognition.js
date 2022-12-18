@@ -17,6 +17,14 @@ import {UneditableCourseComponent} from "../uneditable-course-component";
 
 export const SendingInstitutionRecognition = (props) => {
 
+    console.log("SendingInstitutionRecognition")
+    console.log(props.values)
+
+    const courses = props.values.filter((element) => {
+            return element !== undefined
+        }
+    )
+
     return (
         <form
             autoComplete="off"
@@ -24,7 +32,7 @@ export const SendingInstitutionRecognition = (props) => {
             hidden={props.hidden}
         >
 
-            {props.values.map((course, index) => (
+            {courses.map((course, index) => (
 
                 <>
                     <UneditableCourseComponent

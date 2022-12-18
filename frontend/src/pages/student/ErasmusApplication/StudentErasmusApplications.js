@@ -3,7 +3,6 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
 import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Students} from "../../../components/componentsStudent/lists/students";
 import axios from 'axios';
 import StudentPreapprovalList from "../Preapproval/StudentErasmusPreapprovalList";
 import StudentCreateErasmusApplication from "./StudentCreateErasmusApplication";
