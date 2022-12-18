@@ -408,10 +408,15 @@ public class LearningAgreementErasmusService {
     public List<MobilityCourseForm> findCoursesByStudent(OutGoingStudent student) {
         PreApprovalFormNew preApprovalForm = findPreApprovalById(student);
         List<MobilityCourseForm> courses = new ArrayList<>();
+        if (preApprovalForm == null) {
+            return courses;
+        }
         for (CourseReviewFormNew courseReviewForm : preApprovalForm.getForms()) {
             MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
             mobilityCourseForm.setCourseBilkent(courseReviewForm.getCourseBilkent());
             mobilityCourseForm.setCourseHost(courseReviewForm.getCourseHost());
+            mobilityCourseFormService.save(mobilityCourseForm);
+            courses.add(mobilityCourseForm);
         }
         return courses;
     }
