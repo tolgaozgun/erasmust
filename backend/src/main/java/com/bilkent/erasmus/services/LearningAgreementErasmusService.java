@@ -214,7 +214,56 @@ public class LearningAgreementErasmusService {
     }
 
     public LearningAgreementErasmus saveForm(LearningAgreementErasmusDTO form) throws Exception {
-       // LearningAgreementErasmus erasmusForm = erasmusMapper.toEntity(form);
+
+        LearningAgreementErasmus erasmusForm = erasmusMapper.toEntity(form);
+        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
+
+        MobilityDetail beforeMobility = new MobilityDetail();
+        MobilityDetail duringMobility = new MobilityDetail();
+        MobilityDetail afterMobility = new MobilityDetail();
+
+        beforeMobility.setMobilityType(MobilityType.BEFORE);
+        beforeMobility.setStartDate(new Date());
+        beforeMobility.setMobilityCourseForms(findCoursesByStudent(student));
+
+        duringMobility.setMobilityType(MobilityType.DURING);
+        afterMobility.setMobilityType(MobilityType.AFTER);
+
+        List<MobilityDetail> mobilityDetailList = new ArrayList<>();
+
+        mobilityDetailList.add(beforeMobility);
+        mobilityDetailList.add(duringMobility);
+        mobilityDetailList.add(afterMobility);
+
+        BilkentInformation bilkentInformation = new BilkentInformation();
+        Faculty bilkentFaculty = new Faculty();
+
+        bilkentFaculty.setId(0);
+        bilkentFaculty.setName(FacultyName.ENGINEERING);
+
+        bilkentInformation.setNameBilkent("Bilkent University");
+        bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
+        bilkentInformation.setErasmusCodeBilkent("ANKARA07");
+        bilkentInformation.setCountryCodeBilkent("Turkey, TR");
+
+        bilkentInformation.setContactPersonFirstNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getFirstName());
+        bilkentInformation.setContactPersonLastNameBilkent(findPreApprovalById(student).getExchangeCoordinator().getLastName());
+        bilkentInformation.setContactPersonEmailBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getEmailUniversity());
+        bilkentInformation.setContactPersonPhoneNumberBilkent(findPreApprovalById(student).getExchangeCoordinator().getContactInformation().getPhoneNumberWork());
+        bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
+        bilkentInformation.setFacultyBilkent(bilkentFaculty);
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
+
+
+        erasmusForm.setMobilityDetailList(mobilityDetailList);
+        erasmusForm.setBilkentInformation(bilkentInformation);
+        erasmusForm.setSemester(findPreApprovalById(student).getSemester());
+        erasmusForm.setAcademicYear(findPreApprovalById(student).getAcademicYear());
+        erasmusForm.setStatus(Status.IN_PROCESS);
+        erasmusForm.setStudent(student);
+
+
         /*LearningAgreementErasmus erasmusForm = createEmptyLearningAgreement(form.getSubjectArea(), form.getStudyCycle(), form.getLanguageLevel(), form.getLanguage(), form.getReceivingInstitutionInformation().getNameHost(), form.getReceivingInstitutionInformation().getAddressHost(),
                 form.getReceivingInstitutionInformation().getErasmusCodeHost(),form.getReceivingInstitutionInformation().getCountryCodeHost(),form.getReceivingInstitutionInformation().getContactPersonFirstNameHost(), form.getReceivingInstitutionInformation().getContactPersonLastNameHost(),
                 form.getReceivingInstitutionInformation().getContactPersonEmailHost(),form.getReceivingInstitutionInformation().getContactPersonPhoneNumberHost(), form.getReceivingInstitutionInformation().getContactPersonFunctionHost(),
@@ -223,7 +272,7 @@ public class LearningAgreementErasmusService {
         // if (student.isEmpty())
         //    throw new EntityNotFoundException("No student found");
         // erasmusForm.setStudent(student);
-        return erasmusRepository.save(erasmusMapper.toEntity(form));
+        return erasmusRepository.save(erasmusForm);
     }
 
 /*  public List<LearningAgreementErasmus> retrieveAgreements(MobilityDetail mobility) {
