@@ -49,4 +49,11 @@ public class CourseBilkentService {
 
         return courseBilkentMapper.toCourseBilkentDTO(courseBilkentRepository.save(course));
     }
+
+    public CourseBilkentDTO edit(CourseBilkentDTO dto, int id) {
+        CourseBilkent courseBilkent = courseBilkentRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Course doesn't exist"));
+        courseBilkentMapper.updateFromDTO(dto, courseBilkent);
+        courseBilkentRepository.save(courseBilkent);
+        return courseBilkentMapper.toCourseBilkentDTO(courseBilkent);
+    }
 }

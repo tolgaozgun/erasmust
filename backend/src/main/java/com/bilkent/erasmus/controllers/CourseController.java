@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.controllers;
 
+import com.bilkent.erasmus.dtos.CourseBilkentDTO;
 import com.bilkent.erasmus.dtos.CourseDTO;
 import com.bilkent.erasmus.services.CourseBilkentService;
 import com.bilkent.erasmus.services.CourseHostService;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Map;
 
 @RestController
@@ -45,5 +47,11 @@ public class CourseController {
     @GetMapping("/previously-approved")
     public ResponseEntity<?> getPreviouslyApproved() {
         return new ResponseEntity<>(courseHostService.getAllPreviouslyApproved(), HttpStatus.OK);
+    }
+
+    @RolesAllowed("ROLE_ADMIN")
+    @PostMapping("/edit/{id}")
+    public ResponseEntity<?> edit(@PathVariable int id, @RequestBody CourseBilkentDTO dto) {
+        return new ResponseEntity<>(courseBilkentService.edit(dto, id), HttpStatus.OK);
     }
 }

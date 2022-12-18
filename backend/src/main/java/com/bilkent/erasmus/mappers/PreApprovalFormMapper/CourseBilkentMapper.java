@@ -2,9 +2,7 @@ package com.bilkent.erasmus.mappers.PreApprovalFormMapper;
 
 import com.bilkent.erasmus.dtos.CourseBilkentDTO;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
-import org.mapstruct.IterableMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 
 import java.util.List;
 @Mapper(componentModel = "spring")
@@ -21,4 +19,8 @@ public interface CourseBilkentMapper {
 
     @IterableMapping(qualifiedByName = "toEntity")
     List<CourseBilkent> toCourseBilkentList(List<CourseBilkentDTO>  courseBilkentDTOList);
+
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateFromDTO(CourseBilkentDTO dto, @MappingTarget CourseBilkent courseBilkent);
 }
