@@ -102,8 +102,8 @@ public class CourseReviewFormControllerNew {
     public ResponseEntity<?> editFormAllTogether(@RequestParam("file") MultipartFile file) throws Exception {
         return new ResponseEntity<>(courseReviewFormService.saveFileAllTogether(file), HttpStatus.OK);
     }
-
-    @PostMapping("get-all/student/course-forms")
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_COURSE_COORDINATOR", "ROLE_STUDENT"})
+    @GetMapping("get-all/student/course-forms")
     public ResponseEntity<?> getAllFormsForStudent() {
         return new ResponseEntity<>(courseReviewFormService.getAllFormsForStudent(), HttpStatus.OK);
     }
