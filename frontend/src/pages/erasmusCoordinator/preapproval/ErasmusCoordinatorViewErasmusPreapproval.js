@@ -55,7 +55,7 @@ const ErasmusCoordinatorViewErasmusPreapproval = () => {
     var academicYears;
     var semesters;
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
     const handleApproval = (approvedBool, id) => {
         console.log(approvedBool, id)

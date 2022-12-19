@@ -59,7 +59,7 @@ const ViewCourseReviewForm = () => {
     const [requirement, setRequirement] = useState("")
     const [courseCoordinator, setCourseCoordinator] = useState("")
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
     const params = useParams();
     const appId = params.id
 
