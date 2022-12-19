@@ -18,6 +18,7 @@ import {Check} from "@mui/icons-material";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import BeforeMobility from "./BeforeMobility";
+import EditBeforeMobility from "./EditBeforeMobility";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -31,13 +32,14 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 
 const StudentEditErasmusPreapproval = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const [mobilityType, setMobilityType] = useState(0)
+    const [mobilityType, setMobilityType] = useState("")
+    const [info, setInfo] = useState({})
 
     const token = sessionStorage.getItem("jwtToken");
 
     const params = useParams();
     const appId = params.id
-    const url = "http://92.205.25.135:4/erasmus-application/student/view-application-by-id/" + appId;
+    const url = "http://92.205.25.135:4/learning-agreement-erasmus/get-by-id/" + appId;
     // application id => params.id => appId
 
     useEffect(() => {
@@ -49,6 +51,8 @@ const StudentEditErasmusPreapproval = () => {
             .then((res) => {
                 if (res && res.data) {
                     console.log(res)
+                    setMobilityType(res.data["activeMobility"])
+                    setInfo(res.data)
                 }
             })
             .catch((err) => {
@@ -64,34 +68,9 @@ const StudentEditErasmusPreapproval = () => {
                 Edit Learning Agreement
             </title>
             <DashboardLayoutRoot>
-                <Box
-                    component="main"
-                    sx={{
-                        flexGrow: 1,
-                        py: 8
-                    }}
-                >
-                    <Container maxWidth={false}>
-                        <Typography
-                            sx={{mb: 5}}
-                            align="center"
-                            variant="h4"
-                        >
-                            Edit Learning Agreement Form
-                        </Typography>
-
-                        <Grid
-                            container
-                            spacing={3}
-                        >
-                            {mobilityType === 0 &&
-                                <BeforeMobility/>
-
-
-                            }
-                        </Grid>
-                    </Container>
-                </Box>
+                {mobilityType === "BEFOREMOBILITY" &&
+                    <EditBeforeMobility appId={appId} edit={info}/>
+                }
             </DashboardLayoutRoot>
             <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)}/>
             <DashboardSidebar
