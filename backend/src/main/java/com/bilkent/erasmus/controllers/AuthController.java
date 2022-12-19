@@ -3,6 +3,7 @@ package com.bilkent.erasmus.controllers;
 import com.bilkent.erasmus.dtos.*;
 import com.bilkent.erasmus.embeddables.ContactInformation;
 import com.bilkent.erasmus.enums.RoleBasedPermission;
+import com.bilkent.erasmus.exceptions.PasswordsDoNotMatchException;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.models.userModels.User;
 import com.bilkent.erasmus.repositories.CourseCoordinatorRepository;
@@ -160,6 +161,13 @@ public class AuthController {
             userService.saveUser(user);
             return new ResponseEntity<>("Account is successfully created", HttpStatus.CREATED);
         }
+    }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<?> changePassword(@RequestBody Map<String, String> json) throws PasswordsDoNotMatchException {
+        userService.changePassword(json.get("newPassword"),
+                json.get("oldPassword"), json.get("confirmationPassword"));
+        return new ResponseEntity<>("Password changed successfully", HttpStatus.OK);
     }
 
 }

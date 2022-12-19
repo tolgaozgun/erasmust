@@ -79,4 +79,21 @@ public class FieldExceptionHandler {
 
         return errorMap;
     }
+
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(EntityDoesNotExistException.class)
+    public Map<String, String> entityDoesNotExist(EntityDoesNotExistException ex) {
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", ex.getMessage());
+        errorMap.put("id", String.valueOf(ex.getId()));
+        return errorMap;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(PasswordsDoNotMatchException.class)
+    public Map<String, String> passwordsDoNotMatchException(PasswordsDoNotMatchException ex) {
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", ex.getMessage());
+        return errorMap;
+    }
 }
