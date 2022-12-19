@@ -81,7 +81,8 @@ import CourseCoordinatorErasmusCourseReviewForms
     from "./pages/courseCoordinator/CourseReviewForm/CourseCoordinatorErasmusCourseReviewForms";
 import EditLearningAgreement from "./pages/student/LearningAgreement/EditLearningAgreement";
 import ErasmusCoordinatorDashboard from "./pages/erasmusCoordinator/ErasmusCoordinatorDashboard";
-import ReviewErasmusPreapprovalForm from "./pages/erasmusCoordinator/preapproval/ReviewErasmusPreapprovalForm";
+import ErasmusCoordinatorViewErasmusPreapproval
+    from "./pages/erasmusCoordinator/preapproval/ErasmusCoordinatorViewErasmusPreapproval";
 
 const App = () => {
     // const [routes, setRoutes] = useState(routeItemsDefault)
@@ -317,7 +318,7 @@ const App = () => {
                         </Route>
                         <Route path="preapproval/*" element={<Outlet/>}>
                             <Route path="list" element={<ErasmusCoordinatorErasmusPreapprovalList/>}/>
-                            <Route path="view/:id" element={<ReviewErasmusPreapprovalForm/>}/>
+                            <Route path="view/:id" element={<ErasmusCoordinatorViewErasmusPreapproval/>}/>
                             <Route path="review" element={<Error/>}/>
                             <Route path="*" element={<Error/>}/>
                         </Route>
