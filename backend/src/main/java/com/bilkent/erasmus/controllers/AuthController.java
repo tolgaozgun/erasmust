@@ -37,11 +37,8 @@ public class AuthController {
 
     private final UserRepository userRepository;
     private final OutGoingStudentRepository outGoingStudentRepository;
-
     private final ExchangeCoordinatorRepository exchangeCoordinatorRepository;
-
     private final CourseCoordinatorRepository courseCoordinatorRepository;
-
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;
     private PasswordEncoder passwordEncoder;
@@ -80,7 +77,6 @@ public class AuthController {
         log.info("starsID: " + user.getStarsId());
         RoleBasedPermission role = user.getPermission();
         String roleName = role.getRoleName();
-
         if (roleName.equals("STUDENT")) {
             OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId)
                     .orElseThrow(() -> new EntityNotFoundException("no user is available"));
