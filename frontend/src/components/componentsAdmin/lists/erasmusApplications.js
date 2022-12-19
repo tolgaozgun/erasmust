@@ -21,15 +21,23 @@ export const ErasmusApplications = (props) => {
     const {applications} = props
 
 
+    const getCoordinatorName = (application) => {
+        if (application["coordinator"]) {
+            return `${application["coordinator"]["firstName"]} ${application["coordinator"]["lastName"]}`
+        } else {
+            return "Coordinator not assigned"
+        }
+    }
+
     return (
-    <Card {...props}>
-        <CardHeader title="Ongoing Preapprovals"/>
-        <PerfectScrollbar>
-            <Box
-                sx={{
-                    minWidth: 800,
-                    height: 400,
-                }}
+        <Card {...props}>
+            <CardHeader title="Ongoing Preapprovals"/>
+            <PerfectScrollbar>
+                <Box
+                    sx={{
+                        minWidth: 800,
+                        height: 400,
+                    }}
             >
                 <Table>
                     <TableHead>
@@ -67,7 +75,7 @@ export const ErasmusApplications = (props) => {
                                     {/*)}*/}
                                 </TableCell>
                                 <TableCell>
-                                    {application.coordinator.firstName} {application.coordinator.lastName}
+                                    {getCoordinatorName(application)}
                                 </TableCell>
                                 <TableCell>
                                     <SeverityPill
