@@ -2,25 +2,26 @@ package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewFormCreation;
 import com.bilkent.erasmus.dtos.CourseReviewFormResponseDTO;
-import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
+import com.bilkent.erasmus.dtos.EvaluationDTO;
 import com.bilkent.erasmus.dtos.PreApprovalFormDtos.PreApprovalFormDTONew;
 import com.bilkent.erasmus.dtos.PreApprovalFormEditDTO;
 import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.enums.ToDoType;
+import com.bilkent.erasmus.exceptions.PreApprovalFormNotCompletedException;
 import com.bilkent.erasmus.mappers.PreApprovalFormEditMapper;
 import com.bilkent.erasmus.mappers.PreApprovalFormMapper.PreApprovalFormErasmusMapper;
-import com.bilkent.erasmus.models.FileData;
 import com.bilkent.erasmus.models.ToDoItem;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
-import com.bilkent.erasmus.models.applicationModels.courseReviewForms.CourseReviewForm;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
+import com.bilkent.erasmus.repositories.ExchangeCoordinatorRepository;
 import com.bilkent.erasmus.repositories.PreApprovalFormRepositories.PreApprovalFormRepositoryNew;
 import com.bilkent.erasmus.repositories.ToDoItemRepository;
 import com.bilkent.erasmus.repositories.applicationRepositories.ApplicationErasmusRepository;
@@ -57,6 +58,8 @@ public class PreApprovalFormNewService {
 
     private final ToDoItemRepository toDoItemRepository;
 
+    private final ExchangeCoordinatorRepository exchangeCoordinatorRepository;
+
     public PreApprovalFormNewService(PreApprovalFormErasmusMapper preApprovalFormErasmusMapper
             , PreApprovalFormRepositoryNew preApprovalFormRepository
             , CourseHostService courseHostService
@@ -64,7 +67,8 @@ public class PreApprovalFormNewService {
             , CourseReviewFormServiceNew courseReviewFormService
             , OutGoingStudentRepository outGoingStudentRepository
             , ApplicationErasmusRepository erasmusRepository
-            , PreApprovalFormEditMapper editMapper, ToDoItemRepository toDoItemRepository) {
+            , PreApprovalFormEditMapper editMapper, ToDoItemRepository toDoItemRepository
+            , ExchangeCoordinatorRepository exchangeCoordinatorRepository) {
         this.preApprovalFormErasmusMapper = preApprovalFormErasmusMapper;
         this.preApprovalFormRepository = preApprovalFormRepository;
         this.courseHostService = courseHostService;
@@ -74,6 +78,7 @@ public class PreApprovalFormNewService {
         this.applicationErasmusRepository = erasmusRepository;
         this.editMapper = editMapper;
         this.toDoItemRepository = toDoItemRepository;
+        this.exchangeCoordinatorRepository = exchangeCoordinatorRepository;
     }
 
     public PreApprovalFormNew saveForm(PreApprovalFormDTONew form) throws Exception {
@@ -247,6 +252,43 @@ public class PreApprovalFormNewService {
 
         log.info(form.getStudent().getFirstName());
         return reviewForm;
+    }
+
+    public PreApprovalFormNew evaluate(int id, EvaluationDTO evaluation) throws PreApprovalFormNotCompletedException {
+        PreApprovalFormNew form = preApprovalFormRepository.findById(id)
+                .orElseThrow( () -> new EntityNotFoundException("there is no approval form with id " + id));
+        if (evaluation.isFlag()) {
+            for (CourseReviewFormNew reviewForm : form.getForms()) {
+                if (!reviewForm.getStatus().equals(CourseApprovalStatus.APPROVED)) {
+                    throw new PreApprovalFormNotCompletedException("cannot approve," +
+                            " there is at leat one course need to be approved", reviewForm.getCourseHost().getName());
+                }
+            }
+            form.setStatus(Status.APPROVED);
+        }
+        else {
+            form.setStatus(Status.REJECTED);
+        }
+        return form;
+    }
+
+    // todo throw generic exception
+    public List<PreApprovalFormNew> getAllPreApprovalFormsForExchangeCoordinatorToEvaluate() {
+        String starsId = getStarsId();
+        exchangeCoordinatorRepository.findByStarsId(starsId).
+                orElseThrow(() -> new EntityNotFoundException("there is no exchange coordinator with stars id: " + starsId));
+        List<PreApprovalFormNew> preApprovalFormLists = preApprovalFormRepository.findAllByExchangeCoordinator_StarsId(starsId);
+        return preApprovalFormLists;
+    }
+
+    // todo throw generic exception
+    public PreApprovalFormNew getPreApprovalFormForExchangeCoordinatorToEvaluate(int id) {
+        String starsId = getStarsId();
+        exchangeCoordinatorRepository.findByStarsId(starsId).
+                orElseThrow(() -> new EntityNotFoundException("there is no exchange coordinator with stars id: " + starsId));
+        PreApprovalFormNew preApprovalForm = preApprovalFormRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("there is no approval form with id : " + id));
+        return preApprovalForm;
     }
 }
 

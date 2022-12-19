@@ -35,7 +35,6 @@ import java.util.Map;
 public class AuthController {
 
     private final UserRepository userRepository;
-
     private final OutGoingStudentRepository outGoingStudentRepository;
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;

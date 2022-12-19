@@ -21,6 +21,10 @@ public interface PreApprovalFormRepositoryNew
     List<PreApprovalFormNew> findAllByStudent_StarsId(String id);
 
     PreApprovalFormNew findByStudent_StarsId(String starsId);
+
+    List<PreApprovalFormNew> findByExchangeCoordinator_StarsId(String str);
+
+    List<PreApprovalFormNew> findAllByExchangeCoordinator_StarsId(String str);
     
     PreApprovalFormNew findByStudent(Student student);
     Optional<PreApprovalFormNew> findByStatusAndStudent_StarsId(Status status, String str);

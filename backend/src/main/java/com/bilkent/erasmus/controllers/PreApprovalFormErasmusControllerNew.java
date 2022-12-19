@@ -1,8 +1,10 @@
 package com.bilkent.erasmus.controllers;
 
+import com.bilkent.erasmus.dtos.EvaluationDTO;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
 import com.bilkent.erasmus.dtos.PreApprovalFormDtos.PreApprovalFormDTONew;
 import com.bilkent.erasmus.dtos.PreApprovalFormEditDTO;
+import com.bilkent.erasmus.exceptions.PreApprovalFormNotCompletedException;
 import com.bilkent.erasmus.services.preApprovalService.PreApprovalFormNewService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -74,11 +76,30 @@ public class PreApprovalFormErasmusControllerNew {
         return new ResponseEntity<>(preApprovalService.getCourseReviewFormForStudent(id), HttpStatus.OK);
     }
 
-    @RolesAllowed("ROLE_ERASMUS_COORDINATOR")
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN"})
     @GetMapping("get-all/exchange-coordinator/review-course-forms")
     public ResponseEntity<?> getAllFormsForExchangeCoordinatorToReview() {
         return new ResponseEntity<>(preApprovalService.getAllReviewFormsForExchangeCoordinator(), HttpStatus.OK);
     }
 
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN"})
+    @GetMapping("get-all/exchange-coordinator/pre-approval-forms")
+    public ResponseEntity<?> getAllPreApprovalFormsForExchangeCoordinatorToEvaluate() {
+        return new ResponseEntity<>(preApprovalService.getAllPreApprovalFormsForExchangeCoordinatorToEvaluate(), HttpStatus.OK);
+    }
+
+
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN"})
+    @GetMapping("get/exchange-coordinator/pre-approval-form/{id}")
+    public ResponseEntity<?> getPreApprovalFormForExchangeCoordinatorToEvaluate(@PathVariable int id) {
+        return new ResponseEntity<>(preApprovalService.getPreApprovalFormForExchangeCoordinatorToEvaluate(id), HttpStatus.OK);
+    }
+
+    // todo -> role ü değiştir
+    @RolesAllowed("ROLE_ADMIN")
+    @PostMapping("/evaluate/{id}")
+    public ResponseEntity<?> evaluatePreApprovalForm(@PathVariable int id, @RequestBody EvaluationDTO evaluation) throws PreApprovalFormNotCompletedException {
+        return new ResponseEntity<>(preApprovalService.evaluate(id, evaluation), HttpStatus.OK);
+    }
 
 }
