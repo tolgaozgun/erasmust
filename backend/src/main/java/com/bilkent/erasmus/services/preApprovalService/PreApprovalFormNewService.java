@@ -1,14 +1,17 @@
 package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewFormCreation;
+import com.bilkent.erasmus.dtos.CourseReviewFormResponseDTO;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.PreApprovalFormDTO;
 import com.bilkent.erasmus.dtos.PreApprovalFormDtos.PreApprovalFormDTONew;
 import com.bilkent.erasmus.dtos.PreApprovalFormEditDTO;
+import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.enums.ToDoType;
 import com.bilkent.erasmus.mappers.PreApprovalFormEditMapper;
 import com.bilkent.erasmus.mappers.PreApprovalFormMapper.PreApprovalFormErasmusMapper;
+import com.bilkent.erasmus.models.FileData;
 import com.bilkent.erasmus.models.ToDoItem;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseReviewFormNew;
@@ -219,7 +222,25 @@ public class PreApprovalFormNewService {
                 .orElseThrow(() -> new EntityNotFoundException("no pre approval form is found"));
     }
 
-    public CourseReviewFormNew getCourseReviewFormForStudent(int id) {
-        return courseReviewFormService.getCourseReviewFormByIdForStudent(id);
+    public CourseReviewFormResponseDTO getCourseReviewFormForStudent(int id) {
+        PreApprovalFormNew form = preApprovalFormRepository.findByFormsId(id);
+        CourseReviewFormNew formReview = courseReviewFormService.getCourseReviewFormByIdForStudent(id);
+        CourseReviewFormResponseDTO reviewForm = CourseReviewFormResponseDTO.builder()
+                .id(id)
+                .courseBilkent(formReview.getCourseBilkent())
+                .courseHost(formReview.getCourseHost())
+                .files(formReview.getFiles())
+                .status(formReview.getStatus())
+                .coordinatorReply(formReview.getCoordinatorReply())
+                .requirements(formReview.getRequirements())
+                .date(formReview.getDate())
+                .academicYear(form.getAcademicYear())
+                .semester(form.getSemester())
+                .firstName(form.getStudent().getFirstName())
+                .lastName(form.getStudent().getLastName()).build();
+
+        log.info(form.getStudent().getFirstName());
+        return reviewForm;
     }
 }
+
