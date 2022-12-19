@@ -3,6 +3,10 @@ package com.bilkent.erasmus.services;
 
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.ApplicationErasmusDTO;
 import com.bilkent.erasmus.enums.DepartmentName;
+import com.bilkent.erasmus.exceptions.ApplicationSchoolCountException;
+import com.bilkent.erasmus.exceptions.ApplicationSchoolRequirementsException;
+import com.bilkent.erasmus.exceptions.ExistingApplicationException;
+import com.bilkent.erasmus.exceptions.StudentDoesNotExistException;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.ApplicationErasmusMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.enums.Status;
@@ -42,23 +46,38 @@ public class ApplicationErasmusService {
         this.outGoingStudentRepository = outGoingStudentRepository;
     }
 
-    public ApplicationErasmus createErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) {
+    public ApplicationErasmus createErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
         ApplicationErasmus applicationErasmus = applicationErasmusMapper.toEntity(applicationErasmusDTO);
         ApplicationErasmusDTO dto;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        try {
-            OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName()).orElseThrow(() -> new EntityNotFoundException());
-            if (student.getGpa() >= 2.5 && (student.getSemester().ordinal() >= 2 && student.getSemester().ordinal() <= 4)) {
-                applicationErasmus.setStatus(Status.IN_PROCESS);
-                applicationErasmus.setStudent(student);
-                applicationErasmus.setDate(System.currentTimeMillis());
-                applicationErasmusRepository.save(applicationErasmus);
-            } else {
-                applicationErasmus.setStatus(Status.REJECTED);
+            OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName())
+                    .orElseThrow(() -> new StudentDoesNotExistException("Student with id " + auth.getName() + "does not exist.", auth.getName()));
+            ApplicationErasmus application = applicationErasmusRepository.findByStatusNotAndStudent_StarsId(Status.DONE, auth.getName());
+            if (applicationErasmusDTO.getSchools().size() >= 6 | applicationErasmusDTO.getSchools().size() <= 0) {
+                throw new ApplicationSchoolCountException("Invalid number of schools selected", applicationErasmusDTO.getSchools().size());
             }
-        }catch (EntityNotFoundException e) {
-            log.info("Student doesn't exist");
-        }
+            Set<Integer> map = new HashSet<>();
+            for (PartnerUniversityErasmus uni : applicationErasmusDTO.getSchools()) {
+                map.add(uni.getId());
+            }
+            if (map.size() == applicationErasmusDTO.getSchools().size()) {
+                if (application == null) {
+                    if (student.getGpa() >= 2.5 && (student.getSemester().ordinal() >= 2 && student.getSemester().ordinal() <= 4)) {
+                        applicationErasmus.setStatus(Status.IN_PROCESS);
+                        applicationErasmus.setStudent(student);
+                        applicationErasmus.setDate(System.currentTimeMillis());
+                        applicationErasmusRepository.save(applicationErasmus);
+                    } else {
+                        applicationErasmus.setStatus(Status.REJECTED);
+                    }
+                } else {
+                    throw new ExistingApplicationException("This account already has an ongoing application");
+                }
+            }
+            else {
+                throw new ApplicationSchoolRequirementsException("All selected schools must be unique.");
+            }
+
         dto = applicationErasmusMapper.toApplicationErasmusDTO(applicationErasmus);
         return applicationErasmus;
     }

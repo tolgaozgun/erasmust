@@ -19,7 +19,7 @@ public class ApplicationErasmusController {
 
     @RolesAllowed({"ROLE_STUDENT", "ROLE_ADMIN"})
     @PostMapping("/create")
-    public ResponseEntity<?> createErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO){
+    public ResponseEntity<?> createErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
         return new ResponseEntity<>(applicationErasmusService.createErasmusApplication(applicationErasmusDTO), HttpStatus.CREATED);
     }
 
