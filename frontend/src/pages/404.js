@@ -12,8 +12,13 @@ const Error = () => {
       navigate('/admin/dashboard');
     } else if (role === "STUDENT") {
       navigate('/student/dashboard');
-    } else {
-      navigate('staff/dashboard')
+    } else if (role === "COURSE_COORDINATOR") {
+      navigate('/coursecoordinator/dashboard')
+    } else if (role === "ERASMUS_COORDINATOR") {
+      navigate('/erasmuscoordinator/dashboard')
+    }
+    else {
+      navigate('/splash')
     }
   }
 
