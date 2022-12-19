@@ -61,7 +61,7 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.getAllStudent(), HttpStatus.OK);
     }
 
-    @GetMapping("/get-by-id")
+    @GetMapping("/get-by-id/{id}")
     public ResponseEntity<?> findLearningAgreementByFormId(@PathVariable int id){
         return new ResponseEntity<>(erasmusService.findLearningAgreementByFormId(id), HttpStatus.OK);
     }
