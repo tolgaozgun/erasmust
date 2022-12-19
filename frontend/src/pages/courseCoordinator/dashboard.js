@@ -3,9 +3,9 @@ import { LatestOrders } from '../../components/componentsAdmin/dashboard/latest-
 import { Sales } from '../../components/componentsAdmin/dashboard/sales';
 import { DashboardNavbar } from '../../components/componentsAdmin/dashboard-navbar';
 import { DashboardSidebar } from '../../components/componentsStaff/courseCoordinator/dashboard-sidebar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {styled} from '@mui/material/styles';
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useNavigate} from "react-router-dom";
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -19,6 +19,21 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 
 const DashboardCourseCoordinator = (props) => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const navigate = useNavigate();
+
+  const goError = () => {
+    navigate("/404")
+  }
+  const role = sessionStorage.getItem("role")
+
+  useEffect(() => {
+    if (role != "COURSE_COORDINATOR") {
+      goError()
+    }
+  }, [])
+
+  /*if (sessionStorage.getItem("role") != "COURSE_COORDINATOR") {
+  }*/
 
 
   return(
