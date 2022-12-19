@@ -268,7 +268,7 @@ public class PreApprovalFormNewService {
             for (CourseReviewFormNew reviewForm : form.getForms()) {
                 if (!reviewForm.getStatus().equals(CourseApprovalStatus.APPROVED)) {
                     throw new PreApprovalFormNotCompletedException("cannot approve," +
-                            " there is at leat one course need to be approved", reviewForm.getCourseHost().getName());
+                            " there is at least one course need to be approved", reviewForm.getCourseHost().getName());
                 }
             }
             form.setStatus(Status.APPROVED);
