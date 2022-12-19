@@ -29,7 +29,7 @@ const ErasmusCoordinatorErasmusPreapprovalList = () => {
 
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-preapproval-erasmus", {
+        axios.get("http://92.205.25.135:4/pre-approval/erasmus/get-all/exchange-coordinator/pre-approval-forms", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
