@@ -40,7 +40,7 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.reviewForm(request, formId), HttpStatus.ACCEPTED);
     }
 
-    @PatchMapping("/edit")
+    @PatchMapping("/edit/{formId}")
     public ResponseEntity<?> editAgreement(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
         return new ResponseEntity<>(erasmusService.editForm(formId, erasmusDTO), HttpStatus.OK);
     }
@@ -59,6 +59,11 @@ public class LearningAgreementErasmusController {
     @GetMapping("/student-get-all")
     public ResponseEntity<?> getAllStudent(){
         return new ResponseEntity<>(erasmusService.getAllStudent(), HttpStatus.OK);
+    }
+
+    @GetMapping("/get-by-id/{id}")
+    public ResponseEntity<?> findLearningAgreementByFormId(@PathVariable int id){
+        return new ResponseEntity<>(erasmusService.findLearningAgreementByFormId(id), HttpStatus.OK);
     }
 
 /*    @PatchMapping("/add-course-during")

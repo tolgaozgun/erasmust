@@ -2,6 +2,8 @@ package com.bilkent.erasmus.services.preApprovalService;
 
 import com.bilkent.erasmus.dtos.CourseReviewEditDTO;
 
+import com.bilkent.erasmus.dtos.CourseReviewFormNewDTO;
+import com.bilkent.erasmus.dtos.EvaluationDTO;
 import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.enums.ToDoType;
 
@@ -140,6 +142,16 @@ public class CourseReviewFormServiceNew {
     public CourseReviewFormNew getCourseReviewFormByIdForStudent(int id) {
         CourseReviewFormNew courseReviewForm = courseReviewFormRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("course review form not found with id: " + id));
+        return courseReviewForm;
+    }
+
+    public CourseReviewFormNew evaluateCourseReview(int id, EvaluationDTO evaluation) {
+        CourseReviewFormNew courseReviewForm = courseReviewFormRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("course review form not found with id: " + id));
+        if (evaluation.isFlag())
+            courseReviewForm.setStatus(CourseApprovalStatus.APPROVED);
+        else
+            courseReviewForm.setStatus(CourseApprovalStatus.DECLINED);
         return courseReviewForm;
     }
 

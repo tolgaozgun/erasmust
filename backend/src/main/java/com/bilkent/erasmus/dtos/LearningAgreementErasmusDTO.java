@@ -2,6 +2,7 @@ package com.bilkent.erasmus.dtos;
 
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
+import com.bilkent.erasmus.enums.ActiveMobility;
 import com.bilkent.erasmus.enums.LanguageLevel;
 import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
@@ -38,6 +39,8 @@ public class LearningAgreementErasmusDTO {
     private ReceivingInstitutionInformation receivingInstitutionInformation;
 
     private List<MobilityDetail> mobilityDetailList;
+
+    private ActiveMobility activeMobility;
 
     private LanguageLevel languageLevel;
 

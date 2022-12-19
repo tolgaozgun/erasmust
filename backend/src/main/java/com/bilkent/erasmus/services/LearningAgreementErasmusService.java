@@ -279,6 +279,8 @@ public class LearningAgreementErasmusService {
         erasmusForm.setSemester(findPreApprovalById(student).getSemester());
         erasmusForm.setAcademicYear(findPreApprovalById(student).getAcademicYear());
         erasmusForm.setStatus(Status.IN_PROCESS);
+        erasmusForm.setActiveMobility(ActiveMobility.BEFOREMOBILITY);
+
         erasmusForm.setStudent(student);
 
 
@@ -446,6 +448,7 @@ public class LearningAgreementErasmusService {
 
     public LearningAgreementDTO editForm(int id, LearningAgreementDTO erasmusDTO) {
         LearningAgreementErasmus agreementForm = new LearningAgreementErasmus();
+        erasmusDTO.setId(id);
         try {
             if (erasmusRepository.findById(id) != null) {
                 agreementForm = erasmusRepository.findById(id);
@@ -459,7 +462,7 @@ public class LearningAgreementErasmusService {
             // learning agreement is null
         }
 
-        return agreementMapper.toLearningAgreementDTO(agreementForm);
+        return agreementMapper.toLearningAgreementDTO(erasmusRepository.save(agreementForm));
     }
 
     public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds) {
@@ -520,8 +523,8 @@ public class LearningAgreementErasmusService {
             return null;
     }
 
-    public LearningAgreementErasmus findLearningAgreementByFormId(int Id){
-        LearningAgreementErasmus agreementForm = erasmusRepository.findById(Id);
+    public LearningAgreementErasmus findLearningAgreementByFormId(int id){
+        LearningAgreementErasmus agreementForm = erasmusRepository.findById(id);
         if (agreementForm != null)
             return agreementForm;
         else

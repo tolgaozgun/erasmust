@@ -73,5 +73,7 @@ public class ApplicationErasmusController {
         return new ResponseEntity<>(applicationErasmusService.viewApplicationStudentAll(), HttpStatus.OK);
     }
 
+
+
 }
 

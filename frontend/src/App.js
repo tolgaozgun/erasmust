@@ -29,7 +29,6 @@ import ViewErasmusPreapproval from "./pages/ViewErasmusPreapproval";
 import ViewErasmusApplication from "./pages/ViewErasmusApplication";
 import StudentCreateErasmusCourseReview from "./pages/student/CourseReviewForm/StudentCreateErasmusCourseReview";
 import StaffCourseReviewForm from "./pages/student/StaffCourseReviewForm";
-import StaffPreapprovalForm from "./pages/admin/erasmus/ReviewErasmusPreapprovalForm";
 import StudentEditErasmusPreapproval from "./pages/student/Preapproval/StudentEditErasmusPreapproval";
 import CourseReviewForms from "./pages/student/CourseReviewForm/StudentErasmusCourseReviewForms";
 import ViewCourseReviewForm from "./pages/ViewCourseReviewForm";
@@ -62,7 +61,8 @@ import ErasmusStaff from "./pages/academic/erasmus";
 import DashboardCourseCoordinator from "./pages/courseCoordinator/dashboard";
 import AccountCourseCoordinator from "./pages/courseCoordinator/account";
 import SettingsCourseCoordinator from "./pages/courseCoordinator/settings";
-import CourseCoordinatorErasmusPreapprovalList from "./pages/courseCoordinator/preapproval/CourseCoordinatorErasmusPreapprovalList";
+import ErasmusCoordinatorErasmusPreapprovalList
+    from "./pages/erasmusCoordinator/preapproval/ErasmusCoordinatorErasmusPreapprovalList";
 
 import Splash from "./pages/splash";
 import Error from "./pages/404";
@@ -79,6 +79,9 @@ import StudentErasmusPage from "./pages/student/StudentErasmusPage";
 import StudentLearningAgreements from "./pages/student/LearningAgreement/StudentLearningAgreements";
 import CourseCoordinatorErasmusCourseReviewForms
     from "./pages/courseCoordinator/CourseReviewForm/CourseCoordinatorErasmusCourseReviewForms";
+import EditLearningAgreement from "./pages/student/LearningAgreement/EditLearningAgreement";
+import ErasmusCoordinatorDashboard from "./pages/erasmusCoordinator/ErasmusCoordinatorDashboard";
+import ReviewErasmusPreapprovalForm from "./pages/erasmusCoordinator/preapproval/ReviewErasmusPreapprovalForm";
 
 const App = () => {
     // const [routes, setRoutes] = useState(routeItemsDefault)
@@ -270,8 +273,51 @@ const App = () => {
                             <Route path="*" element={<Error/>}/>
                         </Route>
                         <Route path="preapproval/*" element={<Outlet/>}>
-                            <Route path="list" element={<CourseCoordinatorErasmusPreapprovalList/>}/>
+                            <Route path="list" element={<Error/>}/>
                             <Route path="view/:id" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
+                        </Route>
+                        <Route path="faq" element={<ExchangeFaq/>}/>
+                        <Route path="*" element={<Error/>}/>
+                    </Route>
+
+                </Route>
+
+                {/* Erasmus Coordinator */}
+
+                <Route
+                    exact
+                    path="/admin"
+                    element={<Navigate to="/erasmuscoordinator/dashboard"/>}
+                />
+                <Route path="/erasmuscoordinator/*" element={<Outlet/>}>
+                    <Route path="dashboard" element={<ErasmusCoordinatorDashboard/>}/>
+                    <Route path="account" element={<AccountCourseCoordinator/>}/>
+                    <Route path="settings" element={<SettingsCourseCoordinator/>}/>
+                    <Route exact path="exchange" element={<Splash/>}/>
+                    <Route exact path="exchange/*" element={<Outlet/>}>
+                        <Route path="coursereview/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                        </Route>
+                        <Route path="faq" element={<ExchangeFaq/>}/>
+                        <Route path="*" element={<Error/>}/>
+                    </Route>
+                    <Route exact path="erasmus" element={<Splash/>}/>
+                    <Route exact path="erasmus/*" element={<Outlet/>}>
+                        <Route path="coursereview/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="view/:id" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
+                        </Route>
+                        <Route path="preapproval/*" element={<Outlet/>}>
+                            <Route path="list" element={<ErasmusCoordinatorErasmusPreapprovalList/>}/>
+                            <Route path="view/:id" element={<ReviewErasmusPreapprovalForm/>}/>
                             <Route path="review" element={<Error/>}/>
                             <Route path="*" element={<Error/>}/>
                         </Route>
@@ -307,19 +353,19 @@ const App = () => {
                             <Route path="view" element={<Error />} />
                             <Route path="edit" element={<Error />} />
                         </Route>
-                        <Route path="coursetransfer/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
+                        <Route path="coursetransfer/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<Error/>}/>
                         </Route>
-                        <Route path="learningagreement/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
+                        <Route path="learningagreement/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit/:id" element={<EditLearningAgreement/>}/>
                         </Route>
-                        <Route path="faq" element={<ExchangeFaq />} />
+                        <Route path="faq" element={<ExchangeFaq/>}/>
                         <Route path="*" element={<Error />} />
                     </Route>
                     <Route
@@ -389,8 +435,8 @@ const App = () => {
                         <Route path="learningagreement/*" element={<Outlet />}>
                             <Route path="list" element={<StudentLearningAgreements/>}/>
                             <Route path="create" element={<BeforeMobility/>}/>
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit/:id" element={<EditLearningAgreement/>}/>
                         </Route>
                         <Route path="faq" element={<ExchangeFaq />} />
                         <Route path="*" element={<Error />} />

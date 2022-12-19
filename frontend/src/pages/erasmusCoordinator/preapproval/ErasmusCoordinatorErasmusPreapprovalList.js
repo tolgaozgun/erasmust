@@ -62,15 +62,9 @@ const ErasmusCoordinatorErasmusPreapprovalList = () => {
         console.log(approvedBool, id)
         console.log(url)
 
-<<<<<<< HEAD:frontend/src/pages/courseCoordinator/preapproval/CourseCoordinatorErasmusPreapprovalList.js
         axios.post(url, JSON.stringify({
             "flag": approvedBool
         }), {
-=======
-        axios.post(url, {
-            flag: approvedBool
-        }, {
->>>>>>> 5eabd5ed168697b1d7db045ada09f42b69b1fdb5:frontend/src/pages/erasmusCoordinator/preapproval/ErasmusCoordinatorErasmusPreapprovalList.js
             headers: {
                 "Authorization": `Bearer ${token}`,
                 Accept: "application/json",
