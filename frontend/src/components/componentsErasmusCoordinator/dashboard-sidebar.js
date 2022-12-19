@@ -15,74 +15,22 @@ import React from "react";
 
 const items = [
     {
-        href: "/student/dashboard",
+        href: "/erasmuscoordinator/dashboard",
         icon: <ChartBarIcon fontSize="small"/>,
         title: "Dashboard",
     },
     {
-        href: "/student/erasmus/dashboard",
-        icon: <HiGlobeEuropeAfrica fontSize="small"/>,
-        title: "Erasmus Page",
-        side: [
-            {
-                href: "/student/erasmus/application/list",
-                icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "View Your Erasmus Application List",
-            },
-            {
-                href: "/student/erasmus/application/create",
-                icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "Create Erasmus Application",
-            },
-            {
-                href: "/student/erasmus/application/view",
-                icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "View Your Erasmus Applicaiton",
-            },
-            {
-                href: "/student/erasmus/preapproval/list",
-                icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "View Your Preapproval List",
-            },
-            {
-                href: "/student/erasmus/preapproval/create",
-                icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "Create Preapproval Form",
-            },
-            {
-                href: "/student/erasmus/preapproval/view",
-                icon: <AddOutlinedIcon fontSize="small"/>,
-                title: "View Your Preapproval Form",
-            },
-        ],
-    },
-    {
-        href: "/student/exchange/",
-        icon: <HiGlobeAmericas fontSize="small"/>,
-        title: "Exchange Program",
-    },
-    {
-        href: "/applications",
+        href: "/erasmuscoordinator/erasmus/preapproval/list",
         icon: <ApprovalOutlinedIcon fontSize="small"/>,
-        title: "Applications",
+        title: "Preapproval List",
     },
     {
-        href: "/submissionsStudent",
-        icon: <ImportExportOutlinedIcon fontSize="small"/>,
-        title: "Submissions",
-    },
-    {
-        href: "/student/account",
+        href: "/erasmuscoordinator/account",
         icon: <UserIcon fontSize="small"/>,
         title: "Account",
     },
     {
-        href: "/student/exchange/faq",
-        icon: <QuestionMarkIcon fontSize="small"/>,
-        title: "Exchange FAQ",
-    },
-    {
-        href: "/student/settings",
+        href: "/erasmuscoordinator/settings",
         icon: <CogIcon fontSize="small"/>,
         title: "Settings",
     },
@@ -117,7 +65,7 @@ export const DashboardSidebar = (props) => {
                     </Box>
                     <Box sx={{px: 2}}>
                         <Typography sx={{m: 1}} variant="h4">
-                            Erasmust
+                            Erasmust Erasmus Coordinator
                         </Typography>
                     </Box>
                 </div>
