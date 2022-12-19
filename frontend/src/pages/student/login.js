@@ -12,8 +12,12 @@ const Login = () => {
       navigate('/student/dashboard');
     }
 
-    const goDashboardStaff = () => {
-      navigate('/staff/dashboard');
+    const goDashboardCourseCoordinator = () => {
+      navigate('/coursecoordinator/dashboard');
+    }
+
+    const goDashboardErasmusCoordinator = () => {
+      navigate('/erasmuscoordinator/dashboard');
     }
 
     const goDashboardAdmin = () => {
@@ -39,7 +43,7 @@ const Login = () => {
                 .max(255)
                 .required('Password is required')
         }),
-        onSubmit: async (values, formikHelpers) => {
+        onSubmit: async (values) => {
             await axios.post("http://92.205.25.135:4/auth/login", values)
                 .then((response) => {
                     if (response && response.data) {
@@ -65,8 +69,10 @@ const Login = () => {
                           sessionStorage.setItem("academicYear", academicYear)
                           sessionStorage.setItem("semester", semester)
                           goDashboardStudent()
-                        } else if (role !== undefined) {
-                          goDashboardStaff()
+                        } else if (role === "COURSE_COORDINATOR") {
+                          goDashboardCourseCoordinator()
+                        } else if (role === "ERASMUS_COORDINATOR"){
+                          goDashboardErasmusCoordinator()
                         } else {
                           goSplash()
                         }

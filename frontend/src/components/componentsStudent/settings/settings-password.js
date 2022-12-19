@@ -1,22 +1,50 @@
 import { useState } from 'react';
-import { Box, Button, Card, CardContent, CardHeader, Divider, TextField } from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Divider, TextField, Alert, AlertTitle } from '@mui/material';
 import React from 'react';
+import { useFormik } from "formik";
+import * as Yup from 'yup';
+import axios from 'axios';
 
 export const SettingsPassword = (props) => {
-  const [values, setValues] = useState({
-    password: '',
-    confirm: ''
-  });
 
-  const handleChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    });
-  };
+  const formik = useFormik({
+    initialValues: {
+      oldPassword: "",
+      newPassword: "",
+      confirmPassword: ""
+    },
+    validationSchema: Yup.object({
+        oldPassword: Yup
+            .string()
+            .max(255)
+            .required("Old password is required"),
+        newPassword: Yup
+            .string()
+            .max(255)
+            .required("New password is required"),
+        confirmPassword: Yup
+            .string()
+            .max(255)
+            .required("Confirmation password is required")
+    }),
+    onSubmit: async (values) => {
+        await axios.post("http://92.205.25.135:4/auth/change-password", values)
+          .then((response) => {
+            if (response && response.data) {
+              console.log(response)
+            }
+          })
+          .catch((err) => {
+            if (err && err.response) {
+              console.log(err)
+            }
+          })
+    }
+  })
+  
 
   return (
-    <form {...props}>
+    <form {...props} onSubmit={formik.handleSubmit}>
       <Card>
         <CardHeader
           subheader="Update password"
@@ -25,23 +53,42 @@ export const SettingsPassword = (props) => {
         <Divider />
         <CardContent>
           <TextField
+            error={Boolean(formik.touched.oldPassword && formik.touched.oldPassword)}
             fullWidth
-            label="Password"
+            helperText={formik.touched.oldPassword && formik.errors.oldPassword}
+            label="Old Password"
             margin="normal"
-            name="password"
-            onChange={handleChange}
+            name="oldPassword"
             type="password"
-            value={values.password}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.oldPassword}
             variant="outlined"
           />
           <TextField
+            error={Boolean(formik.touched.newPassword && formik.touched.newPassword)}
             fullWidth
+            helperText={formik.touched.newPassword && formik.errors.newPassword}
+            label="New Password"
+            margin="normal"
+            name="newPassword"
+            type="password"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.newPassword}
+            variant="outlined"
+          />
+          <TextField
+            error={Boolean(formik.touched.confirmPassword && formik.touched.confirmPassword)}
+            fullWidth
+            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
             label="Confirm password"
             margin="normal"
-            name="confirm"
-            onChange={handleChange}
+            name="confirmPassword"
             type="password"
-            value={values.confirm}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.confirmPassword}
             variant="outlined"
           />
         </CardContent>
@@ -56,6 +103,7 @@ export const SettingsPassword = (props) => {
           <Button
             color="primary"
             variant="contained"
+            type='submit'
           >
             Update
           </Button>

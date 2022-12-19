@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../../components/componentsAdmin/dashboard-navbar";
-import {DashboardSidebar} from "../../../components/componentsAdmin/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, TextField, Typography, Button} from "@mui/material";
 import { useFormik } from 'formik';
 import * as Yup from "yup"

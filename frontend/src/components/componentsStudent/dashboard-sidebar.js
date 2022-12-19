@@ -116,7 +116,7 @@ export const DashboardSidebar = (props) => {
                     </Box>
                     <Box sx={{ px: 2 }}>
                         <Typography sx={{ m: 1 }} variant="h4">
-                            Erasmust
+                            Erasmust Student
                         </Typography>
                     </Box>
                 </div>
