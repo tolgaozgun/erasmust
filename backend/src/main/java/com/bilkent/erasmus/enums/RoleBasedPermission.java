@@ -22,7 +22,7 @@ public enum RoleBasedPermission {
 
 
 
-    // STUDENT, EXCHANGE_COORDINATOR, ADMIN, DEAN
+    // STUDENT, ERASMUS_COORDINATOR, ADMIN, DEAN
 
 
     private final Set<Permission> permissions;
