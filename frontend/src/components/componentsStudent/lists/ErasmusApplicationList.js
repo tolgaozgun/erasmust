@@ -104,7 +104,7 @@ const ErasmusApplicationList = (props) => {
                                             <Tooltip title="View">
                                                 <IconButton
                                                     onClick={() => {
-                                                        navigate(`/student/erasmus/application/view/${application.id}`, {state: application})
+                                                        navigate(`/student/erasmus/application/view/${application.id}`)
                                                     }}
                                                 >
                                                     <VisibilityIcon/>
@@ -112,7 +112,9 @@ const ErasmusApplicationList = (props) => {
                                             </Tooltip>
                                             <Tooltip title="Edit">
                                                 <IconButton
-                                                    
+                                                    onClick={() => {
+                                                        navigate(`/student/erasmus/application/edit/${application.id}`, {state: application})
+                                                    }}
                                                 >
                                                     <EditIcon/>
                                                 </IconButton>
