@@ -17,6 +17,8 @@ public class ApplicationErasmusController {
         this.applicationErasmusService = applicationErasmusService;
     }
 
+    // todo --> check added universities' uniquenessx
+
     @RolesAllowed({"ROLE_STUDENT", "ROLE_ADMIN"})
     @PostMapping("/create")
     public ResponseEntity<?> createErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO){
