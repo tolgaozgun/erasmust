@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {styled} from "@mui/material/styles";
-import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
-import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
+import {DashboardNavbar} from "../../../components/componentsStaff/courseCoordinator/dashboard-navbar";
+import {DashboardSidebar} from "../../../components/componentsStaff/courseCoordinator/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
 import CourseReviewList from "../../../components/componentsStudent/dashboard/course-review-forms";
 import axios from 'axios';

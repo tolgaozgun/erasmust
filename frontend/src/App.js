@@ -59,6 +59,9 @@ import DashboardStaff from "./pages/academic/dashboard";
 import AccountStaff from "./pages/academic/account";
 import SettingsStaff from "./pages/academic/settings";
 import ErasmusStaff from "./pages/academic/erasmus";
+import DashboardCourseCoordinator from "./pages/courseCoordinator/dashboard";
+import AccountCourseCoordinator from "./pages/courseCoordinator/account";
+import SettingsCourseCoordinator from "./pages/courseCoordinator/settings"
 
 import Splash from "./pages/splash";
 import Error from "./pages/404";
@@ -239,11 +242,12 @@ const App = () => {
                 <Route
                     exact
                     path="/admin"
-                    element={<Navigate to="/admin/dashboard"/>}
+                    element={<Navigate to="/coursecoordinator/dashboard"/>}
                 />
                 <Route path="/coursecoordinator/*" element={<Outlet/>}>
-                    <Route path="dashboard" element={<DashboardAdmin/>}/>
-                    <Route path="account" element={<AccountAdmin/>}/>
+                    <Route path="dashboard" element={<DashboardCourseCoordinator/>}/>
+                    <Route path="account" element={<AccountCourseCoordinator/>}/>
+                    <Route path="settings" element={<SettingsCourseCoordinator/>}/>
                     <Route exact path="exchange" element={<Splash/>}/>
                     <Route exact path="exchange/*" element={<Outlet/>}>
                         <Route path="coursereview/*" element={<Outlet/>}>
