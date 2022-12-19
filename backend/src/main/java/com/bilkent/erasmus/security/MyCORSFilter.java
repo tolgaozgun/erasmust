@@ -35,8 +35,8 @@ public class MyCORSFilter extends OncePerRequestFilter {
         HttpServletResponse response = (HttpServletResponse) res;
 
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
-        response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("access-aontrol-allow-credentials", "true");
+        response.setHeader("access-control-allow-methods", "*");
         response.setHeader("Access-Control-Max-Age", "3600");
         //response.setHeader("access-control-expose-headers", "*");
         response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
