@@ -30,7 +30,7 @@ const PreapprovalsList = (props) => {
 
     return (
         <Card {...props}>
-            <CardHeader title="Ongoing StudentPreapprovalList"/>
+            <CardHeader title="Ongoing Preapproval List "/>
             <PerfectScrollbar>
                 <Box
                     sx={{
@@ -39,8 +39,8 @@ const PreapprovalsList = (props) => {
                     }}
                 >
                     <Table>
-                    <TableHead>
-                        <TableRow>
+                        <TableHead>
+                            <TableRow>
                             <TableCell>Preapproval ID</TableCell>
                             <TableCell>Student Name</TableCell>
                             <TableCell sortDirection="desc">
