@@ -279,6 +279,8 @@ public class LearningAgreementErasmusService {
         erasmusForm.setSemester(findPreApprovalById(student).getSemester());
         erasmusForm.setAcademicYear(findPreApprovalById(student).getAcademicYear());
         erasmusForm.setStatus(Status.IN_PROCESS);
+        erasmusForm.setActiveMobility(ActiveMobility.BEFOREMOBILITY);
+
         erasmusForm.setStudent(student);
 
 
