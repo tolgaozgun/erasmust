@@ -57,14 +57,18 @@ const CourseCoordinatorErasmusPreapprovalList = () => {
     }, []);
 
     const handleApproval = (approvedBool, id) => {
-        console.log(approvedBool, id)
 
         const url = "http://92.205.25.135:4/pre-approval/erasmus/evaluate/" + id;
+        console.log(approvedBool, id)
         console.log(url)
 
-        axios.post(url, approvedBool, {
+        axios.post(url, JSON.stringify({
+            "flag": approvedBool
+        }), {
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`,
+                Accept: "application/json",
+                "Content-Type": "application/json"
             }
         })
             .then((res) => {
