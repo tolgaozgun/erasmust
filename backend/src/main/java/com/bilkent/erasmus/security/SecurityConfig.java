@@ -73,7 +73,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**")
                 .permitAll()
                 .anyRequest().authenticated();
-        httpSecurity.addFilterBefore(new MyCORSFilter(),UsernamePasswordAuthenticationFilter.class);
+        //httpSecurity.addFilter(new MyCORSFilter());
+        httpSecurity.addFilterBefore(new MyCORSFilter(), UsernamePasswordAuthenticationFilter.class);
         httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
