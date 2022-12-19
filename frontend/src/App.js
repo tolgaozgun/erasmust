@@ -170,28 +170,28 @@ const App = () => {
                         <Route path="preapproval/*" element={<Outlet />}>
                             <Route
                                 path="list"
-                                element={<AdminErasmusPreapprovalList />}
+                                element={<AdminErasmusPreapprovalList/>}
                             />
                             <Route
                                 path="view"
-                                element={<ViewErasmusPreapproval />}
+                                element={<ViewErasmusPreapproval/>}
                             />
-                            <Route path="review" element={<Error />} />
-                            <Route path="*" element={<Error />} />
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
-                        <Route path="coursereview/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="review" element={<Error />} />
-                            <Route path="*" element={<Error />} />
+                        <Route path="coursereview/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="view/:id" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
-                        <Route path="coursetransfer/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
-                            <Route path="review" element={<Error />} />
-                            <Route path="*" element={<Error />} />
+                        <Route path="coursetransfer/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
                         </Route>
                         <Route path="learningagreement/*" element={<Outlet />}>
                             <Route path="list" element={<Error />} />
@@ -323,13 +323,13 @@ const App = () => {
                             />
                             <Route
                                 path="create"
-                                element={<StudentCreateErasmusCourseReview />}
+                                element={<StudentCreateErasmusCourseReview/>}
                             />
                             <Route
-                                path="view"
-                                element={<ViewCourseReviewForm />}
+                                path="view/:id"
+                                element={<ViewCourseReviewForm/>}
                             />
-                            <Route path="edit" element={<Error />} />
+                            <Route path="edit" element={<Error/>}/>
                         </Route>
                         <Route path="coursetransfer/*" element={<Outlet />}>
                             <Route path="list" element={<Error />} />
