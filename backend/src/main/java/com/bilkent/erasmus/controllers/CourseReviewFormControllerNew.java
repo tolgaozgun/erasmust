@@ -1,9 +1,6 @@
 package com.bilkent.erasmus.controllers;
 
-import com.bilkent.erasmus.dtos.CourseReviewEditDTO;
-import com.bilkent.erasmus.dtos.CourseReviewFormFillRequest;
-import com.bilkent.erasmus.dtos.EditFormDTO;
-import com.bilkent.erasmus.dtos.EvaluationDTO;
+import com.bilkent.erasmus.dtos.*;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
@@ -127,6 +124,12 @@ public class CourseReviewFormControllerNew {
     @PostMapping("/evaluate/{id}")
     public ResponseEntity<?> evaluateCourseReviewForm(@PathVariable int id, @RequestBody EvaluationDTO evaluation) {
         return new ResponseEntity<>(courseReviewFormService.evaluateCourseReview(id, evaluation), HttpStatus.OK);
+    }
+
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_COURSE_COORDINATOR","ROLE_ADMIN"})
+    @PostMapping("/reply/{id}")
+    public ResponseEntity<?> replyCourseReviewForm(@PathVariable int id, @RequestBody ReplyDTO replyDTO) throws Exception {
+        return new ResponseEntity<>(courseReviewFormService.replyCourseReviewForm(id, replyDTO), HttpStatus.OK);
     }
 /*
     @PostMapping("get-all/courseCoordinator/course-forms")

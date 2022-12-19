@@ -78,11 +78,5 @@ public class ApplicationErasmusController {
     }
 
 
-    @RolesAllowed({"ROLE_COURSE_COORDINATOR", "ROLE_ERASMUS_COORDINATOR"})
-    @GetMapping("/coordinator/add-reply/{id}")
-    public ResponseEntity<?> replyCourseForm(@PathVariable int id, @RequestBody ReplyDTO replyDTO) {
-        return new ResponseEntity<>(applicationErasmusService.replyCourseForm(id, replyDTO), HttpStatus.OK);
-    }
-
 }
 

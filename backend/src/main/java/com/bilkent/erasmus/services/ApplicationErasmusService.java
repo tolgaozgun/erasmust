@@ -219,7 +219,4 @@ public class ApplicationErasmusService {
         return applicationErasmusMapper.toApplicationErasmusDTOList(applicationErasmusRepository.findAllByStudent_StarsId(auth.getName()));
     }
 
-    public CourseReviewFormNew replyCourseForm(int id, ReplyDTO replyDTO) {
-        return null;
-    }
 }
