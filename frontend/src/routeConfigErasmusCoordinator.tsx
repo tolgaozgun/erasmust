@@ -1,3 +1,4 @@
+
 // Erasmus Coordinator
 export const itemsErasmusCoordinator = [
     {
@@ -24,8 +25,6 @@ export const itemsErasmusCoordinator = [
         label: "Erasmus Coordinator Erasmus Preapproval View",
         route: "/erasmuscoordinator/erasmus/preapproval/view/:id",
     },
-
-    //err
     {
         label: "Erasmus Coordinator Erasmus Preapproval Review",
         route: "/erasmuscoordinator/erasmus/preapproval/review/",

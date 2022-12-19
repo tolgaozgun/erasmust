@@ -1,3 +1,4 @@
+
 // Course Coordinator
 export const itemsCourseCoordinator = [
     {
@@ -16,12 +17,10 @@ export const itemsCourseCoordinator = [
         label: "Course Coordinator Erasmus Course Review List",
         route: "/coursecoordinator/erasmus/coursereview/list",
     },
-    //err
     {
         label: "Course Coordinator Erasmus Course Review View",
         route: "/coursecoordinator/erasmus/coursereview/view/:id",
     },
-    //err
     {
         label: "Course Coordinator Erasmus Course Review Review",
         route: "/coursecoordinator/erasmus/coursereview/review",
