@@ -2,6 +2,7 @@ package com.bilkent.erasmus.advice;
 
 import com.bilkent.erasmus.dtos.StorageResponse;
 import com.bilkent.erasmus.exceptions.HostCourseFieldException;
+import com.bilkent.erasmus.exceptions.PreApprovalFormNotCompletedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -33,6 +34,15 @@ public class FieldExceptionHandler {
             errorMap.put("errorMessage", ex.getMessage());
             errorMap.put("field", ex.getField());
             errorMap.put("courseName", ex.getCourseName());
+            return errorMap;
+        }
+
+        @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+        @ExceptionHandler(PreApprovalFormNotCompletedException.class)
+        public Map<String, String> handleEvaluateFormException(PreApprovalFormNotCompletedException ex) {
+            Map<String, String> errorMap = new HashMap<>();
+            errorMap.put("errorMessage", ex.getMessage());
+            errorMap.put("courseName", ex.getHostCourseName());
             return errorMap;
         }
 }

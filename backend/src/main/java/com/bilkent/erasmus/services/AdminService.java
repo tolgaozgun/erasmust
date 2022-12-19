@@ -85,7 +85,6 @@ public class AdminService {
         return preApprovalFormRepositoryNew.findAll();
     }
 
-
     public List<CourseReviewFormListResponse> getAllCourseReviewForms() {
         List<PreApprovalFormNew> forms = preApprovalFormRepositoryNew.findAll();
         List<CourseReviewFormListResponse> responseList = new ArrayList<>();
