@@ -78,6 +78,7 @@ import StudentErasmusPage from "./pages/student/StudentErasmusPage";
 import StudentLearningAgreements from "./pages/student/LearningAgreement/StudentLearningAgreements";
 import CourseCoordinatorErasmusCourseReviewForms
     from "./pages/courseCoordinator/CourseReviewForm/CourseCoordinatorErasmusCourseReviewForms";
+import EditLearningAgreement from "./pages/student/LearningAgreement/EditLearningAgreement";
 
 const App = () => {
     // const [routes, setRoutes] = useState(routeItemsDefault)
@@ -300,19 +301,19 @@ const App = () => {
                             <Route path="view" element={<Error />} />
                             <Route path="edit" element={<Error />} />
                         </Route>
-                        <Route path="coursetransfer/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
+                        <Route path="coursetransfer/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<Error/>}/>
                         </Route>
-                        <Route path="learningagreement/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
+                        <Route path="learningagreement/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<EditLearningAgreement/>}/>
                         </Route>
-                        <Route path="faq" element={<ExchangeFaq />} />
+                        <Route path="faq" element={<ExchangeFaq/>}/>
                         <Route path="*" element={<Error />} />
                     </Route>
                     <Route
