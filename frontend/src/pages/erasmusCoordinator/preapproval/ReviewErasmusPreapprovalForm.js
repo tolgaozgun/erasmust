@@ -78,7 +78,7 @@ const QontoStepIconRoot = styled('div')(
 );
 
 
-const Preapproval = () => {
+const ReviewErasmusPreapprovalForm = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     const courses = require('../../../lessons.json');
@@ -151,4 +151,4 @@ const Preapproval = () => {
     );
 };
 
-export default Preapproval;
+export default ReviewErasmusPreapprovalForm;
