@@ -127,7 +127,7 @@ const prefetchData = {
 
 }
 
-const BeforeMobility = () => {
+const BeforeMobility = (props) => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [activeStep, setActiveStep] = useState(0)
     const [stepCompleted, setStepCompleted] = useState([
@@ -141,7 +141,6 @@ const BeforeMobility = () => {
     const [faculties, setFaculties] = useState([])
 
     const token = sessionStorage.getItem("jwtToken")
-
 
     const formik = useFormik({
         initialValues: {
@@ -231,7 +230,7 @@ const BeforeMobility = () => {
             }),
         }),
         onSubmit: async (values, formikHelpers) => {
-            await axios.post("http://92.205.25.135:4/learning-agreement-erasmus/create", values, {
+            await axios.patch("http://92.205.25.135:4/learning-agreement-erasmus/edit/" + props.appId, values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -309,6 +308,14 @@ const BeforeMobility = () => {
                 }
             })
     }, []);
+
+    useEffect(() => {
+        formik.setFieldValue("studyCycle", props.edit.studyCycle)
+        formik.setFieldValue("subjectArea", props.edit.subjectArea)
+        formik.setFieldValue("language", props.edit.language)
+        formik.setFieldValue("languageLevel", props.edit.languageLevel)
+        formik.setFieldValue("receivingInstitutionInformation", props.edit.receivingInstitutionInformation)
+    }, [])
 
     console.log("Formik errors")
     console.log(formik.errors)
@@ -413,7 +420,7 @@ const BeforeMobility = () => {
                             align="center"
                             variant="h4"
                         >
-                            Learning Agreement Form - Before Mobility
+                            Edit Learning Agreement Form - Before Mobility
                         </Typography>
 
                         <Stepper nonLinear alternativeLabel activeStep={activeStep} connector={<QontoConnector/>}>

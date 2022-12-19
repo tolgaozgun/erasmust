@@ -16,18 +16,21 @@ import {
     IconButton
 } from "@mui/material";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import {SeverityPill} from "../../severity-pill";
+import {SeverityPill} from "../../../../componentsStaff/severity-pill";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import {useNavigate} from "react-router-dom";
 
 const PreapprovalsList = (props) => {
 
+    const navigate = useNavigate()
+
     return (
         <Card {...props}>
-            <CardHeader title="Ongoing StudentPreapprovalList"/>
+            <CardHeader title="Ongoing Preapproval List "/>
             <PerfectScrollbar>
                 <Box
                     sx={{
@@ -36,8 +39,8 @@ const PreapprovalsList = (props) => {
                     }}
                 >
                     <Table>
-                    <TableHead>
-                        <TableRow>
+                        <TableHead>
+                            <TableRow>
                             <TableCell>Preapproval ID</TableCell>
                             <TableCell>Student Name</TableCell>
                             <TableCell sortDirection="desc">
@@ -98,7 +101,11 @@ const PreapprovalsList = (props) => {
                                 </TableCell>
                                 <TableCell>
                                     <Tooltip title="View">
-                                        <IconButton>
+                                        <IconButton onClick={
+                                            () => {
+                                                navigate("../view/" + preapproval.id)
+                                            }
+                                        }>
                                             <VisibilityIcon/>
                                         </IconButton>
                                     </Tooltip>

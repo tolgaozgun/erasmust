@@ -40,7 +40,7 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.reviewForm(request, formId), HttpStatus.ACCEPTED);
     }
 
-    @PatchMapping("/edit")
+    @PatchMapping("/edit/{formId}")
     public ResponseEntity<?> editAgreement(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
         return new ResponseEntity<>(erasmusService.editForm(formId, erasmusDTO), HttpStatus.OK);
     }

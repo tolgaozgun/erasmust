@@ -6,7 +6,8 @@ import {Box, Container, Grid} from "@mui/material";
 import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
 import StudentPreapprovalList from "../../student/Preapproval/StudentErasmusPreapprovalList";
-import PreapprovalsList from "../../../components/componentsStaff/courseCoordinator/preapproval/preapprovals-list";
+import PreapprovalsList
+    from "../../../components/componentsErasmusCoordinator/info/erasmus/preapprovalForm/preapprovals-list";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -18,7 +19,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const CourseCoordinatorErasmusPreapprovalList = () => {
+const ErasmusCoordinatorErasmusPreapprovalList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [preapprovalList, setPreapprovalList] = useState([]);
     const [flag, setFlag] = useState(false);
@@ -27,9 +28,9 @@ const CourseCoordinatorErasmusPreapprovalList = () => {
     const token = sessionStorage.getItem("jwtToken");
     var array = []
 
-    
+
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-preapproval-erasmus", {
+        axios.get("http://92.205.25.135:4/pre-approval/erasmus/get-all/exchange-coordinator/pre-approval-forms", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -57,14 +58,18 @@ const CourseCoordinatorErasmusPreapprovalList = () => {
     }, []);
 
     const handleApproval = (approvedBool, id) => {
-        console.log(approvedBool, id)
 
         const url = "http://92.205.25.135:4/pre-approval/erasmus/evaluate/" + id;
+        console.log(approvedBool, id)
         console.log(url)
 
-        axios.post(url, approvedBool, {
+        axios.post(url, JSON.stringify({
+            "flag": approvedBool
+        }), {
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`,
+                Accept: "application/json",
+                "Content-Type": "application/json"
             }
         })
             .then((res) => {
@@ -118,4 +123,4 @@ const CourseCoordinatorErasmusPreapprovalList = () => {
     );
 }
 
-export default CourseCoordinatorErasmusPreapprovalList
+export default ErasmusCoordinatorErasmusPreapprovalList
