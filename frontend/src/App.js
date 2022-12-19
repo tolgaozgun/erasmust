@@ -33,6 +33,7 @@ import StaffPreapprovalForm from "./pages/admin/erasmus/ReviewErasmusPreapproval
 import StudentEditErasmusPreapproval from "./pages/student/Preapproval/StudentEditErasmusPreapproval";
 import CourseReviewForms from "./pages/student/CourseReviewForm/StudentErasmusCourseReviewForms";
 import ViewCourseReviewForm from "./pages/ViewCourseReviewForm";
+import EditErasmusApplication from "./pages/student/ErasmusApplication/EditErasmusApplication";
 
 //Admin Pages
 import DashboardAdmin from "./pages/admin/dashboard";
@@ -296,7 +297,7 @@ const App = () => {
                                 path="view/:id"
                                 element={<ViewErasmusApplication />}
                             />
-                            <Route path="edit" element={<Error />} />
+                            <Route path="edit/:id" element={<EditErasmusApplication />} />
                         </Route>
                         <Route path="preapproval/*" element={<Outlet />}>
                             <Route
