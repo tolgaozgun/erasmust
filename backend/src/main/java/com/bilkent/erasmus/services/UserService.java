@@ -29,17 +29,15 @@ public class UserService {
         return userRepository.findUserByStarsId(id);
     }
 
-    public void changePassword(String newPassword, String oldPassword, String confirmPassword) throws PasswordException {
+    public void changePassword(String newPassword, String oldPassword, String confirmPassword) throws Exception {
         User currentUser = userRepository.findUserByStarsId(SecurityContextHolder.getContext().getAuthentication().getName());
         if (newPassword == null | oldPassword == null | confirmPassword == null) {
             throw new PasswordException("All fields must be filled");
-        }
-        else {
+        } else {
             if (passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
-                if (passwordEncoder.matches(newPassword,currentUser.getPassword())) {
+                if (passwordEncoder.matches(newPassword, currentUser.getPassword())) {
                     throw new PasswordException("New password cannot be same with current password");
-                }
-                else {
+                } else {
                     if (newPassword.equals(confirmPassword)) {
                         currentUser.setPassword(passwordEncoder.encode(newPassword));
                         userRepository.save(currentUser);
@@ -49,23 +47,9 @@ public class UserService {
                 }
             } else {
                 throw new PasswordException("Entered password does not match current password");
-
-    public void changePassword(String newPassword, String oldPassword, String confirmPassword) throws PasswordsDoNotMatchException {
-        User currentUser = userRepository.findUserByStarsId(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (newPassword == null | oldPassword == null | confirmPassword == null) {
-            throw new PasswordsDoNotMatchException("All fields must be filled");
-        }
-        else {
-            if (passwordEncoder.matches(oldPassword, currentUser.getPassword())) {
-                if (newPassword.equals(confirmPassword)) {
-                    currentUser.setPassword(passwordEncoder.encode(newPassword));
-                } else {
-                    throw new PasswordsDoNotMatchException("Confirmation password does not match new password");
-                }
-            } else {
-                throw new PasswordsDoNotMatchException("Entered password does not match current password");
             }
-
         }
     }
+
+
 }

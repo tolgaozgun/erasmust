@@ -165,7 +165,7 @@ public class AuthController {
     }
 
     @PostMapping("/change-password")
-    public ResponseEntity<?> changePassword(@RequestBody Map<String, String> json) throws PasswordException {
+    public ResponseEntity<?> changePassword(@RequestBody Map<String, String> json) throws Exception {
 
         userService.changePassword(json.get("newPassword"),
                 json.get("oldPassword"), json.get("confirmationPassword"));
