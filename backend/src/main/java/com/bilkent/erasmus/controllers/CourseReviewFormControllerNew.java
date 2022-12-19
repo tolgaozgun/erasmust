@@ -106,7 +106,6 @@ public class CourseReviewFormControllerNew {
         return new ResponseEntity<>(courseReviewFormService.saveFileAllTogether(file), HttpStatus.OK);
     }
 
-
     @PostMapping("get-all/student/course-forms")
     public ResponseEntity<?> getAllFormsForStudent() {
         return new ResponseEntity<>(courseReviewFormService.getAllFormsForStudent(), HttpStatus.OK);
