@@ -214,8 +214,12 @@ public class PreApprovalFormNewService {
         return preApprovalForm.getForms();
     }
 
-    public PreApprovalFormNew getAllPreapprovalByIdForStudent(int id) {
+    public PreApprovalFormNew getPreapprovalByIdForStudent(int id) {
         return preApprovalFormRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("no pre approval form is found"));
+    }
+
+    public CourseReviewFormNew getCourseReviewFormForStudent(int id) {
+        return courseReviewFormService.getCourseReviewFormByIdForStudent(id);
     }
 }

@@ -42,11 +42,10 @@ public class ApplicationErasmusService {
         this.outGoingStudentRepository = outGoingStudentRepository;
     }
 
-    public ApplicationErasmusDTO createErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) {
+    public ApplicationErasmus createErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) {
         ApplicationErasmus applicationErasmus = applicationErasmusMapper.toEntity(applicationErasmusDTO);
         ApplicationErasmusDTO dto;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         try {
             OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName()).orElseThrow(() -> new EntityNotFoundException());
             if (student.getGpa() >= 2.5 && (student.getSemester().ordinal() >= 2 && student.getSemester().ordinal() <= 4)) {
@@ -61,7 +60,7 @@ public class ApplicationErasmusService {
             log.info("Student doesn't exist");
         }
         dto = applicationErasmusMapper.toApplicationErasmusDTO(applicationErasmus);
-        return dto;
+        return applicationErasmus;
     }
 
     public ApplicationErasmusDTO editErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) throws Exception {

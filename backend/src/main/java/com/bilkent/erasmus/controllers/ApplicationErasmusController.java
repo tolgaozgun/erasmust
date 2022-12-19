@@ -16,12 +16,12 @@ public class ApplicationErasmusController {
     public ApplicationErasmusController( ApplicationErasmusService applicationErasmusService) {
         this.applicationErasmusService = applicationErasmusService;
     }
-
+/*
     @RolesAllowed({"ROLE_STUDENT", "ROLE_ADMIN"})
     @PostMapping("/create")
     public ResponseEntity<?> createErasmusApplication(@RequestBody ApplicationErasmusDTO applicationErasmusDTO){
-        return new ResponseEntity<>(applicationErasmusService.createErasmusApplication(applicationErasmusDTO), HttpStatus.CREATED);
-    }
+        return new ResponseEntity<>(applicationErasmusService.creteErasmusApplication(applicationErasmusDTO), HttpStatus.CREATED);
+    }*/
 
     @RolesAllowed({"ROLE_STUDENT", "ROLE_ADMIN"})
     @PatchMapping("/edit")
