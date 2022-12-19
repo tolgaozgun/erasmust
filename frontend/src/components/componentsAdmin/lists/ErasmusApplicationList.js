@@ -17,17 +17,27 @@ import {
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import {SeverityPill} from "../severity-pill";
 
-export const ErasmusApplicationList = (props) => (
-    <Card {...props}>
-        <CardHeader title="Ongoing StudentPreapprovalList"/>
-        <PerfectScrollbar>
-            <Box
-                sx={{
-                    minWidth: 800,
-                    height: 400,
-                }}
-            >
-                <Table>
+export const ErasmusApplicationList = (props) => {
+
+    const getCoordinatorName = (application) => {
+        if (application["coordinator"]) {
+            return `${application["coordinator"]["firstName"]} ${application["coordinator"]["lastName"]}`
+        } else {
+            return "Coordinator not assigned"
+        }
+    }
+
+    return (
+        <Card {...props}>
+            <CardHeader title="Ongoing StudentPreapprovalList"/>
+            <PerfectScrollbar>
+                <Box
+                    sx={{
+                        minWidth: 800,
+                        height: 400,
+                    }}
+                >
+                    <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell>Preapproval ID</TableCell>
@@ -63,7 +73,7 @@ export const ErasmusApplicationList = (props) => (
                                     {/*)}*/}
                                 </TableCell>
                                 <TableCell>
-                                    {application.coordinator.firstName} {application.coordinator.lastName}
+                                    {getCoordinatorName(application)}
                                 </TableCell>
                                 <TableCell>
                                     <SeverityPill
@@ -102,5 +112,6 @@ export const ErasmusApplicationList = (props) => (
                 View all
             </Button>
         </Box>
-    </Card>
-);
+        </Card>
+    )
+};

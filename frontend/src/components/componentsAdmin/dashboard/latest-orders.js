@@ -98,7 +98,7 @@ export const LatestOrders = (props) => (
                   {order.customer.name}
                 </TableCell>
                 <TableCell>
-                  {format(order.createdAt, 'dd/MM/yyyy')}
+                  {format(order.createdAt * 1000, 'dd/MM/yyyy')}
                 </TableCell>
                 <TableCell>
                   <SeverityPill
