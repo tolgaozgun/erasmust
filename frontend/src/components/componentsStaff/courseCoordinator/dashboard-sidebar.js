@@ -20,7 +20,12 @@ const items = [
     {
         href: "/coursecoordinator/erasmus/coursereview/list",
         icon: <ApprovalOutlinedIcon fontSize="small" />,
-        title: "Applications",
+        title: "Course Review Form List",
+    },
+    {
+        href: "/coursecoordinator/erasmus/preapproval/list",
+        icon: <ApprovalOutlinedIcon fontSize="small" />,
+        title: "Preapproval Form List",
     },
     {
         href: "/coursecoordinator/account",
