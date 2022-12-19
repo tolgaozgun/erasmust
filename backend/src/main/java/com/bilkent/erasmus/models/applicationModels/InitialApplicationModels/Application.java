@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.models.applicationModels.InitialApplicationModels;
 
+import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
@@ -19,6 +20,9 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String academicYear;
+
+    private SemesterOfferings semester;
 
     @Enumerated(EnumType.STRING)
     private Status status;

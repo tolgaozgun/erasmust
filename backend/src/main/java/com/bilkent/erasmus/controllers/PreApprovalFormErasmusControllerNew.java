@@ -39,8 +39,8 @@ public class PreApprovalFormErasmusControllerNew {
     }
     @RolesAllowed("ROLE_STUDENT")
     @GetMapping("/all-preapproval-student/{id}")
-    public ResponseEntity<?> getAllPreapprovalByFormIdForStudent(@PathVariable int id) {
-        return new ResponseEntity<>(preApprovalService.getAllPreapprovalByIdForStudent(id), HttpStatus.OK);
+    public ResponseEntity<?> getPreapprovalByFormIdForStudent(@PathVariable int id) {
+        return new ResponseEntity<>(preApprovalService.getPreapprovalByIdForStudent(id), HttpStatus.OK);
     }
 
     //todo add hoca permission
@@ -66,6 +66,12 @@ public class PreApprovalFormErasmusControllerNew {
     @GetMapping("get-all/student/course-forms")
     public ResponseEntity<?> getAllFormsForStudent() throws Exception {
         return new ResponseEntity<>(preApprovalService.getAllCourseReviewFormsForStudent(), HttpStatus.OK);
+    }
+
+    @RolesAllowed("ROLE_STUDENT")
+    @GetMapping("get/student/course-forms/{id}")
+    public ResponseEntity<?> getFormForStudent(@PathVariable int id) throws Exception {
+        return new ResponseEntity<>(preApprovalService.getCourseReviewFormForStudent(id), HttpStatus.OK);
     }
 
     @RolesAllowed("ROLE_ERASMUS_COORDINATOR")

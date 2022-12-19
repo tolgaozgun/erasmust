@@ -140,8 +140,7 @@ public class CourseReviewFormServiceNew {
     public CourseReviewFormNew getCourseReviewFormByIdForStudent(int id) {
         CourseReviewFormNew courseReviewForm = courseReviewFormRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("course review form not found with id: " + id));
-
-        return null;
+        return courseReviewForm;
     }
 
 }
