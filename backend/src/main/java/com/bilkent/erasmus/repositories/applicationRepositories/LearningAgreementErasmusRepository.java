@@ -8,18 +8,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface LearningAgreementErasmusRepository extends JpaRepository<LearningAgreementErasmus, Integer> {
 
-    // todo:?
     //List<LearningAgreementErasmus> findByMobilityDetail(MobilityDetail mobilityDetail);
 
     //List<LearningAgreementErasmus> findAllByStatus(Status status);
 
-    LearningAgreementErasmus findByStudent_Id(String id);
+    Optional<LearningAgreementErasmus> findByStudent_Id(String id);
 
     List<LearningAgreementErasmus> findAllByStudent_StarsId(String id);
 
-    LearningAgreementErasmus findById(int id);
+    Optional<LearningAgreementErasmus> findById(int id);
 }
