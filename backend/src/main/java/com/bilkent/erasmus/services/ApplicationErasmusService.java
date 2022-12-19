@@ -1,12 +1,10 @@
 package com.bilkent.erasmus.services;
 
 
+import com.bilkent.erasmus.advice.FieldExceptionHandler;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.ApplicationErasmusDTO;
 import com.bilkent.erasmus.enums.DepartmentName;
-import com.bilkent.erasmus.exceptions.ApplicationSchoolCountException;
-import com.bilkent.erasmus.exceptions.ApplicationSchoolRequirementsException;
-import com.bilkent.erasmus.exceptions.ExistingApplicationException;
-import com.bilkent.erasmus.exceptions.StudentDoesNotExistException;
+import com.bilkent.erasmus.exceptions.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.ApplicationErasmusMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.enums.Status;
@@ -84,7 +82,7 @@ public class ApplicationErasmusService {
 
     public ApplicationErasmusDTO editErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
         ApplicationErasmus applicationErasmus = applicationErasmusRepository.findById(applicationErasmusDTO.getId())
-                .orElseThrow(()-> new Exception("Application with ID " + applicationErasmusDTO.getId() + "does not exist"));
+                .orElseThrow(()-> new EntityDoesNotExistException("This account has no ongoing applications related to it.", applicationErasmusDTO.getId()));
         if (applicationErasmus != null && applicationErasmus.getStatus().equals(Status.IN_PROCESS)) {
             applicationErasmusMapper.updateApplicationErasmusFromDTO(applicationErasmusDTO, applicationErasmus);
             log.info(applicationErasmusRepository.save(applicationErasmus).toString());
@@ -97,7 +95,7 @@ public class ApplicationErasmusService {
         String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
         try {
             ApplicationErasmus applicationErasmus = applicationErasmusRepository.findByStudent_StarsId(starsId)
-                    .orElseThrow(EntityNotFoundException::new);
+                    .orElseThrow(() -> new EntityDoesNotExistException("This account has no ongoing applications related to it", Integer.parseInt(starsId)));
             if (!(applicationErasmus.getStatus().equals(Status.CANCELLED))) {
                 applicationErasmus.setStatus(Status.CANCELLED);
                 applicationErasmusRepository.save(applicationErasmus);
@@ -192,11 +190,11 @@ public class ApplicationErasmusService {
         return applicationErasmusMapper.toApplicationErasmusDTOList(applicationErasmusRepository.findAll());
     }
 
-    public ApplicationErasmus viewApplicationById(int id) {
+    public ApplicationErasmus viewApplicationById(int id) throws EntityDoesNotExistException {
        // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return applicationErasmusRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("No application is found: " + id)
-        );
+                () -> new EntityDoesNotExistException("Application does not exist", id));
+
     }
 
     public List<ApplicationErasmusDTO> viewApplicationStudentAll() {

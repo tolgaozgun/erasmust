@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.controllers;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.ApplicationErasmusDTO;
+import com.bilkent.erasmus.exceptions.EntityDoesNotExistException;
 import com.bilkent.erasmus.services.ApplicationErasmusService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,7 +66,7 @@ public class ApplicationErasmusController {
 
     @RolesAllowed("ROLE_STUDENT")
     @GetMapping("/student/view-application-by-id/{id}")
-    public ResponseEntity<?> viewApplication(@PathVariable int id) {
+    public ResponseEntity<?> viewApplication(@PathVariable int id) throws EntityDoesNotExistException {
         return new ResponseEntity<>(applicationErasmusService.viewApplicationById(id), HttpStatus.OK);
     }
 
