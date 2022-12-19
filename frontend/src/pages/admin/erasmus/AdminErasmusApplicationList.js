@@ -22,7 +22,7 @@ const AdminErasmusApplicationList = () => {
     const [applicationList, setApplicationList] = useState([]);
     const [flag, setFlag] = useState(false);
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
     var array = []
 
     useEffect(() => {

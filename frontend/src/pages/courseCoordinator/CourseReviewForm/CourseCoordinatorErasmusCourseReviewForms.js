@@ -20,7 +20,7 @@ const CourseCoordinatorErasmusCourseReviewForms = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [courseReviewFormList, setCourseReviewFormList] = useState([]);
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
     var array = []
 
     useEffect(() => {

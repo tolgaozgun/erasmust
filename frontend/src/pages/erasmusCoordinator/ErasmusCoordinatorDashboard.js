@@ -1,9 +1,33 @@
-import {Box, Button, Container, Grid} from '@mui/material';
+import {
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CardHeader,
+    Container,
+    Divider,
+    Grid,
+    Stack,
+    TextField,
+    Typography
+} from '@mui/material';
 import {DashboardNavbar} from "../../components/componentsErasmusCoordinator/dashboard-navbar";
 import {DashboardSidebar} from '../../components/componentsErasmusCoordinator/dashboard-sidebar';
 import React, {useState} from 'react';
 import {styled} from '@mui/material/styles';
 import {Link, Outlet} from "react-router-dom";
+import PreapprovalsList from "../../components/componentsAdmin/lists/preapprovals-list";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
+import {
+    ViewStudentInfo
+} from "../../components/componentsErasmusCoordinator/info/erasmus/preapprovalForm/view-student-info";
+import {
+    ViewExchangeInfo
+} from "../../components/componentsErasmusCoordinator/info/erasmus/preapprovalForm/view-exchange-info";
+import {
+    ViewCourseInfo
+} from "../../components/componentsErasmusCoordinator/info/erasmus/preapprovalForm/view-course-info";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -21,30 +45,93 @@ const ErasmusCoordinatorDashboard = (props) => {
 
     return (
         <>
-
             <title>
-                Dashboard | Material Kit
+                View Preapproval
             </title>
             <DashboardLayoutRoot>
                 <Box
                     component="main"
                     sx={{
-                        display: 'flex',
-                        flex: '1 1 auto',
-                        flexDirection: 'column',
-                        width: '100%',
                         flexGrow: 1,
                         py: 8
                     }}
                 >
-                    <Container maxWidth={false}>
+                    <Container maxWidth="lg">
+                        <Typography
+                            sx={{mb: 5}}
+                            align="center"
+                            variant="h4"
+                        >
+                            Dashboard
+                        </Typography>
+
                         <Grid
                             container
                             spacing={3}
                         >
-                            <Button>
-                                Place students to schools
-                            </Button>
+
+                            <Grid
+                                item
+                                lg={12}
+                                md={12}
+                                xs={24}>
+                                <Card>
+                                    <CardHeader
+                                        subheader="Erasmus period details"
+                                        title="Erasmus Period"
+                                    />
+                                    <Divider/>
+                                    <CardContent>
+                                        <Stack
+                                            direction="column"
+                                            spacing={5}
+                                            style={{justifyContent: "center"}}>
+                                            <Stack
+                                                direction="row"
+                                                spacing={5}
+                                                style={{justifyContent: "center"}}>
+                                                <TextField
+                                                    InputLabelProps={{shrink: true}}
+                                                    label="Erasmus Period Start Date"
+                                                    type="date"
+                                                />
+                                                <TextField
+                                                    InputLabelProps={{shrink: true}}
+                                                    label="Erasmus Period End Date"
+                                                    type="date"
+                                                />
+                                            </Stack>
+                                            <Button>
+                                                Save Changes
+                                            </Button>
+                                        </Stack>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid
+                                item
+                                lg={12}
+                                md={12}
+                                xs={24}>
+                                <Card>
+                                    <CardHeader
+                                        subheader="Student placement details"
+                                        title="Erasmus Program Details"
+                                    />
+                                    <Divider/>
+                                    <CardContent>
+                                        <Stack
+                                            direction="row"
+                                            spacing={5}
+                                            style={{justifyContent: "center"}}>
+                                            <Button>
+                                                Place Students
+                                            </Button>
+                                        </Stack>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+
                         </Grid>
                     </Container>
                 </Box>

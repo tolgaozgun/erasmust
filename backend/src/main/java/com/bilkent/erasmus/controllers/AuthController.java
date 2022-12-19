@@ -1,13 +1,14 @@
 package com.bilkent.erasmus.controllers;
 
-import com.bilkent.erasmus.dtos.AdminLoginResponseDTO;
-import com.bilkent.erasmus.dtos.LoginDTO;
-import com.bilkent.erasmus.dtos.LoginStudentResponseDTO;
-import com.bilkent.erasmus.dtos.RegisterDTO;
+import com.bilkent.erasmus.dtos.*;
 import com.bilkent.erasmus.embeddables.ContactInformation;
 import com.bilkent.erasmus.enums.RoleBasedPermission;
+import com.bilkent.erasmus.exceptions.PasswordException;
+
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.models.userModels.User;
+import com.bilkent.erasmus.repositories.CourseCoordinatorRepository;
+import com.bilkent.erasmus.repositories.ExchangeCoordinatorRepository;
 import com.bilkent.erasmus.repositories.UserRepository;
 import com.bilkent.erasmus.repositories.studentRepository.OutGoingStudentRepository;
 import com.bilkent.erasmus.security.JwtTokenProvider;
@@ -36,6 +37,11 @@ public class AuthController {
 
     private final UserRepository userRepository;
     private final OutGoingStudentRepository outGoingStudentRepository;
+
+    private final ExchangeCoordinatorRepository exchangeCoordinatorRepository;
+
+    private final CourseCoordinatorRepository courseCoordinatorRepository;
+
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;
     private PasswordEncoder passwordEncoder;
@@ -43,12 +49,16 @@ public class AuthController {
 
     public AuthController(UserRepository userRepository
             , OutGoingStudentRepository outGoingStudentRepository
+            , ExchangeCoordinatorRepository exchangeCoordinatorRepository
+            , CourseCoordinatorRepository courseCoordinatorRepository
             , AuthenticationManager authenticationManager
             , JwtTokenProvider jwtTokenProvider
             , PasswordEncoder passwordEncoder
             , UserService userService) {
         this.userRepository = userRepository;
         this.outGoingStudentRepository = outGoingStudentRepository;
+        this.exchangeCoordinatorRepository = exchangeCoordinatorRepository;
+        this.courseCoordinatorRepository = courseCoordinatorRepository;
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;
@@ -56,7 +66,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public Object login(@RequestBody LoginDTO login) {
+    public Object login(@RequestBody LoginDTO login) throws Exception {
         Map<String, String> returnMap = new HashMap<>();
         String starsId = login.getStarsId();
 
@@ -85,7 +95,7 @@ public class AuthController {
                     .lastName(student.getLastName()).build();
             return loginResponse;
         }
-        else {
+        else if (roleName.equals("ADMIN")) {
             AdminLoginResponseDTO loginResponse = AdminLoginResponseDTO.builder()
                     .starsId(starsId)
                     .firstName(user.getFirstName())
@@ -94,6 +104,27 @@ public class AuthController {
                     .token("Bearer " + jwtToken)
                     .build();
             return  loginResponse;
+        }
+        else if (roleName.equals("ERASMUS_COORDINATOR")) {
+            LoginCourseCoordinatorDTO loginResponse = LoginCourseCoordinatorDTO.builder()
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .role(user.getPermission().getRoleName())
+                    .token("Bearer " + jwtToken)
+                    .build();
+            return  loginResponse;
+        }
+        else if (roleName.equals("COURSE_COORDINATOR")) {
+            LoginExchangeCoordinatorDTO loginResponse = LoginExchangeCoordinatorDTO.builder()
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .role(user.getPermission().getRoleName())
+                    .token("Bearer " + jwtToken)
+                    .build();
+            return  loginResponse;
+        }
+        else {
+            throw new Exception("there is no related type");
         }
 /*
 
@@ -131,6 +162,14 @@ public class AuthController {
             userService.saveUser(user);
             return new ResponseEntity<>("Account is successfully created", HttpStatus.CREATED);
         }
+    }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<?> changePassword(@RequestBody Map<String, String> json) throws Exception {
+
+        userService.changePassword(json.get("newPassword"),
+                json.get("oldPassword"), json.get("confirmationPassword"));
+        return new ResponseEntity<>("Password changed successfully", HttpStatus.OK);
     }
 
 }

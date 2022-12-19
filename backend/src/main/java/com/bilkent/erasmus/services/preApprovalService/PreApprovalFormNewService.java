@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.services.preApprovalService;
 
+import com.bilkent.erasmus.ErasmusApplication;
 import com.bilkent.erasmus.dtos.CourseReviewFormCreation;
 import com.bilkent.erasmus.dtos.CourseReviewFormResponseDTO;
 import com.bilkent.erasmus.dtos.EvaluationDTO;
@@ -18,6 +19,8 @@ import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.CourseRevie
 import com.bilkent.erasmus.models.applicationModels.PreApprovalForms.PreApprovalFormNew;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
+import com.bilkent.erasmus.models.universityModels.PartnerUniversity;
+import com.bilkent.erasmus.models.universityModels.PartnerUniversityErasmus;
 import com.bilkent.erasmus.models.userModels.AdministrativeModels.ExchangeCoordinator;
 import com.bilkent.erasmus.models.userModels.StudentModels.OutGoingStudent;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
@@ -96,6 +99,11 @@ public class PreApprovalFormNewService {
         return preApprovalForm;
     }
 
+    private void activateAutomaticCheck(CourseReviewFormNew courseReviewFormNew,
+                                        PartnerUniversityErasmus partnerUniversity) {
+
+    }
+
     private CourseHost createHostCourse(CourseReviewFormCreation formCreation) {
         return courseReviewFormService.createCourseHost(formCreation.getCourseHostName(), formCreation.getCourseHostCredit());
     }
@@ -124,19 +132,18 @@ public class PreApprovalFormNewService {
     }
 
     private void inheritInfoFromApplication(PreApprovalFormNew preApprovalFormNew) {
+        ApplicationErasmus erasmusApplication = retrieveApplicationFromStudentId();
         preApprovalFormNew.setStatus(Status.IN_PROCESS);
-        preApprovalFormNew.setSemester(SemesterOfferings.FALL);
-        preApprovalFormNew.setAcademicYear("2022-2023");
-        preApprovalFormNew.setStudent(retrieveApplicationFromStudentId().getStudent());
+        preApprovalFormNew.setSemester(erasmusApplication.getSemester());
+        preApprovalFormNew.setAcademicYear(erasmusApplication.getAcademicYear());
+        preApprovalFormNew.setStudent(erasmusApplication.getStudent());
         preApprovalFormNew.setExchangeCoordinator(retrieveApplicationFromStudentId().getCoordinator());
     }
 
     private int findStudentId() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        log.info("stars id: " + auth.getName());
-        List<OutGoingStudent> list = outGoingStudentRepository.findAll();
-        log.info(list.get(0).getStarsId() + " " + list.get(1).getStarsId() );
-        OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName()).orElseThrow(()-> new EntityNotFoundException());
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName())
+                .orElseThrow(()-> new EntityNotFoundException("Outgoing student is not found with id: " + findStudentId()));
         return student.getId();
     }
 
@@ -145,7 +152,7 @@ public class PreApprovalFormNewService {
         if (application != null)
             return application;
         else
-            return null;
+            throw new EntityNotFoundException("Application erasmus is not found with id: " + findStudentId());
     }
 
     public PreApprovalFormDTONew editForm(int id, PreApprovalFormEditDTO form) throws Exception {
@@ -261,7 +268,7 @@ public class PreApprovalFormNewService {
             for (CourseReviewFormNew reviewForm : form.getForms()) {
                 if (!reviewForm.getStatus().equals(CourseApprovalStatus.APPROVED)) {
                     throw new PreApprovalFormNotCompletedException("cannot approve," +
-                            " there is at leat one course need to be approved", reviewForm.getCourseHost().getName());
+                            " there is at least one course need to be approved", reviewForm.getCourseHost().getName());
                 }
             }
             form.setStatus(Status.APPROVED);
@@ -269,7 +276,7 @@ public class PreApprovalFormNewService {
         else {
             form.setStatus(Status.REJECTED);
         }
-        return form;
+        return preApprovalFormRepository.save(form);
     }
 
     // todo throw generic exception

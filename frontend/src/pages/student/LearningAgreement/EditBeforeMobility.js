@@ -140,7 +140,7 @@ const BeforeMobility = (props) => {
 
     const [faculties, setFaculties] = useState([])
 
-    const token = sessionStorage.getItem("jwtToken")
+    const token = localStorage.getItem("jwtToken")
 
     const formik = useFormik({
         initialValues: {

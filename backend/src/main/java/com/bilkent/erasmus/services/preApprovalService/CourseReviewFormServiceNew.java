@@ -155,4 +155,12 @@ public class CourseReviewFormServiceNew {
         return courseReviewForm;
     }
 
+    private boolean approveCourseAutomatically(int CourseHostId) {
+        return false;
+    }
+
+    private boolean iterateAndCheckHostCourses() {
+        return false;
+    }
+
 }

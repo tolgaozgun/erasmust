@@ -1,8 +1,10 @@
 package com.bilkent.erasmus.services;
 
 
+import com.bilkent.erasmus.advice.FieldExceptionHandler;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.ApplicationErasmusDTO;
 import com.bilkent.erasmus.enums.DepartmentName;
+import com.bilkent.erasmus.exceptions.*;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.ApplicationErasmusMapper;
 import com.bilkent.erasmus.models.applicationModels.InitialApplicationModels.ApplicationErasmus;
 import com.bilkent.erasmus.enums.Status;
@@ -42,30 +44,45 @@ public class ApplicationErasmusService {
         this.outGoingStudentRepository = outGoingStudentRepository;
     }
 
-    public ApplicationErasmus createErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) {
+    public ApplicationErasmus createErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
         ApplicationErasmus applicationErasmus = applicationErasmusMapper.toEntity(applicationErasmusDTO);
         ApplicationErasmusDTO dto;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        try {
-            OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName()).orElseThrow(() -> new EntityNotFoundException());
-            if (student.getGpa() >= 2.5 && (student.getSemester().ordinal() >= 2 && student.getSemester().ordinal() <= 4)) {
-                applicationErasmus.setStatus(Status.IN_PROCESS);
-                applicationErasmus.setStudent(student);
-                applicationErasmus.setDate(System.currentTimeMillis());
-                applicationErasmusRepository.save(applicationErasmus);
-            } else {
-                applicationErasmus.setStatus(Status.REJECTED);
+            OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName())
+                    .orElseThrow(() -> new StudentDoesNotExistException("Student with id " + auth.getName() + "does not exist.", auth.getName()));
+            ApplicationErasmus application = applicationErasmusRepository.findByStatusNotAndStudent_StarsId(Status.DONE, auth.getName());
+            if (applicationErasmusDTO.getSchools().size() >= 6 | applicationErasmusDTO.getSchools().size() <= 0) {
+                throw new ApplicationSchoolCountException("Invalid number of schools selected", applicationErasmusDTO.getSchools().size());
             }
-        }catch (EntityNotFoundException e) {
-            log.info("Student doesn't exist");
-        }
+            Set<Integer> map = new HashSet<>();
+            for (PartnerUniversityErasmus uni : applicationErasmusDTO.getSchools()) {
+                map.add(uni.getId());
+            }
+            if (map.size() == applicationErasmusDTO.getSchools().size()) {
+                if (application == null) {
+                    if (student.getGpa() >= 2.5 && (student.getSemester().ordinal() >= 2 && student.getSemester().ordinal() <= 4)) {
+                        applicationErasmus.setStatus(Status.IN_PROCESS);
+                        applicationErasmus.setStudent(student);
+                        applicationErasmus.setDate(System.currentTimeMillis());
+                        applicationErasmusRepository.save(applicationErasmus);
+                    } else {
+                        applicationErasmus.setStatus(Status.REJECTED);
+                    }
+                } else {
+                    throw new ExistingApplicationException("This account already has an ongoing application");
+                }
+            }
+            else {
+                throw new ApplicationSchoolRequirementsException("All selected schools must be unique.");
+            }
+
         dto = applicationErasmusMapper.toApplicationErasmusDTO(applicationErasmus);
         return applicationErasmus;
     }
 
     public ApplicationErasmusDTO editErasmusApplication(ApplicationErasmusDTO applicationErasmusDTO) throws Exception {
         ApplicationErasmus applicationErasmus = applicationErasmusRepository.findById(applicationErasmusDTO.getId())
-                .orElseThrow(()-> new Exception("Application with ID " + applicationErasmusDTO.getId() + "does not exist"));
+                .orElseThrow(()-> new EntityDoesNotExistException("This account has no ongoing applications related to it.", applicationErasmusDTO.getId()));
         if (applicationErasmus != null && applicationErasmus.getStatus().equals(Status.IN_PROCESS)) {
             applicationErasmusMapper.updateApplicationErasmusFromDTO(applicationErasmusDTO, applicationErasmus);
             log.info(applicationErasmusRepository.save(applicationErasmus).toString());
@@ -78,7 +95,7 @@ public class ApplicationErasmusService {
         String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
         try {
             ApplicationErasmus applicationErasmus = applicationErasmusRepository.findByStudent_StarsId(starsId)
-                    .orElseThrow(EntityNotFoundException::new);
+                    .orElseThrow(() -> new EntityDoesNotExistException("This account has no ongoing applications related to it", Integer.parseInt(starsId)));
             if (!(applicationErasmus.getStatus().equals(Status.CANCELLED))) {
                 applicationErasmus.setStatus(Status.CANCELLED);
                 applicationErasmusRepository.save(applicationErasmus);
@@ -173,11 +190,11 @@ public class ApplicationErasmusService {
         return applicationErasmusMapper.toApplicationErasmusDTOList(applicationErasmusRepository.findAll());
     }
 
-    public ApplicationErasmus viewApplicationById(int id) {
+    public ApplicationErasmus viewApplicationById(int id) throws EntityDoesNotExistException {
        // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return applicationErasmusRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("No application is found: " + id)
-        );
+                () -> new EntityDoesNotExistException("Application does not exist", id));
+
     }
 
     public List<ApplicationErasmusDTO> viewApplicationStudentAll() {

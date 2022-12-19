@@ -22,7 +22,7 @@ const StudentLearningAgreements = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [applicationList, setApplicationList] = useState([]);
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
     var array = []
 
     useEffect(() => {
