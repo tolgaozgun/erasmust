@@ -2,6 +2,7 @@ package com.bilkent.erasmus.controllers;
 
 import com.bilkent.erasmus.dtos.CourseBilkentDTO;
 import com.bilkent.erasmus.dtos.CourseDTO;
+import com.bilkent.erasmus.exceptions.EntityDoesNotExistException;
 import com.bilkent.erasmus.services.CourseBilkentService;
 import com.bilkent.erasmus.services.CourseHostService;
 import com.bilkent.erasmus.services.CourseService;
@@ -39,8 +40,9 @@ public class CourseController {
         return new ResponseEntity<>(courseBilkentService.getAll(), HttpStatus.OK);
     }
 
+    @RolesAllowed("ROLE_COURSE_COORDINATOR")
     @PostMapping("/set-requirement")
-    public ResponseEntity<?> setRequirement(@RequestBody Map<String, String> json) {
+    public ResponseEntity<?> setRequirement(@RequestBody Map<String, String> json) throws EntityDoesNotExistException {
         return new ResponseEntity<>(courseBilkentService.setRequirements(json.get("requirements")), HttpStatus.OK);
     }
 
@@ -51,7 +53,7 @@ public class CourseController {
 
     @RolesAllowed("ROLE_ADMIN")
     @PostMapping("/edit/{id}")
-    public ResponseEntity<?> edit(@PathVariable int id, @RequestBody CourseBilkentDTO dto) {
+    public ResponseEntity<?> edit(@PathVariable int id, @RequestBody CourseBilkentDTO dto) throws EntityDoesNotExistException {
         return new ResponseEntity<>(courseBilkentService.edit(dto, id), HttpStatus.OK);
     }
 }
