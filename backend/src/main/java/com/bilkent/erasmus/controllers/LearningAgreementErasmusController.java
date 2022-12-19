@@ -61,6 +61,11 @@ public class LearningAgreementErasmusController {
         return new ResponseEntity<>(erasmusService.getAllStudent(), HttpStatus.OK);
     }
 
+    @GetMapping("/get-by-id")
+    public ResponseEntity<?> findLearningAgreementByFormId(@PathVariable int id){
+        return new ResponseEntity<>(erasmusService.findLearningAgreementByFormId(id), HttpStatus.OK);
+    }
+
 /*    @PatchMapping("/add-course-during")
     public ResponseEntity<?> addCourseDuring(@RequestBody LearningAgreementDTO erasmusDTO, @PathVariable int formId) throws Exception {
         return new ResponseEntity<>(erasmusService.saveCourseHostDuring(formId, erasmusDTO), HttpStatus.OK);
