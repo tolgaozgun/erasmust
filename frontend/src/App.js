@@ -63,6 +63,8 @@ import AccountCourseCoordinator from "./pages/courseCoordinator/account";
 import SettingsCourseCoordinator from "./pages/courseCoordinator/settings";
 import ErasmusCoordinatorErasmusPreapprovalList
     from "./pages/erasmusCoordinator/preapproval/ErasmusCoordinatorErasmusPreapprovalList";
+import AccountErasmusCoordinator from "./pages/erasmusCoordinator/account";
+import SettingsErasmusCoordinator from "./pages/erasmusCoordinator/settings";
 
 import Splash from "./pages/splash";
 import Error from "./pages/404";
@@ -294,8 +296,8 @@ const App = () => {
                 />
                 <Route path="/erasmuscoordinator/*" element={<Outlet/>}>
                     <Route path="dashboard" element={<ErasmusCoordinatorDashboard/>}/>
-                    <Route path="account" element={<AccountCourseCoordinator/>}/>
-                    <Route path="settings" element={<SettingsCourseCoordinator/>}/>
+                    <Route path="account" element={<AccountErasmusCoordinator/>}/>
+                    <Route path="settings" element={<SettingsErasmusCoordinator/>}/>
                     <Route exact path="exchange" element={<Splash/>}/>
                     <Route exact path="exchange/*" element={<Outlet/>}>
                         <Route path="coursereview/*" element={<Outlet/>}>

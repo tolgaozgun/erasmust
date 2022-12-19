@@ -1,8 +1,6 @@
 import {Box, Button, Container, Grid} from '@mui/material';
-import {LatestOrders} from '../../components/componentsAdmin/dashboard/latest-orders';
-import {Sales} from '../../components/componentsAdmin/dashboard/sales';
-import {DashboardNavbar} from '../../components/componentsAdmin/dashboard-navbar';
-import {DashboardSidebar} from '../../components/componentsAdmin/dashboard-sidebar';
+import {DashboardNavbar} from "../../components/componentsErasmusCoordinator/dashboard-navbar";
+import {DashboardSidebar} from '../../components/componentsErasmusCoordinator/dashboard-sidebar';
 import React, {useState} from 'react';
 import {styled} from '@mui/material/styles';
 import {Link, Outlet} from "react-router-dom";
