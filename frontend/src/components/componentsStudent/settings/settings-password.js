@@ -28,8 +28,7 @@ export const SettingsPassword = (props) => {
             .required("Confirmation password is required")
     }),
     onSubmit: async (values) => {
-        console.log(values)
-        await axios.post("http://92.205.25.135:4/auth/change-password", values)
+        await axios.post("http://92.205.25.135:8080/auth/change-password", values)
           .then((response) => {
             if (response && response.data) {
               console.log(response)
@@ -60,6 +59,7 @@ export const SettingsPassword = (props) => {
             label="Old Password"
             margin="normal"
             name="oldPassword"
+            type="password"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.oldPassword}
@@ -72,18 +72,20 @@ export const SettingsPassword = (props) => {
             label="New Password"
             margin="normal"
             name="newPassword"
+            type="password"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.newPassword}
             variant="outlined"
           />
           <TextField
-            error={Boolean(formik.touched.confirmationPassword && formik.touched.confirmationPassword)}
+            error={Boolean(formik.touched.confirmPassword && formik.touched.confirmPassword)}
             fullWidth
-            helperText={formik.touched.confirmationPassword && formik.errors.confirmationPassword}
+            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
             label="Confirm password"
             margin="normal"
             name="confirmationPassword"
+            type="password"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.confirmationPassword}

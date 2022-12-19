@@ -136,17 +136,17 @@ const StudentAdd = () => {
                 
         }),
         onSubmit: async (values) => {
-            await axios.post("http://92.205.25.135:4/admin/add-outgoing-student", values, {
-              headers: {
-                "Authorization": `Bearer ${token}`
-              }
-            })
-              .then((response) => {
-                if (response && response.data) {
-                  console.log(response)
-                  navigate("/admin/student/list")
+            await axios.post("http://92.205.25.135:8080/admin/add-outgoing-student", values, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
                 }
-              })
+            })
+                .then((response) => {
+                    if (response && response.data) {
+                        console.log(response)
+                        navigate("/admin/student/list")
+                    }
+                })
               .catch((err) => {
                 if (err && err.response) {
                   console.log("Error: ", err)

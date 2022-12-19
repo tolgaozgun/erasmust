@@ -30,7 +30,7 @@ const ErasmusCoordinatorErasmusPreapprovalList = () => {
 
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/pre-approval/erasmus/get-all/exchange-coordinator/pre-approval-forms", {
+        axios.get("http://92.205.25.135:8080/pre-approval/erasmus/get-all/exchange-coordinator/pre-approval-forms", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -59,7 +59,7 @@ const ErasmusCoordinatorErasmusPreapprovalList = () => {
 
     const handleApproval = (approvedBool, id) => {
 
-        const url = "http://92.205.25.135:4/pre-approval/erasmus/evaluate/" + id;
+        const url = "http://92.205.25.135:8080/pre-approval/erasmus/evaluate/" + id;
         console.log(approvedBool, id)
         console.log(url)
 

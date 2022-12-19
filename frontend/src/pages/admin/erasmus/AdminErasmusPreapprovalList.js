@@ -27,7 +27,7 @@ const AdminErasmusPreapprovalList = () => {
     var array = []
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-preapproval-erasmus", {
+        axios.get("http://92.205.25.135:8080/admin/all-preapproval-erasmus", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

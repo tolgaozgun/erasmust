@@ -29,7 +29,7 @@ const AdminCourseReviewFormList = () => {
     var array = []
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-applications", {
+        axios.get("http://92.205.25.135:8080/admin/all-applications", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
