@@ -11,8 +11,8 @@ import {
     TextField,
     Typography
 } from '@mui/material';
-import {DashboardNavbar} from "../../components/componentsErasmusCoordinator/dashboard-navbar";
-import {DashboardSidebar} from '../../components/componentsErasmusCoordinator/dashboard-sidebar';
+import {DashboardNavbar} from "../../components/componentsStaff/courseCoordinator/dashboard-navbar";
+import {DashboardSidebar} from '../../components/componentsStaff/courseCoordinator/dashboard-sidebar';
 import React, {useState} from 'react';
 import {styled} from '@mui/material/styles';
 import {Link, Outlet} from "react-router-dom";
@@ -32,6 +32,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
     flex: '1 1 auto',
@@ -42,8 +43,10 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
+
 const CourseCoordinatorDashboard = (props) => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+
 
 
     const token = localStorage.getItem("jwtToken")

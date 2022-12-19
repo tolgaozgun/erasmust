@@ -11,7 +11,7 @@ export const SettingsPassword = (props) => {
     initialValues: {
       oldPassword: "",
       newPassword: "",
-      confirmPassword: ""
+      confirmationPassword: ""
     },
     validationSchema: Yup.object({
         oldPassword: Yup
@@ -22,12 +22,13 @@ export const SettingsPassword = (props) => {
             .string()
             .max(255)
             .required("New password is required"),
-        confirmPassword: Yup
+        confirmationPassword: Yup
             .string()
             .max(255)
             .required("Confirmation password is required")
     }),
     onSubmit: async (values) => {
+        console.log(values)
         await axios.post("http://92.205.25.135:4/auth/change-password", values)
           .then((response) => {
             if (response && response.data) {
@@ -59,7 +60,6 @@ export const SettingsPassword = (props) => {
             label="Old Password"
             margin="normal"
             name="oldPassword"
-            type="password"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.oldPassword}
@@ -72,23 +72,21 @@ export const SettingsPassword = (props) => {
             label="New Password"
             margin="normal"
             name="newPassword"
-            type="password"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.newPassword}
             variant="outlined"
           />
           <TextField
-            error={Boolean(formik.touched.confirmPassword && formik.touched.confirmPassword)}
+            error={Boolean(formik.touched.confirmationPassword && formik.touched.confirmationPassword)}
             fullWidth
-            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+            helperText={formik.touched.confirmationPassword && formik.errors.confirmationPassword}
             label="Confirm password"
             margin="normal"
-            name="confirmPassword"
-            type="password"
+            name="confirmationPassword"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            value={formik.values.confirmPassword}
+            value={formik.values.confirmationPassword}
             variant="outlined"
           />
         </CardContent>
