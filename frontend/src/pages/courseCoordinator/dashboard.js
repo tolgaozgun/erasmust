@@ -59,7 +59,7 @@ const CourseCoordinatorDashboard = (props) => {
                 .required("Requirements is required"),
         }),
         onSubmit: async (values) => {
-            await axios.post("http://92.205.25.135:4/course/set-requirement", values, {
+            await axios.post("http://92.205.25.135:8080/course/set-requirement", values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },

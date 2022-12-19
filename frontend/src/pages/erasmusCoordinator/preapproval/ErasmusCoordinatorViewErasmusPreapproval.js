@@ -60,7 +60,7 @@ const ErasmusCoordinatorViewErasmusPreapproval = () => {
     const handleApproval = (approvedBool, id) => {
         console.log(approvedBool, id)
 
-        const url = "http://92.205.25.135:4/pre-approval/erasmus/evaluate/" + id;
+        const url = "http://92.205.25.135:8080/pre-approval/erasmus/evaluate/" + id;
         console.log(url)
 
         axios.post(url, {
@@ -81,7 +81,7 @@ const ErasmusCoordinatorViewErasmusPreapproval = () => {
 
     const params = useParams();
     const appId = params.id
-    const url = "http://92.205.25.135:4/pre-approval/erasmus/get/exchange-coordinator/pre-approval-form/" + appId;
+    const url = "http://92.205.25.135:8080/pre-approval/erasmus/get/exchange-coordinator/pre-approval-form/" + appId;
 
     useEffect(() => {
         axios.get(url, {

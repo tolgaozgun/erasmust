@@ -29,10 +29,10 @@ const EditErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
-      axios.get("http://92.205.25.135:4/universities/all-by-student-department", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
+      axios.get("http://92.205.25.135:8080/universities/all-by-student-department", {
+          headers: {
+              "Authorization": `Bearer ${token}`
+          }
       })
         .then((res) => {
             if (res && res.data) {

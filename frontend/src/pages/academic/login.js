@@ -37,16 +37,16 @@ const Login = () => {
             .required('Password is required')
         }),
         onSubmit: async (values) => {
-          await axios.post("http://92.205.25.135:4/auth/login", values)
-          .then((res) => {
-            console.log("Response: ", res)
-          })
-          .catch((err) => {
-            if (err && err.response) {
-              // if admin call goDashAdmin else call goDashStaff
-              console.log("Error: ", err)
-            }
-          })
+          await axios.post("http://92.205.25.135:8080/auth/login", values)
+              .then((res) => {
+                  console.log("Response: ", res)
+              })
+              .catch((err) => {
+                  if (err && err.response) {
+                      // if admin call goDashAdmin else call goDashStaff
+                      console.log("Error: ", err)
+                  }
+              })
         }
       });
     

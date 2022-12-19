@@ -102,7 +102,7 @@ const StudentCreateErasmusPreapproval = () => {
     const token = localStorage.getItem("jwtToken")
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/course/all-bilkent-courses", {
+        axios.get("http://92.205.25.135:8080/course/all-bilkent-courses", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -193,7 +193,7 @@ const StudentCreateErasmusPreapproval = () => {
         }),
         onSubmit: async (values, formikHelpers) => {
             let token = localStorage.getItem("jwtToken")
-            await axios.post("http://92.205.25.135:4/pre-approval/erasmus/save", values, {
+            await axios.post("http://92.205.25.135:8080/pre-approval/erasmus/save", values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
