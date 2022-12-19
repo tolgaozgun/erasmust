@@ -1,14 +1,11 @@
 package com.bilkent.erasmus.advice;
 
-import com.bilkent.erasmus.dtos.StorageResponse;
 import com.bilkent.erasmus.exceptions.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -90,8 +87,9 @@ public class FieldExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
-    @ExceptionHandler(PasswordsDoNotMatchException.class)
-    public Map<String, String> passwordsDoNotMatchException(PasswordsDoNotMatchException ex) {
+    @ExceptionHandler(PasswordException.class)
+    public Map<String, String> passwordsDoNotMatchException(PasswordException ex) {
+
         Map<String, String> errorMap = new HashMap<>();
         errorMap.put("errorMessage", ex.getMessage());
         return errorMap;
