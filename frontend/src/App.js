@@ -248,7 +248,7 @@ const App = () => {
                 {/* Course Coordinator */}
                 <Route
                     exact
-                    path="/admin"
+                    path="/coursecoordinator"
                     element={<Navigate to="/coursecoordinator/dashboard"/>}
                 />
                 <Route path="/coursecoordinator/*" element={<Outlet/>}>
@@ -291,7 +291,7 @@ const App = () => {
 
                 <Route
                     exact
-                    path="/admin"
+                    path="/erasmuscoordinator"
                     element={<Navigate to="/erasmuscoordinator/dashboard"/>}
                 />
                 <Route path="/erasmuscoordinator/*" element={<Outlet/>}>
@@ -410,7 +410,7 @@ const App = () => {
                                 element={<ViewErasmusPreapproval />}
                             />
                             <Route
-                                path="edit"
+                                path="edit/:id"
                                 element={<StudentEditErasmusPreapproval />}
                             />
                         </Route>
