@@ -89,6 +89,7 @@ public class FieldExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     @ExceptionHandler(PasswordException.class)
     public Map<String, String> passwordsDoNotMatchException(PasswordException ex) {
+
         Map<String, String> errorMap = new HashMap<>();
         errorMap.put("errorMessage", ex.getMessage());
         return errorMap;
