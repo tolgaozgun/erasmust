@@ -25,5 +25,5 @@ public interface PreApprovalFormRepositoryNew
     PreApprovalFormNew findByStudent(Student student);
     Optional<PreApprovalFormNew> findByStatusAndStudent_StarsId(Status status, String str);
 
-
+    PreApprovalFormNew findByFormsId(int id);
 }
