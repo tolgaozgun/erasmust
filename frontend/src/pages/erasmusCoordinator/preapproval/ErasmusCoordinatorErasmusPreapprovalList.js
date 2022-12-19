@@ -18,7 +18,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
     }
 }));
 
-const CourseCoordinatorErasmusPreapprovalList = () => {
+const ErasmusCoordinatorErasmusPreapprovalList = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [preapprovalList, setPreapprovalList] = useState([]);
     const [flag, setFlag] = useState(false);
@@ -27,7 +27,7 @@ const CourseCoordinatorErasmusPreapprovalList = () => {
     const token = sessionStorage.getItem("jwtToken");
     var array = []
 
-    
+
     useEffect(() => {
         axios.get("http://92.205.25.135:4/admin/all-preapproval-erasmus", {
             headers: {
@@ -62,7 +62,9 @@ const CourseCoordinatorErasmusPreapprovalList = () => {
         const url = "http://92.205.25.135:4/pre-approval/erasmus/evaluate/" + id;
         console.log(url)
 
-        axios.post(url, approvedBool, {
+        axios.post(url, {
+            flag: approvedBool
+        }, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -118,4 +120,4 @@ const CourseCoordinatorErasmusPreapprovalList = () => {
     );
 }
 
-export default CourseCoordinatorErasmusPreapprovalList
+export default ErasmusCoordinatorErasmusPreapprovalList
