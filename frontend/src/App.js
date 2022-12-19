@@ -61,7 +61,8 @@ import SettingsStaff from "./pages/academic/settings";
 import ErasmusStaff from "./pages/academic/erasmus";
 import DashboardCourseCoordinator from "./pages/courseCoordinator/dashboard";
 import AccountCourseCoordinator from "./pages/courseCoordinator/account";
-import SettingsCourseCoordinator from "./pages/courseCoordinator/settings"
+import SettingsCourseCoordinator from "./pages/courseCoordinator/settings";
+import CourseCoordinatorErasmusPreapprovalList from "./pages/courseCoordinator/preapproval/CourseCoordinatorErasmusPreapprovalList";
 
 import Splash from "./pages/splash";
 import Error from "./pages/404";
@@ -265,6 +266,12 @@ const App = () => {
                     <Route exact path="erasmus/*" element={<Outlet/>}>
                         <Route path="coursereview/*" element={<Outlet/>}>
                             <Route path="list" element={<CourseCoordinatorErasmusCourseReviewForms/>}/>
+                            <Route path="view/:id" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
+                        </Route>
+                        <Route path="preapproval/*" element={<Outlet/>}>
+                            <Route path="list" element={<CourseCoordinatorErasmusPreapprovalList/>}/>
                             <Route path="view/:id" element={<Error/>}/>
                             <Route path="review" element={<Error/>}/>
                             <Route path="*" element={<Error/>}/>
