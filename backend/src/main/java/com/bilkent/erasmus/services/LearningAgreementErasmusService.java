@@ -448,6 +448,7 @@ public class LearningAgreementErasmusService {
 
     public LearningAgreementDTO editForm(int id, LearningAgreementDTO erasmusDTO) {
         LearningAgreementErasmus agreementForm = new LearningAgreementErasmus();
+        erasmusDTO.setId(id);
         try {
             if (erasmusRepository.findById(id) != null) {
                 agreementForm = erasmusRepository.findById(id);
