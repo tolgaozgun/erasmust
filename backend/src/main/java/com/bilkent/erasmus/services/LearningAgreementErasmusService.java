@@ -461,7 +461,7 @@ public class LearningAgreementErasmusService {
             // learning agreement is null
         }
 
-        return agreementMapper.toLearningAgreementDTO(agreementForm);
+        return agreementMapper.toLearningAgreementDTO(erasmusRepository.save(agreementForm));
     }
 
     public List<CourseBilkent> getBilkentCourseList(List<Integer> courseBilkentIds) {
