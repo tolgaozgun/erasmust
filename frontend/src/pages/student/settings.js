@@ -35,7 +35,7 @@ const Settings = () => {
                             Settings
                         </Typography>
                         <Box sx={{ pt: 3 }}>
-                            <SettingsPassword />
+                            <SettingsPassword/>
                         </Box>
                     </Container>
                 </Box>
