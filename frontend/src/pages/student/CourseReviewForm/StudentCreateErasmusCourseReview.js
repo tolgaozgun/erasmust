@@ -38,7 +38,7 @@ const StudentCreateErasmusCourseReview = () => {
     const [data, setData] = useState();
     const [file, setFile] = useState();
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
     const formik = useFormik({
         initialValues: {

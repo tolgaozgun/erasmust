@@ -36,7 +36,7 @@ const ViewErasmusApplication = () => {
     var schoolArray = []
     var studentObj = {}
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
     const params = useParams();
     const appId = params.id

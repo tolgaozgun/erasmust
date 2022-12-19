@@ -46,7 +46,7 @@ const CourseCoordinatorDashboard = (props) => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
 
-    const token = sessionStorage.getItem("jwtToken")
+    const token = localStorage.getItem("jwtToken")
 
     const formik = useFormik({
         initialValues: {

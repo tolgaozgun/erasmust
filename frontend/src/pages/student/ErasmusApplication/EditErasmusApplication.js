@@ -21,7 +21,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 const EditErasmusApplication = () => {
     const location = useLocation();
     const application = location.state;
-    const token = sessionStorage.getItem("jwtToken")
+    const token = localStorage.getItem("jwtToken")
 
     const [schools, setSchools] = useState([])
     var schoolArray = []

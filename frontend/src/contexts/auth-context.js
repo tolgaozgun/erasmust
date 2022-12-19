@@ -76,7 +76,7 @@ export const AuthProvider = (props) => {
 
     // Check if auth has been skipped
     // From sign-in page we may have set "skip-auth" to "true"
-    const authSkipped = window.sessionStorage.getItem('skip-auth') === 'true';
+    const authSkipped = window.localStorage.getItem('skip-auth') === 'true';
 
     if (authSkipped) {
       const user = {};
