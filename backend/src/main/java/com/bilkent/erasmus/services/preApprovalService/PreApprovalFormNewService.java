@@ -172,10 +172,6 @@ public class PreApprovalFormNewService {
         return preApprovalFormErasmusMapper.toPreApprovalFormDTONewList(preApprovalFormRepository.findAll());
     }
 
-    public PreApprovalFormNew getStudentForm() throws Exception {
-        return preApprovalFormRepository.findByStatusAndStudent_Id(Status.IN_PROCESS, findStudentId())
-                .orElseThrow(() -> new Exception("no form is found"));
-    }
 
     public List<CourseReviewFormNew> gelAllReviewFormsForCourseCoordinator() {
         String starsId = getStarsId();
@@ -212,16 +208,24 @@ public class PreApprovalFormNewService {
         return reviewForms;
     }
 
-    public List<CourseReviewFormNew> getAllCourseReviewFormsForStudent() throws Exception {
-        PreApprovalFormNew preApprovalForm = getStudentForm();
-        return preApprovalForm.getForms();
-    }
-
     public PreApprovalFormNew getPreapprovalByIdForStudent(int id) {
         return preApprovalFormRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("no pre approval form is found"));
     }
 
+    public PreApprovalFormNew getStudentForm() throws Exception {
+        return preApprovalFormRepository.findByStatusAndStudent_Id(Status.IN_PROCESS, findStudentId())
+                .orElseThrow(() -> new Exception("no form is found"));
+    }
+
+    public List<CourseReviewFormResponseDTO> getAllCourseReviewFormsForStudent() throws Exception {
+        PreApprovalFormNew preApprovalForm = getStudentForm();
+        List<CourseReviewFormResponseDTO> responseList = new ArrayList<>();
+        for (CourseReviewFormNew form : preApprovalForm.getForms()) {
+            responseList.add(getCourseReviewFormForStudent(form.getId()));
+        }
+        return responseList;
+    }
     public CourseReviewFormResponseDTO getCourseReviewFormForStudent(int id) {
         PreApprovalFormNew form = preApprovalFormRepository.findByFormsId(id);
         CourseReviewFormNew formReview = courseReviewFormService.getCourseReviewFormByIdForStudent(id);
@@ -244,3 +248,4 @@ public class PreApprovalFormNewService {
     }
 }
 
+// todo --> coordinator add reply
