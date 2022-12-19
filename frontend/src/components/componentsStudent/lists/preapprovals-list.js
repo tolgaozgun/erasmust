@@ -20,9 +20,12 @@ import app from "../../../App";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 
 const PreapprovalsList = (props) => {
+    const navigate = useNavigate()
+
     const getCoordinator = (preapproval) => {
         if (preapproval.coordinator) {
             return preapproval.coordinator.firstName + " " + preapproval.coordinator.lastName;
@@ -97,16 +100,16 @@ const PreapprovalsList = (props) => {
                                     <TableCell>
                                         <>
                                             <Tooltip title="View">
-                                                <IconButton>
+                                                <IconButton
+                                                    onClick={() => {
+                                                    navigate(`/student/erasmus/preapproval/view/${preapproval.id}`)
+                                                    }}
+                                                >
                                                     <VisibilityIcon/>
                                                 </IconButton>
                                             </Tooltip>
                                             <Tooltip title="Edit">
-                                                <IconButton
-                                                    // onClick={() => {
-                                                    //     navigate(`/studentListAdmin/student/${student.id}`, {state: student})
-                                                    // {}
-                                                >
+                                                <IconButton>
                                                     <EditIcon/>
                                                 </IconButton>
                                             </Tooltip>
