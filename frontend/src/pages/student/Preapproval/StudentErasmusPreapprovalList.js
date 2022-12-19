@@ -3,9 +3,7 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../../components/componentsStudent/dashboard-navbar";
 import {DashboardSidebar} from "../../../components/componentsStudent/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import {Students} from "../../../components/componentsAdmin/lists/students";
 import axios from 'axios';
-import StudentPreapprovalList from "./StudentErasmusPreapprovalList";
 import PreapprovalsList from "../../../components/componentsStudent/lists/preapprovals-list";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({

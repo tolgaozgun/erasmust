@@ -308,7 +308,7 @@ const App = () => {
                                 element={<StudentCreateErasmusPreapproval />}
                             />
                             <Route
-                                path="view"
+                                path="view/:id"
                                 element={<ViewErasmusPreapproval />}
                             />
                             <Route

@@ -37,7 +37,7 @@ export const ViewSchoolInfo = (props) => {
                             >
                                 School #{index + 1}
                             </Typography>
-                            <InfoTable key={index} items={item}/>
+                            <InfoTable items={item}/>
                         </Grid>
                     ))}
 
