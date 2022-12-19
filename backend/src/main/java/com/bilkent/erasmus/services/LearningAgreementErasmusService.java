@@ -520,8 +520,8 @@ public class LearningAgreementErasmusService {
             return null;
     }
 
-    public LearningAgreementErasmus findLearningAgreementByFormId(int Id){
-        LearningAgreementErasmus agreementForm = erasmusRepository.findById(Id);
+    public LearningAgreementErasmus findLearningAgreementByFormId(int id){
+        LearningAgreementErasmus agreementForm = erasmusRepository.findById(id);
         if (agreementForm != null)
             return agreementForm;
         else

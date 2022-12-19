@@ -59,6 +59,10 @@ import DashboardStaff from "./pages/academic/dashboard";
 import AccountStaff from "./pages/academic/account";
 import SettingsStaff from "./pages/academic/settings";
 import ErasmusStaff from "./pages/academic/erasmus";
+import DashboardCourseCoordinator from "./pages/courseCoordinator/dashboard";
+import AccountCourseCoordinator from "./pages/courseCoordinator/account";
+import SettingsCourseCoordinator from "./pages/courseCoordinator/settings";
+import CourseCoordinatorErasmusPreapprovalList from "./pages/courseCoordinator/preapproval/CourseCoordinatorErasmusPreapprovalList";
 
 import Splash from "./pages/splash";
 import Error from "./pages/404";
@@ -73,6 +77,9 @@ import StudentErasmusCourseReviewForms from "./pages/student/CourseReviewForm/St
 import StudentCreateErasmusApplication from "./pages/student/ErasmusApplication/StudentCreateErasmusApplication";
 import StudentErasmusPage from "./pages/student/StudentErasmusPage";
 import StudentLearningAgreements from "./pages/student/LearningAgreement/StudentLearningAgreements";
+import CourseCoordinatorErasmusCourseReviewForms
+    from "./pages/courseCoordinator/CourseReviewForm/CourseCoordinatorErasmusCourseReviewForms";
+import EditLearningAgreement from "./pages/student/LearningAgreement/EditLearningAgreement";
 
 const App = () => {
     // const [routes, setRoutes] = useState(routeItemsDefault)
@@ -222,26 +229,68 @@ const App = () => {
                         <Route path="*" element={<Error />} />
                     </Route>
 
-                    <Route exact path="school" element={<Splash />} />
-                    <Route exact path="school/*" element={<Outlet />}>
-                        <Route path="list" element={<SchoolList />} />
-                        <Route path="create" element={<Error />} />
-                        <Route path="view" element={<Error />} />
-                        <Route path="edit" element={<Error />} />
-                        <Route path="*" element={<Error />} />
+                    <Route exact path="school" element={<Splash/>}/>
+                    <Route exact path="school/*" element={<Outlet/>}>
+                        <Route path="list" element={<SchoolList/>}/>
+                        <Route path="create" element={<Error/>}/>
+                        <Route path="view" element={<Error/>}/>
+                        <Route path="edit" element={<Error/>}/>
+                        <Route path="*" element={<Error/>}/>
                     </Route>
-                    <Route path="*" element={<Error />} />
+                    <Route path="*" element={<Error/>}/>
+                </Route>
+
+                {/* Course Coordinator */}
+                <Route
+                    exact
+                    path="/admin"
+                    element={<Navigate to="/coursecoordinator/dashboard"/>}
+                />
+                <Route path="/coursecoordinator/*" element={<Outlet/>}>
+                    <Route path="dashboard" element={<DashboardCourseCoordinator/>}/>
+                    <Route path="account" element={<AccountCourseCoordinator/>}/>
+                    <Route path="settings" element={<SettingsCourseCoordinator/>}/>
+                    <Route exact path="exchange" element={<Splash/>}/>
+                    <Route exact path="exchange/*" element={<Outlet/>}>
+                        <Route path="coursereview/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                        </Route>
+                        <Route path="faq" element={<ExchangeFaq/>}/>
+                        <Route path="*" element={<Error/>}/>
+                    </Route>
+                    <Route exact path="erasmus" element={<Splash/>}/>
+                    <Route exact path="erasmus/*" element={<Outlet/>}>
+                        <Route path="coursereview/*" element={<Outlet/>}>
+                            <Route path="list" element={<CourseCoordinatorErasmusCourseReviewForms/>}/>
+                            <Route path="view/:id" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
+                        </Route>
+                        <Route path="preapproval/*" element={<Outlet/>}>
+                            <Route path="list" element={<CourseCoordinatorErasmusPreapprovalList/>}/>
+                            <Route path="view/:id" element={<Error/>}/>
+                            <Route path="review" element={<Error/>}/>
+                            <Route path="*" element={<Error/>}/>
+                        </Route>
+                        <Route path="faq" element={<ExchangeFaq/>}/>
+                        <Route path="*" element={<Error/>}/>
+                    </Route>
+
                 </Route>
 
                 {/* Student */}
-                <Route path="/student/*" element={<Outlet />}>
-                    <Route path="dashboard" element={<DashboardStudent />} />
-                    <Route path="account" element={<AccountStudent />} />
-                    <Route path="settings" element={<SettingsStudent />} />
-                    <Route path="submissions" element={<Submissions />} />
-                    <Route exact path="exchange" element={<Splash />} />
-                    <Route exact path="exchange/*" element={<Outlet />}>
-                        <Route path="application/*" element={<Outlet />}>
+                <Route path="/student/*" element={<Outlet/>}>
+                    <Route path="dashboard" element={<DashboardStudent/>}/>
+                    <Route path="account" element={<AccountStudent/>}/>
+                    <Route path="settings" element={<SettingsStudent/>}/>
+                    <Route path="submissions" element={<Submissions/>}/>
+                    <Route exact path="exchange" element={<Splash/>}/>
+                    <Route exact path="exchange/*" element={<Outlet/>}>
+                        <Route path="application/*" element={<Outlet/>}>
                             <Route path="list" element={<Error />} />
                             <Route path="create" element={<Error />} />
                             <Route path="view" element={<Error />} />
@@ -259,19 +308,19 @@ const App = () => {
                             <Route path="view" element={<Error />} />
                             <Route path="edit" element={<Error />} />
                         </Route>
-                        <Route path="coursetransfer/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
+                        <Route path="coursetransfer/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<Error/>}/>
                         </Route>
-                        <Route path="learningagreement/*" element={<Outlet />}>
-                            <Route path="list" element={<Error />} />
-                            <Route path="create" element={<Error />} />
-                            <Route path="view" element={<Error />} />
-                            <Route path="edit" element={<Error />} />
+                        <Route path="learningagreement/*" element={<Outlet/>}>
+                            <Route path="list" element={<Error/>}/>
+                            <Route path="create" element={<Error/>}/>
+                            <Route path="view" element={<Error/>}/>
+                            <Route path="edit" element={<EditLearningAgreement/>}/>
                         </Route>
-                        <Route path="faq" element={<ExchangeFaq />} />
+                        <Route path="faq" element={<ExchangeFaq/>}/>
                         <Route path="*" element={<Error />} />
                     </Route>
                     <Route

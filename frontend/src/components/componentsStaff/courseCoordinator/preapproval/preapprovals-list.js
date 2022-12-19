@@ -13,33 +13,29 @@ import {
     TableRow,
     TableSortLabel,
     Tooltip,
+    IconButton
 } from "@mui/material";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import {SeverityPill} from "../severity-pill";
+import {SeverityPill} from "../../severity-pill";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DoneIcon from '@mui/icons-material/Done';
+import CloseIcon from '@mui/icons-material/Close';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
-export const ErasmusApplications = (props) => {
-    const {applications} = props
-
-
-    const getCoordinatorName = (application) => {
-        if (application["coordinator"]) {
-            return `${application["coordinator"]["firstName"]} ${application["coordinator"]["lastName"]}`
-        } else {
-            return "Coordinator not assigned"
-        }
-    }
+const PreapprovalsList = (props) => {
 
     return (
         <Card {...props}>
-            <CardHeader title="Ongoing Preapprovals"/>
+            <CardHeader title="Ongoing StudentPreapprovalList"/>
             <PerfectScrollbar>
                 <Box
                     sx={{
                         minWidth: 800,
                         height: 400,
                     }}
-            >
-                <Table>
+                >
+                    <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell>Preapproval ID</TableCell>
@@ -59,38 +55,67 @@ export const ErasmusApplications = (props) => {
                                 </Tooltip>
                             </TableCell>
                             <TableCell>Status</TableCell>
+                            <TableCell>Approve/Reject</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {applications.map((application) => (
-                            <TableRow hover key={application.id}>
-                                <TableCell>{application.id}</TableCell>
+                        {props.preapprovals && props.preapprovals.map((preapproval) => (
+                            <TableRow hover key={preapproval.id}>
+                                <TableCell>{preapproval.id}</TableCell>
                                 <TableCell>
-                                    {application.student.firstName} {application.student.lastName}
+                                    {preapproval.student.firstName} {preapproval.student.lastName}
                                 </TableCell>
                                 <TableCell>
-                                    {/*{format(*/}
-                                    {/*    preapproval.createdAt,*/}
-                                    {/*    "dd/MM/yyyy"*/}
-                                    {/*)}*/}
+                                    {format(
+                                        preapproval.date,
+                                        "dd/MM/yyyy"
+                                    )}
                                 </TableCell>
                                 <TableCell>
-                                    {getCoordinatorName(application)}
+                                    {() => {
+                                        if (preapproval.coordinator) {
+                                            return preapproval.coordinator.firstName + preapproval.coordinator.lastName
+                                        } else {
+                                            return "Coordinator not assigned"
+                                        }
+
+                                    }}
                                 </TableCell>
                                 <TableCell>
                                     <SeverityPill
                                         color={
-                                            (application.status ===
+                                            (preapproval.status ===
                                                 "approved" &&
                                                 "success") ||
-                                            (application.status ===
+                                            (preapproval.status ===
                                                 "disapproved" &&
                                                 "error") ||
                                             "warning"
                                         }
                                     >
-                                        {application.status}
+                                        {preapproval.status}
                                     </SeverityPill>
+                                </TableCell>
+                                <TableCell>
+                                    <Tooltip title="View">
+                                        <IconButton>
+                                            <VisibilityIcon/>
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Approve">
+                                        <IconButton
+                                            onClick={() => props.handleApproval(true, preapproval.id)}
+                                        >
+                                            <DoneIcon/>
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Reject">
+                                        <IconButton
+                                            onClick={() => props.handleApproval(false, preapproval.id)}
+                                        >
+                                            <CloseIcon/>
+                                        </IconButton>
+                                    </Tooltip>
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -114,6 +139,8 @@ export const ErasmusApplications = (props) => {
                 View all
             </Button>
         </Box>
-    </Card>
+        </Card>
     )
 };
+
+export default PreapprovalsList

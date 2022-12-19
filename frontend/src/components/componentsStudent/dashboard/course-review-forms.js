@@ -20,10 +20,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import {SeverityPill} from '../severity-pill';
+import {useNavigate} from "react-router-dom";
 
 
 const CourseReviewList = (props) => {
     const {students} = props
+
+
+    const navigate = useNavigate()
 
     const [selectedState, setSelected] = useState(
         new Array(students.length).fill(false)
@@ -155,7 +159,7 @@ const CourseReviewList = (props) => {
                                         {student.id}
                                     </TableCell>
                                     <TableCell>
-                                        {/*format(student.createdAt, 'dd/MM/yyyy')*/}
+                                        {format(student.date * 1000, 'dd/MM/yyyy')}
                                     </TableCell>
                                     <TableCell>
                                         {getCourseName("courseBilkent", student)}
@@ -172,7 +176,10 @@ const CourseReviewList = (props) => {
                                     <TableCell>
                                         <>
                                             <Tooltip title="View">
-                                                <IconButton>
+                                                <IconButton
+                                                    onClick={() => {
+                                                        navigate(`/student/erasmus/coursereview/view/${student.id}`, {state: student})
+                                                    }}>
                                                     <VisibilityIcon/>
                                                 </IconButton>
                                             </Tooltip>
