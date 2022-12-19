@@ -24,7 +24,7 @@ import javax.xml.ws.Response;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/course-review-v2")
+@RequestMapping("/api/course-review-v2")
 @Slf4j
 public class CourseReviewFormControllerNew {
 
