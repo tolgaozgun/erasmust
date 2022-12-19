@@ -11,7 +11,7 @@ export const SettingsPassword = (props) => {
     initialValues: {
       oldPassword: "",
       newPassword: "",
-      confirmPassword: ""
+      confirmationPassword: ""
     },
     validationSchema: Yup.object({
         oldPassword: Yup
@@ -22,23 +22,23 @@ export const SettingsPassword = (props) => {
             .string()
             .max(255)
             .required("New password is required"),
-        confirmPassword: Yup
+        confirmationPassword: Yup
             .string()
             .max(255)
             .required("Confirmation password is required")
     }),
     onSubmit: async (values) => {
         await axios.post("http://92.205.25.135:8080/auth/change-password", values)
-            .then((response) => {
-                if (response && response.data) {
-                    console.log(response)
-                }
-            })
-            .catch((err) => {
-                if (err && err.response) {
-                    console.log(err)
-                }
-            })
+          .then((response) => {
+            if (response && response.data) {
+              console.log(response)
+            }
+          })
+          .catch((err) => {
+            if (err && err.response) {
+              console.log(err)
+            }
+          })
     }
   })
   
@@ -84,11 +84,11 @@ export const SettingsPassword = (props) => {
             helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
             label="Confirm password"
             margin="normal"
-            name="confirmPassword"
+            name="confirmationPassword"
             type="password"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            value={formik.values.confirmPassword}
+            value={formik.values.confirmationPassword}
             variant="outlined"
           />
         </CardContent>
