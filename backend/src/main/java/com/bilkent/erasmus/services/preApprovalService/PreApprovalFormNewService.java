@@ -173,19 +173,21 @@ public class PreApprovalFormNewService {
     }
 
 
-    public List<CourseReviewFormNew> gelAllReviewFormsForCourseCoordinator() {
+    public List<CourseReviewFormResponseDTO> gelAllReviewFormsForCourseCoordinator() {
         String starsId = getStarsId();
         List<CourseReviewFormNew> reviewForms = new ArrayList<>();
         List<PreApprovalFormNew> copyList = preApprovalFormRepository.findAll();
+        List<CourseReviewFormResponseDTO> responseList = new ArrayList<>();
         for (PreApprovalFormNew form : copyList) {
             for (CourseReviewFormNew reviewForm : form.getForms()) {
                 if (reviewForm.getCourseBilkent().getCourseCoordinator().getStarsId().equals(starsId)
                 && reviewForm.getCourseBilkent().getIsMustCourse()) {
+                    responseList.add(getCourseReviewFormForStudent(reviewForm.getId()));
                     reviewForms.add(reviewForm);
                 }
             }
         }
-        return reviewForms;
+        return responseList;
     }
 
     private String getStarsId() {
