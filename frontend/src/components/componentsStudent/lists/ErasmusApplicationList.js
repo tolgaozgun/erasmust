@@ -37,12 +37,7 @@ const ErasmusApplicationList = (props) => {
         <Card {...props}>
             <CardHeader title="Erasmus Applications"/>
             <PerfectScrollbar>
-                <Box
-                    sx={{
-                        minWidth: 800,
-                        height: 400,
-                    }}
-                >
+                <Box>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -139,14 +134,6 @@ const ErasmusApplicationList = (props) => {
                     p: 2,
                 }}
             >
-                <Button
-                    color="primary"
-                    endIcon={<ArrowRightIcon fontSize="small"/>}
-                    size="small"
-                    variant="text"
-                >
-                    View all
-                </Button>
             </Box>
         </Card>
     );
