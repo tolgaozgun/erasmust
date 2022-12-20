@@ -312,6 +312,17 @@ const StudentCreateErasmusApplication = () => {
                     }}
                 >
                     <Container maxWidth="lg">
+
+                        {errorMessage &&
+                            <Alert
+                                severity="error"
+                                onClose={() => {
+                                    setErrorMessage("")
+                                }}>
+                                <AlertTitle>Error</AlertTitle>
+                                {errorMessage}
+                            </Alert>
+                        }
                         <Typography
                             sx={{mb: 5}}
                             align="center"
@@ -335,16 +346,6 @@ const StudentCreateErasmusApplication = () => {
                             container
                             spacing={3}
                         >
-                            {errorMessage &&
-                                <Alert
-                                    severity="error"
-                                    onClose={() => {
-                                        setErrorMessage("")
-                                    }}>
-                                    <AlertTitle>Error</AlertTitle>
-                                    {errorMessage}
-                                </Alert>
-                            }
 
                             {formik.isSubmitting ?
                                 <Container
