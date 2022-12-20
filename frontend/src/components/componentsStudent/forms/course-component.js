@@ -32,17 +32,17 @@ export const CourseComponent = (props) => {
 
 
     const courseNameChange = (event) => {
-        props.setCourse(props.index, "courseName", event.target.value)
+        props.setCourse(props.index, "courseHostName", event.target.value)
         setCourseName(event.target.value)
     }
 
     const courseCodeChange = (event) => {
-        props.setCourse(props.index, "courseCode", event.target.value)
+        props.setCourse(props.index, "courseHostCode", event.target.value)
         setCourseCode(event.target.value)
     }
 
     const onCreditChange = (event) => {
-        props.setCourse(props.index, "courseCredits", event.target.value)
+        props.setCourse(props.index, "courseHostCredit", event.target.value)
     }
 
     let title = `Course #${props.index + 1}`
