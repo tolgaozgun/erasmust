@@ -22,6 +22,9 @@ export const ViewStudentInfo = (props) => {
         department: student.departmentName ? student.departmentName : "",
     }
 
+    console.log("Student items")
+    console.log(items)
+
     return (
         <form
             autoComplete="off"

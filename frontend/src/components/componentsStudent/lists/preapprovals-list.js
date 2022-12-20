@@ -27,8 +27,8 @@ const PreapprovalsList = (props) => {
     const navigate = useNavigate()
 
     const getCoordinator = (preapproval) => {
-        if (preapproval.coordinator) {
-            return preapproval.coordinator.firstName + " " + preapproval.coordinator.lastName;
+        if (preapproval.exchangeCoordinator) {
+            return preapproval.exchangeCoordinator.firstName + " " + preapproval.exchangeCoordinator.lastName;
         }
         return "Coordinator not assigned"
     }

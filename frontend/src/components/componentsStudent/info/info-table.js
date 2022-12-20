@@ -34,6 +34,9 @@ export const InfoTable = (props) => {
             this[key] = this[key].toString()
     }, items);
 
+    console.log("Info table items")
+    console.log(items)
+
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">
