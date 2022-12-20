@@ -137,6 +137,7 @@ public class PreApprovalFormNewService {
         preApprovalFormNew.setSemester(erasmusApplication.getSemester());
         preApprovalFormNew.setAcademicYear(erasmusApplication.getAcademicYear());
         preApprovalFormNew.setStudent(erasmusApplication.getStudent());
+        preApprovalFormNew.setPartnerUniversityErasmus(erasmusApplication.getAssignedUniversity());
         preApprovalFormNew.setExchangeCoordinator(retrieveApplicationFromStudentId().getCoordinator());
     }
 
