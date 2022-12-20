@@ -58,7 +58,7 @@ public class PreApprovalFormErasmusControllerNew {
         return new ResponseEntity<>(preApprovalService.getStudentForm(),HttpStatus.OK);
     }
 
-    @RolesAllowed("ROLE_ADMIN")
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_COURSE_COORDINATOR"})
     @GetMapping("/get-all/course-coordinator/review-course-forms")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(preApprovalService.gelAllReviewFormsForCourseCoordinator(), HttpStatus.OK);
@@ -96,7 +96,7 @@ public class PreApprovalFormErasmusControllerNew {
     }
 
     // todo -> role ü değiştir
-    @RolesAllowed("ROLE_ADMIN")
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN"})
     @PostMapping("/evaluate/{id}")
     public ResponseEntity<?> evaluatePreApprovalForm(@PathVariable int id, @RequestBody EvaluationDTO evaluation) throws PreApprovalFormNotCompletedException {
         return new ResponseEntity<>(preApprovalService.evaluate(id, evaluation), HttpStatus.OK);

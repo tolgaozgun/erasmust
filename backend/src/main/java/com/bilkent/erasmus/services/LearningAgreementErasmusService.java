@@ -7,6 +7,8 @@ import com.bilkent.erasmus.dtos.ReviewFormRequestDTO;
 import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.*;
+import com.bilkent.erasmus.exceptions.EntityDoesNotExistException;
+import com.bilkent.erasmus.exceptions.StudentDoesNotExistException;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
 import com.bilkent.erasmus.mappers.LearningAgreementEditMapper;
 import com.bilkent.erasmus.mappers.LearningAgreementErasmusMapper;
@@ -92,7 +94,10 @@ public class LearningAgreementErasmusService {
 
     public boolean cancelAgreement() throws Exception {
         String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
-        LearningAgreementErasmus agreementErasmus = erasmusRepository.findByStudent_Id(starsId);
+        try{
+        LearningAgreementErasmus agreementErasmus = erasmusRepository.findByStudent_Id(starsId)
+                .orElseThrow(() -> new EntityDoesNotExistException("This account has no ongoing applications related to it", Integer.parseInt(starsId)));
+
         if (!(agreementErasmus.getStatus().equals(Status.CANCELLED))) {
             agreementErasmus.setStatus(Status.CANCELLED);
             erasmusRepository.save(agreementErasmus);
@@ -101,7 +106,13 @@ public class LearningAgreementErasmusService {
         else {
             log.info("Learning agreement is already cancelled");
         }
-        return true;
+            return true;
+        }
+        catch (EntityNotFoundException e){
+            log.info(e.toString());
+            log.info(("Student doesn't have a learning agreement"));
+            return false;
+        }
     }
 
     public LearningAgreementInitialFieldsDTO getInitialFieldValues(){
@@ -233,8 +244,9 @@ public class LearningAgreementErasmusService {
     public LearningAgreementErasmus saveForm(LearningAgreementErasmusDTO form) throws Exception {
 
         LearningAgreementErasmus erasmusForm = erasmusMapper.toEntity(form);
-        String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
-        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(auth.getName())
+                .orElseThrow(() -> new StudentDoesNotExistException("Student with id " + auth.getName() + "does not exist.", auth.getName()));
 
         MobilityDetail beforeMobility = new MobilityDetail();
         MobilityDetail duringMobility = new MobilityDetail();
@@ -360,7 +372,7 @@ public class LearningAgreementErasmusService {
         return courseBilkentService.save(course);
     }
 
-    private LearningAgreementErasmus saveCourseBilkentDuring(int formId, String name, double credit, boolean isAdded, String reason) {
+    private LearningAgreementErasmus saveCourseBilkentDuring(int formId, String name, double credit, boolean isAdded, String reason) throws Exception {
         LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseBilkent course = new CourseBilkent();
@@ -377,7 +389,7 @@ public class LearningAgreementErasmusService {
         return erasmusRepository.save(agreementErasmus);
     }
 
-    private LearningAgreementErasmus saveCourseBilkentAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) {
+    private LearningAgreementErasmus saveCourseBilkentAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) throws Exception {
         LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseBilkent course = new CourseBilkent();
@@ -402,7 +414,7 @@ public class LearningAgreementErasmusService {
         return courseHostService.save(course);
     }
 
-    public LearningAgreementErasmus saveCourseHostDuring(int formId, String name, double credit, boolean isAdded, String reason) {
+    public LearningAgreementErasmus saveCourseHostDuring(int formId, String name, double credit, boolean isAdded, String reason) throws Exception {
         LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseHost course = new CourseHost();
@@ -419,7 +431,7 @@ public class LearningAgreementErasmusService {
         return erasmusRepository.save(agreementErasmus);
     }
 
-    public LearningAgreementErasmus saveCourseHostAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) {
+    public LearningAgreementErasmus saveCourseHostAfter(int formId, String name, double credit, boolean wasCompleted, LetterGrade grade) throws Exception {
         LearningAgreementErasmus agreementErasmus = findLearningAgreementByFormId(formId);
         MobilityCourseForm mobilityCourseForm = new MobilityCourseForm();
         CourseHost course = new CourseHost();
@@ -440,18 +452,22 @@ public class LearningAgreementErasmusService {
         return agreementMapper.toLearningAgreementDTOList(erasmusRepository.findAll());
     }
 
-    public LearningAgreementDTO reviewForm(ReviewFormRequestDTO request, int formId) {
+    public LearningAgreementDTO reviewForm(ReviewFormRequestDTO request, int formId) throws Exception {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        LearningAgreementErasmus agreement = erasmusRepository.findByStudent_Id(auth.getName());
+        LearningAgreementErasmus agreement = erasmusRepository.findByStudent_Id(auth.getName())
+                .orElseThrow(() -> new EntityDoesNotExistException("This account has no learning agreements related to it", Integer.parseInt(auth.getName())));
+
         return agreementMapper.toLearningAgreementDTO(agreement);
     }
 
-    public LearningAgreementDTO editForm(int id, LearningAgreementDTO erasmusDTO) {
+    public LearningAgreementDTO editForm(int id, LearningAgreementDTO erasmusDTO) throws Exception {
         LearningAgreementErasmus agreementForm = new LearningAgreementErasmus();
         erasmusDTO.setId(id);
+
         try {
             if (erasmusRepository.findById(id) != null) {
-                agreementForm = erasmusRepository.findById(id);
+                agreementForm = erasmusRepository.findById(id)
+                        .orElseThrow(() -> new EntityDoesNotExistException("This account has no learning agreements related to it", Integer.parseInt(id+"")));
 
                 if (agreementForm.getStatus().equals(Status.IN_PROCESS)) {
                     log.info(agreementForm.toString());
@@ -523,12 +539,10 @@ public class LearningAgreementErasmusService {
             return null;
     }
 
-    public LearningAgreementErasmus findLearningAgreementByFormId(int id){
-        LearningAgreementErasmus agreementForm = erasmusRepository.findById(id);
-        if (agreementForm != null)
-            return agreementForm;
-        else
-            return null;
+    public LearningAgreementErasmus findLearningAgreementByFormId(int id) throws Exception {
+        LearningAgreementErasmus agreementForm = erasmusRepository.findById(id)
+                .orElseThrow(() -> new EntityDoesNotExistException("This account has no learning agreements related to it", Integer.parseInt(id+"")));
+        return agreementForm;
     }
 
     public List<LearningAgreementDTO> getAllStudent(){

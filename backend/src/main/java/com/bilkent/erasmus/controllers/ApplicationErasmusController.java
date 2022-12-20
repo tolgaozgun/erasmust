@@ -1,5 +1,6 @@
 package com.bilkent.erasmus.controllers;
 import com.bilkent.erasmus.dtos.InitialApplicationDTO.ApplicationErasmusDTO;
+import com.bilkent.erasmus.dtos.ReplyDTO;
 import com.bilkent.erasmus.exceptions.EntityDoesNotExistException;
 import com.bilkent.erasmus.services.ApplicationErasmusService;
 import org.springframework.http.HttpStatus;
@@ -75,7 +76,6 @@ public class ApplicationErasmusController {
     public ResponseEntity<?> viewApplicationAllForStudent() {
         return new ResponseEntity<>(applicationErasmusService.viewApplicationStudentAll(), HttpStatus.OK);
     }
-
 
 
 }
