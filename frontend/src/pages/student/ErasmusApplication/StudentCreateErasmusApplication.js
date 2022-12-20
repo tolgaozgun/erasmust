@@ -1,4 +1,5 @@
 import {
+    Alert, AlertTitle,
     Box, Button, CircularProgress,
     Container,
     Grid,
@@ -103,6 +104,8 @@ const StudentCreateErasmusApplication = () => {
         }
     )
 
+    const [errorMessage, setErrorMessage] = useState("")
+
     const readyData = {
         name: "Tolga",
         surname: "Özgün",
@@ -157,11 +160,9 @@ const StudentCreateErasmusApplication = () => {
                     }
                 })
                 .catch((err) => {
-                    console.log("Formik error1")
                     if (err && err.response) {
-                        console.log("Formik error")
-                        console.log(err)
-                        console.log(err.response)
+                        if (err.response.data["errorMessage"])
+                            setErrorMessage(err.response.data["errorMessage"])
 
                     }
                 })
@@ -290,10 +291,6 @@ const StudentCreateErasmusApplication = () => {
 
     const addSchool = () => {
         let length = formik.values.schools.length
-        // TODO: Stop adding for more than 5 universities
-        if (length === 5) {
-
-        }
         formik.setFieldValue(`schools.${length}`, emptySchoolComponent)
         formik.values.schools.push(emptySchoolComponent)
     }
@@ -338,6 +335,16 @@ const StudentCreateErasmusApplication = () => {
                             container
                             spacing={3}
                         >
+                            {errorMessage &&
+                                <Alert
+                                    severity="error"
+                                    onClose={() => {
+                                        setErrorMessage("")
+                                    }}>
+                                    <AlertTitle>Error</AlertTitle>
+                                    {errorMessage}
+                                </Alert>
+                            }
 
                             {formik.isSubmitting ?
                                 <Container
