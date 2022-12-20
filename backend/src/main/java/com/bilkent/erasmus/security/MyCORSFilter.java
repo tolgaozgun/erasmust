@@ -1,3 +1,4 @@
+/*
 package com.bilkent.erasmus.security;
 
 import org.springframework.core.Ordered;
@@ -9,10 +10,12 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Component
 public class MyCORSFilter extends OncePerRequestFilter {
+*/
 /*    @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
@@ -27,15 +30,16 @@ public class MyCORSFilter extends OncePerRequestFilter {
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
 
         chain.doFilter(req, res);
-    }*/
+    }*//*
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
-        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
-        response.setHeader("access-aontrol-allow-credentials", "true");
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        response.setHeader("access-control-allow-credentials", "true");
         response.setHeader("access-control-allow-methods", "*");
         response.setHeader("Access-Control-Max-Age", "3600");
         //response.setHeader("access-control-expose-headers", "*");
@@ -49,3 +53,4 @@ public class MyCORSFilter extends OncePerRequestFilter {
     public void destroy() {
     }
 }
+*/
