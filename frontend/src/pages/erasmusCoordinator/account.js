@@ -66,11 +66,11 @@ const Account = () => {
           >
             <AccountProfileDetails/>
             <Signature />
-            <AccountAdminSettings/>
+            {/* <AccountAdminSettings/>
             <AccountIncomingErasmus/>
             <AccountIncomingExchange/>
             <AccountOutgoingErasmus/>
-            <AccountOutgoingExchange/>
+            <AccountOutgoingExchange/> */}
 
           </Grid>
 
