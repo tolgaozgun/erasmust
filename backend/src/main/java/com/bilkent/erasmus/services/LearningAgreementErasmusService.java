@@ -8,6 +8,7 @@ import com.bilkent.erasmus.embeddables.BilkentInformation;
 import com.bilkent.erasmus.embeddables.ReceivingInstitutionInformation;
 import com.bilkent.erasmus.enums.*;
 import com.bilkent.erasmus.exceptions.EntityDoesNotExistException;
+import com.bilkent.erasmus.exceptions.GenericException;
 import com.bilkent.erasmus.exceptions.StudentDoesNotExistException;
 import com.bilkent.erasmus.mappers.InitialApplicationMappper.LearningAgreementMapper;
 import com.bilkent.erasmus.mappers.LearningAgreementEditMapper;
@@ -115,21 +116,18 @@ public class LearningAgreementErasmusService {
         }
     }
 
-    public LearningAgreementInitialFieldsDTO getInitialFieldValues(){
+    public LearningAgreementInitialFieldsDTO getInitialFieldValues() throws Exception {
         String starsId = SecurityContextHolder.getContext().getAuthentication().getName();
-        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId).orElseThrow(() -> new EntityNotFoundException("No student found"));
-
+        OutGoingStudent student = outGoingStudentRepository.findByStarsId(starsId)
+                .orElseThrow(() -> new EntityNotFoundException("No student found"));
 
         BilkentInformation bilkentInformation = new BilkentInformation();
-        Faculty bilkentFaculty = new Faculty();
-
-        bilkentFaculty.setId(0);
-        bilkentFaculty.setName(FacultyName.ENGINEERING);
 
         bilkentInformation.setNameBilkent("Bilkent University");
         bilkentInformation.setAddressBilkent("UNIVERSITELER MAH. BILKENT UNIVERSITESI - 06800 CANKAYA/ANKARA");
         bilkentInformation.setErasmusCodeBilkent("ANKARA07");
         bilkentInformation.setCountryCodeBilkent("Turkey, TR");
+        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
 
         try{
             if(findPreApprovalById(student).getExchangeCoordinator() != null){
@@ -140,11 +138,8 @@ public class LearningAgreementErasmusService {
                 bilkentInformation.setContactPersonFunctionBilkent(findPreApprovalById(student).getExchangeCoordinator().getPermission().toString());
             }
         }catch(NullPointerException ex){
-            // exchange coordinator will be empty
+            throw new GenericException("Eramus Coordinator not found.");
         }
-        bilkentInformation.setFacultyBilkent(bilkentFaculty);
-        bilkentInformation.setDepartmentBilkent(student.getDepartmentName());
-
 
         List<MobilityCourseForm> courseList = findCoursesByStudent(student);
 
