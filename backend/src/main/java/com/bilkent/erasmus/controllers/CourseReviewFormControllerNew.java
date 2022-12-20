@@ -1,6 +1,7 @@
 package com.bilkent.erasmus.controllers;
 
 import com.bilkent.erasmus.dtos.*;
+import com.bilkent.erasmus.dtos.UserDtos.CourseReviewStringEditDTO;
 import com.bilkent.erasmus.models.courseModels.CourseBilkent;
 import com.bilkent.erasmus.models.courseModels.CourseHost;
 import com.bilkent.erasmus.repositories.CourseBilkentRepository;
@@ -53,7 +54,7 @@ public class CourseReviewFormControllerNew {
         return new ResponseEntity<>(courseReviewFormService.createForm(courseBilkent, courseHost, credit), HttpStatus.CREATED);
     }
 
-    @GetMapping("/downloadFile/{fileName:.+}")
+    @GetMapping("/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         // Load file as Resource
         Resource resource = service.loadFileAsResource(fileName);
@@ -84,13 +85,18 @@ public class CourseReviewFormControllerNew {
     @PostMapping("/edit")
     public ResponseEntity<?> editForm(@RequestPart("data") CourseReviewEditDTO editDTO,
                                       @RequestPart("file") MultipartFile[] files) throws Exception {
-        return new ResponseEntity<>(courseReviewFormService.editForm(editDTO, files),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(courseReviewFormService.editForm(editDTO, files), HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/edit/requirements/{id}")
+    public ResponseEntity<?> editForm(@PathVariable int id, @RequestBody CourseReviewStringEditDTO editDTO) throws Exception {
+        return new ResponseEntity<>(courseReviewFormService.editJustStringForm(id, editDTO), HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/edit-v2")
     public ResponseEntity<?> editFormTogether(@RequestBody EditFormDTO dto) throws Exception {
         CourseReviewEditDTO editDTO = new CourseReviewEditDTO(dto.getFormId(), dto.getRequirements());
-        return new ResponseEntity<>(courseReviewFormService.editForm(editDTO, dto.getFiles()),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(courseReviewFormService.editForm(editDTO, dto.getFiles()), HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/edit-v3")

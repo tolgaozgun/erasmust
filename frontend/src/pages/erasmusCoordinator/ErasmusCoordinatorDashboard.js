@@ -29,6 +29,8 @@ import {
 import {
     ViewCourseInfo
 } from "../../components/componentsErasmusCoordinator/info/erasmus/preapprovalForm/view-course-info";
+import {async} from 'q';
+import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -43,6 +45,22 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 const ErasmusCoordinatorDashboard = (props) => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [resultMessage, setResultMessage] = useState("")
+
+    const token = localStorage.getItem("jwtToken")
+
+    const placeStudents = async () => {
+        await axios.post("http://92.205.25.135:8080/erasmus-application/place", {}, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
 
     return (

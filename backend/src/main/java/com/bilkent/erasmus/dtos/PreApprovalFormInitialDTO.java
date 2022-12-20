@@ -9,15 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LoginCourseCoordinatorDTO {
+public class PreApprovalFormInitialDTO {
 
-    private String firstName;
-
-    private String lastName;
-
-    private String role;
-
-    private String starsId;
-
-    private String token;
+    private String userName;
 }

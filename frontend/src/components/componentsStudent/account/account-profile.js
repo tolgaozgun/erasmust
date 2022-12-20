@@ -1,23 +1,26 @@
 import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Typography
+    Avatar,
+    Box,
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    Divider,
+    Typography
 } from '@mui/material';
 import React from 'react';
 
+const name = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
+
 const user = {
-  avatar: '/static/images/avatars/avatar_1.png',
-  city: 'Ankara',
-  country: 'Turkey',
-  jobTitle: 'Student',
-  name: 'John Doe',
-  timezone: 'GTM-3'
+    avatar: '/static/images/avatars/avatar_1.png',
+    city: 'Ankara',
+    country: 'Turkey',
+    jobTitle: 'Student',
+    name: name,
+    timezone: 'GTM-3'
 };
+
 
 export const AccountProfile = (props) => (
   <Card {...props}>

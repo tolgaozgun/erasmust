@@ -105,6 +105,7 @@ public class AuthController {
             LoginCourseCoordinatorDTO loginResponse = LoginCourseCoordinatorDTO.builder()
                     .firstName(user.getFirstName())
                     .lastName(user.getLastName())
+                    .starsId(user.getStarsId())
                     .role(user.getPermission().getRoleName())
                     .token("Bearer " + jwtToken)
                     .build();
@@ -114,6 +115,7 @@ public class AuthController {
             LoginExchangeCoordinatorDTO loginResponse = LoginExchangeCoordinatorDTO.builder()
                     .firstName(user.getFirstName())
                     .lastName(user.getLastName())
+                    .starsId(user.getStarsId())
                     .role(user.getPermission().getRoleName())
                     .token("Bearer " + jwtToken)
                     .build();
