@@ -38,7 +38,7 @@ export const FormCourseInfo = (props) => {
                         key={index}
                         index={index}
                         errors={props.errors.courses ? props.errors.courses[`${index}`] : {}}
-                        touched={props.touched.courses ? props.errors.courses[`${index}`] : {}}
+                        touched={props.touched.courses ? props.touched.courses[`${index}`] : {}}
                         handleChange={props.handleChange}
                         handleBlur={props.handleBlur}
                         courses={props.courses}
