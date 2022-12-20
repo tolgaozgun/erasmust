@@ -78,15 +78,6 @@ const QontoStepIconRoot = styled('div')(
     })
 );
 
-const readyData = {
-    name: "Tolga",
-    surname: "Özgün",
-    starsId: 22003850,
-    department: "Computer Engineering",
-    hostName: "EPFL",
-    academicYear: "2022-2023",
-    semester: "FALL",
-}
 
 
 const StudentCreateErasmusPreapproval = () => {
@@ -100,6 +91,16 @@ const StudentCreateErasmusPreapproval = () => {
     ])
     const [courses, setCourses] = useState([])
     const token = localStorage.getItem("jwtToken")
+
+    const [setData, setSetData] = useState({
+        name: "",
+        surname: "",
+        starsId: 0,
+        department: "",
+        hostName: "",
+        academicYear: "",
+        semester: "",
+    })
 
     useEffect(() => {
         axios.get("http://92.205.25.135:8080/course/all-bilkent-courses", {
@@ -142,6 +143,18 @@ const StudentCreateErasmusPreapproval = () => {
             .then((res) => {
                 if (res && res.data) {
                     console.log(res.data)
+                    let items = {}
+                    let name = res.data["student"]["firstName"]
+                    items["name"] = name
+                    let surname = res.data["student"]["lastName"]
+                    items["surname"] = surname
+                    items["starsId"] = res.data["student"]["starsId"]
+                    items["department"] = res.data["student"]["departmentName"]
+                    items["hostName"] = res.data["assignedUniversity"]["name"]
+                    items["academicYear"] = res.data["academicYear"]
+                    items["semester"] = res.data["semester"]
+
+                    setSetData(items)
                 }
             })
             .catch((err) => {
@@ -306,6 +319,9 @@ const StudentCreateErasmusPreapproval = () => {
         formik.setFieldValue(`forms[${index}].${field}`, value)
     }
 
+    console.log("Setdata")
+    console.log(setData)
+
     const steps = ['Student Information', 'Program Information', 'Courses'];
 
     return (
@@ -356,11 +372,11 @@ const StudentCreateErasmusPreapproval = () => {
 
                                 <FormStudentInfo
                                     hidden={activeStep !== 0}
-                                    values={readyData}
+                                    values={setData}
                                 />
                                 <FormExchangeInfo
                                     hidden={activeStep !== 1}
-                                    values={readyData}
+                                    values={setData}
                                 />
                                 <FormCourseInfo
                                     courses={courses}
