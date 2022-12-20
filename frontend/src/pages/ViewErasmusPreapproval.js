@@ -62,13 +62,15 @@ const ViewErasmusPreapproval = () => {
         })
             .then((res) => {
                 if (res && res.data) {
-                    console.log(res)
                     studentObj = res.data.student
                     dataObj = res.data
-                    names = res.data.partnerUniversityErasmus.name
+                    let names
+                    if (res.data["partnerUniversityErasmus"])
+                        names = res.data.partnerUniversityErasmus.name
                     academicYears = res.data.academicYear
                     semesters = res.data.semester
                     for (var i = 0; i < res.data.forms.length; i++) {
+                        console.log("S2")
                         courses.push({
                             host: {
                                 courseName: res.data.forms[i].courseHost.name,
@@ -83,7 +85,6 @@ const ViewErasmusPreapproval = () => {
                         })
                     }
                 }
-                console.log(courses)
                 setAcademicYear(academicYears)
                 setSemester(semesters)
                 setName(names)
@@ -97,6 +98,7 @@ const ViewErasmusPreapproval = () => {
                 }
             })
     }, [])
+
 
     return (
         <>
