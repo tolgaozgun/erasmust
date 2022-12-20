@@ -43,6 +43,16 @@ const items = [
                 icon: <AddOutlinedIcon fontSize="small" />,
                 title: "Create Preapproval Form",
             },
+            {
+                href: "/student/erasmus/learningagreement/list",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "View Your Learning Agreement List",
+            },
+            {
+                href: "/student/erasmus/learningagreement/create",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "Create Learning Agreement",
+            },
         ],
     },
     {

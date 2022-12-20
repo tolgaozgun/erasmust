@@ -1,11 +1,6 @@
 import {Box, Container, Grid, Typography} from '@mui/material';
 import {AccountProfile} from '../../components/componentsStudent/account/account-profile';
-import {AccountAdminSettings} from '../../components/componentsStudent/account/account-admin-settings';
 import {AccountProfileDetails} from '../../components/componentsStudent/account/account-profile-details';
-import {AccountIncomingErasmus} from '../../components/componentsStudent/account/account-incoming-erasmus';
-import {AccountIncomingExchange} from '../../components/componentsStudent/account/account-incoming-exchange';
-import {AccountOutgoingErasmus} from '../../components/componentsStudent/account/account-outgoing-erasmus';
-import {AccountOutgoingExchange} from '../../components/componentsStudent/account/account-outgoing-exchange';
 import {DashboardNavbar} from '../../components/componentsErasmusCoordinator/dashboard-navbar';
 import {DashboardSidebar} from '../../components/componentsErasmusCoordinator/dashboard-sidebar';
 import { Signature } from '../../components/signature';
@@ -66,11 +61,6 @@ const Account = () => {
           >
             <AccountProfileDetails/>
             <Signature />
-            <AccountAdminSettings/>
-            <AccountIncomingErasmus/>
-            <AccountIncomingExchange/>
-            <AccountOutgoingErasmus/>
-            <AccountOutgoingExchange/>
 
           </Grid>
 

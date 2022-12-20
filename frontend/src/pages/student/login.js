@@ -52,22 +52,23 @@ const Login = () => {
                         console.log(response.data)
                         const jwtToken = response.data["token"]
                         const role = response.data["role"]
+                        const firstName = response.data["firstName"]
+                        const lastName = response.data["lastName"]
+                        const starsId = response.data["starsId"]
+                        const department = response.data["department"]
+
                         localStorage.setItem("jwtToken", jwtToken)
                         localStorage.setItem("role", role)
+                        localStorage.setItem("firstName", firstName)
+                        localStorage.setItem("lastName", lastName)
+                        localStorage.setItem("starsId", starsId)
+                        localStorage.setItem("department", department)
                         if (role === "ADMIN") {
                             goDashboardAdmin()
                         } else if (role === "STUDENT") {
-                            const firstName = response.data["firstName"]
-                            const lastName = response.data["lastName"]
-                            const starsId = response.data["starsId"]
-                            const department = response.data["department"]
                             const academicYear = response.data["academicYear"]
                             const semester = response.data["semester"]
 
-                            localStorage.setItem("firstName", firstName)
-                            localStorage.setItem("lastName", lastName)
-                            localStorage.setItem("starsId", starsId)
-                            localStorage.setItem("department", department)
                             localStorage.setItem("academicYear", academicYear)
                             localStorage.setItem("semester", semester)
                             
