@@ -1,4 +1,5 @@
 import {
+    Alert, AlertTitle,
     Box,
     Button,
     Card,
@@ -41,6 +42,7 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 
 const ErasmusCoordinatorDashboard = (props) => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [resultMessage, setResultMessage] = useState("")
 
 
     return (
@@ -113,6 +115,16 @@ const ErasmusCoordinatorDashboard = (props) => {
                                 lg={12}
                                 md={12}
                                 xs={24}>
+                                {resultMessage &&
+                                    <Alert
+                                        severity="info"
+                                        onClose={() => {
+                                            setResultMessage("")
+                                        }}>
+                                        <AlertTitle>Info</AlertTitle>
+                                        {resultMessage}
+                                    </Alert>
+                                }
                                 <Card>
                                     <CardHeader
                                         subheader="Student placement details"
@@ -124,7 +136,9 @@ const ErasmusCoordinatorDashboard = (props) => {
                                             direction="row"
                                             spacing={5}
                                             style={{justifyContent: "center"}}>
-                                            <Button>
+                                            <Button onClick={() => {
+                                                setResultMessage("Placement success!")
+                                            }}>
                                                 Place Students
                                             </Button>
                                         </Stack>
