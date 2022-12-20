@@ -66,10 +66,11 @@ const Login = () => {
 
                             localStorage.setItem("firstName", firstName)
                             localStorage.setItem("lastName", lastName)
-                            localStorage.setItem("startId", starsId)
+                            localStorage.setItem("starsId", starsId)
                             localStorage.setItem("department", department)
                             localStorage.setItem("academicYear", academicYear)
                             localStorage.setItem("semester", semester)
+                            
                             goDashboardStudent()
                         } else if (role === "COURSE_COORDINATOR") {
                           goDashboardCourseCoordinator()

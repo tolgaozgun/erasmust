@@ -10,14 +10,17 @@ import {
 } from '@mui/material';
 import React from 'react';
 
+const name = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
+
 const user = {
   avatar: '/static/images/avatars/avatar_1.png',
   city: 'Ankara',
   country: 'Turkey',
   jobTitle: 'Student',
-  name: 'John Doe',
+  name: name,
   timezone: 'GTM-3'
 };
+
 
 export const AccountProfile = (props) => (
   <Card {...props}>
