@@ -2,18 +2,20 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {Box, Button, Container, Grid, Link, TextField, Typography} from '@mui/material';
+import {Alert, AlertTitle, Box, Button, Container, Grid, Link, TextField, Typography} from '@mui/material';
 import axios from "axios";
 
 const Login = () => {
     const navigate = useNavigate();
 
+    const [errorMessage, setErrorMessage] = useState("")
+
     const goDashboardStudent = () => {
-      navigate('/student/dashboard');
+        navigate('/student/dashboard');
     }
 
     const goDashboardCourseCoordinator = () => {
-      navigate('/coursecoordinator/dashboard');
+        navigate('/coursecoordinator/dashboard');
     }
 
     const goDashboardErasmusCoordinator = () => {
@@ -80,7 +82,12 @@ const Login = () => {
                 })
                 .catch((err) => {
                     if (err && err.response) {
-                        console.log("Error: ", err)
+                        if (err.response.status === 401)
+                            setErrorMessage("Invalid username and password")
+                        else
+                            setErrorMessage("Connection error")
+                    } else {
+                        setErrorMessage("Connection error")
                     }
                 })
         }
@@ -145,16 +152,27 @@ const Login = () => {
                 />
                 <Box sx={{ py: 2 }}>
                   <Button
-                    color="primary"
-                    disabled={formik.isSubmitting}
-                    fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
+                      color="primary"
+                      disabled={formik.isSubmitting}
+                      fullWidth
+                      size="large"
+                      type="submit"
+                      variant="contained"
                   >
-                    Sign In Now
+                      Sign In Now
                   </Button>
                 </Box>
+
+                  {errorMessage.trim().length !== 0 &&
+                      <Alert
+                          severity="error"
+                          onClose={() => {
+                              setErrorMessage("")
+                          }}>
+                          <AlertTitle>Error</AlertTitle>
+                          {errorMessage}
+                      </Alert>
+                  }
               </form>
             </Container>
           </Box>
