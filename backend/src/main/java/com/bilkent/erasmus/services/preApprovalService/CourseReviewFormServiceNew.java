@@ -5,6 +5,7 @@ import com.bilkent.erasmus.dtos.CourseReviewEditDTO;
 import com.bilkent.erasmus.dtos.CourseReviewFormNewDTO;
 import com.bilkent.erasmus.dtos.EvaluationDTO;
 import com.bilkent.erasmus.dtos.ReplyDTO;
+import com.bilkent.erasmus.dtos.UserDtos.CourseReviewStringEditDTO;
 import com.bilkent.erasmus.enums.CourseApprovalStatus;
 import com.bilkent.erasmus.enums.ToDoType;
 
@@ -61,6 +62,7 @@ public class CourseReviewFormServiceNew {
         CourseReviewFormNew courseReviewForm = CourseReviewFormNew.builder()
                 .courseBilkent(courseBilkent)
                 .courseHost(courseHost)
+                .status(CourseApprovalStatus.ON_PROCESS)
                 .build();
         courseReviewFormRepository.save(courseReviewForm);
         ToDoItem todo = new ToDoItem();
@@ -91,7 +93,7 @@ public class CourseReviewFormServiceNew {
     public FileData saveFile(MultipartFile file) {
         String fileName = storageService.storeFile(file);
 
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+        String fileDownloadUri =  ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(fileName)
                 .toUriString();
 
@@ -170,5 +172,13 @@ public class CourseReviewFormServiceNew {
                 orElseThrow( () -> new Exception("course review form is not found with id: " + id));
         courseReviewFormNew.setCoordinatorReply(replyDTO.getReply());
         return courseReviewFormRepository.save(courseReviewFormNew);
+    }
+
+    public CourseReviewFormNew editJustStringForm(int id, CourseReviewStringEditDTO editDTO) throws Exception {
+        CourseReviewFormNew form = courseReviewFormRepository.findById(id)
+                .orElseThrow(() -> new Exception("no form is found"));
+        form.setRequirements(editDTO.getRequirements());
+        courseReviewFormRepository.save(form);
+        return form;
     }
 }

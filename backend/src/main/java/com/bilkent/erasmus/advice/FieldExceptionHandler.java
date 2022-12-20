@@ -103,4 +103,13 @@ public class FieldExceptionHandler {
         errorMap.put("errorMessage", ex.getMessage());
         return errorMap;
     }
+
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(PreApprovalFromAlreadyExist.class)
+    public Map<String, String> PreApprovalFromAlreadyExistException(GenericException ex) {
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage", ex.getMessage());
+        return errorMap;
+    }
+
 }

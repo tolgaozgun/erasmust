@@ -11,6 +11,7 @@ import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.enums.ToDoType;
 import com.bilkent.erasmus.exceptions.PreApprovalFormNotCompletedException;
+import com.bilkent.erasmus.exceptions.PreApprovalFromAlreadyExist;
 import com.bilkent.erasmus.mappers.PreApprovalFormEditMapper;
 import com.bilkent.erasmus.mappers.PreApprovalFormMapper.PreApprovalFormErasmusMapper;
 import com.bilkent.erasmus.models.ToDoItem;
@@ -85,6 +86,10 @@ public class PreApprovalFormNewService {
     }
 
     public PreApprovalFormNew saveForm(PreApprovalFormDTONew form) throws Exception {
+        PreApprovalFormNew preApprovalFormNew = preApprovalFormRepository.findByStudent_StarsId(getStarsId());
+        if (preApprovalFormNew != null) {
+            throw new PreApprovalFromAlreadyExist("You have already ongoing pre approval form");
+        }
         PreApprovalFormNew preApprovalForm = PreApprovalFormNew.builder()
                 .forms(createCourseReviewFormAll(form.getForms()))
                 .date(System.currentTimeMillis())

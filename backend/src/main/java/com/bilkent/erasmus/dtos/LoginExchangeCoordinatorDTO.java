@@ -14,6 +14,8 @@ public class LoginExchangeCoordinatorDTO {
 
     private String firstName;
 
+    private String starsId;
+
     private String lastName;
 
     private String role;
