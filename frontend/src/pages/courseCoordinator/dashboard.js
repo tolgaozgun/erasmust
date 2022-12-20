@@ -49,7 +49,7 @@ const CourseCoordinatorDashboard = (props) => {
 
 
 
-    const token = sessionStorage.getItem("jwtToken")
+    const token = localStorage.getItem("jwtToken")
 
     const formik = useFormik({
         initialValues: {

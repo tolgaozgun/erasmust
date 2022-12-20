@@ -25,7 +25,7 @@ const ErasmusCoordinatorErasmusPreapprovalList = () => {
     const [flag, setFlag] = useState(false);
     const [isApproved, setApproved] = useState()
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
     var array = []
 
 
