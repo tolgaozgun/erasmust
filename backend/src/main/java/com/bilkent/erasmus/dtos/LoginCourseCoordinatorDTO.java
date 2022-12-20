@@ -17,5 +17,7 @@ public class LoginCourseCoordinatorDTO {
 
     private String role;
 
+    private String starsId;
+
     private String token;
 }
