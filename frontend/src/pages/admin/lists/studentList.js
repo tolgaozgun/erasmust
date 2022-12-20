@@ -21,11 +21,11 @@ const StudentList = () => {
     const [studentList, setStudentList] = useState([]);
     const [flag, setFlag] = useState(false);
 
-    const token = localStorage.getItem("jwtToken");
+    const token = sessionStorage.getItem("jwtToken");
     var array = []
     
     useEffect(() => {
-        axios.get("http://92.205.25.135:8080/admin/all-students", {
+        axios.get("http://92.205.25.135:4/admin/all-students", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

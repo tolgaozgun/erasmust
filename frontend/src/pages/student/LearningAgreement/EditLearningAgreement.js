@@ -35,11 +35,11 @@ const StudentEditErasmusPreapproval = () => {
     const [mobilityType, setMobilityType] = useState("")
     const [info, setInfo] = useState({})
 
-    const token = localStorage.getItem("jwtToken");
+    const token = sessionStorage.getItem("jwtToken");
 
     const params = useParams();
     const appId = params.id
-    const url = "http://92.205.25.135:8080/learning-agreement-erasmus/get-by-id/" + appId;
+    const url = "http://92.205.25.135:4/learning-agreement-erasmus/get-by-id/" + appId;
     // application id => params.id => appId
 
     useEffect(() => {

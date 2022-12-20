@@ -89,7 +89,7 @@ import ErasmusCoordinatorViewErasmusPreapproval
 const App = () => {
     // const [routes, setRoutes] = useState(routeItemsDefault)
     //
-    // let role = localStorage.getItem("role")
+    // let role = sessionStorage.getItem("role")
     // useEffect(() => {
     //     switch (role) {
     //         case "ADMIN":
