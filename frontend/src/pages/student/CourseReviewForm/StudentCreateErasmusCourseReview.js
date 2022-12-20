@@ -16,7 +16,7 @@ import {FileUpload} from '../../../components/FileUpload';
 import {styled} from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Check} from "@mui/icons-material";
 import {useFormik} from "formik";
 import * as Yup from "yup";
@@ -39,6 +39,26 @@ const StudentCreateErasmusCourseReview = () => {
     const [file, setFile] = useState();
 
     const token = localStorage.getItem("jwtToken");
+
+
+    useEffect(() => {
+        axios.get("/pre-approval/erasmus/get/student/course-forms/", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (res && res.data) {
+
+                    console.log(res.data)
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }, []);
 
     const formik = useFormik({
         initialValues: {
