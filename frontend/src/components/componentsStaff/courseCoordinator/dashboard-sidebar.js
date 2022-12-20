@@ -23,11 +23,6 @@ const items = [
         title: "Course Review Form List",
     },
     {
-        href: "/coursecoordinator/erasmus/preapproval/list",
-        icon: <ApprovalOutlinedIcon fontSize="small" />,
-        title: "Preapproval Form List",
-    },
-    {
         href: "/coursecoordinator/account",
         icon: <UserIcon fontSize="small" />,
         title: "Account",
@@ -36,11 +31,6 @@ const items = [
         href: "/coursecoordinator/settings",
         icon: <CogIcon fontSize="small" />,
         title: "Settings",
-    },
-    {
-        href: "/schoolList",
-        icon: <CogIcon fontsize="small" />,
-        title: "School List",
     },
 ];
 
