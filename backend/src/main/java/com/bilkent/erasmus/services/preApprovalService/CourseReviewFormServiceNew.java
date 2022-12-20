@@ -62,7 +62,7 @@ public class CourseReviewFormServiceNew {
         CourseReviewFormNew courseReviewForm = CourseReviewFormNew.builder()
                 .courseBilkent(courseBilkent)
                 .courseHost(courseHost)
-                .status(CourseApprovalStatus.ON_PROCESS)
+                .status(CourseApprovalStatus.APPROVED)
                 .build();
         courseReviewFormRepository.save(courseReviewForm);
         ToDoItem todo = new ToDoItem();
