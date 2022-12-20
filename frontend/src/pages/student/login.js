@@ -64,7 +64,7 @@ const Login = () => {
 
                             sessionStorage.setItem("firstName", firstName)
                             sessionStorage.setItem("lastName", lastName)
-                            sessionStorage.setItem("startId", starsId)
+                            sessionStorage.setItem("starsId", starsId)
                             sessionStorage.setItem("department", department)
                             sessionStorage.setItem("academicYear", academicYear)
                             sessionStorage.setItem("semester", semester)
