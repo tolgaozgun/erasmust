@@ -24,7 +24,7 @@ const StudentErasmusCourseReviewForms = () => {
     var array = []
 
     useEffect(() => {
-        axios.get("http://myerasmust.com/api/course-review-v2/get-all/student/course-forms", {
+        axios.get("http://92.205.25.135:8080/course-review-v2/get-all/student/course-forms", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

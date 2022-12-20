@@ -21,6 +21,7 @@ import {Check} from "@mui/icons-material";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
+import {useParams} from "react-router-dom";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -35,21 +36,32 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
 
 const StudentCreateErasmusCourseReview = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const [data, setData] = useState();
+    const [data, setData] = useState({
+        courseBilkent: {
+            courseCode: "",
+            name: ""
+        }
+    });
     const [file, setFile] = useState();
 
     const token = localStorage.getItem("jwtToken");
 
+    const params = useParams();
+    const appId = params.id
+
+    const name = localStorage.getItem("firstName")
+    const surname = localStorage.getItem("lastName")
+
 
     useEffect(() => {
-        axios.get("/pre-approval/erasmus/get/student/course-forms/", {
+        axios.get("http://92.205.25.135:8080/pre-approval/erasmus/get/student/course-forms/" + appId, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
             .then((res) => {
                 if (res && res.data) {
-
+                    setData(res.data)
                     console.log(res.data)
                 }
             })
@@ -62,44 +74,14 @@ const StudentCreateErasmusCourseReview = () => {
 
     const formik = useFormik({
         initialValues: {
-            formId: 1,
-            name: "Tolga",
-            surname: "Özgün",
-            bilkentCourse: "CS319 - Object Oriented Software Engineering",
-            hostCourseName: "Statistics",
-            hostCourseCode: "MATH234",
-            hostUnivesity: "EPFL",
-            academicYear: "2022-2023",
-            semester: "FALL",
-            coordinatorMessage: "Please provide syllabus link and project links. Lorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem Lorem ipsum lorem ipsum loremLorem ipsum lorem ipsum lorem",
-            courseCoordinator: "Eray Tuzun",
-            description: "My syllabus: xx.com\nMy this: xx.com",
+            formId: appId,
+            requirements: "",
         },
         validationSchema: Yup.object({
-            name: Yup
-                .string()
-                .max(255)
-                .required("Name is required"),
-            surname: Yup
-                .string()
-                .max(255)
-                .required("Surname is required"),
-            bilkentCourse: Yup
-                .string()
-                .max(255)
-                .required("Bilkent Course is required"),
-            coordinatorMessage: Yup
-                .string()
-                .max(255)
-                .required("Coordinator Message is required"),
-            courseCoordinator: Yup
-                .string()
-                .max(500)
-                .required("Course Coordinator is required"),
-            description: Yup
+            requirements: Yup
                 .string()
                 .max(1000)
-                .required("Description is required"),
+                .required("Description is required")
                 
         }),
         onSubmit: async (values) => {
@@ -184,15 +166,10 @@ const StudentCreateErasmusCourseReview = () => {
                                 xs={12}
                             >
                                 <TextField
-                                    error={Boolean(formik.touched.name && formik.errors.name)}
                                     fullWidth
-                                    helperText={formik.touched.name && formik.errors.name}
                                     label="Name"
                                     name="name"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    required
-                                    value={formik.values.name}
+                                    value={name}
                                     variant="outlined"
                                     disabled={true}
                                 />
@@ -205,15 +182,10 @@ const StudentCreateErasmusCourseReview = () => {
                                 xs={12}
                             >
                                 <TextField
-                                    error={Boolean(formik.touched.surname && formik.errors.surname)}
                                     fullWidth
-                                    helperText={formik.touched.surname && formik.errors.surname}
                                     label="Surname"
                                     name="surname"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
-                                    required
-                                    value={formik.values.surname}
+                                    value={surname}
                                     variant="outlined"
                                     disabled={true}
                                 />
@@ -226,15 +198,11 @@ const StudentCreateErasmusCourseReview = () => {
                                 xs={24}
                             >
                                 <TextField
-                                    error={Boolean(formik.touched.bilkentCourse && formik.errors.bilkentCourse)}
                                     fullWidth
-                                    helperText={formik.touched.bilkentCourse && formik.errors.bilkentCourse}
                                     label="Bilkent Course"
                                     name="bilkentCourse"
-                                    onChange={formik.handleChange}
-                                    onBlur={formik.handleBlur}
                                     required
-                                    value={formik.values.bilkentCourse}
+                                    value={`${data["courseBilkent"]["courseCode"]} - ${data["courseBilkent"]["name"]}`}
                                     variant="outlined"
                                     disabled={true}
                                 />
@@ -247,16 +215,16 @@ const StudentCreateErasmusCourseReview = () => {
                                 xs={24}
                             >
                                 <TextField
-                                    error={Boolean(formik.touched.description && formik.errors.description)}
+                                    error={Boolean(formik.touched && formik.errors.requirements)}
                                     fullWidth
-                                    helperText={formik.touched.description && formik.errors.description}
+                                    helperText={formik.touched && formik.errors.requirements}
                                     label="Description"
-                                    name="description"
+                                    name="requirements"
                                     multiline
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                     required
-                                    value={formik.values.description}
+                                    value={formik.values.requirements}
                                     variant="outlined"
                                 />
                             </Grid>
@@ -274,12 +242,12 @@ const StudentCreateErasmusCourseReview = () => {
                     <Box sx={{ py: 2 }}>
                         <Button
                             color="primary"
-                            fullWidth
+                            sx={{textAlign: "center", alignItems: "center"}}
                             size="large"
                             type="submit"
                             variant="contained"
                         >
-                            Sign In Now
+                            Save Changes
                         </Button>
                     </Box>
                 </Box>
