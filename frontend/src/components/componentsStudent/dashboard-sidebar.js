@@ -46,16 +46,6 @@ const items = [
         ],
     },
     {
-        href: "/student/exchange/",
-        icon: <HiGlobeAmericas fontSize="small" />,
-        title: "Exchange Program",
-    },
-    {
-        href: "/submissionsStudent",
-        icon: <ImportExportOutlinedIcon fontSize="small" />,
-        title: "Submissions",
-    },
-    {
         href: "/student/account",
         icon: <UserIcon fontSize="small" />,
         title: "Account",
@@ -63,7 +53,7 @@ const items = [
     {
         href: "/student/exchange/faq",
         icon: <QuestionMarkIcon fontSize="small" />,
-        title: "Exchange FAQ",
+        title: "Erasmus FAQ",
     },
     {
         href: "/student/settings",
