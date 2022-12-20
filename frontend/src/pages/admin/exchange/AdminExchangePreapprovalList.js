@@ -23,7 +23,7 @@ const AdminExchangePreapprovalList = () => {
     const [preapprovalList, setPreapprovalList] = useState([]);
     const [flag, setFlag] = useState(false);
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
     useEffect(() => {
         axios.get("http://92.205.25.135:8080/admin/all-students", {

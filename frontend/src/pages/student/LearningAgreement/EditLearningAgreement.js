@@ -35,7 +35,7 @@ const StudentEditErasmusPreapproval = () => {
     const [mobilityType, setMobilityType] = useState("")
     const [info, setInfo] = useState({})
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
     const params = useParams();
     const appId = params.id

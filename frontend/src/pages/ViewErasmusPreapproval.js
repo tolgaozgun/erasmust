@@ -48,7 +48,7 @@ const ViewErasmusPreapproval = () => {
     var academicYears;
     var semesters;
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
     const params = useParams();
     const appId = params.id

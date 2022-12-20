@@ -101,5 +101,10 @@ public class PreApprovalFormErasmusControllerNew {
     public ResponseEntity<?> evaluatePreApprovalForm(@PathVariable int id, @RequestBody EvaluationDTO evaluation) throws PreApprovalFormNotCompletedException {
         return new ResponseEntity<>(preApprovalService.evaluate(id, evaluation), HttpStatus.OK);
     }
+    @RolesAllowed({"ROLE_ERASMUS_COORDINATOR", "ROLE_ADMIN", "ROLE_STUDENT"})
+    @GetMapping({"/get/initial-values"})
+    public ResponseEntity<?> getInitialValues() throws Exception {
+        return new ResponseEntity<>(preApprovalService.getInitValues(), HttpStatus.OK);
+    }
 
 }

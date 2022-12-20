@@ -22,7 +22,7 @@ const StudentAdd = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const navigate = useNavigate();
 
-    const token = sessionStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
     const formik = useFormik({
         initialValues: {

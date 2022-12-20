@@ -298,6 +298,15 @@ public class PreApprovalFormNewService {
                 .orElseThrow(() -> new EntityNotFoundException("there is no approval form with id : " + id));
         return preApprovalForm;
     }
+
+    public ApplicationErasmus getInitValues() throws Exception {
+        int id = findStudentId();
+        ApplicationErasmus erasmus = applicationErasmusRepository.findByStatusAndStudent_Id(Status.APPROVED, id);
+        if (erasmus == null) {
+            throw new Exception("you are not allowed to create pre approval form");
+        }
+        return erasmus;
+    }
 }
 
 // todo --> coordinator add reply

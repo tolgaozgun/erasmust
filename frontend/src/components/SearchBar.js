@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 const SearchBar = (props) => {
     const [options, setOptions] = useState([])
-    const role = sessionStorage.getItem("role")
+    const role = localStorage.getItem("role")
 
     const navigate = useNavigate()
 

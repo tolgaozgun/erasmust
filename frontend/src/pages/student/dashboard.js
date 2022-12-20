@@ -5,6 +5,8 @@ import { DashboardNavbar } from '../../components/componentsStudent/dashboard-na
 import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
 import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
+import StudentErasmusApplicationList from "./ErasmusApplication/StudentErasmusApplications";
+import StudentErasmusApplications from "./ErasmusApplication/StudentErasmusApplications";
 
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -44,24 +46,7 @@ const DashboardStudent = (props) => {
           container
           spacing={3}
         >
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            <Sales />
-          </Grid>
-          <Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-            <LatestOrders />
-          </Grid>
+            <StudentErasmusApplications />
         </Grid>
       </Container>
     </Box>
