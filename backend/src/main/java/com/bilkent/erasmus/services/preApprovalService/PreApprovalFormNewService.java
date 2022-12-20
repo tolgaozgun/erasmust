@@ -11,6 +11,7 @@ import com.bilkent.erasmus.enums.SemesterOfferings;
 import com.bilkent.erasmus.enums.Status;
 import com.bilkent.erasmus.enums.ToDoType;
 import com.bilkent.erasmus.exceptions.PreApprovalFormNotCompletedException;
+import com.bilkent.erasmus.exceptions.PreApprovalFromAlreadyExist;
 import com.bilkent.erasmus.mappers.PreApprovalFormEditMapper;
 import com.bilkent.erasmus.mappers.PreApprovalFormMapper.PreApprovalFormErasmusMapper;
 import com.bilkent.erasmus.models.ToDoItem;
@@ -85,6 +86,10 @@ public class PreApprovalFormNewService {
     }
 
     public PreApprovalFormNew saveForm(PreApprovalFormDTONew form) throws Exception {
+        PreApprovalFormNew preApprovalFormNew = preApprovalFormRepository.findByStudent_StarsId(getStarsId());
+        if (preApprovalFormNew != null) {
+            throw new PreApprovalFromAlreadyExist("You have already ongoing pre approval form");
+        }
         PreApprovalFormNew preApprovalForm = PreApprovalFormNew.builder()
                 .forms(createCourseReviewFormAll(form.getForms()))
                 .date(System.currentTimeMillis())
@@ -137,6 +142,7 @@ public class PreApprovalFormNewService {
         preApprovalFormNew.setSemester(erasmusApplication.getSemester());
         preApprovalFormNew.setAcademicYear(erasmusApplication.getAcademicYear());
         preApprovalFormNew.setStudent(erasmusApplication.getStudent());
+        preApprovalFormNew.setPartnerUniversityErasmus(erasmusApplication.getAssignedUniversity());
         preApprovalFormNew.setExchangeCoordinator(retrieveApplicationFromStudentId().getCoordinator());
     }
 
@@ -296,6 +302,15 @@ public class PreApprovalFormNewService {
         PreApprovalFormNew preApprovalForm = preApprovalFormRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("there is no approval form with id : " + id));
         return preApprovalForm;
+    }
+
+    public ApplicationErasmus getInitValues() throws Exception {
+        int id = findStudentId();
+        ApplicationErasmus erasmus = applicationErasmusRepository.findByStatusAndStudent_Id(Status.APPROVED, id);
+        if (erasmus == null) {
+            throw new Exception("you are not allowed to create pre approval form");
+        }
+        return erasmus;
     }
 }
 

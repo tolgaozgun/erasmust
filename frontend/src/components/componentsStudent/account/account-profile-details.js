@@ -11,13 +11,16 @@ import {
 } from '@mui/material';
 import React from 'react';
 
+
+
 export const AccountProfileDetails = (props) => {
+  
   const [values, setValues] = useState({
-    firstName: 'Tolga',
-    lastName: 'Özgün',
-    email: 'tolga.ozgun@ug.bilkent.edu.tr',
-    department: 'Computer Engineering',
-    starsId: 22003850,
+    firstName: localStorage.getItem("firstName"),
+    lastName: localStorage.getItem("lastName"),
+    email: localStorage.getItem("firstName").toLowerCase() + "." + localStorage.getItem("lastName").toLowerCase() + '@ug.bilkent.edu.tr',
+    department: localStorage.getItem("department"),
+    starsId: localStorage.getItem("starsId"),
     id: 1,
   });
 

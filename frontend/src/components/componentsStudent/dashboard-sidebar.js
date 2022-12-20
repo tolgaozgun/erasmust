@@ -34,11 +34,6 @@ const items = [
                 title: "Create Erasmus Application",
             },
             {
-                href: "/student/erasmus/application/view",
-                icon: <AddOutlinedIcon fontSize="small" />,
-                title: "View Your Erasmus Applicaiton",
-            },
-            {
                 href: "/student/erasmus/preapproval/list",
                 icon: <AddOutlinedIcon fontSize="small" />,
                 title: "View Your Preapproval List",
@@ -49,26 +44,16 @@ const items = [
                 title: "Create Preapproval Form",
             },
             {
-                href: "/student/erasmus/preapproval/view",
+                href: "/student/erasmus/learningagreement/list",
                 icon: <AddOutlinedIcon fontSize="small" />,
-                title: "View Your Preapproval Form",
+                title: "View Your Learning Agreement List",
+            },
+            {
+                href: "/student/erasmus/learningagreement/create",
+                icon: <AddOutlinedIcon fontSize="small" />,
+                title: "Create Learning Agreement",
             },
         ],
-    },
-    {
-        href: "/student/exchange/",
-        icon: <HiGlobeAmericas fontSize="small" />,
-        title: "Exchange Program",
-    },
-    {
-        href: "/applications",
-        icon: <ApprovalOutlinedIcon fontSize="small" />,
-        title: "Applications",
-    },
-    {
-        href: "/submissionsStudent",
-        icon: <ImportExportOutlinedIcon fontSize="small" />,
-        title: "Submissions",
     },
     {
         href: "/student/account",
@@ -78,7 +63,7 @@ const items = [
     {
         href: "/student/exchange/faq",
         icon: <QuestionMarkIcon fontSize="small" />,
-        title: "Exchange FAQ",
+        title: "Erasmus FAQ",
     },
     {
         href: "/student/settings",
