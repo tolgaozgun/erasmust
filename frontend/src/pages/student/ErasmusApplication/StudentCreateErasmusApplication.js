@@ -29,6 +29,7 @@ import {Check} from "@mui/icons-material";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
     display: 'flex',
@@ -104,7 +105,9 @@ const StudentCreateErasmusApplication = () => {
         }
     )
 
+    const navigate = useNavigate()
     const [errorMessage, setErrorMessage] = useState("")
+    const [resultMessage, setResultMessage] = useState("")
 
     const readyData = {
         name: localStorage.getItem("firstName"),
@@ -152,6 +155,9 @@ const StudentCreateErasmusApplication = () => {
                 .then((response) => {
                     if (response && response.data) {
                         console.log(response.data)
+                        setResultMessage("Application process successful, you will be redirected in 4 seconds!")
+                        setTimeout(() => navigate("../list"), 4000);
+
                         // const jwtToken = response.data["token"]
                         // const role = response.data["role"]
                         // localStorage.setItem("jwtToken", jwtToken)
@@ -321,6 +327,16 @@ const StudentCreateErasmusApplication = () => {
                                 }}>
                                 <AlertTitle>Error</AlertTitle>
                                 {errorMessage}
+                            </Alert>
+                        }
+                        {resultMessage &&
+                            <Alert
+                                severity="info"
+                                onClose={() => {
+                                    setResultMessage("")
+                                }}>
+                                <AlertTitle>Info</AlertTitle>
+                                {resultMessage}
                             </Alert>
                         }
                         <Typography
