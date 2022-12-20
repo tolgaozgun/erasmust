@@ -1,22 +1,22 @@
-import { Box, Container, Grid } from '@mui/material';
-import { LatestOrders } from '../../components/componentsStudent/dashboard/latest-orders';
-import { Sales } from '../../components/componentsStudent/dashboard/sales';
-import { DashboardNavbar } from '../../components/componentsStudent/dashboard-navbar';
-import { DashboardSidebar } from '../../components/componentsStudent/dashboard-sidebar';
-import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
+import {Box, Container, Grid} from '@mui/material';
+import {LatestOrders} from '../../components/componentsStudent/dashboard/latest-orders';
+import {Sales} from '../../components/componentsStudent/dashboard/sales';
+import {DashboardNavbar} from '../../components/componentsStudent/dashboard-navbar';
+import {DashboardSidebar} from '../../components/componentsStudent/dashboard-sidebar';
+import React, {useState} from 'react';
+import {styled} from '@mui/material/styles';
 import StudentErasmusApplicationList from "./ErasmusApplication/StudentErasmusApplications";
 import StudentErasmusApplications from "./ErasmusApplication/StudentErasmusApplications";
+import StudentLearningAgreements from "./LearningAgreement/StudentLearningAgreements";
+import StudentErasmusPreapprovalList from "./Preapproval/StudentErasmusPreapprovalList";
+import StudentErasmusCourseReviewForms from "./CourseReviewForm/StudentErasmusCourseReviewForms";
 
 
-const DashboardLayoutRoot = styled('div')(({ theme }) => ({
-  display: 'flex',
-  flex: '1 1 auto',
-  maxWidth: '100%',
-  paddingTop: 64,
-  [theme.breakpoints.up('lg')]: {
-    paddingLeft: 280
-  }
+const DashboardLayoutRoot = styled('div')(({theme}) => ({
+    display: 'flex',
+    flex: '1 1 auto',
+    maxWidth: '100%',
+    paddingTop: 64,
 }));
 
 const DashboardStudent = (props) => {
@@ -42,12 +42,15 @@ const DashboardStudent = (props) => {
       }}
     >
       <Container maxWidth={false}>
-        <Grid
-          container
-          spacing={3}
-        >
-            <StudentErasmusApplications />
-        </Grid>
+          <Grid
+              container
+              spacing={3}
+          >
+              <StudentErasmusApplications/>
+              <StudentErasmusPreapprovalList/>
+              <StudentErasmusCourseReviewForms/>
+              <StudentLearningAgreements/>
+          </Grid>
       </Container>
     </Box>
     </DashboardLayoutRoot>
