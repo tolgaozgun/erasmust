@@ -63,7 +63,7 @@ const ViewCourseReviewForm = () => {
     const params = useParams();
     const appId = params.id
 
-    const url = "http://92.205.25.135:4/pre-approval/erasmus/get/student/course-forms/" + appId;
+    const url = "http://92.205.25.135:8080/pre-approval/erasmus/get/student/course-forms/" + appId;
     // application id => params.id => appId
 
     useEffect(() => {
