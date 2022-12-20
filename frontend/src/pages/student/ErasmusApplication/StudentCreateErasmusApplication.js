@@ -107,10 +107,10 @@ const StudentCreateErasmusApplication = () => {
     const [errorMessage, setErrorMessage] = useState("")
 
     const readyData = {
-        name: "Sude",
-        surname: "Tatar",
-        starsId: 22003175,
-        department: "CS",
+        name: localStorage.getItem("firstName"),
+        surname: localStorage.getItem("lastName"),
+        starsId: localStorage.getItem("starsId"),
+        department: localStorage.getItem("department"),
     }
 
     const formik = useFormik({
