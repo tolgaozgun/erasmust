@@ -12,9 +12,8 @@ import {
 import React from 'react';
 
 
-
 export const AccountProfileDetails = (props) => {
-  
+
   const [values, setValues] = useState({
     firstName: localStorage.getItem("firstName"),
     lastName: localStorage.getItem("lastName"),

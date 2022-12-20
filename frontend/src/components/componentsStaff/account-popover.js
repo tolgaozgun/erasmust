@@ -4,7 +4,7 @@ import React from 'react';
 import { Box, MenuItem, MenuList, Popover, Typography } from '@mui/material';
 
 export const AccountPopover = (props) => {
-  const { anchorEl, onClose, open, ...other } = props;
+  const {anchorEl, onClose, open, ...other} = props;
 
   const navigate = useNavigate();
 

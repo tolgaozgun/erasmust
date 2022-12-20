@@ -4,54 +4,54 @@ import {Box, MenuItem, MenuList, Popover, Typography} from '@mui/material';
 import React from 'react';
 
 export const AccountPopover = (props) => {
-  const {anchorEl, onClose, open, ...other} = props;
+    const {anchorEl, onClose, open, ...other} = props;
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const name = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
+    const name = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
 
-  const handleSignOut = async () => {
-    localStorage.removeItem("role")
-    localStorage.removeItem("jwtToken")
-    localStorage.removeItem("starsId")
-    localStorage.removeItem("semester")
-    localStorage.removeItem("firstName")
-    localStorage.removeItem("lastName")
-    localStorage.removeItem("department")
-    localStorage.removeItem("academicYear")
+    const handleSignOut = async () => {
+        localStorage.removeItem("role")
+        localStorage.removeItem("jwtToken")
+        localStorage.removeItem("starsId")
+        localStorage.removeItem("semester")
+        localStorage.removeItem("firstName")
+        localStorage.removeItem("lastName")
+        localStorage.removeItem("department")
+        localStorage.removeItem("academicYear")
 
 
-    navigate('/splash')
-  };
+        navigate('/splash')
+    };
 
-  return (
-      <Popover
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            horizontal: 'left',
-            vertical: 'bottom'
-          }}
-          onClose={onClose}
-          open={open}
-          PaperProps={{
-            sx: {width: '300px'}
-          }}
-          {...other}
-      >
-        <Box
-            sx={{
-              py: 1.5,
-              px: 2
+    return (
+        <Popover
+            anchorEl={anchorEl}
+            anchorOrigin={{
+                horizontal: 'left',
+                vertical: 'bottom'
             }}
+            onClose={onClose}
+            open={open}
+            PaperProps={{
+                sx: {width: '300px'}
+            }}
+            {...other}
         >
-          <Typography variant="overline">
-            Account
-          </Typography>
-          <Typography
-              color="text.secondary"
+            <Box
+                sx={{
+                    py: 1.5,
+                    px: 2
+                }}
+            >
+                <Typography variant="overline">
+                    Account
+                </Typography>
+                <Typography
+                    color="text.secondary"
               variant="body2"
           >
-            {name}
+                    {name}
           </Typography>
         </Box>
         <MenuList

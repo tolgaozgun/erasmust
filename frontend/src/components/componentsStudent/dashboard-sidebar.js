@@ -35,22 +35,22 @@ const items = [
             },
             {
                 href: "/student/erasmus/preapproval/list",
-                icon: <AddOutlinedIcon fontSize="small" />,
+                icon: <AddOutlinedIcon fontSize="small"/>,
                 title: "View Your Preapproval List",
             },
             {
                 href: "/student/erasmus/preapproval/create",
-                icon: <AddOutlinedIcon fontSize="small" />,
+                icon: <AddOutlinedIcon fontSize="small"/>,
                 title: "Create Preapproval Form",
             },
             {
                 href: "/student/erasmus/learningagreement/list",
-                icon: <AddOutlinedIcon fontSize="small" />,
+                icon: <AddOutlinedIcon fontSize="small"/>,
                 title: "View Your Learning Agreement List",
             },
             {
                 href: "/student/erasmus/learningagreement/create",
-                icon: <AddOutlinedIcon fontSize="small" />,
+                icon: <AddOutlinedIcon fontSize="small"/>,
                 title: "Create Learning Agreement",
             },
         ],
@@ -62,7 +62,7 @@ const items = [
     },
     {
         href: "/student/exchange/faq",
-        icon: <QuestionMarkIcon fontSize="small" />,
+        icon: <QuestionMarkIcon fontSize="small"/>,
         title: "Erasmus FAQ",
     },
     {

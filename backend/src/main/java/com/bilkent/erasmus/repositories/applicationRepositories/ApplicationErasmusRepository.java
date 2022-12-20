@@ -12,14 +12,21 @@ import java.util.Optional;
 @Repository
 public interface ApplicationErasmusRepository extends JpaRepository<ApplicationErasmus, Integer> {
     ApplicationErasmus findByStatusNotAndStudent_StarsId(Status status, String id);
+
     List<ApplicationErasmus> findAllByStatus(Status status);
+
     List<ApplicationErasmus> findAllByStatusAndStudent_DepartmentNameOrderByStudent_ErasmusPointDesc(Status status, DepartmentName departmentName);
 
     List<ApplicationErasmus> findAllByStatusAndStudent_DepartmentNameOrderByStudent_ErasmusPointAsc(Status status, DepartmentName dep);
+
     Optional<ApplicationErasmus> findByStudent_StarsId(String starsId);
+
     List<ApplicationErasmus> findAllByStudent_StarsId(String starsId);
+
     List<ApplicationErasmus> findAllByCoordinator_StarsId(String starsId);
+
     List<ApplicationErasmus> findAllByCoordinator_StarsIdAndStatus(String starsId, Status status);
+
     List<ApplicationErasmus> findAllByStudent_StarsIdAndStatus(String starsId, Status status);
 
     ApplicationErasmus findByStatusAndStudent_Id(Status status, int id);

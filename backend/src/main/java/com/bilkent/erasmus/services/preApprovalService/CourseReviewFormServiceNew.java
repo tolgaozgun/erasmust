@@ -93,7 +93,7 @@ public class CourseReviewFormServiceNew {
     public FileData saveFile(MultipartFile file) {
         String fileName = storageService.storeFile(file);
 
-        String fileDownloadUri =  ServletUriComponentsBuilder.fromCurrentContextPath()
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(fileName)
                 .toUriString();
 
@@ -169,7 +169,7 @@ public class CourseReviewFormServiceNew {
     // todo --> add not found exceptions, handle null string
     public CourseReviewFormNew replyCourseReviewForm(int id, ReplyDTO replyDTO) throws Exception {
         CourseReviewFormNew courseReviewFormNew = courseReviewFormRepository.findById(id).
-                orElseThrow( () -> new Exception("course review form is not found with id: " + id));
+                orElseThrow(() -> new Exception("course review form is not found with id: " + id));
         courseReviewFormNew.setCoordinatorReply(replyDTO.getReply());
         return courseReviewFormRepository.save(courseReviewFormNew);
     }

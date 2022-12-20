@@ -30,6 +30,7 @@ const CourseCoordinatorErasmusCourseReviewForms = () => {
             }
         })
             .then((res) => {
+
                 if (res && res.data) {
                     for (let i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
@@ -46,6 +47,7 @@ const CourseCoordinatorErasmusCourseReviewForms = () => {
                 console.log("Error: ", err)
             })
     }, [])
+
 
     return (
         <> <title>

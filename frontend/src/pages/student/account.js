@@ -40,41 +40,41 @@ const Account = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Typography
-          sx={{ mb: 3 }}
-          variant="h4"
-        >
-          Account
-        </Typography>
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xs={12}
+          <Typography
+              sx={{mb: 3}}
+              variant="h4"
           >
-            <AccountProfile/>
-          </Grid>
+              Account
+          </Typography>
           <Grid
-              item
-              lg={8}
-              md={6}
-              xs={12}
+              container
+              spacing={3}
           >
-            <AccountProfileDetails/>
-            <Signature />
-            {/* <AccountAdminSettings/> */}
-            {/* <AccountIncomingErasmus/> */}
-            {/* <AccountIncomingExchange/> */}
-            <AccountOutgoingErasmus/>
-            {/* <AccountOutgoingExchange/> */}
+              <Grid
+                  item
+                  lg={4}
+                  md={6}
+                  xs={12}
+              >
+                  <AccountProfile/>
+              </Grid>
+              <Grid
+                  item
+                  lg={8}
+                  md={6}
+                  xs={12}
+              >
+                  <AccountProfileDetails/>
+                  <Signature/>
+                  {/* <AccountAdminSettings/> */}
+                  {/* <AccountIncomingErasmus/> */}
+                  {/* <AccountIncomingExchange/> */}
+                  <AccountOutgoingErasmus/>
+                  {/* <AccountOutgoingExchange/> */}
+
+              </Grid>
 
           </Grid>
-
-        </Grid>
       </Container>
     </Box>
     </DashboardLayoutRoot>

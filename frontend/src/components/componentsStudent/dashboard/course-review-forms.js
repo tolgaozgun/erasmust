@@ -184,7 +184,10 @@ const CourseReviewList = (props) => {
                                                 </IconButton>
                                             </Tooltip>
                                             <Tooltip title="Edit">
-                                                <IconButton>
+                                                <IconButton
+                                                    onClick={() => {
+                                                        navigate(`/student/erasmus/coursereview/edit/${student.id}`, {state: student})
+                                                    }}>
                                                     <EditIcon/>
                                                 </IconButton>
                                             </Tooltip>

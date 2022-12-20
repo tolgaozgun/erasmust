@@ -71,14 +71,14 @@ const Login = () => {
 
                             localStorage.setItem("academicYear", academicYear)
                             localStorage.setItem("semester", semester)
-                            
+
                             goDashboardStudent()
                         } else if (role === "COURSE_COORDINATOR") {
-                          goDashboardCourseCoordinator()
-                        } else if (role === "ERASMUS_COORDINATOR"){
-                          goDashboardErasmusCoordinator()
+                            goDashboardCourseCoordinator()
+                        } else if (role === "ERASMUS_COORDINATOR") {
+                            goDashboardErasmusCoordinator()
                         } else {
-                          goSplash()
+                            goSplash()
                         }
                     }
                 })

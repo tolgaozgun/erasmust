@@ -29,7 +29,6 @@ import {
 import {
     ViewCourseInfo
 } from "../../components/componentsErasmusCoordinator/info/erasmus/preapprovalForm/view-course-info";
-import { async } from 'q';
 import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
@@ -54,12 +53,12 @@ const ErasmusCoordinatorDashboard = (props) => {
                 "Authorization": `Bearer ${token}`
             }
         })
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
 
@@ -154,12 +153,9 @@ const ErasmusCoordinatorDashboard = (props) => {
                                             direction="row"
                                             spacing={5}
                                             style={{justifyContent: "center"}}>
-
                                             <Button onClick={() => {
                                                 setResultMessage("Placement success!")
                                             }}>
-                                                
-                             
                                                 Place Students
                                             </Button>
                                         </Stack>
