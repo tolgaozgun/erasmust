@@ -52,8 +52,8 @@ const Login = () => {
                         console.log(response.data)
                         const jwtToken = response.data["token"]
                         const role = response.data["role"]
-                        sessionStorage.setItem("jwtToken", jwtToken)
-                        sessionStorage.setItem("role", role)
+                        localStorage.setItem("jwtToken", jwtToken)
+                        localStorage.setItem("role", role)
                         if (role === "ADMIN") {
                             goDashboardAdmin()
                         } else if (role === "STUDENT") {
@@ -64,12 +64,12 @@ const Login = () => {
                             const academicYear = response.data["academicYear"]
                             const semester = response.data["semester"]
 
-                            sessionStorage.setItem("firstName", firstName)
-                            sessionStorage.setItem("lastName", lastName)
-                            sessionStorage.setItem("startId", starsId)
-                            sessionStorage.setItem("department", department)
-                            sessionStorage.setItem("academicYear", academicYear)
-                            sessionStorage.setItem("semester", semester)
+                            localStorage.setItem("firstName", firstName)
+                            localStorage.setItem("lastName", lastName)
+                            localStorage.setItem("startId", starsId)
+                            localStorage.setItem("department", department)
+                            localStorage.setItem("academicYear", academicYear)
+                            localStorage.setItem("semester", semester)
                             goDashboardStudent()
                         } else if (role === "COURSE_COORDINATOR") {
                           goDashboardCourseCoordinator()

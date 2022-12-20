@@ -99,7 +99,7 @@ const StudentCreateErasmusPreapproval = () => {
         false, false, false
     ])
     const [courses, setCourses] = useState([])
-    const token = sessionStorage.getItem("jwtToken")
+    const token = localStorage.getItem("jwtToken")
 
     useEffect(() => {
         axios.get("http://92.205.25.135:8080/course/all-bilkent-courses", {
@@ -123,6 +123,25 @@ const StudentCreateErasmusPreapproval = () => {
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                }
+            })
+            .catch((err) => {
+                if (err && err.response) {
+                    console.log("Error: ", err)
+                }
+            })
+    }, []);
+
+
+    useEffect(() => {
+        axios.get("http://92.205.25.135:8080/pre-approval/erasmus/get/initial-values", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then((res) => {
+                if (res && res.data) {
+                    console.log(res.data)
                 }
             })
             .catch((err) => {
@@ -194,7 +213,7 @@ const StudentCreateErasmusPreapproval = () => {
             ),
         }),
         onSubmit: async (values, formikHelpers) => {
-            let token = sessionStorage.getItem("jwtToken")
+            let token = localStorage.getItem("jwtToken")
             await axios.post("http://92.205.25.135:8080/pre-approval/erasmus/save", values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -205,8 +224,8 @@ const StudentCreateErasmusPreapproval = () => {
                         console.log(response.data)
                         // const jwtToken = response.data["token"]
                         // const role = response.data["role"]
-                        // sessionStorage.setItem("jwtToken", jwtToken)
-                        // sessionStorage.setItem("role", role)
+                        // localStorage.setItem("jwtToken", jwtToken)
+                        // localStorage.setItem("role", role)
                         // navigate('/dashboardStudent')
                     }
                 })

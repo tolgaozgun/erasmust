@@ -143,7 +143,7 @@ const StudentCreateErasmusApplication = () => {
             ),
         }),
         onSubmit: async (values, formikHelpers) => {
-            let token = sessionStorage.getItem("jwtToken")
+            let token = localStorage.getItem("jwtToken")
             await axios.post("http://92.205.25.135:8080/erasmus-application/create", values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -154,8 +154,8 @@ const StudentCreateErasmusApplication = () => {
                         console.log(response.data)
                         // const jwtToken = response.data["token"]
                         // const role = response.data["role"]
-                        // sessionStorage.setItem("jwtToken", jwtToken)
-                        // sessionStorage.setItem("role", role)
+                        // localStorage.setItem("jwtToken", jwtToken)
+                        // localStorage.setItem("role", role)
                         // navigate('/dashboardStudent')
                     }
                 })
@@ -170,7 +170,7 @@ const StudentCreateErasmusApplication = () => {
     });
 
     useEffect(async () => {
-        let token = sessionStorage.getItem("jwtToken")
+        let token = localStorage.getItem("jwtToken")
         await axios.get("http://92.205.25.135:8080/universities/all-by-student-department", {
             headers: {
                 "Authorization": `Bearer ${token}`
