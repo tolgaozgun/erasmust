@@ -158,14 +158,15 @@ const StudentCreateErasmusPreapproval = () => {
         handleStep(2, state)
     }
 
+
     const formik = useFormik({
         initialValues: {
             forms: [
                 {
-                    courseName: "",
-                    courseCode: "",
-                    courseCredits: 0.0,
-                    bilkentCourse: "",
+                    courseHostName: "",
+                    courseHostCode: "",
+                    courseHostCredit: 0.0,
+                    courseBilkentId: 0,
                 }
             ]
         },
@@ -173,18 +174,19 @@ const StudentCreateErasmusPreapproval = () => {
             forms: Yup.array().of(
                 Yup.object().shape(
                     {
-                        courseCode: Yup
+                        courseHostCode: Yup
                             .string()
                             .required("Course Code is required"),
-                        courseCredits: Yup
+                        courseHostCredit: Yup
                             .number()
                             .min(0)
                             .required("Course Credits is required"),
-                        courseName: Yup
+                        courseHostName: Yup
                             .string()
                             .required("Course Name is required"),
-                        bilkentCourse: Yup
-                            .string()
+                        courseBilkentId: Yup
+                            .number()
+                            .min(0)
                             .required("Bilkent Course is required"),
                     },
                     'Course is invalid',
@@ -220,11 +222,13 @@ const StudentCreateErasmusPreapproval = () => {
         },
     });
 
+    console.log("Errors")
+    console.log(formik.errors)
 
     const addCourse = () => {
         let length = formik.values.courses.length
-        const component = {courseCode: '', courseCredits: 0.0, courseName: '', bilkentCourse: ''}
-        formik.setFieldValue(`courses.${length}`, component)
+        const component = {courseHostCode: '', courseHostCredit: 0.0, courseHostName: '', courseBilkentId: 0}
+        formik.setFieldValue(`forms.${length}`, component)
         formik.values.courses.push(component)
     }
 
@@ -280,7 +284,7 @@ const StudentCreateErasmusPreapproval = () => {
     }
 
     const setCourse = (index, field, value) => {
-        formik.setFieldValue(`courses[${index}].${field}`, value)
+        formik.setFieldValue(`forms[${index}].${field}`, value)
     }
 
     const steps = ['Student Information', 'Program Information', 'Courses'];
