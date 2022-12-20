@@ -92,11 +92,11 @@ export const CourseComponent = (props) => {
                                 xs={12}
                             >
                                 <TextField
-                                    error={Boolean(props.errors && props.errors.courseCode)}
+                                    error={Boolean(props.errors && props.errors.courseHostCode)}
                                     fullWidth
-                                    helperText={props.touched && props.touched.courseCode}
+                                    helperText={props.touched && props.touched.courseHostCode}
                                     label="Course Code"
-                                    name={"courses[" + props.index + "].courseCode"}
+                                    name={"forms[" + props.index + "].courseHostCode"}
                                     onChange={courseCodeChange}
                                     onBlur={props.handleBlur}
                                     required
@@ -112,11 +112,11 @@ export const CourseComponent = (props) => {
                                 xs={12}
                             >
                                 <TextField
-                                    error={Boolean(props.errors && props.errors.courseCredits)}
+                                    error={Boolean(props.errors && props.errors.courseHostCredit)}
                                     fullWidth
-                                    helperText={props.touched && props.touched.courseCredits}
+                                    helperText={props.touched && props.touched.courseHostCredit}
                                     label="Course Credits"
-                                    name={"courses[" + props.index + "].courseCredits"}
+                                    name={"forms[" + props.index + "].courseHostCredit"}
                                     onChange={onCreditChange}
                                     onBlur={props.handleBlur}
                                     required
@@ -130,11 +130,11 @@ export const CourseComponent = (props) => {
                                 xs={24}
                             >
                                 <TextField
-                                    error={Boolean(props.errors && props.errors.courseName)}
+                                    error={Boolean(props.errors && props.errors.courseHostName)}
                                     fullWidth
-                                    helperText={props.touched && props.touched.courseName}
+                                    helperText={props.touched && props.touched.courseHostName}
                                     label="Course Name"
-                                    name={"courses[" + props.index + "].courseName"}
+                                    name={"forms[" + props.index + "].courseHostName"}
                                     onChange={courseNameChange}
                                     onBlur={props.handleBlur}
                                     required
@@ -158,7 +158,7 @@ export const CourseComponent = (props) => {
                                     id="bilkent-course-selector"
                                     options={props.courses}
                                     onChange={(event, value) => {
-                                        props.setCourse(props.index, "bilkentCourse", value["label"])
+                                        props.setCourse(props.index, "courseBilkentId", value["id"])
                                     }}
                                     renderInput={(params) => <TextField {...params} label="Enter class code or name"/>}
                                 />
