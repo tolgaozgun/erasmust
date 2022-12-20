@@ -9,6 +9,7 @@ import {UserCircle as UserCircleIcon} from '../../icons/user-circle';
 import {Users as UsersIcon} from '../../icons/users';
 import {AccountPopover} from './account-popover';
 import React from 'react';
+import SearchBar from "../SearchBar";
 
 const DashboardNavbarRoot = styled(AppBar)(({theme}) => ({
     backgroundColor: theme.palette.background.paper,
@@ -52,16 +53,7 @@ export const DashboardNavbar = (props) => {
                     >
                         <MenuIcon fontSize="small"/>
                     </IconButton>
-                    <Tooltip title="Search">
-                        <Autocomplete
-                            disablePortal
-                            id="search-bar"
-                            options={[]}
-                            sx={{width: 300}}
-                            renderInput={(params) => <TextField {...params} label="Search"/>}
-                        />
-                        {/*<SearchIcon fontSize="small" />*/}
-                    </Tooltip>
+                    <SearchBar/>
                     <Box sx={{flexGrow: 1}}/>
                     <Tooltip title="Contacts">
                         <IconButton sx={{ml: 1}}>

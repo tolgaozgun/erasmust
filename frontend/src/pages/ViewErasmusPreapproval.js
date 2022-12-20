@@ -48,11 +48,11 @@ const ViewErasmusPreapproval = () => {
     var academicYears;
     var semesters;
 
-    const token = localStorage.getItem("jwtToken");
+    const token = sessionStorage.getItem("jwtToken");
 
     const params = useParams();
     const appId = params.id
-    const url = "http://92.205.25.135:8080/pre-approval/erasmus/all-preapproval-student/" + appId;
+    const url = "http://92.205.25.135:4/pre-approval/erasmus/all-preapproval-student/" + appId;
 
     useEffect(() => {
         axios.get(url, {

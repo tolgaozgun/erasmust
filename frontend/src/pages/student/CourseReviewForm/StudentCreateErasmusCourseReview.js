@@ -38,7 +38,7 @@ const StudentCreateErasmusCourseReview = () => {
     const [data, setData] = useState();
     const [file, setFile] = useState();
 
-    const token = localStorage.getItem("jwtToken");
+    const token = sessionStorage.getItem("jwtToken");
 
     const formik = useFormik({
         initialValues: {
@@ -95,7 +95,7 @@ const StudentCreateErasmusCourseReview = () => {
                 console.log(pair[0], pair[1])
             }*/
 
-            await axios.post("http://92.205.25.135:8080/course-review-v2/edit", formData, {
+            await axios.post("http://92.205.25.135:4/course-review-v2/edit", formData, {
                 headers: {
                     'Content-Type': undefined,
                     "Authorization": `Bearer ${token}`

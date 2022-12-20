@@ -21,7 +21,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 const EditErasmusApplication = () => {
     const location = useLocation();
     const application = location.state;
-    const token = localStorage.getItem("jwtToken")
+    const token = sessionStorage.getItem("jwtToken")
 
     const [schools, setSchools] = useState([])
     var schoolArray = []
@@ -29,17 +29,17 @@ const EditErasmusApplication = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
-      axios.get("http://92.205.25.135:8080/universities/all-by-student-department", {
-          headers: {
-              "Authorization": `Bearer ${token}`
-          }
-      })
-        .then((res) => {
-            if (res && res.data) {
-              console.log(res.data)
-              //schoolArray.push()
+        axios.get("http://92.205.25.135:4/universities/all-by-student-department", {
+            headers: {
+                "Authorization": `Bearer ${token}`
             }
         })
+            .then((res) => {
+                if (res && res.data) {
+                    console.log(res.data)
+                    //schoolArray.push()
+                }
+            })
     })
 
     const formik = useFormik({

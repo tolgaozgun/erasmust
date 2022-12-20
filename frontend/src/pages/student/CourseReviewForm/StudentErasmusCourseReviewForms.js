@@ -20,11 +20,11 @@ const StudentErasmusCourseReviewForms = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(true);
     const [courseReviewFormList, setCourseReviewFormList] = useState([]);
 
-    const token = localStorage.getItem("jwtToken");
+    const token = sessionStorage.getItem("jwtToken");
     var array = []
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:8080/pre-approval/erasmus/get-all/student/course-forms", {
+        axios.get("http://myerasmust.com/api/course-review-v2/get-all/student/course-forms", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

@@ -23,11 +23,11 @@ const StudentErasmusApplicationList = () => {
     const [applicationList, setApplicationList] = useState([]);
     const [flag, setFlag] = useState(false);
 
-    const token = localStorage.getItem("jwtToken");
+    const token = sessionStorage.getItem("jwtToken");
     var array = []
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:8080/erasmus-application/view-application", {
+        axios.get("http://92.205.25.135:4/erasmus-application/view-application", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

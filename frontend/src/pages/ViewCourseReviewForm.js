@@ -59,11 +59,11 @@ const ViewCourseReviewForm = () => {
     const [requirement, setRequirement] = useState("")
     const [courseCoordinator, setCourseCoordinator] = useState("")
 
-    const token = localStorage.getItem("jwtToken");
+    const token = sessionStorage.getItem("jwtToken");
     const params = useParams();
     const appId = params.id
 
-    const url = "http://92.205.25.135:8080/pre-approval/erasmus/get/student/course-forms/" + appId;
+    const url = "http://92.205.25.135:4/pre-approval/erasmus/get/student/course-forms/" + appId;
     // application id => params.id => appId
 
     useEffect(() => {

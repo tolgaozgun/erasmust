@@ -5,7 +5,7 @@ import React from 'react';
 
 const Error = () => {
   const navigate = useNavigate();
-    const role = localStorage.getItem("role");
+    const role = sessionStorage.getItem("role");
 
   const goDash = () => {
     if (role === "ADMIN") {
