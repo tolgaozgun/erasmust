@@ -8,8 +8,18 @@ export const AccountPopover = (props) => {
 
   const navigate = useNavigate();
 
+  const name = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
+
   const handleSignOut = async () => {
-    //onClose?.();
+    localStorage.removeItem("role")
+    localStorage.removeItem("jwtToken")
+    localStorage.removeItem("starsId")
+    localStorage.removeItem("semester")
+    localStorage.removeItem("firstName")
+    localStorage.removeItem("lastName")
+    localStorage.removeItem("department")
+    localStorage.removeItem("academicYear")
+
 
     navigate('/splash')
   };
@@ -41,7 +51,7 @@ export const AccountPopover = (props) => {
               color="text.secondary"
               variant="body2"
           >
-            John Doe
+            {name}
           </Typography>
         </Box>
         <MenuList

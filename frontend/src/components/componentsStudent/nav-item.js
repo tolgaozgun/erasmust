@@ -248,6 +248,72 @@ export const NavItem = (props) => {
                   {sideItems[3].title}
                 </Button>
               </ListItem>
+              <ListItem
+                sx={{
+                  py: 0,
+                  width: "100%",
+                  display: "flex"
+                }}
+              >
+                <Button
+                  href = {sideItems[4].href}
+                  component="a"
+                  startIcon={sideItems[4].icon}
+                  disableRipple
+                  onClick={() => {setLink(sideItems[4].href); goLinkSide()}}
+                  sx={{
+                    backgroundColor: (location.pathname === sideItems[4].href) && 'rgba(255,255,255, 0.08)',
+                    borderRadius: 1,
+                    color: (location.pathname === sideItems[4].href) ? 'secondary.main' : 'neutral.300',
+                    fontWeight: (location.pathname === sideItems[4].href) && 'fontWeightBold',
+                    justifyContent: 'flex-start',
+                    px: 3,
+                    textAlign: 'left',
+                    textTransform: 'none',
+                    '& .MuiButton-startIcon': {
+                      color: (location.pathname === sideItems[4].href) ? 'secondary.main' : 'neutral.400'
+                    },
+                    '&:hover': {
+                      backgroundColor: 'rgba(255,255,255, 0.08)'
+                    }
+                  }}
+                >
+                  {sideItems[4].title}
+                </Button>
+              </ListItem>
+              <ListItem
+                sx={{
+                  py: 0,
+                  width: "100%",
+                  display: "flex"
+                }}
+              >
+                <Button
+                  href = {sideItems[5].href}
+                  component="a"
+                  startIcon={sideItems[5].icon}
+                  disableRipple
+                  onClick={() => {setLink(sideItems[5].href); goLinkSide()}}
+                  sx={{
+                    backgroundColor: (location.pathname === sideItems[5].href) && 'rgba(255,255,255, 0.08)',
+                    borderRadius: 1,
+                    color: (location.pathname === sideItems[5].href) ? 'secondary.main' : 'neutral.300',
+                    fontWeight: (location.pathname === sideItems[5].href) && 'fontWeightBold',
+                    justifyContent: 'flex-start',
+                    px: 3,
+                    textAlign: 'left',
+                    textTransform: 'none',
+                    '& .MuiButton-startIcon': {
+                      color: (location.pathname === sideItems[5].href) ? 'secondary.main' : 'neutral.400'
+                    },
+                    '&:hover': {
+                      backgroundColor: 'rgba(255,255,255, 0.08)'
+                    }
+                  }}
+                >
+                  {sideItems[5].title}
+                </Button>
+              </ListItem>
             </List>
           </Collapse>
           </ListItem>

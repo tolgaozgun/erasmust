@@ -14,10 +14,11 @@ import React from 'react';
 
 
 export const AccountProfileDetails = (props) => {
+  
   const [values, setValues] = useState({
     firstName: localStorage.getItem("firstName"),
     lastName: localStorage.getItem("lastName"),
-    email: localStorage.getItem("firstName") + '.' + localStorage.getItem("lastName") + '@ug.bilkent.edu.tr',
+    email: localStorage.getItem("firstName").toLowerCase() + "." + localStorage.getItem("lastName").toLowerCase() + '@ug.bilkent.edu.tr',
     department: localStorage.getItem("department"),
     starsId: localStorage.getItem("starsId"),
     id: 1,
