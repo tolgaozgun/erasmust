@@ -136,7 +136,7 @@ const StudentAdd = () => {
                 
         }),
         onSubmit: async (values) => {
-            await axios.post("http://92.205.25.135:4/admin/add-outgoing-student", values, {
+            await axios.post("http://92.205.25.135:8080/admin/add-outgoing-student", values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }

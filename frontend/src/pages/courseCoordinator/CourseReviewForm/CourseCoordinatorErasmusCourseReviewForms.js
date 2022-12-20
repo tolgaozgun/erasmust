@@ -24,7 +24,7 @@ const CourseCoordinatorErasmusCourseReviewForms = () => {
     var array = []
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/pre-approval/erasmus/get-all/course-coordinator/review-course-forms", {
+        axios.get("http://92.205.25.135:8080/pre-approval/erasmus/get-all/course-coordinator/review-course-forms", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

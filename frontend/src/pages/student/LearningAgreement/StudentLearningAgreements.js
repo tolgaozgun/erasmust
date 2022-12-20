@@ -26,7 +26,7 @@ const StudentLearningAgreements = () => {
     var array = []
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/learning-agreement-erasmus/student-get-all", {
+        axios.get("http://92.205.25.135:8080/learning-agreement-erasmus/student-get-all", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

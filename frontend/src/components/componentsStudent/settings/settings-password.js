@@ -28,7 +28,7 @@ export const SettingsPassword = (props) => {
             .required("Confirmation password is required")
     }),
     onSubmit: async (values) => {
-        await axios.post("http://92.205.25.135:4/auth/change-password", values)
+        await axios.post("http://92.205.25.135:8080/auth/change-password", values)
             .then((response) => {
                 if (response && response.data) {
                     console.log(response)

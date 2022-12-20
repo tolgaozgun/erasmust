@@ -230,7 +230,7 @@ const BeforeMobility = (props) => {
             }),
         }),
         onSubmit: async (values, formikHelpers) => {
-            await axios.patch("http://92.205.25.135:4/learning-agreement-erasmus/edit/" + props.appId, values, {
+            await axios.patch("http://92.205.25.135:8080/learning-agreement-erasmus/edit/" + props.appId, values, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -253,7 +253,7 @@ const BeforeMobility = (props) => {
     });
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/learning-agreement-erasmus/get-initial", {
+        axios.get("http://92.205.25.135:8080/learning-agreement-erasmus/get-initial", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -282,7 +282,7 @@ const BeforeMobility = (props) => {
 
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/faculty/all", {
+        axios.get("http://92.205.25.135:8080/faculty/all", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

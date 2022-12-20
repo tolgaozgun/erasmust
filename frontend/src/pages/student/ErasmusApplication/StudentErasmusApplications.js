@@ -27,7 +27,7 @@ const StudentErasmusApplicationList = () => {
     var array = []
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/erasmus-application/view-application", {
+        axios.get("http://92.205.25.135:8080/erasmus-application/view-application", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

@@ -26,7 +26,7 @@ const AdminExchangePreapprovalList = () => {
     const token = sessionStorage.getItem("jwtToken");
 
     useEffect(() => {
-        axios.get("http://92.205.25.135:4/admin/all-students", {
+        axios.get("http://92.205.25.135:8080/admin/all-students", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
