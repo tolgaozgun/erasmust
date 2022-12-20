@@ -111,19 +111,20 @@ const StudentCreateErasmusPreapproval = () => {
             .then((res) => {
                 if (res && res.data) {
                     var i;
+                    let items = []
                     for (i = 0; i < res.data.length; i++) {
                         console.log("Item fetched!")
                         var item = res.data[i]
 
-                        let name = item.name;
+                        let name = item.courseCode + " - " + item.name;
                         item.label = name;
 
-
-                        setCourses(oldArray => [...oldArray, item])
+                        items[i] = item
 
                         console.log(res.data);
                         console.log("Item placed on array!");
                     }
+                    setCourses(items)
                 }
             })
             .catch((err) => {
@@ -132,6 +133,9 @@ const StudentCreateErasmusPreapproval = () => {
                 }
             })
     }, []);
+
+    console.log("Courses")
+    console.log(courses)
 
 
     useEffect(() => {

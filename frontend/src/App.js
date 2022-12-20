@@ -421,13 +421,13 @@ const App = () => {
                             />
                             <Route
                                 path="create"
-                                element={<StudentCreateErasmusCourseReview/>}
+                                element={<Error/>}
                             />
                             <Route
                                 path="view/:id"
                                 element={<ViewCourseReviewForm/>}
                             />
-                            <Route path="edit" element={<Error/>}/>
+                            <Route path="edit/:id" element={<StudentCreateErasmusCourseReview/>}/>
                         </Route>
                         <Route path="coursetransfer/*" element={<Outlet />}>
                             <Route path="list" element={<Error />} />
