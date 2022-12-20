@@ -32,8 +32,8 @@ const Login = () => {
 
     const formik = useFormik({
         initialValues: {
-          starsId: '2xxxxxxx',
-          password: 'Password123'
+            starsId: '',
+            password: ''
         },
         validationSchema: Yup.object({
             starsId: Yup
