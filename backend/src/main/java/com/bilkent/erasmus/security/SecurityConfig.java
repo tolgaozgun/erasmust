@@ -66,7 +66,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:3000","https://92.205.25.135:2"));
+        config.setAllowedOrigins(List.of("http://localhost:3000", "https://92.205.25.135:2",
+                "http://myerasmust.com", "myerasmust.com", "https://92.205.25.135:3000",
+                "http://92.205.25.135:2", "http://92.205.25.135:3000", "http://myerasmust.com",
+                "myerasmust.com"));
         config.addAllowedHeader("*");
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("HEAD");
