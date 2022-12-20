@@ -29,7 +29,6 @@ import {
 import {
     ViewCourseInfo
 } from "../../components/componentsErasmusCoordinator/info/erasmus/preapprovalForm/view-course-info";
-import {async} from 'q';
 import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
