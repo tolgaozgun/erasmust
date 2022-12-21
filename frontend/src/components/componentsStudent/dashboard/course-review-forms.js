@@ -122,9 +122,9 @@ const CourseReviewList = (props) => {
                                         </TableSortLabel>
                                     </Tooltip>
                                 </TableCell>
-                                <TableCell>
-                                    Status
-                                </TableCell>
+                                {/*<TableCell>*/}
+                                {/*    Status*/}
+                                {/*</TableCell>*/}
                                 <TableCell>
                                     Actions
                                 </TableCell>
@@ -160,9 +160,9 @@ const CourseReviewList = (props) => {
                                     <TableCell>
                                         {student.semester}
                                     </TableCell>
-                                    <TableCell>
-                                        {student.status}
-                                    </TableCell>
+                                    {/*<TableCell>*/}
+                                    {/*    {student.status}*/}
+                                    {/*</TableCell>*/}
                                     <TableCell>
                                         <>
                                             <Tooltip title="View">
@@ -173,7 +173,6 @@ const CourseReviewList = (props) => {
                                                     <VisibilityIcon/>
                                                 </IconButton>
                                             </Tooltip>
-                                            {student.status !== "APPROVED" &&
                                                 <>
                                                     <Tooltip title="Edit">
                                                         <IconButton
@@ -189,7 +188,6 @@ const CourseReviewList = (props) => {
                                                         </IconButton>
                                                     </Tooltip>
                                                 </>
-                                            }
                                         </>
                                     </TableCell>
                                 </TableRow>
