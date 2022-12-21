@@ -154,7 +154,8 @@ const ErasmusCoordinatorDashboard = (props) => {
                                             spacing={5}
                                             style={{justifyContent: "center"}}>
                                             <Button onClick={() => {
-                                                setResultMessage("Placement success!")
+                                                setResultMessage("Placement success!");
+                                                placeStudents()
                                             }}>
                                                 Place Students
                                             </Button>

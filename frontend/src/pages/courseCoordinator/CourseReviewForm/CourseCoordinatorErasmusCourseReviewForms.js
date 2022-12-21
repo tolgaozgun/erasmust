@@ -3,7 +3,7 @@ import {styled} from "@mui/material/styles";
 import {DashboardNavbar} from "../../../components/componentsStaff/courseCoordinator/dashboard-navbar";
 import {DashboardSidebar} from "../../../components/componentsStaff/courseCoordinator/dashboard-sidebar";
 import {Box, Container, Grid} from "@mui/material";
-import CourseReviewList from "../../../components/componentsStudent/dashboard/course-review-forms";
+import CourseReviewList from "./course-review-forms";
 import axios from 'axios';
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
