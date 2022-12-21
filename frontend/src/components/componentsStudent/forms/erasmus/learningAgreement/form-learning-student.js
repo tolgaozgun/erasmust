@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
     Box,
     Button,
@@ -15,7 +15,13 @@ import * as Yup from "yup";
 
 export const LearningStudentInfo = (props) => {
 
+    const [dateStr, setDateStr] = useState("")
+    useEffect(() => {
+        const epoch = props.setData["dateOfBirth"]
+        const date = new Date(epoch)
+        setDateStr(date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear())
 
+    }, props.setData["dateOfBirth"])
     return (
         <form
             autoComplete="off"
@@ -72,11 +78,14 @@ export const LearningStudentInfo = (props) => {
                                 fullWidth
                                 label="Date of Birth"
                                 name="dateOfBirth"
-                                type="date"
                                 required
-                                // value={props.setData["dateOfBirth"]}
-                                variant="outlined"
+                                value={dateStr}
+                                defaultValue="2017-05-24"
+                                onChange={(e, v) => {
+                                    console.log(e)
+                                }}
                                 disabled={true}
+                                variant="outlined"
                             />
                         </Grid>
                         <Grid
@@ -89,7 +98,7 @@ export const LearningStudentInfo = (props) => {
                                 label="Nationality"
                                 name="nationality"
                                 required
-                                // value={props.setData["nationality"]}
+                                value={props.setData["nationality"]}
                                 variant="outlined"
                                 disabled={true}
                             />
@@ -119,7 +128,7 @@ export const LearningStudentInfo = (props) => {
                                 label="Academic Year"
                                 name="academicYear"
                                 required
-                                // value={props.setData["academicYear"]}
+                                value={props.setData["academicYear"]}
                                 variant="outlined"
                                 disabled={true}
                             />

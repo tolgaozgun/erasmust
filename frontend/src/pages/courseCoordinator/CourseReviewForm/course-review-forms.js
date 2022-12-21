@@ -18,6 +18,8 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import DoneIcon from '@mui/icons-material/Done';
+import CloseIcon from '@mui/icons-material/Close';
 
 import {SeverityPill} from '../severity-pill';
 import {useNavigate} from "react-router-dom";
@@ -175,17 +177,17 @@ const CourseReviewList = (props) => {
                                             </Tooltip>
                                             {student.status !== "APPROVED" &&
                                                 <>
-                                                    <Tooltip title="Edit">
+                                                    <Tooltip title="Approve">
                                                         <IconButton
                                                             onClick={() => {
                                                                 navigate(`/student/erasmus/coursereview/edit/${student.id}`, {state: student})
                                                             }}>
-                                                            <EditIcon/>
+                                                            <DoneIcon/>
                                                         </IconButton>
                                                     </Tooltip>
-                                                    <Tooltip title="Delete">
+                                                    <Tooltip title="Reject">
                                                         <IconButton>
-                                                            <DeleteIcon/>
+                                                            <CloseIcon/>
                                                         </IconButton>
                                                     </Tooltip>
                                                 </>
